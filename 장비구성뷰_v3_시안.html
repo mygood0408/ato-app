@@ -642,7 +642,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "SICAS",
-      "cable": "전원",
+      "cable": "AC220V",
       "kind": "power",
       "via": null,
       "protocol": null,
@@ -651,7 +651,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "LZB700M",
-      "cable": "전원",
+      "cable": "AC220V",
       "kind": "power",
       "via": null,
       "protocol": null,
@@ -660,7 +660,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "IFC",
-      "cable": "전원",
+      "cable": "AC220V",
       "kind": "power",
       "via": null,
       "protocol": null,
@@ -669,7 +669,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "CONTROL_CENTER",
-      "cable": "전원",
+      "cable": "AC220V",
       "kind": "power",
       "via": null,
       "protocol": null,
@@ -678,7 +678,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "TWC",
-      "cable": "전원",
+      "cable": "AC220V",
       "kind": "power",
       "via": null,
       "protocol": null,
@@ -687,7 +687,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "FIELD_SWITCH",
-      "cable": "전원",
+      "cable": "AC110V",
       "kind": "power",
       "via": "TR4/TR5",
       "protocol": null,
@@ -696,7 +696,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "FIELD_SIGNAL",
-      "cable": "전원",
+      "cable": "AC110V",
       "kind": "power",
       "via": "TR4/TR5",
       "protocol": null,
@@ -705,7 +705,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "FTGS",
-      "cable": "전원",
+      "cable": "AC220V",
       "kind": "power",
       "via": "TR1/TR2",
       "protocol": null,
@@ -714,7 +714,7 @@ var CONN = {
     {
       "from": "AC_PANEL",
       "to": "ECDSTT",
-      "cable": "전원",
+      "cable": "AC110V",
       "kind": "power",
       "via": "TR4/TR5",
       "protocol": null,
@@ -726,7 +726,7 @@ var CONN = {
     {
       "from": "DC_PANEL",
       "to": "SICAS",
-      "cable": "전원",
+      "cable": "DC60/24V",
       "kind": "power",
       "via": "TR6~TR9",
       "protocol": null,
@@ -735,7 +735,7 @@ var CONN = {
     {
       "from": "DC_PANEL",
       "to": "LZB700M",
-      "cable": "전원",
+      "cable": "DC60/24V",
       "kind": "power",
       "via": "TR6~TR9",
       "protocol": null,
@@ -744,7 +744,7 @@ var CONN = {
     {
       "from": "DC_PANEL",
       "to": "ECDSTT",
-      "cable": "전원",
+      "cable": "DC60V",
       "kind": "power",
       "via": "TR6/TR7",
       "protocol": null,
@@ -758,7 +758,7 @@ var CONN = {
     {
       "from": "DC_PANEL",
       "to": "ATOLOOP",
-      "cable": "전원",
+      "cable": "DC60V",
       "kind": "power",
       "via": "TR6/TR7",
       "protocol": null,
@@ -770,7 +770,7 @@ var CONN = {
     {
       "from": "DC_PANEL",
       "to": "IFC",
-      "cable": "전원",
+      "cable": "DC24V",
       "kind": "power",
       "via": "TR8/TR9",
       "protocol": null,
@@ -8136,8 +8136,10 @@ var MAP_EDGE_PATHS = {
   'SICAS|IFC':                     [[350,290],[350,245],[610,245],[610,178]],
   'SICAS|SICAS_ADJACENT_STATION':  [[250,290],[250,245],[120,245],[120,206]],
   'SICAS|ID_RACK':                 [[335,360],[335,430]],
-  'ECDSTT|FIELD_SWITCH':           [[505,500],[505,650]],
-  'ECDSTT|FIELD_SIGNAL':           [[560,500],[560,600],[680,600],[680,650]],
+  /* [2026-09-22] DC_PANEL이 새로 x360~650,y545~611 자리에 생기면서 기존 직선 경로가 그 박스를
+     그대로 관통하게 됨 — DC_PANEL 오른쪽(x>650)으로 돌아가도록 재수정. */
+  'ECDSTT|FIELD_SWITCH':           [[505,500],[505,530],[660,530],[660,650],[505,650]],
+  'ECDSTT|FIELD_SIGNAL':           [[560,500],[560,530],[680,530],[680,650]],
   'IFC|TWC':                       [[780,178],[850,178]],
   'IFC|CONTROL_CENTER':            [[695,150],[695,110],[560,110],[560,80]],
   'ID_RACK|FTGS':                  [[280,458],[190,458]],
@@ -8152,7 +8154,29 @@ var MAP_EDGE_PATHS = {
      ECDSTT|FIELD_SIGNAL의 y=600 구간(x 560~680)과 겹치지 않도록 x 720~885만 사용. */
   'ATOLOOP|FIELD_ATOLOOP':         [[720,486],[720,600],[885,600],[885,650]],
   'LZB700M|TWC':                   [[780,300],[900,300],[900,206]],
-  'LZB700M|IFC':                   [[695,290],[695,206]]
+  'LZB700M|IFC':                   [[695,290],[695,206]],
+
+  /* [2026-09-22] AC_PANEL/DC_PANEL 전원선 14건 — 전부 가로/세로선만 쓰고, 다른 장비 박스를
+     통과하지 않도록 직접 확인한 "빈 통로"만 지나가게 손으로 좌표를 짰다(사용자 요청 ①④⑧).
+     빈 통로: x190~280(FTGS↔ID_RACK 사이), x390~420(ID_RACK↔ECDSTT 사이),
+     x590~640(ECDSTT↔ATOLOOP 사이), x390~610(SICAS↔LZB700M 사이, 매우 넓음),
+     x780~850(IFC/LZB700M↔TWC 사이), y505(모든 장비 하단(~500)과 두 분전반 상단(545) 사이 빈 틈).
+     선끼리 서로 교차하는 것은 조건에 안 걸리므로 신경 쓰지 않았다(같은 y=505 구간을 여러 선이
+     같이 지나가도 괜찮음) — 오직 "다른 장비 네모칸을 통과하지 않는 것"만 지켰다. */
+  'AC_PANEL|FTGS':                 [[90,545],[90,486]],
+  'AC_PANEL|SICAS':                [[200,545],[200,360],[300,360]],
+  'AC_PANEL|ECDSTT':               [[220,545],[220,505],[505,505],[505,500]],
+  'AC_PANEL|LZB700M':              [[250,545],[250,505],[620,505],[620,360]],
+  'AC_PANEL|IFC':                  [[270,545],[270,505],[600,505],[600,206],[615,206]],
+  'AC_PANEL|CONTROL_CENTER':       [[290,545],[290,505],[595,505],[595,80]],
+  'AC_PANEL|TWC':                  [[310,545],[310,505],[920,505],[920,206]],
+  'AC_PANEL|FIELD_SWITCH':         [[150,611],[150,650],[505,650]],
+  'AC_PANEL|FIELD_SIGNAL':         [[250,611],[250,650],[680,650]],
+  'DC_PANEL|ECDSTT':               [[470,545],[470,500]],
+  'DC_PANEL|ATOLOOP':              [[645,545],[645,486]],
+  'DC_PANEL|SICAS':                [[400,545],[400,360],[370,360]],
+  'DC_PANEL|LZB700M':              [[625,545],[625,360]],
+  'DC_PANEL|IFC':                  [[605,545],[605,206],[615,206]]
 };
 /* geometric midpoint measured along total path length — used to anchor the cable/protocol
    label so it sits centered on the line regardless of how many bends it has. */
@@ -8187,13 +8211,16 @@ function edgePathPoints(fromId, toId){
   return [[cf.x,cf.y],[ct.x,ct.y]];
 }
 /* cable-type -> color, matching the SICAS 지침서 통신망 구성도 색상 관례 */
+/* [2026-09-22] 전원선(kind:'power')은 케이블 종류가 아니라 "어느 분전반에서 나왔는지"로 색을
+   정한다 — AC_PANEL/DC_PANEL 박스 색(GROUPS 분전반(AC)/(DC) accent)과 똑같은 색을 그대로 써서,
+   선 색만 보고도 그 선이 어느 박스에서 나왔는지 바로 알 수 있게 했다(사용자 요청 ③⑤). */
 function cableColor(edge){
+  if (edge.kind === 'power') return edge.from === 'AC_PANEL' ? '#a13c3c' : '#3c5ca1';
   var cable = edge.cable || '';
   if (/Plastic Optical/i.test(cable)) return '#b0348f';
   if (/Glass Optical/i.test(cable)) return '#b23a2e';
   if (/RS-?485/i.test(cable) || /RS232/i.test(cable) || /RS232/i.test(edge.protocol||'')) return '#8a5a2a';
   if (/UTP/i.test(cable)) return '#2e8b57';
-  if (/전원/i.test(cable)) return '#c47a1f';
   if (/직결|실선/i.test(cable)) return '#33363b';
   return '#8a8f97';
 }
@@ -8201,7 +8228,7 @@ function cableColorLabel(){
   return [
     ['#b0348f','광케이블 (Plastic)'], ['#b23a2e','광케이블 (Glass)'],
     ['#8a5a2a','RS-485 / RS232'], ['#2e8b57','UTP'],
-    ['#c47a1f','전원 케이블'], ['#33363b','직결(실선)']
+    ['#a13c3c','AC분전반 전원'], ['#3c5ca1','DC분전반 전원'], ['#33363b','직결(실선)']
   ];
 }
 
@@ -8504,7 +8531,6 @@ function renderSystemMap(){
      또한 배경 사각형에 실선 테두리를 둘러 "이 글씨는 이 선의 설명"이라는 소속을
      시각적으로 분명히 했다(색은 해당 선의 케이블 색과 동일). */
   CONN.edges.forEach(function(edge, i){
-    if (edge.kind === 'power') return; /* 전원선은 라벨 박스 없이 점선만 — 14개나 되어 라벨까지 달면 지저분해짐 */
     var mid = edgeMids[i];
     var col = cableColor(edge);
     var lbl = edge.protocol || (edge.cable ? edge.cable.split(' ')[0] : '');
