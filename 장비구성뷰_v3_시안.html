@@ -8079,35 +8079,35 @@ function saveFaultFavorites(){ try { localStorage.setItem(FAULT_FAV_KEY, JSON.st
    튜닝한 경로(꺾이는 지점 좌표)를 MAP_EDGE_PATHS에 지정한다. 같은 방향으로 지나가는
    선이 여럿일 때는 서로 다른 '레인(lane) y/x'를 배정해 나란히 지나가되 절대 겹치지
    않도록 했다. */
-var MAP_W = 1050, MAP_H = 800;
-/* [2026-09-22] 기계실 설비(위)와 현장설비(아래) 사이에 점선 구분선을 긋기 위한 y좌표.
-   AC_PANEL/DC_PANEL(전원 계통, group:"전원")은 기계실 쪽에 남기고, group:"현장설비"인 3개
-   (FIELD_SWITCH/FIELD_SIGNAL/FIELD_ATOLOOP)만 이 선 아래로 배치한다. */
-var MAP_FIELD_DIVIDER_Y = 635;
+/* [2026-09-23] 3차 재설계 — 사용자가 ①화살표가 박스 테두리에 겹침 ②도착 화살표가 다른
+   선/텍스트/박스에 가려짐 ③장비 사이 세로 간격이 좁음 ④기계실/현장설비 간격이 좁음
+   ⑤라벨 박스가 장비 박스를 가림, 총 5건을 지적 — 캔버스를 세로로 크게 키우고(800→1180)
+   모든 행 사이 간격을 40~60px씩 더 벌렸다. 화살표 자체가 박스에 안 겹치도록 하는 처리는
+   draw 단계에서 도착 지점을 박스 테두리보다 살짝(ARROW_GAP) 앞에서 멈추게 하는 방식으로
+   따로 처리한다(아래 renderSystemMap 참고) — 좌표 자체는 여전히 박스 테두리에 정확히
+   맞닿게 정의하고, 그리기 직전에 마지막 구간만 줄인다. */
+var MAP_W = 1140, MAP_H = 1180;
+/* 기계실 설비(위)와 현장설비(아래) 사이 간격을 대폭 확대(패널 하단 872 ~ 현장설비 상단 1010,
+   총 138px 여유) — 점선은 그 중간인 950에 긋는다. */
+var MAP_FIELD_DIVIDER_Y = 950;
 var NODE_POS = {
-  CONTROL_CENTER:         { x: 440, y: 20,  w: 170, h: 60 },
-  SICAS_ADJACENT_STATION: { x: 40,  y: 150, w: 160, h: 56 },
-  IFC:                    { x: 610, y: 150, w: 170, h: 56 },
-  TWC:                    { x: 850, y: 150, w: 150, h: 56 },
-  SICAS:                  { x: 220, y: 290, w: 170, h: 70 },
-  LZB700M:                { x: 610, y: 290, w: 170, h: 70 },
-  FTGS:                   { x: 40,  y: 430, w: 150, h: 56 },
-  /* [2026-09-16] 폭 축소(160→110) + 오른쪽으로 이동 — FTGS와의 간격을 35px→90px로 넓혀서
-     ID_RACK|FTGS 화살표에 붙는 케이블 라벨이 양쪽 박스와 겹치지 않게 함(사용자 지적). */
-  ID_RACK:                { x: 280, y: 430, w: 110, h: 56 },
-  ECDSTT:                 { x: 420, y: 430, w: 170, h: 70 },
-  ATOLOOP:                { x: 640, y: 430, w: 160, h: 56 },
-  /* [2026-09-22] 전원 계통 1개(ATO_PANEL) → 2개(AC_PANEL/DC_PANEL)로 분리해 나란히 배치
-     (ATO 분전반 → EC/DSTT 외 다른 설비 전원공급 여부 확인 요청 반영). 각 패널에서 나가는
-     선은 전부 얇은 점선(.power 클래스, 별도 색)으로 그려 기존 데이터/통신선과 시각적으로
-     구분되게 하고, 라벨 박스도 달지 않아(renderSystemMap 라벨 루프에서 kind:'power' 건너뜀)
-     선이 많아져도 화면이 복잡해 보이지 않도록 했다. */
-  AC_PANEL:               { x: 40,  y: 545, w: 290, h: 66 },
-  DC_PANEL:               { x: 360, y: 545, w: 290, h: 66 },
-  /* 아래 3개(현장설비)는 모두 점선(y=635) 아래 한 줄로 배치. */
-  FIELD_SWITCH:           { x: 425, y: 650, w: 160, h: 56 },
-  FIELD_SIGNAL:           { x: 605, y: 650, w: 150, h: 56 },
-  FIELD_ATOLOOP:          { x: 800, y: 650, w: 170, h: 56 }
+  CONTROL_CENTER:         { x: 460, y: 20,   w: 180, h: 64 },
+  SICAS_ADJACENT_STATION: { x: 30,  y: 200,  w: 170, h: 60 },
+  IFC:                    { x: 650, y: 200,  w: 180, h: 60 },
+  TWC:                    { x: 900, y: 200,  w: 160, h: 60 },
+  SICAS:                  { x: 230, y: 390,  w: 180, h: 76 },
+  LZB700M:                { x: 650, y: 390,  w: 180, h: 76 },
+  FTGS:                   { x: 30,  y: 590,  w: 160, h: 60 },
+  ID_RACK:                { x: 300, y: 590,  w: 120, h: 60 },
+  ECDSTT:                 { x: 450, y: 590,  w: 180, h: 76 },
+  ATOLOOP:                { x: 680, y: 590,  w: 170, h: 60 },
+  /* AC_PANEL/DC_PANEL(전원 계통) — ATO 분전반 → EC/DSTT 외 다른 설비 전원공급 여부 확인
+     요청으로 2026-09-22에 분리한 것을 그대로 유지, 위치만 더 넓은 레이아웃에 맞게 재배치. */
+  AC_PANEL:               { x: 30,  y: 800,  w: 300, h: 72 },
+  DC_PANEL:               { x: 370, y: 800,  w: 300, h: 72 },
+  FIELD_SWITCH:           { x: 440, y: 1010, w: 170, h: 60 },
+  FIELD_SIGNAL:           { x: 630, y: 1010, w: 160, h: 60 },
+  FIELD_ATOLOOP:          { x: 840, y: 1010, w: 180, h: 60 }
 };
 /* [2026-09-16] 랙 구성 화면이 있는 노드(NODE_ID_TO_GROUPKEY에 등록된 노드)만, 그 랙이
    랙 구성 탭에서 이미 쓰고 있는 것과 동일한 accent 색(GROUPS[key].accent/accentBg)으로
@@ -8131,52 +8131,51 @@ function nodeCenter(id){
    horizontal/vertical segments only — no diagonals), and every path was checked against
    every other path's segments so none touch or cross. */
 var MAP_EDGE_PATHS = {
-  'SICAS|ECDSTT':                  [[340,360],[340,400],[505,400],[505,430]],
-  'SICAS|LZB700M':                 [[390,325],[610,325]],
-  'SICAS|IFC':                     [[350,290],[350,245],[610,245],[610,178]],
-  'SICAS|SICAS_ADJACENT_STATION':  [[250,290],[250,245],[120,245],[120,206]],
-  'SICAS|ID_RACK':                 [[335,360],[335,430]],
-  /* [2026-09-22] DC_PANEL이 새로 x360~650,y545~611 자리에 생기면서 기존 직선 경로가 그 박스를
-     그대로 관통하게 됨 — DC_PANEL 오른쪽(x>650)으로 돌아가도록 재수정. */
-  'ECDSTT|FIELD_SWITCH':           [[505,500],[505,530],[660,530],[660,650],[505,650]],
-  'ECDSTT|FIELD_SIGNAL':           [[560,500],[560,530],[680,530],[680,650]],
-  'IFC|TWC':                       [[780,178],[850,178]],
-  'IFC|CONTROL_CENTER':            [[695,150],[695,110],[560,110],[560,80]],
-  'ID_RACK|FTGS':                  [[280,458],[190,458]],
-  /* [2026-09-15 수정] 시작점을 FTGS 박스 밖 허공(x=5)이 아니라 박스 왼쪽 변(x=40) 위로
-     옮김 — 기존 좌표는 FTGS와 실제로 맞닿지 않아 "끊긴 선"처럼 보이는 버그였음.
-     FTGS|CONTROL_CENTER가 이미 x=40,y=445 지점에서 박스에 붙어 나가므로, 겹치지 않도록
-     이 선은 y=470(같은 왼쪽 변의 더 아래쪽)에서 시작한다. */
-  'FTGS|LZB700M':                  [[40,470],[5,470],[5,10],[1015,10],[1015,320],[780,320]],
-  'FTGS|CONTROL_CENTER':           [[40,445],[15,445],[15,110],[470,110],[470,80]],
-  'LZB700M|ATOLOOP':               [[720,360],[720,430]],
-  /* [2026-09-16 재배치] FIELD_ATOLOOP가 현장설비 한 줄(y=650)로 이동. y=600 구간은
-     ECDSTT|FIELD_SIGNAL의 y=600 구간(x 560~680)과 겹치지 않도록 x 720~885만 사용. */
-  'ATOLOOP|FIELD_ATOLOOP':         [[720,486],[720,600],[885,600],[885,650]],
-  'LZB700M|TWC':                   [[780,300],[900,300],[900,206]],
-  'LZB700M|IFC':                   [[695,290],[695,206]],
+  'SICAS|ECDSTT':                  [[320,466],[320,530],[505,530],[505,590]],
+  'SICAS|LZB700M':                 [[410,428],[650,428]],
+  'SICAS|IFC':                     [[320,390],[320,330],[740,330],[740,260]],
+  'SICAS|SICAS_ADJACENT_STATION':  [[230,410],[160,410],[160,260]],
+  'SICAS|ID_RACK':                 [[350,466],[350,590]],
+  'ECDSTT|FIELD_SWITCH':           [[500,666],[500,760],[700,760],[700,900],[505,900],[505,1010]],
+  'ECDSTT|FIELD_SIGNAL':           [[560,666],[560,740],[730,740],[730,1010]],
+  'IFC|TWC':                       [[830,230],[900,230]],
+  'IFC|CONTROL_CENTER':            [[740,200],[740,140],[600,140],[600,84]],
+  'ID_RACK|FTGS':                  [[300,620],[190,620]],
+  'FTGS|LZB700M':                  [[110,590],[110,530],[700,530],[700,466]],
+  'FTGS|CONTROL_CENTER':           [[110,590],[110,530],[435,530],[435,140],[550,140],[550,84]],
+  'LZB700M|ATOLOOP':               [[750,466],[750,590]],
+  'ATOLOOP|FIELD_ATOLOOP':         [[845,650],[845,1010]],
+  'LZB700M|TWC':                   [[830,420],[950,420],[950,260]],
+  'LZB700M|IFC':                   [[740,390],[740,260]],
 
-  /* [2026-09-22] AC_PANEL/DC_PANEL 전원선 14건 — 전부 가로/세로선만 쓰고, 다른 장비 박스를
-     통과하지 않도록 직접 확인한 "빈 통로"만 지나가게 손으로 좌표를 짰다(사용자 요청 ①④⑧).
-     빈 통로: x190~280(FTGS↔ID_RACK 사이), x390~420(ID_RACK↔ECDSTT 사이),
-     x590~640(ECDSTT↔ATOLOOP 사이), x390~610(SICAS↔LZB700M 사이, 매우 넓음),
-     x780~850(IFC/LZB700M↔TWC 사이), y505(모든 장비 하단(~500)과 두 분전반 상단(545) 사이 빈 틈).
-     선끼리 서로 교차하는 것은 조건에 안 걸리므로 신경 쓰지 않았다(같은 y=505 구간을 여러 선이
-     같이 지나가도 괜찮음) — 오직 "다른 장비 네모칸을 통과하지 않는 것"만 지켰다. */
-  'AC_PANEL|FTGS':                 [[90,545],[90,486]],
-  'AC_PANEL|SICAS':                [[200,545],[200,360],[300,360]],
-  'AC_PANEL|ECDSTT':               [[220,545],[220,505],[505,505],[505,500]],
-  'AC_PANEL|LZB700M':              [[250,545],[250,505],[620,505],[620,360]],
-  'AC_PANEL|IFC':                  [[270,545],[270,505],[600,505],[600,206],[615,206]],
-  'AC_PANEL|CONTROL_CENTER':       [[290,545],[290,505],[595,505],[595,80]],
-  'AC_PANEL|TWC':                  [[310,545],[310,505],[920,505],[920,206]],
-  'AC_PANEL|FIELD_SWITCH':         [[150,611],[150,650],[505,650]],
-  'AC_PANEL|FIELD_SIGNAL':         [[250,611],[250,650],[680,650]],
-  'DC_PANEL|ECDSTT':               [[470,545],[470,500]],
-  'DC_PANEL|ATOLOOP':              [[645,545],[645,486]],
-  'DC_PANEL|SICAS':                [[400,545],[400,360],[370,360]],
-  'DC_PANEL|LZB700M':              [[625,545],[625,360]],
-  'DC_PANEL|IFC':                  [[605,545],[605,206],[615,206]]
+  /* AC_PANEL/DC_PANEL 전원선 14건 — 전부 가로/세로선만 쓰고, 다른 장비 박스를 통과하지
+     않도록 확인한 "빈 통로"만 지나가게 손으로 좌표를 짰다. 라벨(전압 텍스트)이 장비 박스에
+     겹치지 않도록, 라벨이 지나가는 지점은 넓게 뚫린 y=740/760 구간(장비 하단(~590~666)과
+     두 분전반 상단(800) 사이의 134px 빈 틈)에 오도록 길을 짰다 — 그래서 몇몇은 굳이 안
+     그래도 될 것 같은 우회를 한다(조건 ⑧은 1~7번 다음 우선순위이므로 허용). */
+  'AC_PANEL|FTGS':                 [[80,800],[80,650]],
+  'AC_PANEL|SICAS':                [[250,800],[250,466]],
+  'AC_PANEL|ECDSTT':               [[180,800],[180,740],[500,740],[500,666]],
+  'AC_PANEL|LZB700M':              [[220,800],[220,740],[655,740],[655,466]],
+  'AC_PANEL|IFC':                  [[260,800],[260,740],[640,740],[640,260],[655,260]],
+  'AC_PANEL|CONTROL_CENTER':       [[290,800],[290,740],[640,740],[640,140],[600,140],[600,84]],
+  'AC_PANEL|TWC':                  [[310,800],[310,740],[950,740],[950,260]],
+  'AC_PANEL|FIELD_SWITCH':         [[100,872],[100,900],[500,900],[500,1010]],
+  'AC_PANEL|FIELD_SIGNAL':         [[220,872],[220,920],[700,920],[700,1010]],
+  'DC_PANEL|ECDSTT':               [[550,800],[550,666]],
+  'DC_PANEL|ATOLOOP':              [[650,800],[650,740],[750,740],[750,650]],
+  'DC_PANEL|SICAS':                [[550,800],[550,760],[635,760],[635,466],[350,466]],
+  'DC_PANEL|LZB700M':              [[650,800],[650,466]],
+  'DC_PANEL|IFC':                  [[640,800],[640,260],[655,260]]
+};
+/* 케이블/전압 라벨을 pathMidpoint(경로 절반 지점)가 아니라 이 좌표에 고정하고 싶은 엣지만
+   예외적으로 지정 — 절반 지점이 좁은 통로(장비 박스 사이 30~50px 틈)에 걸려 라벨이 박스를
+   가리는 경우에만 쓴다(조건 ⑤). 전부 넓게 뚫린 y=740~760 구간을 가리킨다. */
+var MAP_LABEL_AT = {
+  'AC_PANEL|CONTROL_CENTER': [640,740],
+  'DC_PANEL|SICAS':          [550,760],
+  'DC_PANEL|LZB700M':        [650,740],
+  'ECDSTT|FIELD_SWITCH':     [700,760]
 };
 /* geometric midpoint measured along total path length — used to anchor the cable/protocol
    label so it sits centered on the line regardless of how many bends it has. */
@@ -8479,7 +8478,7 @@ function renderSystemMap(){
   h += '<svg class="map-svg" width="' + MAP_W + '" height="' + MAP_H + '" viewBox="0 0 ' + MAP_W + ' ' + MAP_H + '" xmlns="http://www.w3.org/2000/svg">';
   h += '<defs>';
   cableColorLabel().forEach(function(c, i){
-    h += '<marker id="arrow' + i + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
+    h += '<marker id="arrow' + i + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">'
        + '<path d="M0,0 L10,5 L0,10 z" fill="' + c[0] + '"></path></marker>';
   });
   h += '</defs>';
@@ -8493,18 +8492,40 @@ function renderSystemMap(){
      기존에는 엣지마다 "선 → 그 선의 라벨"을 한 번에 그려서, 나중에 그려지는 다른 엣지의 선이
      먼저 그려둔 라벨 위를 덮어버리는 경우가 있었음(z-order 문제) — 라벨을 전부 맨 위 레이어로
      분리하면 어떤 라벨이든 항상 모든 선보다 위에 보여 가려지지 않음. */
+  /* 화살촉이 도착 장비 박스 테두리에 겹치지 않도록(사용자 지적 ①②), 클릭 판정 영역(edge-hit)과
+     라벨 중점 계산은 원래 좌표(박스 테두리에 정확히 닿는 좌표) 그대로 쓰되, 실제로 그리는
+     선(edge-line)만 도착 지점 바로 앞에서 ARROW_GAP만큼 짧게 끊어서 화살촉이 박스 밖 빈
+     공간에서 완전한 모양으로 보이게 한다. 박스는 이 선들보다 나중에(위에) 그려지므로, 선이
+     박스 테두리까지 닿아있으면 박스가 화살촉 끝을 가려버리는 문제가 있었음. */
+  var ARROW_GAP = 12;
+  function shortenEnd(pts, gap){
+    var n = pts.length;
+    if (n < 2) return pts;
+    var out = pts.slice();
+    var p1 = pts[n-2], p2 = pts[n-1];
+    var dx = p2[0]-p1[0], dy = p2[1]-p1[1];
+    var len = Math.hypot(dx,dy);
+    if (len > gap) {
+      var t = (len-gap)/len;
+      out[n-1] = [p1[0]+dx*t, p1[1]+dy*t];
+    }
+    return out;
+  }
   var edgeMids = [];
   CONN.edges.forEach(function(edge, i){
     var pts = edgePathPoints(edge.from, edge.to);
     var d = 'M' + pts.map(function(p){ return p[0] + ',' + p[1]; }).join(' L');
-    var mid = pathMidpoint(pts);
+    var dVisible = 'M' + shortenEnd(pts, ARROW_GAP).map(function(p){ return p[0] + ',' + p[1]; }).join(' L');
+    var mid = MAP_LABEL_AT[edge.from + '|' + edge.to]
+      ? { x: MAP_LABEL_AT[edge.from + '|' + edge.to][0], y: MAP_LABEL_AT[edge.from + '|' + edge.to][1] }
+      : pathMidpoint(pts);
     edgeMids.push(mid);
     var active = (state.selectedEdge === i);
     var col = cableColor(edge);
     var markerIdx = cableColorLabel().map(function(c){return c[0];}).indexOf(col);
     if (markerIdx < 0) markerIdx = 0;
     h += '<path class="edge-hit" data-act="edge" data-edge="' + i + '" d="' + d + '"></path>';
-    h += '<path class="edge-line' + (active?' active':'') + (edge.kind==='power'?' power':'') + '" stroke="' + col + '" marker-end="url(#arrow' + markerIdx + ')" d="' + d + '"></path>';
+    h += '<path class="edge-line' + (active?' active':'') + (edge.kind==='power'?' power':'') + '" stroke="' + col + '" marker-end="url(#arrow' + markerIdx + ')" d="' + dVisible + '"></path>';
   });
 
   Object.keys(NODE_POS).forEach(function(id){
