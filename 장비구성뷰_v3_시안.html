@@ -7425,13 +7425,19 @@ function requestDriveToken(cb){
   client.requestAccessToken();
 }
 function openDrivePickerUI(token, onPicked){
+  /* Picker 기본 UI는 "내 드라이브" 탭 옆에 "업로드" 탭도 같이 보여준다 — 사용자가 실수로
+     업로드 탭을 누르면 (기존 사진을 고르는 게 아니라) OS 파일/폴더 선택창이 뜬다(사용자 제보로
+     확인). NAV_HIDDEN으로 왼쪽 탭 자체를 숨겨서 아래 지정한 "기존 이미지/동영상 보기" 화면
+     하나만 뜨게 고정한다. */
   var view = new google.picker.DocsView(google.picker.ViewId.DOCS_IMAGES_AND_VIDEOS)
-    .setIncludeFolders(true).setSelectFolderEnabled(false);
+    .setIncludeFolders(true).setSelectFolderEnabled(false).setParent('root');
   new google.picker.PickerBuilder()
     .setOAuthToken(token)
     .setDeveloperKey(GOOGLE_API_KEY)
+    .setAppId(GOOGLE_CLIENT_ID.split('-')[0])
     .addView(view)
     .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+    .enableFeature(google.picker.Feature.NAV_HIDDEN)
     .setCallback(function(data){
       if (data.action === google.picker.Action.PICKED) onPicked(data.docs, token);
     })
