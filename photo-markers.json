@@ -1,0 +1,592 @@
+{
+  "schemaVersion": "2.0",
+  "description": "사진별 마커 좌표. x,y는 이미지 좌상단 기준 0~1 비율.",
+  "generatedAt": "2026-09-06T17:49:15.659Z",
+  "photos": [
+    {"folder": "FTGS", "file": "20260901_143146.jpg", "role": "measure", "markers": [
+      {"x": 0.4951, "y": 0.4588, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "FTGS_FRONT"}
+    ]},
+    {"folder": "FTGS", "file": "20260901_143256.jpg", "role": "measure", "markers": [
+      {"x": 0.2606, "y": 0.4398, "name": "증폭&필터 PCB 측정소켓", "ref": "MP_FTGS_AMP_OUT", "note": "", "guide": "FTGS_AMP"},
+      {"x": 0.3916, "y": 0.4312, "name": "수신-1 PCB E1/E2 소켓", "ref": "MP_FTGS_RX1_E", "note": "", "guide": "FTGS_RX1_E"},
+      {"x": 0.5435, "y": 0.4305, "name": "계전기 GF1 / GF2", "ref": "MP_FTGS_RELAY", "note": "", "guide": "FTGS_RELAY"},
+      {"x": 0.4023, "y": 0.5832, "name": "수신-1 PCB I5/II8 소켓", "ref": "MP_FTGS_RX1_I", "note": "", "guide": "FTGS_RX1_I"},
+      {"x": 0.3539, "y": 0.4369, "name": "송신 PCB (주파수·코드 설정창)", "ref": "MP_FTGS_FREQ", "note": "", "guide": "FTGS_TX"}
+    ]},
+    {"folder": "FTGS", "file": "20260901_143329.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143336.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143343.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143353.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143446.jpg", "role": "measure", "markers": [
+      {"x": 0.472, "y": 0.4957, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "FTGS_REAR"}
+    ]},
+    {"folder": "FTGS", "file": "20260901_143458.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143506.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143511.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143517.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143521.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143545.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.6877, "name": "REMEMO 계전기 (ATO Loop 장애신호)", "ref": "", "note": "", "guide": "FTGS_REMEMO"},
+      {"x": 0.5234, "y": 0.435, "name": "REMEMO 계전기 (ATO Loop 장애신호)", "ref": "", "note": "", "guide": "FTGS_REMEMO"}
+    ]},
+    {"folder": "FTGS", "file": "20260901_143624.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260901_143648(1).jpg", "role": "reference", "markers": [
+      {"x": 0.4583, "y": 0.5377, "name": "랙 문의 궤도 배정표", "ref": "", "note": "", "guide": "FTGS_RACK_LABEL"}
+    ]},
+    {"folder": "FTGS", "file": "20260901_150622.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260902_212315.jpg", "role": "reference", "markers": [
+      {"x": 0.5052, "y": 0.5014, "name": "랙 내부 구간 라벨", "ref": "", "note": "", "guide": "FTGS_SECTION"}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212319.jpg", "role": "reference", "markers": [
+      {"x": 0.4758, "y": 0.634, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212322.jpg", "role": "reference", "markers": [
+      {"x": 0.513, "y": 0.5007, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212325.jpg", "role": "reference", "markers": [
+      {"x": 0.487, "y": 0.5042, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212328.jpg", "role": "reference", "markers": [
+      {"x": 0.5026, "y": 0.5146, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212331.jpg", "role": "reference", "markers": [
+      {"x": 0.5417, "y": 0.4833, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212334.jpg", "role": "reference", "markers": [
+      {"x": 0.5156, "y": 0.5354, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212338.jpg", "role": "reference", "markers": [
+      {"x": 0.5365, "y": 0.4972, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212342.jpg", "role": "reference", "markers": [
+      {"x": 0.5208, "y": 0.4972, "name": "랙 내부 구간 라벨", "ref": "", "note": ""}
+    ]},
+    {"folder": "FTGS", "file": "20260902_212350.jpg", "role": "reference", "markers": []},
+    {"folder": "FTGS", "file": "20260902_212502.jpg", "role": "reference", "markers": []},
+    {"folder": "ID랙", "file": "20190223_111130.jpg", "role": "reference", "markers": []},
+    {"folder": "ID랙", "file": "20260901_144229.jpg", "role": "reference", "markers": []},
+    {"folder": "ID랙", "file": "20260901_144234.jpg", "role": "reference", "markers": []},
+    {"folder": "ID랙", "file": "20260901_144240.jpg", "role": "measure", "markers": [
+      {"x": 0.4879, "y": 0.4506, "name": "단자대 전체 (전면 상부)", "ref": "", "note": "", "guide": "D51_TERMINAL"}
+    ]},
+    {"folder": "ID랙", "file": "20260901_144245.jpg", "role": "measure", "markers": [
+      {"x": 0.5161, "y": 0.3863, "name": "단자대 전체 (전면 하부)", "ref": "", "note": ""}
+    ]},
+    {"folder": "ID랙", "file": "20260901_144248.jpg", "role": "measure", "markers": [
+      {"x": 0.432, "y": 0.3937, "name": "24V 전원 인입부", "ref": "", "note": "", "guide": "D51_24V"}
+    ]},
+    {"folder": "ID랙", "file": "20260901_144255.jpg", "role": "measure", "markers": [
+      {"x": 0.4677, "y": 0.4395, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "D51_FRONT"}
+    ]},
+    {"folder": "ID랙", "file": "20260902_212542.jpg", "role": "measure", "markers": [
+      {"x": 0.4919, "y": 0.4339, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "D51_REAR"}
+    ]},
+    {"folder": "IFC", "file": "20161030_020145.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20170903_002057.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20170903_002643.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20190301_015345.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260901_150404.jpg", "role": "measure", "markers": [
+      {"x": 0.3352, "y": 0.3323, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "IFC_FRONT"},
+      {"x": 0.3306, "y": 0.473, "name": "컴퓨터 본체 / 모니터 화면", "ref": "MP_IFC_CPU", "note": "", "guide": "IFC_PC"},
+      {"x": 0.3593, "y": 0.3973, "name": "상용 / 예비 절체 스위치", "ref": "MP_IFC_CHANGEOVER", "note": "", "guide": "IFC_SWITCH"}
+    ]},
+    {"folder": "IFC", "file": "20260901_150415.jpg", "role": "measure", "markers": [
+      {"x": 0.5204, "y": 0.5784, "name": "정차표시등(Dwell Light) 계전기", "ref": "MP_IFC_DWELL", "note": "", "guide": "IFC_DWELL"}
+    ]},
+    {"folder": "IFC", "file": "20260901_150436.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260901_150442.jpg", "role": "reference", "markers": [
+      {"x": 0.3568, "y": 0.3394, "name": "비상정지용 계전기", "ref": "MP_IFC_ESTOP", "note": "", "guide": "IFC_ESTOP"}
+    ]},
+    {"folder": "IFC", "file": "20260901_150444.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_213928.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_213936.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_213939.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_213942.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_213947.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214042.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214048.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214123.jpg", "role": "measure", "markers": [
+      {"x": 0.4718, "y": 0.4871, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "IFC_REAR"}
+    ]},
+    {"folder": "IFC", "file": "20260902_214142.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214206.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214210.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214215.jpg", "role": "reference", "markers": []},
+    {"folder": "IFC", "file": "20260902_214247.jpg", "role": "measure", "markers": [
+      {"x": 0.3965, "y": 0.146, "name": "상용 / 예비 절체 스위치", "ref": "MP_IFC_CHANGEOVER", "note": "", "guide": "IFC_SWITCH"}
+    ]},
+    {"folder": "LZB 51", "file": "20260901_145350.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145456.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.4758, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "LZB_FRONT"}
+    ]},
+    {"folder": "LZB 51", "file": "20260901_145506.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145512.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145518.jpg", "role": "measure", "markers": [
+      {"x": 0.4509, "y": 0.4964, "name": "Computer A / B / C 모듈", "ref": "", "note": "", "guide": "LZB_COMPUTER"}
+    ]},
+    {"folder": "LZB 51", "file": "20260901_145527.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145532.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145558.jpg", "role": "measure", "markers": [
+      {"x": 0.7664, "y": 0.1809, "name": "후면 M레벨 단자대", "ref": "MP_LZB_DC60", "note": "", "guide": "LZB_M_LEVEL"},
+      {"x": 0.7604, "y": 0.5407, "name": "후면 N레벨 단자대", "ref": "MP_LZB_DC24", "note": "", "guide": "LZB_N_LEVEL"},
+      {"x": 0.7735, "y": 0.2745, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": "", "guide": "LZB_WAGO"},
+      {"x": 0.6063, "y": 0.2673, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": ""},
+      {"x": 0.433, "y": 0.2724, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": ""}
+    ]},
+    {"folder": "LZB 51", "file": "20260901_145602.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145621.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 51", "file": "20260901_145627.jpg", "role": "measure", "markers": [
+      {"x": 0.7454, "y": 0.1883, "name": "후면 M레벨 단자대", "ref": "MP_LZB_DC60", "note": "", "guide": "LZB_M_LEVEL"},
+      {"x": 0.7474, "y": 0.488, "name": "후면 N레벨 단자대", "ref": "MP_LZB_DC24", "note": "", "guide": "LZB_N_LEVEL"},
+      {"x": 0.7526, "y": 0.287, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": "", "guide": "LZB_WAGO"},
+      {"x": 0.5963, "y": 0.2769, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": ""},
+      {"x": 0.428, "y": 0.2828, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": ""}
+    ]},
+    {"folder": "LZB 51", "file": "20260902_212616.jpg", "role": "measure", "markers": [
+      {"x": 0.3992, "y": 0.4647, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "LZB_REAR"}
+    ]},
+    {"folder": "LZB 52", "file": "20260901_144213.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 52", "file": "20260901_145344.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 52", "file": "20260901_145411.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 52", "file": "20260901_145416.jpg", "role": "measure", "markers": [
+      {"x": 0.4677, "y": 0.5129, "name": "Computer A / B / C 모듈", "ref": "", "note": "", "guide": "LZB_COMPUTER"}
+    ]},
+    {"folder": "LZB 52", "file": "20260901_145425.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 52", "file": "20260901_145435.jpg", "role": "measure", "markers": [
+      {"x": 0.5079, "y": 0.5397, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "LZB_FRONT"}
+    ]},
+    {"folder": "LZB 52", "file": "20260901_145441.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 52", "file": "20260901_145558.jpg", "role": "measure", "markers": [
+      {"x": 0.776, "y": 0.1838, "name": "후면 M레벨 단자대", "ref": "MP_LZB_DC60", "note": "", "guide": "LZB_M_LEVEL"},
+      {"x": 0.7708, "y": 0.4537, "name": "후면 N레벨 단자대", "ref": "MP_LZB_DC24", "note": "", "guide": "LZB_N_LEVEL"},
+      {"x": 0.7807, "y": 0.2743, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": "", "guide": "LZB_WAGO"},
+      {"x": 0.603, "y": 0.269, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": ""},
+      {"x": 0.4358, "y": 0.264, "name": "Power supply 후면 WAGO 터미널", "ref": "MP_LZB_DC5", "note": ""}
+    ]},
+    {"folder": "LZB 52", "file": "20260901_145602.jpg", "role": "reference", "markers": []},
+    {"folder": "LZB 52", "file": "20260901_145710.jpg", "role": "measure", "markers": [
+      {"x": 0.4798, "y": 0.4937, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "LZB_REAR"}
+    ]},
+    {"folder": "O51", "file": "20260901_143912.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_143921.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_143925.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_143938.jpg", "role": "measure", "markers": [
+      {"x": 0.4839, "y": 0.3123, "name": "단자대 A 전체", "ref": "", "note": "", "guide": "OT_TERMINAL_A"}
+    ]},
+    {"folder": "O51", "file": "20260901_143944.jpg", "role": "measure", "markers": [
+      {"x": 0.4657, "y": 0.4413, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "O5x_FRONT"}
+    ]},
+    {"folder": "O51", "file": "20260901_144020.jpg", "role": "measure", "markers": [
+      {"x": 0.4532, "y": 0.3643, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "O5x_REAR"}
+    ]},
+    {"folder": "O51", "file": "20260901_144027.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144030.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144037.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144104.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144113.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144126.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144133.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144147.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144201.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144209.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260901_144213.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_212742.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_212752.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_212759.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_212801.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_212809.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_213026.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_213039.jpg", "role": "reference", "markers": []},
+    {"folder": "O51", "file": "20260902_213053.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143648.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143707.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143721.jpg", "role": "measure", "markers": [
+      {"x": 0.4615, "y": 0.15, "name": "단자대 A 전체", "ref": "", "note": "", "guide": "OT_TERMINAL_A"}
+    ]},
+    {"folder": "O52", "file": "20260901_143729.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143738.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143749.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143820.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143831.jpg", "role": "measure", "markers": [
+      {"x": 0.4798, "y": 0.3752, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "O5x_REAR"}
+    ]},
+    {"folder": "O52", "file": "20260901_143838.jpg", "role": "measure", "markers": [
+      {"x": 0.4798, "y": 0.355, "name": "단자대 A 전체", "ref": "", "note": "", "guide": "OT_TERMINAL_A"}
+    ]},
+    {"folder": "O52", "file": "20260901_143845.jpg", "role": "reference", "markers": [
+      {"x": 0.5121, "y": 0.394, "name": "단자대 A 전체", "ref": "", "note": "", "guide": "OT_TERMINAL_A"}
+    ]},
+    {"folder": "O52", "file": "20260901_143850.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143856.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260901_143901.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260902_213203.jpg", "role": "measure", "markers": [
+      {"x": 0.4798, "y": 0.3097, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "O5x_FRONT"}
+    ]},
+    {"folder": "O52", "file": "20260902_213228.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260902_213235.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260902_213306.jpg", "role": "reference", "markers": []},
+    {"folder": "O52", "file": "20260902_213314.jpg", "role": "reference", "markers": []},
+    {"folder": "Ots", "file": "20260902_213714.jpg", "role": "reference", "markers": []},
+    {"folder": "Ots", "file": "20260902_213737.jpg", "role": "reference", "markers": []},
+    {"folder": "Ots", "file": "20260902_213744.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 51", "file": "20260901_145725.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 51", "file": "20260901_145730.jpg", "role": "measure", "markers": [
+      {"x": 0.4974, "y": 0.6275, "name": "후면 N레벨 전원배전반 전체", "ref": "", "note": "", "guide": "SICAS_N_PANEL"},
+      {"x": 0.2279, "y": 0.6171, "name": "60V 단자 (1~7번)", "ref": "MP_SICAS_S51_DC60", "note": "", "guide": "SICAS_DC60"},
+      {"x": 0.5215, "y": 0.6213, "name": "24V 퓨즈열 (40~59번)", "ref": "MP_SICAS_S51_DC24", "note": "", "guide": "SICAS_DC24"},
+      {"x": 0.783, "y": 0.6157, "name": "팬 유닛 / 230V 단자 (71~81번)", "ref": "", "note": "", "guide": "SICAS_FAN"}
+    ]},
+    {"folder": "SICAS 51", "file": "20260901_145736.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.4653, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "SICAS_REAR"}
+    ]},
+    {"folder": "SICAS 51", "file": "20260901_145804.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 51", "file": "20260901_150334.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 51", "file": "20260901_150339.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 51", "file": "20260901_150344.jpg", "role": "measure", "markers": [
+      {"x": 0.2683, "y": 0.5593, "name": "VENUS3 디스플레이", "ref": "", "note": "", "guide": "SICAS_VENUS"}
+    ]},
+    {"folder": "SICAS 51", "file": "20260901_150348.jpg", "role": "measure", "markers": [
+      {"x": 0.5755, "y": 0.7903, "name": "전원모듈 (60V→5V)", "ref": "", "note": "", "guide": "SICAS_PS_MODULE"},
+      {"x": 0.4427, "y": 0.8164, "name": "전면 전원장치 LED 표시창", "ref": "MP_SICAS_CPU_IF", "note": "", "guide": "SICAS_LED"}
+    ]},
+    {"folder": "SICAS 51", "file": "20260902_213434.jpg", "role": "measure", "markers": [
+      {"x": 0.496, "y": 0.3962, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "SICAS_FRONT"}
+    ]},
+    {"folder": "SICAS 52", "file": "20260901_145649.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 52", "file": "20260901_145654.jpg", "role": "measure", "markers": [
+      {"x": 0.5443, "y": 0.4683, "name": "후면 N레벨 전원배전반 전체", "ref": "", "note": "", "guide": "SICAS_N_PANEL"},
+      {"x": 0.2969, "y": 0.544, "name": "60V 단자 (1~7번)", "ref": "MP_SICAS_S51_DC60", "note": "", "guide": "SICAS_DC60"},
+      {"x": 0.5318, "y": 0.5454, "name": "24V 퓨즈열 (40~59번)", "ref": "MP_SICAS_S51_DC24", "note": "", "guide": "SICAS_DC24"},
+      {"x": 0.7841, "y": 0.538, "name": "팬 유닛 / 230V 단자 (71~81번)", "ref": "", "note": "", "guide": "SICAS_FAN"}
+    ]},
+    {"folder": "SICAS 52", "file": "20260901_145702.jpg", "role": "measure", "markers": [
+      {"x": 0.5202, "y": 0.4879, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "SICAS_REAR"}
+    ]},
+    {"folder": "SICAS 52", "file": "20260901_145758.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 52", "file": "20260901_150100.jpg", "role": "measure", "markers": [
+      {"x": 0.504, "y": 0.4262, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "SICAS_FRONT"}
+    ]},
+    {"folder": "SICAS 52", "file": "20260901_150304.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 52", "file": "20260901_150310.jpg", "role": "reference", "markers": []},
+    {"folder": "SICAS 52", "file": "20260901_150318.jpg", "role": "measure", "markers": [
+      {"x": 0.2855, "y": 0.5983, "name": "VENUS3 디스플레이", "ref": "", "note": "", "guide": "SICAS_VENUS"}
+    ]},
+    {"folder": "SICAS 52", "file": "20260901_150326.jpg", "role": "measure", "markers": [
+      {"x": 0.4208, "y": 0.7547, "name": "전면 전원장치 LED 표시창", "ref": "MP_SICAS_CPU_IF", "note": "", "guide": "SICAS_LED"},
+      {"x": 0.5579, "y": 0.7239, "name": "전원모듈 (60V→5V)", "ref": "", "note": "", "guide": "SICAS_PS_MODULE"}
+    ]},
+    {"folder": "T51", "file": "20260901_144601.jpg", "role": "measure", "markers": [
+      {"x": 0.4798, "y": 0.4192, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "T5x_FRONT"}
+    ]},
+    {"folder": "T51", "file": "20260901_144608.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144610.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144616.jpg", "role": "measure", "markers": [
+      {"x": 0.4974, "y": 0.4322, "name": "STEKOP 모듈 열", "ref": "", "note": "", "guide": "T_STEKOP"}
+    ]},
+    {"folder": "T51", "file": "20260901_144619.jpg", "role": "measure", "markers": [
+      {"x": 0.349, "y": 0.5097, "name": "DEWEMO 모듈", "ref": "", "note": "", "guide": "T_DEWEMO"}
+    ]},
+    {"folder": "T51", "file": "20260901_144622.jpg", "role": "measure", "markers": [
+      {"x": 0.3646, "y": 0.4514, "name": "DEWEMO 모듈", "ref": "", "note": "", "guide": "T_DEWEMO"}
+    ]},
+    {"folder": "T51", "file": "20260901_144624.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144628.jpg", "role": "measure", "markers": [
+      {"x": 0.4858, "y": 0.6313, "name": "퓨즈열", "ref": "", "note": "", "guide": "T_FUSE"}
+    ]},
+    {"folder": "T51", "file": "20260901_144633.jpg", "role": "measure", "markers": [
+      {"x": 0.3115, "y": 0.3032, "name": "단자대 (XL / XW)", "ref": "", "note": "", "guide": "T_TERMINAL"}
+    ]},
+    {"folder": "T51", "file": "20260901_144638.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144642.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144702.jpg", "role": "measure", "markers": [
+      {"x": 0.5242, "y": 0.5288, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "T5x_REAR"}
+    ]},
+    {"folder": "T51", "file": "20260901_144715.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144718.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144724.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144728.jpg", "role": "measure", "markers": [
+      {"x": 0.5104, "y": 0.488, "name": "DESIMO 모듈", "ref": "", "note": "", "guide": "T_DESIMO"}
+    ]},
+    {"folder": "T51", "file": "20260901_144732.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.5778, "name": "계전기 열 (진행현시)", "ref": "", "note": "", "guide": "T_RELAY_R"}
+    ]},
+    {"folder": "T51", "file": "20260901_144734.jpg", "role": "measure", "markers": [
+      {"x": 0.4818, "y": 0.422, "name": "계전기 열 (진로표시)", "ref": "", "note": "", "guide": "T_RELAY_S"}
+    ]},
+    {"folder": "T51", "file": "20260901_144741.jpg", "role": "reference", "markers": []},
+    {"folder": "T51", "file": "20260901_144744.jpg", "role": "measure", "markers": [
+      {"x": 0.4375, "y": 0.3775, "name": "단자대 (XL / XW)", "ref": "", "note": "", "guide": "T_TERMINAL"}
+    ]},
+    {"folder": "T51", "file": "20260902_213737.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.4669, "name": "OTS 기준값/Remark 안내 카드", "ref": "", "note": "", "guide": "T00_OTS_CARD"}
+    ]},
+    {"folder": "T51", "file": "20260902_213740.jpg", "role": "measure", "markers": [
+      {"x": 0.4896, "y": 0.4461, "name": "T00 서브랙 - OTS(선로전환기 감시반) 전체", "ref": "", "note": "", "guide": "T00_OTS_FRONT"},
+      {"x": 0.487, "y": 0.6521, "name": "선로전환기 선택 버튼 + 전압계 표시값", "ref": "", "note": "", "guide": "T00_OTS_SELECT"}
+    ]},
+    {"folder": "T51", "file": "20260902_213744.jpg", "role": "measure", "markers": [
+      {"x": 0.4661, "y": 0.4069, "name": "OTS 기준값/Remark 안내 카드", "ref": "", "note": "", "guide": "T00_OTS_CARD"}
+    ]},
+    {"folder": "T52", "file": "20260901_144314.jpg", "role": "measure", "markers": [
+      {"x": 0.496, "y": 0.4419, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "T5x_FRONT"}
+    ]},
+    {"folder": "T52", "file": "20260901_144325.jpg", "role": "measure", "markers": [
+      {"x": 0.513, "y": 0.6058, "name": "STEKOP 모듈 열", "ref": "", "note": "", "guide": "T_STEKOP"}
+    ]},
+    {"folder": "T52", "file": "20260901_144331.jpg", "role": "measure", "markers": [
+      {"x": 0.4453, "y": 0.5595, "name": "DEWEMO 모듈", "ref": "", "note": "", "guide": "T_DEWEMO"}
+    ]},
+    {"folder": "T52", "file": "20260901_144337.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144339.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144343.jpg", "role": "measure", "markers": [
+      {"x": 0.4812, "y": 0.4817, "name": "퓨즈열", "ref": "", "note": "", "guide": "T_FUSE"}
+    ]},
+    {"folder": "T52", "file": "20260901_144348.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144355.jpg", "role": "measure", "markers": [
+      {"x": 0.2498, "y": 0.3758, "name": "단자대 (XL / XW)", "ref": "", "note": "", "guide": "T_TERMINAL"}
+    ]},
+    {"folder": "T52", "file": "20260901_144403.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144408.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144421.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144426.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144456.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144459.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144508.jpg", "role": "measure", "markers": [
+      {"x": 0.5403, "y": 0.3734, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "T5x_REAR"}
+    ]},
+    {"folder": "T52", "file": "20260901_144514.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144519.jpg", "role": "measure", "markers": [
+      {"x": 0.4036, "y": 0.4743, "name": "DESIMO 모듈", "ref": "", "note": "", "guide": "T_DESIMO"}
+    ]},
+    {"folder": "T52", "file": "20260901_144523.jpg", "role": "measure", "markers": [
+      {"x": 0.4792, "y": 0.5238, "name": "계전기 열 (진행현시)", "ref": "", "note": "", "guide": "T_RELAY_R"}
+    ]},
+    {"folder": "T52", "file": "20260901_144526.jpg", "role": "measure", "markers": [
+      {"x": 0.4401, "y": 0.5005, "name": "계전기 열 (진로표시)", "ref": "", "note": "", "guide": "T_RELAY_S"}
+    ]},
+    {"folder": "T52", "file": "20260901_144529.jpg", "role": "reference", "markers": []},
+    {"folder": "T52", "file": "20260901_144534.jpg", "role": "measure", "markers": [
+      {"x": 0.526, "y": 0.5431, "name": "단자대 (XL / XW)", "ref": "", "note": "", "guide": "T_TERMINAL"}
+    ]},
+    {"folder": "T52", "file": "20260902_213714.jpg", "role": "measure", "markers": [
+      {"x": 0.5052, "y": 0.4815, "name": "OTS 기준값/Remark 안내 카드", "ref": "", "note": "", "guide": "T00_OTS_CARD"}
+    ]},
+    {"folder": "T52", "file": "20260902_213718.jpg", "role": "measure", "markers": [
+      {"x": 0.4948, "y": 0.4843, "name": "T00 서브랙 - OTS(선로전환기 감시반) 전체", "ref": "", "note": "", "guide": "T00_OTS_FRONT"},
+      {"x": 0.4948, "y": 0.6956, "name": "선로전환기 선택 버튼 + 전압계 표시값", "ref": "", "note": "", "guide": "T00_OTS_SELECT"}
+    ]},
+    {"folder": "TWC", "file": "20260901_145302.jpg", "role": "measure", "markers": [
+      {"x": 0.3229, "y": 0.3847, "name": "PTI 수신기 전면 LED", "ref": "", "note": "", "guide": "TWC_LED"}
+    ]},
+    {"folder": "TWC", "file": "20260901_145307.jpg", "role": "reference", "markers": []},
+    {"folder": "TWC", "file": "20260901_145319.jpg", "role": "reference", "markers": []},
+    {"folder": "TWC", "file": "20260901_145324.jpg", "role": "reference", "markers": []},
+    {"folder": "TWC", "file": "20260901_145327.jpg", "role": "reference", "markers": []},
+    {"folder": "TWC", "file": "20260901_145331.jpg", "role": "reference", "markers": []},
+    {"folder": "TWC", "file": "20260902_213857.jpg", "role": "measure", "markers": [
+      {"x": 0.5113, "y": 0.5694, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "TWC_FRONT"}
+    ]},
+    {"folder": "TWC", "file": "20260902_213922.jpg", "role": "measure", "markers": [
+      {"x": 0.5026, "y": 0.528, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "TWC_REAR"},
+      {"x": 0.401, "y": 0.4613, "name": "배면 단자 접속부", "ref": "MP_TWC_TERMINAL", "note": "", "guide": "TWC_TERMINAL"}
+    ]},
+    {"folder": "가상신호기", "file": "20260901_150757.jpg", "role": "measure", "markers": [
+      {"x": 0.4421, "y": 0.494, "name": "캐비닛 전체", "ref": "", "note": ""}
+    ]},
+    {"folder": "가상신호기", "file": "20260901_150807.jpg", "role": "reference", "markers": []},
+    {"folder": "가상신호기", "file": "20260901_150810.jpg", "role": "measure", "markers": [
+      {"x": 0.5282, "y": 0.5776, "name": "전체 모습", "ref": "", "note": "", "guide": "VS_ALL"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260901_144812.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_144818.jpg", "role": "measure", "markers": [
+      {"x": 0.496, "y": 0.4232, "name": "차단기 열 전체", "ref": "", "note": "", "guide": "AC_BREAKER"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260901_144833.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_144839.jpg", "role": "measure", "markers": [
+      {"x": 0.5121, "y": 0.3952, "name": "코팅 자료 / 벽면 안내표", "ref": "", "note": "", "guide": "AC_LABEL"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260901_144901.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_144903.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145030.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145044.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145057.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145110.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145120.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145132.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145209.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260901_145218.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260902_214403.jpg", "role": "measure", "markers": [
+      {"x": 0.4718, "y": 0.471, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "AC_FRONT"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260902_214421.jpg", "role": "measure", "markers": [
+      {"x": 0.5234, "y": 0.5581, "name": "메인 차단기 / 계량부", "ref": "", "note": "", "guide": "AC_MAIN"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260902_214425.jpg", "role": "measure", "markers": [
+      {"x": 0.4818, "y": 0.5861, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "AC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260902_214427.jpg", "role": "measure", "markers": [
+      {"x": 0.513, "y": 0.4583, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "AC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260902_214433.jpg", "role": "measure", "markers": [
+      {"x": 0.4974, "y": 0.4269, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "AC_BREAKER_LABEL"},
+      {"x": 0.4818, "y": 0.7553, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "AC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260902_214438.jpg", "role": "measure", "markers": [
+      {"x": 0.5026, "y": 0.3118, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "AC_BREAKER_LABEL"},
+      {"x": 0.5026, "y": 0.8269, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "AC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 AC", "file": "20260902_214456.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260902_214503.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 AC", "file": "20260902_214508.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.5748, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "AC_REAR"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260901_144833.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 DC", "file": "20260901_144839.jpg", "role": "measure", "markers": [
+      {"x": 0.5081, "y": 0.473, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "DC_FRONT"},
+      {"x": 0.5081, "y": 0.5494, "name": "차단기 열 전체", "ref": "", "note": "", "guide": "DC_BREAKER"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260901_144917.jpg", "role": "measure", "markers": [
+      {"x": 0.5208, "y": 0.4428, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "DC_REAR"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260901_144921.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 DC", "file": "20260902_214716.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 DC", "file": "20260902_214722.jpg", "role": "reference", "markers": []},
+    {"folder": "분전반 DC", "file": "20260902_214750.jpg", "role": "measure", "markers": [
+      {"x": 0.4948, "y": 0.5044, "name": "메인 차단기 / 계량부", "ref": "", "note": "", "guide": "DC_MAIN"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260902_214752.jpg", "role": "measure", "markers": [
+      {"x": 0.4948, "y": 0.5715, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "DC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260902_214755.jpg", "role": "measure", "markers": [
+      {"x": 0.5052, "y": 0.4613, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "DC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260902_214800.jpg", "role": "measure", "markers": [
+      {"x": 0.4818, "y": 0.3222, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "DC_BREAKER_LABEL"},
+      {"x": 0.4922, "y": 0.8065, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "DC_BREAKER_LABEL"}
+    ]},
+    {"folder": "분전반 DC", "file": "20260902_214805.jpg", "role": "measure", "markers": [
+      {"x": 0.5026, "y": 0.3417, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "DC_BREAKER_LABEL"},
+      {"x": 0.4948, "y": 0.8505, "name": "차단기 명판 / 회로 표기", "ref": "", "note": "", "guide": "DC_BREAKER_LABEL"}
+    ]},
+    {"folder": "전원 UPS", "file": "20260902_214858.jpg", "role": "measure", "markers": [
+      {"x": 0.5605, "y": 0.4855, "name": "캐비닛 전체 (전면)", "ref": "", "note": "", "guide": "UPS_FRONT"}
+    ]},
+    {"folder": "전원 UPS", "file": "20260902_214904.jpg", "role": "measure", "markers": [
+      {"x": 0.4479, "y": 0.5049, "name": "UPS 전면 표시부", "ref": "", "note": "", "guide": "UPS_PANEL"}
+    ]},
+    {"folder": "전원 UPS", "file": "20260902_214909.jpg", "role": "reference", "markers": []},
+    {"folder": "전원 UPS", "file": "20260902_214912.jpg", "role": "reference", "markers": []},
+    {"folder": "전원 UPS", "file": "20260902_214936.jpg", "role": "measure", "markers": [
+      {"x": 0.4355, "y": 0.6004, "name": "캐비닛 전체 (후면)", "ref": "", "note": "", "guide": "UPS_REAR"}
+    ]},
+    {"folder": "전원 UPS", "file": "20260902_214956.jpg", "role": "reference", "markers": []},
+    {"folder": "전원 UPS", "file": "20260902_215014.jpg", "role": "reference", "markers": [
+      {"x": 0.3724, "y": 0.7194, "name": "출력 단자 / 배선", "ref": "", "note": "", "guide": "UPS_OUT"}
+    ]},
+    {"folder": "전원 UPS", "file": "20260902_215019.jpg", "role": "reference", "markers": []},
+    {"folder": "전원 UPS", "file": "20260902_215022.jpg", "role": "reference", "markers": []},
+    {"folder": "전원 UPS", "file": "20260902_215026.jpg", "role": "reference", "markers": []},
+    {"folder": "현장시설물", "file": "1517510587808.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.5256, "name": "TWC Loop Coil / 안테나", "ref": "MP_TWC_LOOPCOIL", "note": "", "guide": "FIELD_TWC_LOOP"}
+    ]},
+    {"folder": "현장시설물", "file": "20161103_031247.jpg", "role": "measure", "markers": [
+      {"x": 0.4271, "y": 0.4744, "name": "DC Box 전체 및 단자", "ref": "MP_FTGS_DCBOX", "note": "", "guide": "FIELD_AF_DCBOX"}
+    ]},
+    {"folder": "현장시설물", "file": "20170408_021146.jpg", "role": "measure", "markers": [
+      {"x": 0.4907, "y": 0.6023, "name": "TWC 접속박스 외함", "ref": "", "note": "", "guide": "FIELD_TWC_CB_EXT"}
+    ]},
+    {"folder": "현장시설물", "file": "20170408_021153.jpg", "role": "measure", "markers": [
+      {"x": 0.4624, "y": 0.4746, "name": "ATO Loop C/B Box 외함", "ref": "", "note": "", "guide": "FIELD_ATOLOOP_CB_EXT"}
+    ]},
+    {"folder": "현장시설물", "file": "20170408_021229.jpg", "role": "measure", "markers": [
+      {"x": 0.4409, "y": 0.4794, "name": "ATO Loop 제어함(Controller Box) 외함", "ref": "", "note": "", "guide": "FIELD_ATOLOOP_CTRLBOX_EXT"}
+    ]},
+    {"folder": "현장시설물", "file": "20170416_003557.jpg", "role": "measure", "markers": [
+      {"x": 0.4089, "y": 0.4929, "name": "선로전환기 전체", "ref": "", "note": "", "guide": "FIELD_SW_FRONT"}
+    ]},
+    {"folder": "현장시설물", "file": "20170911_014228.jpg", "role": "measure", "markers": [
+      {"x": 0.5156, "y": 0.5981, "name": "AF궤도회로 C/B Box 외함", "ref": "", "note": "", "guide": "FIELD_AF_CB_EXT"}
+    ]},
+    {"folder": "현장시설물", "file": "20171114_035507.jpg", "role": "measure", "markers": [
+      {"x": 0.5108, "y": 0.4792, "name": "AF궤도회로 C/B Box 내부", "ref": "", "note": "", "guide": "FIELD_AF_CB"}
+    ]},
+    {"folder": "현장시설물", "file": "20171224_010634.jpg", "role": "measure", "markers": [
+      {"x": 0.4792, "y": 0.5676, "name": "C/B Box 9/10번, 11/14번 단자", "ref": "MP_FTGS_TX_FIELD", "note": "", "guide": "FIELD_AF_CB_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20180302_011822.jpg", "role": "measure", "markers": [
+      {"x": 0.457, "y": 0.4831, "name": "신호기 전체", "ref": "", "note": "", "guide": "FIELD_SIG_FRONT"},
+      {"x": 0.5323, "y": 0.5665, "name": "등렬(현시등) 근접", "ref": "MP_FIELD_SIG_LAMP", "note": "", "guide": "FIELD_SIG_LAMP"}
+    ]},
+    {"folder": "현장시설물", "file": "20180302_012303.jpg", "role": "measure", "markers": [
+      {"x": 0.586, "y": 0.5389, "name": "신호기 전체", "ref": "", "note": "", "guide": "FIELD_SIG_FRONT"}
+    ]},
+    {"folder": "현장시설물", "file": "20180415_005733.jpg", "role": "measure", "markers": [
+      {"x": 0.5, "y": 0.5185, "name": "TWC 접속박스(C/B) 내부", "ref": "MP_TWC_OUT", "note": "", "guide": "FIELD_TWC_CB"}
+    ]},
+    {"folder": "현장시설물", "file": "20180515_134135.jpg", "role": "measure", "markers": [
+      {"x": 0.5547, "y": 0.5773, "name": "ATO Loop 제어함 내부 (보드 배치)", "ref": "MP_ATO_CONTROLLER_LED_TEST", "note": "", "guide": "FIELD_ATOLOOP_CTRLBOX_INT"}
+    ]},
+    {"folder": "현장시설물", "file": "20180515_134614.jpg", "role": "measure", "markers": [
+      {"x": 0.5026, "y": 0.6065, "name": "ATO Loop 제어함 내부 (보드 배치)", "ref": "MP_ATO_CONTROLLER_LED_TEST", "note": "", "guide": "FIELD_ATOLOOP_CTRLBOX_INT"}
+    ]},
+    {"folder": "현장시설물", "file": "20190418_014508.jpg", "role": "measure", "markers": [
+      {"x": 0.8172, "y": 0.4661, "name": "C/B Box 9/10번, 11/14번 단자", "ref": "MP_FTGS_TX_FIELD", "note": "", "guide": "FIELD_AF_CB_TERMINAL"},
+      {"x": 0.3105, "y": 0.4782, "name": "C/B Box 9/10번, 11/14번 단자", "ref": "MP_FTGS_TX_FIELD", "note": "", "guide": "FIELD_AF_CB_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20190512_011527.jpg", "role": "measure", "markers": [
+      {"x": 0.4974, "y": 0.4528, "name": "ATO Loop C/B Box", "ref": "MP_ATO_LOOP_CURRENT", "note": "", "guide": "FIELD_ATOLOOP_CB"}
+    ]},
+    {"folder": "현장시설물", "file": "20200212_022211.jpg", "role": "measure", "markers": [
+      {"x": 0.496, "y": 0.4315, "name": "C/B Box 9/10번, 11/14번 단자", "ref": "MP_FTGS_TX_FIELD", "note": "", "guide": "FIELD_AF_CB_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20200311_021831.jpg", "role": "measure", "markers": [
+      {"x": 0.4766, "y": 0.5123, "name": "C/B Box 9/10번, 11/14번 단자", "ref": "MP_FTGS_TX_FIELD", "note": "", "guide": "FIELD_AF_CB_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20200428_012119.jpg", "role": "measure", "markers": [
+      {"x": 0.4113, "y": 0.5476, "name": "콘덴서(커패시터)", "ref": "MP_SW_CAPACITOR", "note": "", "guide": "FIELD_SW_CAPACITOR"}
+    ]},
+    {"folder": "현장시설물", "file": "20240525_021347.jpg", "role": "measure", "markers": [
+      {"x": 0.4896, "y": 0.4968, "name": "선로전환기 전체", "ref": "", "note": "", "guide": "FIELD_SW_FRONT"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_004055.jpg", "role": "measure", "markers": [
+      {"x": 0.4516, "y": 0.4343, "name": "등렬(현시등) 근접", "ref": "MP_FIELD_SIG_LAMP", "note": "", "guide": "FIELD_SIG_LAMP"},
+      {"x": 0.4718, "y": 0.5067, "name": "신호기 전체", "ref": "", "note": "", "guide": "FIELD_SIG_FRONT"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_004157.jpg", "role": "measure", "markers": [
+      {"x": 0.5444, "y": 0.796, "name": "ATO Loop Coil", "ref": "MP_LZB_LOOPCOIL", "note": "", "guide": "FIELD_ATOLOOP_COIL"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005154.jpg", "role": "measure", "markers": [
+      {"x": 0.5156, "y": 0.8495, "name": "S-bond 취부 상태", "ref": "MP_FTGS_SBOND", "note": "", "guide": "FIELD_SBOND"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005159.jpg", "role": "measure", "markers": [
+      {"x": 0.4792, "y": 0.4859, "name": "S-bond 취부 상태", "ref": "MP_FTGS_SBOND", "note": "", "guide": "FIELD_SBOND"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005206.jpg", "role": "measure", "markers": [
+      {"x": 0.5052, "y": 0.5583, "name": "S-bond 취부 상태", "ref": "MP_FTGS_SBOND", "note": "", "guide": "FIELD_SBOND"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005214.jpg", "role": "measure", "markers": [
+      {"x": 0.5495, "y": 0.588, "name": "S-bond 취부 상태", "ref": "MP_FTGS_SBOND", "note": "", "guide": "FIELD_SBOND"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005902.jpg", "role": "measure", "markers": [
+      {"x": 0.5312, "y": 0.4924, "name": "현장 단자반(터미널)", "ref": "MP_FIELD_SW_INDICATION", "note": "", "guide": "FIELD_SW_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005913.jpg", "role": "measure", "markers": [
+      {"x": 0.5495, "y": 0.5472, "name": "회로제어기(Circuit Controller) 내부", "ref": "", "note": "", "guide": "FIELD_SW_CTRLBOX"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_005936.jpg", "role": "measure", "markers": [
+      {"x": 0.5417, "y": 0.5285, "name": "현장 단자반(터미널)", "ref": "MP_FIELD_SW_INDICATION", "note": "", "guide": "FIELD_SW_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_010032.jpg", "role": "measure", "markers": [
+      {"x": 0.6458, "y": 0.6211, "name": "텅레일 밀착·쇄정 상태", "ref": "", "note": "", "guide": "FIELD_SW_TONGUE"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_010036.jpg", "role": "measure", "markers": [
+      {"x": 0.6536, "y": 0.315, "name": "텅레일 밀착·쇄정 상태", "ref": "", "note": "", "guide": "FIELD_SW_TONGUE"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_010652.jpg", "role": "measure", "markers": [
+      {"x": 0.526, "y": 0.6366, "name": "현장 단자반(터미널)", "ref": "MP_FIELD_SW_INDICATION", "note": "", "guide": "FIELD_SW_TERMINAL"}
+    ]},
+    {"folder": "현장시설물", "file": "20260907_015227.jpg", "role": "measure", "markers": [
+      {"x": 0.5495, "y": 0.4192, "name": "ATO Loop C/B Box 내부", "ref": "MP_ATO_LOOP_CURRENT", "note": "", "guide": "FIELD_ATOLOOP_CB"}
+    ]}
+  ]
+}

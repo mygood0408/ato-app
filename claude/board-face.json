@@ -1,0 +1,621 @@
+{
+  "schemaVersion": "1.0",
+  "description": "보드 전면 확대도용 데이터. 보드 하나를 열었을 때(3레벨 줌인의 마지막 단계) 실제 보드 앞면처럼 보이는 그림 위에 LED/표시등 위치를 좌표(0~1, 좌상단 기준)로 찍어, 클릭하면 board-info.json의 ledInfo 또는 measure-points.json의 ledCheck 설명을 보여주기 위한 데이터입니다.",
+  "station": "전역 공통",
+  "scopeNote": "LED의 정확한 픽셀 위치는 보드 개체마다 미세하게 다를 수 있어, 여기 좌표는 '실제 배치와 비슷한 참고용'입니다. 텍스트 설명(의미/정상상태)은 board-info.json / measure-points.json 원문 그대로이며 좌표만 새로 만든 것입니다.",
+  "fieldNotes": {
+    "boardShape": "보드 전면 이미지가 아직 없는 경우, 표준 유로카드형 보드(세로형 기판, 상단 또는 좌측에 LED 표시부, 하단에 커넥터)로 렌더링합니다.",
+    "leds[].x,y": "0~1 좌표. x=0 좌측, x=1 우측 / y=0 상단, y=1 하단.",
+    "leds[].sourceRef": "이 LED 설명 텍스트가 어디서 왔는지: board-info.json의 ledInfo 배열이면 'boardInfo'(문자열 배열인 경우) 또는 'BOARD_ID.ledInfo.LED_ID'(id가 있는 구조화 배열인 경우), measure-points.json의 ledCheck 배열이면 'measurePoint(해당 id)'."
+  },
+  "boards": {
+    "SICAS_VENUS3": {
+      "boardRef": "SICAS_VENUS3",
+      "title": "VENUS3 (Processor and memory module)",
+      "boardShape": "standard_eurocard_top_led",
+      "note": "board-info.json의 SICAS_VENUS3.ledInfo 4개 항목을 보드 전면 상단 LED 4개에 순서대로 배치했습니다.",
+      "leds": [
+        {
+          "id": "VENUS3_LED_RS",
+          "label": "RS",
+          "x": 0.2,
+          "y": 0.12,
+          "normalState": "평상시 소등",
+          "meaning": "채널을 리셋하는 동안 적색 점등",
+          "sourceRef": "boardInfo"
+        },
+        {
+          "id": "VENUS3_LED_SD",
+          "label": "SD",
+          "x": 0.4,
+          "y": 0.12,
+          "normalState": "평상시 소등",
+          "meaning": "프로그램 오류 시 적색 점등(리셋을 통해서만 소등됨). 점검 시 채널전원 차단됨에 유의",
+          "sourceRef": "boardInfo"
+        },
+        {
+          "id": "VENUS3_LED_1",
+          "label": "1",
+          "x": 0.6,
+          "y": 0.12,
+          "normalState": "평상시 녹색 점등",
+          "meaning": "다른 채널과의 동기상태 표시",
+          "sourceRef": "boardInfo"
+        },
+        {
+          "id": "VENUS3_LED_2",
+          "label": "2",
+          "x": 0.8,
+          "y": 0.12,
+          "normalState": "평상시 소등",
+          "meaning": "(세부 설명은 원본 자료에 LED1과 함께 기재, 소등이 정상)",
+          "sourceRef": "boardInfo"
+        }
+      ],
+      "spec": {
+        "CPU": "AMD AM486",
+        "RAM": "8MB",
+        "EPROM": "4MB",
+        "FLASH+PROM": "2MB",
+        "동작주파수": "25MHz",
+        "에러메시지 예": "정지 상태 'A0000', 시스템재시 'F0000'"
+      },
+      "caution": "교체 시 EPROM 버전을 반드시 확인할 것. VENUS3 오류 출력만으로는 어느 모듈이 실제 고장인지 특정할 수 없다는 것이 매뉴얼상 한계로 명시되어 있음.",
+      "relatedFaultCases": [
+        "FLT_VEN_01"
+      ]
+    },
+    "SICAS_SVK2102": {
+      "boardRef": "SICAS_SVK2102",
+      "title": "SVK 2102 전원장치",
+      "boardShape": "standard_eurocard_top_led",
+      "note": "SICAS_SVK2102 자체에는 board-info.json에 ledInfo가 없지만, 이 보드에서 측정하는 measure-points.json의 MP_SICAS_S51_DC60 항목에 실제 전면 LED(UE/UA)에 대한 ledCheck 정보가 있어 그대로 가져와 배치했습니다.",
+      "leds": [
+        {
+          "id": "SVK2102_LED_UE",
+          "label": "UE",
+          "x": 0.3,
+          "y": 0.15,
+          "meaning": "입력전압 DC60V 정상",
+          "normalState": "녹색 점등",
+          "abnormal": "과전압(89V 이상) 시 스위치 차단",
+          "sourceRef": "measurePoint(MP_SICAS_S51_DC60)"
+        },
+        {
+          "id": "SVK2102_LED_UA",
+          "label": "UA",
+          "x": 0.7,
+          "y": 0.15,
+          "meaning": "출력전압 DC5V 정상",
+          "normalState": "녹색 점등",
+          "abnormal": "저전압(6.3V 이하) 시 스위치 차단",
+          "sourceRef": "measurePoint(MP_SICAS_S51_DC60)"
+        }
+      ],
+      "measurePoints": {
+        "note": "N레벨 배전반에서 이 보드로 들어오는 60V 입력을 직접 측정할 수 있는 단자.",
+        "probe": {
+          "positive": "5, 6, 7번 터미널",
+          "negative": "1, 2, 3번 터미널"
+        },
+        "drawingRef": "=SIN1/08.01.01 p.2",
+        "measurePointRef": "MP_SICAS_S51_DC60"
+      },
+      "function": "SIMIS 컴퓨터 주변장비용 전력공급모듈. 입력전압 60V를 받아 출력전압 5V를 공급하며, 출력전압을 센서로 측정해 전압장애를 보상한다. 과전압(UE 89V 이상) 또는 저전압(UA 6.3V 이하) 시 모두 스위치가 차단된다.",
+      "caution": "소형 규격 PSC 4102와 호환.",
+      "relatedFaultCases": [
+        "FLT_ILK_06",
+        "FLT_ILK_07",
+        "FLT_ILK_12",
+        "FLT_PWR_01",
+        "FLT_PWR_03",
+        "FLT_PWR_04"
+      ]
+    },
+    "ECDSTT_STEKOP": {
+      "boardRef": "ECDSTT_STEKOP",
+      "title": "STEKOP (인터페이스 모듈 커플러) 보드 전면",
+      "boardShape": "standard_eurocard_top_led",
+      "note": "1개의 물리 보드에 상단 FEMES 구역(Channel1/Channel2 각 4LED+RESET)과 하단 인터페이스 모듈 구역(Channel1/Channel2 각 ASS 1개 + K/M 12쌍)이 함께 있음. K/M 각 번호의 실제 기능(어떤 선로전환기/신호기인지)은 슬롯(N-코드)마다 다르므로 여기서는 표기하지 않고 rack-layout.json의 stekopSlotAssignment를 참고할 것. 좌표는 도면(ECDSTT 지침서.pdf p.65)+사진(FEMES-6/FEMAP-4, FEMES-6/FEMAP-5 라벨 보드) 비율 추정치.",
+      "leds": [
+        {
+          "id": "femes_ch1_rass",
+          "label": "Channel1 - RASS",
+          "x": 0.62,
+          "y": 0.03,
+          "meaning": "FEMES 보드 동작 상태 표시",
+          "normalState": "평상시 소등(오류시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_rass"
+        },
+        {
+          "id": "femes_ch1_ass",
+          "label": "Channel1 - ASS",
+          "x": 0.62,
+          "y": 0.05,
+          "meaning": "FEMES 보드 동작 상태 표시",
+          "normalState": "평상시 소등(오류시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_ass"
+        },
+        {
+          "id": "femes_ch1_5vvk",
+          "label": "Channel1 - 5V VK",
+          "x": 0.62,
+          "y": 0.07,
+          "meaning": "입력 및 동작 전원 상태 표시",
+          "normalState": "평상시 녹색점등",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_5vvk"
+        },
+        {
+          "id": "femes_ch1_5vuk",
+          "label": "Channel1 - 5V UK",
+          "x": 0.62,
+          "y": 0.09,
+          "meaning": "입력 및 동작 전원 상태 표시",
+          "normalState": "평상시 녹색점등",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_5vuk"
+        },
+        {
+          "id": "femes_reset",
+          "label": "RESET Key",
+          "x": 0.55,
+          "y": 0.105,
+          "meaning": "시스템 리셋시 1회 누른다",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_reset"
+        },
+        {
+          "id": "femes_ch2_rass",
+          "label": "Channel2 - RASS",
+          "x": 0.62,
+          "y": 0.13,
+          "meaning": "FEMES 보드 동작 상태 표시",
+          "normalState": "평상시 소등(오류시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_rass"
+        },
+        {
+          "id": "femes_ch2_ass",
+          "label": "Channel2 - ASS",
+          "x": 0.62,
+          "y": 0.15,
+          "meaning": "FEMES 보드 동작 상태 표시",
+          "normalState": "평상시 소등(오류시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_ass"
+        },
+        {
+          "id": "femes_ch2_5vvk",
+          "label": "Channel2 - 5V VK",
+          "x": 0.62,
+          "y": 0.17,
+          "meaning": "입력 및 동작 전원 상태 표시",
+          "normalState": "평상시 녹색점등",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_5vvk"
+        },
+        {
+          "id": "femes_ch2_5vuk",
+          "label": "Channel2 - 5V UK",
+          "x": 0.62,
+          "y": 0.19,
+          "meaning": "입력 및 동작 전원 상태 표시",
+          "normalState": "평상시 녹색점등",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.femes_5vuk"
+        },
+        {
+          "id": "if_ch1_ass",
+          "label": "Channel1 - ASS (인터페이스)",
+          "x": 0.3,
+          "y": 0.23,
+          "meaning": "모든 인터페이스 차단 의미",
+          "normalState": "평상시 소등(이상시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_ass"
+        },
+        {
+          "id": "if_ch1_row01",
+          "label": "Channel1 - K1/M1",
+          "x": 0.3,
+          "y": 0.255,
+          "meaning": "출력(K1)/입력(M1) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row02",
+          "label": "Channel1 - K2/M2",
+          "x": 0.3,
+          "y": 0.28,
+          "meaning": "출력(K2)/입력(M2) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row03",
+          "label": "Channel1 - K3/M3",
+          "x": 0.3,
+          "y": 0.305,
+          "meaning": "출력(K3)/입력(M3) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row04",
+          "label": "Channel1 - K4/M4",
+          "x": 0.3,
+          "y": 0.33,
+          "meaning": "출력(K4)/입력(M4) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row05",
+          "label": "Channel1 - K5/M5",
+          "x": 0.3,
+          "y": 0.355,
+          "meaning": "출력(K5)/입력(M5) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row06",
+          "label": "Channel1 - K6/M6",
+          "x": 0.3,
+          "y": 0.38,
+          "meaning": "출력(K6)/입력(M6) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row07",
+          "label": "Channel1 - K7/M7",
+          "x": 0.3,
+          "y": 0.405,
+          "meaning": "출력(K7)/입력(M7) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row08",
+          "label": "Channel1 - K8/M8",
+          "x": 0.3,
+          "y": 0.43,
+          "meaning": "출력(K8)/입력(M8) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row09",
+          "label": "Channel1 - K9/M9",
+          "x": 0.3,
+          "y": 0.455,
+          "meaning": "출력(K9)/입력(M9) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row10",
+          "label": "Channel1 - K10/M10",
+          "x": 0.3,
+          "y": 0.48,
+          "meaning": "출력(K10)/입력(M10) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row11",
+          "label": "Channel1 - K11/M11",
+          "x": 0.3,
+          "y": 0.505,
+          "meaning": "출력(K11)/입력(M11) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch1_row12",
+          "label": "Channel1 - K12/M12",
+          "x": 0.3,
+          "y": 0.53,
+          "meaning": "출력(K12)/입력(M12) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_ass",
+          "label": "Channel2 - ASS (인터페이스)",
+          "x": 0.3,
+          "y": 0.585,
+          "meaning": "모든 인터페이스 차단 의미",
+          "normalState": "평상시 소등(이상시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_ass"
+        },
+        {
+          "id": "if_ch2_row01",
+          "label": "Channel2 - K1/M1",
+          "x": 0.3,
+          "y": 0.61,
+          "meaning": "출력(K1)/입력(M1) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row02",
+          "label": "Channel2 - K2/M2",
+          "x": 0.3,
+          "y": 0.635,
+          "meaning": "출력(K2)/입력(M2) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row03",
+          "label": "Channel2 - K3/M3",
+          "x": 0.3,
+          "y": 0.66,
+          "meaning": "출력(K3)/입력(M3) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row04",
+          "label": "Channel2 - K4/M4",
+          "x": 0.3,
+          "y": 0.685,
+          "meaning": "출력(K4)/입력(M4) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row05",
+          "label": "Channel2 - K5/M5",
+          "x": 0.3,
+          "y": 0.71,
+          "meaning": "출력(K5)/입력(M5) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row06",
+          "label": "Channel2 - K6/M6",
+          "x": 0.3,
+          "y": 0.735,
+          "meaning": "출력(K6)/입력(M6) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row07",
+          "label": "Channel2 - K7/M7",
+          "x": 0.3,
+          "y": 0.76,
+          "meaning": "출력(K7)/입력(M7) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row08",
+          "label": "Channel2 - K8/M8",
+          "x": 0.3,
+          "y": 0.785,
+          "meaning": "출력(K8)/입력(M8) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row09",
+          "label": "Channel2 - K9/M9",
+          "x": 0.3,
+          "y": 0.81,
+          "meaning": "출력(K9)/입력(M9) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row10",
+          "label": "Channel2 - K10/M10",
+          "x": 0.3,
+          "y": 0.835,
+          "meaning": "출력(K10)/입력(M10) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row11",
+          "label": "Channel2 - K11/M11",
+          "x": 0.3,
+          "y": 0.86,
+          "meaning": "출력(K11)/입력(M11) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_row12",
+          "label": "Channel2 - K12/M12",
+          "x": 0.3,
+          "y": 0.885,
+          "meaning": "출력(K12)/입력(M12) - 슬롯별 배정 다름",
+          "normalState": "-",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_k"
+        },
+        {
+          "id": "if_ch2_ass_bottom",
+          "label": "Channel2 하단 - ASS",
+          "x": 0.3,
+          "y": 0.915,
+          "meaning": "모든 인터페이스 차단 의미",
+          "normalState": "평상시 소등(이상시 적색점등)",
+          "sourceRef": "ECDSTT_STEKOP.ledInfo.if_ass"
+        }
+      ]
+    },
+    "ECDSTT_DEWEMO": {
+      "boardRef": "ECDSTT_DEWEMO",
+      "title": "DEWEMO (선로전환기 제어 모듈) 전면",
+      "boardShape": "standard_wide_panel_top_led",
+      "note": "좌표는 도면(ECDSTT 지침서.pdf p.68) 비율 추정치. 좌측 'message point position' 3열(point left/trailed/right) x 2행 LED, 중앙 point run/position, 우측 HS1/HS2 + L/R.",
+      "leds": [
+        {
+          "id": "point_left",
+          "label": "point left (표시상태 확인램프)",
+          "x": 0.1,
+          "y": 0.28,
+          "meaning": "선로전환기 좌측방향 표시상태",
+          "normalState": "정상시 좌측방향에서 점등 패턴",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.detector_left"
+        },
+        {
+          "id": "point_trailed",
+          "label": "point trailed (표시상태 확인램프)",
+          "x": 0.17,
+          "y": 0.28,
+          "meaning": "선로전환기 전환중 표시",
+          "normalState": "전환중에는 소등, 전환완료시 좌/우 상태로 전환",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.detector_trailed"
+        },
+        {
+          "id": "point_right",
+          "label": "point right (표시상태 확인램프)",
+          "x": 0.24,
+          "y": 0.28,
+          "meaning": "선로전환기 우측방향 표시상태",
+          "normalState": "정상시 우측방향에서 점등 패턴",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.detector_right"
+        },
+        {
+          "id": "point_run",
+          "label": "point run",
+          "x": 0.44,
+          "y": 0.36,
+          "meaning": "위치계전기 동작표시",
+          "normalState": "평상시 소등, 전환중 황색점등",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.point_run"
+        },
+        {
+          "id": "position",
+          "label": "position",
+          "x": 0.44,
+          "y": 0.4,
+          "meaning": "위치계전기 동작표시",
+          "normalState": "평상시 녹색 점멸",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.position"
+        },
+        {
+          "id": "hs2",
+          "label": "HS2",
+          "x": 0.78,
+          "y": 0.24,
+          "meaning": "전환보조계전기 동작표시",
+          "normalState": "평상시 소등, 전환중 녹색점등",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.hs2"
+        },
+        {
+          "id": "hs1",
+          "label": "HS1",
+          "x": 0.78,
+          "y": 0.29,
+          "meaning": "전환보조계전기 동작표시",
+          "normalState": "평상시 소등, 전환중 녹색점등",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.hs1"
+        },
+        {
+          "id": "dir_l",
+          "label": "L",
+          "x": 0.86,
+          "y": 0.24,
+          "meaning": "방향계전기 동작표시 - 좌측방향 명령",
+          "normalState": "좌측 명령시 점등",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.dir_l"
+        },
+        {
+          "id": "dir_r",
+          "label": "R",
+          "x": 0.86,
+          "y": 0.29,
+          "meaning": "방향계전기 동작표시 - 우측방향 명령",
+          "normalState": "우측 명령시 점등",
+          "sourceRef": "ECDSTT_DEWEMO.ledInfo.dir_r"
+        }
+      ]
+    },
+    "ECDSTT_DESIMO": {
+      "boardRef": "ECDSTT_DESIMO",
+      "title": "DESIMO (신호기 제어 모듈) 전면",
+      "boardShape": "standard_wide_panel_dual_row_led",
+      "note": "좌표는 도면(ECDSTT 지침서.pdf p.86) 비율 추정치. 램프1(상단행) / 램프2(하단행, 좌우 대칭 미러링) 구조.",
+      "leds": [
+        {
+          "id": "lamp1_s0",
+          "label": "램프1 - S0",
+          "x": 0.14,
+          "y": 0.3,
+          "meaning": "정지[R]신호시 녹색점멸 / 진행[Y]신호시 녹색점등",
+          "normalState": "정상",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.s0"
+        },
+        {
+          "id": "lamp1_s1",
+          "label": "램프1 - S1",
+          "x": 0.44,
+          "y": 0.3,
+          "meaning": "정지[R]신호시 녹색점멸 / 진행[Y]신호시 녹색점등",
+          "normalState": "정상",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.s1"
+        },
+        {
+          "id": "lamp1_ik2",
+          "label": "램프1 - IK2",
+          "x": 0.56,
+          "y": 0.3,
+          "meaning": "단심검출 용도",
+          "normalState": "평상시 황색점등(이상시 소등)",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.ik2"
+        },
+        {
+          "id": "lamp1_ik1",
+          "label": "램프1 - IK1",
+          "x": 0.68,
+          "y": 0.3,
+          "meaning": "단심검출 용도",
+          "normalState": "평상시 황색점등(이상시 소등)",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.ik1"
+        },
+        {
+          "id": "lamp2_ik1",
+          "label": "램프2 - IK1",
+          "x": 0.14,
+          "y": 0.58,
+          "meaning": "단심검출 용도",
+          "normalState": "평상시 황색점등(이상시 소등)",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.ik1"
+        },
+        {
+          "id": "lamp2_ik2",
+          "label": "램프2 - IK2",
+          "x": 0.26,
+          "y": 0.58,
+          "meaning": "단심검출 용도",
+          "normalState": "평상시 황색점등(이상시 소등)",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.ik2"
+        },
+        {
+          "id": "lamp2_s1",
+          "label": "램프2 - S1",
+          "x": 0.38,
+          "y": 0.58,
+          "meaning": "정지[R]신호시 녹색점멸 / 진행[Y]신호시 녹색점등",
+          "normalState": "정상",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.s1"
+        },
+        {
+          "id": "lamp2_s0",
+          "label": "램프2 - S0",
+          "x": 0.68,
+          "y": 0.58,
+          "meaning": "정지[R]신호시 녹색점멸 / 진행[Y]신호시 녹색점등",
+          "normalState": "정상",
+          "sourceRef": "ECDSTT_DESIMO.ledInfo.s0"
+        }
+      ]
+    }
+  },
+  "changelog": [
+    "2026-09-06: 신규 생성 — SICAS 확장 파일럿의 3레벨(보드 상세) 데이터. VENUS3(자체 ledInfo)와 SVK2102(연결된 measure-point의 ledCheck) 2개 보드로 시작.",
+    "2026-09-07: EC/DSTT 3개 보드(STEKOP/DEWEMO/DESIMO) 추가. LED 좌표는 ECDSTT 지침서.pdf(외부 자료) 도면 비율과 현장 사진 추정치이며, board-info.json의 구조화된 ledInfo(id 기반)를 정확히 참조하도록 sourceRef를 'BOARD_ID.ledInfo.LED_ID' 형식으로 작성. 마커편집기 등에서 실측 보정 필요."
+  ]
+}

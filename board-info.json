@@ -1,0 +1,2066 @@
+{
+  "schemaVersion": "1.0",
+  "description": "SICAS/EC-DSTT/LZB700M/IFC/FTGS/TWC 캐비닛을 구성하는 보드(모듈)별 역할과 기능 설명. 사진의 보드를 클릭했을 때 보여줄 정보.",
+  "station": "신도림",
+  "scopeNote": "각 보드는 SIEMENS 등 제작사의 표준 규격 부품이라 다른 연동역에서도 동일 장비라면 그대로 적용 가능합니다. 역별로 달라지는 것은 실제 설치 위치·수량 정도입니다.",
+  "fieldNotes": {
+    "relatedMeasurePoints": "measure-points.json의 id 참조. 이 보드에서 측정 가능한 지점.",
+    "relatedFaultCases": "fault-cases.json의 id 참조. 이 보드와 관련된 대표 고장사례.",
+    "caution": "교체/조작 시 특별히 주의할 사항.",
+    "ledInfo": "LED가 많은 보드는 배열 원소를 {id,label,section,meaning,normalState} 객체로 저장해 board-face.json에서 'BOARD_ID.ledInfo.LED_ID' 형태로 정확히 참조할 수 있게 합니다(EC/DSTT의 STEKOP/DEWEMO/DESIMO부터 적용, 2026-09-07). LED가 적은 보드는 기존처럼 문자열 배열을 유지합니다.",
+    "note": "정보가 원본자료에 없어 확인이 필요한 항목에 사용. '미확인, 원본자료 대조 필요' 식으로 남기고 추측하지 않습니다."
+  },
+  "boards": {
+    "SICAS": [
+      {
+        "id": "SICAS_VESUV3",
+        "name": "VESUV3 (Synchronizing and comparator module)",
+        "function": "1) 전자연동컴퓨터 3개 채널(A/B/C)의 프로그램 순서를 동기화 2) 컴퓨터 채널의 출력 데이터를 인접 채널의 데이터와 자동 비교 3) 입력 데이터와 인터럽트(Interrupt) 관리 4) 공급전압 감시 5) Safety차단(사고발생시 안전성 관련 전원공급을 차단)",
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "rf",
+            "label": "RF",
+            "section": "VESUV3",
+            "meaning": "동작 상태 표시",
+            "normalState": "평상시 녹색 점등"
+          },
+          {
+            "id": "bt",
+            "label": "BT",
+            "section": "VESUV3",
+            "meaning": "인접채널과의 동기 상태 표시",
+            "normalState": "평상시 노랑색 점등 (소등일 경우 인접채널과 동기중임을 표시)"
+          },
+          {
+            "id": "vl",
+            "label": "VL",
+            "section": "VESUV3",
+            "meaning": "인접채널 고장 표시",
+            "normalState": "평상시 소등 (인접채널 고장시 적색 점등)"
+          },
+          {
+            "id": "vr",
+            "label": "VR",
+            "section": "VESUV3",
+            "meaning": "인접채널 고장 표시",
+            "normalState": "평상시 소등 (인접채널 고장시 적색 점등)"
+          },
+          {
+            "id": "sp",
+            "label": "SP",
+            "section": "VESUV3",
+            "meaning": "전원상태 감시 LED",
+            "normalState": "평상시 노랑색 점등 (전원 이상 시 소등)"
+          },
+          {
+            "id": "pf",
+            "label": "PF",
+            "section": "VESUV3",
+            "meaning": "주변기기 상태표시. PF버튼을 눌러 정상상태가 되면 점등",
+            "normalState": "평상시 소등, PF버튼 조작 후 정상시 노랑색 점등"
+          }
+        ]
+      },
+      {
+        "id": "SICAS_VENUS3",
+        "name": "VENUS3 (Processor and memory module)",
+        "function": "SICAS의 처리장치 및 메모리 모듈(연동 컴퓨터의 CPU 역할). 고장 시 7세그먼트 디스플레이에 F.0000 형태의 오류코드가 표시된다.",
+        "caution": "교체 시 EPROM 버전을 반드시 확인할 것. VENUS3 오류 출력만으로는 어느 모듈이 실제 고장인지 특정할 수 없다는 것이 매뉴얼상 한계로 명시되어 있음.",
+        "relatedFaultCases": [
+          "FLT_VEN_01"
+        ],
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "rs",
+            "label": "RS",
+            "section": "VENUS3",
+            "meaning": "채널 리셋 상태 표시",
+            "normalState": "평상시 소등 (채널을 리셋하는 동안 적색 점등)"
+          },
+          {
+            "id": "sd",
+            "label": "SD",
+            "section": "VENUS3",
+            "meaning": "프로그램 오류 표시",
+            "normalState": "평상시 소등 (프로그램상의 오류발생시 적색 점등, 점검시 채널전원 차단)"
+          },
+          {
+            "id": "l1",
+            "label": "1",
+            "section": "VENUS3",
+            "meaning": "다른 채널과의 동기상태 표시",
+            "normalState": "평상시 녹색 점등"
+          },
+          {
+            "id": "l2",
+            "label": "2",
+            "section": "VENUS3",
+            "meaning": "다른 채널과의 동기상태 표시",
+            "normalState": "평상시 소등"
+          }
+        ],
+        "spec": {
+          "CPU": "AMD AM486",
+          "RAM": "8MB",
+          "EPROM": "4MB",
+          "FLASH+PROM": "2MB",
+          "동작주파수": "25MHz",
+          "에러메시지 예": "정지 상태 'A0000', 시스템재시 'F0000'"
+        }
+      },
+      {
+        "id": "SICAS_VESIN",
+        "name": "VESIN (Interrupt module)",
+        "function": "1) 프레임 플러그를 통하여 들어오는 32개 인터럽트 요구를 집합적인 인터럽트(PUS)로 형성 2) VESUV3 모듈을 통해 전자연동컴퓨터로 인터럽트 전송 및 SIMIS 동기화(SIMIS: Fail-safe microcomputer System) 3) 컴퓨터 채널에서 사용되는 모듈의 에러 어드레싱 체크",
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "adr",
+            "label": "ADR",
+            "section": "VESIN",
+            "meaning": "Write/Read 시 Addressing 상태 표시",
+            "normalState": "평상시 노랑색 점멸"
+          },
+          {
+            "id": "pus",
+            "label": "PUS",
+            "section": "VESIN",
+            "meaning": "그룹 인터럽트 상태 표시",
+            "normalState": "인터럽트 발생시 노랑색 점등"
+          }
+        ]
+      },
+      {
+        "id": "SICAS_BUMA",
+        "name": "BUMA (Busmaster module)",
+        "function": "1) 2-out-of-3로 구성되어 버스 시스템에 대한 관리기능과 안전성 기능을 수행 2) 인접연동역 SICAS, LZB, EC/DSTT 사이에 데이터 전송 3) 버스 트래픽(데이터) 제어 4) OLM과 광케이블로 연결 5) 공급전압 관리 6) 1개의 BUMA당 최대 8개의 STEKOP 제어 가능 7) 채널간 비교와 오류저장",
+        "caution": "교체 시 EPROM 버전을 반드시 확인할 것.",
+        "relatedFaultCases": [
+          "FLT_ILK_01",
+          "FLT_ILK_03"
+        ],
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "vl",
+            "label": "VL",
+            "section": "BUMA",
+            "meaning": "인접채널 동작상태 표시",
+            "normalState": "평상시 소등 (점등시 RV버튼을 이용 리셋)"
+          },
+          {
+            "id": "vr",
+            "label": "VR",
+            "section": "BUMA",
+            "meaning": "인접채널 동작상태 표시",
+            "normalState": "평상시 소등 (점등시 RV버튼을 이용 리셋)"
+          },
+          {
+            "id": "fs",
+            "label": "FS",
+            "section": "BUMA",
+            "meaning": "에러 발생 표시",
+            "normalState": "평상시 소등 (에러발생시 적색 점등, 점등시 RV와 RB버튼을 누른다)"
+          },
+          {
+            "id": "vs",
+            "label": "VS",
+            "section": "BUMA",
+            "meaning": "전원상태 감시 한계초과 표시",
+            "normalState": "평상시 소등 (한계초과시 적색 점등)"
+          },
+          {
+            "id": "sf",
+            "label": "SF",
+            "section": "BUMA",
+            "meaning": "SIMIS 해제(No ASS) 상태 표시",
+            "normalState": "평상시 녹색 점등"
+          },
+          {
+            "id": "bk",
+            "label": "BK",
+            "section": "BUMA",
+            "meaning": "BUMA보드 동작 준비완료 상태 표시",
+            "normalState": "평상시 소등(녹색 LED)"
+          },
+          {
+            "id": "me",
+            "label": "ME",
+            "section": "BUMA",
+            "meaning": "메시지 FIFO에 메시지정보 이용가능 상태표시",
+            "normalState": "평상시 노랑색 약하게 점멸"
+          },
+          {
+            "id": "ko",
+            "label": "KO",
+            "section": "BUMA",
+            "meaning": "명령 FIFO에 명령정보 이용가능 상태표시",
+            "normalState": "평상시 노랑색 약하게 점멸"
+          },
+          {
+            "id": "l1",
+            "label": "L1",
+            "section": "BUMA",
+            "meaning": "에러메세지 표시 (L1만 점멸시 에러 메세지 시작을 의미)",
+            "normalState": "평상시 노랑색 점멸"
+          },
+          {
+            "id": "l2",
+            "label": "L2",
+            "section": "BUMA",
+            "meaning": "에러메세지 표시",
+            "normalState": "평상시 노랑색 점멸"
+          }
+        ],
+        "networkNote": "채널별 BUMA는 OLM(P12, 플라스틱)을 거쳐 EC/DSTT의 STEKOP(최대 8대/BUMA) 및 IFC와, OLM(G12, 유리)을 거쳐 LZB700M 및 인접 연동역 SICAS와 연결됨. CH1=OLM·IFC·STEKOP 연결용, CH2/CH3=OLM·BUMA·LZB·ECC 연결용."
+      },
+      {
+        "id": "SICAS_MELDE2",
+        "name": "MELDE2 (Digital input module)",
+        "function": "1) 궤도회로 점유·비점유 정보, 정류기 고장정보 등을 물리적(24V 전위)으로 수신하여 VESIN 모듈로 전송 2) 2개의 전면플러그를 이용하여 64개의 메시지 상태저장 3) 주변장치와 전기적 분리를 위해 Optocoupler 입력 설치 (Optocoupler: 발광원(입력)과 광검출기(출력)로 구성되는 고체 스위칭 소자)",
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "ld",
+            "label": "LD",
+            "section": "MELDE2",
+            "meaning": "데이터 Read 상태 표시",
+            "normalState": "데이터 Read시 노랑색으로 점멸"
+          }
+        ]
+      },
+      {
+        "id": "SICAS_KOMDA2",
+        "name": "KOMDA2 (Digital output module)",
+        "function": "1) 전면 플러그를 통해 24V 전력 공급 2) 테스트 텔레그램을 되돌려 주는 미러 레지스터를 이용하여 버스 기능을 점검",
+        "relatedFaultCases": [
+          "FLT_ILK_08"
+        ],
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "led1",
+            "label": "LED1",
+            "section": "KOMDA2",
+            "meaning": "Write / Addressing 상태 표시",
+            "normalState": "평상시 소등 (Write시 노랑색 점등)"
+          },
+          {
+            "id": "led2",
+            "label": "LED2",
+            "section": "KOMDA2",
+            "meaning": "Read / Addressing 상태 표시",
+            "normalState": "평상시 소등 (Read시 노랑색 점등)"
+          }
+        ]
+      },
+      {
+        "id": "SICAS_OLM",
+        "name": "OLM (Optical Link Module, 광링크모듈)",
+        "function": "OLM(P12)과 OLM(G12)은 광 PROFIBUS 네트워크를 위해 사용됨. BUMA모듈은 PROFIBUS OLM에 의해 상호 연결되며 전기적 신호가 광 데이터로 변환되고 그 반대 전송도 이루어짐. 주변기기와도 광케이블로 연결됨. OLM(P12)=플라스틱 광 PROFIBUS, OLM(G12)=유리 광 PROFIBUS(플라스틱보다 파장이 짧고 수신감도가 좋아 인접 연동역과의 장거리 통신에 사용).",
+        "relatedFaultCases": [
+          "FLT_ILK_01",
+          "FLT_ILK_03",
+          "FLT_ECD_01"
+        ],
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "system",
+            "label": "System",
+            "section": "OLM",
+            "meaning": "장치 동작 상태 표시",
+            "normalState": "평상시 녹색 점등 (데이터 전송 안되거나 송·수신 케이블이 바뀐 경우 적색 점등, 전원공급 안되거나 커넥터 불량시 소등)"
+          },
+          {
+            "id": "ch1",
+            "label": "CH1",
+            "section": "OLM",
+            "meaning": "채널1 데이터 상태 표시 (OLM-OLM, OLM-IFC, OLM-STEKOP 연결용)",
+            "normalState": "평상시 황색 점등 (산발적 데이터 접속·네트워크 간섭·드라이버 손상시 적색 점멸, 데이터버스 미연결·커넥터 불량시 소등)"
+          },
+          {
+            "id": "ch2",
+            "label": "CH2",
+            "section": "OLM",
+            "meaning": "채널2 데이터 상태 표시 (OLM-BUMA, OLM-인접역 BUMA, OLM-LZB, OLM-ECC 연결용)",
+            "normalState": "평상시 황색 점등 (전송없음시 점멸, 상대 미접속·손상시 적색 점등, 접속불량시 적색/황색 점멸, 케이블 바뀜시 소등)"
+          },
+          {
+            "id": "ch3",
+            "label": "CH3",
+            "section": "OLM",
+            "meaning": "채널3 데이터 상태 표시 (CH2와 동일 용도)",
+            "normalState": "CH2와 동일"
+          }
+        ]
+      },
+      {
+        "id": "SICAS_SVK2102",
+        "name": "SVK 2102 전원장치",
+        "function": "SIMIS 컴퓨터 주변장비용 전력공급모듈. 입력전압 60V를 받아 출력전압 5V를 공급하며, 출력전압을 센서로 측정해 전압장애를 보상한다. 과전압(UE 89V 이상) 또는 저전압(UA 6.3V 이하) 시 모두 스위치가 차단된다.",
+        "caution": "소형 규격 PSC 4102와 호환.",
+        "relatedMeasurePoints": [
+          "MP_SICAS_S51_DC60",
+          "MP_SICAS_CPU_IF"
+        ],
+        "relatedFaultCases": [
+          "FLT_ILK_06",
+          "FLT_ILK_07",
+          "FLT_ILK_12",
+          "FLT_PWR_01",
+          "FLT_PWR_03",
+          "FLT_PWR_04"
+        ],
+        "source": {
+          "doc": "SICAS 지침서.pdf",
+          "section": "SICAS 각 보드별 기능 (p.52~62), 통신망/캐비닛/전원 구성도 (p.48~51,62)",
+          "note": "사용자가 대화 중 업로드한 외부 PDF (프로젝트에 미보관). 기존 '2. SICAS_ECDSTT.pdf' 출처와 동일 계열 자료로, 내용이 서로 일치함을 확인함(2026-09-07)."
+        },
+        "ledInfo": [
+          {
+            "id": "ue",
+            "label": "UE",
+            "section": "SVK2102",
+            "meaning": "입력측 과전압 감시 (입력전압 60V)",
+            "normalState": "평상시 황색 점등 (입력측 과전압시[89V 이상] 소등 — 퓨즈 F200mA 교체)"
+          },
+          {
+            "id": "ua",
+            "label": "UA",
+            "section": "SVK2102",
+            "meaning": "출력측 과전압 감시 (출력전압 5V)",
+            "normalState": "평상시 황색 점등 (출력측 과전압시[6.3V 이상] 소등 — 전원모듈 교체)"
+          }
+        ]
+      }
+    ],
+    "EC/DSTT": [
+      {
+        "id": "ECDSTT_STEKOP",
+        "name": "STEKOP (인터페이스 모듈 커플러)",
+        "function": "인터페이스 모듈부와 SICAS 컴퓨터 간 커플링을 담당. PROFIBUS를 통해 인터페이스 모듈의 신호를 SICAS로 전송하며, 채널마다 입력 12개·출력 12개를 가진다. 내부 FEMES 보드가 버스 데이터 트래픽을 안전하게 처리하고 연결된 인터페이스 모듈(DEWEMO/DESIMO 등)을 제어·감시한다.",
+        "rackPosition": "전면 B행 (캐비닛당 7개)",
+        "ledInfo": [
+          {
+            "id": "femes_rass",
+            "label": "RASS",
+            "section": "FEMES",
+            "meaning": "FEMES 보드 동작 상태 표시",
+            "normalState": "평상시 소등 (FEMES보드 오류시 적색점등)"
+          },
+          {
+            "id": "femes_ass",
+            "label": "ASS",
+            "section": "FEMES",
+            "meaning": "FEMES 보드 동작 상태 표시",
+            "normalState": "평상시 소등 (FEMES보드 오류시 적색점등)"
+          },
+          {
+            "id": "femes_5vvk",
+            "label": "5V VK",
+            "section": "FEMES",
+            "meaning": "입력 및 동작 전원 상태 표시",
+            "normalState": "평상시 녹색점등 (이상시 녹색 점멸 및 소등)"
+          },
+          {
+            "id": "femes_5vuk",
+            "label": "5V UK",
+            "section": "FEMES",
+            "meaning": "입력 및 동작 전원 상태 표시",
+            "normalState": "평상시 녹색점등 (이상시 녹색 점멸 및 소등)"
+          },
+          {
+            "id": "femes_l1l4_ch1",
+            "label": "L1~L4 (Channel1)",
+            "section": "FEMES",
+            "meaning": "시스템 오류/접속장애시 사용. 4개 모두 황색점등=에러메시지 시작 표시(점등순서로 16진수 값 표현). SICAS 로직 접속장애시 L4만 황색점등. SICAS 동작·표시 접속장애시 L1,L4만 황색점등.",
+            "normalState": "평상시 소등"
+          },
+          {
+            "id": "femes_l1l4_ch2",
+            "label": "L1~L4 (Channel2)",
+            "section": "FEMES",
+            "meaning": "시스템 내부 진단용으로만 사용",
+            "normalState": "평상시 L1이 항상 황색점등됨 (정상)"
+          },
+          {
+            "id": "femes_reset",
+            "label": "RESET Key",
+            "section": "FEMES",
+            "meaning": "시스템 리셋시 1회 누른다",
+            "normalState": "-"
+          },
+          {
+            "id": "if_ass",
+            "label": "ASS",
+            "section": "인터페이스 모듈",
+            "meaning": "모든 인터페이스 차단 의미",
+            "normalState": "평상시 소등 (이상시 적색점등)"
+          },
+          {
+            "id": "if_k",
+            "label": "K (1~12)",
+            "section": "인터페이스 모듈",
+            "meaning": "1~12까지의 출력(명령) 표시",
+            "normalState": "슬롯별 STEKOP-Platter 배정표에 따라 의미가 다름 (rack-layout.json의 stekopSlotAssignment 참고)"
+          },
+          {
+            "id": "if_m",
+            "label": "M (1~12)",
+            "section": "인터페이스 모듈",
+            "meaning": "1~12까지의 입력(메시지) 표시",
+            "normalState": "슬롯별 STEKOP-Platter 배정표에 따라 의미가 다름 (rack-layout.json의 stekopSlotAssignment 참고)"
+          }
+        ],
+        "caution": "교체 시 EPROM 버전 확인 필요. 선로전환기 불일치가 자동 해제되지 않을 때 STEKOP의 빨간 Reset 버튼을 누르고, 3분 경과 후 EC/DSTT랙 F레벨의 Fail 표시 LED(녹색)가 켜지는지 확인 후 재시행한다. [2026-09-06] 선로전환기 장애 발생 시에는 반드시 기계실 STEKOP·DEWEMO의 LED 표시상태 및 에러메시지를 동영상으로 촬영해둘 것(교육자료2호선 선로전환기 장애조치 매뉴얼.pdf). [2026-09-07] LED 점등 개수로 상태 판단: 선로전환기 1조(예: 201A/B)당 LED 4개 = Detector1/2 LED 2개 + 방향계전기 동작표시램프 1개 + Fail계전기 LED 1개. 인접한 2조(예: 201A/B + 202A/B)를 같이 보면 정상 상태일 때 총 8개 LED가 점등되어 있어야 한다.",
+        "relatedFaultCases": [
+          "FLT_ECD_02",
+          "FLT_ECD_03",
+          "FLT_ECD_05",
+          "FLT_ILK_01"
+        ],
+        "source": {
+          "doc": "2. SICAS_ECDSTT.pdf",
+          "section": "EC/DSTT 각 보드별 기능 (p.65~94)"
+        },
+        "sourcePage": [
+          65,
+          66,
+          67
+        ]
+      },
+      {
+        "id": "ECDSTT_DEWEMO",
+        "name": "DEWEMO (선로전환기 제어모듈)",
+        "function": "선로전환기를 제어 및 감시하는 모듈. 단상 및 3상 선로전환기의 제어·감시가 모두 가능하며, 제어전류 연결/단락용 접점으로 외부 접속장치와 연결된다. 단동(선로전환기 1대)과 쌍동(선로전환기 2대, A/B) 결선 방식이 있다.",
+        "rackPosition": "전면 D/E/F행 (캐비닛당 6개)",
+        "connectors": {
+          "X1": "24V 표시전원",
+          "X2": "24V 제어전원, 110V 모터전원",
+          "X3": "현장 선로전환기 제어 및 모터전원 접속",
+          "X4": "현장 선로전환기 표시전원 접속",
+          "X100": "STEKOP과 접속 (DB25)"
+        },
+        "ledInfo": [
+          {
+            "id": "detector_left",
+            "label": "표시상태 확인램프 (point left)",
+            "meaning": "정상상태 - 선로전환기 좌측방향 표시",
+            "normalState": "Detector2 Plus점등/Minus소등, Detector1 Plus소등/Minus점등"
+          },
+          {
+            "id": "detector_right",
+            "label": "표시상태 확인램프 (point right)",
+            "meaning": "정상상태 - 선로전환기 우측방향 표시",
+            "normalState": "Detector2 Plus소등/Minus점등, Detector1 Plus점등/Minus소등"
+          },
+          {
+            "id": "detector_trailed",
+            "label": "표시상태 확인램프 (point trailed/전환중)",
+            "meaning": "정상상태 - 선로전환기 전환중 표시 (전환완료시 좌/우 상태가 되어야 함)",
+            "normalState": "Detector1/2 모두 소등"
+          },
+          {
+            "id": "detector_error1",
+            "label": "표시상태 확인램프 오류1",
+            "meaning": "회로의 접지장애 / 타선로전환기와의 합선 / 회선 장애",
+            "normalState": "Detector1 Plus만 점등, 나머지 소등"
+          },
+          {
+            "id": "detector_error2",
+            "label": "표시상태 확인램프 오류2",
+            "meaning": "회로의 접지장애 / 타선로전환기와의 합선 / 회선 장애",
+            "normalState": "Detector2 Minus만 점등, 나머지 소등"
+          },
+          {
+            "id": "detector_mismatch",
+            "label": "표시상태 확인램프 불일치",
+            "meaning": "선로전환기 불일치 상태 / 표시전원 공급상태 불량 / 회로 접지장애 및 회선장애",
+            "normalState": "Detector2 Plus 점등 + Detector1 Plus 점등 (둘 다)"
+          },
+          {
+            "id": "point_run",
+            "label": "point run",
+            "meaning": "위치계전기 동작표시",
+            "normalState": "평상시 소등, 전환중에는 황색점등"
+          },
+          {
+            "id": "position",
+            "label": "position",
+            "meaning": "위치계전기 동작표시",
+            "normalState": "평상시 녹색 점멸"
+          },
+          {
+            "id": "hs1",
+            "label": "HS1",
+            "meaning": "전환보조계전기 동작표시",
+            "normalState": "평상시 소등, 전환중 녹색점등"
+          },
+          {
+            "id": "hs2",
+            "label": "HS2",
+            "meaning": "전환보조계전기 동작표시",
+            "normalState": "평상시 소등, 전환중 녹색점등"
+          },
+          {
+            "id": "dir_l",
+            "label": "L",
+            "meaning": "방향계전기 동작표시 - 좌측방향 명령표시",
+            "normalState": "좌측 명령시 점등, 그 외 소등"
+          },
+          {
+            "id": "dir_r",
+            "label": "R",
+            "meaning": "방향계전기 동작표시 - 우측방향 명령표시",
+            "normalState": "우측 명령시 점등, 그 외 소등"
+          }
+        ],
+        "relatedMeasurePoints": [
+          "MP_FIELD_SW_CONTROL",
+          "MP_FIELD_SW_INDICATION",
+          "MP_FIELD_SW_MOTOR"
+        ],
+        "relatedFaultCases": [
+          "FLT_ECD_03",
+          "FLT_ECD_04",
+          "FLT_ECD_08",
+          "FLT_ECD_09"
+        ],
+        "source": {
+          "doc": "2. SICAS_ECDSTT.pdf",
+          "section": "EC/DSTT 각 보드별 기능 (p.65~94)"
+        },
+        "sourcePage": [
+          68,
+          69,
+          70,
+          71,
+          72,
+          76,
+          77,
+          81
+        ],
+        "terminalMapping": {
+          "note": "선로전환기 1대(A호기 기준)당 DEWEMO-W가 3개 회로(제어/모터/표시)를 내보냄. 단자 번호 자체는 선로전환기 번호(201~206)마다 다르며, 아래는 '역할'별 위치입니다.",
+          "PointMachineA": {
+            "제어전원": "14, 13",
+            "모터전원": "C, D",
+            "표시전원": "N4, 10"
+          },
+          "PointMachineB": {
+            "제어전원": "14, 13",
+            "모터전원": "C, D",
+            "표시전원": "4, 3"
+          },
+          "detailedWiringSource": "선로전환기별 정확한 단자 번호(예: P201A는 T51.01의 001~006번)는 'SICAS HW Design White_SIN1.pdf'에 선로전환기별로 한 페이지씩 있음. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04).",
+          "confirmedVoltages": {
+            "제어전원": "DC 24V (확정)",
+            "표시전원(출력/입력)": "DC 60V(2호선 본선, 신도림 해당) — 1,3,4호선 및 2호선 기지 구간은 DC 24V로 다름 (2line 정기점검.pdf, 신호설비보수규정 시행내규 기준)",
+            "모터전원": "AC 110V, 선로전환기 전환 동작 중에만 인가 (평상시 0V)",
+            "source": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf (신호1사업소 기술과, 성수 201A/B 실측 예시) / 2line 정기점검.pdf (규정상 노선별 표시전압 24V·60V 구분 명시)"
+          }
+        },
+        "caution": "[2026-09-06 확정] 제어전원 DC24V, 표시전원 DC60V, 모터전원 AC110V(전환시만 인가)로 확인됨 — 기존에 있던 AC24V(08.선로전환기 pptx)·DC100-120V(현장 실측) 등 혼선은 이 값으로 대체. 모터전원 케이블에는 표시전원(DC)이 병렬로 걸려있어, 평상시에도 DC 전압 측정으로 모터전원 케이블 단선·혼촉 등을 진단할 수 있음(FLT_SW_01 참고). [2026-09-06 삼중 확인] 2line 정기점검.pdf(신호설비보수규정 시행내규)에서 제어DC24V/모터AC110V(정격의 0.8~1.2배 전압, 0.9~1.2배 전류, 8.5A 이하)/표시전압(노선별 24V 또는 60V, 신도림=2호선 본선이므로 60V)이 모두 재확인됨."
+      },
+      {
+        "id": "ECDSTT_DESIMO",
+        "name": "DESIMO (신호기 제어모듈)",
+        "function": "신호기를 제어 및 감시하는 모듈. 두 개의 LED 회로에 대한 릴레이와 LED 전류 감시회로를 포함하며, DESIMO 1개가 신호기 2개(램프1/램프2)를 제어한다.",
+        "rackPosition": "후면 P/Q행 (캐비닛당 4개)",
+        "connectors": {
+          "X1": "24V 공급전원, STEKOP과 접속",
+          "X2": "110V 신호기 램프전원"
+        },
+        "ledInfo": [
+          {
+            "id": "s0",
+            "label": "S0",
+            "meaning": "정지[R]신호시 녹색점멸 / 진행[Y]신호시 녹색점등",
+            "normalState": "정상"
+          },
+          {
+            "id": "s1",
+            "label": "S1",
+            "meaning": "정지[R]신호시 녹색점멸 / 진행[Y]신호시 녹색점등",
+            "normalState": "정상"
+          },
+          {
+            "id": "ik1",
+            "label": "IK1",
+            "meaning": "단심검출 용도로 사용",
+            "normalState": "평상시 황색점등 (이상시 황색소등)"
+          },
+          {
+            "id": "ik2",
+            "label": "IK2",
+            "meaning": "단심검출 용도로 사용",
+            "normalState": "평상시 황색점등 (이상시 황색소등)"
+          }
+        ],
+        "relatedMeasurePoints": [
+          "MP_FIELD_SIG_LAMP"
+        ],
+        "relatedFaultCases": [
+          "FLT_ECD_06",
+          "FLT_ECD_07",
+          "FLT_SIG_07",
+          "FLT_SIG_08",
+          "FLT_SIG_09"
+        ],
+        "source": {
+          "doc": "2. SICAS_ECDSTT.pdf",
+          "section": "EC/DSTT 각 보드별 기능 (p.65~94)"
+        },
+        "sourcePage": [
+          86,
+          87,
+          88,
+          89
+        ]
+      },
+      {
+        "id": "ECDSTT_PS",
+        "name": "SV 2602 전원장치 (PS CH1/CH2)",
+        "function": "STEKOP 채널1/채널2 전원 공급모듈. SVK2102와 같은 계열의 보드로, 입력전압 60V를 받아 출력전압 8V로 변환해 STEKOP-Platter에 공급한다.",
+        "rackPosition": "전면 A행 (CH1×2, CH2×2, 총 4개)",
+        "partNumber": "SV 2602 (SIEMENS, 정확한 부품번호는 미확인)",
+        "ledInfo": [
+          {
+            "id": "ue",
+            "label": "UE",
+            "section": "SV2602",
+            "meaning": "입력측(60V) 감시",
+            "normalState": "평상시 주황색 점등 (전원 공급 장애시 소등)"
+          },
+          {
+            "id": "inh",
+            "label": "INH",
+            "section": "SV2602",
+            "meaning": "억제(Inhibit) 표시 — 사용자가 실측한 대로 정상 상태에서는 항상 소등",
+            "normalState": "평상시 소등"
+          },
+          {
+            "id": "ua",
+            "label": "UA",
+            "section": "SV2602",
+            "meaning": "출력측(8V) 감시",
+            "normalState": "평상시 주황색 점등 (전원 공급 장애시 소등)"
+          }
+        ],
+        "relatedFaultCases": [
+          "FLT_PWR_01",
+          "FLT_PWR_03",
+          "FLT_PWR_04",
+          "FLT_PWR_05",
+          "FLT_PWR_06",
+          "FLT_PWR_07"
+        ],
+        "source": {
+          "doc": "ECDSTT 지침서.pdf (외부 자료, 프로젝트 미보관) + 사용자 현장 확인(2026-09-16)",
+          "section": "EC/DSTT 캐비닛 구성도"
+        },
+        "sourcePage": [
+          64
+        ],
+        "note": "2026-09-16 사용자가 현장에서 SVK2102와 동일한 외형에 UE·UA 사이 INH LED 1개가 추가된 형태임을 확인. UE·UA는 SVK2102와 동일하게 평상시 주황 점등, INH는 평상시 소등. 정확한 SIEMENS 부품번호는 아직 미확인. [2026-09-16 정정] fault-cases.json의 FLT_PWR_07 항목이 errorSource는 'SV2602 전원장치'인데 cause·remedy·manualRefs만 'SVK2102' 표현이 남아있던 복사 오류를 발견해 사용자 확인 후 다른 SV2602 항목(FLT_PWR_01/03~06)과 동일한 표현으로 수정함."
+      },
+      {
+        "id": "ECDSTT_PLATTER",
+        "name": "Platter (후면 -X4 배선판)",
+        "function": "STEKOP 슬롯 위치(N-코드, 예: N11)와 DEWEMO/DESIMO를 연결하는 후면 배선 기준판. 각 슬롯 위치의 플러그(X1~X8 등)가 어떤 선로전환기·신호기와 연결되는지는 H/W Design 배정표(캐비닛별로 다를 수 있음)에 정의된다.",
+        "rackPosition": "후면 N행",
+        "source": {
+          "doc": "ECDSTT 지침서.pdf (외부 자료, 프로젝트 미보관)",
+          "section": "EC/DSTT 캐비닛 구성도"
+        },
+        "sourcePage": [
+          67
+        ],
+        "note": "LED 없음(순수 배선판). 슬롯별 실제 배정은 rack-layout.json의 stekopSlotAssignment 참고. [2026-09-07 추가조사] 'SICAS HW Design White_SIN1.pdf'의 T51/T52 STEKOP-Platter 배정표(=SIN1/08.02.11, =SIN1/08.02.21)를 확인한 결과 문서상 N111/N131 배정은 field label표와 정확히 일치함이 재확인되었으나, 실측 사진(N111/N131에서 확인된 라벨)과의 불일치는 여전히 해소되지 않음 — 현장에서 캐비닛 외부 T51/T52 라벨을 직접 재확인해야 함."
+      },
+      {
+        "id": "ECDSTT_OLM",
+        "name": "OLM's (EC/DSTT 후면)",
+        "function": "원본자료에 명칭만 등장(후면 M행, 전원흐름도의 'OLM 전원' 항목). 정확한 기능 설명은 원본자료 추가 확인 필요. SICAS_OLM(광링크모듈)과 이름은 비슷하나 동일 부품인지는 미확인 — 별개 id로 관리.",
+        "rackPosition": "후면 M행",
+        "source": {
+          "doc": "ECDSTT 지침서.pdf (외부 자료, 프로젝트 미보관)",
+          "section": "EC/DSTT 캐비닛 구성도 / 전원흐름도"
+        },
+        "sourcePage": [
+          64,
+          81,
+          89
+        ],
+        "note": "미확인, 원본자료 대조 필요."
+      },
+      {
+        "id": "ECDSTT_ARRELAY",
+        "name": "계전연동 I/F, AR계전기",
+        "function": "SICAS 측 계전연동장치(RB RACK)와의 인터페이스 릴레이. STEKOP의 표시상태·쇄정상태, 신호기 진로표시 상태를 방향별로 RB RACK 단자로 중계한다. 예시(신도림): P202 우측(R) 표시상태 → STEKOP-Platter(N11) → EC/DSTT 캐비닛 L Level 40단자 터미널판 → RB RACK B24/C24 단자 → 계전연동 '202RKR' 계전기. 신호기 쪽은 방향(좌/직진 등)별로 AR계전기가 분리 설치된다.",
+        "rackPosition": "후면 R행",
+        "source": {
+          "doc": "ECDSTT 지침서.pdf (외부 자료, 프로젝트 미보관)",
+          "section": "계전연동장치 인터페이스"
+        },
+        "sourcePage": [
+          82,
+          83,
+          84,
+          92
+        ],
+        "note": "AR계전기 자체 LED 상태표는 원본자료에 없음(설치 사진·회로도만 확인). 계전연동 구획 표기 'R'/'S'의 정확한 의미도 미확인."
+      }
+    ],
+    "LZB700M": [
+      {
+        "id": "LZB_VESUV3",
+        "name": "VESUV3 (Synchronizing and comparator module)",
+        "function": "1) ATP 지상설비 3개 채널(A/B/C)의 프로그램 순서 동기화 2) 컴퓨터 채널의 출력 데이터를 인접 채널의 데이터와 자동적으로 비교 3) 입력 데이터와 인터럽트(Interrupt) 관리 4) 공급전압 감시 5) Safety차단(사고발생시 안전성 관련 전원공급을 차단). SICAS의 VESUV3와 동일 계열 모듈.",
+        "rackPosition": "채널 프레임 1번째 슬롯 (전면 B/D/F행, 채널 A/B/C당 1개)",
+        "ledInfo": [
+          {
+            "id": "rf",
+            "label": "RF",
+            "section": "VESUV3",
+            "meaning": "동작 상태 표시",
+            "normalState": "평상시 녹색 점등"
+          },
+          {
+            "id": "bt",
+            "label": "BT",
+            "section": "VESUV3",
+            "meaning": "인접채널과의 동기 상태 표시",
+            "normalState": "평상시 노랑색 점등 (소등일 경우 인접채널과 동기중임을 표시)"
+          },
+          {
+            "id": "vl",
+            "label": "VL",
+            "section": "VESUV3",
+            "meaning": "인접채널 고장 표시",
+            "normalState": "평상시 소등 (인접채널 고장시 적색 점등)"
+          },
+          {
+            "id": "vr",
+            "label": "VR",
+            "section": "VESUV3",
+            "meaning": "인접채널 고장 표시",
+            "normalState": "평상시 소등 (인접채널 고장시 적색 점등)"
+          },
+          {
+            "id": "sp",
+            "label": "SP",
+            "section": "VESUV3",
+            "meaning": "전원상태 감시 LED",
+            "normalState": "평상시 노랑색 점등 (전원 이상 시 소등)"
+          },
+          {
+            "id": "pf",
+            "label": "PF",
+            "section": "VESUV3",
+            "meaning": "주변기기 상태표시. PF버튼을 눌러 정상상태가 되면 점등",
+            "normalState": "평상시 소등, PF버튼 조작 후 정상시 노랑색 점등"
+          }
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_VENUS2",
+        "name": "VENUS2 (Processor and memory module)",
+        "function": "1) ATP 지상설비 컴퓨터의 중앙처리장치(CPU, EPROM, RAM으로 구성) 2) 입력 주변장치를 통해 프로세스 입력을 판독 3) 출력 주변장치를 통해 프로세스 명령을 출력 4) 시스템의 데이터 처리 5) 상태정보 표시. SICAS의 VENUS3와 동일 계열이나 LZB700M 전용 모델명은 VENUS2.",
+        "caution": "교체 시 EPROM 버전을 반드시 확인할 것.",
+        "rackPosition": "채널 프레임 2번째 슬롯",
+        "ledInfo": [
+          {
+            "id": "rs",
+            "label": "RS",
+            "section": "VENUS2",
+            "meaning": "채널 리셋 상태 표시",
+            "normalState": "평상시 소등 (채널을 리셋하는 동안 적색 점등)"
+          },
+          {
+            "id": "sd",
+            "label": "SD",
+            "section": "VENUS2",
+            "meaning": "프로그램 오류 표시",
+            "normalState": "평상시 소등 (프로그램상의 오류발생시 적색 점등, 점검시 채널전원 차단)"
+          },
+          {
+            "id": "l1",
+            "label": "1",
+            "section": "VENUS2",
+            "meaning": "다른 채널과의 동기상태 표시",
+            "normalState": "평상시 녹색 점등"
+          },
+          {
+            "id": "l2",
+            "label": "2",
+            "section": "VENUS2",
+            "meaning": "다른 채널과의 동기상태 표시",
+            "normalState": "평상시 소등"
+          }
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_VESPE",
+        "name": "VESPE",
+        "function": "1) VENUS의 확장된 저장능력을 가지며, 프로그램 코드와 주문데이터를 저장 2) EPROM은 주문데이터를 저장 3) EEPROM은 데이터 및 기록을 저장 4) 2호선은 BL1과 BA 1/2/3을 사용(설명 텍스트 기준).",
+        "caution": "교체 시 EPROM 버전을 반드시 확인할 것. [2026-09-08 확정] 사용자가 '2호선 신호업무 지침'(p.100-101, LED 동작표) 원본을 직접 확인해 BA슬롯 사용 여부를 확정했습니다 — 2호선은 BL1·BA1/3/4만 사용(Access 시 노랑색 점등)하고, BL2·BA2/5/6은 2호선에서 사용하지 않음(상시 소등). 기존에 남아있던 '원본 설명 문구(BA1/2/3)와 LED 상태표(BA1/3/4)가 서로 어긋난다'는 불일치, 그리고 '어느 쪽이 맞는지 확정하지 못했다'는 이전 기록(2026-09-07·2026-09-08 19차)은 이번 확인으로 모두 해소되었습니다. [경위] SICAS HW Design·ATP HW Design 계열 문서(배선·물리배치 전용)로는 이 갭을 풀 수 없었으나, 기능/LED 설명 문서인 '2호선 신호업무 지침'으로 최종 확정됨.",
+        "rackPosition": "채널 프레임 3번째 슬롯",
+        "ledInfo": [
+          {
+            "id": "bl1",
+            "label": "BL1",
+            "section": "VESPE",
+            "meaning": "Access 상태 표시",
+            "normalState": "Access시 노랑색 점등"
+          },
+          {
+            "id": "bl2",
+            "label": "BL2",
+            "section": "VESPE",
+            "meaning": "Access 상태 표시",
+            "normalState": "항상 소등 (2호선에서 사용하지 않음)"
+          },
+          {
+            "id": "ba134",
+            "label": "BA1/3/4",
+            "section": "VESPE",
+            "meaning": "Access 상태 표시",
+            "normalState": "Access시 노랑색 점등 (2호선 사용)"
+          },
+          {
+            "id": "ba256",
+            "label": "BA2/5/6",
+            "section": "VESPE",
+            "meaning": "Access 상태 표시",
+            "normalState": "항상 소등 (2호선에서 사용하지 않음)"
+          }
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_VESIN",
+        "name": "VESIN (Interrupt module)",
+        "function": "1) 프레임 플러그를 통하여 들어오는 32개 인터럽트 요구를 집합적인 인터럽트(PUS)로 형성 2) VESUV3 모듈을 통해 ATP 지상설비 컴퓨터로 인터럽트의 전송 및 SIMIS 동기화 3) 컴퓨터 채널에서 사용되는 모듈의 에러 어드레싱 체크",
+        "rackPosition": "채널 프레임 4번째 슬롯",
+        "ledInfo": [
+          {
+            "id": "adr",
+            "label": "ADR",
+            "section": "VESIN",
+            "meaning": "Write/Read시 Addressing 상태 표시",
+            "normalState": "평상시 노랑색 점멸"
+          },
+          {
+            "id": "pus",
+            "label": "PUS",
+            "section": "VESIN",
+            "meaning": "그룹 인터럽트 상태 표시",
+            "normalState": "인터럽트 발생시 노랑색 점등"
+          }
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_BUMA",
+        "name": "BUMA (Busmaster module)",
+        "function": "1) 2-out-of-3로 구성되어 버스 시스템에 대한 관리기능과 안전성 기능을 수행 2) SICAS/인접 LZB 데이터 전송 3) 버스 트래픽(데이터) 제어 4) OLM과 광케이블로 연결 5) 공급전압 관리 6) 채널간 비교와 오류저장",
+        "caution": "교체 시 EPROM 버전을 반드시 확인할 것.",
+        "rackPosition": "채널 프레임 5번째 슬롯",
+        "ledInfo": [
+          {
+            "id": "vl",
+            "label": "VL",
+            "section": "BUMA",
+            "meaning": "인접채널 동작상태 표시",
+            "normalState": "평상시 소등 (점등시 RV버튼을 이용 리셋)"
+          },
+          {
+            "id": "vr",
+            "label": "VR",
+            "section": "BUMA",
+            "meaning": "인접채널 동작상태 표시",
+            "normalState": "평상시 소등 (점등시 RV버튼을 이용 리셋)"
+          },
+          {
+            "id": "fs",
+            "label": "FS",
+            "section": "BUMA",
+            "meaning": "에러 발생 표시",
+            "normalState": "평상시 소등 (에러발생시 적색 점등, 점등시 RV와 RB버튼을 누른다)"
+          },
+          {
+            "id": "vs",
+            "label": "VS",
+            "section": "BUMA",
+            "meaning": "전원상태 감시 한계초과 표시",
+            "normalState": "평상시 소등 (한계초과시 적색 점등)"
+          },
+          {
+            "id": "sf",
+            "label": "SF",
+            "section": "BUMA",
+            "meaning": "SIMIS 해제(No ASS) 상태 표시",
+            "normalState": "평상시 녹색 점등"
+          },
+          {
+            "id": "bk",
+            "label": "BK",
+            "section": "BUMA",
+            "meaning": "BUMA보드 동작 준비완료 상태 표시",
+            "normalState": "평상시 소등(녹색 LED)"
+          },
+          {
+            "id": "me",
+            "label": "ME",
+            "section": "BUMA",
+            "meaning": "메시지 FIFO에 메시지정보 이용가능 상태표시",
+            "normalState": "평상시 노랑색 약하게 점멸"
+          },
+          {
+            "id": "ko",
+            "label": "KO",
+            "section": "BUMA",
+            "meaning": "명령 FIFO에 명령정보 이용가능 상태표시",
+            "normalState": "평상시 노랑색 약하게 점멸"
+          },
+          {
+            "id": "l1",
+            "label": "L1",
+            "section": "BUMA",
+            "meaning": "에러메세지 표시 (L1만 점멸시 에러 메세지 시작을 의미)",
+            "normalState": "평상시 노랑색 점멸"
+          },
+          {
+            "id": "l2",
+            "label": "L2",
+            "section": "BUMA",
+            "meaning": "에러메세지 표시",
+            "normalState": "평상시 노랑색 점멸"
+          }
+        ],
+        "networkNote": "채널별 BUMA는 캐비닛 외부의 OLM(P12, 플라스틱) 4개를 거쳐 SICAS(2개소)와 PROFIBUS(Plastic)로 연결됨(LZB 지침서.pdf p.96 LZB 통신망 구성도 기준). SICAS_BUMA와 달리 OLM(G12, 유리)을 통한 인접역 간 직접 연결은 이 자료에서 확인되지 않음 — SICAS를 경유해 인접 LZB700M과 통신하는 구조로 추정.",
+        "profibusAddressing": {
+          "note": "[2026-09-08 신규, 19차] 'ATP HW Design_SIN1.pdf'의 BUMA 배면 커넥터(C53/G53) 슬롯코딩 보조배선도에서 확인한 Profibus 주소 설정표입니다. 레지스터 비트 RE7-P~RE0-P가 아래 단자 핀에 대응하며, 각 자리값(가중치)을 더해 주소를 정합니다.",
+          "bitToTerminal": [
+            {
+              "bit": "RE7-P",
+              "terminal": "Z28",
+              "weight": 4
+            },
+            {
+              "bit": "RE6-P",
+              "terminal": "Z26",
+              "weight": 2
+            },
+            {
+              "bit": "RE5-P",
+              "terminal": "Z24",
+              "weight": 1
+            },
+            {
+              "bit": "RE4-P",
+              "terminal": "Z22",
+              "weight": 8
+            },
+            {
+              "bit": "RE3-P",
+              "terminal": "Z20",
+              "weight": 4
+            },
+            {
+              "bit": "RE2-P",
+              "terminal": "Z18",
+              "weight": 2
+            },
+            {
+              "bit": "RE1-P",
+              "terminal": "Z16",
+              "weight": 1
+            },
+            {
+              "bit": "RE0-P",
+              "terminal": "(패리티/미상)",
+              "weight": null
+            }
+          ],
+          "example": "주소(십진) 26 = 16진 1A — 도면에 실린 대표 예시.",
+          "wiringRules": [
+            "Z30은 0V 기준으로 홀수번호끼리 함께 배선(wrap)해야 함.",
+            "핀 B32는 0V로 이미 점유(busy)되어 있어 다른 용도로 쓸 수 없음."
+          ],
+          "caution": "이 표는 배선도 상의 슬롯코딩 참고용이며, 실제 각 BUMA(채널A/B/C, L51/L52별)에 어떤 십진 주소가 설정되어 있는지는 현장 딥스위치/점퍼 실측으로 확인해야 합니다 — 미확인."
+        },
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        },
+        "frontPanelObserved": {
+          "note": "[2026-09-09 추가, 22차] 사용자가 정면에서 촬영한 LZB_BUMA 슬롯 열 사진(후면은 물리적으로 막혀 있어 촬영 불가) 기준. 슬롯 라벨 'BUMA(0)'~'BUMA(6)'이 전면에 인쇄되어 있고, 옆에 'VENUS2'(LZB700M 전용 명칭, SICAS는 'VENUS3'를 씀)라고 표기된 보드가 인접해 있어 이 사진이 LZB_BUMA(SICAS_BUMA 아님)임을 확인함.",
+          "partNumber": "S25181-B15-A1",
+          "slotLabels": [
+            "BUMA(0)",
+            "BUMA(1)",
+            "BUMA(2)",
+            "BUMA(3)",
+            "BUMA(4)",
+            "BUMA(5)",
+            "BUMA(6)"
+          ],
+          "visibleElements": "적색 푸시버튼(RV/RB 리셋용으로 추정), ledInfo와 대체로 일치하는 LED 배열(RV/VL VR/FS VS/RB/E S/SF BK/ME KO/L1 L2 형태의 인쇄 범례 확인). 이젝터 레버 옆에 작은 회전형(로터리/노브형) 요소와 'C/S9'로 추정되는 부분 라벨이 보이나, 이것이 실제 Profibus 주소 설정용 스위치인지는 사진만으로 특정할 수 없음 — 미확인.",
+          "addressingCaution": "profibusAddressing에 기록된 주소 설정 방식은 배면 커넥터(C53/G53)의 슬롯코딩(핀 배선)으로 정해지는 구조로 문서화되어 있어, 이번 정면 사진만으로는 실제 주소값을 확인할 수 없습니다. 정면에서 보이는 회전형 요소가 주소 설정과 관련이 있는지는 아직 미확인 — 만약 후면 촬영이 가능해지거나 해당 회전형 요소를 더 가깝게 찍은 사진을 주시면 다시 판단해보겠습니다."
+        }
+      },
+      {
+        "id": "LZB_V24KOP",
+        "name": "V24KOP",
+        "function": "1) DIAG 플러그를 경유하여 서비스 연결 PC 2개의 V24 인터페이스 제공 2) 제어 및 메시지 신호를 처리 3) 입출력 저장을 제어하기 위해 V24 커플링 장치 이용 4) 데이터 출력 및 출력제어 커넥터는 분리될 수 있으며 소프트웨어는 릴레이 접속에 의해 제어됨.",
+        "rackPosition": "채널 프레임 6번째 슬롯",
+        "connectors": {
+          "DIAG": "9-pole 표준 전면 플러그 2개, 서비스 PC(EDDI 등) 연결용"
+        },
+        "ledInfo": [
+          {
+            "id": "l1",
+            "label": "1",
+            "section": "V24KOP",
+            "meaning": "Read 상태 표시",
+            "normalState": "평상시 노랑색 점멸 (Read시 노랑색 점멸)"
+          },
+          {
+            "id": "l2",
+            "label": "2",
+            "section": "V24KOP",
+            "meaning": "Write 상태 표시",
+            "normalState": "평상시 노랑색 점멸 (Write시 노랑색 점멸)"
+          },
+          {
+            "id": "l37",
+            "label": "3/7",
+            "section": "V24KOP",
+            "meaning": "제어메시지 수신 상태 표시",
+            "normalState": "제어메시지 수신 시 노랑색 점멸"
+          },
+          {
+            "id": "l48",
+            "label": "4/8",
+            "section": "V24KOP",
+            "meaning": "인터럽트 요구 출력 상태 표시",
+            "normalState": "인터럽트 요구 출력 시 노랑색 점멸"
+          },
+          {
+            "id": "l59",
+            "label": "5/9",
+            "section": "V24KOP",
+            "meaning": "입력메모리 여유공간 상태 표시",
+            "normalState": "입력메모리 여유공간 없을 시 노랑색 점멸"
+          },
+          {
+            "id": "l610",
+            "label": "6/10",
+            "section": "V24KOP",
+            "meaning": "출력메모리 여유공간 상태 표시",
+            "normalState": "출력메모리 여유공간 없을 시 노랑색 점멸"
+          },
+          {
+            "id": "l1519",
+            "label": "15/19",
+            "section": "V24KOP",
+            "meaning": "S/W 제어를 위한 Relay Control 상태 표시",
+            "normalState": "S/W 제어를 위한 Relay Control시 노랑색 점멸"
+          }
+        ],
+        "note": "[2026-09-07 신규 확인] 신도림 LZB51/52 전원 결선도(사용자 제공 사진)에서 V24KOP가 전원 단말레일의 'Power supply module V24KOP'로도 표시되어 0V/-12V/+5V/+12V 4계통을 만들어 -12V LED/+5V LED/+12V LED로 상태를 표시하는 전원공급 기능도 겸하는 것으로 확인됨. 이 전원공급 기능이 위 디지털 I/O용 V24KOP와 동일 보드인지, 같은 이름을 쓰는 인접 별도 유닛인지는 사진만으로 완전히 특정되지 않아 '미확인, 원본 H/W 설계도 대조 필요'로 남김.",
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_MELDE2",
+        "name": "MELDE2 (Digital input module)",
+        "function": "1) ATP 선로변 장치 및 FAN 정보를 물리적(24V전위)로 수신하여 VESIN 모듈로 전송 2) 2개의 전면플러그를 이용하여 64개의 메시지 상태저장 3) 주변장치와 전기적 분리위해 Optocoupler 입력설치. 속도제한 해제 Key, 비상정지(EMS) 등 현장 입력단자와 연결된다.",
+        "rackPosition": "채널 프레임 7번째 슬롯",
+        "connectors": {
+          "출력단자대 Conductor Plug 31": "속도제한 해제 Key 입력",
+          "출력단자대 Conductor Plug 32~37, 46~51": "MELDE 전면플러그 입력단자 커플링",
+          "출력단자대 Conductor Plug 38/42": "비상정지(EMS) 관련"
+        },
+        "ledInfo": [
+          {
+            "id": "ld",
+            "label": "LD",
+            "section": "MELDE2",
+            "meaning": "데이터 Read 상태 표시",
+            "normalState": "데이터 Read시 노랑색으로 점멸한다"
+          }
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_STELA3",
+        "name": "STELA3",
+        "function": "지상 ATP 신호처리 보드. 1) FTGS/ATO Loop를 ATP 지상설비 연결에 사용 2) 1개의 보드는 4개의 궤도회로 커플링 3) 각 채널별 병렬로 연결되어 있어 각 궤도회로에 대한 모든 필요한 입·출력 신호를 제공. 전면 플러그의 X6 단자를 통해 현장(선로전환기/ATO Loop 등)과 연결된다 — X6단자 중 4·5번 Pin은 LZB→현장 출력, 10·11번 Pin은 현장→LZB 에러메시지 입력. ATO Loop 캐비닛과의 데이터 흐름의 시작점이며, STELA3 출력은 FTGS 랙 후면의 REMEMO 계전기로 이어진다.",
+        "rackPosition": "채널 프레임 STELA3 슬롯열. 신도림 L51/L52 실측 LED 설명표에서 슬롯 라벨 G87(상세 도해 대상)·G93·G99·G105·G111·G117·G123·G129·G135·G141·G147·G153·G159·G165까지 확인되어, 캐비닛 1대당 최대 약 14개 STELA3 슬롯이 존재하는 것으로 보입니다. 이 슬롯열이 채널 A/B/C마다 개별 반복되는지, 3채널이 공유하는지는 미확인.",
+        "ledInfo": [
+          {
+            "id": "bs",
+            "label": "Bs",
+            "section": "STELA3",
+            "meaning": "Write/Read 상태 표시",
+            "normalState": "평상시 노랑색 점멸 (Write/Read시 노랑색 점멸)"
+          },
+          {
+            "id": "err",
+            "label": "ERR",
+            "section": "STELA3",
+            "meaning": "보드 Error 발생 표시",
+            "normalState": "평상시 소등 (보드 Error 발생시 적색 점등)"
+          },
+          {
+            "id": "p",
+            "label": "P (궤도 I~IV 각 1개씩)",
+            "section": "STELA3",
+            "meaning": "궤도 점유 상태 표시. 보드 1개가 담당하는 궤도회로 4개(I/II/III/IV) 각각에 대해 개별 표시됨",
+            "normalState": "궤도 비점유시 노랑색 점등, 점유시 소등"
+          },
+          {
+            "id": "s",
+            "label": "S (궤도 I~IV 각 1개씩)",
+            "section": "STELA3",
+            "meaning": "송신 정상동작 표시",
+            "normalState": "R과 함께 점등되며 송신 정상동작을 표시"
+          },
+          {
+            "id": "r",
+            "label": "R (궤도 I~IV 각 1개씩)",
+            "section": "STELA3",
+            "meaning": "수신 정상동작 표시",
+            "normalState": "S와 함께 점등되며 수신 정상동작을 표시"
+          }
+        ],
+        "relatedMeasurePoints": [
+          "MP_LZB_ATO_TX",
+          "MP_LZB_ATO_TEST"
+        ],
+        "relatedFaultCases": [
+          "FLT_ATO_01",
+          "FLT_ATO_02",
+          "FLT_ATO_03",
+          "FLT_ATO_04"
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_SECOP",
+        "name": "SECOP (안전출력장치)",
+        "function": "STELA3와 ATP 지상설비 중간단에 설치되는 안전출력장치. 판정기 출력으로서 통합된 출력과 전위를 스위칭하고, 안전하게 접속을 분리한다.",
+        "rackPosition": "전면 L행 SVK2102(5V전원) 인접 (신도림 실측 사진 기준. 원본 배치도 p.98에는 별도 행으로 표시되지 않아 정확한 행 배정은 미확인)",
+        "connectors": {
+          "출력단자대 Conductor Plug 53": "SECOP장치 전면 플러그에 커플링"
+        },
+        "note": "원본자료(LZB 지침서.pdf, 신도림 실측 캐비닛 보드설명표)에 SECOP 자체의 LED 표시 항목이 없음 — 단순 스위칭 릴레이 장치로 추정됨. 정확한 대수(1개인지 채널별 여러 개인지)는 사진상 확인이 어려워 미확인.",
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_FTGS_DISTRIBUTOR",
+        "name": "FTGS Distributor",
+        "function": "각 궤도회로에 필요한 입·출력 신호를 제공하기 위한 LZB-FTGS 간 연결장치.",
+        "rackPosition": "전면 K행",
+        "connectors": {
+          "LZB↔FTGS 연결": "LZB 캐비닛 Level K와 FTGS 캐비닛 후면 커넥터가 직결(LZB 지침서.pdf p.114 연결도면 기준)"
+        },
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_SVK2102",
+        "name": "SVK 2102 전원장치",
+        "function": "ATP 컴퓨터 장비용 전력공급모듈. 입력 60V→출력 5V. 출력전압을 센서로 측정해 전압장애를 보상하며, 과전압(UE 89V) 또는 저전압(UA 6.3V) 시 모두 차단된다.",
+        "caution": "소형 규격 PSC 4102와 호환.",
+        "rackPosition": "전면 L행 (채널 A/B/C 각 1개, 총 3개)",
+        "partNumber": "S25790-B116-D1 (SVK 2102, SIEMENS)",
+        "ledInfo": [
+          {
+            "id": "ue",
+            "label": "UE",
+            "section": "SVK2102",
+            "meaning": "입력측 과전압 감시 (입력전압 60V)",
+            "normalState": "평상시 황색 점등 (입력측 과전압시[89V 이상] 소등 — 퓨즈 F200mA 교체)"
+          },
+          {
+            "id": "ua",
+            "label": "UA",
+            "section": "SVK2102",
+            "meaning": "출력측 과전압 감시 (출력전압 5V)",
+            "normalState": "평상시 황색 점등 (출력측 과전압시[6.3V 이상] 소등 — 전원모듈 교체)"
+          }
+        ],
+        "relatedMeasurePoints": [
+          "MP_LZB_DC60",
+          "MP_LZB_DC5"
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_SVK2402",
+        "name": "SVK 2402 전원장치",
+        "function": "주변장비용 전력공급모듈. 입력 60V→출력 24V. 출력전압을 센서로 측정해 전압장애를 보상하며, 과전압(UE 89V) 또는 저전압(UA 30V) 시 모두 차단된다.",
+        "caution": "소형 규격 PSC 4402와 호환.",
+        "rackPosition": "전면 M행 (SV1~SV4 24V Periphery 4계통, 총 4개)",
+        "partNumber": "S25790-B119-D1 (SVK 2402, SIEMENS)",
+        "ledInfo": [
+          {
+            "id": "ue",
+            "label": "UE",
+            "section": "SVK2402",
+            "meaning": "입력측 과전압 감시 (입력전압 60V)",
+            "normalState": "평상시 황색 점등 (입력측 과전압시[89V 이상] 소등 — 퓨즈 F200mA 교체)"
+          },
+          {
+            "id": "ua",
+            "label": "UA",
+            "section": "SVK2402",
+            "meaning": "출력측 과전압 감시 (출력전압 24V)",
+            "normalState": "평상시 황색 점등 (출력측 과전압시[30V 이상] 소등 — 전원모듈 교체)"
+          }
+        ],
+        "relatedMeasurePoints": [
+          "MP_LZB_DC24"
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      },
+      {
+        "id": "LZB_FAN",
+        "name": "팬 장치",
+        "function": "캐비닛 냉각용 팬. 회전속도가 10초 이상 30% 넘게 감소하면 감시 릴레이가 동작(장애 표시)한다.",
+        "rackPosition": "전면 N행",
+        "ledInfo": [
+          {
+            "id": "on",
+            "label": "ON",
+            "section": "팬 장치",
+            "meaning": "동작 상태 표시",
+            "normalState": "평상시 녹색점등"
+          },
+          {
+            "id": "alarm",
+            "label": "Alarm",
+            "section": "팬 장치",
+            "meaning": "회전속도 이상 표시",
+            "normalState": "평상시 소등 (회전속도가 10초후에 30%감소할 경우 적색점등 — 팬장치 교체)"
+          }
+        ],
+        "source": {
+          "doc": "3. ATP.pdf",
+          "section": "LZB700M 각 보드별 기능 (p.99~113)"
+        }
+      }
+    ],
+    "IFC": [
+      {
+        "id": "IFC_COMPUTER",
+        "name": "IFC 컴퓨터 A/B",
+        "function": "현장 장치(연동장치, TWC 등)와 콘솔(CDTS, LCC, LMC, SSC) 사이의 서로 다른 프로토콜을 변환하는 이중계 산업용 컴퓨터. TWC 지상장치에서 수신한 열차 텔레그램을 관제로 인터페이스하고, 열차의 승강장 정차 시 정차등 제어 및 정지점 해제를 담당한다. A계/B계 이중화 구조.",
+        "relatedMeasurePoints": [
+          "MP_IFC_CPU"
+        ],
+        "source": {
+          "doc": "4. IFCLCC LMC 표시상태.pdf",
+          "section": "IFC 장치 (p.150~180)"
+        }
+      },
+      {
+        "id": "IFC_CAM",
+        "name": "CAM (이중계 절체장치)",
+        "function": "IFC 컴퓨터를 마스터(A계)/슬레이브(B계)로 절체하는 장치. 파트너 시스템 간에는 동기라인(DO1/DI1)과 모드라인(DO2/DI2)을 사용해 동작/대기 상태를 주고받는다.",
+        "caution": "이중계 절체 장애 시 CAM 스위치를 수동으로 조작해 A↔B 절체.",
+        "relatedMeasurePoints": [
+          "MP_IFC_CHANGEOVER"
+        ],
+        "source": {
+          "doc": "IFC 교재IFCTWC 후면부 접속.pdf",
+          "section": "3. IFC 케비닛 구성"
+        }
+      },
+      {
+        "id": "IFC_HUB",
+        "name": "HUB A/B",
+        "function": "IFC, LCC, LMC, SSC, TMS 등 여러 장치의 송수신 데이터를 필요한 장치로 중계.",
+        "source": {
+          "doc": "IFC 교재IFCTWC 후면부 접속.pdf",
+          "section": "3. IFC 케비닛 구성"
+        }
+      },
+      {
+        "id": "IFC_DL_RELAY",
+        "name": "D/L(정차등) T/B, D/L Relay",
+        "function": "IFC 컴퓨터의 명령으로 정차등 계전기(D/L Relay) 동작전원을 출력. 두 개의 계전기 동작 조건 조합으로 정차등의 점등·점멸·소등을 제어한다.",
+        "relatedMeasurePoints": [
+          "MP_IFC_DWELL"
+        ],
+        "source": {
+          "doc": "IFC 교재IFCTWC 후면부 접속.pdf",
+          "section": "3. IFC 케비닛 구성"
+        }
+      },
+      {
+        "id": "IFC_EMS_RELAY",
+        "name": "EMS(비상정지) T/B, EMS Relay",
+        "function": "IFC 컴퓨터의 명령으로 비상정지 계전기(EMS Relay) 동작전원을 출력해 비상정지를 설정한다.",
+        "relatedMeasurePoints": [
+          "MP_IFC_ESTOP"
+        ],
+        "source": {
+          "doc": "IFC 교재IFCTWC 후면부 접속.pdf",
+          "section": "3. IFC 케비닛 구성"
+        }
+      },
+      {
+        "id": "IFC_RS232_PORT",
+        "name": "4채널 RS-232 포트(멀티포트)",
+        "function": "IFC가 TWC 스테이션과 시리얼 통신을 수행하기 위한 포트.",
+        "source": {
+          "doc": "4. IFCLCC LMC 표시상태.pdf",
+          "section": "IFC 장치 (p.150~180)"
+        }
+      }
+    ],
+    "FTGS": [
+      {
+        "id": "FTGS_TX_PCB",
+        "name": "송신 PCB",
+        "function": "변조 주파수와 AC전원을 필터&증폭 PCB로 전송하는 장치. 열차 비점유 시 12가지 비트패턴을 FSK로 변조하고, 점유 시에는 텔레그램 전송을 위해 PSK 방식을 사용한다.",
+        "ledInfo": [
+          "L9: 케이블 결함(단락회로) 감시, 12V 전압 정상 공급 확인용",
+          "L8: 부가회로 정상동작 표시",
+          "L2, L3: FSK 상태 표시",
+          "L1: 증폭기 제어전압 표시"
+        ],
+        "relatedMeasurePoints": [
+          "MP_FTGS_FREQ"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_AMP_FILTER_PCB",
+        "name": "증폭&필터 PCB",
+        "function": "송신 PCB에서 받은 전압을 필터링 및 증폭하여 현장 C/B Box로 전송. ½단자는 송신출력전압(측정치 AC 9~12V, 송신 PCB→증폭&필터 PCB 입력), ¾단자는 증폭출력전압(측정치 AC 60~90V, 브릿지저항을 거쳐 현장으로 나가는 출력).",
+        "ledInfo": [
+          "L4: 필터 출력 동작상태 표시(현장으로 출력이 제대로 가는지 확인)"
+        ],
+        "relatedMeasurePoints": [
+          "MP_FTGS_AMP_OUT"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_RX1_PCB",
+        "name": "수신-1 PCB",
+        "function": "궤도에서 입력된 수신 레벨을 조정하며, 입력 레벨이 기준 레벨 이상일 때 수신2 PCB와 복조 PCB에 전압을 공급해 정상동작하게 한다. E1/E2는 현장 C/B Box에서 기계실로 들어오는 수신전압(AC 0.3~3V), I5/II8은 수신 증폭전압(Pick-up AC 6.5V 이상/Drop AC 5V 이하), I6는 PCB 출력전압(DC 12~15V), I7은 복조 PCB 입력전압(AC 1.3~2V), I8은 DC 12V 공급전원. CH1/CH2 두 채널로 오류를 체크한다.",
+        "ledInfo": [
+          "I.L5, II.L5: 수신1 보드 진폭평가 표시(열차 점유 시 소등)"
+        ],
+        "caution": "PCB 교체 시 초기 DIP S/W 번호가 2/7번으로 되어 있으므로 기존 번호와 일치시켜야 한다.",
+        "relatedMeasurePoints": [
+          "MP_FTGS_RX1_E",
+          "MP_FTGS_RX1_I",
+          "MP_FTGS_RX_FIELD"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_DEMOD_PCB",
+        "name": "복조 PCB",
+        "function": "수신1 PCB에서 입력된 수신 신호를 복조하여 송신 PCB의 비트패턴과 동일한지 검사하고, 동일하면 수신2 PCB로 입력신호를 전송한다.",
+        "ledInfo": [
+          "I.L6, II.L6: 비트패턴 비교결과 표시(열차 점유 시 소등, 비점유 시 점등)"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_RX2_PCB",
+        "name": "수신2 PCB",
+        "function": "수신1 PCB, 복조 PCB, 송신 PCB에서 입력되는 신호의 동기가 서로 맞았을 경우 GF계전기 PCB에 동작전압을 출력한다. I11/12는 계전기전압(DC 16.5V±1V), I13/14는 낙하점 출력전압(AC 4~5V).",
+        "ledInfo": [
+          "I.L7, II.L7: 진폭 및 비트패턴 평가 동작 표시"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_GF_RELAY_PCB",
+        "name": "GF계전기 PCB",
+        "function": "수신2 PCB에서 받은 신호로 동작하며, 해당 구간의 열차 점유/비점유 신호(계전기 접점신호)를 SICAS와 LZB에 전송한다. 계전기 강상 지연시간 600ms, 낙하 지연시간 350ms. 2호선은 기존 TP계전기와의 인터페이스를 위해 AR계전기를 함께 동작시킨다.",
+        "relatedMeasurePoints": [
+          "MP_FTGS_RELAY"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_TELEGRAM_SWITCH_PCB",
+        "name": "텔레그램전환 PCB",
+        "function": "열차가 궤도를 점유하면 LZB에서 수신된 텔레그램을 전송하기 위해 송신 PCB의 스위치를 텔레그램 쪽으로 전환한다. E1/E2는 수신1 PCB의 I/II채널 출력(점유 시 DC 0.7V 이하, 비점유 시 DC 2.4V 이상), VCC/GND는 공급전압 DC 5V.",
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_SWITCHING_PCB",
+        "name": "스위칭 유닛 (Switching Unit) — 레벨별 공용 셸프의 양방향용 변형",
+        "function": "열차 운행방향에 따라 궤도회로의 Feed-in/Feed-out(송·수신 경로)을 전환하는 양방향 궤도용 유닛. 송신 PCB·수신1 PCB·수신2 PCB 3개 라인이 이 유닛의 스위칭부(계전기 K2/K12/K3/K13)를 거쳐 각각 현장 C/B박스로 나간다(3개 라인 모두 동일한 K2/K12/K3/K13 스위칭 로직 공유). 열차정방향상태(LED A·B 모두 소등)에서는 모든 계전기가 무여자 상태다. 열차주행방향 A(LED A 점등)이면 계전기 K2/K12가 동작하고, 열차주행방향 B(LED B 점등)이면 계전기 K3/K13이 동작하여 각 방향에 맞게 송수신 경로가 전환된다. K1 계전기는 Feed-in을 차단하는 역할을 하며, 동시에 송신선택기로서 FTGS의 텔레그램전환 보드(FTGS_TELEGRAM_SWITCH_PCB)로 연결된다. K2/K12·K3/K13 각 방향 계전기는 Power Reduction Circuit을 거쳐 LZB의 24V 전원(LZB의 STELA 보드 커넥터)으로도 연결된다 — 이 LZB 커넥터와 FTGS 커넥터는 내부적으로 스위칭PCB와 결선되어 있다.",
+        "caution": "[2026-09-07 정정] 이전에는 '양방향·분기부 궤도에만 존재하는 프레임 내 보드'로 기록했으나, 사용자가 제공한 FTGS917EZS 랙 실측사진 확인 결과 실제로는 프레임 안이 아니라 랙 하단의 공용 '레벨별 스위칭/브릿징 유닛' 셸프(11개 레벨 컬럼, 200~400m 궤도길이별)에 있는 별도 부품으로 보입니다. 개별 궤도 프레임은 케이블 점퍼로 이 셸프의 해당 레벨에 연결됩니다. 단방향 궤도용 짝인 FTGS_BRIDGING_PCB(브릿징 유닛, LED 1개)와 세트입니다. 상세는 rack-layout.json의 racks.FTGS.switchingLevelShelf 참고 — 이 재해석 자체는 아직 원본 도면으로 최종 확정되지 않았습니다. [2026-09-08 확정, 20차] 사용자가 브릿지저항(rack-layout.json FTGS 후면 L행)과 이 스위칭 유닛은 서로 다른 별개의 제품임을 직접 확인했습니다 — 이름의 유사성(브릿지저항 vs 브릿징 유닛)에서 온 혼동일 뿐, 동일 부품이 아닙니다. 또한 사용자 제공 실측사진(랙 하단 단자대, 파란 점퍼선)에 따르면 이 유닛은 랙 하단에 1열로 배치되며, 각 컬럼이 개별 궤도에 대응하는 것으로 보입니다(rack-layout.json switchingLevelShelf.openItems 참고, 정확한 개수·범위는 추가 확인 필요). [2026-09-08 재확인, 20차] 사용자가 사진 라벨의 범위·괄호숫자에 대해 추가 확인: 괄호 안 숫자(예: 220T(264T)의 264T)는 철거된 ATS 설비가 쓰던 옛 궤도번호라 더 이상 의미가 없으며, 메인 숫자(220T 등)가 실제 궤도번호입니다. 또한 '궤도 길이별로 여러 궤도가 공유'하는 것이 아니라 '궤도 1개당 1개씩' 배치되며, 신도림 전체 궤도 개수(88개)와 이 유닛의 총 개수가 정확히 일치함을 확인했습니다 — rack-layout.json switchingLevelShelf 참고(길이 레벨 모델은 폐기). [2026-09-09 신규확인, 23차] 사용자가 제공한 스위칭_PCB 매뉴얼 원본 페이지(K1/K2/K12/K3/K13 계전기 로직 도해 포함)를 반영해 function/connectors/ledInfo를 상세화했습니다. 매뉴얼 원문에 '스위칭_PCB 교체시 점퍼 확인(+저항값)'이라는 주의사항이 명시되어 있음 — 교체 작업 시 점퍼 설정과 저항값을 반드시 확인할 것.",
+        "partNumber": "S25533-B43-A2 / S25533-B43-A3",
+        "ledInfo": [
+          {
+            "id": "s",
+            "label": "S",
+            "section": "스위칭 유닛",
+            "meaning": "LZB에 의해 송신기 연결이 끊어질 때 켜지는 순간점등 표시",
+            "normalState": "평상시 소등 — LZB가 송신기 연결을 끊는 순간 100ms 동안만 점등"
+          },
+          {
+            "id": "a",
+            "label": "A",
+            "section": "스위칭 유닛",
+            "meaning": "열차주행방향 A 표시. 점등 시 계전기 K2/K12가 동작해 Feed-in/Feed-out이 A방향으로 전환됨",
+            "normalState": "열차정방향상태에서는 소등(A·B 모두 무여자). 열차가 A방향으로 주행 중일 때 점등"
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "section": "스위칭 유닛",
+            "meaning": "열차주행방향 B 표시. 점등 시 계전기 K3/K13이 동작해 Feed-in/Feed-out이 B방향으로 전환됨",
+            "normalState": "열차정방향상태에서는 소등(A·B 모두 무여자). 열차가 B방향으로 주행 중일 때 점등"
+          }
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx + 사용자 제공 FTGS917EZS 랙 실측사진(2026-09-07)",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        },
+        "connectors": {
+          "송신 PCB → 스위칭부": "K1 계전기(Feed-in 차단, 송신선택기)를 거쳐 K2/K12/K3/K13 스위칭부로 연결, 현장 CB박스로 출력",
+          "수신1 PCB → 스위칭부": "K2/K12/K3/K13 스위칭부를 거쳐 현장 CB박스와 연결",
+          "수신2 PCB → 스위칭부": "K2/K12/K3/K13 스위칭부를 거쳐 현장 CB박스와 연결",
+          "LZB의 STELA 보드": "K2/K12(열차운행방향A)·K3/K13(열차운행방향B) 계전기가 각각 Power Reduction Circuit을 거쳐 LZB의 24V 전원으로 연결(LZB 커넥터)",
+          "FTGS의 텔레그램전환 보드": "K1 계전기(송신선택기)가 FTGS의 텔레그램 보드로 연결됨"
+        }
+      },
+      {
+        "id": "FTGS_BRIDGING_PCB",
+        "name": "브릿징 유닛 (Bridging Unit) — 레벨별 공용 셸프의 단방향용 변형",
+        "function": "단방향 궤도는 방향전환이 필요 없으므로, 레벨별 공용 셸프에서 신호를 전환 없이 그대로 통과·레벨 보정만 하는 단순화된 변형. LED 1개(S)만 있다.",
+        "partNumber": "S25533-B51-A2",
+        "ledInfo": [
+          {
+            "id": "s",
+            "label": "S",
+            "section": "브릿징 유닛",
+            "meaning": "상태 표시",
+            "normalState": "미확인 — 원본자료 대조 필요"
+          }
+        ],
+        "note": "[2026-09-07 신규] 사용자 제공 FTGS917EZS 랙 실측사진(LED 개수로 스위칭 유닛/브릿징 유닛 구분: 3개=양방향, 1개=단방향)을 반영해 신규 추가. 스위칭 유닛(FTGS_SWITCHING_PCB)의 단방향용 짝. 정확한 LED 의미는 원본 매뉴얼 대조 필요. [2026-09-08 확정, 20차] 사용자가 브릿지저항과 이 브릿징 유닛은 서로 다른 별개의 제품임을 직접 확인했습니다 — 이름은 비슷하지만 혼동하지 마세요. 궤도 1개당 1개씩 배치되는 원칙은 스위칭 유닛과 동일합니다(racks.FTGS.switchingLevelShelf 참고). [2026-09-09 참고, 23차] 스위칭 유닛(FTGS_SWITCHING_PCB)의 K1/K2/K12/K3/K13 방향전환 로직이 매뉴얼로 확인되었으나, 이는 양방향용 스위칭 유닛 전용 회로이며 단방향용 브릿징 유닛(LED 1개, S)에는 방향전환 로직 자체가 없을 것으로 추정됨(단방향은 Feed-in/out 전환이 불필요) — 브릿징 유닛 자체의 회로도는 아직 확인되지 않아 추정으로 남김.",
+        "source": {
+          "doc": "사용자 제공 FTGS917EZS 랙 실측사진 + 손글씨 설명 (2026-09-07)",
+          "section": "레벨별 스위칭/브릿징 유닛 셸프"
+        }
+      },
+      {
+        "id": "FTGS_TX_SWITCH_PCB",
+        "name": "송신기전환 PCB",
+        "function": "센터패드형(중앙 공급식) FTGS 궤도회로에서, 열차 운행방향에 따라 송신부 위치를 이동시키는 장치(LZB 제어).",
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_POWER_UNIT",
+        "name": "전원장치 (AF-PCB 전원장치)",
+        "function": "각 궤도회로마다 실장된 자체 전원장치. 입력전원 허용범위 220V(+10/-15%), 60Hz(±2%). 궤도회로 2개가 동시에 낙하하면 이 전원장치부터 우선 점검한다.",
+        "ledInfo": [
+          "정상 시 12V, 5V LED 녹색 점등"
+        ],
+        "source": {
+          "doc": "02.AF궤도회로 (김영추).pptx",
+          "section": "실내(기계실) 설비 구성 및 설명"
+        }
+      },
+      {
+        "id": "FTGS_CB_UNI",
+        "name": "C/B박스 (단방향용)",
+        "function": "단방향(T형) 궤도회로용 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 두 튜닝 유닛 중앙 하단에 인터페이스 모듈 1개가 공용으로 자리한다.",
+        "note": "[2026-09-15] 사용자 설명(2026-09-15)을 바탕으로 신규 이미지화. 인터페이스 모듈은 사용자가 확정본으로 제공한 이미지 적용(ATO Loop C/B박스와 공용 부품). 실측 사진으로 좌우 배치·비율 검증 필요.",
+        "forcePhotoSection": true,
+        "source": {
+          "doc": "사용자 설명(2026-09-15)",
+          "section": "FTGS 현장설비 — C/B박스 구성"
+        }
+      },
+      {
+        "id": "FTGS_CB_BI",
+        "name": "C/B박스 (양방향용)",
+        "function": "양방향(ST형) 궤도회로용 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 각 튜닝 유닛 하단에 전환 모듈이 개별로 1개씩(총 2개) 자리한다.",
+        "note": "[2026-09-15] 사용자 설명(2026-09-15)을 바탕으로 신규 이미지화. 전환 모듈은 사용자가 확정본으로 제공한 이미지 적용(양방향(ST형) 전용, 송신/수신 상태 LED 표시 포함). 실측 사진으로 좌우 배치·비율 검증 필요. 양방향 궤도 2개가 나란히 있는 경우(양방향끼리)에 쓰는 구성이며, 단방향 궤도와 섞여 있는 경우는 FTGS_CB_MIXED(혼합형) 참고 — [2026-09-16 해소] 이전에 남겨두었던 centerPadDetail.cbBoxStructure와의 '불일치'는 실제로는 서로 다른 두 유형(양방향끼리=이 보드 / 단방향+양방향 혼재=FTGS_CB_MIXED)을 가리키는 것이었을 뿐, 데이터 오류가 아니었음(사용자 확인, 2026-09-16).",
+        "forcePhotoSection": true,
+        "source": {
+          "doc": "사용자 설명(2026-09-15)",
+          "section": "FTGS 현장설비 — C/B박스 구성"
+        }
+      },
+      {
+        "id": "FTGS_CB_MIXED",
+        "name": "C/B박스 (혼합형: 단방향+양방향 궤도 공용)",
+        "function": "한 C/B박스에 단방향 궤도 1개와 양방향 궤도 1개가 함께 접속되는 경우의 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 하단에 인터페이스 모듈 1개(단방향쪽)와 전환 모듈 1개(양방향쪽)가 나란히 자리한다. 대표적으로 센터패드형 궤도의 양측 C/B박스 중 인접 궤도가 양방향인 경우가 이 구성이다(centerPadDetail 참고).",
+        "note": "[2026-09-16 신규] 사용자 확인(2026-09-16)으로 추가한 세 번째 실제 구성. 인터페이스 모듈·전환 모듈 이미지 모두 FTGS_CB_UNI·FTGS_CB_BI와 공용 부품 재사용. [경위] 처음 이미지화 요청 시 '단방향끼리'(FTGS_CB_UNI)와 '양방향끼리'(FTGS_CB_BI) 두 케이스만 요청받아 만들었고, 이로 인해 기존에 남아있던 centerPadDetail.cbBoxStructure의 '튜닝유니트2+인터페이스1+전환모듈1' 기재가 마치 FTGS_CB_BI와 불일치하는 것처럼 보였음 — 실제로는 데이터 오류가 아니라 이 세 번째 유형이 누락되어 있었던 것(사용자 확인).",
+        "forcePhotoSection": true,
+        "source": {
+          "doc": "사용자 설명(2026-09-16)",
+          "section": "FTGS 현장설비 — C/B박스 구성"
+        }
+      },
+      {
+        "id": "FTGS_CB_CENTERPAD",
+        "name": "C/B박스 (센터패드용)",
+        "function": "센터패드형(M형) 궤도회로 1구간의 가운데 C/B박스. 정사각형 함체 안에 튜닝 유닛 1개가 중앙에 배치되고, 그 하단에 인터페이스 모듈 1개가 자리한다.",
+        "note": "[2026-09-15] 사용자 설명(2026-09-15) 및 centerPadDetail.cbBoxStructure(rack-layout.json, '가운데 C/B: 튜닝유니트 1개 + 인터페이스 모듈 1개')와 일치하는 구성으로 신규 이미지화. 인터페이스 모듈은 사용자가 확정본으로 제공한 이미지 적용(FTGS_CB_UNI·ATO Loop C/B박스와 공용 부품). 센터패드형 궤도 1구간은 이 가운데 C/B박스 외에 양측 C/B박스 2개(단방향/양방향 타입 중 인접 궤도에 맞는 것)가 추가로 있다 — centerPadDetail 참고.",
+        "forcePhotoSection": true,
+        "source": {
+          "doc": "사용자 설명(2026-09-15) + AF궤도회로 지침서.pdf (centerPadDetail)",
+          "section": "센터패드형 궤도회로 C/B박스 구성"
+        }
+      }
+    ],
+    "ATO Loop 제어함": [
+      {
+        "id": "ATOLOOP_TX_BOARD",
+        "name": "FTGS-46 송신보드",
+        "function": "ATP/ATO 보조장치인 ATO Loop 전송장치의 송신보드. X-tal 발진기로 반송 주파수를 생성하고 비트패턴으로 FSK 변조한다.",
+        "caution": "AF궤도회로용 송신보드(S25533-B30-A5)와 ATO-LOOP용 송신보드(S25533-B30-A4)는 서로 호환되지 않으므로 교체 시 품번을 반드시 확인할 것.",
+        "relatedFaultCases": [
+          "FLT_ATO_01"
+        ],
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_AMP_BOARD",
+        "name": "FTGS-46 증폭보드",
+        "function": "송신보드에서 변조된 주파수를 적정 전압까지 증폭한다.",
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_FILTER_BOARD",
+        "name": "FTGS-46 필터보드",
+        "function": "증폭보드에서 구형파로 증폭된 전압을 사인파로 전환해 현장 ATO Loop C/B로 전송한다. 구형파의 고조파 성분을 제거해 궤도장애 요인을 줄인다.",
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_FAN",
+        "name": "Fan unit (팬 장치)",
+        "function": "함체 내부 냉각용 팬. [2026-09-15] 실물 이미지 자료가 별도로 없어, 동일 부품인 LZB_FAN(팬 장치)의 실물 이미지를 재사용함.",
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_POWER_UNIT",
+        "name": "전원장치",
+        "function": "230V/60Hz 입력을 받아 5V±3%, 12V±3%의 두 출력전압을 생성해 장치 내 각 보드에 공급한다.",
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_FUUELL",
+        "name": "기능제어보드 (FUUELL)",
+        "function": "ATO-Loop 전송장치 내부에 설치되어 FTGS-46이 증폭·변조한 신호를 감시한다. 에러 발생 시 OR-논리회로를 거쳐 에러 메모리에 저장하고, 적색 LED와 개방된 릴레이로 에러상황을 표시한다. Loop1/Loop2/FAN 3가지 장애를 감시하며, 장애 조합에 따라 0~7번 상태코드로 구분된다.",
+        "caution": "장애를 복구해도 FUUELL 보드의 Reset 버튼을 누르지 않으면 MMI의 'Loop' 표시가 계속 적색으로 남는다. 반드시 Reset 버튼을 누르고 LED가 꺼지는지 확인할 것.",
+        "relatedFaultCases": [
+          "FLT_ATO_01",
+          "FLT_ATO_02",
+          "FLT_ATO_03",
+          "FLT_ATO_04"
+        ],
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_REMEMO",
+        "name": "릴레이보드 (REMEMO)",
+        "function": "현장으로부터의 에러메시지를 전송받기 위해 UPS로부터 60V 전압을 인가받아 OT랙을 거쳐 현장의 Loop 캐비닛에 연결되는 릴레이보드. 전송릴레이 1개, 수신릴레이 2개로 각 Loop마다 대칭 설치된다. 전송릴레이 구동전압은 24V, 수신릴레이는 48V로 동작한다.",
+        "caution": "라벨의 뒷자리 숫자(예: REMEMO 612)는 설치된 역을 구분하는 표기일 뿐 구조 자체는 어느 역이든 동일하다. ATO-Loop 전송장치에서 LZB까지 장애표시 전송용 케이블은 3개가 필요하며 총 길이 6.5km를 초과하면 안 된다(60V 전원이 Loop 릴레이 구동을 위해 인가되기 때문).",
+        "source": {
+          "doc": "03.ATO LOOP(김영추).pptx",
+          "section": "ATO-LOOP 제어함(Controller Box)"
+        }
+      },
+      {
+        "id": "ATOLOOP_CB",
+        "name": "ATO Loop C/B박스",
+        "function": "궤도변(현장)에 설치되는 ATO Loop 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 두 튜닝 유닛 중앙 하단에 인터페이스 모듈 1개가 공용으로 자리한다 — 사용자 확인: FTGS의 단방향용 C/B박스와 동일 구성.",
+        "relatedMeasurePoints": [
+          "MP_LZB_LOOP_CB",
+          "MP_ATO_LOOP_CURRENT"
+        ],
+        "relatedFaultCases": [
+          "FLT_ATO_01"
+        ],
+        "forcePhotoSection": true,
+        "note": "[2026-09-15 신규] 사용자 확인(2026-09-15)으로 FTGS_CB_UNI(단방향용)와 동일 구성으로 이미지화 — 튜닝 유닛·인터페이스 모듈 이미지 모두 FTGS와 공용 부품으로 재사용. [참고] ATOLOOP_TX_BOARD의 caution에 'AF궤도회로용과 ATO-LOOP용 송신보드는 품번이 달라 호환 안 됨'이라는 확인된 사실이 있어, C/B박스 구성(틀)은 같아도 내부 부품 실측 품번까지 100% 동일한지는 현장 확인 권장.",
+        "source": {
+          "doc": "사용자 설명(2026-09-15) + 03.ATO LOOP(김영추).pptx"
+        }
+      }
+    ],
+    "TWC": [
+      {
+        "id": "TWC_IMU100",
+        "name": "IMU-100 (TWC 실내장치, PTI 수신기)",
+        "function": "TWC 실외장치(Loop 코일, 증폭모듈)로부터 수신한 신호를 처리하는 실내 수신기. 채널별(Data1~8) LED로 수신 상태를 표시하며, COM1 포트에 노트북을 연결해 프로그램 재설치·설정이 가능하다.",
+        "relatedMeasurePoints": [
+          "MP_TWC_OUT",
+          "MP_TWC_RX_FREQ"
+        ],
+        "relatedFaultCases": [
+          "FLT_TWC_01",
+          "FLT_TWC_02",
+          "FLT_TWC_03"
+        ],
+        "source": {
+          "doc": "2line 정기점검.pdf",
+          "section": "제11절 ATO 장치 - 3.TWC 장치 - 2)배면 단자접속 및 배선상태 점검"
+        },
+        "ledInfo": [
+          "POWER: Green, 정상시 지속점등",
+          "Vint(내부 동작전압): Green, 정상시 지속점등",
+          "Vext(안테나 공급전압): Green, 정상시 지속점등",
+          "Data1~8(수신채널): Yellow, 수신시 Flashing",
+          "WD(워치독): Green, 정상시 지속점등",
+          "Init(초기화): Yellow, 초기화중 ON",
+          "Send(TWC간 통신): Yellow, 시리얼통신중 ON",
+          "Error(수신불량): Red, 수신불량시 ON",
+          "1.5~12/16(PSD제어정보 확산): Yellow, 동작시 ON"
+        ]
+      },
+      {
+        "id": "TWC_AMP_MODULE",
+        "name": "TWC 증폭모듈 (실외)",
+        "function": "TWC Loop 코일이 받은 신호를 증폭하는 실외 모듈. S1/S2 스위치 조합으로 증폭비를 1배~13배까지 조정할 수 있다.",
+        "source": {
+          "doc": "5. ATO LOOPTWC 장애처리 절차.pdf",
+          "section": "TWC 실내장치: IMU-100 / TWC 실외장치"
+        }
+      },
+      {
+        "id": "TWC_LOOP_COIL",
+        "name": "TWC Loop 코일 (실외)",
+        "function": "차상 안테나와 무선으로 통신하는 궤도변 코일. 열차의 텔레그램(승무번호, 열차번호, 목적지 등)을 수신하는 지점이다.",
+        "relatedMeasurePoints": [
+          "MP_TWC_LOOPCOIL"
+        ],
+        "source": {
+          "doc": "5. ATO LOOPTWC 장애처리 절차.pdf",
+          "section": "TWC 실내장치: IMU-100 / TWC 실외장치"
+        }
+      }
+    ],
+    "분기부 안전설비": [
+      {
+        "id": "TURNOUT_SAFETY_MR_RELAY",
+        "name": "MR계전기 (분기부 안전설비 취급 감시)",
+        "function": "분기부(선로전환기 인근) 작업자 안전을 위한 취급실 판넬의 계전기. 취급실에서의 조작(작업 시작/종료 등)에 따라 경보등(시작등/종료등)과 경보벨 출력을 제어한다. 정확한 접점·배선 구성은 도면(원본 PDF의 블록도) 참고가 필요 — OCR 특성상 세부 핀 번호까지는 완전히 정리하지 못함.",
+        "caution": "안전설비이므로 접점 오조작 시 작업자 위험 신호가 잘못 표시될 수 있음. 배선 변경/점검 시 원본 도면과 반드시 대조할 것. [2026-09-06] 신호설비보수규정 시행내규 제76조 확인: 사용전원 AC100~125V(현장 실측 100~120V). 6개월 주기 점검 대상.",
+        "source": {
+          "doc": "분기부 안전설비 제어랙구성블럭도.pdf",
+          "section": "분기부 신호 안전 설비 판넬간 결선도 - MR계전기 설명도"
+        }
+      },
+      {
+        "id": "TURNOUT_SAFETY_PR_RELAY",
+        "name": "PR계전기 (분기부 안전설비 궤도조건 감시)",
+        "function": "궤도조건(열차 접근 여부 등)과 취급실 스위치 상태를 조합해 경보벨(경보벨1/2)을 동작시키는 계전기. C접점/N접점 조합으로 궤도조건별 경보 여부를 결정한다. 정확한 접점·배선 구성은 도면(원본 PDF의 블록도) 참고가 필요 — OCR 특성상 세부 핀 번호까지는 완전히 정리하지 못함.",
+        "caution": "안전설비이므로 접점 오조작 시 작업자 위험 신호가 잘못 표시될 수 있음. 배선 변경/점검 시 원본 도면과 반드시 대조할 것. [2026-09-06] 신호설비보수규정 시행내규 제76조 확인: 사용전원 AC100~125V(현장 실측 100~120V). 6개월 주기 점검 대상.",
+        "source": {
+          "doc": "분기부 안전설비 제어랙구성블럭도.pdf",
+          "section": "분기부 신호 안전 설비 판넬간 결선도 - PR계전기 설명도"
+        }
+      },
+      {
+        "id": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
+        "name": "TPR 릴레이 (경보벨 동작 조건 릴레이)",
+        "function": "[2026-09-08 신규] EIB-24(전원)→FUSE를 거쳐 병렬로 배치된 8개 TPR 릴레이(L440TPR/440TPR/460TPR/480TPR/390TPR/370TPR/350TPR + 예비2개) 중 하나. 각 릴레이는 담당 ATO 궤도(예: L440TPR→ATO L440T)의 점유 여부에 반응해 pin14(+)/pin13(-)로 동작신호를 출력한다. 이 신호가 경보벨1(TYPE C-1 담당, 460TPR+L440TPR 조합)·경보벨2(TYPE C-2 담당, 370TPR+350TPR 조합) 동작조건 회로로 들어간다.",
+        "wiringDetail": {
+          "경보벨1_동작조건": "안전설비TYPE C-1: pin11↔안전설비AT0 I/DF↔terminal1(460TPR 9-1 + L440TPR 9-1 병렬입력)↔pin12↔안전설비AT0 I/DF↔terminal2→TYPE C-1",
+          "경보벨2_동작조건": "안전설비TYPE C-2: pin11↔안전설비AT0 I/DF↔terminal3(370TPR 9-1 + 350TPR 9-1 병렬입력)↔pin12↔안전설비AT0 I/DF↔terminal4→TYPE C-2",
+          "drawingRef": "도면번호 C-16, 일자 2011.10, (주)서울메트로/서우전설산업"
+        },
+        "caution": "TPR 릴레이 2개(SP)는 예비로 ATO 라벨이 없음 — 향후 궤도 추가시 사용 가능성.",
+        "source": {
+          "doc": "분기부 안전설비 경보벨 동작 케이블 조건(신도림) (사용자 제공 사진, 2026-09-08)",
+          "section": "경보벨1/2 동작조건 배선도"
+        }
+      }
+    ],
+    "PSD 인터페이스": [
+      {
+        "id": "PSD_OT_SWITCHOVER_BOARD",
+        "name": "O.T반 PSD 절체보드",
+        "function": "PSD(스크린도어) 표시전원을 Loop케이블(정상운영)과 현장케이블(시험/신설 작업용) 중 하나로 절체하는 보드. C01~C10/A01~A10/B01~B10 단자로 구성 — C01~04·A01~04·B01~04가 1세트. C01~10은 PSD relay 전원 DC60V, A01~10은 O.T반 Loop케이블, B01~10은 현장 케이블에 연결된다. 스위치 Off 시 Loop케이블과 결선되어 PSD가 닫힘 상태로 동작(정상 운영), 스위치 On 시 현장케이블 결선 전까지 PSD가 열림 상태로 동작하여 표시시험을 진행한다.",
+        "caution": "PSD 인터페이스 개량 작업(신설/교체) 시 사용하는 절체보드로, 스위치 조작 순서를 지키지 않으면 PSD 표시 오류가 날 수 있음.",
+        "source": {
+          "doc": "PSDIFC.pdf",
+          "section": "7. O.T반 절체보드 설치"
+        }
+      },
+      {
+        "id": "PSD_RELAY_MODULE",
+        "name": "PSD/Relay 모듈 (FTGS 랙 내)",
+        "function": "PSD 열림/닫힘 상태를 IFC 및 LZB로 전달하는 계전기 모듈. 1~15번 단자가 1Set이며, 1~4번은 PSD relay 전원. 8,9,14,15번(N/O 방식)은 LZB로 PSD정보를 전달하고, 10,11,12,13번(N/C 방식)은 IFC로 PSD정보를 전달한다. N/C 상태 = PSD 열림, Open(접점 개방) 상태 = PSD 닫힘으로 IFC D I/O에 입력된다. 10,12번은 IFC로부터 DC 0V 전원을 받고, 11,13번 출력으로 IFC에 PSD 상태 정보를 전달(IFC 측 D I/O는 DC 24V).",
+        "relatedMeasurePoints": [],
+        "source": {
+          "doc": "PSDIFC.pdf",
+          "section": "8. PSD/relay 인터페이스, 9. IFC-PSD간 인터페이스"
+        }
+      },
+      {
+        "id": "PSD_IFC_SOFTWARE",
+        "name": "IFC/LMC 소프트웨어 PSD정보 현시",
+        "function": "PSD/Relay 모듈의 열림/닫힘 동작에 따라 IFC(ATO관리자 화면)와 LMC(MMI 화면)가 해당 역사 외선/내선별 PSD 열림/닫힘 상태를 표시한다. 표시 시험은 O.T반 절체보드 스위치 On/Off 동작에 맞춰 진행하며, LCC와 LMC의 표시정보가 동일하므로 LCC 현시 시험은 LMC 현시 시험으로 대체 가능하다.",
+        "source": {
+          "doc": "PSDIFC.pdf",
+          "section": "10. IFC 소프트웨어 재설치 및 PSD정보 현시시험, 11. LMC 소프트웨어 재설치 및 PSD정보 현시시험"
+        }
+      },
+      {
+        "id": "PSD_TERMINAL_MAP_SIN051",
+        "name": "PSD 배선표 (출력단자 캐비닛 SIN+051)",
+        "function": "신도림~문래~영등포구청~당산~신대방~구로디지털~대림 8개 역(지선 포함) PSD 표시신호를 WAGO 출력단자 1~64번으로 분배하는 배선표. 역별 2단자(외선/내선, 신도림은 지선외선/외선/내선/지선내선 4단자) 짝으로 구성되며, 각 짝의 끝에는 End plate(끝단) 또는 Stoper(고정) 표시가 있다.",
+        "note": "[2026-09-07] 이 배선표 헤더의 'LZB(표시)' 항목이 원래 'LZB 51'로 인쇄되어 있으나 손글씨로 '52'로 정정되어 있음 — 이 배선표 전체가 실제로는 LZB L52 소속일 가능성이 있으나, 최종 확정을 위해서는 현장 대조가 필요함(미확인).",
+        "source": {
+          "doc": "PSDIFC.pdf",
+          "section": "PSD 배선표 (사용자 제공 사진, 2026-09-07)"
+        }
+      },
+      {
+        "id": "PSD_VS26R_TERMINAL_BOX",
+        "name": "VS26_R 단자함 (Phoenix Contact, 신호기계실 PSD 연계)",
+        "function": "[2026-09-08 신규] 신호기계실 내 설치된 방폭 단자함(VS26_R). PSD 관련 신호를 EC/DSTT·IF_C(정차등 등)와 실외 PSD 제어함 사이에서 중계한다. pin1,2→HFCCO 2.5㎟×2C→[EC/DSTT · IF_C(Digital out×2)]→분전함[B24, C24]. pin4,6→HFCO 2.5㎟×2C→분전함[BX110, CX110]. pin8,10→HFCO 2.5㎟×2C→실외 PSD 제어함.",
+        "spec": {
+          "제조사": "Phoenix Contact",
+          "규격": "A300X300X210",
+          "방수등급": "IP66",
+          "방폭": "ATEX 인증 (방폭구역 설치)",
+          "일련번호": "VAGJB21E41",
+          "제조주": "CW40/2021"
+        },
+        "source": {
+          "doc": "신도림 신호기계실 VS26_R 단자함 (사용자 제공 사진, 2026-09-08)",
+          "section": "PSD 연계 단자함 배선"
+        }
+      }
+    ],
+    "분전반(AC)": [
+      {
+        "id": "PANEL_AC_TR1",
+        "name": "AC분전반 TR1 (220V, FTGS-1 계통)",
+        "function": "AC220V 계통 변압기. F51~F59 (FTGS-1용 퓨즈 9개, 각 10A) + A51신대방/A52구로디지털/A53대림/A54신도림400T(각 32A) 부하를 담당.",
+        "rackPosition": "신도림 AC분전반 (헤더 범례: A=ATOLOOP, C=IFC, D=ID, L=LZB, M=TMS, S=SICAS, T=EC/DSTT랙, B=TCM100)",
+        "loadTable": {
+          "F51~F59": "FTGS-1 (각 10A)",
+          "A51": "신대방 400T (32A)",
+          "A52": "구로디지털 400T (32A)",
+          "A53": "대림 400T (32A)",
+          "A54": "신도림 400T (32A)"
+        },
+        "note": "[2026-09-08 신규] 신도림 AC분전반표(손글씨 주석 실측사진) 반영. TR1/TR2는 대칭 구조(TR2는 FTGS-2 + 신도림L420T/신도림410T/문래/영등포구청/당산).",
+        "source": {
+          "doc": "신도림 AC분전반표 (사용자 제공 사진, 2026-09-08)",
+          "section": "AC분전반 결선표"
+        }
+      },
+      {
+        "id": "PANEL_AC_TR2",
+        "name": "AC분전반 TR2 (220V, FTGS-2 계통)",
+        "function": "AC220V 계통 변압기. TR1과 동일 패턴의 FTGS-2 퓨즈군 + A55신도림L420T/A56신도림410T/A57문래/A58영등포구청/A59당산 부하를 담당.",
+        "rackPosition": "신도림 AC분전반",
+        "loadTable": {
+          "A55": "신도림 L420T (32A)",
+          "A56": "신도림 410T (32A)",
+          "A57": "문래 400T (32A)",
+          "A58": "영등포구청 400T (32A)",
+          "A59": "당산 400T (32A)"
+        },
+        "source": {
+          "doc": "신도림 AC분전반표 (사용자 제공 사진, 2026-09-08)",
+          "section": "AC분전반 결선표"
+        }
+      },
+      {
+        "id": "PANEL_AC_DIRECT",
+        "name": "AC분전반 직결라인 (220V DIRECT, 팬·컴퓨터류)",
+        "function": "변압기를 거치지 않고 AC220V를 직접 공급하는 라인. SICAS/LZB 팬, IFC A/B계 컴퓨터, LMC/LCC, 통합감시장치(M52), HUB/TWC 감시장치(구C52), TMS(M51) 등에 급전.",
+        "loadTable": {
+          "S51/S52": "SICAS FAN",
+          "L51/L52": "LZB FAN",
+          "신C51IFCA": "IFC A계 컴퓨터",
+          "신C51IFCB": "IFC B계 컴퓨터",
+          "LMC51": "LMC",
+          "LCC51": "LCC",
+          "M52": "통합감시장치",
+          "구C52HUBTWCA": "HUB/TWC2 감시장치 A",
+          "구C52HUBTWCB": "HUB/TWC 감시장치 B",
+          "M51": "TMS"
+        },
+        "source": {
+          "doc": "신도림 AC분전반표 (사용자 제공 사진, 2026-09-08)",
+          "section": "AC분전반 직결라인"
+        }
+      },
+      {
+        "id": "PANEL_AC_TR4",
+        "name": "AC분전반 TR4 (110V, 신호기/선로전환기 1계통)",
+        "function": "AC110V 계통 변압기. T51/T52 신호기1, T51/T52 선로전환기2, 신C51 D/L(정차등), 분기부 안전설비, VS(가상신호기) 부하를 담당.",
+        "loadTable": {
+          "T51_T52_신호기1": "신호기 램프전원 계열 1",
+          "T51_T52_선로전환기2": "선로전환기 표시/모터 계열 2",
+          "신C51_D_L": "IFC D/L(정차등) 릴레이",
+          "분기부안전설비": "분기부 안전설비 AC110~125V",
+          "VS": "가상신호기(손글씨 정정 표기 — 정확한 컬럼 위치는 손글씨 수정으로 다소 모호, 최종 컬럼은 미확인)"
+        },
+        "note": "[2026-09-08 확정] 분기부 안전설비와 가상신호기(VS)가 모두 이 TR4/TR5 계열(AC110V)에서 급전받음을 확인 — 분기부 안전설비 board-info 항목(TURNOUT_SAFETY_MR/PR_RELAY)의 AC100~125V 실측값과 일치.",
+        "source": {
+          "doc": "신도림 AC분전반표 (사용자 제공 사진, 2026-09-08)",
+          "section": "AC분전반 결선표"
+        }
+      },
+      {
+        "id": "PANEL_AC_TR5",
+        "name": "AC분전반 TR5 (110V, 신호기/선로전환기 2계통)",
+        "function": "AC110V 계통 변압기. T51/T52 신호기2, T51/T52 선로전환기1, 신C51 D/L(정차등), VS(가상신호기) 부하를 담당 — TR4와 대칭 구조(계통 이중화).",
+        "loadTable": {
+          "T51_T52_신호기2": "신호기 램프전원 계열 2",
+          "T51_T52_선로전환기1": "선로전환기 표시/모터 계열 1",
+          "신C51_D_L": "IFC D/L(정차등) 릴레이",
+          "VS": "가상신호기(손글씨 정정 표기, 최종 컬럼 미확인)"
+        },
+        "source": {
+          "doc": "신도림 AC분전반표 (사용자 제공 사진, 2026-09-08)",
+          "section": "AC분전반 결선표"
+        }
+      }
+    ],
+    "분전반(DC)": [
+      {
+        "id": "PANEL_DC_TR6_TR7",
+        "name": "DC분전반 TR6/TR7 (DC60V, 35A, 220/47V)",
+        "function": "SICAS/LZB의 MAIN·ATP 계통과 ATO Loop 원격기억(REMEMO), EC/DSTT의 EC MAIN, PSD 계전기 등 DC60V 부하를 급전하는 이중화 변압기(TR6=계통1, TR7=계통2).",
+        "loadTable": {
+          "S51_S52": "SICAS MAIN-1/2 (MC)",
+          "L51_L52": "LZB ATP-1/2",
+          "F58_F55": "ATOLOOP REMEMO-1/2",
+          "T52": "EC/DSTT EC MAIN-1/2",
+          "F55_PSD": "PSD I/F E·L(왼쪽)-1 / R·L(오른쪽)-2"
+        },
+        "note": "[2026-09-08 신규] 신도림 DC분전반표(손글씨 주석) + 신도림 전원반회로도(TBM-2) 종합 반영. 헤더 범례: A=ATOLOOP, C=IFC, D=ID, L=LZB, M=TMS, S=SICAS, T=EC/DSTT랙.",
+        "source": {
+          "doc": "신도림 DC분전반표 + 신도림 전원반회로도(TBM-2) (사용자 제공 사진, 2026-09-08)",
+          "section": "DC분전반 결선표 / TBM-2 회로도"
+        }
+      },
+      {
+        "id": "PANEL_DC_TR8_TR9",
+        "name": "DC분전반 TR8/TR9 (DC24V, 40A, 220/19.7V)",
+        "function": "SICAS AUX, LZB STEKOP·OLM·POINTCONTROL, IFC DI/DO·EMS, 정반위표시등 등 DC24V 부하를 급전하는 이중화 변압기.",
+        "loadTable": {
+          "S51_S52": "SICAS AUX-1/2",
+          "T51A_T52A": "STEKOP OLM-1/2",
+          "T51B_T52B": "POINT CONTROL-1/2",
+          "신C51_DIDO": "IFC DI/DO-1",
+          "신C51_EMS": "IFC EMS-1",
+          "O52": "정반위표시등 (TR8 계열에만 존재)"
+        },
+        "source": {
+          "doc": "신도림 DC분전반표 + 신도림 전원반회로도(TBM-2) (사용자 제공 사진, 2026-09-08)",
+          "section": "DC분전반 결선표 / TBM-2 회로도"
+        }
+      },
+      {
+        "id": "PANEL_DC_TR10_TR11",
+        "name": "DC분전반 TR10/TR11 (DC24V, 40A)",
+        "function": "TWC(구C52), 신호기 관련 MELDE(D51), IFC D/L 릴레이(신C51), 통합감시장치 DI/DO(M52) 등 DC24V 부하를 급전하는 이중화 변압기.",
+        "loadTable": {
+          "구C52_TWC": "TWC-1/2",
+          "D51": "MELDE(신호) DC-1/2",
+          "신C51_D_L_RELAY": "IFC D/L(정차등) 릴레이-1/2",
+          "M52": "통합감시 DI/DO-1/2"
+        },
+        "source": {
+          "doc": "신도림 DC분전반표 + 신도림 전원반회로도(TBM-2) (사용자 제공 사진, 2026-09-08)",
+          "section": "DC분전반 결선표 / TBM-2 회로도"
+        }
+      },
+      {
+        "id": "PANEL_DC_TR12_TR13",
+        "name": "DC분전반 TR12/TR13 (DC28V, 40A, 220/23V)",
+        "function": "UPS 경보회로 전용(TR12) — 나머지는 예비(SPARE).",
+        "loadTable": {
+          "UPS경보회로": "TR12 전용, TR13은 전 채널 SPARE"
+        },
+        "source": {
+          "doc": "신도림 DC분전반표 + 신도림 전원반회로도(TBM-2) (사용자 제공 사진, 2026-09-08)",
+          "section": "DC분전반 결선표 / TBM-2 회로도"
+        }
+      }
+    ],
+    "전원장치(UPS)": [
+      {
+        "id": "UPS_ATS_AVR_UNIT",
+        "name": "ATS & AVR 유닛 (3φ-1φ 35KVA)",
+        "function": "정전 시 상용전원(AC INPUT 1/2, 3P4W 380V 60Hz)을 자동 절체(ATS)하고 전압을 자동 조정(AVR)하는 유닛. MCCB1/MCCB2 → 480/220W 변압기 → ATS CONTROL → ATS VIDER(68WN)로 절체하며, MAIN TR/SPARE TR(MCCB1 CT 경유)를 거쳐 AC OUTPUT 1P2W 220V 60Hz를 출력한다. TRIAC1~8 드라이버 PCB(MDS-102) + 컨트롤 PCB(MDS-101)가 AVR(110)/BYPASS(111) 및 ALARM을 제어한다.",
+        "spec": {
+          "모델": "YES-A35-2",
+          "제조번호": "YS141110-2",
+          "제조사": "(주)예성엔지니어링",
+          "설치일": "2015.02.16",
+          "설치현장": "2호선 신도림신호기계실"
+        },
+        "source": {
+          "doc": "ATS&AVR/UPS Top Schematic Diagram (사용자 제공 도면, 2026-09-08)",
+          "section": "TOP SCHEMATIC DIAGRAM FOR UPS, AVR(3φ-1φ 35KVA)"
+        }
+      },
+      {
+        "id": "UPS_RECTIFIER_UNIT",
+        "name": "UPS 정류·인버터 유닛",
+        "function": "UPS INPUT(3P4W 380V 60Hz)을 CB1→TR1→CB2→F1→PRE.CHG1을 거쳐 D2/SC1(SC1~6)/SC2 정류회로로 정류하고, HEAT-SINK로 방열한다. Control board가 ST/SW BOARD·SNUBBER BOARD를 제어해 배터리(BATTERY 입력)와 연계된 인버터 출력을 만든다. PRE.CHG2, MS BOARD, CB5(<Locking>)도 함께 구성.",
+        "spec": {
+          "모델": "YES-U35-2K",
+          "제조번호": "YS141110-1",
+          "제조사": "(주)예성엔지니어링"
+        },
+        "note": "손글씨 주석으로 CB3/CB6/B4 표기가 추가로 확인됨 — 정확한 역할은 도면 재확인 필요(미확인).",
+        "source": {
+          "doc": "ATS&AVR/UPS Top Schematic Diagram (사용자 제공 도면, 2026-09-08)",
+          "section": "UPS 정류/인버터 회로"
+        }
+      },
+      {
+        "id": "UPS_OUTPUT_DISTRIBUTION",
+        "name": "UPS 출력 분배반 (TBL1~4, TBM-1 공급원)",
+        "function": "UPS 인버터 출력을 8계통으로 분배하는 단자대. TBL1(OUTPUT1: 1φ2w220V ATO전원, OUTPUT2: 1φ2w220V 결선TR1차 실외), TBL2(OUTPUT3/4: 1φ2w110V 정류기/기타), TBL3(OUTPUT5: 1φ2w110V TT, OUTPUT6: 1φ2w110V MOTOR), TBL4(OUTPUT7/8: 1φ2w110V LT변압기 ×2). STB20-6P AL TBI가 BYPASS 경로를 제공. 이 출력이 UPS OUTPUT TRANSFORMER를 거쳐 TBM-1(220VAC/110VAC 분전반)로 공급됨(신도림 전원반회로도 TBM-1 기준).",
+        "note": "[2026-09-08 신규] UPS OUTPUT1(ATO전원)이 racks 'ATO Loop 제어함'의 powerFlow REMEMO 릴레이 60V 인가 및 FTGS 랙 전원장치와 연계되는 상위 전원원임을 확인.",
+        "source": {
+          "doc": "ATS&AVR/UPS Top Schematic Diagram (사용자 제공 도면, 2026-09-08) + 신도림 전원반회로도(TBM-1)",
+          "section": "UPS 출력 분배 / TBM-1 결선도"
+        }
+      }
+    ]
+  },
+  "changelog": [
+    "2026-09-06: 2. S-bond.pptx 반영 — FTGS 그룹에 '튜닝 유닛(Tuning Unit)' 항목 추가(ESJ/S-bond와 기계실 케이블을 연결·동조시키는 장치, 실내외 절연 기능). 해당 pptx는 이 외에는 대부분 이미지 위주 슬라이드라 추가 반영할 텍스트 정보 없음.",
+    "2026-09-06: '선로전환기 장애조치매뉴얼 및 체크리스트.pdf' 반영 — ECDSTT_DEWEMO에 확정 전압(제어DC24V/표시DC60V/모터AC110V) 추가, ECDSTT_STEKOP에 LED 점등 개수 판독법 추가. '분기부 안전설비 제어랙구성블럭도.pdf' 반영 — 신규 그룹 '분기부 안전설비'(MR/PR계전기) 추가. 단, 이 문서는 이미지 위주 블록도라 텍스트 추출이 불완전 — 세부 배선은 원본 PDF를 프로젝트에 계속 보관해 참고할 것.",
+    "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반) 반영 — SICAS_VENUS3 LED/스펙 상세화, TWC_IMU100 LED 표 추가, ECDSTT_DEWEMO 표시전압 노선별(24V/60V) 구분 확정, 분기부 안전설비 확정전원(AC100~125V) 반영. 'PSDIFC.pdf'(서울교통공사 PSD 인터페이스 시험계획서) 반영 — 신규 그룹 'PSD 인터페이스' 추가 (O.T반 절체보드, PSD/Relay 모듈, IFC/LMC 소프트웨어 현시). 이 자료는 서울대입구역 개량공사 문서이나 2호선 SICAS/IFC/FTGS 표준 구조는 신도림과 동일하여 참고 가능.",
+    "2026-09-07: (다른 대화창에서 정리된 EC/DSTT 자료 반영) ECDSTT_STEKOP/DEWEMO/DESIMO의 ledInfo를 문자열 배열에서 {id,label,section,meaning,normalState} 구조로 업그레이드(board-face.json에서 개별 LED를 정확히 참조하기 위함) — 기존 확정 전압·terminalMapping·caution은 그대로 유지. DEWEMO/DESIMO에 connectors·rackPosition 필드 신규 추가. 신규 보드 4종 추가: ECDSTT_PS(전원공급장치), ECDSTT_PLATTER(후면 배선판), ECDSTT_OLM(후면 OLM's, 기능 미확인), ECDSTT_ARRELAY(계전연동 AR계전기). 출처: 'ECDSTT 지침서.pdf'(사용자 보유, 프로젝트 미보관) 및 신도림 T51/T52 현장 사진 — 자세한 내용은 마커진행상황_점검 문서의 해당 날짜 섹션 참고.",
+    "2026-09-07: 사용자가 업로드한 'SICAS 지침서.pdf'로 SICAS 9개 보드 전체의 LED 정보를 정밀 반영. VESUV3/VESIN/BUMA/MELDE2/KOMDA2/OLM/SVK2102/FAN에 구조화된 ledInfo 신규 추가, VENUS3는 기존 문자열 ledInfo를 동일한 구조화 형식으로 업그레이드(board-face.json 참조용). BUMA에 채널별 네트워크 연결 정보(networkNote) 추가. 기존 '2. SICAS_ECDSTT.pdf' 기반 function/caution/relatedFaultCases 내용과 대조해 불일치 없음을 확인.",
+    "2026-09-07: 사용자가 첨부한 'LZB 지침서.pdf'(p.99~113 보드별 LED표) 및 실측 사진 11장(신도림 LZB51/52 캐비닛 보드설명, LZB L51/L52 단자, 신도림 LZB51/52 전원 결선도, LZB RACK 커넥터/전원장치, PSD 배선표 등)을 반영해 LZB700M 13개 보드 전체에 rackPosition·구조화된 ledInfo·connectors·partNumber 필드를 신규 추가(SICAS와 동일한 board-face.json 참조 스키마). SVK2102/SVK2402의 정확한 부품번호(S25790-B116-D1 / S25790-B119-D1)를 사진에서 확인해 partNumber로 신규 기록. V24KOP가 디지털 I/O 기능 외에 전원 단말레일에서 'Power supply module' 역할도 겸함을 신규 확인(전원 -12V/+5V/+12V LED 표시) — 동일 보드인지 별도 유닛인지는 미확인으로 표시. STELA3는 슬롯 라벨 G87~G165(최대 약 14개)까지 실측 확인했으며 채널별 반복/공유 여부는 미확인으로 남김. SECOP은 원본자료에 LED 항목이 없어 LED 없는 단순 릴레이로 추정함을 기록. [불일치 발견] LZB_VESPE의 기능 설명 문구('2호선은 BL1과 BA1/2/3 사용')와 같은 페이지 LED 상태표('BA1/3/4 사용, BA2/5/6 미사용')가 서로 어긋나 caution에 명시함. 신규 그룹 'PSD 인터페이스'에 PSD_TERMINAL_MAP_SIN051 보드 추가 — 배선표 헤더의 'LZB 51→52' 손글씨 정정 사실을 note로 기록. 기존 SICAS/EC-DSTT/IFC/FTGS/ATO Loop 제어함/TWC/분기부 안전설비 보드 데이터는 변경 없음.",
+    "2026-09-08(19차): 사용자가 제공한 'ATP HW Design_SIN1.pdf'(228p, L51+L52 배선·물리배치 합본)를 반영. (1) [갭2 문서 소거] LZB_VESPE.caution에 추가조사 결과 반영 — 이 문서도 SICAS HW Design과 마찬가지로 배선·물리배치 전용이라 BA슬롯/LED 기능 설명은 없음을 확인, 'HW Design' 계열 문서로는 이 갭을 풀 수 없다는 결론을 명시. (2) LZB_BUMA에 신규 필드 profibusAddressing 추가 — BUMA 배면 커넥터(C53/G53) 슬롯코딩 보조배선도의 RE7-P~RE0-P ↔ 단자 Z28~Z16 비트-단자 대응표, 주소 예시(십진26=16진1A), 배선 규칙(Z30 홀수 wrap, B32는 0V로 busy) 기록 — 현장 실측 주소값은 미확인으로 caution에 남김. 관련 캐비닛 구조(MELDE2×2, STELA3×14 등) 정정은 claude/rack-layout.json 19차 항목 참고. 기존 다른 보드 데이터는 변경 없음.",
+    "2026-09-08(20차): 사용자가 제공한 IFC 지침서.pdf·TWC 지침서.pdf(PDF 내 이미지 전체 포함) 및 실측 사진 다수(신도림 IFC HUB/FDF/광변환기 연결도 1·2, 신도림 기계실 관내 정차등 32단자표, D/L 신도림 03 1~4/4 릴레이결선도, IF_Computer의 기능 슬라이드, IMU 100 TWC 실내수신기 인터페이스 슬라이드, 신도림 DC/AC분전반표, 신도림 전원반회로도 TBM-1/TBM-2, ATS&AVR/UPS Top Schematic Diagram, 신도림역 분기부 신호안전설비 제어랙 구성도, 분기부 안전설비 경보벨 동작 케이블 조건, 신도림 신호기계실 VS26_R 단자함)을 반영해 IFC/TWC/PSD 인터페이스/분기부 안전설비를 kind:'concept'에서 실제 배치 자료(cabinet)로 승격하고, 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 그룹을 신규 작성. IFC: 8슬롯 카드표·IP번호체계(신도림=IFC5)·연결설비 프로토콜표를 IFC_COMPUTER에 추가, IFC_HUB/IFC_FDF에 HUB1·HUB2/FDF1·FDF2/MAU 포트배정 신규 반영, IFC_DL_RELAY에 32개 릴레이(D/L 신도림03)·IDO 매핑 및 32단자 정차등표 신규 반영. TWC: TWC_IMU100에 6보드 내부구성·커넥터 핀아웃·TWC2/TWC3 예시 라벨 반영, TWC_AMP_MODULE에 S1/S2 증폭비표·튜닝절차 반영. PSD 인터페이스: PSD_VS26R_TERMINAL_BOX 신규 추가(방폭 단자함, EC/DSTT·IF_C~PSD 제어함 배선). 분기부 안전설비: TURNOUT_SAFETY_ALARM_TPR_RELAY 신규 추가(경보벨1/2 동작조건 배선, TYPE C-1/C-2). 분전반(AC): TR1~TR5 부하표 신규 작성 — 분기부 안전설비·가상신호기(VS)가 TR4/TR5(AC110V) 계열에서 급전됨을 확인. 분전반(DC): TR6~TR13 부하표 신규 작성. 전원장치(UPS): ATS&AVR유닛·정류인버터유닛·출력분배반 신규 작성. [미해결] 가상신호기(VS)는 AC110V 급전 사실 외에 내부 구조·배선에 대한 사진/도면 자료가 없어 이번에도 실제 배치 자료로 승격하지 못했습니다 — 계속 'concept(보류)' 상태로 유지를 권장합니다. 분기부 안전설비의 신도림역 제어랙(TYPE A~E) 상세 부품 리스트는 racks.분기부 안전설비 참고.",
+    "2026-09-08(21차): LZB_VESPE의 BA슬롯 사용 문구를 사용자가 제공한 '2호선 신호업무 지침'(p.100-101, LED 동작표 원본 사진)으로 최종 확정 — BL1·BA1/3/4 사용, BL2·BA2/5/6 미사용(2호선). 기존 원본 설명 문구와 LED 상태표 간 불일치, 그리고 여러 라운드(19차 등)에 걸쳐 문서로도 확정하지 못했던 상태를 이번에 해소함. function/caution/ledInfo 3곳 모두 갱신.",
+    "2026-09-09(22차): 사용자가 제공한 LZB_BUMA 정면 사진(후면은 접근 불가로 촬영 못함) 반영 — LZB_BUMA에 frontPanelObserved 신규 추가. 부품번호(S25181-B15-A1), 슬롯 라벨(BUMA(0)~BUMA(6)) 확인, 인접 'VENUS2' 라벨로 이 사진이 SICAS_BUMA가 아닌 LZB_BUMA임을 재확인. 정면에 보이는 회전형(로터리) 요소는 Profibus 주소 설정 스위치일 가능성이 있으나 사진만으로 특정 불가 — 미확인으로 기록. profibusAddressing(19차, 배면 커넥터 슬롯코딩 기반)의 caution은 유지 — 이번 정면 사진으로는 그 갭이 해소되지 않음.",
+    "2026-09-09(23차): 사용자가 제공한 스위칭_PCB 매뉴얼 원본 페이지(K1/K2/K12/K3/K13 계전기 로직 도해, LED S/A/B 패널)를 반영해 FTGS_SWITCHING_PCB의 function/connectors/ledInfo를 상세화(기존 '미확인' 상태였던 LED A/B/S 의미 전체 확정). 아울러 이전 라운드(20~22차)에 완료되었으나 프로젝트 문서에는 아직 반영되지 않았던 항목들을 이번에 함께 병합: 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 보드그룹, TURNOUT_SAFETY_ALARM_TPR_RELAY, PSD_VS26R_TERMINAL_BOX, LZB_VESPE BA슬롯 최종 확정 caution, LZB_BUMA.frontPanelObserved."
+  ]
+}

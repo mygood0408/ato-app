@@ -1,0 +1,1574 @@
+{
+  "schemaVersion": "1.1",
+  "description": "시설물 측정지점 마스터. 시설물검사표준안 전 항목 + 도면 교차검증분.",
+  "changelog": [
+    "1.1: measureType 필드 추가 (voltage/current/frequency/temperature/percentage/visual/functional). 전압 외 측정 유형을 담기 위함.",
+    "1.1: thresholds 배열 추가 (한 항목에 복수 기준이 있는 경우, 예: 픽업/드롭, 단자별 상이).",
+    "1.1: fuses, ledCheck, relatedFaults, drawingRef 필드 추가.",
+    "1.1 (2026-09-05): OTS(선로전환기 감시시스템, T51/T52 내 T00 서브랙) 측정지점 4종(MP_OTS_CONTROL, MP_OTS_MOTOR, MP_OTS_IND_OUT, MP_OTS_IND_IN) 추가. 표시전압(표시출력/표시입력) 정상값은 선로전환기 번호별 개별표가 필요하나 원본 사진 재확인 전까지는 verify=true로 보류. 제어전원 기준값은 사용자가 추후 제공 예정(미기재).",
+    "1.1 (2026-09-05): 현장시설물(선로전환기/신호기/S-bond/AF현장/ATO Loop현장/TWC현장) 측정지점 신규 반영. MP_FIELD_SW_CONTROL/INDICATION/MOTOR(선로전환기 현장 단자반), MP_FIELD_SIG_LAMP(신호기 등렬 육안), MP_FTGS_DCBOX(AF궤도회로 DC Box) 추가. S-bond/TWC/ATO Loop 현장 항목은 기존 MP_FTGS_SBOND, MP_TWC_OUT, MP_TWC_LOOPCOIL, MP_LZB_LOOPCOIL, MP_LZB_LOOP_CB, MP_ATO_LOOP_CURRENT를 그대로 재사용(신규 측정지점 불필요, photo-guide.json에서 사진 안내만 추가). MP_FTGS_TX_FIELD에 11/14번 단자 정상범위 conflictNote 추가(표준안 20~50V vs 튜닝자료 30~60V).",
+    "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가. 개별 측정지점에는 별도 표시를 하지 않음 — 대부분 표준 장비 사양이라 공통 적용 가능하다고 판단.",
+    "2026-09-06: board-info.json(claude/board-info.json) 연계를 위해 관련 측정지점에 boardRef 필드 추가 (SICAS/LZB/IFC/FTGS/TWC 보드 id 참조).",
+    "2026-09-06: 사용자 확인으로 verify:true/conflictNote 5건 확정 — MP_OTS_CONTROL/MP_FIELD_SW_CONTROL(42~75V, SICAS DC60 계통과 동일), MP_OTS_IND_OUT/MP_OTS_IND_IN/MP_FIELD_SW_INDICATION(42~75V, 동일 근거), MP_FTGS_DCBOX(독자기준 없음, 통과라인 값 적용), MP_FTGS_TX_FIELD(30~50V 확정), MP_ATO_LOOP_CURRENT(1.6~1.9A 확정).",
+    "2026-09-06: 08.선로전환기(김영추) pptx 재검토로 표시회로 전압이 AC 24V임을 확인, MP_OTS_IND_OUT/IN·MP_FIELD_SW_INDICATION 정정. 제어전원(MP_OTS_CONTROL·MP_FIELD_SW_CONTROL)은 근거 부족으로 verify:true로 환원. 모터전원은 기존 DC 100~120V 유지(AC 라벨과 불일치 있음, note 참고).",
+    "2026-09-06: SICAS HW Design White_SIN1.pdf(P201A/B, P203A/B, P204A/B 회로도) 반영 — OTS/현장 선로전환기 제어·표시·모터 측정지점 7건에 drawingRef(정확한 단자번호 찾는 법)와 boardRef(ECDSTT_DEWEMO) 추가.",
+    "2026-09-06: 03.ATO LOOP(김영추).pptx 재검토로 MP_ATO_LOOP_CURRENT에 실제 측정 절차(C/B Box 내 점퍼 변경, 10/12번 단자 측정) 추가.",
+    "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
+    "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true."
+  ],
+  "measureTypes": {
+    "voltage": "전압 (V)",
+    "current": "전류 (A)",
+    "frequency": "주파수 (kHz)",
+    "temperature": "온도 (℃)",
+    "percentage": "사용률 (%)",
+    "visual": "육안점검 - 수치 없음, checkItems 사용",
+    "functional": "동작시험 - 수치 없음, 정상/비정상 판정"
+  },
+  "fieldNotes": {
+    "range": "단일 허용범위. min/max/unit/nominal/note.",
+    "thresholds": "복수 기준이 필요한 경우 range 대신 사용.",
+    "relatedFaults": "fault-cases.json의 id. 이 지점이 범위를 벗어났을 때 참조할 고장사례.",
+    "verify": "출처가 불확실하거나 재확인이 필요한 항목에 표시.",
+    "conflictNote": "자료 간 값이 불일치하는 항목에 표시."
+  },
+  "points": [
+    {
+      "id": "MP_FTGS_AMP_OUT",
+      "facility": "FTGS",
+      "title": "증폭&필터 PCB 출력전압 (3,4번)",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "기계실 FTGS 랙 증폭&필터 PCB 3,4번 측정소켓",
+        "pcb": "S25533-B40-B1~B8 (주파수 F1~F8별 1:1 대응)"
+      },
+      "range": {
+        "min": 50,
+        "max": 65,
+        "unit": "V"
+      },
+      "instrument": "Siemens FTGS Digital 전압계",
+      "method": [
+        "FTGS 측정기를 해당 궤도주파수(9.5~16.5kHz)로 선택",
+        "증폭&필터 PCB의 3,4번 측정소켓에 리드선 연결",
+        "출력전압 측정"
+      ],
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 247
+      },
+      "boardRef": "FTGS_AMP_FILTER_PCB",
+      "note": "2026-09-06: '2line 정기점검.pdf'로 PCB 번호 정확화. F1(9.5kHz)=B1 ... F8(16.5kHz)=B8."
+    },
+    {
+      "id": "MP_FTGS_RX1_E",
+      "facility": "FTGS",
+      "title": "수신-1 PCB 입력전압 (E1/E2)",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "수신-1 PCB E1/E2 측정소켓",
+        "pcb": "S25533-B33-B1~B8 (주파수 F1~F8별 1:1 대응)"
+      },
+      "range": {
+        "min": 0.3,
+        "max": 3.0,
+        "unit": "V"
+      },
+      "instrument": "Siemens FTGS Digital 전압계",
+      "method": [
+        "FTGS 측정기 주파수를 해당 궤도주파수(9.5~16.5kHz)로 설정",
+        "수신-1 PCB의 E1/E2 측정소켓에 리드선 연결",
+        "입력전압 측정"
+      ],
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 248
+      },
+      "boardRef": "FTGS_RX1_PCB"
+    },
+    {
+      "id": "MP_FTGS_RX1_I",
+      "facility": "FTGS",
+      "title": "수신-1 PCB 입력전압 (I5/II8)",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "수신-1 PCB I5/II8 측정소켓"
+      },
+      "thresholds": [
+        {
+          "label": "Pick up",
+          "min": 6.5,
+          "unit": "V",
+          "note": "증폭전압 6.5V 이상"
+        },
+        {
+          "label": "Drop",
+          "max": 5.0,
+          "unit": "V",
+          "note": "5V 이하"
+        }
+      ],
+      "instrument": "Siemens FTGS Digital 전압계",
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 249
+      },
+      "method": [
+        "FTGS 측정기 주파수를 해당 궤도주파수(9.5~16.5kHz)로 설정",
+        "수신-1 PCB(S25533-B33-B?)의 I5/II8 측정소켓에 리드선 연결",
+        "증폭전압 측정"
+      ],
+      "boardRef": "FTGS_RX1_PCB",
+      "note": "계측 범위: 수신-1 PCB 증폭전압 6.5V 이상, 보통 10V 이상 측정됨(2line 정기점검.pdf)."
+    },
+    {
+      "id": "MP_FTGS_RELAY",
+      "facility": "FTGS",
+      "title": "계전기 동작전압",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "수신 PCB 외부 측정단자 I11/I12",
+        "pcb": "S25533-B36-A4-2"
+      },
+      "range": {
+        "min": 15.5,
+        "max": 17.5,
+        "unit": "V",
+        "note": "DC. 궤도계전기 출력전압 16.5V±1V (2line 정기점검.pdf, 신호설비보수규정 시행내규 기준)."
+      },
+      "instrument": "Digital Multimeter",
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "FTGS_GF_RELAY_PCB",
+      "timing": {
+        "여자시간": "1.0~1.5초",
+        "낙하시간": "0.6초",
+        "type": "DC바이어스형"
+      }
+    },
+    {
+      "id": "MP_FTGS_FREQ",
+      "facility": "FTGS",
+      "title": "열차검지 주파수 측정",
+      "measureType": "frequency",
+      "cycle": "6개월",
+      "position": {
+        "desc": "여자시: 수신-1 PCB E1/E2 / 낙하시: 증폭&필터 PCB 3,4번"
+      },
+      "range": {
+        "min": 9.5,
+        "max": 16.5,
+        "unit": "kHz",
+        "note": "채널별 세부값은 channels 필드 참조. 허용오차 전 채널 공통 ±64Hz"
+      },
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 251
+      },
+      "channels": [
+        {
+          "ch": "F1",
+          "center": 9500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F2",
+          "center": 10500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F3",
+          "center": 11500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F4",
+          "center": 12500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F5",
+          "center": 13500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F6",
+          "center": 14500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F7",
+          "center": 15500,
+          "tolerance": 64,
+          "unit": "Hz"
+        },
+        {
+          "ch": "F8",
+          "center": 16500,
+          "tolerance": 64,
+          "unit": "Hz"
+        }
+      ],
+      "instrument": "Oscilloscope 또는 Siemens FTGS Digital 전압계",
+      "method": [
+        "증폭&필터 PCB(S25533-B40-) 측정단자 3,4번에서 전압 측정",
+        "Oscilloscope probe (+)는 3번, GND는 접지와 연결",
+        "수신 PCB의 E1(+)/E2(-)도 동일 방법으로 측정"
+      ],
+      "boardRef": "FTGS_TX_PCB",
+      "note": "측정위치: 송신측=송신&필터PCB 3/4번(오실로스코프, probe(+)=3번/GND=접지), 수신측=수신1PCB E1(+)/E2(-), 증폭된 전압에서만 측정 가능(2line 정기점검.pdf)."
+    },
+    {
+      "id": "MP_FTGS_SBOND",
+      "facility": "FTGS",
+      "title": "S-본드 취부상태",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "궤도 레일 S-본드 취부부"
+      },
+      "checkItems": [
+        "본드 탈락 유무",
+        "부식 상태",
+        "체결 상태"
+      ],
+      "note": "S-bond는 ESJ(전기절연이음매, Electrical Separating Joint)의 한 형식. 현장 접속함(트랙사이드 커넥션 박스, C/B박스) 내 튜닝유닛(Tuning unit)이 ESJ/IRJ(절연이음매)와 기계실 송수신 케이블을 연결해주며, 궤도회로 주파수(자기 채널 + 인접 채널)에 맞춰 동조시키는 역할을 함. 튜닝유닛 내 변압기가 실내(기계실)와 실외(궤도) 장비를 전기적으로 절연시킴 (2. S-bond.pptx). [2026-09-15] 튜닝유닛은 더 이상 단독 보드 항목이 아니라 FTGS의 C/B박스 3종(단방향/양방향/센터패드용) 이미지 안에 조립된 형태로만 존재 — 상세 화면 이동 링크는 C/B박스 랙 배치(현장설비 탭)에서 확인.",
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_FTGS_TX_FIELD",
+      "facility": "FTGS",
+      "title": "현장 송신전압 측정",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "현장 송신부 단자"
+      },
+      "thresholds": [
+        {
+          "label": "11/14번",
+          "min": 30,
+          "max": 50,
+          "unit": "V"
+        },
+        {
+          "label": "9/10번",
+          "min": 3.5,
+          "max": 8,
+          "unit": "V"
+        }
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "note": "2026-09-06 사용자 확정: 11/14번 단자 정상범위는 30~50V (기존 20~50V/30~60V 두 자료 간 차이는 이 값으로 확정).",
+      "conflictNote": "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규)는 현장송신전압 11/14번 기준을 20~50V로 명시 — 사용자가 2026-09-05 확정한 30~50V와 하한이 다름(20V vs 30V). 사용자 확정값(30~50V)을 그대로 유지하되, 규정상 하한은 20V까지 허용됨을 참고로 남겨둠."
+    },
+    {
+      "id": "MP_FTGS_RX_FIELD",
+      "facility": "FTGS",
+      "title": "현장 수신전압 측정",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "현장 수신부 단자"
+      },
+      "thresholds": [
+        {
+          "label": "9/10번",
+          "min": 0.3,
+          "max": 6,
+          "unit": "V"
+        },
+        {
+          "label": "15~20번",
+          "min": 0.3,
+          "max": 3,
+          "unit": "V"
+        }
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "FTGS_RX1_PCB",
+      "note": "2026-09-06: '2line 정기점검.pdf'에서 동일 기준(현장레일수신 9/10번 0.3~6V, 기계실수신입력 15~20번 0.3~3V) 재확인됨."
+    },
+    {
+      "id": "MP_SICAS_TERMINAL",
+      "facility": "SICAS",
+      "title": "단자 이완 및 조임부분 점검",
+      "measureType": "visual",
+      "cycle": "1개월",
+      "position": {
+        "desc": "SICAS 랙 전체 단자대"
+      },
+      "checkItems": [
+        "단자 이완 유무",
+        "조임 상태",
+        "배선 손상"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_SICAS_S51_DC60",
+      "facility": "SICAS",
+      "title": "전원전압 구동 DC 60V",
+      "measureType": "voltage",
+      "cycle": "1개월",
+      "position": {
+        "cabinet": "S51",
+        "view": "rear",
+        "level": "N",
+        "desc": "SICAS 랙 후면 Level N 전원배전반"
+      },
+      "range": {
+        "min": 42,
+        "max": 75,
+        "unit": "V",
+        "nominal": 60
+      },
+      "probe": {
+        "positive": "5, 6, 7번 터미널",
+        "negative": "1, 2, 3번 터미널"
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "Digital Multimeter로 SICAS 후면 레벨 N에서 측정",
+        "(+) 5,6,7번 / (−) 1,2,3번"
+      ],
+      "caution": "전원전압 측정 시 주변 단자와의 단락 위험에 유의",
+      "ledCheck": [
+        {
+          "led": "UE",
+          "meaning": "입력전압 DC60V 정상",
+          "normal": "녹색 점등"
+        },
+        {
+          "led": "UA",
+          "meaning": "출력전압 DC5V 정상",
+          "normal": "녹색 점등"
+        }
+      ],
+      "relatedFaults": [
+        "FLT_PWR_03",
+        "FLT_PWR_04",
+        "FLT_ILK_04",
+        "FLT_ILK_06",
+        "FLT_ILK_07"
+      ],
+      "drawingRef": "=SIN1/08.01.01 p.2",
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 256
+      },
+      "boardRef": "SICAS_SVK2102"
+    },
+    {
+      "id": "MP_SICAS_S51_DC24",
+      "facility": "SICAS",
+      "title": "전원전압 구동 DC 24V",
+      "measureType": "voltage",
+      "cycle": "1개월",
+      "position": {
+        "cabinet": "S51",
+        "view": "rear",
+        "level": "N",
+        "desc": "SICAS 랙 후면 Level N 전원배전반"
+      },
+      "range": {
+        "min": 16.8,
+        "max": 31.2,
+        "unit": "V",
+        "nominal": 24
+      },
+      "probe": {
+        "positive": "40~49번 터미널",
+        "negative": "51~59번 터미널"
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "Digital Multimeter로 SICAS 후면 레벨 N에서 측정",
+        "(+) 40~49번 / (−) 51~59번",
+        "휴즈 상태 병행 점검"
+      ],
+      "caution": "전원전압 측정 시 주변 단자와의 단락 위험에 유의",
+      "fuses": [
+        {
+          "terminal": 40,
+          "rating": "4A"
+        },
+        {
+          "terminal": 41,
+          "rating": "4A"
+        },
+        {
+          "terminal": 42,
+          "rating": "4A"
+        },
+        {
+          "terminal": 43,
+          "rating": "4A"
+        },
+        {
+          "terminal": 44,
+          "rating": "1A"
+        },
+        {
+          "terminal": 45,
+          "rating": "1A"
+        },
+        {
+          "terminal": 46,
+          "rating": "1A"
+        },
+        {
+          "terminal": 47,
+          "rating": "6.3A"
+        },
+        {
+          "terminal": 48,
+          "rating": "6.3A"
+        },
+        {
+          "terminal": 49,
+          "rating": "6.3A"
+        }
+      ],
+      "relatedFaults": [
+        "FLT_ECD_01",
+        "FLT_PWR_02",
+        "FLT_ILK_05",
+        "FLT_SIG_01"
+      ],
+      "drawingRef": "=SIN1/08.01.01 p.2",
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 256
+      }
+    },
+    {
+      "id": "MP_SICAS_CHANGEOVER",
+      "facility": "SICAS",
+      "title": "계절체 시험",
+      "measureType": "functional",
+      "cycle": "1개월",
+      "position": {
+        "desc": "SICAS 채널 A/B/C"
+      },
+      "checkItems": [
+        "채널 절체 동작 확인"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_SICAS_CPU_IF",
+      "facility": "SICAS",
+      "title": "CPU모듈과 외부장치 인터페이스",
+      "measureType": "visual",
+      "cycle": "1개월",
+      "position": {
+        "desc": "CPU 모듈"
+      },
+      "normalState": "LED1 녹색",
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "SICAS_SVK2102"
+    },
+    {
+      "id": "MP_LZB_DC60",
+      "facility": "LZB700M",
+      "title": "LZB 전원전압 DC 60V",
+      "measureType": "voltage",
+      "cycle": "3개월",
+      "position": {
+        "cabinet": "L51",
+        "view": "rear",
+        "level": "M",
+        "desc": "LZB 캐비닛 후면 레벨 M"
+      },
+      "range": {
+        "min": 51,
+        "max": 72,
+        "unit": "V",
+        "nominal": 60,
+        "note": "+20% / −15%"
+      },
+      "probe": {
+        "terminals": "레벨 M 2번과 7번 단자"
+      },
+      "instrument": "Digital 멀티메터 Fluke (DC 설정)",
+      "caution": "측정 시 WAGO 터미널 접속상태 및 퓨즈홀더 상태, 캐비닛 후면 각부 배선상태 점검. 주변 단자와 단락 위험 유의.",
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 259
+      },
+      "boardRef": "LZB_SVK2102"
+    },
+    {
+      "id": "MP_LZB_DC24",
+      "facility": "LZB700M",
+      "title": "LZB 전원전압 DC 24V",
+      "measureType": "voltage",
+      "cycle": "3개월",
+      "position": {
+        "cabinet": "L51",
+        "view": "rear",
+        "level": "N",
+        "desc": "LZB 캐비닛 후면 레벨 N"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 28.8,
+        "unit": "V",
+        "nominal": 24,
+        "note": "+20% / −10%"
+      },
+      "probe": {
+        "terminals": "레벨 N 30번과 28번 단자"
+      },
+      "instrument": "Digital 멀티메터 Fluke (DC 설정)",
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 259
+      },
+      "boardRef": "LZB_SVK2402"
+    },
+    {
+      "id": "MP_LZB_DC5",
+      "facility": "LZB700M",
+      "title": "LZB 전원전압 DC 5V",
+      "measureType": "voltage",
+      "cycle": "3개월",
+      "position": {
+        "cabinet": "L51",
+        "view": "rear",
+        "level": "M",
+        "desc": "LZB 후면 레벨 M 채널 A/B/C별 Power supply 후면 WAGO 터미널"
+      },
+      "range": {
+        "min": 4.75,
+        "max": 5.25,
+        "unit": "V",
+        "nominal": 5,
+        "note": "±5%"
+      },
+      "probe": {
+        "terminals": "WAGO 14_15, 30_31, 46_47과 샷시 간"
+      },
+      "instrument": "Digital 멀티메터 Fluke (DC 설정)",
+      "manualRef": "LZB 유지보수 매뉴얼 47~48쪽",
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 259
+      }
+    },
+    {
+      "id": "MP_LZB_LOOPCOIL",
+      "facility": "LZB700M",
+      "title": "ATO Loop Coil 손상 유무",
+      "measureType": "visual",
+      "cycle": "3개월",
+      "position": {
+        "desc": "궤도 ATO Loop Coil"
+      },
+      "checkItems": [
+        "코일 손상",
+        "피복 상태",
+        "고정 상태"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_LZB_TEMP",
+      "facility": "LZB700M",
+      "title": "캐비닛 내부 온도 측정",
+      "measureType": "temperature",
+      "cycle": "3개월",
+      "position": {
+        "cabinet": "L51",
+        "desc": "LZB 캐비닛 내부"
+      },
+      "range": {
+        "max": 40,
+        "unit": "℃",
+        "note": "반도체 표면은 70℃ 이하"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_LZB_ATO_TEST",
+      "facility": "LZB700M",
+      "title": "ATO 컨트롤러 동작시험",
+      "measureType": "functional",
+      "cycle": "3개월",
+      "position": {
+        "desc": "ATO 컨트롤러"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "LZB_STELA3"
+    },
+    {
+      "id": "MP_LZB_ATO_TX",
+      "facility": "LZB700M",
+      "title": "ATO 컨트롤러 송신전압",
+      "measureType": "voltage",
+      "cycle": "3개월",
+      "position": {
+        "desc": "ATO 컨트롤러 증폭보드 / 필터보드"
+      },
+      "thresholds": [
+        {
+          "label": "증폭보드",
+          "min": 9,
+          "max": 12,
+          "unit": "V",
+          "note": "AC"
+        },
+        {
+          "label": "필터보드",
+          "min": 30,
+          "max": 90,
+          "unit": "V",
+          "note": "AC"
+        }
+      ],
+      "relatedFrequency": {
+        "channels": "F9~F12",
+        "min": 4.75,
+        "max": 6.25,
+        "unit": "kHz"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "LZB_STELA3"
+    },
+    {
+      "id": "MP_LZB_LOOP_CB",
+      "facility": "LZB700M",
+      "title": "ATO Loop C/B 내부 접속상태",
+      "measureType": "visual",
+      "cycle": "3개월",
+      "position": {
+        "desc": "ATO Loop 접속함(C/B) 내부"
+      },
+      "checkItems": [
+        "단자 접속 상태",
+        "부식",
+        "수분 침투"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_ATO_LOOP_CURRENT",
+      "facility": "LZB700M",
+      "title": "ATO Loop 전류 측정",
+      "measureType": "current",
+      "cycle": "3개월",
+      "position": {
+        "desc": "ATO Loop C/B Box 내부. 기능제어보드2(S25533-B37-A3) 위."
+      },
+      "range": {
+        "min": 1.6,
+        "max": 1.9,
+        "unit": "A",
+        "note": "튜닝 기준 겸 정상범위로 확정(2026-09-06 사용자 확인). 검사표준안의 '1.5A 이상'은 최소 합격기준 참고치."
+      },
+      "relatedFaults": [
+        "FLT_ATO_01"
+      ],
+      "source": {
+        "doc": "03.ATO LOOP(김영추).pptx",
+        "section": "ATO-LOOP C/B BOX - C/B 내 전류측정 방법"
+      },
+      "note": "2026-09-06 사용자 확정: 1.6~1.9A가 맞음. 2026-09-06: 구체적인 측정 절차(점퍼 위치, 측정 단자) 추가 반영.",
+      "instrument": "Digital Multimeter (전류 측정)",
+      "method": [
+        "ATO Loop C/B Box를 열고 기능제어보드2(S25533-B37-A3)를 찾는다.",
+        "점퍼 핀이 4번-11번으로 되어 있으면 측정을 위해 4번-10번으로 임시 변경한다.",
+        "10번과 12번 단자 사이에서 멀티메타로 전류를 측정한다 (정상범위 1.6~1.9A).",
+        "측정 후 원래대로 터미널보드2의 점퍼를 4번-11번으로 복구한다.",
+        "복구 후 ATO Loop 캐비닛의 해당 주파수 기능제어보드 Reset 버튼을 눌러 빨간 LED가 꺼지는지 확인한다."
+      ]
+    },
+    {
+      "id": "MP_IFC_ESTOP",
+      "facility": "IFC",
+      "title": "비상정지용 계전기 동작점검",
+      "measureType": "functional",
+      "cycle": "미상",
+      "position": {
+        "cabinet": "C51",
+        "desc": "IFC 캐비닛 비상정지 계전기"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "IFC_EMS_RELAY"
+    },
+    {
+      "id": "MP_IFC_DWELL",
+      "facility": "IFC",
+      "title": "정차표시등(Dwell Light) 계전기",
+      "measureType": "functional",
+      "cycle": "미상",
+      "position": {
+        "desc": "정차표시등 계전기"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "IFC_DL_RELAY"
+    },
+    {
+      "id": "MP_IFC_CHANGEOVER",
+      "facility": "IFC",
+      "title": "상용/예비 절체시험",
+      "measureType": "functional",
+      "cycle": "미상",
+      "position": {
+        "desc": "IFC 상용·예비 계통"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "IFC_CAM"
+    },
+    {
+      "id": "MP_IFC_CPU",
+      "facility": "IFC",
+      "title": "CPU 가동률 및 하드디스크 사용량",
+      "measureType": "percentage",
+      "cycle": "미상",
+      "position": {
+        "desc": "IFC 컴퓨터"
+      },
+      "range": {
+        "max": 50,
+        "unit": "%",
+        "note": "가동률·사용량 모두 50% 이하"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "IFC_COMPUTER"
+    },
+    {
+      "id": "MP_TWC_LOOPCOIL",
+      "facility": "TWC",
+      "title": "TWC Loop Coil 손상 유무",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "궤도 TWC Loop Coil"
+      },
+      "checkItems": [
+        "코일 손상",
+        "고정 상태"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "TWC_LOOP_COIL"
+    },
+    {
+      "id": "MP_TWC_TERMINAL",
+      "facility": "TWC",
+      "title": "배면 단자접속 및 배선상태 점검",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "TWC 배면 단자대"
+      },
+      "checkItems": [
+        "단자 접속",
+        "배선 상태"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_TWC_CB",
+      "facility": "TWC",
+      "title": "TWC 접속박스 내부 점검",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "TWC 접속박스(C/B) 내부"
+      },
+      "checkItems": [
+        "내부 부식",
+        "수분 침투",
+        "결선 상태"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_TWC_OUT",
+      "facility": "TWC",
+      "title": "출력전압",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "승강장 TWC 실외 모듈 접속박스(C/B) 내부"
+      },
+      "range": {
+        "min": 20,
+        "max": 24,
+        "unit": "V",
+        "nominal": 24,
+        "note": "DC"
+      },
+      "instrument": "Digital 멀티메터 Fluke",
+      "method": [
+        "지정계측기를 DC에 위치하고 전압 측정",
+        "평상시 DC 20~24V가 측정되는지 확인"
+      ],
+      "caution": "프로브의 흔촉, 전원의 합선에 주의",
+      "spec": {
+        "전원공급": "DC 24V",
+        "소비전력": "약 40W",
+        "IMU~안테나": "동축케이블",
+        "케이블 최대길이": "2km",
+        "다중 수신기 공급전압": "DC20V < U < DC24V",
+        "다중 수신기 수신전압": "AC3.5V < U < AC7V"
+      },
+      "relatedFaults": [
+        "FLT_TWC_01"
+      ],
+      "source": {
+        "doc": "시설물검사표준안",
+        "page": 275
+      },
+      "boardRef": "TWC_IMU100"
+    },
+    {
+      "id": "MP_TWC_RX_FREQ",
+      "facility": "TWC",
+      "title": "TWC 수신주파수",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "TWC 수신부"
+      },
+      "range": {
+        "min": 1.9,
+        "max": 2.1,
+        "unit": "V"
+      },
+      "relatedFrequency": {
+        "전송주파수": [
+          "832.5 kHz",
+          "875 kHz"
+        ]
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      },
+      "boardRef": "TWC_IMU100"
+    },
+    {
+      "id": "MP_TMS_CONN",
+      "facility": "TMS",
+      "title": "각종 컨넥터 접속상태",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "TMS 장치 컨넥터"
+      },
+      "checkItems": [
+        "접속 상태",
+        "체결 상태"
+      ],
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_TMS_TIME",
+      "facility": "TMS",
+      "title": "표준시간 일치여부 상태",
+      "measureType": "functional",
+      "cycle": "미상",
+      "position": {
+        "desc": "TMS 시각 동기"
+      },
+      "source": {
+        "doc": "시설물검사표준안"
+      }
+    },
+    {
+      "id": "MP_OTS_CONTROL",
+      "facility": "OTS",
+      "title": "제어전압 (14, 13번 전압계)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "cabinet": "T51 / T52",
+        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '제어' 라벨 전압계(14,13) 판독"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 26.4,
+        "unit": "V",
+        "nominal": 24,
+        "note": "DC. '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(신호1사업소 기술과, 성수 201A/B 실측 예시)로 확인됨 — DEWEMO/OTS/기구함 제어전원 전 구간 DC24V로 일관되게 표기됨."
+      },
+      "note": "2026-09-06 정정: 이전에 넣은 DC 42~75V는 '표시회로=SICAS DC60 계통과 동일'이라는 잘못된 가정에 기반한 값이었음. 도면 표기가 AC 계열이 맞다는 것은 확인됐으나, 제어전원(14,13번) 자체의 정확한 전압(AC인지, 몇 V인지)은 아직 자료에서 확인 못함. 현장 실측 또는 추가 자료로 재확인 필요. 2026-09-06 확정: 제어전원은 DC 24V (선로전환기 장애조치매뉴얼 및 체크리스트.pdf 근거). 이전 verify:true 상태 해제. 2026-09-06 삼중 확인: '2line 정기점검.pdf'에도 제어전압 DC24V로 명시되어 있어 최종 확정됨.",
+      "source": {
+        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
+      },
+      "verify": false,
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO"
+    },
+    {
+      "id": "MP_OTS_MOTOR",
+      "facility": "OTS",
+      "title": "모터전원 (모터 C-D, A호/B호 전압계)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "cabinet": "T51 / T52",
+        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '모터 C-D' 라벨 전압계(A호/B호) 판독"
+      },
+      "range": {
+        "min": 100,
+        "max": 120,
+        "unit": "V",
+        "nominal": 110,
+        "note": "AC. 모터가 실제로 전환 동작 중일 때만 인가되는 순간값 — 평상시(정지 상태)에는 0V가 정상이며 고장이 아님."
+      },
+      "caution": "전환 동작이 끝나면 곧바로 0V로 돌아가므로, 값을 보려면 선로전환기 전환 순간에 맞춰 확인해야 함.",
+      "source": {
+        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
+      },
+      "note": "2026-09-06 정정: '3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf'와 '선로전환기 장애조치매뉴얼 및 체크리스트.pdf' 두 공식 자료 모두 모터전원=AC110V(전환시에만 인가)로 명시. 기존에 'DC 100~120V(OTS 카드 실측)'로 기록했던 것은 계측기를 AC로 전환하지 않고 측정했거나 실측 당시 오독이었을 가능성이 높음 — 단위를 DC에서 AC로 정정. 범위(100~120)는 기존 실측값 유지, 단위/명목값만 정정. 2026-09-06 삼중 확인: '2line 정기점검.pdf'(신호설비보수규정 시행내규)에도 '전동기 동작전압 AC110V, 운전전류 8.5A 이하'로 명시되어 있어, 앞서 확정한 AC110V(전환시만 인가)가 최종 확정됨. 전압범위는 정격의 0.8~1.2배, 전류범위는 정격의 0.9~1.2배를 정상범위로 함(신호설비보수규정 시행내규 제15조).",
+      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 '평상시 단동DC60V/쌍동DC30V'라는 다른 수치를 제시 — 이번에 확인된 AC110V(전환시만 인가)와 단위·크기가 모두 다름. 공식 매뉴얼 2건(AC110V)의 근거가 더 강하다고 판단되나, 확정 짓지 않고 참고로 남겨둠.",
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO",
+      "diagnosticTip": "모터전원 케이블에는 표시전원(DC)이 병렬로 결선되어 있어 평상시에도 DC 전압이 상시 인가된다. 장애(단선, 혼촉 등) 발생 시 모터전원 케이블의 DC 전압을 측정하면 고장개소 파악이 가능하다 (3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf).",
+      "relatedFaults": [
+        "FLT_SW_01"
+      ]
+    },
+    {
+      "id": "MP_OTS_IND_OUT",
+      "facility": "OTS",
+      "title": "표시출력전압 (N4, 10번 전압계)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "cabinet": "T51 / T52",
+        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '표시출력' 라벨 전압계(N4/10) 판독"
+      },
+      "range": {
+        "min": 54,
+        "max": 66,
+        "unit": "V",
+        "nominal": 60,
+        "note": "DC. '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반)에 노선별 표시전압 기준이 명시됨: 1,3,4호선 및 2호선 기지(차량기지) 구간 = DC 24V, 2호선 본선 = DC 60V. 신도림은 2호선 본선 구간이므로 DC 60V가 적용됨 — '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(성수, 역시 2호선 본선)의 DC60V와도 정확히 일치. 3개 공식 자료가 교차 확인되어 신뢰도 높음."
+      },
+      "note": "2026-09-06 재확인: 08.선로전환기(김영추) pptx의 'AC 24V' 서술은 2호선 기지 구간(24V, 하지만 AC가 아닌 DC) 관련 내용을 잘못 인용했거나 다른 노선 자료를 참고했을 가능성이 있음 — 신도림(2호선 본선)에는 DC60V가 적용되는 것으로 최종 판단.",
+      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 단선/접지 위치별로 DC30~120V의 세부 패턴을 제시 — 이는 DC60V 기준선 위에서 여러 단선·접지 조합이 만들어내는 값일 가능성이 있으나 정확한 회로 해석(전압분배)까지는 확인 못함. 참고자료로 fault-cases.json(FLT_OTS_03~07)에 남겨둠.",
+      "relatedFaults": [
+        "FLT_OTS_01",
+        "FLT_OTS_02",
+        "FLT_OTS_03",
+        "FLT_OTS_04",
+        "FLT_OTS_05",
+        "FLT_OTS_06",
+        "FLT_OTS_07"
+      ],
+      "source": {
+        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
+      },
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO"
+    },
+    {
+      "id": "MP_OTS_IND_IN",
+      "facility": "OTS",
+      "title": "표시입력전압 (4, 3번 전압계)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "cabinet": "T51 / T52",
+        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '표시입력' 라벨 전압계(4/3) 판독"
+      },
+      "range": {
+        "min": 54,
+        "max": 66,
+        "unit": "V",
+        "nominal": 60,
+        "note": "DC. '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반)에 노선별 표시전압 기준이 명시됨: 1,3,4호선 및 2호선 기지(차량기지) 구간 = DC 24V, 2호선 본선 = DC 60V. 신도림은 2호선 본선 구간이므로 DC 60V가 적용됨 — '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(성수, 역시 2호선 본선)의 DC60V와도 정확히 일치. 3개 공식 자료가 교차 확인되어 신뢰도 높음."
+      },
+      "note": "2026-09-06 재확인: 08.선로전환기(김영추) pptx의 'AC 24V' 서술은 2호선 기지 구간(24V, 하지만 AC가 아닌 DC) 관련 내용을 잘못 인용했거나 다른 노선 자료를 참고했을 가능성이 있음 — 신도림(2호선 본선)에는 DC60V가 적용되는 것으로 최종 판단.",
+      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 단선/접지 위치별로 DC30~120V의 세부 패턴을 제시 — 이는 DC60V 기준선 위에서 여러 단선·접지 조합이 만들어내는 값일 가능성이 있으나 정확한 회로 해석(전압분배)까지는 확인 못함. 참고자료로 fault-cases.json(FLT_OTS_03~07)에 남겨둠.",
+      "relatedFaults": [
+        "FLT_OTS_01",
+        "FLT_OTS_02",
+        "FLT_OTS_03",
+        "FLT_OTS_04",
+        "FLT_OTS_05",
+        "FLT_OTS_06",
+        "FLT_OTS_07"
+      ],
+      "source": {
+        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
+      },
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO"
+    },
+    {
+      "id": "MP_FIELD_SW_CONTROL",
+      "facility": "선로전환기",
+      "title": "현장 단자반 제어전압",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "선로전환기 현장 단자반(터미널). 기계실 T51/T52의 OTS(MP_OTS_CONTROL)와 같은 회로를 현장 쪽 끝에서 측정."
+      },
+      "range": {
+        "min": 21.6,
+        "max": 26.4,
+        "unit": "V",
+        "nominal": 24,
+        "note": "DC. '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(신호1사업소 기술과, 성수 201A/B 실측 예시)로 확인됨 — DEWEMO/OTS/기구함 제어전원 전 구간 DC24V로 일관되게 표기됨."
+      },
+      "note": "2026-09-06 정정: 이전에 넣은 DC 42~75V는 '표시회로=SICAS DC60 계통과 동일'이라는 잘못된 가정에 기반한 값이었음. 도면 표기가 AC 계열이 맞다는 것은 확인됐으나, 제어전원(14,13번) 자체의 정확한 전압(AC인지, 몇 V인지)은 아직 자료에서 확인 못함. 현장 실측 또는 추가 자료로 재확인 필요. 2026-09-06 확정: 제어전원은 DC 24V (선로전환기 장애조치매뉴얼 및 체크리스트.pdf 근거). 이전 verify:true 상태 해제. 2026-09-06 삼중 확인: '2line 정기점검.pdf'에도 제어전압 DC24V로 명시되어 있어 최종 확정됨.",
+      "source": {
+        "doc": "08.선로전환기(김영추).pptx + 사용자 확인(2026-09-05)"
+      },
+      "verify": false,
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO"
+    },
+    {
+      "id": "MP_FIELD_SW_INDICATION",
+      "facility": "선로전환기",
+      "title": "현장 단자반 표시전압",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "선로전환기 현장 단자반(터미널). 기계실 T51/T52의 OTS 표시출력/표시입력(MP_OTS_IND_OUT/MP_OTS_IND_IN)과 같은 회로를 현장 쪽 끝에서 측정."
+      },
+      "range": {
+        "min": 54,
+        "max": 66,
+        "unit": "V",
+        "nominal": 60,
+        "note": "DC. '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반)에 노선별 표시전압 기준이 명시됨: 1,3,4호선 및 2호선 기지(차량기지) 구간 = DC 24V, 2호선 본선 = DC 60V. 신도림은 2호선 본선 구간이므로 DC 60V가 적용됨 — '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(성수, 역시 2호선 본선)의 DC60V와도 정확히 일치. 3개 공식 자료가 교차 확인되어 신뢰도 높음."
+      },
+      "note": "2026-09-06 재확인: 08.선로전환기(김영추) pptx의 'AC 24V' 서술은 2호선 기지 구간(24V, 하지만 AC가 아닌 DC) 관련 내용을 잘못 인용했거나 다른 노선 자료를 참고했을 가능성이 있음 — 신도림(2호선 본선)에는 DC60V가 적용되는 것으로 최종 판단.",
+      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 단선/접지 위치별로 DC30~120V의 세부 패턴을 제시 — 이는 DC60V 기준선 위에서 여러 단선·접지 조합이 만들어내는 값일 가능성이 있으나 정확한 회로 해석(전압분배)까지는 확인 못함. 참고자료로 fault-cases.json(FLT_OTS_03~07)에 남겨둠.",
+      "relatedFaults": [
+        "FLT_OTS_01",
+        "FLT_OTS_02",
+        "FLT_OTS_03",
+        "FLT_OTS_04",
+        "FLT_OTS_05",
+        "FLT_OTS_06",
+        "FLT_OTS_07"
+      ],
+      "source": {
+        "doc": "08.선로전환기(김영추).pptx + 사용자 확인(2026-09-05)"
+      },
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO"
+    },
+    {
+      "id": "MP_FIELD_SW_MOTOR",
+      "facility": "선로전환기",
+      "title": "현장 단자반 모터전압",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "선로전환기 현장 단자반(터미널) E/F단자 부근. 기계실 T51/T52의 OTS 모터전원(MP_OTS_MOTOR)과 같은 회로."
+      },
+      "range": {
+        "min": 100,
+        "max": 120,
+        "unit": "V",
+        "nominal": 110,
+        "note": "AC. 모터가 실제로 전환 동작 중일 때만 인가되는 순간값 — 평상시(정지 상태)에는 0V가 정상이며 고장이 아님."
+      },
+      "caution": "전환 동작이 끝나면 곧바로 0V로 돌아가므로, 값을 보려면 선로전환기 전환 순간에 맞춰 확인해야 함.",
+      "source": {
+        "doc": "08.선로전환기(김영추).pptx + 사용자 확인(2026-09-05)"
+      },
+      "note": "2026-09-06 정정: '3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf'와 '선로전환기 장애조치매뉴얼 및 체크리스트.pdf' 두 공식 자료 모두 모터전원=AC110V(전환시에만 인가)로 명시. 기존에 'DC 100~120V(OTS 카드 실측)'로 기록했던 것은 계측기를 AC로 전환하지 않고 측정했거나 실측 당시 오독이었을 가능성이 높음 — 단위를 DC에서 AC로 정정. 범위(100~120)는 기존 실측값 유지, 단위/명목값만 정정. 2026-09-06 삼중 확인: '2line 정기점검.pdf'(신호설비보수규정 시행내규)에도 '전동기 동작전압 AC110V, 운전전류 8.5A 이하'로 명시되어 있어, 앞서 확정한 AC110V(전환시만 인가)가 최종 확정됨. 전압범위는 정격의 0.8~1.2배, 전류범위는 정격의 0.9~1.2배를 정상범위로 함(신호설비보수규정 시행내규 제15조).",
+      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 '평상시 단동DC60V/쌍동DC30V'라는 다른 수치를 제시 — 이번에 확인된 AC110V(전환시만 인가)와 단위·크기가 모두 다름. 공식 매뉴얼 2건(AC110V)의 근거가 더 강하다고 판단되나, 확정 짓지 않고 참고로 남겨둠.",
+      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
+      "boardRef": "ECDSTT_DEWEMO",
+      "diagnosticTip": "모터전원 케이블에는 표시전원(DC)이 병렬로 결선되어 있어 평상시에도 DC 전압이 상시 인가된다. 장애(단선, 혼촉 등) 발생 시 모터전원 케이블의 DC 전압을 측정하면 고장개소 파악이 가능하다 (3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf).",
+      "relatedFaults": [
+        "FLT_SW_01"
+      ]
+    },
+    {
+      "id": "MP_FIELD_SIG_LAMP",
+      "facility": "신호기",
+      "title": "등렬(LED/전구) 점등 상태",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "현장 신호기 등렬(현시등) 전체"
+      },
+      "checkItems": [
+        "각 현시색 정상 점등 여부",
+        "등렬 일부 소등/깜빡임 여부",
+        "렌즈 오염·파손 여부"
+      ],
+      "note": "기계실 DESIMO 쪽에서는 IK1/IK2 LED로 신호기 꺼짐(24V 없음, 신호기 자체 불량 등)을 먼저 확인하고(FLT_ECD_06/07/FLT_SIG_07/08/09), 이 현장 항목으로 실제 등렬 상태를 눈으로 재확인.",
+      "relatedFaults": [
+        "FLT_ECD_06",
+        "FLT_ECD_07",
+        "FLT_SIG_07",
+        "FLT_SIG_08",
+        "FLT_SIG_09"
+      ],
+      "source": {
+        "doc": "2. SICAS_ECDSTT.pdf + 사용자 확인(2026-09-05)"
+      }
+    },
+    {
+      "id": "MP_FTGS_DCBOX",
+      "facility": "FTGS",
+      "title": "DC Box 인입/인출 전압",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "AF궤도회로 현장 설비 중 DC Box(선 연장용 중간 단자함) 내부 단자"
+      },
+      "range": {
+        "min": null,
+        "max": null,
+        "unit": "V",
+        "note": "독자적인 정상범위 없음 — 케이블 연장용 중간 단자함이라, 그 지점에 물려있는 회선의 정상범위를 그대로 적용함. 예) 송신측 라인이면 MP_FTGS_TX_FIELD와 동일(30~50V)."
+      },
+      "note": "2026-09-06 사용자 확인: DC Box 인입/인출 전압은 해당 라인에 해당하는 전압값과 같음(통과 지점이라 자체 기준값 없음). 각 역 C/B Box에 걸리는 전압 조정은 기계실 내 브릿지저항으로 하며, DC Box는 그 경로 중간의 점검 포인트.",
+      "source": {
+        "doc": "02.AF궤도회로(김영추).pptx + 사용자 확인(2026-09-05)"
+      }
+    },
+    {
+      "id": "MP_FIELD_SW_LOCK",
+      "facility": "선로전환기",
+      "title": "쇄정(鎖錠) 상태 및 텅레일 밀착 점검",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "선로전환기 본체 쇄정창(주쇄정/부쇄정) 및 텅레일-기본레일 접촉부"
+      },
+      "checkItems": [
+        "텅레일과 기본레일 밀착 상태 (정위/반위 모두 균일한 압력인지)",
+        "주쇄정자 좌우 균등 간격 2mm 여부",
+        "부쇄정자 좌우 균등 간격 2mm 여부",
+        "죠핀 헐거움 여부",
+        "궤도 복진(밀림) 여부"
+      ],
+      "note": "쇄정 위치는 선로전환기 조작상 가장 중요한 요소 — 쇄정이 틀리면 텅레일 밀착이 불가능해져 표시계전기가 낙하하고 관계 신호기에 정지신호가 현시된다. 쇄정 불량의 대표 원인 4가지: ① 죠핀이 헐겁거나 밀착압력이 약할 때, ② 기온변화로 궤조(레일)가 수축했을 때, ③ 궤도 복진으로 위치가 이동했을 때, ④ 텅레일과 기본궤조의 접하는 위치가 틀렸을 때. 표시전압 이상(MP_FIELD_SW_INDICATION/MP_OTS_IND_OUT 등)이 배선 문제가 아니라 이 쇄정/밀착 불량 때문일 수 있으므로, 전기적 원인을 찾기 전에 이 항목부터 육안 확인하는 것이 좋다.",
+      "method": [
+        "밀착 조정: 모터전원 차단 후 수동키 삽입 → 수동키로 텅레일을 기본궤조 중앙에 위치시킴 → 18\" 파이프렌치로 조정너트를 풀고 돌음막이 제거 → 통나사로 밀착 압력 조절 → 돌음막이·너트 재고정 → 수동키/푸시버튼으로 1회 전환시험",
+        "쇄정 조정: 쇄정창을 열어 주쇄정/부쇄정 중 불량 구간 확인 → 조정쇠 너트를 풀고 화살표 방향으로 이동 → 좌우 2mm 균등 여부 확인 후 너트 고정 → 조정 후 10회 정도 전환시험"
+      ],
+      "relatedFaults": [
+        "FLT_OTS_12"
+      ],
+      "source": {
+        "doc": "선로전환기 조정 방법.pdf",
+        "section": "선로전환기 점검 요령 - 밀착 조정 순서 / 쇄정 조정 순서"
+      }
+    },
+    {
+      "id": "MP_SW_CAPACITOR",
+      "facility": "선로전환기",
+      "title": "콘덴서(커패시터) 상태 점검",
+      "measureType": "functional",
+      "cycle": "미상",
+      "position": {
+        "desc": "선로전환기 함체 내 콘덴서 설치 위치 (정확한 위치는 현장 확인 필요)"
+      },
+      "checkItems": [
+        "외관 팽창/누액 여부",
+        "단자 접속 상태",
+        "정전용량(용량값) 또는 절연 측정값 — 정상범위 확인 필요"
+      ],
+      "verify": true,
+      "note": "2026-09-06 사용자 제보: 선로전환기에 콘덴서를 측정하는 지점이 있으나, 현재 자료에는 정상범위·측정방법이 없음. 어떤 콘덴서인지(예: 모터 기동용 콘덴서), 측정 단위(정전용량 µF? 전압? 절연저항?)와 정상범위를 사용자가 알려주면 정식 측정지점으로 확정 예정.",
+      "source": {
+        "doc": "사용자 제보 (2026-09-06), 출처 자료 확인 필요"
+      }
+    },
+    {
+      "id": "MP_SW_CIRCUIT_CONTROLLER",
+      "facility": "선로전환기",
+      "title": "회로제어기·제어계전기 동작상태",
+      "measureType": "functional",
+      "cycle": "1개월",
+      "position": {
+        "desc": "현장 선로전환기 내부 회로제어기/제어계전기"
+      },
+      "checkItems": [
+        "정·반위 전환 시 내부접점 용착 여부",
+        "케이스 균열 및 습기 유입 여부",
+        "전환 및 쇄정완료시 표시회로 구성과 전동기 전원차단 동작 적정성"
+      ],
+      "note": "신호실무교재 기준: 접점은 AC110V-10A 역률0.2 부하를 연속 개폐 가능해야 함. 접촉저항: DC2A 통전시 0.05Ω 이하(20,000회 사용 후 0.1Ω 이하). 개방 시 고정편-가동편 간격 1.5mm 이상, 접촉 순간 다른 쪽 접점과의 간격 0.8mm 이상.",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 1)회로제어기, 제어계전기 동작상태 (신호설비보수규정 시행내규 제35조)"
+      }
+    },
+    {
+      "id": "MP_SW_GEAR_LUBRICATION",
+      "facility": "선로전환기",
+      "title": "톱니바퀴 절손 우려성 및 급유상태",
+      "measureType": "visual",
+      "cycle": "1개월(주유) / 3개월(전환로라·축·기어)",
+      "position": {
+        "desc": "선로전환기 내부 기어부"
+      },
+      "checkItems": [
+        "수동전환에 의한 기어 맞물림 상태",
+        "이음 및 회전상태",
+        "톱니바퀴 절손 여부"
+      ],
+      "note": "그리스(Grease): 리튬계 만능그리스 NO.0 사용. 급유 시 전선류 등에 기름이 닿지 않도록 주의.",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 3)톱니바퀴의 절손 우려성"
+      }
+    },
+    {
+      "id": "MP_SW_LEVER_GAP",
+      "facility": "선로전환기",
+      "title": "스트로크레버 유격 손상 상태",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "선로전환기 내부 회로제어기 레바 스트로크부. A,B=스트로크 조정용 볼트, C,D=중립 조정용 볼트"
+      },
+      "checkItems": [
+        "레바 스트로크 좌우 유격 상태",
+        "유격조절볼트 고정너트 이완 여부"
+      ],
+      "note": "중립시 C와D볼트가 선로전환기 레바 사이에 약 1mm 이상의 간격이 있도록 조정하고 조임 너트로 고정. 조정 불량 시 진동이나 클러치 반발회전 등으로 접점 장애 발생 가능.",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 5)스트로크레버유격 손상 상태"
+      }
+    },
+    {
+      "id": "MP_SW_NFB",
+      "facility": "선로전환기",
+      "title": "N.F.B (전동기 보호용 배선차단기)",
+      "measureType": "functional",
+      "cycle": "6개월",
+      "position": {
+        "desc": "선로전환기 내부 NFB"
+      },
+      "checkItems": [
+        "접속단자 견고 접속 여부",
+        "NFB 손상 여부",
+        "단락 시 차단 유무 (ON/OFF 시험)"
+      ],
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 7)N.F.B (신호설비보수규정 시행내규 제51조)"
+      }
+    },
+    {
+      "id": "MP_SW_LOCK_ROD_GAP",
+      "facility": "선로전환기",
+      "title": "록크 롯트와 쇄정부간 간격 및 마모",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "선로전환기 외부 쇄정간(쇄정자)"
+      },
+      "checkItems": [
+        "쇄정자 좌우 2mm 균등 간격 여부(합 4mm 이하)",
+        "쇄정자·쇄정간 홈부 마모 여부(양쪽 면이 심하게 마모·둥글게 된 것은 교체)"
+      ],
+      "relatedFaults": [
+        "FLT_OTS_12"
+      ],
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 8)록크 롯트와 쇄정부간 간격 및 마모 (신호설비보수규정 시행내규 제21조)"
+      }
+    },
+    {
+      "id": "MP_SW_SWITCH_TIME",
+      "facility": "선로전환기",
+      "title": "전환시간",
+      "measureType": "functional",
+      "cycle": "6개월",
+      "position": {
+        "desc": "선로전환기 외부, Stop watch로 모터 동작 개시~종료까지 측정"
+      },
+      "range": {
+        "max": 7,
+        "unit": "초",
+        "note": "NS형 6초 이하, NS-AM형 7초 이하 (신호설비보수규정 시행내규 제21조)"
+      },
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 11)전환시간"
+      }
+    },
+    {
+      "id": "MP_SW_CONTACT_FORCE",
+      "facility": "선로전환기",
+      "title": "밀착도 (텅레일 밀착력)",
+      "measureType": "functional",
+      "cycle": "1년",
+      "position": {
+        "desc": "현장 선로전환기, 텅레일-기본레일 밀착간 위치에 밀착력 시험기 삽입"
+      },
+      "range": {
+        "min": 100,
+        "unit": "kg",
+        "note": "밀착력(정/반위, 수동핸들 전환 점검): 100kg 이상. 전환력(자동전환 점검): NS-C형 300kg, NS-AM형 400kg. 3회 이상 측정 평균값."
+      },
+      "note": "선로전환기 설명서 기준: 첨단을 1mm 벌리는데 100kg 이상의 힘이 소요되어야 하고, 동작간에 400kg의 부하를 가해도 전환되어야 함(신호설비보수규정 시행내규 제23조).",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 12)밀착도"
+      }
+    },
+    {
+      "id": "MP_SW_INSULATION_RESIST",
+      "facility": "선로전환기",
+      "title": "절연저항 (모터코일-외함 / 도체부분-외함)",
+      "measureType": "voltage",
+      "cycle": "1년",
+      "position": {
+        "desc": "선로전환기 단자대 및 모터 외함"
+      },
+      "range": {
+        "min": 1,
+        "unit": "MΩ",
+        "note": "모터코일과 외함, 도체부분과 외함 절연저항 각 1MΩ 이상. 절연저항계 500V 이상 사용(전자기기는 예외)."
+      },
+      "instrument": "절연저항측정기(메가) 500V",
+      "method": [
+        "선로전환기의 제어, 표시, 모터전원을 차단",
+        "현장 선로전환기 내부 F,E,D 회선단자 분리, 혼촉방지 조치(단자 테이핑)",
+        "회선 확인을 위해 Loop 시험 실시",
+        "흑색 리드봉은 Earth(선로전환기 외함)에, 적색 리드봉은 F,E,D 회선단자에 각각 연결하여 500V로 측정",
+        "도체부분과 외함: 전원 차단기 OFF → 단자대에서 회선 단자 모두 분리 → 심선 상호간/대지와의 절연저항 측정"
+      ],
+      "caution": "고신뢰형 선로전환기는 버튼을 누른 상태에서 해당 회선을 당겨 분리 후 측정(회선 분리방법 별도).",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제2절 선로전환기 - 13)절연저항 (신호설비보수규정 시행내규 제16조)"
+      }
+    },
+    {
+      "id": "MP_ATO_CONTROLLER_LED_TEST",
+      "facility": "LZB700M",
+      "title": "ATO 컨트롤러 동작시험 (LED 점검)",
+      "measureType": "functional",
+      "cycle": "3개월",
+      "position": {
+        "desc": "승강장 ATO_LOOP 컨트롤러 캐비닛 내부"
+      },
+      "checkItems": [
+        "송신보드 LED_1,4,9 = green 정상",
+        "송신보드 LED_2,3 = yellow 정상",
+        "증폭보드 LED_4.1(출력전압) = green 정상",
+        "필터보드 LED_4(출력전압) = green 정상",
+        "기능제어보드 FUUELL LED = 정상시 소등, 에러시 RED",
+        "전원장치 및 FAN 동작상태"
+      ],
+      "note": "[입력]230V AC +10%/-15%, [출력]DC5V, DC12V ±3%. FAN 수명주기 20,000시간.",
+      "boardRef": "ATOLOOP_FUUELL",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제11절 ATO 장치 - 4)ATO컨트롤러 동작시험"
+      }
+    },
+    {
+      "id": "MP_LZB_AIRGAP_TELEGRAM",
+      "facility": "LZB700M",
+      "title": "진단PC에 의한 LZB속도 텔레그램 측정 (Air gap)",
+      "measureType": "functional",
+      "cycle": "6개월",
+      "position": {
+        "desc": "기계실 LZB캐비넷 하단부, 진단PC-LZB Diag보드(레벨 Q) 간 RS-232 연결"
+      },
+      "method": [
+        "진단PC와 LZB Diag보드(LZB 캐비넷 'Q'레벨) 간 RS-232 케이블 연결",
+        "진단프로그램 EDDI 기동, RS-232 연결상태('OK' sign) 확인",
+        "메뉴바에서 ATP 선택 → 하위메뉴 'Air gap' 선택 → <Ctrl+A> 입력 → 측정할 궤도의 information section 입력",
+        "LCC(신호취급실)에서 해당 궤도 관련 진로 설정 후 궤도의 진로별 'Air gap telegram' 확인"
+      ],
+      "caution": "열차운행 시 진단프로그램 장시간 활성화 금지. RS_232 Link가 안 되면 연결케이블 2번-3번 크로스 여부, 5번 접지 여부 확인.",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제11절 ATO 장치 - 6)진단PC에 의한 LZB속도 텔레그램 측정"
+      }
+    },
+    {
+      "id": "MP_ATO_LOOP_INSULATION",
+      "facility": "LZB700M",
+      "title": "ATO Loop전원케이블 절연저항 측정",
+      "measureType": "voltage",
+      "cycle": "4년",
+      "position": {
+        "desc": "승강장 선로변 ATO_Loop 제어함 및 신호기계실"
+      },
+      "range": {
+        "min": 1,
+        "unit": "MΩ",
+        "note": "심선 상호간 또는 심선과 대지와의 절연저항 1MΩ 이상. 절연저항계 500V 이상 사용."
+      },
+      "method": [
+        "기계실 차단기 OFF",
+        "현장 ATO Loop제어함 단자대에서 전원측 케이블 분리",
+        "절연저항계로 심선 상호간/대지 간 절연저항 측정"
+      ],
+      "caution": "작업 시 절연장갑 착용, 작업 종료 후 배선단자 혼촉/이완상태 및 기기 동작상태 확인.",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제11절 ATO 장치 - 10)ATO Loop전원케이블 절연저항 측정"
+      }
+    },
+    {
+      "id": "MP_DWELL_LIGHT",
+      "facility": "IFC",
+      "title": "정차등(Dwell Light) 입력전압 및 표시상태",
+      "measureType": "functional",
+      "cycle": "1년(정차등) / 3개월(계전기 동작점검)",
+      "position": {
+        "desc": "현장 정차등(기주형/벽형)"
+      },
+      "checkItems": [
+        "정차등 체결볼트 이완 여부",
+        "승강장궤도 완전점유 시 즉시 점등 여부",
+        "점등 후 15초 뒤 10초간 점멸 여부",
+        "이후 소등 여부",
+        "정차등 투시방향(승무원 시야 기준) 적정 여부"
+      ],
+      "note": "사용전원 AC100~125V 범위(신호설비보수규정 시행내규 제62조). IF_C 화면에서 ATO관리자→정차등 테스트→테스트인증→해당역번호 선택→시작버튼 시 5초간 지속등, 10초간 점멸등 계전기 동작 확인, LCC상 백색 점등 확인.",
+      "boardRef": "IFC_DL_RELAY",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제11절 ATO 장치 - 2.정차등 / 제9절 통신장치 - 2)Dwell Light제어용 계전기 동작점검"
+      }
+    },
+    {
+      "id": "MP_TWC_CB_DETAIL",
+      "facility": "TWC",
+      "title": "TWC 접속박스 내부접속 상태 (상세)",
+      "measureType": "visual",
+      "cycle": "6개월",
+      "position": {
+        "desc": "승강장 TWC 실외 모듈"
+      },
+      "checkItems": [
+        "동축케이블 실드부분 접속상태",
+        "증폭배율 설정상태 (S1, S2 스위치)",
+        "접속박스 고정볼트 진동 이완 여부",
+        "케이블 인입부 방수상태 및 이물질 여부",
+        "체결시 고무패킹 이탈 여부"
+      ],
+      "note": "점검 전 분전반에서 TWC력 전원(DC24V) OFF 필요.",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제11절 ATO 장치 - 3.TWC 장치 - 3)TWC 접속박스 내부접속 상태"
+      }
+    },
+    {
+      "id": "MP_TWC_RX_WAVEFORM",
+      "facility": "TWC",
+      "title": "TWC 수신주파수 파형 및 레벨측정",
+      "measureType": "voltage",
+      "cycle": "6개월",
+      "position": {
+        "desc": "IFC랙 TWC수신기 전면, T커넥터에 오실로스코프 및 현장 케이블 연결"
+      },
+      "range": {
+        "min": 1.9,
+        "max": 2.1,
+        "unit": "V",
+        "note": "Vpp 값. 실외 TWC시험기에서 모의 텔레그램 전송 후 측정"
+      },
+      "spec": {
+        "전송모드": "다중 시분할 방식",
+        "전송주파수": "832.5kHz / 875kHz",
+        "정보량": "최대 96bits",
+        "전송 Airgap": "100~400mm",
+        "평균편차": "±100m",
+        "동작속도": "0~250km/h",
+        "동작온도": "-25℃~80℃"
+      },
+      "note": "Vpp값이 기준보다 높거나 낮으면 실외 TWC증폭모듈의 S1/S2 스위치를 조정 후 재측정.",
+      "boardRef": "TWC_IMU100",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제11절 ATO 장치 - 3.TWC 장치 - 4)TWC 수신주파수 파형 및 레벨측정"
+      }
+    },
+    {
+      "id": "MP_TURNOUT_SAFETY_ALARM",
+      "facility": "분기부 안전설비",
+      "title": "경보벨(등, 전광판) 동작상태 및 입력전압",
+      "measureType": "functional",
+      "cycle": "6개월",
+      "position": {
+        "desc": "현장 경보벨(등), 전광판 / 현장 기구함"
+      },
+      "checkItems": [
+        "신호취급실 안전설비스위치 취급 시 전광판/경보벨/점멸등(경고등,해제등) 기능 정상 여부",
+        "접속단자 이완상태 유무"
+      ],
+      "range": {
+        "min": 100,
+        "max": 120,
+        "unit": "V",
+        "note": "현장전원 100~120V 범위 (규정상 AC100~125V). 현장기구함 내 각 설비 전원을 테스터로 측정."
+      },
+      "caution": "안전설비 점검 시 열차 및 모타카(작업차량) 운행에 유의.",
+      "boardRef": "TURNOUT_SAFETY_MR_RELAY",
+      "source": {
+        "doc": "2line 정기점검.pdf",
+        "section": "제12절 기타 신호설비 - 1.분기부 안전설비 (신호설비보수규정 시행내규 제76조)"
+      }
+    }
+  ],
+  "station": "신도림",
+  "scopeNote": "측정지점의 facility/측정방법/정상범위는 표준 규격 장비(SICAS, LZB700M, IFC, FTGS, TWC, OTS 등) 사양이므로 다른 연동역에서도 동일 장비라면 그대로 적용 가능합니다. 'position'에 적힌 캐비닛/랙 명칭(T51, O51 등)만 신도림의 명칭이며, 다른 역은 실제 캐비닛 이름으로 바꿔 읽으면 됩니다."
+}

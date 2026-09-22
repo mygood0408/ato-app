@@ -1,0 +1,1831 @@
+{
+  "schemaVersion": "1.0",
+  "description": "캐비닛(랙) 물리 배치 데이터 + 전원흐름도. board-info.json의 보드 id를 참조해 실제 레터 배치(전면 기준)와 비슷하게 채널별로 반복 배치. SICAS HW Design White_SIN1/SIN2.pdf의 캐비닛 구성도 사진 기반.",
+  "station": "전역 공통",
+  "scopeNote": "채널(A/B/C) 3중화 구조와 보드 종류·순서는 SIEMENS 표준 규격이라 다른 연동역에서도 동일합니다. 실제 슬롯 폭이나 정확한 물리적 순서는 역/캐비닛마다 미세하게 다를 수 있어, 이 배치는 '실제와 비슷한 참고용 구성도'입니다. 캐비닛 '대수'와 그 대수별 담당범위(예: EC/DSTT의 T51/T52)는 역마다 다른 사실이라 각 그룹의 note에 '신도림 기준' 실측 사례임을 명시해둡니다 — 다른 역은 현장 확인 후 갈아끼우세요.",
+  "racks": {
+    "SICAS": {
+      "title": "SICAS 캐비닛 구성도",
+      "note": "실제 캐비닛은 전면에 채널 A/B/C가 각각 한 행씩 있고, 각 채널마다 6종 보드가 같은 순서로 반복됩니다. OLM·주전원·팬은 3채널이 공유합니다. 정확한 슬롯 폭·순서가 필요하면 원본자료(SICAS HW Design White_SIN1.pdf 캐비닛 구성도)를 참고하세요.",
+      "channels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "channelBoardOrder": [
+        "SICAS_VESUV3",
+        "SICAS_VENUS3",
+        "SICAS_VESIN",
+        "SICAS_BUMA",
+        "SICAS_MELDE2",
+        "SICAS_KOMDA2"
+      ],
+      "sharedRows": [
+        {
+          "label": "OLM (광링크모듈, 채널당 2개×3채널)",
+          "boardRef": "SICAS_OLM",
+          "count": 6
+        },
+        {
+          "label": "주전원 A / B / C",
+          "boardRef": "SICAS_SVK2102",
+          "count": 3
+        }
+      ],
+      "powerFlow": [
+        {
+          "stage": "UPS / 분전반",
+          "desc": "무정전전원장치(UPS)로부터 60V/24V/230V 공급. SICAS는 UPS로부터 케이블 거리 최대 20m 이내여야 합니다."
+        },
+        {
+          "stage": "N레벨 배전반 (캐비닛 후면)",
+          "desc": "60V·24V·230V가 여기서 각 채널로 분기됩니다. 60V는 5,6,7번(+)/1,2,3번(−), 24V는 40~49번(+, 퓨즈 4A~6.3A)/51~59번(−) 단자에서 측정합니다.",
+          "measurePointRef": [
+            "MP_SICAS_S51_DC60",
+            "MP_SICAS_S51_DC24"
+          ]
+        },
+        {
+          "stage": "채널별 SVK2102 전원장치 (주전원 A/B/C)",
+          "desc": "채널마다 60V를 받아 5V로 변환. 과전압(UE 89V 이상) 또는 저전압(UA 6.3V 이하) 시 스위치가 차단됩니다. 전면 LED로 UE(입력 60V)/UA(출력 5V) 상태를 확인합니다.",
+          "boardRef": "SICAS_SVK2102"
+        },
+        {
+          "stage": "각 보드 (VESUV3~KOMDA2)",
+          "desc": "SVK2102가 공급하는 5V로 동작합니다."
+        }
+      ],
+      "boards": [
+        {
+          "row": "A",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "B",
+          "side": "전면",
+          "label": "채널 A (VESUV3·VENUS3·VESIN·BUMA·MELDE2·KOMDA2)",
+          "frameRef": "SICAS_CHANNEL_FRAME",
+          "channel": "A",
+          "count": 6
+        },
+        {
+          "row": "C",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "D",
+          "side": "전면",
+          "label": "채널 B (VESUV3·VENUS3·VESIN·BUMA·MELDE2·KOMDA2)",
+          "frameRef": "SICAS_CHANNEL_FRAME",
+          "channel": "B",
+          "count": 6
+        },
+        {
+          "row": "E",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "F",
+          "side": "전면",
+          "label": "채널 C (VESUV3·VENUS3·VESIN·BUMA·MELDE2·KOMDA2)",
+          "frameRef": "SICAS_CHANNEL_FRAME",
+          "channel": "C",
+          "count": 6
+        },
+        {
+          "row": "G",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "H",
+          "side": "전면",
+          "label": "OLM (광링크모듈, 1행)",
+          "boardRef": "SICAS_OLM",
+          "count": 5
+        },
+        {
+          "row": "J",
+          "side": "전면",
+          "label": "OLM (광링크모듈, 2행)",
+          "boardRef": "SICAS_OLM",
+          "count": 5
+        },
+        {
+          "row": "K",
+          "side": "전면",
+          "label": "주전원 A / B / C",
+          "boardRef": "SICAS_SVK2102",
+          "count": 3
+        },
+        {
+          "row": "L",
+          "side": "전면",
+          "label": "필터장치",
+          "count": 0,
+          "note": "board-info.json에 별도 항목 없음 — 전원 필터 고정부품"
+        },
+        {
+          "row": "MN",
+          "side": "전면",
+          "label": "(여백)",
+          "count": 0
+        },
+        {
+          "row": "P",
+          "side": "전면",
+          "label": "케이블 인입부",
+          "count": 0
+        },
+        {
+          "row": "A",
+          "side": "후면",
+          "label": "배선 패널 (상단)",
+          "count": 0
+        },
+        {
+          "row": "B",
+          "side": "후면",
+          "label": "Panel (채널 A 배선)",
+          "count": 0
+        },
+        {
+          "row": "C",
+          "side": "후면",
+          "label": "Panel (채널 A~B 사이)",
+          "count": 0
+        },
+        {
+          "row": "D",
+          "side": "후면",
+          "label": "Panel (채널 B 배선)",
+          "count": 0
+        },
+        {
+          "row": "E",
+          "side": "후면",
+          "label": "Panel (채널 B~C 사이)",
+          "count": 0
+        },
+        {
+          "row": "F",
+          "side": "후면",
+          "label": "Panel (채널 C 배선)",
+          "count": 0
+        },
+        {
+          "row": "G",
+          "side": "후면",
+          "label": "배선 패널 (하단)",
+          "count": 0
+        },
+        {
+          "row": "H",
+          "side": "후면",
+          "label": "OLM 후면 배선부 (1행)",
+          "boardRef": "SICAS_OLM",
+          "count": 0
+        },
+        {
+          "row": "J",
+          "side": "후면",
+          "label": "OLM 후면 배선부 (2행)",
+          "boardRef": "SICAS_OLM",
+          "count": 0
+        },
+        {
+          "row": "K",
+          "side": "후면",
+          "label": "N레벨 배전반 — 60V/24V/230V 단자열",
+          "count": 0,
+          "measurePointRef": [
+            "MP_SICAS_S51_DC60",
+            "MP_SICAS_S51_DC24"
+          ]
+        },
+        {
+          "row": "L",
+          "side": "후면",
+          "label": "단자열",
+          "count": 0
+        },
+        {
+          "row": "MN",
+          "side": "후면",
+          "label": "케이블 덕트",
+          "count": 0
+        },
+        {
+          "row": "P",
+          "side": "후면",
+          "label": "(여백)",
+          "count": 0
+        }
+      ],
+      "channelFrames": {
+        "SICAS_CHANNEL_FRAME": {
+          "title": "채널 프레임 (VESUV3 · VENUS3 · VESIN · BUMA · MELDE2 · KOMDA2)",
+          "boardOrder": [
+            "SICAS_VESUV3",
+            "SICAS_VENUS3",
+            "SICAS_VESIN",
+            "SICAS_BUMA",
+            "SICAS_MELDE2",
+            "SICAS_KOMDA2"
+          ],
+          "note": "채널 A/B/C 모두 동일한 6종 보드가 같은 순서로 반복됩니다."
+        }
+      },
+      "olmProfibusTopology": {
+        "title": "OLM–BUMA Profibus 배선 구조 (SICAS51/52 상세, 신도림 실측)",
+        "note": "[2026-09-09 추가, 21차] 사용자 제공 SICAS51/52 캐비닛 배선도 사진 10장 기반. 'BUMA 기능·LED 설명표'(사진 속 별도 표 — 기능 1~7번 설명 및 FS/VS/E/S/SF/BK/ME/KO/L1/L2 LED 색상표)는 사용자 요청으로 이번 반영 대상에서 제외했습니다 — board-info.json의 SICAS_BUMA 항목을 참고하세요.",
+        "station": "신도림",
+        "olmPairsByCabinet": {
+          "SICAS52": [
+            "A1/A2",
+            "A5/A6",
+            "B1/B2",
+            "B5/B6"
+          ],
+          "SICAS51": [
+            "A1/A2",
+            "A21/A22",
+            "A5/A6",
+            "B1/B2",
+            "B21/B22",
+            "B5/B6"
+          ]
+        },
+        "olmPairCountNote": "SICAS51의 OLM 쌍(6쌍)이 SICAS52(4쌍)보다 많은 것은 SICAS51이 외부(인접역) Profibus 링크를 더 많이 담당하기 때문으로 보입니다(아래 adjacentStationLinks 참고) — 사진상 관찰이며 문서 대조는 아직 하지 않았습니다.",
+        "olmPinRoleNote": "사진상 OLM 쌍의 CH2/CH3 핀이 외부(인접 캐비닛/인접역) Profibus 링크를 담당하고, CH1 핀은 'C' 라벨 케이블로 같은 캐비닛 내부 BUMA 슬롯 열까지 내려가는 것으로 표시되어 있습니다.",
+        "adjacentStationLinks": {
+          "fromSICAS51": [
+            "to SNU1 +S41_BUMA0 A/B",
+            "to SIN2 +S52_BUMA0 A/B",
+            "to HON +S61_BUMA0 A/B",
+            "to YAN +S71_BUMA0 A/B"
+          ],
+          "fromSICAS52": [
+            "to SIN1 +S51_BUMA0 A/B",
+            "to SIN1 +S51_BUMA2 A/B"
+          ],
+          "caution": "위 코드는 배선도에 인쇄된 문자를 그대로 옮긴 것입니다. SNU1/HON/YAN이 실제 어느 역을 가리키는지는 확인하지 않았습니다(추측 금지 원칙) — 다른 역명 대조표가 있으면 알려주세요. '=SIN1'/'=SIN2' 접두는 이 프로젝트의 다른 도면에서 '당역(신도림) 캐비닛1/캐비닛2'를 뜻하는 패턴과 일치해 SIN2→SICAS52를 가리키는 것으로 보이나, 이 역시 확정은 아닙니다.",
+          "verify": "미확인, 원본자료 대조 필요"
+        },
+        "internalStekopPath": {
+          "note": "SICAS51-BUMA0~6가 CH-A/CH-B를 통해 내부적으로 OLM을 경유해 STEKOP 보드와 연결되는 배선도(빨간선, 포트 '1')를 별도 사진에서 확인했습니다. 각 BUMA가 관리하는 STEKOP 개수 등 구체적인 기능 수치는 이번에는 반영하지 않았습니다(사용자 요청으로 'BUMA 기능·LED 설명표' 내용 제외) — 필요하면 board-info.json SICAS_BUMA 항목에 별도로 정리하겠습니다."
+        },
+        "lzbCableTables": {
+          "note": "LZB51(신도림F51 201BT~당산F55 L440T), LZB52(신대방F56 020T~신도림F59 390T) 케이블 대응표가 사진에 있으나, F51~F59 컬럼 전체(약 150칸)를 셀 단위로 옮기기엔 사진 해상도·반사로 인한 오독 위험이 커서 이번에는 표의 '존재'와 '범위'만 기록했습니다. 정확한 전체 표가 필요하면 더 선명한 사진이나 원본 도면을 요청드리겠습니다.",
+          "verify": "미확인, 원본자료 대조 필요"
+        }
+      }
+    },
+    "ECDSTT": {
+      "title": "선로전환기·신호기 인터페이스 제어기(EC/DSTT) 캐비닛 구성도",
+      "note": "전면/후면 행 배치(A~W행)와 보드 종류는 SIEMENS 표준 규격이라 다른 연동역에서도 동일합니다. [신도림 기준] 이 역에는 동일한 물리 레이아웃의 EC/DSTT 캐비닛이 T51, T52 두 대 있고, T51은 선로전환기 P201~P204·신호기 S02~S18을, T52는 선로전환기 P205~P206·신호기 S16~S24를 담당합니다(출처: EC/DSTT T51/T52 M단자 도면, ECDSTT 지침서.pdf p.64 및 현장 사진). 다른 역은 캐비닛 대수와 담당범위가 다를 수 있으니 현장에서 재확인하세요 — 'instances'는 신도림 사례이며, 구조(rows)만 재사용하면 됩니다.",
+      "instances": [
+        "T51",
+        "T52"
+      ],
+      "boards": [
+        {
+          "row": "A",
+          "side": "전면",
+          "label": "전원공급장치 (PS CH1 x2, PS CH2 x2)",
+          "boardRef": "ECDSTT_PS",
+          "count": 4
+        },
+        {
+          "row": "B",
+          "side": "전면",
+          "label": "STEKOP (인터페이스 모듈 커플러)",
+          "boardRef": "ECDSTT_STEKOP",
+          "count": 7
+        },
+        {
+          "row": "C",
+          "side": "전면",
+          "label": "(빈 슬롯)",
+          "count": 0
+        },
+        {
+          "row": "D",
+          "side": "전면",
+          "label": "DEWEMO",
+          "boardRef": "ECDSTT_DEWEMO",
+          "count": 2
+        },
+        {
+          "row": "E",
+          "side": "전면",
+          "label": "DEWEMO",
+          "boardRef": "ECDSTT_DEWEMO",
+          "count": 2
+        },
+        {
+          "row": "F",
+          "side": "전면",
+          "label": "DEWEMO",
+          "boardRef": "ECDSTT_DEWEMO",
+          "count": 2
+        },
+        {
+          "row": "G",
+          "side": "전면",
+          "label": "전원공급 터미널단자 (-X3)",
+          "count": 0
+        },
+        {
+          "row": "H",
+          "side": "전면",
+          "label": "DEWEMO 제어·모터 휴즈",
+          "count": 0
+        },
+        {
+          "row": "L",
+          "side": "전면",
+          "label": "OT 및 I/F 터미널단자 (-X1)",
+          "count": 0
+        },
+        {
+          "row": "M",
+          "side": "후면",
+          "label": "OLM's",
+          "boardRef": "ECDSTT_OLM",
+          "count": 0
+        },
+        {
+          "row": "N",
+          "side": "후면",
+          "label": "Platter (-X4)",
+          "boardRef": "ECDSTT_PLATTER",
+          "count": 1
+        },
+        {
+          "row": "P",
+          "side": "후면",
+          "label": "DESIMO",
+          "boardRef": "ECDSTT_DESIMO",
+          "count": 2
+        },
+        {
+          "row": "Q",
+          "side": "후면",
+          "label": "DESIMO",
+          "boardRef": "ECDSTT_DESIMO",
+          "count": 2
+        },
+        {
+          "row": "R",
+          "side": "후면",
+          "label": "계전연동 I/F, AR계전기",
+          "boardRef": "ECDSTT_ARRELAY",
+          "count": 0
+        },
+        {
+          "row": "S",
+          "side": "후면",
+          "label": "(터미널 스트립)",
+          "count": 0
+        },
+        {
+          "row": "T",
+          "side": "후면",
+          "label": "DESIMO 휴즈",
+          "count": 0
+        },
+        {
+          "row": "U",
+          "side": "후면",
+          "label": "(터미널 스트립)",
+          "count": 0
+        },
+        {
+          "row": "W",
+          "side": "후면",
+          "label": "OT 및 I/F 터미널단자 (-X2)",
+          "count": 0
+        }
+      ],
+      "stekopSlotAssignment": [
+        {
+          "slot": "N11",
+          "cabinet": "T52",
+          "function": "선로전환기 P205/P206 (HS1·right·left·HS2·NO failure·UMS)",
+          "source": "\"신도림 T52 STEKOP LED 표시상태 설명(ATO)\" 부착표"
+        },
+        {
+          "slot": "N31",
+          "cabinet": "T52",
+          "function": "R/I(Relay Interface) - P202·P201A/B·P203A/B·P204A/B (Right/Left lock)",
+          "source": "동일 부착표"
+        },
+        {
+          "slot": "N51",
+          "cabinet": "T52",
+          "function": "신호기 S16·S18 + Route indicator",
+          "source": "동일 부착표"
+        },
+        {
+          "slot": "N71",
+          "cabinet": "T52",
+          "function": "신호기 S20·S22 + Route indicator",
+          "source": "\"신도림 T52 STEKOP LED 표시상태 설명(ATO-ATS R/I)\" 부착표"
+        },
+        {
+          "slot": "N91",
+          "cabinet": "T52",
+          "function": "신호기 S24 + Route indicator",
+          "source": "동일"
+        },
+        {
+          "slot": "N111",
+          "cabinet": "T52 (문서)",
+          "function": "R/I - P205A/B·P206A/B",
+          "source": "동일",
+          "verify": "실측 사진에서는 N111 라벨 STEKOP 보드에 P201/202/203 표시 LED 라벨이 부착되어 있어 문서(T52)와 배정이 다름. 사진 촬영 캐비닛이 T51인지 재확인 필요 - 미확인. [2026-09-07 추가조사] 사용자 제공 'SICAS HW Design White_SIN1.pdf'에서 T51(=SIN1/08.02.11)·T52(=SIN1/08.02.21) STEKOP-Platter 배정표를 모두 확인했고, 이 문서상 T52 N111 배정은 위 field label표(N111=T52, R/I P205A/B·P206A/B)와 정확히 일치함 — 즉 '문서상 배정' 자체는 재확인·재확정됨. 다만 실측 사진(P201/202/203 라벨)과의 불일치는 여전히 해소되지 않았음 — 이는 문서 대조로는 풀리지 않는 현장 실측 문제(사진 촬영 캐비닛이 실제로 T51인지 T52인지)이므로, 현장에서 캐비닛 외부 라벨(T51/T52 표기)을 직접 재확인해야 함."
+        },
+        {
+          "slot": "N131",
+          "cabinet": "T52 (문서)",
+          "function": "R/I - S16·S18·S20·S22·S24",
+          "source": "동일",
+          "verify": "실측 사진에서는 N131 라벨 STEKOP 보드에 Signal S02~S18 + P201~203 lock 라벨이 부착되어 있어 문서(T52)와 배정이 다름. 사진 촬영 캐비닛이 T51인지 재확인 필요 - 미확인. [2026-09-07 추가조사] SICAS HW Design White_SIN1.pdf의 T51(=SIN1/08.02.11)·T52(=SIN1/08.02.21) 배정표 확인 결과, 문서상 N131=T52 배정(R/I S16·S18·S20·S22·S24)은 field label표와 정확히 일치 — '문서상 배정'은 재확정됨. 실측 사진과의 불일치는 문서 대조가 아니라 현장 캐비닛 라벨 재확인으로만 해소 가능."
+        },
+        {
+          "slot": "N151",
+          "cabinet": "T52",
+          "function": "STEKOP-파워 DC 8V",
+          "source": "동일"
+        }
+      ],
+      "stekopSlotAssignmentPhotoObserved": [
+        {
+          "slot": "N111",
+          "cabinet": "미확인(추정 T51)",
+          "function": "P201 Right/Left 표시(반위/정위), P202 Right/Left 표시(정위/반위), P203 표시(정위/반위) - Channel1·Channel2 동일",
+          "source": "현장 사진(신도림, 날짜스티커 2017.8.18 교체)"
+        },
+        {
+          "slot": "N131",
+          "cabinet": "미확인(추정 T51)",
+          "function": "Signal S02·S04·S06·S08·S18, P201/202/203 Right·Left lock - Channel1·Channel2 동일",
+          "source": "현장 사진"
+        }
+      ],
+      "powerFlow": [
+        {
+          "stage": "1. ATO 분전반 60V",
+          "desc": "Fuse(4A) → filter → SV2602 x4 (60/8V 변환)",
+          "boardRef": null
+        },
+        {
+          "stage": "2. ATO 분전반 24V",
+          "desc": "Fuse(10A) → STEKOP",
+          "boardRef": "ECDSTT_STEKOP"
+        },
+        {
+          "stage": "3. ATO 분전반 24V",
+          "desc": "Fuse(6.3A) → filter → Fuse(2A) → OLM 전원",
+          "boardRef": "ECDSTT_OLM"
+        },
+        {
+          "stage": "4. ATO 분전반 110V",
+          "desc": "Fuse(0.2A) x2 → DESIMO X2(12,14) 신호기 램프전원",
+          "boardRef": "ECDSTT_DESIMO"
+        },
+        {
+          "stage": "5. STEKOP → DEWEMO",
+          "desc": "24V: X1(1,2) 표시전원 / X2(4,6) 모타전원(AC110V) / X2(7,10) 제어전원(DC24V). 쌍동시 Fuse(0.4A)/Fuse(16A)로 용량 상이",
+          "boardRef": "ECDSTT_DEWEMO"
+        },
+        {
+          "stage": "6. STEKOP → DESIMO",
+          "desc": "24V: X1(4,8) 공급전원",
+          "boardRef": "ECDSTT_DESIMO"
+        },
+        {
+          "stage": "7. [신도림 실측] 캐비닛 입력단자",
+          "desc": "T51 G전원단자: 24V-1/24V-2 DC (P51 TR7-3/TR8-3). T52 G전원단자: 60V-1/60V-2 DC (P51 TR5-9/TR6-11), 24V-1/24V-2 DC (P51 TR7-5/TR8-5). 이 실측값은 신도림 사례이며, 다른 역은 캐비닛 배선표를 따로 확인해야 합니다.",
+          "boardRef": null
+        }
+      ]
+    },
+    "FTGS": {
+      "title": "AF궤도회로(FTGS) 랙 구성도",
+      "note": "실제 사진(2026-09-07 첨부: AF궤도회로 지침서.pdf 캐비닛 구성도, 3종 보드랙 사진, FTGS917EZS 랙 실측사진, 공식 '표준형(ST타입)/분기형(W타입)/센터패드형' 보드배치도)과 신도림 F51~F59 궤도회로 배치표를 반영했습니다. 랙 1개에 궤도회로 10개분(전면 A~K행, I 제외)이 나란히 들어가고, 후면은 궤도회로 2개당 전원장치 1개를 공유합니다(A,C,E,G,J행). 각 슬롯(A~K)에 실제로 어떤 궤도(표준형 단방향/양방향/분기부/센터패드형)가 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 하며, 이 구성도는 '단방향(가장 흔한 유형, 신도림 88개 중 67개)'을 기본 예시로 표시합니다. [2026-09-08 재정정, 20차 최종] 사용자가 여러 차례 재확인 끝에 최종적으로 '표준형 단방향(T)·양방향(S)은 보드구성이 동일한 7보드이며, 수신1·복조 중복 9보드는 전철기 분기형(W)의 특징'이라고 재확정했습니다.",
+      "station": "신도림",
+      "scopeNote": "[신도림 기준] 신도림 신호기계실 AF/ATO FTGS 궤도회로는 F51~F59 랙 컬럼에 총 88개(단방향 67, 양방향 16, 센터패드형 3, 분기부 2)가 배치되어 있습니다(출처: '신도림 신호기계실 ATO FTGS 궤도회로 구성도' 사용자 제공 사진, 2026-09-07). 랙 컬럼별 정확한 궤도번호 대응표는 원본 사진을 참고하세요 — 이 파일에는 총량과 유형별 개수만 기록합니다. 다른 역은 랙 대수·궤도수·F번호 자체가 다릅니다.",
+      "trackTypeCounts": {
+        "표준형 단방향 (T)": 67,
+        "표준형 양방향 (ST, S917-U)": 16,
+        "센터패드형 (중앙급전형, M)": 3,
+        "전철기 분기부 (W)": 2,
+        "합계": 88,
+        "source": "신도림 신호기계실 ATO FTGS 궤도회로 구성도 (사용자 제공 사진, 2026-09-07)",
+        "namingNote": "[2026-09-08, 20차] T형=표준형 단방향, S형=표준형 양방향, ST형은 통칭. T·S는 보드구성(표준 7보드) 동일, 랙 하단 스위칭/브릿징 유닛 종류로만 구분. W형=전철기 분기형(9보드), M형=센터패드형(10보드)."
+      },
+      "centerPadDetail": {
+        "installCriterion": "일반적으로 폐색구간(궤도회로 1구간) 길이는 약 200m이나, 한 구간 길이가 250m를 초과하는 곳에는 센터패드(중앙 공급식)가 설치됩니다.",
+        "tracks": [
+          "090T",
+          "R430T",
+          "L440T"
+        ],
+        "cbBoxStructure": {
+          "가운데 C/B": "튜닝유니트 1개 + 인터페이스 모듈 1개",
+          "양측 C/B": "인접 궤도 타입에 따라 결정 — 단방향이면 튜닝유니트2+인터페이스1, 양방향이면 튜닝유니트2+인터페이스1+전환모듈1",
+          "note": "센터패드형 궤도 1구간은 C/B박스 3개로 구성."
+        },
+        "openItems": [
+          "[2026-09-09 해결, 23차] 090T/R430T 가운데·양측 C/B박스 매핑 확정 — cbBoxNames 참고 (기존 '미확정' 항목 해소).",
+          "[2026-09-09 해결, 23차] 'M/G/A' 표시 의미 확정 — directionLabels 참고 (기존 '미확정 가설' 항목을 확정 값으로 대체; B라벨은 분기형 전용임도 함께 확정)."
+        ],
+        "source": "사용자 제공 'FTGS 궤도회로 구성도(88EA)' 표 + '13.센터패드형 궤도회로(M)' 공식 교육자료 사진 + 사용자 설명 (2026-09-07)",
+        "cbBoxNames": {
+          "note": "[2026-09-09 확정, 23차] 센터패드형 궤도 1구간당 C/B박스 3개(가운데 1 + 양측 2)의 실제 명칭. SIEMENS 실측조정표(L4129, 신도림 090T/R430T/L440T 3건)에서 가운데 박스는 궤도명 그대로 인쇄되어 있음(예: '090T', 'box no.*' 표기 = transmitter in basic position 담당 박스). 이 프로젝트에서는 궤도명 자체와 구분하기 위해 가운데 박스 명칭 끝에 'F'를 붙여 표기함(090T→090TF). 양측 박스는 인접한 두 궤도구간 이름을 딴 복합명칭이 매뉴얼에 그대로 인쇄되어 있어 그 표기를 그대로 사용함.",
+          "090T": {
+            "center": "090TF",
+            "centerAsPrinted": "090T",
+            "sides": [
+              "110T/090T",
+              "090T/070T"
+            ]
+          },
+          "R430T": {
+            "center": "R430TF",
+            "centerAsPrinted": "R430T",
+            "sides": [
+              "234-2-010T/234-430RT",
+              "R430T/R410T"
+            ]
+          },
+          "L440T": {
+            "center": "L440TF",
+            "centerAsPrinted": "L440T",
+            "sides": [
+              "234-1-010T/234-440LT",
+              "L440T/205BT"
+            ]
+          },
+          "source": "SIEMENS L4129 실측조정표(신도림 090T·R430T·L440T, 3건) 사용자 제공 사진 (2026-09-09)"
+        },
+        "directionLabels": {
+          "note": "[2026-09-09 확정, 23차] 궤도회로 방향 라벨(M/G/A/B)의 의미를 궤도 유형별로 최종 확정.",
+          "단방향": "G만 존재 (방향전환 없음)",
+          "양방향": "G(정진로)·A(역진로) 2방향 (예: 410T/202T 실측조정표에서 G/A만 확인됨)",
+          "분기형(3방향)": "G(정방향)·A(역방향)·B(분기방향) 3방향",
+          "센터패드형": "M(중간상태)·G(정방향)·A(역방향)",
+          "centerpadOperatingLogic": "센터패드형의 M상태 = 기본상태. 이때 스위칭PCB(FTGS_SWITCHING_PCB)에서는 LED 'S'로 표시되며, 중앙 C/B박스가 기본적으로 송신 상태, 양측 C/B박스는 기본적으로 수신 상태다. 열차 진행에 따라 G방향 또는 A방향으로 전환되면 송수신 상태가 바뀐다 — 양쪽 궤도의 C/B박스로 향하는 진행방향 및 궤도 점유 상태에 따라 어느 쪽이 송신/수신이 되는지가 달라진다.",
+          "source": "사용자 설명(2026-09-09) + SIEMENS L4129 실측조정표 G/M/A 박스 표기 대조 (센터패드 090T/R430T/L440T=M/G/A 3단, 양방향 410T/202T=G/A 2단만 존재하는 것으로 확인)"
+        }
+      },
+      "switchingLevelShelf": {
+        "title": "스위칭/브릿징 유닛 (전면 하단, 궤도 1개당 1개씩 배치)",
+        "desc": "[2026-09-08 확정, 20차] 궤도(트랙) 1개당 1개씩 배치되는 개별 유닛 — 신도림 전체 궤도 개수(88개)와 총 개수 일치. [2026-09-09 재확인, 23차] 사용자가 궤도 1개당 1개 배치 원칙과 괄호숫자(ATS 옛 궤도번호, 무의미) 처리를 다시 한번 확인 — 기존 결론 그대로 유지.",
+        "variants": {
+          "스위칭 유닛 (Switching Unit)": {
+            "partNumber": "S25533-B43-A2 / S25533-B43-A3",
+            "ledCount": 3,
+            "ledLabels": [
+              "S",
+              "A",
+              "B"
+            ],
+            "use": "양방향 궤도용"
+          },
+          "브릿징 유닛 (Bridging Unit)": {
+            "partNumber": "S25533-B51-A2",
+            "ledCount": 1,
+            "ledLabels": [
+              "S"
+            ],
+            "use": "단방향 궤도용"
+          }
+        },
+        "ledCountRule": "LED 3개 = 양방향(스위칭 유닛), LED 1개 = 단방향(브릿징 유닛).",
+        "openItems": [
+          "브릿지저항과는 서로 다른 별개 제품(확정).",
+          "메인 숫자=실제 궤도번호, 괄호 숫자=철거된 ATS 궤도번호(무의미, 확정).",
+          "랙별 정확한 궤도 대응은 미확정."
+        ],
+        "source": "사용자 제공 FTGS917EZS 랙 실측사진 + 손글씨 설명 (2026-09-07)"
+      },
+      "partNumberCaution": "AF궤도회로(FTGS-917) 송신보드 = S25533-B30-A5. ATO-LOOP(FTGS-46) 송신보드 = S25533-B30-A4. 겉모습이 비슷해도 서로 호환되지 않으므로 교체 시 반드시 품번을 확인할 것.",
+      "boards": [
+        {
+          "row": "A",
+          "side": "전면",
+          "label": "궤도회로 프레임 — 표준형 단방향(T, 필터&증폭·송신·수신1·복조·수신2·계전기·텔레그램전환, 7보드)",
+          "frameRef": "FTGS_FRAME_STD",
+          "count": 7
+        },
+        {
+          "row": "B",
+          "side": "전면",
+          "label": "궤도회로 프레임 — 표준형 양방향(S, 7보드)",
+          "frameRef": "FTGS_FRAME_BIDIR",
+          "count": 7
+        },
+        {
+          "row": "C",
+          "side": "전면",
+          "label": "궤도회로 프레임 — 전철기 분기형(W, 9보드)",
+          "frameRef": "FTGS_FRAME_BRANCH",
+          "count": 9
+        },
+        {
+          "row": "D",
+          "side": "전면",
+          "label": "궤도회로 프레임 — 센터패드형(M, 10보드)",
+          "frameRef": "FTGS_FRAME_CENTERPAD",
+          "count": 10
+        },
+        {
+          "row": "E",
+          "side": "전면",
+          "label": "궤도회로 프레임 — ST(표준형)·W(분기형)·M(센터패드형) 중 1개가 들어있음",
+          "count": 0,
+          "note": "실제로 어떤 유형이 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 합니다."
+        },
+        {
+          "row": "F",
+          "side": "전면",
+          "label": "궤도회로 프레임 — ST(표준형)·W(분기형)·M(센터패드형) 중 1개가 들어있음",
+          "count": 0,
+          "note": "실제로 어떤 유형이 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 합니다."
+        },
+        {
+          "row": "G",
+          "side": "전면",
+          "label": "궤도회로 프레임 — ST(표준형)·W(분기형)·M(센터패드형) 중 1개가 들어있음",
+          "count": 0,
+          "note": "실제로 어떤 유형이 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 합니다."
+        },
+        {
+          "row": "H",
+          "side": "전면",
+          "label": "궤도회로 프레임 — ST(표준형)·W(분기형)·M(센터패드형) 중 1개가 들어있음",
+          "count": 0,
+          "note": "실제로 어떤 유형이 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 합니다."
+        },
+        {
+          "row": "J",
+          "side": "전면",
+          "label": "궤도회로 프레임 — ST(표준형)·W(분기형)·M(센터패드형) 중 1개가 들어있음",
+          "count": 0,
+          "note": "실제로 어떤 유형이 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 합니다."
+        },
+        {
+          "row": "K",
+          "side": "전면",
+          "label": "궤도회로 프레임 — ST(표준형)·W(분기형)·M(센터패드형) 중 1개가 들어있음",
+          "count": 0,
+          "note": "실제로 어떤 유형이 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 합니다."
+        },
+        {
+          "row": "L",
+          "side": "전면",
+          "label": "퓨즈 레일 (궤도회로 공통 퓨즈)",
+          "count": 0
+        },
+        {
+          "row": "M",
+          "side": "전면",
+          "label": "단자대 (현장 송·수신 케이블 인출)",
+          "count": 0
+        },
+        {
+          "row": "N",
+          "side": "전면",
+          "label": "단자대 (예비)",
+          "count": 0
+        },
+        {
+          "row": "A",
+          "side": "후면",
+          "label": "전원장치 (궤도회로 2개분 공유)",
+          "boardRef": "FTGS_POWER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "C",
+          "side": "후면",
+          "label": "전원장치 (궤도회로 2개분 공유)",
+          "boardRef": "FTGS_POWER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "E",
+          "side": "후면",
+          "label": "전원장치 (궤도회로 2개분 공유)",
+          "boardRef": "FTGS_POWER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "G",
+          "side": "후면",
+          "label": "전원장치 (궤도회로 2개분 공유)",
+          "boardRef": "FTGS_POWER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "J",
+          "side": "후면",
+          "label": "전원장치 (궤도회로 2개분 공유)",
+          "boardRef": "FTGS_POWER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "L",
+          "side": "후면",
+          "label": "브릿지저항 (현장 송신전압 조정용)",
+          "count": 0,
+          "note": "브릿지저항과 switchingLevelShelf의 브릿징/스위칭 유닛은 서로 다른 별개 제품(확정)."
+        },
+        {
+          "row": "M",
+          "side": "후면",
+          "label": "후면 커넥터 (PLUG 21/25/31-35/51-55/61-62)",
+          "count": 0
+        },
+        {
+          "row": "P",
+          "side": "전면",
+          "label": "스위칭/브릿징 유닛 (궤도 1개당 1개씩) — 예시: 브릿징(단방향용) 5개 + 스위칭(양방향용) 5개",
+          "boardOrder": [
+            "FTGS_BRIDGING_PCB",
+            "FTGS_BRIDGING_PCB",
+            "FTGS_BRIDGING_PCB",
+            "FTGS_BRIDGING_PCB",
+            "FTGS_BRIDGING_PCB",
+            "FTGS_SWITCHING_PCB",
+            "FTGS_SWITCHING_PCB",
+            "FTGS_SWITCHING_PCB",
+            "FTGS_SWITCHING_PCB",
+            "FTGS_SWITCHING_PCB"
+          ]
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "label": "C/B박스 (단방향용) — 튜닝 유닛×2 + 인터페이스 모듈×1",
+          "boardRef": "FTGS_CB_UNI",
+          "count": 1,
+          "note": "[2026-09-15] 기계실 설비가 아니라 현장(트랙사이드) 설비라 별도 '현장설비' 탭으로 분리함. 단방향(T형) 궤도회로용 C/B박스 구성."
+        },
+        {
+          "row": "2",
+          "side": "현장설비",
+          "label": "C/B박스 (양방향용) — 튜닝 유닛×2 + 전환 모듈×2",
+          "boardRef": "FTGS_CB_BI",
+          "count": 1,
+          "note": "양방향(ST형) 궤도회로용 C/B박스 구성."
+        },
+        {
+          "row": "3",
+          "side": "현장설비",
+          "label": "C/B박스 (센터패드용) — 튜닝 유닛×1 + 인터페이스 모듈×1",
+          "boardRef": "FTGS_CB_CENTERPAD",
+          "count": 1,
+          "note": "센터패드형(M형) 궤도회로 1구간의 가운데 C/B박스 구성. 양측 C/B박스는 인접 궤도 타입에 맞춰 단방향용(인접이 단방향일 때) 또는 혼합형(인접이 양방향일 때, 아래 행 참고) 중 하나가 쓰인다(centerPadDetail 참고). [2026-09-16 정정] 이전 note에 '단방향용/양방향용 중 하나'라고 적었던 것은 부정확 — 양측 C/B박스는 순수 양방향용(전환모듈×2)이 아니라 혼합형(인터페이스×1+전환모듈×1)이 쓰인다."
+        },
+        {
+          "row": "4",
+          "side": "현장설비",
+          "label": "C/B박스 (혼합형: 단방향+양방향 궤도 공용) — 튜닝 유닛×2 + 인터페이스 모듈×1 + 전환 모듈×1",
+          "boardRef": "FTGS_CB_MIXED",
+          "count": 1,
+          "note": "[2026-09-16 신규] 사용자 확인(2026-09-16)으로 추가한 세 번째 실제 구성 — 한 C/B박스 안에 단방향 궤도 1개와 양방향 궤도 1개가 함께 접속되는 경우(예: 센터패드형의 양측 C/B박스가 인접 양방향 궤도와 만나는 경우)에 쓰인다. 이전까지는 '단방향끼리(튜닝2+인터페이스1)'와 '양방향끼리(튜닝2+전환모듈2)' 두 이미지만 요청받아 만들었는데, 실제로는 이 혼합형이 별도로 존재한다 — 구성 불일치가 아니라 세 번째 유형이 누락되어 있었던 것."
+        },
+        {
+          "row": "5",
+          "side": "현장설비",
+          "label": "S본드 (S-Bond)",
+          "count": 0,
+          "measurePointRef": [
+            "MP_FTGS_SBOND"
+          ],
+          "note": "ESJ(전기절연이음매)의 한 형식. 별도 보드 이미지는 없으나 실물 사진·동영상을 붙여둘 수 있음(행을 누르면 사진 첨부 화면으로 이동)."
+        },
+        {
+          "row": "6",
+          "side": "현장설비",
+          "label": "D/C박스 (DC Box)",
+          "count": 0,
+          "measurePointRef": [
+            "MP_FTGS_DCBOX"
+          ],
+          "note": "선 연장용 중간 단자함(자체 정상범위 없음, 통과 지점). 별도 보드 이미지는 없으나 실물 사진·동영상을 붙여둘 수 있음(행을 누르면 사진 첨부 화면으로 이동)."
+        }
+      ],
+      "channelFrames": {
+        "FTGS_FRAME_STD": {
+          "title": "표준형 단방향(T) 보드 순서",
+          "boardOrder": [
+            "FTGS_AMP_FILTER_PCB",
+            "FTGS_TX_PCB",
+            "FTGS_RX1_PCB",
+            "FTGS_DEMOD_PCB",
+            "FTGS_RX2_PCB",
+            "FTGS_GF_RELAY_PCB",
+            "FTGS_TELEGRAM_SWITCH_PCB"
+          ],
+          "note": "신도림 88개 중 67개가 이 7보드 구성."
+        },
+        "FTGS_FRAME_BIDIR": {
+          "title": "표준형 양방향(S형) 보드 순서 — 표준 7보드",
+          "boardOrder": [
+            "FTGS_AMP_FILTER_PCB",
+            "FTGS_TX_PCB",
+            "FTGS_RX1_PCB",
+            "FTGS_DEMOD_PCB",
+            "FTGS_RX2_PCB",
+            "FTGS_GF_RELAY_PCB",
+            "FTGS_TELEGRAM_SWITCH_PCB"
+          ],
+          "note": "[2026-09-08 최종 확정, 20차] T형·S형 모두 표준 7보드. 차이는 랙 하단 스위칭/브릿징 유닛."
+        },
+        "FTGS_FRAME_BRANCH": {
+          "title": "전철기 분기부(W타입) 보드 순서 — 이중 수신체인 9보드",
+          "boardOrder": [
+            "FTGS_AMP_FILTER_PCB",
+            "FTGS_TX_PCB",
+            "FTGS_RX1_PCB",
+            "FTGS_DEMOD_PCB",
+            "FTGS_RX2_PCB",
+            "FTGS_GF_RELAY_PCB",
+            "FTGS_RX1_PCB",
+            "FTGS_DEMOD_PCB",
+            "FTGS_TELEGRAM_SWITCH_PCB"
+          ],
+          "note": "신도림 2개 궤도가 이 유형."
+        },
+        "FTGS_FRAME_CENTERPAD": {
+          "title": "센터패드형(M) 보드 순서 — 이중 수신체인 10보드",
+          "boardOrder": [
+            "FTGS_AMP_FILTER_PCB",
+            "FTGS_TX_PCB",
+            "FTGS_RX1_PCB",
+            "FTGS_DEMOD_PCB",
+            "FTGS_RX2_PCB",
+            "FTGS_GF_RELAY_PCB",
+            "FTGS_RX1_PCB",
+            "FTGS_DEMOD_PCB",
+            "FTGS_TELEGRAM_SWITCH_PCB",
+            "FTGS_TX_SWITCH_PCB"
+          ],
+          "note": "신도림 3개(090T/R430T/L440T)."
+        }
+      },
+      "powerFlow": [
+        {
+          "stage": "1. 외부전원 입력 → 전원장치",
+          "desc": "AC220V(+10%/-15%), 60Hz(±2%)가 FTGS 랙 후면 전원장치(PULS)로 입력됩니다.",
+          "boardRef": "FTGS_POWER_UNIT"
+        },
+        {
+          "stage": "2. 송신 PCB → 증폭&필터 PCB",
+          "desc": "송신 PCB가 만든 변조신호가 증폭&필터 PCB로 전달됩니다.",
+          "boardRef": "FTGS_AMP_FILTER_PCB",
+          "measurePointRef": [
+            "MP_FTGS_AMP_OUT"
+          ]
+        },
+        {
+          "stage": "3. 브릿지저항 → 현장 송신",
+          "desc": "후면 브릿지저항으로 전압을 조정한 뒤 현장 레일로 송신합니다.",
+          "measurePointRef": [
+            "MP_FTGS_TX_FIELD"
+          ]
+        },
+        {
+          "stage": "4. 현장 수신 → 수신-1 PCB",
+          "desc": "현장 C/B Box에서 돌아온 수신신호가 수신-1 PCB로 들어옵니다.",
+          "boardRef": "FTGS_RX1_PCB",
+          "measurePointRef": [
+            "MP_FTGS_RX1_E",
+            "MP_FTGS_RX1_I"
+          ]
+        },
+        {
+          "stage": "5. 복조 → 수신2 → GF계전기 PCB",
+          "desc": "GF계전기 PCB가 점유/비점유 접점신호를 SICAS·LZB로 출력합니다.",
+          "boardRef": "FTGS_GF_RELAY_PCB",
+          "measurePointRef": [
+            "MP_FTGS_RELAY"
+          ]
+        }
+      ]
+    },
+    "ATO Loop 제어함": {
+      "title": "ATO Loop 제어함 (Controller Box) 구성도",
+      "note": "승강장 선로변에 설치되는 소형 제어함으로, 캐비닛이 아니라 하나의 함체 안에 보드가 배치되는 구조입니다.",
+      "station": "전역 공통",
+      "scopeNote": "부품 구성(전원장치·FTGS-46 보드셋·REMEMO·FUUELL)은 표준 규격이라 다른 역에서도 동일합니다.",
+      "boards": [
+        {
+          "row": "1",
+          "side": "ATO Loop 제어함",
+          "label": "[함체 상단] Module Rack — FTGS-46 보드셋 좌우대칭 6PCB (필터→증폭→송신 | 송신→증폭→필터)",
+          "frameRef": "ATOLOOP_FTGS46_FRAME",
+          "count": 6
+        },
+        {
+          "row": "2",
+          "side": "ATO Loop 제어함",
+          "label": "Fan unit",
+          "boardOrder": [
+            "ATOLOOP_FAN"
+          ]
+        },
+        {
+          "row": "3",
+          "side": "ATO Loop 제어함",
+          "label": "Power supply module (중앙) — 좌측에 X5, 우측에 X1·X6 단자 부착",
+          "boardRef": "ATOLOOP_POWER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "4",
+          "side": "ATO Loop 제어함",
+          "label": "Filter · Trans · 릴레이보드(REMEMO) · 기능제어보드(FUUEL1) · 기능제어보드(FUUEL2) — 5개 나란히 배치",
+          "boardOrder": [
+            "ATOLOOP_REMEMO",
+            "ATOLOOP_FUUELL",
+            "ATOLOOP_FUUELL"
+          ],
+          "note": "좌측부터 Filter, Trans(변압기), REMEMO, FUUEL1(Loop1 감시), FUUEL2(Loop2 감시) 순. [2026-09-15] Filter·Trans는 실물 이미지 자료가 없어 텍스트로만 유지, REMEMO·FUUELL(기능제어보드) 2개는 이미지 반영."
+        },
+        {
+          "row": "5",
+          "side": "ATO Loop 제어함",
+          "label": "[함체 하단] 단자대 X7 · X2(230V/60Hz 전원입력) · X3(폭넓은 다핀) · X4",
+          "count": 0,
+          "note": "X6은 LZB700M STELA3와 연결(4·5번 Pin=LZB→현장, 10·11번 Pin=현장→LZB)."
+        },
+        {
+          "row": "1",
+          "side": "ATO Loop C/B박스",
+          "label": "ATO Loop C/B박스 — 튜닝 유닛×2 + 인터페이스 모듈×1 (FTGS 단방향용과 동일 구성)",
+          "boardRef": "ATOLOOP_CB",
+          "count": 1,
+          "note": "[2026-09-15 신규] 현장(궤도변) 접속함. 사용자 확인: 구성이 FTGS의 단방향용 C/B박스와 동일(튜닝 유닛 2개 + 인터페이스 모듈 1개)."
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "label": "ATO Loop 코일 (레일 사이 매설)",
+          "count": 0,
+          "measurePointRef": [
+            "MP_LZB_LOOPCOIL"
+          ],
+          "note": "[2026-09-15 신규] 세부 자료 미확보 — 우선 자리만 만들어둠(추후 보강 예정). 별도 보드 이미지는 없으나 실물 사진·동영상을 붙여둘 수 있음(행을 누르면 사진 첨부 화면으로 이동)."
+        }
+      ],
+      "channelFrames": {
+        "ATOLOOP_FTGS46_FRAME": {
+          "title": "Module Rack 내 FTGS-46 보드셋 — 좌우대칭 6PCB",
+          "boardOrder": [
+            "ATOLOOP_FILTER_BOARD",
+            "ATOLOOP_AMP_BOARD",
+            "ATOLOOP_TX_BOARD",
+            "ATOLOOP_TX_BOARD",
+            "ATOLOOP_AMP_BOARD",
+            "ATOLOOP_FILTER_BOARD"
+          ],
+          "note": "[2026-09-15 실측사진 확정] 하나의 Module Rack 안에 필터-증폭-송신-송신-증폭-필터 순으로 좌우대칭 배치됨(기존엔 '본선내선용 3PCB'와 '지선내선용 3PCB'를 별도 행으로 나눠 기록했으나, 실제로는 한 Module Rack 안에 대칭으로 함께 들어있는 구조로 정정). 좌측 3PCB=한 라인(본선내선 또는 외선), 우측 3PCB=다른 라인(지선내선 또는 외선). 본선내선(F9~F10)과 지선내선(F11~F12)은 서로 다른 주파수(4.75~6.25kHz)로 동작."
+        }
+      },
+      "powerFlow": [
+        {
+          "stage": "1. 전원 입력",
+          "desc": "AC230V(+10%/-15%), 60Hz가 X2 단자를 통해 Power supply module로 입력되어 DC5V±3%·DC12V±3%를 만듭니다.",
+          "boardRef": "ATOLOOP_POWER_UNIT"
+        },
+        {
+          "stage": "2. Module Rack: 필터→증폭→송신 (좌우 대칭 2라인)",
+          "desc": "Module Rack 내 6PCB(필터-증폭-송신-송신-증폭-필터)를 거쳐 현장 ATO Loop C/B로 송신합니다.",
+          "boardRef": "ATOLOOP_FILTER_BOARD"
+        },
+        {
+          "stage": "3. 현장 Loop 전류",
+          "desc": "현장 ATO Loop C/B Box 내에서 전류를 측정합니다. 정상범위 1.6~1.9A.",
+          "measurePointRef": [
+            "MP_ATO_LOOP_CURRENT"
+          ]
+        },
+        {
+          "stage": "4. 현장 에러메시지 → REMEMO 릴레이",
+          "desc": "REMEMO 릴레이보드를 거쳐 OT랙 → LZB700M(STELA3)으로 전달됩니다.",
+          "boardRef": "ATOLOOP_REMEMO"
+        },
+        {
+          "stage": "5. FUUELL 감시·경보",
+          "desc": "Loop1/Loop2/FAN 상태를 감시하며 이상 시 적색 LED + 릴레이 개방으로 표시합니다.",
+          "boardRef": "ATOLOOP_FUUELL"
+        }
+      ]
+    },
+    "LZB700M": {
+      "title": "LZB700M (ATP) 캐비닛 구성도",
+      "note": "SIEMENS LZB700M ATP 지상설비 캐비닛. 채널 A/B/C 3중화 구조이며, 채널마다 VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2(×2)·STELA3(×14) 보드가 배치됩니다.",
+      "station": "신도림",
+      "scopeNote": "채널(A/B/C) 3중화 구조와 보드 종류·순서는 SICAS와 동일하게 SIEMENS 표준 규격입니다. 캐비닛 대수(신도림 기준 L51/L52 2대)와 담당범위는 역마다 다릅니다.",
+      "channels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "instances": [
+        "L51",
+        "L52"
+      ],
+      "instanceNote": "[2026-09-08 확정, 20차] L52(신대방~신도림): 내선 010T~390T, 외선 020T~400T. L51(신도림~당산): 내선 202T~750T, 외선 201BT~760T, M400T, 201AT, 203BT, R410T, R430T, 204BT, L420T, 205BT, L440T.",
+      "boards": [
+        {
+          "row": "A",
+          "side": "전면",
+          "label": "케이블 단자대, FAN",
+          "count": 0
+        },
+        {
+          "row": "B",
+          "side": "전면",
+          "label": "채널 A (VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2·MELDE2 + STELA3×14)",
+          "frameRef": "LZB_CHANNEL_FRAME",
+          "channel": "A",
+          "count": 8
+        },
+        {
+          "row": "C",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "D",
+          "side": "전면",
+          "label": "채널 B (VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2·MELDE2 + STELA3×14)",
+          "frameRef": "LZB_CHANNEL_FRAME",
+          "channel": "B",
+          "count": 8
+        },
+        {
+          "row": "E",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "F",
+          "side": "전면",
+          "label": "채널 C (VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2·MELDE2 + STELA3×14)",
+          "frameRef": "LZB_CHANNEL_FRAME",
+          "channel": "C",
+          "count": 8
+        },
+        {
+          "row": "G",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "H",
+          "side": "전면",
+          "label": "속도제한관련 KEY",
+          "count": 0
+        },
+        {
+          "row": "J",
+          "side": "전면",
+          "label": "케이블 단자대",
+          "count": 0
+        },
+        {
+          "row": "K",
+          "side": "전면",
+          "label": "FTGS Distributor",
+          "boardRef": "LZB_FTGS_DISTRIBUTOR",
+          "boardOrder": [
+            "LZB_FTGS_DISTRIBUTOR"
+          ],
+          "count": 1
+        },
+        {
+          "row": "L",
+          "side": "전면",
+          "label": "5V전원 A,B,C (SVK2102) + SECOP",
+          "boardRef": "LZB_SVK2102",
+          "boardOrder": [
+            "LZB_SVK2102",
+            "LZB_SVK2102",
+            "LZB_SVK2102",
+            "LZB_SECOP"
+          ],
+          "count": 4
+        },
+        {
+          "row": "M",
+          "side": "전면",
+          "label": "24V전원 A,B,C,D (SVK2402)",
+          "boardRef": "LZB_SVK2402",
+          "count": 4
+        },
+        {
+          "row": "N",
+          "side": "전면",
+          "label": "FAN",
+          "boardRef": "LZB_FAN",
+          "boardOrder": [
+            "LZB_FAN"
+          ],
+          "count": 1
+        },
+        {
+          "row": "P",
+          "side": "전면",
+          "label": "출력 단자대",
+          "count": 0
+        },
+        {
+          "row": "Q",
+          "side": "전면",
+          "label": "전원 단말레일",
+          "count": 0,
+          "measurePointRef": [
+            "MP_LZB_DC60",
+            "MP_LZB_DC24",
+            "MP_LZB_DC5"
+          ]
+        },
+        {
+          "row": "R",
+          "side": "전면",
+          "label": "(캐비닛 최하단, 케이블 인입부로 추정)",
+          "count": 0
+        }
+      ],
+      "channelFrames": {
+        "LZB_CHANNEL_FRAME": {
+          "title": "채널 프레임 (VESUV3 · VENUS2 · VESPE · VESIN · BUMA · V24KOP · MELDE2 ×2) + STELA3 뱅크(×14)",
+          "boardOrder": [
+            "LZB_VESUV3",
+            "LZB_VENUS2",
+            "LZB_VESPE",
+            "LZB_VESIN",
+            "LZB_BUMA",
+            "LZB_V24KOP",
+            "LZB_MELDE2",
+            "LZB_MELDE2",
+            "LZB_STELA3",
+            "__SEP__",
+            "LZB_STELA3",
+            "__LABEL__×14"
+          ],
+          "note": "[2026-09-08 확정, 19차] MELDE2는 mount pos 55/63 두 곳에 실제로 두 번 장착됨. [2026-09-15] STELA3는 실제로 채널당 14개가 장착되지만(mountPositions 참고) 이미지 타일은 대표로 2개만 표시하고 '~' 구분 기호와 '×14' 텍스트로 실제 수량을 나타냄.",
+          "stela3": {
+            "count": 14,
+            "mountPositions": [
+              87,
+              93,
+              99,
+              105,
+              111,
+              117,
+              123,
+              129,
+              135,
+              141,
+              147,
+              153,
+              159,
+              165
+            ],
+            "partNumber": "S25464-B200-A2",
+            "note": "채널마다 개별로 존재하며 3채널이 공유하지 않는 구조로 확정."
+          }
+        }
+      },
+      "powerFlow": [
+        {
+          "stage": "1. P51 캐비닛 → 전원 단말레일",
+          "desc": "L51은 TR5-3/TR6-3/DIRECT3, L52는 TR5-4/TR6-4/DIRECT4 단자를 통해 급전받습니다."
+        },
+        {
+          "stage": "2. 전원 단말레일 (F1~F8 퓨즈레일)",
+          "desc": "+60V가 F1/F2/F3(10A, 채널별)·F4(3A, 예비)·F5~F8(6A×4, SV1~4)로 분배됩니다.",
+          "measurePointRef": [
+            "MP_LZB_DC60",
+            "MP_LZB_DC24"
+          ]
+        },
+        {
+          "stage": "3. SVK2102 ×3 (5V전원, L행)",
+          "desc": "채널 A/B/C 각각 60V를 받아 5V로 변환합니다.",
+          "boardRef": "LZB_SVK2102",
+          "measurePointRef": [
+            "MP_LZB_DC5"
+          ]
+        },
+        {
+          "stage": "4. SVK2402 ×4 (24V전원, M행)",
+          "desc": "SV1~SV4 24V Periphery 계통에 60V를 받아 24V로 변환합니다.",
+          "boardRef": "LZB_SVK2402",
+          "measurePointRef": [
+            "MP_LZB_DC24"
+          ]
+        },
+        {
+          "stage": "5. 각 채널 보드 (VESUV3~MELDE2, STELA3)",
+          "desc": "SVK2102(5V)·SVK2402(24V)가 공급하는 전원으로 동작합니다."
+        },
+        {
+          "stage": "6. FAN (N행)",
+          "desc": "21~24번 단자(F0.2A)로 급전됩니다.",
+          "boardRef": "LZB_FAN"
+        }
+      ]
+    },
+    "IFC": {
+      "title": "IFC 장치 캐비닛 구성도",
+      "note": "[2026-09-08 신규] IFC 지침서.pdf(사용자 첨부 PDF, 이미지 전체 확인) + 신도림 실측 사진(IFC HUB/FDF/광변환기 연결도 1·2, IFC후면, CAM후면, D/L 신도림03 릴레이결선도, 정차등 32단자표) 반영. IFC 캐비닛은 위에서부터 IFC A계 → IFC B계 → CAM → 표시화면/공유기/키보드 → HUB 순으로 적층되며, 별도 함체로 FDF1/FDF2(광분배함)·MAU(광변환기)·HUB1/HUB2가 인접 설치됩니다.",
+      "station": "신도림",
+      "scopeNote": "[신도림 기준] IFC 캐비닛 구조 자체(8슬롯 카드구성, CAM 이중화)는 SIEMENS/공급사 표준 규격이라 다른 역도 동일합니다. IP주소·정차등 32릴레이 매핑·HUB/FDF 포트배정 등은 신도림 고유 값이므로 다른 역은 원본 도면을 따로 확인해야 합니다.",
+      "boards": [
+        {
+          "row": "1",
+          "side": "전면",
+          "label": "IFC A계 컴퓨터 (8슬롯: ①DI/DO PCI-7434 정차등 ②DI/DO PCI-7432 이중계·EMS ③Profibus카드 ④COM1/LPT1 ⑤Keyboard,Mouse ⑥LAN,Monitor(LAN-1) ⑦4채널RS-232(TWC) ⑧LAN카드(LAN-2))",
+          "boardRef": "IFC_COMPUTER",
+          "count": 1
+        },
+        {
+          "row": "2",
+          "side": "전면",
+          "label": "IFC B계 컴퓨터 (A계와 동일 8슬롯 구성, 이중화)",
+          "boardRef": "IFC_COMPUTER",
+          "count": 1
+        },
+        {
+          "row": "3",
+          "side": "전면",
+          "label": "CAM (이중계 절체장치)",
+          "boardRef": "IFC_CAM",
+          "count": 1
+        },
+        {
+          "row": "4",
+          "side": "전면",
+          "label": "표시화면 / 공유기 / 키보드",
+          "count": 0
+        },
+        {
+          "row": "5",
+          "side": "전면",
+          "label": "HUB A/B",
+          "boardRef": "IFC_HUB",
+          "count": 1
+        },
+        {
+          "row": "후면",
+          "side": "후면",
+          "label": "IFC후면 단자대 CH7/8/9/10 (A/B/TWC 페어) — CH8→TWC2, CH9→TWC3, CH7→독립형MAU→구로디지털(TWC1), CH10→독립형MAU→영등포구청(TWC4)",
+          "boardRef": "IFC_RS232_PORT",
+          "count": 0
+        },
+        {
+          "row": "CAM후면",
+          "side": "후면",
+          "label": "CAM후면 — CH8→TWC2(오렌지선), CH9→TWC3(회색선)",
+          "boardRef": "IFC_CAM",
+          "count": 0
+        },
+        {
+          "row": "D/L Relay 랙",
+          "side": "인접랙",
+          "label": "D/L(정차등) Relay 랙 — 32개 계전기(Relay1~32), IDO_0~IDO_55 매핑",
+          "boardRef": "IFC_DL_RELAY",
+          "count": 32,
+          "noThumb": true
+        },
+        {
+          "row": "EMS T/B",
+          "side": "인접랙",
+          "label": "EMS(비상정지) T/B",
+          "boardRef": "IFC_EMS_RELAY",
+          "count": 0,
+          "noThumb": true
+        }
+      ],
+      "fdfHubMauRack": {
+        "title": "HUB/FDF/광변환기 랙 (신도림 실측, IFC 캐비닛 인접 별도 함체)",
+        "note": "신도림 IFC(HUB,FDF,광변환기)연결도 1·2 실측사진 기준. 연결도1=사령서울대/구로디지털·대림/사령홍대/영등포구청 계열(TWC/SSC 포함), 연결도2=사령양천구청 계열(IFC/SICAS만, 더 단순).",
+        "components": [
+          {
+            "name": "FDF1",
+            "desc": "24포트(1-1~24) 광분배함. 컬럼: 사령서울대/구로디지털/대림/사령홍대/영등포구청. 9,10번·21,22번은 독립형MAU 경유 TWC1(구로디지털)/TWC4(영등포구청) 연결."
+          },
+          {
+            "name": "FDF2",
+            "desc": "22포트 광분배함. 사령양천구청 계열 — IFC/SICAS만."
+          },
+          {
+            "name": "MAU 광변환기 (공용, 연결도1)",
+            "desc": "서울대1RIGHT(A)/(B), 홍대1LEFT(A)/(B), 양천구청LEFT(A)/(B), SSC(A) — UTP로 HUB1/HUB2 연결."
+          },
+          {
+            "name": "독립형 MAU A(좌측)",
+            "desc": "SFC100 경유 → 구로디지털(TWC1)"
+          },
+          {
+            "name": "독립형 MAU B(우측)",
+            "desc": "SFC100 경유 → 영등포구청(TWC4)"
+          },
+          {
+            "name": "HUB1",
+            "desc": "IFC-A(A)/LEFT B(A)/1LEFT(A)/LCC(A)/IFC-B(A) 1행, SSC(A)/1RIGHT(A)/TODS(A)/LMC(A) 2행"
+          },
+          {
+            "name": "HUB2",
+            "desc": "IFC-A(B)/LMC(B), IFC-B(B)/TODS(B)/LCC 행. 별도 소형표: TMS(A)/UPS/1RIGHT(B)/1LEFT(B)/TMS(B)"
+          }
+        ],
+        "boardRef": "IFC_HUB"
+      },
+      "powerFlow": [
+        {
+          "stage": "1. 분전반 → IFC",
+          "desc": "AC220V 직결라인(분전반(AC) PANEL_AC_DIRECT 신C51IFCA/신C51IFCB)에서 IFC A계/B계 컴퓨터로 직접 급전.",
+          "boardRef": "IFC_COMPUTER"
+        },
+        {
+          "stage": "2. DC24V 계통 → IFC DI/DO·EMS",
+          "desc": "분전반(DC) TR8/TR9(DC24V)의 신C51_DIDO·신C51_EMS 계통에서 급전. (DI/DO는 IFC 컴퓨터 내장 슬롯)",
+          "boardRef": "IFC_COMPUTER"
+        },
+        {
+          "stage": "3. DC24V 계통 → D/L Relay",
+          "desc": "분전반(DC) TR10/TR11(DC24V)의 신C51_D_L_RELAY 계통에서 급전, 32개 릴레이(D/L 신도림03) 동작.",
+          "boardRef": "IFC_DL_RELAY"
+        },
+        {
+          "stage": "4. IFC ↔ SICAS",
+          "desc": "Profibus 카드(슬롯③)를 통해 SICAS와 연동정보 교환. (IFC 컴퓨터 내장 슬롯)",
+          "boardRef": "IFC_COMPUTER"
+        },
+        {
+          "stage": "5. IFC ↔ TWC",
+          "desc": "4채널 RS-232(슬롯⑦)로 TWC1~4(IMU-100 TWC2/TWC3 등)와 텔레그램 송수신.",
+          "boardRef": "IFC_RS232_PORT"
+        },
+        {
+          "stage": "6. IFC ↔ 관제",
+          "desc": "LAN카드(슬롯⑥ LAN-1, 슬롯⑧ LAN-2)를 통해 HUB→FDF→MAU 경유 LCC/LMC/SSC/관제CDTS와 통신. (LAN카드는 IFC 컴퓨터 내장 슬롯)",
+          "boardRef": "IFC_COMPUTER"
+        }
+      ]
+    },
+    "TWC": {
+      "title": "TWC 실내/실외 장치 구성도",
+      "note": "[2026-09-08 신규] TWC 지침서.pdf(사용자 첨부 PDF, 이미지 전체 확인) + IMU 100 TWC 실내수신기 인터페이스 슬라이드 반영. TWC 실내장치(IMU-100)는 IFC Rack 상단(연동역) 또는 단독 Rack(TWC제어역)에 설치.",
+      "station": "신도림",
+      "scopeNote": "IMU-100 내부 6보드 구성·커넥터 규격은 표준 규격. TWC2/TWC3 커넥터별 담당 궤도(신도림 지선/외선 매핑)는 신도림 고유 값.",
+      "instances": [
+        "TWC2",
+        "TWC3"
+      ],
+      "boards": [
+        {
+          "row": "실내",
+          "side": "IFC A계 랙 상단",
+          "label": "IMU-100 (전원공급보드/TWC텔레그램수신보드×2/CPU-인터페이스보드/릴레이접점보드×2, 6보드 내장)",
+          "boardRef": "TWC_IMU100",
+          "count": 2,
+          "note": "[2026-09-15 실측 확정] IFC A계 본체 위에 IMU-100 2대가 좌우로 나란히 설치됨(신도림 기준)."
+        },
+        {
+          "row": "실외",
+          "side": "현장",
+          "label": "TWC 증폭모듈 (S1/S2 스위치, 증폭비 1~13배)",
+          "boardRef": "TWC_AMP_MODULE",
+          "count": 0
+        },
+        {
+          "row": "실외",
+          "side": "현장",
+          "label": "TWC Loop 코일",
+          "boardRef": "TWC_LOOP_COIL",
+          "count": 0
+        }
+      ],
+      "connectorAssignment": {
+        "TWC2": [
+          "L420T(대림)신도림지선",
+          "L420T(도림)신도림지선",
+          "420T(대림)신도림외선",
+          "420T(문래)신도림외선",
+          "410T(대림)신도림외선",
+          "410T(문래)신도림외선",
+          "L420T(6량대림)신도림지선",
+          "L420T(6량도림)신도림외선"
+        ],
+        "TWC3": [
+          "R410T(6량도림)신도림지선",
+          "R410T(6량대림)신도림지선",
+          "M400T(신도림Y선)",
+          "R410T(대림)신도림지선",
+          "R410T(도림)신도림지선"
+        ],
+        "공통단자": [
+          "From.UPS(24VDC)",
+          "TO.IF_C(텔레그램)",
+          "25핀커넥터 TO.PSD"
+        ]
+      },
+      "powerFlow": [
+        {
+          "stage": "1. UPS → IMU-100",
+          "desc": "전원장치(UPS)에서 DC24V가 TWC2/TWC3 IMU-100 'From.UPS' 단자로 공급됩니다.",
+          "boardRef": "TWC_IMU100",
+          "measurePointRef": [
+            "MP_TWC_OUT"
+          ]
+        },
+        {
+          "stage": "2. TWC Loop 코일 → 증폭모듈 → IMU-100",
+          "desc": "현장 Loop코일이 받은 텔레그램 신호를 증폭모듈(S1/S2로 1~13배 증폭)이 증폭해 IMU-100으로 전송.",
+          "boardRef": "TWC_AMP_MODULE",
+          "measurePointRef": [
+            "MP_TWC_RX_WAVEFORM"
+          ]
+        },
+        {
+          "stage": "3. IMU-100 → IFC/CAM",
+          "desc": "COM2/3/4(RS-232)로 IFC 및 CAM(TO.IF_C 텔레그램)에 수신 정보 전달.",
+          "boardRef": "TWC_IMU100"
+        },
+        {
+          "stage": "4. IMU-100 → PSD",
+          "desc": "25핀 커넥터(TO.PSD)로 PSD 제어반에 릴레이 접점 정보 전달.",
+          "boardRef": "TWC_IMU100"
+        }
+      ]
+    },
+    "PSD 인터페이스": {
+      "title": "PSD 인터페이스 구성도",
+      "note": "[2026-09-08 신규] PSD/Relay 모듈(FTGS 랙 내)·O.T반 절체보드·VS26_R 단자함(신호기계실 방폭함) 구성. VS26_R은 EC/DSTT·IF_C(정차등 관련 디지털 출력)와 실외 PSD 제어함 사이를 중계하는 신규 확인 요소입니다.",
+      "station": "신도림",
+      "scopeNote": "PSD/Relay 모듈 자체 규격은 공용, VS26_R 단자함 배선은 신도림 실측 사례.",
+      "boards": [
+        {
+          "row": "FTGS 랙 내",
+          "side": "인접",
+          "label": "PSD/Relay 모듈 (1~15번 단자, N/O→LZB / N/C→IFC)",
+          "boardRef": "PSD_RELAY_MODULE",
+          "count": 1
+        },
+        {
+          "row": "O.T반",
+          "side": "인접",
+          "label": "O.T반 PSD 절체보드 (C01~10/A01~10/B01~10)",
+          "boardRef": "PSD_OT_SWITCHOVER_BOARD",
+          "count": 1
+        },
+        {
+          "row": "신호기계실",
+          "side": "방폭함",
+          "label": "VS26_R 단자함 (Phoenix Contact, IP66/ATEX)",
+          "boardRef": "PSD_VS26R_TERMINAL_BOX",
+          "count": 1
+        }
+      ],
+      "vs26rWiring": {
+        "pin1_2": "HFCCO 2.5㎟×2C → EC/DSTT·IF_C(Digital out×2) → 분전함[B24, C24]",
+        "pin4_6": "HFCO 2.5㎟×2C → 분전함[BX110, CX110]",
+        "pin8_10": "HFCO 2.5㎟×2C → 실외 PSD 제어함"
+      },
+      "powerFlow": [
+        {
+          "stage": "1. PSD relay 전원",
+          "desc": "PSD/Relay 모듈 1~4번 단자에 DC60V(분전반(DC) TR6/TR7 F55_PSD 계통)가 공급됩니다.",
+          "boardRef": "PSD_RELAY_MODULE"
+        },
+        {
+          "stage": "2. PSD/Relay → IFC",
+          "desc": "10,11,12,13번(N/C 방식)으로 IFC D I/O(DC24V)에 PSD 열림/닫힘 정보 전달.",
+          "boardRef": "PSD_RELAY_MODULE"
+        },
+        {
+          "stage": "3. PSD/Relay → LZB",
+          "desc": "8,9,14,15번(N/O 방식)으로 LZB에 PSD 정보 전달."
+        },
+        {
+          "stage": "4. VS26_R → 실외 PSD 제어함",
+          "desc": "pin8,10에서 실외 PSD 제어함으로 배선."
+        }
+      ]
+    },
+    "분기부 안전설비": {
+      "title": "신도림역 분기부 신호안전설비 제어랙 구성도",
+      "note": "[2026-09-08 신규] '신도림역 분기부 신호안전설비 제어랙' 실측사진 + '분기부 안전설비 경보벨 동작 케이블 조건(신도림)' 도면(C-16, 2011.10, 서울메트로/서우전설산업) 반영. 제어랙사이즈 2000mm에 TYPE A~E 5종 부품유닛이 조합 설치됩니다.",
+      "station": "신도림",
+      "scopeNote": "TYPE A~E 부품 리스트는 표준 규격 조합이나, 신도림 제어랙의 TYPE별 수량(A×2, B×2, C×3, D×1, E×1)은 신도림 실측값입니다.",
+      "rackComposition": {
+        "제어랙사이즈": "2000mm",
+        "TYPE A": 2,
+        "TYPE B": 2,
+        "TYPE C": 3,
+        "TYPE D": 1,
+        "TYPE E": 1
+      },
+      "boards": [
+        {
+          "row": "1(최상단)",
+          "side": "전면",
+          "label": "TYPE SP (예비, 빈 슬롯)",
+          "count": 0
+        },
+        {
+          "row": "2",
+          "side": "전면",
+          "label": "(지선) TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
+          "count": 1
+        },
+        {
+          "row": "3",
+          "side": "전면",
+          "label": "(지선) TYPE B-1 — NFB BKM-b 15A×2, 단자대BHTN 10A×16",
+          "count": 1
+        },
+        {
+          "row": "4",
+          "side": "전면",
+          "label": "(지선) TYPE C — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MY4N DC24V×2+소켓×2, 단자대BHTN 60A×13",
+          "count": 1
+        },
+        {
+          "row": "5",
+          "side": "전면",
+          "label": "(본선) TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
+          "count": 1
+        },
+        {
+          "row": "6",
+          "side": "전면",
+          "label": "(본선) TYPE B-1 — NFB BKM-b 15A×2, 단자대BHTN 10A×16",
+          "count": 1
+        },
+        {
+          "row": "7",
+          "side": "전면",
+          "label": "(본선) TYPE C-1 — 경보벨1 동작조건 담당(460TPR+L440TPR)",
+          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
+          "count": 1
+        },
+        {
+          "row": "8",
+          "side": "전면",
+          "label": "(본선) TYPE C-2 — 경보벨2 동작조건 담당(370TPR+350TPR)",
+          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
+          "count": 1
+        },
+        {
+          "row": "9",
+          "side": "전면",
+          "label": "TYPE D — RELAY MY4N DC24V×2+소켓×2",
+          "count": 1
+        },
+        {
+          "row": "10(최하단)",
+          "side": "전면",
+          "label": "TYPE E — 단자대BHTN 60A×20",
+          "count": 1
+        }
+      ],
+      "alarmTpr": {
+        "note": "EIB-24→FUSE→8개 병렬 TPR릴레이(pin14+/pin13-): L440TPR/440TPR/460TPR/480TPR/390TPR/370TPR/350TPR + 예비2개.",
+        "경보벨1": "TYPE C-1 — pin11↔안전설비AT0 I/DF↔terminal1(460TPR+L440TPR)↔pin12↔안전설비AT0 I/DF↔terminal2→TYPE C-1",
+        "경보벨2": "TYPE C-2 — pin11↔안전설비AT0 I/DF↔terminal3(370TPR+350TPR)↔pin12↔안전설비AT0 I/DF↔terminal4→TYPE C-2",
+        "drawingRef": "도면번호 C-16, 2011.10, (주)서울메트로/서우전설산업"
+      },
+      "powerFlow": [
+        {
+          "stage": "1. 분전반 → 분기부 안전설비",
+          "desc": "분전반(AC) TR4/TR5(AC110~125V) 계통에서 취급실 판넬 MR/PR계전기로 급전됩니다.",
+          "boardRef": "TURNOUT_SAFETY_MR_RELAY"
+        },
+        {
+          "stage": "2. TPR릴레이 → 경보벨",
+          "desc": "EIB-24 DC전원으로 구동되는 TPR릴레이 조합이 TYPE C-1/C-2를 거쳐 경보벨1/2를 동작시킵니다.",
+          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY"
+        }
+      ]
+    },
+    "분전반(AC)": {
+      "title": "신도림 AC분전반 (TBM-1) 구성도",
+      "note": "[2026-09-08 신규] '신도림 AC분전반표'(손글씨 주석 실측사진) + '신도림 전원반회로도'(TBM-1) 반영. 헤더 범례: A=ATOLOOP, C=IFC, D=ID, L=LZB, M=TMS, S=SICAS, T=EC/DSTT랙, B=TCM100.",
+      "station": "신도림",
+      "scopeNote": "TR1/TR2/TR4/TR5 변압기 용량(10KVA·20KVA)과 직결라인 구성은 신도림 실측값 — 다른 역은 분전반 배선표를 별도 확인해야 합니다.",
+      "boards": [
+        {
+          "row": "TR1",
+          "side": "-",
+          "label": "220/220V 10KVA — FTGS-1(F51~F59) + A51신대방/A52구로디지털/A53대림/A54신도림400T(각32A)",
+          "boardRef": "PANEL_AC_TR1",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "TR2",
+          "side": "-",
+          "label": "220/220V 10KVA — FTGS-2 + A55신도림L420T/A56신도림410T/A57문래/A58영등포구청/A59당산",
+          "boardRef": "PANEL_AC_TR2",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "DIRECT LINE",
+          "side": "-",
+          "label": "220VAC 2P50A 직결 — SICAS/LZB FAN, IFC A/B계, LMC51, LCC51, M51통합감시, C52A/B(HUB/TWC감시), M51TMS",
+          "boardRef": "PANEL_AC_DIRECT",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "TR4",
+          "side": "-",
+          "label": "220/110V 20KVA 125A — T51/T52신호기-1, T51/T52선로전환기-2, 기구함진로표시기, 분기부안전설비",
+          "boardRef": "PANEL_AC_TR4",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "TR5",
+          "side": "-",
+          "label": "220/110V 20KVA — T51/T52신호기-2, T51/T52선로전환기-1, C51DWELLLIGHT, VS전원(가상신호기)",
+          "boardRef": "PANEL_AC_TR5",
+          "count": 1,
+          "noThumb": true
+        }
+      ],
+      "overviewImageRef": "PANEL_AC_OVERVIEW",
+      "powerFlow": [
+        {
+          "stage": "1. 상용전원/UPS → TBM-1",
+          "desc": "UPS OUTPUT TRANSFORMER → UPS OUTPUT 1φ2W220V → TBM-1 (전원장치(UPS) UPS_OUTPUT_DISTRIBUTION 참고).",
+          "boardRef": "UPS_OUTPUT_DISTRIBUTION"
+        },
+        {
+          "stage": "2. TBM-1 → TR1/TR2 (FTGS)",
+          "desc": "FTGS-1/2 퓨즈군(F51~F59)을 거쳐 각 역 궤도회로(신대방~당산)로 급전.",
+          "boardRef": "PANEL_AC_TR1"
+        },
+        {
+          "stage": "3. TBM-1 → DIRECT LINE",
+          "desc": "변압기 없이 SICAS/LZB FAN, IFC A/B계 컴퓨터 등에 직결 급전.",
+          "boardRef": "PANEL_AC_DIRECT"
+        },
+        {
+          "stage": "4. TBM-1 → TR4/TR5 (110V)",
+          "desc": "신호기·선로전환기·정차등·분기부안전설비·가상신호기(VS)에 AC110V 급전.",
+          "boardRef": "PANEL_AC_TR4"
+        }
+      ]
+    },
+    "분전반(DC)": {
+      "title": "신도림 DC분전반 (TBM-2) 구성도",
+      "note": "[2026-09-08 신규] '신도림 DC분전반표'(손글씨 주석 실측사진) + '신도림 전원반회로도'(TBM-2) 반영.",
+      "station": "신도림",
+      "scopeNote": "TR6~TR13 변압기 용량(35A/40A)과 부하배정은 신도림 실측값입니다.",
+      "boards": [
+        {
+          "row": "TR6/TR7",
+          "side": "-",
+          "label": "DC60V 35A 220/47V — S51/S52MAIN, L51/L52ATP, F58ATOLOOP REMEMO, T52ECMAIN, F55PSD I/F",
+          "boardRef": "PANEL_DC_TR6_TR7",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "TR8/TR9",
+          "side": "-",
+          "label": "DC24V 40A 220/19.7V — S51/S52AUX, T51A/T52A OLM, T51B/T52B POINTCONTROL, 신C51DI/DO, 신C51EMS, O52정반위표시등",
+          "boardRef": "PANEL_DC_TR8_TR9",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "TR10/TR11",
+          "side": "-",
+          "label": "DC24V 40A — 구C52TWC, D51MELDE, 신C51D/LRELAY, M52통합감시DI/DO",
+          "boardRef": "PANEL_DC_TR10_TR11",
+          "count": 1,
+          "noThumb": true
+        },
+        {
+          "row": "TR12/TR13",
+          "side": "-",
+          "label": "DC28V 40A 220/23V — UPS경보회로(TR12), 나머지 SPARE",
+          "boardRef": "PANEL_DC_TR12_TR13",
+          "count": 1,
+          "noThumb": true
+        }
+      ],
+      "overviewImageRef": "PANEL_DC_OVERVIEW",
+      "powerFlow": [
+        {
+          "stage": "1. UPS 정류·인버터 → TBM-2",
+          "desc": "UPS_RECTIFIER_UNIT에서 정류된 DC 전원이 TBM-2 각 TR로 분배됩니다.",
+          "boardRef": "UPS_RECTIFIER_UNIT"
+        },
+        {
+          "stage": "2. TR6/TR7 → SICAS/LZB/ATOLOOP/EC-DSTT/PSD",
+          "desc": "DC60V로 MAIN/ATP/REMEMO/EC MAIN/PSD 계전기를 구동.",
+          "boardRef": "PANEL_DC_TR6_TR7"
+        },
+        {
+          "stage": "3. TR8/TR9 → SICAS AUX/LZB STEKOP·OLM/IFC DI-DO·EMS",
+          "desc": "DC24V로 보조전원 및 IFC DI/DO·EMS 구동.",
+          "boardRef": "PANEL_DC_TR8_TR9"
+        },
+        {
+          "stage": "4. TR10/TR11 → TWC/신호MELDE/IFC D-L릴레이/통합감시",
+          "desc": "DC24V로 TWC IMU-100, IFC D/L Relay(정차등) 등 구동.",
+          "boardRef": "PANEL_DC_TR10_TR11"
+        }
+      ]
+    },
+    "전원장치(UPS)": {
+      "title": "ATS&AVR/UPS 전원장치 구성도",
+      "note": "[2026-09-08 신규] 'ATS&AVR/UPS Top Schematic Diagram'(모델 YES-U35-2K/YES-A35-2, 제조사 (주)예성엔지니어링, 2015.02.16 설치, 2호선 신도림신호기계실) 반영.",
+      "station": "신도림",
+      "scopeNote": "ATS&AVR·UPS 유닛 자체는 제조사 표준 규격 35KVA급이나, 정확한 설치연도·제조번호는 신도림 실측값입니다.",
+      "boards": [
+        {
+          "row": "상단",
+          "side": "-",
+          "label": "ATS&AVR 유닛 (3φ-1φ 35KVA) — AC INPUT-1/2(3P4W380V60Hz)→MCCB→ATS CONTROL→ATS VIDER→MAIN/SPARE TR→AC OUTPUT 1P2W220V60Hz",
+          "boardRef": "UPS_ATS_AVR_UNIT",
+          "count": 1
+        },
+        {
+          "row": "하단",
+          "side": "-",
+          "label": "UPS 정류·인버터 유닛 — UPS INPUT(3P4W380V60Hz)→CB1/TR1/CB2/F1→PRE.CHG1→정류(D2/SC1~6/SC2)→HEAT-SINK→제어보드→ST/SW BOARD→SNUBBER BOARD",
+          "boardRef": "UPS_RECTIFIER_UNIT",
+          "count": 1
+        },
+        {
+          "row": "출력",
+          "side": "-",
+          "label": "출력 분배반 (TBL1~4, 8계통) — OUTPUT1:ATO전원(1φ2w220V), OUTPUT2:결선TR1차실외, OUTPUT3/4:정류기(110V), OUTPUT5:TT(110V), OUTPUT6:MOTOR(110V), OUTPUT7/8:LT변압기(110V)",
+          "boardRef": "UPS_OUTPUT_DISTRIBUTION",
+          "count": 1
+        }
+      ],
+      "powerFlow": [
+        {
+          "stage": "1. 상용 AC 입력 → ATS&AVR",
+          "desc": "AC INPUT-1/2(3P4W 380V 60Hz) → MCCB1/2 → ATS CONTROL이 절체 감시, TRIAC 드라이버(MDS-102)+제어보드(MDS-101)가 AVR/BYPASS를 제어.",
+          "boardRef": "UPS_ATS_AVR_UNIT"
+        },
+        {
+          "stage": "2. UPS 입력 → 정류 → 배터리 충전/인버터",
+          "desc": "UPS INPUT(3P4W380V60Hz)이 정류(SC1~6)되고, BATTERY와 연계된 인버터가 SNUBBER BOARD를 거쳐 안정된 출력을 만듭니다.",
+          "boardRef": "UPS_RECTIFIER_UNIT"
+        },
+        {
+          "stage": "3. UPS 출력 → TBM-1/분전반(AC)",
+          "desc": "TBL1~4의 8계통 출력이 UPS OUTPUT TRANSFORMER를 거쳐 TBM-1(분전반(AC))으로 공급되어 ATO전원 등으로 분배됩니다.",
+          "boardRef": "UPS_OUTPUT_DISTRIBUTION"
+        },
+        {
+          "stage": "4. UPS → 분전반(DC) TR12(경보회로)",
+          "desc": "UPS 자체 경보회로는 분전반(DC) TR12(DC28V)에서 별도 급전됩니다."
+        }
+      ]
+    }
+  },
+  "changelog": [
+    "2026-09-07: 사용자가 업로드한 'SICAS 지침서.pdf'의 캐비닛 구성도(p.51)를 기준으로 SICAS 랙에 EC/DSTT와 동일한 row 기반 boards 배열을 신규 추가.",
+    "2026-09-07: 사용자가 첨부한 'AF궤도회로 지침서.pdf'·'ATO LOOP 지침서.pdf' 및 실사진을 반영해 FTGS·ATO Loop 제어함을 실제 배치 자료로 승격.",
+    "2026-09-07: 사용자가 첨부한 'LZB 지침서.pdf'와 실측 사진을 반영해 LZB700M을 kind:'concept'에서 실제 배치 자료(rack)로 승격.",
+    "2026-09-07: 채널 A/B/C 프레임 행의 count 필드 오류 정정(7→8).",
+    "2026-09-07(17차): FTGS 궤도회로 구성도(88EA) 표, 센터패드형 교육자료 반영 — FTGS_FRAME_CENTERPAD 10보드로 정정, centerPadDetail 신규 추가.",
+    "2026-09-07(18차): AF궤도회로 보드배치도·FTGS917EZS 랙 실측사진 반영 — FTGS_FRAME_BRANCH 신규, switchingLevelShelf 신규.",
+    "2026-09-08(19차): 'ATP HW Design_SIN1.pdf' 반영 — LZB_CHANNEL_FRAME 정정(MELDE2×2, STELA3×14 확정), instanceNote에 Sync-Loop 단서 추가.",
+    "2026-09-08(20차): IFC 지침서.pdf·TWC 지침서.pdf(PDF 내 이미지 전체 포함) 및 실측 사진 다수(IFC HUB/FDF/광변환기 연결도, 정차등 32단자표, D/L 신도림03 릴레이결선도, IMU-100 인터페이스, DC/AC분전반표, 전원반회로도 TBM-1/TBM-2, ATS&AVR/UPS Top Schematic Diagram, 분기부 신호안전설비 제어랙 구성도, 경보벨 동작 케이블 조건, VS26_R 단자함)을 반영해 신규 rack 7건 추가: IFC(캐비닛 적층구조+HUB/FDF/MAU 별도랙), TWC(IMU-100+TWC2/TWC3 커넥터), PSD 인터페이스(PSD/Relay모듈+O.T반절체보드+VS26_R단자함), 분기부 안전설비(TYPE A~E 제어랙 구성+경보벨 TPR릴레이 배선), 분전반(AC)(TR1/TR2/DIRECT/TR4/TR5), 분전반(DC)(TR6~TR13), 전원장치(UPS)(ATS&AVR+정류인버터+출력분배반). 기존 SICAS/ECDSTT/FTGS/ATO Loop 제어함/LZB700M 랙 데이터는 변경 없음. [미해결] 가상신호기(VS)는 AC110V 급전 사실(분전반(AC) TR4/TR5)만 확인되고 내부 구조 자료가 없어 이번에도 rack 항목을 만들지 못했습니다 — 계속 보류 상태.",
+    "2026-09-09(22차): 사용자 제공 SICAS51/52 캐비닛 배선도 사진 10장을 반영해 racks.SICAS에 olmProfibusTopology 신규 추가 — OLM쌍 구성(SICAS51 6쌍 vs SICAS52 4쌍), 인접역 Profibus 링크 코드(SNU1/SIN2/HON/YAN, 역명 미확인 상태로 원문 그대로 기록), BUMA↔OLM↔STEKOP 내부 배선 구조, LZB51/52 케이블표 존재 여부. 사용자 요청에 따라 사진 속 'BUMA 기능·LED 설명표'(기능 1~7번 목록, LED 색상표) 내용은 이번 반영에서 명시적으로 제외함 — board-info.json SICAS_BUMA 참고. F51~F59 케이블표 셀 단위 전체 전사는 사진 해상도 문제로 보류(미확인).",
+    "2026-09-09(23차): 사용자가 제공한 SIEMENS L4129 실측조정표 5건(090T/R430T/L440T/410T/202T)을 반영해 racks.FTGS.centerPadDetail에 cbBoxNames(090TF/R430TF/L440TF 가운데·양측 C/B박스 명칭 전체 확정) 및 directionLabels(궤도유형별 M/G/A/B 라벨 의미 확정 — 단방향=G, 양방향=G+A, 분기형=G+A+B, 센터패드형=M+G+A — 및 센터패드 M상태 기본 송수신 로직) 신규 추가. 기존 openItems 2건(090T/R430T 매핑 미확정, M/G/A 의미 미확정 가설) 모두 해결 처리. switchingLevelShelf는 사용자가 궤도당 1개 배치·ATS 괄호숫자 무의미 원칙을 재확인해 기존 결론 유지를 짧게 기록. board-info.json FTGS_SWITCHING_PCB 상세화는 board-info.json changelog 23차 참고. [미해결/확인필요] 사용자가 이번 메시지에서 'ST와 W는 보드 구성상 동일하고 구분은 송신전환 PCB 유무뿐'이라고 언급했는데, 이는 기존에 확정된 결론(T·S=표준 7보드로 서로 동일, W=9보드로 T·S와 다름 — FTGS_FRAME_BIDIR note 참고)과 어긋나 보입니다. 다만 '송신전환 PCB 유무'는 오히려 이미 확정된 W(9보드)-M/센터패드형(9보드+송신전환PCB=10보드) 관계와 정확히 일치하는 설명이라, 사용자가 'ST'라고 쓴 것이 'W'의 오탈자이고 실제로는 'W와 M(센터패드형)을 구분하는 것은 송신전환 PCB의 유무'라는 의미였을 가능성이 있습니다. 데이터는 변경하지 않고 사용자에게 재확인을 요청한 상태입니다."
+  ]
+}

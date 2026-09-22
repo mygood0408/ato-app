@@ -1,0 +1,282 @@
+{
+  "schemaVersion": "1.0",
+  "description": "기기간(장비간) 연결 관계 그래프. 3레벨 줌인 구조의 1단계인 '시스템 지도'에서 사용 — 어떤 장비가 어떤 장비와, 어떤 케이블/프로토콜로 연결되는지 보여줍니다. 장애 시 '이 장비가 안되면 어디부터 의심해야 하나'를 빠르게 파악하는 용도.",
+  "station": "전역 공통",
+  "scopeNote": "SIEMENS SICAS/EC-DSTT/LZB700M 계열은 표준 규격이라 연결 방식(OLM 종류, 프로토콜) 자체는 다른 연동역에서도 동일합니다. 인접 연동역이 '어느 역인지'만 역마다 다릅니다. [2026-09-07] 이 파일은 의도적으로 '범용 구조'만 담습니다 — 한 그룹(예: EC/DSTT)이 실제로 캐비닛 몇 대로 나뉘어 있는지, 각 대수가 어떤 선로전환기/신호기 번호를 담당하는지 같은 역별 사실은 여기 넣지 않고 rack-layout.json에 station 표시와 함께 기록합니다. 다른 역에서 그대로 재사용하기 위한 원칙입니다.",
+  "fieldNotes": {
+    "source": "사용자가 공유한 '2호선 시스템 Block Diagram' 등 하드웨어 설계자료 이미지에서 사람이 확인해 정리한 내용입니다. board-info.json의 OLM 설명(P12=플라스틱 광케이블용/근거리, G12=유리 광케이블용/장거리·인접역간)과 일치함을 교차 확인했습니다.",
+    "verifyNote": "[2026-09-06] 1차로 SICAS를 중심으로 한 연결만 정리했습니다. 세부 핀/포트 번호까지는 아직 미확인 — 원본 시스템 Block Diagram(사용자 보유)과 대조 확인이 필요합니다.",
+    "edges[].via": "신호 변환/중계 장치(광링크모듈 등). 없으면 두 장비가 직접 전기적으로 연결됨을 의미."
+  },
+  "nodes": [
+    {
+      "id": "SICAS",
+      "label": "SICAS (연동장치)",
+      "rackRef": "SICAS",
+      "group": "연동"
+    },
+    {
+      "id": "ECDSTT",
+      "label": "EC/DSTT (선로전환기·신호기 인터페이스 제어)",
+      "rackRef": "ECDSTT",
+      "group": "현장제어",
+      "note": "한 역에 이 캐비닛이 여러 대(예: 신도림은 T51/T52 2대) 있을 수 있으며, 대수·담당범위는 역마다 다릅니다 — 상세는 rack-layout.json 참고."
+    },
+    {
+      "id": "LZB700M",
+      "label": "LZB700M (ATP)",
+      "rackRef": "LZB700M",
+      "group": "ATP",
+      "note": "한 역에 이 캐비닛이 여러 대(예: 신도림은 L51/L52 2대) 있을 수 있으며, 대수·담당범위(궤도구간·PSD)는 역마다 다릅니다 — 상세는 rack-layout.json 참고."
+    },
+    {
+      "id": "IFC",
+      "label": "IFC (인터페이스 컴퓨터)",
+      "group": "관제연계"
+    },
+    {
+      "id": "ID_RACK",
+      "label": "ID랙",
+      "group": "기타",
+      "note": "명칭만 확인, 상세 기능설명은 board-info.json에 아직 없음 — 추후 보강 필요."
+    },
+    {
+      "id": "SICAS_ADJACENT_STATION",
+      "label": "인접 연동역 SICAS",
+      "group": "역간",
+      "note": "신도림 기준 실제 인접역(예: 대림/구로디지털단지 등)으로 라벨을 바꿔 쓸 수 있음 — 역마다 값만 다르고 구조는 동일."
+    },
+    {
+      "id": "ATO_PANEL",
+      "label": "ATO 분전반 (전원공급)",
+      "group": "전원",
+      "note": "EC/DSTT에 60V/24V/110V 계통 전원을 공급하는 분전반. 다른 역에서는 명칭이 다를 수 있음(같은 역할)."
+    },
+    {
+      "id": "FIELD_SWITCH",
+      "label": "현장 선로전환기 (단동/쌍동)",
+      "group": "현장설비"
+    },
+    {
+      "id": "FIELD_SIGNAL",
+      "label": "현장 신호기",
+      "group": "현장설비"
+    },
+    {
+      "id": "FTGS",
+      "label": "FTGS\n(궤도회로 장치)",
+      "group": "궤도연계",
+      "note": "SICAS PDF 자료상 ID랙 내부에 FTGS·FTGS/UPS 인터페이스 컬럼이 위치. board-info.json에 FTGS 보드군(증폭필터/송신/수신1/복조/수신2/계전기/텔레그램 등) 별도 정리됨."
+    },
+    {
+      "id": "TWC",
+      "label": "TWC (열차위치확인장치 유닛)",
+      "group": "관제연계",
+      "note": "IFC와 RS232로 연결, TWC LOOP코일로 현장에 신호 송출. LZB700M과도 PSD(제어)/TWC(정보) 흐름으로 직접 연결됨(LZB 지침서.pdf p.97 참고)."
+    },
+    {
+      "id": "CONTROL_CENTER",
+      "label": "관제시스템 (LCC/LMC/SSC/TMS)",
+      "group": "관제",
+      "note": "사령실 계열 상위 시스템 묶음. 개별 board-info 항목은 없음 — IFC/FTGS와 UTP·실선으로 연결됨."
+    },
+    {
+      "id": "ATOLOOP",
+      "label": "ATO Loop 제어함 (전송장치)",
+      "rackRef": "ATO Loop 제어함",
+      "group": "궤도연계",
+      "note": "전원장치·FTGS-46 송신/증폭/필터 보드셋·REMEMO 릴레이보드·FUUELL 기능제어보드로 구성된 소형 제어함. [2026-09-07] 위치 표현이 자료마다 다름 — 일부 측정지점(MP_ATO_CONTROLLER_LED_TEST)은 '승강장', 일부(LZB_STELA3 설명)는 'FTGS 랙 후면(신호기계실)'으로 REMEMO 위치를 언급함. 실제 설치 위치(승강장 트랙사이드 vs 기계실 FTGS 랙 인접)는 현장 확인 필요 — rack-layout.json의 ATO Loop 제어함 note에도 동일하게 표시."
+    },
+    {
+      "id": "FIELD_ATOLOOP",
+      "label": "현장 ATO Loop 코일 / C-B Box",
+      "group": "현장설비",
+      "note": "궤도변에 설치된 ATO Loop 코일과 그 접속함(C/B Box). ATO Loop 전류(1.6~1.9A) 측정지점이 이 C/B Box 내부에 있음(MP_ATO_LOOP_CURRENT)."
+    }
+  ],
+  "edges": [
+    {
+      "from": "SICAS",
+      "to": "ECDSTT",
+      "cable": "Plastic Optical Cable",
+      "via": "OLM (P12)",
+      "protocol": "PROFIBUS",
+      "boardRefs": [
+        "SICAS_OLM",
+        "SICAS_BUMA",
+        "ECDSTT_STEKOP"
+      ],
+      "note": "SICAS의 BUMA(버스마스터) → OLM(P12, 플라스틱 광케이블용) → EC/DSTT의 STEKOP(채널당 12입력·12출력). 근거리 연결이라 플라스틱 광케이블 사용."
+    },
+    {
+      "from": "SICAS",
+      "to": "LZB700M",
+      "cable": "Plastic Optical Cable",
+      "via": "OLM (P12)",
+      "protocol": "PROFIBUS",
+      "boardRefs": [
+        "SICAS_OLM",
+        "SICAS_BUMA",
+        "LZB_BUMA"
+      ],
+      "note": "SICAS ↔ LZB700M도 동일하게 OLM(P12) 경유. [2026-09-07] LZB 지침서.pdf p.96 LZB 통신망 구성도로 확인: LZB700M 캐비닛 1대당 채널 A/B/C의 BUMA가 캐비닛 외부의 OLM(P12) 4개를 거쳐 SICAS 2개소와 연결됨(Cu케이블로 OLM 1번 단자 접속). p.97 흐름도 기준으로 이 경로를 통해 Route(정보) 데이터도 함께 오간다."
+    },
+    {
+      "from": "SICAS",
+      "to": "IFC",
+      "cable": "RS-485",
+      "via": "OLM (P12)",
+      "protocol": "PROFIBUS",
+      "boardRefs": [
+        "SICAS_OLM",
+        "SICAS_BUMA",
+        "IFC_COMPUTER"
+      ],
+      "note": "IFC 쪽은 IFC 컴퓨터 내장 Profibus 카드(슬롯③)로 인터페이스함(board-info.json의 IFC_COMPUTER 참고, 2026-09-15 IFC_PROFIBUS_CARD 별도 항목은 중복이라 통합)."
+    },
+    {
+      "from": "SICAS",
+      "to": "SICAS_ADJACENT_STATION",
+      "cable": "Glass Optical Cable",
+      "via": "OLM (G12)",
+      "protocol": "PROFIBUS",
+      "boardRefs": [
+        "SICAS_OLM",
+        "SICAS_BUMA"
+      ],
+      "note": "인접 연동역과는 거리가 멀어 유리 광케이블(G12, 광 파장이 짧고 수신감도가 좋음)을 사용 — board-info.json SICAS_OLM 설명과 일치."
+    },
+    {
+      "from": "SICAS",
+      "to": "ID_RACK",
+      "cable": "직결(실선)",
+      "via": null,
+      "protocol": null,
+      "note": "OLM을 거치지 않는 직접 배선 연결로 표시되어 있었음. 상세 신호 종류는 미확인."
+    },
+    {
+      "from": "ATO_PANEL",
+      "to": "ECDSTT",
+      "cable": "60V/24V/110V 전원 케이블",
+      "via": null,
+      "protocol": null,
+      "boardRefs": [
+        "ECDSTT_PS"
+      ],
+      "note": "60V→SV2602 필터→8V(STEKOP-Platter 전원), 24V→STEKOP/OLM, 110V→DESIMO 램프전원. 실제 측정 단자 번호는 역/캐비닛마다 달라 rack-layout.json의 powerFlow에 기록."
+    },
+    {
+      "from": "ECDSTT",
+      "to": "FIELD_SWITCH",
+      "cable": "제어/모터/표시 전원 케이블 (≤30m)",
+      "via": "DEWEMO",
+      "protocol": null,
+      "boardRefs": [
+        "ECDSTT_DEWEMO"
+      ],
+      "note": "DEWEMO 1개가 선로전환기 1대(단동) 또는 2대(쌍동, A/B)를 제어. 확정 전압: 제어 DC24V / 표시 DC60V(2호선 본선 기준, 노선마다 다를 수 있음) / 모터 AC110V(전환 동작 중에만 인가)."
+    },
+    {
+      "from": "ECDSTT",
+      "to": "FIELD_SIGNAL",
+      "cable": "램프 전원 케이블 (≤30m)",
+      "via": "DESIMO",
+      "protocol": null,
+      "boardRefs": [
+        "ECDSTT_DESIMO"
+      ],
+      "note": "DESIMO 1대가 신호기 2개(램프1/램프2)를 제어."
+    },
+    {
+      "from": "IFC",
+      "to": "TWC",
+      "cable": "Copper (RS232)",
+      "via": null,
+      "protocol": "RS232",
+      "note": "TWC 유닛과 연결, TWC LOOP코일로 현장에 신호 송출. 정차등(Dwell Light)·비상정지(EMS)는 IFC A/B에서 별도 출력됨(CAM 모듈로 이중화 절체)."
+    },
+    {
+      "from": "IFC",
+      "to": "CONTROL_CENTER",
+      "cable": "UTP Cable",
+      "via": null,
+      "protocol": null,
+      "note": "관제측(사령/LCC/LMC/SSC)과 UTP로 연결."
+    },
+    {
+      "from": "ID_RACK",
+      "to": "FTGS",
+      "cable": "직결(실선)",
+      "via": null,
+      "protocol": null,
+      "note": "SICAS PDF의 캐비닛 구성도상 ID랙 내부에 FTGS·FTGS/UPS 인터페이스 컬럼이 위치. SICAS 채널B/C 신호가 ID랙을 거쳐 FTGS로 전달됨."
+    },
+    {
+      "from": "FTGS",
+      "to": "LZB700M",
+      "cable": "직결(실선)",
+      "via": "FTGS Distributor",
+      "protocol": null,
+      "boardRefs": [
+        "LZB_FTGS_DISTRIBUTOR"
+      ],
+      "note": "궤도회로(FTGS) 점유 정보가 LZB700M(ATP) 캐비닛 전면 K행의 FTGS Distributor를 거쳐 각 궤도회로별 입출력 신호로 전달됨. [2026-09-07] LZB 지침서.pdf p.114 연결도면으로 LZB FTGS Distributor ↔ FTGS 캐비닛 후면 커넥터 간 직결 배선(8개 회선 확인)을 재확인."
+    },
+    {
+      "from": "FTGS",
+      "to": "CONTROL_CENTER",
+      "cable": "UTP Cable",
+      "via": null,
+      "protocol": null,
+      "note": "TMS 등 관제측과 UTP로 연결."
+    },
+    {
+      "from": "LZB700M",
+      "to": "ATOLOOP",
+      "cable": "직결(실선)",
+      "via": "STELA3 (X6 단자)",
+      "protocol": null,
+      "boardRefs": [
+        "LZB_STELA3"
+      ],
+      "note": "LZB700M의 STELA3 보드 전면 X6 단자 중 4·5번 Pin이 ATO Loop 제어함으로 출력(LZB→현장 방향), 10·11번 Pin이 ATO Loop 제어함에서 올라오는 에러메시지를 입력받음(현장→LZB 방향). ATP.pdf 기준. [2026-09-07] LZB 지침서.pdf p.97 흐름도 기준으로 REMEMO(제어)/PSD(정보) 데이터도 이 경로로 함께 오간다(ATO Loop 쪽에서는 REMEMO 릴레이보드가 중계)."
+    },
+    {
+      "from": "ATOLOOP",
+      "to": "FIELD_ATOLOOP",
+      "cable": "전송/에러메시지 케이블 (OT랙 경유)",
+      "via": "REMEMO 릴레이보드",
+      "protocol": null,
+      "boardRefs": [
+        "ATOLOOP_REMEMO"
+      ],
+      "note": "REMEMO 릴레이보드가 UPS로부터 60V를 인가받아 OT랙을 거쳐 현장 Loop 코일/C-B Box와 연결됨. 전송릴레이(24V 구동) 1개 + 수신릴레이(48V 구동) 2개가 Loop1/Loop2에 대칭 설치. 케이블 총 길이 6.5km 초과 금지(60V 전원이 릴레이 구동을 위해 인가되기 때문) — 03.ATO LOOP(김영추).pptx 기준."
+    },
+    {
+      "from": "LZB700M",
+      "to": "TWC",
+      "cable": "직결(실선)",
+      "via": null,
+      "protocol": null,
+      "note": "[2026-09-07 신규] LZB 지침서.pdf p.97 'LZB↔기타 장치간 흐름도' 기준: LZB700M → TWC로 PSD(제어) 신호를, TWC → LZB700M로 TWC(정보, 열차 텔레그램 수신 데이터)를 전달하는 것으로 표시되어 있음. 세부 케이블·프로토콜 종류는 원본 도면에 명시되어 있지 않아 미확인."
+    },
+    {
+      "from": "LZB700M",
+      "to": "IFC",
+      "cable": "직결(실선)",
+      "via": null,
+      "protocol": null,
+      "boardRefs": [
+        "IFC_EMS_RELAY"
+      ],
+      "note": "[2026-09-07 신규, 미확인] LZB 지침서.pdf p.97 흐름도에서 LZB700M 박스 우측에 'EMS(제어)' 화살표가 표시되어 있음. EMS(비상정지)는 board-info.json의 IFC_EMS_RELAY(IFC 컴퓨터 명령으로 비상정지 계전기 동작)와 관련된 것으로 추정되나, 화살표가 정확히 LZB700M↔IFC 간인지 다른 경로(LZB700M↔SICAS 등)인지는 그림 판독만으로 완전히 특정하기 어려워 '미확인, 원본 도면 재확인 필요'로 남김."
+    }
+  ],
+  "changelog": [
+    "2026-09-06: 신규 생성 — SICAS 확장 파일럿의 1단계(시스템 지도) 데이터. 사용자가 공유한 시스템 Block Diagram 이미지 기준, SICAS를 중심으로 한 5개 연결만 우선 정리. ID랙 등 상세 미확인 항목은 note로 표시.",
+    "2026-09-07: EC/DSTT 확장 — 기존 'ECDSTT' 노드는 그대로 유지하고(신도림 T51/T52 같은 역별 캐비닛 대수는 여기 넣지 않음), SICAS↔ECDSTT 엣지에 ECDSTT_STEKOP boardRef 추가. ATO_PANEL·RB_RACK·FIELD_SWITCH·FIELD_SIGNAL 노드와 그 사이 엣지(전원공급/DEWEMO/DESIMO/AR계전기 경유) 신규 추가 — 모두 역에 무관한 범용 구조로 작성. 역별 실측값(전원단자 번호, 계전기 이름 등)은 rack-layout.json / board-info.json에 station 표시와 함께 기록.",
+    "2026-09-07: 사용자가 업로드한 'SICAS 지침서.pdf'의 통신망 구성도(p.48~50)를 반영해 FTGS·TWC·관제시스템(LCC/LMC/SSC/TMS) 노드와 관련 엣지 5건 추가. FTGS는 ID랙 내부에 위치하는 것으로 확인되어 SICAS가 아닌 ID_RACK을 경유해 연결함. 기존 SICAS-ECDSTT/LZB700M/IFC/인접역/ID랙 5개 핵심 엣지는 새 자료와 대조해 불일치 없음을 확인, 변경 없음.",
+    "2026-09-07: 'ATO LOOP 지침서.pdf' 및 실사진(ATO Loop 컨트롤러 함 내부 결선도)을 반영해 'ATOLOOP'(ATO Loop 제어함)과 'FIELD_ATOLOOP'(현장 ATO Loop 코일/C-B Box) 노드, LZB700M↔ATOLOOP(STELA3 X6 경유)·ATOLOOP↔FIELD_ATOLOOP(REMEMO 릴레이보드 경유) 엣지 2건 신규 추가. ATOLOOP의 정확한 물리적 설치 위치(승강장 트랙사이드 vs 신호기계실 FTGS 랙 인접)는 자료 간 표현이 엇갈려 note로 남기고 확정하지 않음 — 현장 확인 필요. 기존 FTGS 노드/엣지는 변경 없음.",
+    "2026-09-07: 사용자가 첨부한 'LZB 지침서.pdf'(p.96~97 LZB 통신망 구성도·LZB↔기타장치간 흐름도) 반영 — LZB700M 노드에 rackRef:'LZB700M' 추가(v3 뷰어에서 랙 상세로 드릴다운 가능하게 함) 및 신도림 L51/L52 실측 캐비닛 note 추가. SICAS↔LZB700M 엣지에 boardRefs(LZB_BUMA)와 통신망 구성도 상세(OLM 4개, Route정보) 보강. FTGS→LZB700M 엣지에 via:'FTGS Distributor', boardRefs(LZB_FTGS_DISTRIBUTOR) 추가. LZB700M↔TWC(PSD 제어/TWC 정보), LZB700M↔IFC(EMS 제어, 경로 미확인) 엣지 2건 신규 추가. 기존 SICAS/ECDSTT/FTGS/ATO Loop 관련 다른 노드·엣지는 변경 없음."
+  ]
+}

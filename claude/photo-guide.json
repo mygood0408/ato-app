@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "1.0",
+  "description": "폴더(캐비닛)별 촬영·마킹 가이드. 무엇을 어디서 찍고 마커를 달아야 하는지 안내.",
+  "priorityOrder": ["필수", "권장", "선택"],
+  "sources": [
+    "시설물검사표준안 — 측정 위치·단자 번호",
+    "SICAS HW Design SIN1 =SIN1/08.01.01, 08.02.11 — 캐비닛 레벨 배치",
+    "ATP HW Design SIN1 =SIN1/08.11.01 — ATP 캐비닛 배치",
+    "SICAS/TWC 유지보수 매뉴얼 — LED 판독",
+    "OTS-INT-SM7 실물 사진 및 기준값 카드 (사용자 촬영, 2026-09-05)",
+    "08.선로전환기(김영추).pptx — 선로전환기 동력/표시회로 원리",
+    "02.AF궤도회로(김영추).pptx — AF궤도회로 현장설비(S-bond/DC Box/C-B Box) 및 튜닝 기준",
+    "03.ATO LOOP(김영추).pptx — ATO Loop 현장설비 및 제어함 구성",
+    "2. S-bond.pptx — S-bond(ESJ) 원리"
+  ],
+  "changelog": [
+    "2026-09-05: 분전반 AC의 'AC_LABEL' id 중복(코팅자료/벽면안내표 [권장] vs 차단기명판/회로표기 [필수])을 분리. 후자를 'AC_BREAKER_LABEL'로 개명. 기존에 AC_LABEL로 찍힌 사진 5장은 실제로 어느 쪽인지 재확인 필요.",
+    "2026-09-05: 최근 공사로 분전반이 AC/DC로 분리됨에 따라 '분전반 DC' 항목을 분전반 AC와 동일한 패턴(FRONT/REAR/LABEL/BREAKER/BREAKER_LABEL/MAIN)으로 신규 추가.",
+    "2026-09-05: T51/T52 내부 'T00' 서브랙에 설치된 OTS(선로전환기 감시시스템) 촬영 항목 추가. 사용자 확인: T51·T52 양쪽 모두에 OTS가 있으며 'T00' 표시가 붙은 랙이 OTS. 선로전환기별 정상값(201~206) 상세 수치표는 원본 사진 재확인 후 반영 예정 — 아직 미반영.",
+    "2026-09-05: '현장시설물' 카테고리 신규 추가(선로전환기/신호기/S-bond/AF현장/ATO Loop현장/TWC현장). TWC 폴더의 TWC_CB, TWC_LOOP 항목을 FIELD_TWC_CB, FIELD_TWC_LOOP로 이동(현장시설물 폴더로). FTGS 폴더에 FTGS_REMEMO(기계실측, ATO Loop 장애신호 계전기) 항목 추가. 각 현장시설물 항목에 relatedFacility 필드로 연결된 기계실 장비를 표시 — 사진 폴더는 통합하되, 전원흐름도/장애원인분석 용도로는 이 필드를 따라가는 방식을 쓰기로 함(사용자 확인).",
+    "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가. '가상신호기' 폴더 전체와 AC_LABEL/AC_BREAKER_LABEL/DC_BREAKER_LABEL(실제 라벨 판독 항목)에 stationSpecific:true 표시 — 이 항목들만 역마다 다시 확인 필요, 나머지는 표준 장비 설명이라 공통 재사용 가능.",
+    "2026-09-06: 마커편집기 v9 제작에 맞춰 '현장시설물' 폴더에 'FIELD_TURNOUT_SAFETY'(분기부 안전설비 경보벨/전광판/기구함) 항목 추가 — MP_TURNOUT_SAFETY_ALARM, board-info.json의 분기부 안전설비(MR/PR계전기) 그룹과 연결.",
+    "2026-09-06: 사용자 제보로 현장시설물 갭 6건 반영 — ATO Loop 제어함(외함/내부) 신규 추가, AF궤도회로/ATO Loop/TWC C/B Box 외함 촬영 항목 3건 추가, FIELD_SIG_LAMP 위치 설명 구체화, FIELD_AF_CB에 궤도 단방향/양방향/센터패드형 구분 확인 요청 메모 추가, 선로전환기 콘덴서(FIELD_SW_CAPACITOR/MP_SW_CAPACITOR) 신규 등록(정상범위 미확정, verify 상태).",
+    "2026-09-06: 사용자가 기기에 '분기부안전설비' 폴더를 별도로 신설함에 따라, 기존 '현장시설물' 폴더 안에 있던 FIELD_TURNOUT_SAFETY 항목을 최상위 '분기부 안전설비' 폴더로 분리 이동(사용자 확정). id·measurePointRef·boardRef는 변경 없음 — 소속 폴더만 이동.",
+    "2026-09-07(17차): FIELD_AF_CB의 why/tip을 궤도타입별 C/B박스 구성이 확정된 내용(단방향=튜닝유니트2+인터페이스모듈1 / 양방향=튜닝유니트2+인터페이스모듈1+전환모듈1 / 센터패드형 가운데=튜닝유니트1+인터페이스모듈1 / 센터패드형 양측=인접궤도 타입에 따름)으로 갱신. 상세 근거는 claude/rack-layout.json의 racks.FTGS.centerPadDetail 참고."
+  ],
+  "guides": {
+    "SICAS 51": [
+      {"id": "SICAS_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "SICAS_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "SICAS_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "SICAS_N_PANEL", "name": "후면 N레벨 전원배전반 전체", "where": "캐비닛 후면 중간쯤. 노란 퓨즈가 줄지어 있는 단자대", "why": "60V·24V·230V가 모두 여기서 나갑니다. 가장 중요한 측정 위치입니다.", "priority": "필수", "tip": "단자 번호가 읽히는 거리에서 한 장 더 찍어주면 좋습니다."},
+      {"id": "SICAS_DC60", "name": "60V 단자 (1~7번)", "where": "N레벨 배전반 왼쪽 끝. 도면상 'DC 60V for channel A/B/C'", "why": "채널 A/B/C 구동전압. 42~75V가 정상입니다.", "priority": "필수", "measurePointRef": "MP_SICAS_S51_DC60", "tip": "(+)는 5,6,7번 / (−)는 1,2,3번입니다. 그 언저리를 눌러주세요."},
+      {"id": "SICAS_DC24", "name": "24V 퓨즈열 (40~59번)", "where": "N레벨 배전반 가운데. 도면상 'DC 24V for periphery'", "why": "주변장치 전원. 16.8~31.2V가 정상이고 퓨즈도 함께 봅니다.", "priority": "필수", "measurePointRef": "MP_SICAS_S51_DC24", "tip": "(+)는 40~49번 퓨즈 / (−)는 51~59번입니다."},
+      {"id": "SICAS_LED", "name": "전면 전원장치 LED 표시창", "where": "캐비닛 전면 아래쪽 전원장치. UE·UA 라고 쓰인 LED", "why": "UE는 입력 60V, UA는 출력 5V 상태를 알려줍니다. 둘 다 녹색이어야 정상입니다.", "priority": "필수", "measurePointRef": "MP_SICAS_CPU_IF"},
+      {"id": "SICAS_PS_MODULE", "name": "전원모듈 (60V→5V)", "where": "캐비닛 아래쪽 L레벨. 채널 A/B/C용으로 3개", "why": "고장 시 교체 대상입니다. 어느 채널인지 구분되게 찍어주세요.", "priority": "권장"},
+      {"id": "SICAS_VENUS", "name": "VENUS3 디스플레이", "where": "연동 컴퓨터 모듈. 숫자 5자리가 뜨는 창", "why": "고장 시 F.0000 같은 코드가 여기 뜹니다.", "priority": "권장"},
+      {"id": "SICAS_FAN", "name": "팬 유닛 / 230V 단자 (71~81번)", "where": "N레벨 배전반 오른쪽 끝", "why": "팬 정지도 고장 원인입니다.", "priority": "선택"}
+    ],
+    "SICAS 52": [
+      {"id": "SICAS_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "SICAS_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "SICAS_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "SICAS_N_PANEL", "name": "후면 N레벨 전원배전반 전체", "where": "캐비닛 후면 중간쯤. 노란 퓨즈가 줄지어 있는 단자대", "why": "60V·24V·230V가 모두 여기서 나갑니다. 가장 중요한 측정 위치입니다.", "priority": "필수", "tip": "단자 번호가 읽히는 거리에서 한 장 더 찍어주면 좋습니다."},
+      {"id": "SICAS_DC60", "name": "60V 단자 (1~7번)", "where": "N레벨 배전반 왼쪽 끝. 도면상 'DC 60V for channel A/B/C'", "why": "채널 A/B/C 구동전압. 42~75V가 정상입니다.", "priority": "필수", "measurePointRef": "MP_SICAS_S51_DC60", "tip": "(+)는 5,6,7번 / (−)는 1,2,3번입니다. 그 언저리를 눌러주세요."},
+      {"id": "SICAS_DC24", "name": "24V 퓨즈열 (40~59번)", "where": "N레벨 배전반 가운데. 도면상 'DC 24V for periphery'", "why": "주변장치 전원. 16.8~31.2V가 정상이고 퓨즈도 함께 봅니다.", "priority": "필수", "measurePointRef": "MP_SICAS_S51_DC24", "tip": "(+)는 40~49번 퓨즈 / (−)는 51~59번입니다."},
+      {"id": "SICAS_LED", "name": "전면 전원장치 LED 표시창", "where": "캐비닛 전면 아래쪽 전원장치. UE·UA 라고 쓰인 LED", "why": "UE는 입력 60V, UA는 출력 5V 상태를 알려줍니다. 둘 다 녹색이어야 정상입니다.", "priority": "필수", "measurePointRef": "MP_SICAS_CPU_IF"},
+      {"id": "SICAS_PS_MODULE", "name": "전원모듈 (60V→5V)", "where": "캐비닛 아래쪽 L레벨. 채널 A/B/C용으로 3개", "why": "고장 시 교체 대상입니다. 어느 채널인지 구분되게 찍어주세요.", "priority": "권장"},
+      {"id": "SICAS_VENUS", "name": "VENUS3 디스플레이", "where": "연동 컴퓨터 모듈. 숫자 5자리가 뜨는 창", "why": "고장 시 F.0000 같은 코드가 여기 뜹니다.", "priority": "권장"},
+      {"id": "SICAS_FAN", "name": "팬 유닛 / 230V 단자 (71~81번)", "where": "N레벨 배전반 오른쪽 끝", "why": "팬 정지도 고장 원인입니다.", "priority": "선택"}
+    ],
+    "T51": [
+      {"id": "T5x_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "T5x_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "T5x_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "T_STEKOP", "name": "STEKOP 모듈 열", "where": "전면 위쪽. 세로로 긴 모듈 8개가 나란히. 아래에 P202·S02 S04 같은 라벨", "why": "신호기·선로전환기 제어의 출발점입니다. 라벨이 읽히게 찍어주세요.", "priority": "필수", "tip": "도면상 N131, N151 같은 위치 번호가 노란 태그로 붙어 있습니다."},
+      {"id": "T_DESIMO", "name": "DESIMO 모듈", "where": "후면 P레벨. S02/S04, S06/S08 처럼 신호기 번호가 붙은 모듈", "why": "신호기가 꺼졌을 때 여기 LED(IK1·IK2)를 먼저 봅니다.", "priority": "필수"},
+      {"id": "T_DEWEMO", "name": "DEWEMO 모듈", "where": "전면 중간. SIEMENS 로고와 203A/B, 204A/B 라벨이 있는 가로형 모듈", "why": "선로전환기 불일치 때 위치 LED를 확인하는 곳입니다.", "priority": "필수"},
+      {"id": "T_RELAY_R", "name": "계전기 열 (진행현시)", "where": "후면 R레벨. 작은 계전기가 14개 나란히", "why": "S02-K11부터 S14-K12까지. 신호기별 진행현시 계전기입니다.", "priority": "권장"},
+      {"id": "T_RELAY_S", "name": "계전기 열 (진로표시)", "where": "후면 S레벨. 계전기 16개", "why": "진로표시·다진로표시 계전기입니다.", "priority": "권장"},
+      {"id": "T_FUSE", "name": "퓨즈열", "where": "전면 아래쪽. '모터출력 Fuse', '감시전원 Fuse' 라벨이 붙은 줄", "why": "선로전환기 전류가 끊겼을 때 제일 먼저 보는 곳입니다.", "priority": "필수"},
+      {"id": "T_TERMINAL", "name": "단자대 (XL / XW)", "where": "전면 맨 아래 XL, 후면 맨 아래 XW", "why": "캐비닛에서 현장으로 나가는 출구입니다. 신호기 전압 추적 시 거칩니다.", "priority": "권장"},
+      {"id": "T00_OTS_FRONT", "name": "T00 서브랙 - OTS(선로전환기 감시반) 전체", "where": "T51 캐비닛 내 'T00' 표시가 붙은 서브랙. 8개 디지털 전압계(Autonics M4Y)가 4열×2행으로 배치된 패널", "why": "이 랙 하나로 담당 선로전환기 전 대수의 제어·모터·표시전압을 즉시 확인할 수 있습니다. 랙 겉모습이 비슷하니 'T00' 라벨을 꼭 함께 찍어주세요.", "priority": "필수", "tip": "모델명(OTS-INT-SM7)과 'T00' 라벨이 한 프레임에 들어오게 찍어주세요."},
+      {"id": "T00_OTS_SELECT", "name": "선로전환기 선택 버튼 + 전압계 표시값", "where": "패널 하단 선택 버튼(201~204 등)을 누른 상태에서 8개 전압계 창 전체", "why": "버튼으로 특정 선로전환기를 선택해야 그 선로전환기의 제어·모터·표시전압이 표시됩니다. 어떤 번호를 눌렀을 때 어떤 값이 떴는지 짝을 지어 기록해야 정상값 표를 만들 수 있습니다.", "priority": "필수", "tip": "버튼 번호와 8개 전압계 값이 한 사진에 같이 나오게 찍어주세요."},
+      {"id": "T00_OTS_CARD", "name": "OTS 기준값/Remark 안내 카드", "where": "OTS 패널 옆이나 랙 문에 붙은 코팅 카드 (정상값·단선·접지 시 표시값 표)", "why": "고장 유형별(단선/접지) 전압계 표시 패턴이 정리된 핵심 참고자료입니다.", "priority": "필수", "tip": "표 전체 글씨가 읽히게 정면에서 찍어주세요."}
+    ],
+    "T52": [
+      {"id": "T5x_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "T5x_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "T5x_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "T_STEKOP", "name": "STEKOP 모듈 열", "where": "전면 위쪽. 세로로 긴 모듈 8개가 나란히. 아래에 P202·S02 S04 같은 라벨", "why": "신호기·선로전환기 제어의 출발점입니다. 라벨이 읽히게 찍어주세요.", "priority": "필수", "tip": "도면상 N131, N151 같은 위치 번호가 노란 태그로 붙어 있습니다."},
+      {"id": "T_DESIMO", "name": "DESIMO 모듈", "where": "후면 P레벨. S02/S04, S06/S08 처럼 신호기 번호가 붙은 모듈", "why": "신호기가 꺼졌을 때 여기 LED(IK1·IK2)를 먼저 봅니다.", "priority": "필수"},
+      {"id": "T_DEWEMO", "name": "DEWEMO 모듈", "where": "전면 중간. SIEMENS 로고와 203A/B, 204A/B 라벨이 있는 가로형 모듈", "why": "선로전환기 불일치 때 위치 LED를 확인하는 곳입니다.", "priority": "필수"},
+      {"id": "T_RELAY_R", "name": "계전기 열 (진행현시)", "where": "후면 R레벨. 작은 계전기가 14개 나란히", "why": "S02-K11부터 S14-K12까지. 신호기별 진행현시 계전기입니다.", "priority": "권장"},
+      {"id": "T_RELAY_S", "name": "계전기 열 (진로표시)", "where": "후면 S레벨. 계전기 16개", "why": "진로표시·다진로표시 계전기입니다.", "priority": "권장"},
+      {"id": "T_FUSE", "name": "퓨즈열", "where": "전면 아래쪽. '모터출력 Fuse', '감시전원 Fuse' 라벨이 붙은 줄", "why": "선로전환기 전류가 끊겼을 때 제일 먼저 보는 곳입니다.", "priority": "필수"},
+      {"id": "T_TERMINAL", "name": "단자대 (XL / XW)", "where": "전면 맨 아래 XL, 후면 맨 아래 XW", "why": "캐비닛에서 현장으로 나가는 출구입니다. 신호기 전압 추적 시 거칩니다.", "priority": "권장"},
+      {"id": "T00_OTS_FRONT", "name": "T00 서브랙 - OTS(선로전환기 감시반) 전체", "where": "T52 캐비닛 내 'T00' 표시가 붙은 서브랙. 8개 디지털 전압계(Autonics M4Y)가 4열×2행으로 배치된 패널", "why": "이 랙 하나로 담당 선로전환기 전 대수의 제어·모터·표시전압을 즉시 확인할 수 있습니다. 랙 겉모습이 비슷하니 'T00' 라벨을 꼭 함께 찍어주세요.", "priority": "필수", "tip": "모델명(OTS-INT-SM7)과 'T00' 라벨이 한 프레임에 들어오게 찍어주세요."},
+      {"id": "T00_OTS_SELECT", "name": "선로전환기 선택 버튼 + 전압계 표시값", "where": "패널 하단 선택 버튼(205~206 등)을 누른 상태에서 8개 전압계 창 전체", "why": "버튼으로 특정 선로전환기를 선택해야 그 선로전환기의 제어·모터·표시전압이 표시됩니다. 어떤 번호를 눌렀을 때 어떤 값이 떴는지 짝을 지어 기록해야 정상값 표를 만들 수 있습니다.", "priority": "필수", "tip": "버튼 번호와 8개 전압계 값이 한 사진에 같이 나오게 찍어주세요."},
+      {"id": "T00_OTS_CARD", "name": "OTS 기준값/Remark 안내 카드", "where": "OTS 패널 옆이나 랙 문에 붙은 코팅 카드 (정상값·단선·접지 시 표시값 표)", "why": "고장 유형별(단선/접지) 전압계 표시 패턴이 정리된 핵심 참고자료입니다.", "priority": "필수", "tip": "표 전체 글씨가 읽히게 정면에서 찍어주세요."}
+    ],
+    "LZB 51": [
+      {"id": "LZB_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "LZB_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "LZB_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "LZB_M_LEVEL", "name": "후면 M레벨 단자대", "where": "LZB 캐비닛 후면 위쪽. 'M' 표시가 있는 단자열", "why": "60V 측정 위치입니다.", "priority": "필수", "measurePointRef": "MP_LZB_DC60", "tip": "2번과 7번 단자 사이를 잽니다. 그 부근을 눌러주세요."},
+      {"id": "LZB_N_LEVEL", "name": "후면 N레벨 단자대", "where": "M레벨 바로 아래", "why": "24V 측정 위치입니다.", "priority": "필수", "measurePointRef": "MP_LZB_DC24", "tip": "30번과 28번 단자 사이를 잽니다."},
+      {"id": "LZB_WAGO", "name": "Power supply 후면 WAGO 터미널", "where": "M레벨의 채널 A/B/C별 전원장치 뒷면. 회색 스프링식 단자", "why": "5V 측정 위치입니다. 채널마다 따로 있습니다.", "priority": "권장", "measurePointRef": "MP_LZB_DC5", "tip": "14_15, 30_31, 46_47번과 섀시 사이를 잽니다."},
+      {"id": "LZB_COMPUTER", "name": "Computer A / B / C 모듈", "where": "캐비닛 위쪽. 3중계로 3개가 나란히", "why": "어느 채널이 죽었는지 구분하려면 배치를 알아야 합니다.", "priority": "권장"},
+      {"id": "LZB_TEMP", "name": "캐비닛 내부 (온도 확인용)", "where": "캐비닛 내부 전경, 환기구 부근", "why": "40℃ 이하가 정상입니다.", "priority": "선택", "measurePointRef": "MP_LZB_TEMP"}
+    ],
+    "LZB 52": [
+      {"id": "LZB_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "LZB_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "LZB_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "LZB_M_LEVEL", "name": "후면 M레벨 단자대", "where": "LZB 캐비닛 후면 위쪽. 'M' 표시가 있는 단자열", "why": "60V 측정 위치입니다.", "priority": "필수", "measurePointRef": "MP_LZB_DC60", "tip": "2번과 7번 단자 사이를 잽니다. 그 부근을 눌러주세요."},
+      {"id": "LZB_N_LEVEL", "name": "후면 N레벨 단자대", "where": "M레벨 바로 아래", "why": "24V 측정 위치입니다.", "priority": "필수", "measurePointRef": "MP_LZB_DC24", "tip": "30번과 28번 단자 사이를 잽니다."},
+      {"id": "LZB_WAGO", "name": "Power supply 후면 WAGO 터미널", "where": "M레벨의 채널 A/B/C별 전원장치 뒷면. 회색 스프링식 단자", "why": "5V 측정 위치입니다. 채널마다 따로 있습니다.", "priority": "권장", "measurePointRef": "MP_LZB_DC5", "tip": "14_15, 30_31, 46_47번과 섀시 사이를 잽니다."},
+      {"id": "LZB_COMPUTER", "name": "Computer A / B / C 모듈", "where": "캐비닛 위쪽. 3중계로 3개가 나란히", "why": "어느 채널이 죽었는지 구분하려면 배치를 알아야 합니다.", "priority": "권장"},
+      {"id": "LZB_TEMP", "name": "캐비닛 내부 (온도 확인용)", "where": "캐비닛 내부 전경, 환기구 부근", "why": "40℃ 이하가 정상입니다.", "priority": "선택", "measurePointRef": "MP_LZB_TEMP"}
+    ],
+    "FTGS": [
+      {"id": "FTGS_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "FTGS_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "FTGS_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "FTGS_AMP", "name": "증폭&필터 PCB 측정소켓", "where": "주황색 기판. 검은 소켓 1/2, 빨간 소켓 3/4, 아래 녹색 LED", "why": "3,4번 소켓에서 출력전압을 잽니다. 50~65V가 정상입니다.", "priority": "필수", "measurePointRef": "MP_FTGS_AMP_OUT", "tip": "빨간색 소켓 두 개가 3,4번입니다."},
+      {"id": "FTGS_RX1_E", "name": "수신-1 PCB E1/E2 소켓", "where": "수신_1 기판. 여러 소켓 중 빨간 것이 E1/2", "why": "0.3~3.0V가 정상입니다.", "priority": "필수", "measurePointRef": "MP_FTGS_RX1_E"},
+      {"id": "FTGS_RX1_I", "name": "수신-1 PCB I5/II8 소켓", "where": "같은 수신_1 기판의 다른 소켓열", "why": "픽업 6.5V 이상, 드롭 5V 이하입니다.", "priority": "권장", "measurePointRef": "MP_FTGS_RX1_I"},
+      {"id": "FTGS_RELAY", "name": "계전기 GF1 / GF2", "where": "랙 오른쪽 끝 계전기 기판", "why": "동작전압 16~18V를 확인합니다.", "priority": "권장", "measurePointRef": "MP_FTGS_RELAY"},
+      {"id": "FTGS_TX", "name": "송신 PCB (주파수·코드 설정창)", "where": "녹색 기판. FREQUENCY와 CODE 숫자창이 있음", "why": "궤도별 주파수를 확인하는 곳입니다.", "priority": "권장", "measurePointRef": "MP_FTGS_FREQ"},
+      {"id": "FTGS_RACK_LABEL", "name": "랙 문의 궤도 배정표", "where": "랙 문 바깥쪽에 붙은 흰 표. 맨 위에 F51~F59, 아래 1~10번과 궤도 번호", "why": "랙 하나에 궤도회로 10개가 들어갑니다. '420T가 이상하다'는 연락을 받으면 이 표로 어느 랙 몇 번 슬롯인지 찾습니다. 랙 겉모습이 다 비슷해서 이 표가 유일한 구분 수단입니다.", "priority": "필수", "tip": "여러 랙이 한 장에 나오게 찍으면 한 번에 정리됩니다. 글씨가 읽히는 게 가장 중요합니다."},
+      {"id": "FTGS_SECTION", "name": "랙 내부 구간 라벨", "where": "유리문 안쪽 또는 랙 상단. '구간 대림~신도림', '신도림 R430T~문래 700T' 같은 표기", "why": "이 랙이 어느 역 사이 구간을 담당하는지 알려줍니다.", "priority": "권장"},
+      {"id": "FTGS_REMEMO", "name": "REMEMO 계전기 (ATO Loop 장애신호)", "where": "FTGS 랙 후면. 각 주파수별로 대칭 설치된 릴레이 보드", "why": "현장 ATO Loop 제어함(FUUELL)의 장애신호(Loop1/Loop2/FAN)를 UPS 60V로 받아 OT랙을 거쳐 LZB로 전달하는 계전기입니다. 라벨의 뒷자리 숫자는 설치된 역 구분용이며 구조 자체는 어느 역이든 동일합니다.", "priority": "권장", "tip": "전송릴레이 1개, 수신릴레이 2개가 Loop마다 대칭으로 있습니다. 라벨이 읽히게 찍어주세요."}
+    ],
+    "IFC": [
+      {"id": "IFC_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "IFC_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "IFC_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "IFC_ESTOP", "name": "비상정지용 계전기", "where": "IFC 캐비닛 내 계전기 열", "why": "비상정지 회로는 인접역까지 연결됩니다.", "priority": "필수", "measurePointRef": "MP_IFC_ESTOP"},
+      {"id": "IFC_DWELL", "name": "정차표시등(Dwell Light) 계전기", "where": "비상정지 계전기 부근", "why": "정차 표시 제어용입니다.", "priority": "권장", "measurePointRef": "MP_IFC_DWELL"},
+      {"id": "IFC_SWITCH", "name": "상용 / 예비 절체 스위치", "where": "전면 패널의 절체 스위치", "why": "이중화 절체 시험 대상입니다.", "priority": "권장", "measurePointRef": "MP_IFC_CHANGEOVER"},
+      {"id": "IFC_PC", "name": "컴퓨터 본체 / 모니터 화면", "where": "LCC·LMC 표시 화면", "why": "CPU 가동률과 디스크 사용량을 여기서 봅니다.", "priority": "선택", "measurePointRef": "MP_IFC_CPU"}
+    ],
+    "TWC": [
+      {"id": "TWC_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "TWC_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "TWC_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "TWC_LED", "name": "PTI 수신기 전면 LED", "where": "전원·Vint·Vext 녹색 LED와 Data1~8 황색 LED", "why": "고장 판단의 핵심입니다. 어느 LED가 무슨 뜻인지 앱에 넣을 겁니다.", "priority": "필수"},
+      {"id": "TWC_TERMINAL", "name": "배면 단자 접속부", "where": "TWC 장치 뒷면 단자대", "why": "배선 상태 점검 대상입니다.", "priority": "권장", "measurePointRef": "MP_TWC_TERMINAL"}
+    ],
+    "O51": [
+      {"id": "O5x_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "O5x_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "O5x_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "OT_TERMINAL_A", "name": "단자대 A 전체", "where": "캐비닛 내부 단자열. 003, 004 같은 세 자리 번호가 붙어 있음", "why": "캐비닛에서 현장 신호기로 나가는 중간 경유지입니다.", "priority": "필수", "tip": "신호기 S02는 003~006, 007~010번을 씁니다."},
+      {"id": "OT_NUMBER", "name": "단자 번호가 읽히는 근접 사진", "where": "단자대 일부를 가까이서", "why": "전원계통 추적 시 번호를 봐야 합니다.", "priority": "권장"},
+      {"id": "OT_CABLE", "name": "케이블 인입부", "where": "캐비닛 하단 케이블이 들어오는 곳", "why": "케이블 표기(T51.07 같은)가 보이면 좋습니다.", "priority": "선택"}
+    ],
+    "O52": [
+      {"id": "O5x_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "O5x_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "O5x_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "OT_TERMINAL_A", "name": "단자대 A 전체", "where": "캐비닛 내부 단자열. 003, 004 같은 세 자리 번호가 붙어 있음", "why": "캐비닛에서 현장 신호기로 나가는 중간 경유지입니다.", "priority": "필수", "tip": "신호기 S02는 003~006, 007~010번을 씁니다."},
+      {"id": "OT_NUMBER", "name": "단자 번호가 읽히는 근접 사진", "where": "단자대 일부를 가까이서", "why": "전원계통 추적 시 번호를 봐야 합니다.", "priority": "권장"},
+      {"id": "OT_CABLE", "name": "케이블 인입부", "where": "캐비닛 하단 케이블이 들어오는 곳", "why": "케이블 표기(T51.07 같은)가 보이면 좋습니다.", "priority": "선택"}
+    ],
+    "ID랙": [
+      {"id": "D51_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "D51_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "D51_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "D51_TERMINAL", "name": "단자대 전체", "where": "I.D. 캐비닛 내부 단자열", "why": "FTGS·UPS 상태 메시지가 여기로 모입니다.", "priority": "필수"},
+      {"id": "D51_24V", "name": "24V 전원 인입부", "where": "D51.101 / D51.102 라벨이 있는 전원 케이블 부근", "why": "이중화된 24V가 들어옵니다.", "priority": "권장"}
+    ],
+    "분전반 AC": [
+      {"id": "AC_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "AC_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "AC_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요.", "stationSpecific": true},
+      {"id": "AC_BREAKER", "name": "차단기 열 전체", "where": "분전반 문을 열고 차단기가 줄지어 있는 모습", "why": "어느 차단기가 어느 캐비닛인지가 고장 대응의 출발점입니다.", "priority": "필수"},
+      {"id": "AC_BREAKER_LABEL", "name": "차단기 명판 / 회로 표기", "where": "각 차단기 위아래 라벨", "why": "글씨가 읽혀야 앱에 옮길 수 있습니다.", "priority": "필수", "stationSpecific": true},
+      {"id": "AC_MAIN", "name": "메인 차단기 / 계량부", "where": "분전반 상단", "why": "전체 계통의 최상위입니다.", "priority": "권장"}
+    ],
+    "분전반 DC": [
+      {"id": "DC_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "DC_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "DC_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "DC_BREAKER", "name": "차단기 열 전체", "where": "분전반 문을 열고 차단기가 줄지어 있는 모습", "why": "어느 차단기가 어느 캐비닛인지가 고장 대응의 출발점입니다.", "priority": "필수"},
+      {"id": "DC_BREAKER_LABEL", "name": "차단기 명판 / 회로 표기", "where": "각 차단기 위아래 라벨", "why": "글씨가 읽혀야 앱에 옮길 수 있습니다.", "priority": "필수", "stationSpecific": true},
+      {"id": "DC_MAIN", "name": "메인 차단기 / 계량부", "where": "분전반 상단", "why": "전체 계통의 최상위입니다.", "priority": "권장"}
+    ],
+    "전원 UPS": [
+      {"id": "UPS_FRONT", "name": "캐비닛 전체 (전면)", "where": "도어를 열고 캐비닛 정면에서 위아래가 모두 들어오게", "why": "앱에서 이 캐비닛의 대표 사진이 됩니다. 신입이 처음 보는 화면입니다.", "priority": "필수", "tip": "비스듬해도 괜찮습니다. 위아래가 잘리지만 않으면 됩니다."},
+      {"id": "UPS_REAR", "name": "캐비닛 전체 (후면)", "where": "캐비닛 뒤쪽에서 위아래가 모두 들어오게", "why": "측정 단자는 대부분 후면에 있습니다.", "priority": "필수"},
+      {"id": "UPS_LABEL", "name": "코팅 자료 / 벽면 안내표", "where": "캐비닛에 붙어 있는 코팅된 표나 안내문", "why": "현장에서 정리한 자료라 매뉴얼보다 실용적입니다. 글씨가 읽히게 찍어주세요.", "priority": "권장", "tip": "이건 마커를 안 찍어도 됩니다. 상단 '참고자료'만 체크하세요."},
+      {"id": "UPS_PANEL", "name": "UPS 전면 표시부", "where": "UPS 장비 전면의 표시창·LED", "why": "모든 신호설비 전원의 최상위입니다.", "priority": "필수"},
+      {"id": "UPS_OUT", "name": "출력 단자 / 배선", "where": "UPS 뒷면 또는 출력측", "why": "SICAS까지 최대 20m 거리 조건이 있습니다.", "priority": "권장"}
+    ],
+    "가상신호기": [
+      {"id": "VS_ALL", "name": "전체 모습", "where": "장치 전경", "why": "나중에 정리하기로 한 항목입니다. 지금은 전체 사진 한 장이면 충분합니다.", "priority": "선택", "stationSpecific": true}
+    ],
+    "분기부 안전설비": [
+      {"id": "FIELD_TURNOUT_SAFETY", "name": "분기부 안전설비 경보벨/전광판/기구함", "where": "선로전환기 인근 분기부 안전설비 현장 기구함, 경보벨(등), 전광판", "why": "신호취급실에서 안전설비 스위치를 조작하면 이 현장 설비들이 경보를 울립니다. 접속단자 이완 여부와 전원(AC100~120V)을 함께 확인합니다.", "priority": "권장", "measurePointRef": "MP_TURNOUT_SAFETY_ALARM", "relatedFacility": "분기부 안전설비 (MR/PR계전기, 기계실 제어랙)"}
+    ],
+    "현장시설물": [
+      {"id": "FIELD_SW_FRONT", "name": "선로전환기 전체", "where": "현장 선로전환기(전철기) 측면/정면 전경", "why": "이 앱에서 이 선로전환기의 대표 사진이 됩니다. 어느 번호(예: 201, 202)인지 알아볼 수 있게 찍어주세요.", "priority": "필수", "relatedFacility": "EC/DSTT (DEWEMO, T51/T52)"},
+      {"id": "FIELD_SW_TONGUE", "name": "텅레일 밀착·쇄정 상태", "where": "레일이 맞닿는 부분(텅레일)과 쇄정간 부근", "why": "표시전압이 정상으로 안 뜨는 원인이 '배선 문제'인지 '텅레일이 완전히 밀착·쇄정되지 않은 것'인지는 이 사진으로만 구분됩니다. 표시회로는 제어계전기·텅레일·회로제어기 방향이 모두 일치하고 텅레일이 완전히 밀착돼야 완성됩니다.", "priority": "필수", "relatedFacility": "EC/DSTT (DEWEMO, T51/T52)"},
+      {"id": "FIELD_SW_CTRLBOX", "name": "회로제어기(Circuit Controller) 내부", "where": "선로전환기 옆 회로제어기 함 내부. 접점(NC/RC) 부근", "why": "정위/반위 접점이 실제로 잘 붙고 떨어지는지 확인하는 곳입니다.", "priority": "권장", "relatedFacility": "EC/DSTT (DEWEMO, T51/T52)"},
+      {"id": "FIELD_SW_TERMINAL", "name": "현장 단자반(터미널)", "where": "선로전환기 인근 단자반. 제어/표시/모터 배선이 모이는 곳", "why": "기계실 T51/T52의 OTS 판독값과 같은 회로를 현장 쪽 끝에서 재확인하는 지점입니다. 두 지점 값이 다르면 그 사이 배선 문제를 의심할 수 있습니다.", "priority": "필수", "measurePointRef": "MP_FIELD_SW_INDICATION", "relatedFacility": "EC/DSTT (DEWEMO, T51/T52)", "tip": "제어/표시/모터 단자 세 곳 모두 근접 사진을 남겨주세요."},
+      {"id": "FIELD_SIG_FRONT", "name": "신호기 전체", "where": "현장 신호기 전경. 신호기 번호(예: S02)가 보이게", "why": "이 앱에서 이 신호기의 대표 사진이 됩니다.", "priority": "필수", "relatedFacility": "EC/DSTT (DESIMO, T51/T52)"},
+      {"id": "FIELD_SIG_LAMP", "name": "등렬(현시등) 근접", "where": "신호기 머리(신호기함) 앞면, 색등(적/황/녹 등)이 배열된 렌즈 부분 전체를 가까이서. 신호기 꼭대기의 사각형 함 안에 나란히 있는 원형 렌즈들입니다.", "why": "기계실 DESIMO에서 IK1/IK2 LED로 1차 확인한 뒤, 실제 등렬 점등 상태를 눈으로 재확인하는 사진입니다.", "priority": "필수", "measurePointRef": "MP_FIELD_SIG_LAMP", "relatedFacility": "EC/DSTT (DESIMO, T51/T52)", "tip": "각 색등이 실제로 켜지는지, 렌즈가 깨끗한지 구분되게 정면에서 전체 렌즈열이 다 나오도록 찍어주세요."},
+      {"id": "FIELD_SIG_TERMINAL", "name": "신호기 단자함", "where": "신호기 하단/인근 단자함", "why": "배선 상태 점검 대상입니다.", "priority": "권장", "relatedFacility": "EC/DSTT (DESIMO, T51/T52)"},
+      {"id": "FIELD_SBOND", "name": "S-bond 취부 상태", "where": "레일 이음부의 S-bond(ESJ) 취부 부분", "why": "인접 궤도회로 간 전기적 간섭을 막는 절연이음입니다. 탈락·부식·체결 상태만 육안으로 확인하면 됩니다. 별도 전압 측정은 없습니다.", "priority": "필수", "measurePointRef": "MP_FTGS_SBOND", "relatedFacility": "FTGS"},
+      {"id": "FIELD_AF_CB", "name": "AF궤도회로 C/B Box 내부", "where": "현장 C/B Box(튜닝유니트 + 인터페이스/전환모듈) 내부 전체", "why": "기계실 FTGS와 궤도 사이를 잇는 현장 튜닝 장치입니다. 궤도 타입별 내부 구성이 확정되었습니다(2026-09-07 사용자 확인) — 단방향: 튜닝유니트 2개 + 인터페이스 모듈 1개 / 양방향: 튜닝유니트 2개 + 인터페이스 모듈 1개 + 전환모듈 1개 / 센터패드형(중앙급전형) 가운데 C/B: 튜닝유니트 1개 + 인터페이스 모듈 1개 / 센터패드형 양측 C/B: 인접궤도가 단방향이면 튜닝유니트 2개+인터페이스 모듈 1개, 인접궤도가 양방향이면 튜닝유니트 2개+인터페이스 모듈 1개+전환모듈 1개.", "priority": "필수", "relatedFacility": "FTGS", "tip": "박스 안 튜닝유니트·인터페이스 모듈·전환모듈 개수를 세어서 위 구성과 맞는지 확인하고, 궤도 구간명(예: 090T, R430T, L440T 등)과 센터패드형이면 이 박스가 '가운데'인지 '양측'인지도 함께 메모해주세요."},
+      {"id": "FIELD_AF_CB_TERMINAL", "name": "C/B Box 9/10번, 11/14번 단자", "where": "C/B Box 내 튜닝유니트 단자열", "why": "9/10번은 레일로 나가는 송전전압(약 3.5~8V), 11/14번은 기계실→C/B로 들어오는 인입전압(자료에 따라 20~60V 사이, 데이터시트 기준 확인 필요)입니다.", "priority": "필수", "measurePointRef": "MP_FTGS_TX_FIELD", "relatedFacility": "FTGS", "tip": "단자 번호가 읽히는 근접 사진으로 찍어주세요."},
+      {"id": "FIELD_AF_DCBOX", "name": "DC Box 전체 및 단자", "where": "기계실~C/B Box 사이 중간에 있는 DC Box", "why": "케이블 연장을 위한 중간 단자함입니다. 여기서도 전압을 측정할 수 있어, 구간별로 어디서 신호가 끊기는지 좁혀볼 수 있습니다.", "priority": "권장", "measurePointRef": "MP_FTGS_DCBOX", "relatedFacility": "FTGS"},
+      {"id": "FIELD_ATOLOOP_COIL", "name": "ATO Loop Coil", "where": "궤도에 교차 설치된 ATO Loop 코일", "why": "정위치 정차 보정용 코일입니다. 손상·피복 상태를 육안 점검합니다.", "priority": "권장", "measurePointRef": "MP_LZB_LOOPCOIL", "relatedFacility": "ATO Loop 제어함 / FTGS 후면 REMEMO"},
+      {"id": "FIELD_ATOLOOP_CB", "name": "ATO Loop C/B Box 내부", "where": "ATO Loop 현장 접속함(C/B) 내부. 튜닝유니트·터미널모듈", "why": "정상 Loop 전류는 1.5A 이상(검사표준안) / 1.6~1.9A(튜닝 자료, 목표치)입니다. 두 값의 성격이 달라 conflictNote로 남겨둔 상태이니 참고하세요.", "priority": "필수", "measurePointRef": "MP_ATO_LOOP_CURRENT", "relatedFacility": "ATO Loop 제어함 / FTGS 후면 REMEMO"},
+      {"id": "FIELD_TWC_CB", "name": "TWC 접속박스(C/B) 내부", "where": "승강장 TWC 실외모듈. 육각렌치로 여는 상자 안쪽", "why": "DC 20~24V를 재는 곳입니다. 측정 단자 두 개가 보이게 찍어주세요.", "priority": "필수", "measurePointRef": "MP_TWC_OUT", "relatedFacility": "TWC", "tip": "프로브 흔촉·합선에 주의하라고 표준안에 적혀 있습니다."},
+      {"id": "FIELD_TWC_LOOP", "name": "TWC Loop Coil / 안테나", "where": "궤도에 설치된 TWC 루프 코일", "why": "손상 여부를 육안 점검합니다.", "priority": "권장", "measurePointRef": "MP_TWC_LOOPCOIL", "relatedFacility": "TWC"},
+      {"id": "FIELD_AF_CB_EXT", "name": "AF궤도회로 C/B Box 외함", "where": "레일 옆 C/B Box(현장 접속함) 외부 전경. 박스 전체와 설치 위치(어느 레일, 어느 방향)가 보이게", "why": "박스를 열기 전 겉모습입니다. 여러 C/B Box가 비슷하게 생겨서, 어느 궤도구간 것인지 외함 표기와 위치로 먼저 구분해야 합니다.", "priority": "필수", "relatedFacility": "FTGS", "tip": "외함에 궤도 구간 표기나 타입(단방향/양방향/센터패드형) 표시가 있으면 함께 찍어주세요."},
+      {"id": "FIELD_ATOLOOP_CB_EXT", "name": "ATO Loop C/B Box 외함", "where": "ATO Loop 현장 접속함(C/B) 외부 전경", "why": "박스를 열기 전 겉모습과 설치 위치입니다.", "priority": "필수", "relatedFacility": "ATO Loop 제어함 / FTGS 후면 REMEMO"},
+      {"id": "FIELD_TWC_CB_EXT", "name": "TWC 접속박스 외함", "where": "승강장 TWC 실외모듈 접속박스 바깥 전경. 설치 위치(승강장 어느 구간)가 보이게", "why": "박스를 열기 전 겉모습입니다.", "priority": "필수", "relatedFacility": "TWC"},
+      {"id": "FIELD_ATOLOOP_CTRLBOX_EXT", "name": "ATO Loop 제어함(Controller Box) 외함", "where": "승강장에 설치된 ATO Loop 제어함 캐비닛 외부 전경", "why": "송신·증폭·필터보드와 FUUELL(기능제어보드)이 들어있는 현장 캐비닛입니다. 지금까지는 ATO Loop 코일과 C/B Box만 촬영 목록에 있었고, 이 제어함 자체는 빠져 있었습니다.", "priority": "필수", "relatedFacility": "ATO Loop 제어함 (FTGS-46 TX/증폭/필터보드 + 전원장치 + FUUELL)"},
+      {"id": "FIELD_ATOLOOP_CTRLBOX_INT", "name": "ATO Loop 제어함 내부 (보드 배치)", "where": "제어함 문을 열고 내부 보드 전체 - 송신보드/증폭보드/필터보드/전원장치/FUUELL(기능제어보드) 배치가 보이게", "why": "FUUELL의 LED로 Loop1/Loop2/FAN 장애 여부를 판정합니다(0~7 상태코드). 장애 조치 후 Reset 버튼을 눌러 LED가 꺼지는지 여기서 확인합니다.", "priority": "필수", "measurePointRef": "MP_ATO_CONTROLLER_LED_TEST", "relatedFacility": "ATO Loop 제어함", "tip": "FUUELL 보드의 LED와 Reset 버튼이 잘 보이게 근접 사진도 한 장 더 찍어주세요."},
+      {"id": "FIELD_SW_CAPACITOR", "name": "콘덴서(커패시터)", "where": "선로전환기 함체 내부, 콘덴서 설치 위치 (정확한 위치는 확인 필요 — 촬영하실 때 어디 있는지 알려주시면 반영하겠습니다)", "why": "콘덴서 상태(팽창/누액)와 측정값을 확인하는 지점입니다. 정상범위는 아직 미확정이라 사진과 함께 실측값을 남겨주시면 기준값을 잡는 데 도움이 됩니다.", "priority": "권장", "measurePointRef": "MP_SW_CAPACITOR", "relatedFacility": "EC/DSTT (DEWEMO, T51/T52)"}
+    ]
+  },
+  "station": "신도림",
+  "scopeNote": "이 파일의 대부분 내용(장비 기능/구조/측정방법/판단기준)은 표준 규격 장비를 다루므로 다른 연동역에도 그대로 적용 가능합니다. 항목별 'stationSpecific': true 로 표시된 것만 신도림 고유 정보(실제 라벨 문서, 특정 설비 유무 등)이며, 다른 역 적용 시 그 항목만 새로 확인하면 됩니다."
+}
