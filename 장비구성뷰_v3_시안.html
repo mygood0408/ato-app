@@ -7227,6 +7227,7 @@ function renderPhotoSection(sectionId, groupKey, title){
   var h = '<div class="photo-section" data-photosection="' + escapeHtml(sectionId) + '">';
   h += '<div class="photo-section-head"><span class="t">📷 ' + escapeHtml(title || '실물 사진 / 동영상') + '</span>'
     + '<button class="photo-mini-btn pri" data-act="photopick">사진/동영상 폴더 열기</button>'
+    + '<button class="photo-mini-btn" data-act="drivepickdirect" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🗂 Google Drive</button>'
     + (photoFolderList.length ? '<button class="photo-mini-btn" data-act="photocurate" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🖼 이 장비에 사진 지정</button>' : '')
     + (photoFolderList.length && !curated ? photoFolderPickerHtml(sectionId) : '')
     + '</div>';
@@ -7380,6 +7381,108 @@ function openPhotoPickerDirect(sectionId, groupKey, label){
   inp.click();
 }
 
+/* ---- Google Drive에서 사진/동영상 선택 ----
+   PC/폰 양쪽에서 같은 드라이브 폴더에 접근하고 싶다는 요청으로 추가. 로컬 폴더 열기와 달리
+   서버(구글) 인증이 필요해 별도 흐름: ①Picker API·GIS 스크립트를 한 번만 로드 ②사용자 로그인
+   (drive.file 범위 — Picker로 고른 파일에만 접근, 드라이브 전체 접근 아님) ③Picker로 사진/동영상
+   고르면 각 파일을 Drive API로 내려받아(blob) 기존 photoByFolder 구조에 동일하게 편입시킨다.
+   이후 마커 찍기·갤러리 표시는 로컬 폴더로 불러온 사진과 완전히 동일하게 동작한다. */
+var GOOGLE_CLIENT_ID = '140894166310-7u5d2pkev5mps6l2a0lofd9iifnor4sq.apps.googleusercontent.com';
+var GOOGLE_API_KEY = 'AIzaSyC56Hd02XBL94AtHLNpyWfEp8zTJbkBZrg';
+var driveAccessToken = null, drivePickerReady = false;
+
+function loadScriptOnce(src, cb){
+  var existing = document.querySelector('script[data-src="' + src + '"]');
+  if (existing) { if (existing.getAttribute('data-loaded')) cb(); else existing.addEventListener('load', cb); return; }
+  var s = document.createElement('script');
+  s.src = src; s.async = true; s.defer = true; s.setAttribute('data-src', src);
+  s.onload = function(){ s.setAttribute('data-loaded', '1'); cb(); };
+  s.onerror = function(){ alert('Google API 스크립트를 불러오지 못했습니다. 인터넷 연결을 확인해주세요.'); };
+  document.head.appendChild(s);
+}
+function ensureDriveApis(cb){
+  if (drivePickerReady) { cb(); return; }
+  loadScriptOnce('https://apis.google.com/js/api.js', function(){
+    gapi.load('picker', function(){
+      loadScriptOnce('https://accounts.google.com/gsi/client', function(){
+        drivePickerReady = true;
+        cb();
+      });
+    });
+  });
+}
+function requestDriveToken(cb){
+  if (driveAccessToken) { cb(driveAccessToken); return; }
+  var client = google.accounts.oauth2.initTokenClient({
+    client_id: GOOGLE_CLIENT_ID,
+    scope: 'https://www.googleapis.com/auth/drive.file',
+    callback: function(resp){
+      if (resp.error) { alert('구글 드라이브 로그인에 실패했습니다: ' + resp.error); return; }
+      driveAccessToken = resp.access_token;
+      cb(driveAccessToken);
+    }
+  });
+  client.requestAccessToken();
+}
+function openDrivePickerUI(token, onPicked){
+  var view = new google.picker.DocsView(google.picker.ViewId.DOCS_IMAGES_AND_VIDEOS)
+    .setIncludeFolders(true).setSelectFolderEnabled(false);
+  new google.picker.PickerBuilder()
+    .setOAuthToken(token)
+    .setDeveloperKey(GOOGLE_API_KEY)
+    .addView(view)
+    .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+    .setCallback(function(data){
+      if (data.action === google.picker.Action.PICKED) onPicked(data.docs, token);
+    })
+    .build().setVisible(true);
+}
+/* Picker가 넘겨준 파일들을 실제로 내려받아 photoByFolder에 채운다 — 로컬 폴더 열기의
+   동영상 길이 검사(10초 제한) 로직과 동일하게 재사용. */
+function driveDocsToPhotoItems(docs, token, folder, cb){
+  var remaining = docs.length;
+  if (!remaining) { cb(); return; }
+  docs.forEach(function(doc){
+    fetch('https://www.googleapis.com/drive/v3/files/' + doc.id + '?alt=media', { headers: { Authorization: 'Bearer ' + token } })
+      .then(function(res){ if (!res.ok) throw new Error('HTTP ' + res.status); return res.blob(); })
+      .then(function(blob){
+        var isVid = /^video\//.test(doc.mimeType);
+        var url = URL.createObjectURL(blob);
+        var item = { folder: folder, name: doc.name, url: url, kind: isVid ? 'video' : 'photo' };
+        if (!isVid) { (photoByFolder[folder] = photoByFolder[folder] || []).push(item); if (--remaining <= 0) cb(); return; }
+        var v = document.createElement('video');
+        v.preload = 'metadata'; v.muted = true;
+        var settle = function(){ (photoByFolder[folder] = photoByFolder[folder] || []).push(item); if (--remaining <= 0) cb(); };
+        v.onloadedmetadata = function(){
+          item.duration = v.duration;
+          if (!isFinite(v.duration) || v.duration > PHOTO_MAX_VIDEO_SEC + 0.4) { item.rejected = true; photoRejectedVideoCount++; }
+          settle();
+        };
+        v.onerror = function(){ item.rejected = true; item.duration = null; photoRejectedVideoCount++; settle(); };
+        v.src = url;
+      })
+      .catch(function(){ if (--remaining <= 0) cb(); });
+  });
+}
+function openDrivePickerGeneral(){
+  ensureDriveApis(function(){ requestDriveToken(function(token){
+    openDrivePickerUI(token, function(docs, tok){ driveDocsToPhotoItems(docs, tok, 'Google Drive', finishPhotoLoad); });
+  }); });
+}
+function openDrivePickerDirect(sectionId, groupKey, label){
+  ensureDriveApis(function(){ requestDriveToken(function(token){
+    openDrivePickerUI(token, function(docs, tok){
+      var folder = (label || groupKey || '사진') + ' (Google Drive)';
+      driveDocsToPhotoItems(docs, tok, folder, function(){
+        (photoManualFolders[sectionId] = photoManualFolders[sectionId] || []);
+        if (photoManualFolders[sectionId].indexOf(folder) < 0) photoManualFolders[sectionId].push(folder);
+        finishPhotoLoad();
+        openQuickPreview(sectionId, groupKey, label);
+      });
+    });
+  }); });
+}
+
 /* ---- 마커 편집 모달 ---- */
 function openPhotoModal(folder, name){
   state.photoModal = { folder: folder, name: name };
@@ -7467,6 +7570,8 @@ document.addEventListener('click', function(e){
   if (!t) return;
   var act = t.getAttribute('data-act');
   if (act === 'photopick') { openPhotoPicker(); }
+  else if (act === 'drivepick') { openDrivePickerGeneral(); }
+  else if (act === 'drivepickdirect') { openDrivePickerDirect(t.getAttribute('data-section'), t.getAttribute('data-group'), t.getAttribute('data-label')); }
   else if (act === 'photoexport') { downloadPhotoExport(); }
   else if (act === 'photoopen') { openPhotoModal(t.getAttribute('data-folder'), t.getAttribute('data-name')); }
   else if (act === 'photoclose') { closePhotoModal(); }
@@ -8078,6 +8183,7 @@ function renderTopbar(){
     + '<div class="sub">캐비닛 구성도 → 보드 열 → 개별 보드 순으로 들어가는 방식</div>'
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photopick">📷 사진/동영상 폴더 열기' + (photoCnt ? ' <span class="mono" style="opacity:.8">(' + photoCnt + '개 폴더)</span>' : '') + '</button>'
+    + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
     + (markCnt ? '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photoexport">작업 JSON 내려받기 (' + markCnt + ')</button>' : '')
     + '</div>'
     + '</div>';
