@@ -7503,6 +7503,7 @@ function currentPhotoItem(){
   return null;
 }
 function renderPhotoModalRoot(){
+  syncNavHistory();
   var root = document.getElementById('photoModalRoot');
   if (!state.photoModal) { root.innerHTML = ''; return; }
   var item = currentPhotoItem();
@@ -7695,6 +7696,7 @@ function qpRecalcBox(){
 }
 window.addEventListener('resize', function(){ if (state.quickPreview) qpRecalcBox(); });
 function renderQuickPreviewRoot(){
+  syncNavHistory();
   var root = document.getElementById('quickPreviewRoot');
   if (!root) return;
   if (!state.quickPreview) { root.innerHTML = ''; return; }
@@ -7844,6 +7846,7 @@ function togglePhotoCurateItem(folder, name){
   renderPhotoCurateRoot();
 }
 function renderPhotoCurateRoot(){
+  syncNavHistory();
   var root = document.getElementById('photoCurateRoot');
   if (!root) return;
   if (!state.photoCurate) { root.innerHTML = ''; return; }
@@ -8110,11 +8113,63 @@ function render(){
   renderPhotoCurateRoot();
   renderImgZoomRoot();
   if (state.tab === 'map') setupMapPanZoom();
+  syncNavHistory();
 }
+
+/* =========================================================
+   모바일 뒤로가기 버튼 — 브라우저 히스토리에 한 단계씩 쌓아서, 기기 뒤로가기를
+   눌렀을 때 사이트를 통째로 벗어나지 않고 앱 안에서 한 단계만 뒤로 가게 한다.
+   (모바일 제보: 뒤로가기 누르면 사이트 자체가 사라짐 — SPA라 히스토리 항목이
+   하나도 안 쌓여서 첫 뒤로가기가 바로 그 이전 사이트로 나가버렸던 것)
+   방식: 열려있는 화면/팝업 개수(navDepth)를 셀 수 있게 정의해두고, 그 수가
+   늘어날 때마다 history 항목을 하나 쌓는다. 기기 뒤로가기(popstate)가 오면
+   가장 바깥쪽(가장 최근에 연 것) 하나만 닫고, 아직 닫을 게 남아있으면 다음
+   뒤로가기도 또 잡아채도록 history 항목을 즉시 다시 쌓아둔다. 전부 닫혀서
+   depth가 0이 되면 더 이상 다시 쌓지 않아 다음 뒤로가기는 정상적으로 사이트를
+   벗어난다. ========================================================= */
+function navDepth(){
+  var d = 0;
+  if (state.imgZoom) d++;
+  if (state.quickPreview) d++;
+  if (state.photoModal) d++;
+  if (state.photoCurate) d++;
+  if (state.boardDetail) d++;
+  if (state.rowDetail) d++;
+  if (state.rackDrill) d++;
+  if (state.tab !== 'map') d++;
+  return d;
+}
+var navLastDepth = 0, navInitialized = false;
+function syncNavHistory(){
+  var d = navDepth();
+  if (!navInitialized) { navInitialized = true; navLastDepth = d; history.replaceState({ navDepth: d }, ''); return; }
+  if (d > navLastDepth) history.pushState({ navDepth: d }, '');
+  navLastDepth = d;
+}
+function navBackOneStep(){
+  if (state.imgZoom) { state.imgZoom = null; renderImgZoomRoot(); return; }
+  if (state.quickPreview) { closeQuickPreview(); return; }
+  if (state.photoModal) { closePhotoModal(); return; }
+  if (state.photoCurate) { state.photoCurate = null; renderPhotoCurateRoot(); return; }
+  if (state.boardDetail) {
+    state.boardDetail = null; state.boardDetailList = null; state.selectedLed = null;
+    if (state.boardDetailFrom && state.boardDetailFrom !== 'rack') state.tab = state.boardDetailFrom;
+    render(); return;
+  }
+  if (state.rowDetail) { state.rowDetail = null; render(); return; }
+  if (state.rackDrill) { state.rackDrill = null; render(); return; }
+  if (state.tab !== 'map') { state.tab = 'map'; render(); return; }
+}
+window.addEventListener('popstate', function(){
+  navBackOneStep();
+  navLastDepth = navDepth();
+  if (navLastDepth > 0) history.pushState({ navDepth: navLastDepth }, '');
+});
 
 /* 보드 이미지 확대 팝업 — 클릭하면 화면 가운데 크게 띄우고, 배경이나 닫기 버튼을 누르면
    원래 상세페이지의 작은 이미지 자리로 그대로 돌아간다(팝업을 닫을 뿐 상태는 안 바뀜). */
 function renderImgZoomRoot(){
+  syncNavHistory();
   var root = document.getElementById('imgZoomRoot');
   if (!state.imgZoom || !BOARD_SVG[state.imgZoom]) { root.innerHTML = ''; return; }
   var h = '<div class="imgzoom-overlay" data-act="imgzoomclose"><div class="imgzoom-modal" data-act="qpnoop">'
