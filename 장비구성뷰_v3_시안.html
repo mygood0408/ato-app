@@ -117,6 +117,8 @@ img,svg{max-width:100%}
 .node-label{font-size:12px;font-weight:700}
 .edge-line{stroke-width:2.4;fill:none;cursor:pointer;transition:stroke-width .15s;stroke-linejoin:round;stroke-linecap:round}
 .edge-line.active{stroke-width:4}
+.edge-line.power{stroke-width:1.3;stroke-dasharray:4 3;opacity:.55}
+.edge-line.power.active{stroke-width:2.6;opacity:1}
 .edge-hit{stroke:transparent;stroke-width:14;fill:none;cursor:pointer;stroke-linejoin:round}
 .edge-label-grp{cursor:pointer}
 .edge-label{font-size:9px;font-family:"IBM Plex Mono",monospace;pointer-events:none}
@@ -522,10 +524,18 @@ var CONN = {
       "note": "신도림 기준 실제 인접역(예: 대림/구로디지털단지 등)으로 라벨을 바꿔 쓸 수 있음 — 역마다 값만 다르고 구조는 동일."
     },
     {
-      "id": "ATO_PANEL",
-      "label": "ATO 분전반 (전원공급)",
+      "id": "AC_PANEL",
+      "label": "AC분전반 (TBM-1)",
+      "rackRef": "분전반(AC)",
       "group": "전원",
-      "note": "EC/DSTT에 60V/24V/110V 계통 전원을 공급하는 분전반. 다른 역에서는 명칭이 다를 수 있음(같은 역할)."
+      "note": "AC220V 직결라인(변압기 없음): SICAS/LZB 팬, IFC A/B계 컴퓨터, 관제시스템(LMC/LCC/TMS), HUB/TWC 감시장치. AC110V(TR4/TR5): 신호기·선로전환기 표시/모터 계통, 분기부 안전설비, 가상신호기(VS). AC220V(TR1/TR2): FTGS 궤도회로(인접역 포함). 신도림 실측 기준 — 다른 역은 배선표 별도 확인. 상세 결선표는 랙 구성 탭 '분전반(AC)' 참고."
+    },
+    {
+      "id": "DC_PANEL",
+      "label": "DC분전반 (TBM-2)",
+      "rackRef": "분전반(DC)",
+      "group": "전원",
+      "note": "DC60V(TR6/TR7): SICAS MAIN, LZB ATP, EC/DSTT EC MAIN, ATO Loop REMEMO, PSD I/F. DC24V(TR8/TR9): SICAS AUX, LZB STEKOP·OLM·POINTCONTROL, IFC DI/DO·EMS. 신도림 실측 기준 — 다른 역은 배선표 별도 확인. 상세 결선표는 랙 구성 탭 '분전반(DC)' 참고."
     },
     {
       "id": "FIELD_SWITCH",
@@ -630,15 +640,141 @@ var CONN = {
       "note": "OLM을 거치지 않는 직접 배선 연결로 표시되어 있었음. 상세 신호 종류는 미확인."
     },
     {
-      "from": "ATO_PANEL",
-      "to": "ECDSTT",
-      "cable": "60V/24V/110V 전원 케이블",
+      "from": "AC_PANEL",
+      "to": "SICAS",
+      "cable": "전원",
+      "kind": "power",
       "via": null,
       "protocol": null,
+      "note": "AC220V 직결라인(변압기 없음) — SICAS FAN. 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "LZB700M",
+      "cable": "전원",
+      "kind": "power",
+      "via": null,
+      "protocol": null,
+      "note": "AC220V 직결라인(변압기 없음) — LZB FAN. 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "IFC",
+      "cable": "전원",
+      "kind": "power",
+      "via": null,
+      "protocol": null,
+      "note": "AC220V 직결라인(변압기 없음) — IFC A/B계 컴퓨터. 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "CONTROL_CENTER",
+      "cable": "전원",
+      "kind": "power",
+      "via": null,
+      "protocol": null,
+      "note": "AC220V 직결라인(변압기 없음) — LMC51/LCC51/M51 TMS 등 관제측. 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "TWC",
+      "cable": "전원",
+      "kind": "power",
+      "via": null,
+      "protocol": null,
+      "note": "AC220V 직결라인(변압기 없음) — HUB/TWC 감시장치(구C52). 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "FIELD_SWITCH",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR4/TR5",
+      "protocol": null,
+      "note": "AC110V(TR4/TR5) — 선로전환기 표시·모터 계통(1계통 TR4, 2계통 TR5로 이중화). 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "FIELD_SIGNAL",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR4/TR5",
+      "protocol": null,
+      "note": "AC110V(TR4/TR5) — 신호기 램프전원 계통(1계통 TR4, 2계통 TR5로 이중화). 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "FTGS",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR1/TR2",
+      "protocol": null,
+      "note": "AC220V(TR1/TR2) — FTGS 궤도회로(F51~F59) 및 인접역(신대방·구로디지털단지·대림 등) 궤도회로 급전. 신도림 AC분전반(TBM-1) 실측 결선표 기준."
+    },
+    {
+      "from": "AC_PANEL",
+      "to": "ECDSTT",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR4/TR5",
+      "protocol": null,
       "boardRefs": [
-        "ECDSTT_PS"
+        "ECDSTT_DESIMO"
       ],
-      "note": "60V→SV2602 필터→8V(STEKOP-Platter 전원), 24V→STEKOP/OLM, 110V→DESIMO 램프전원. 실제 측정 단자 번호는 역/캐비닛마다 달라 rack-layout.json의 powerFlow에 기록."
+      "note": "AC110V(TR4/TR5, 신호기 램프전원 계통) — DESIMO가 이 전원을 받아 현장 신호기 램프로 출력."
+    },
+    {
+      "from": "DC_PANEL",
+      "to": "SICAS",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR6~TR9",
+      "protocol": null,
+      "note": "DC60V(TR6/TR7) — SICAS MAIN, DC24V(TR8/TR9) — SICAS AUX. 신도림 DC분전반(TBM-2) 실측 결선표 기준."
+    },
+    {
+      "from": "DC_PANEL",
+      "to": "LZB700M",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR6~TR9",
+      "protocol": null,
+      "note": "DC60V(TR6/TR7) — LZB ATP, DC24V(TR8/TR9) — STEKOP·OLM·POINTCONTROL. 신도림 DC분전반(TBM-2) 실측 결선표 기준."
+    },
+    {
+      "from": "DC_PANEL",
+      "to": "ECDSTT",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR6/TR7",
+      "protocol": null,
+      "boardRefs": [
+        "ECDSTT_PS",
+        "ECDSTT_STEKOP",
+        "ECDSTT_OLM"
+      ],
+      "note": "DC60V(TR6/TR7, EC/DSTT EC MAIN 계통) → SV2602 필터 → 8V(STEKOP-Platter 전원), DC24V → STEKOP/OLM. 실제 측정 단자 번호는 역/캐비닛마다 달라 rack-layout.json의 powerFlow에 기록."
+    },
+    {
+      "from": "DC_PANEL",
+      "to": "ATOLOOP",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR6/TR7",
+      "protocol": null,
+      "boardRefs": [
+        "ATOLOOP_REMEMO"
+      ],
+      "note": "DC60V(TR6/TR7) — ATO Loop REMEMO 릴레이보드 구동 전원. 신도림 DC분전반(TBM-2) 실측 결선표 기준."
+    },
+    {
+      "from": "DC_PANEL",
+      "to": "IFC",
+      "cable": "전원",
+      "kind": "power",
+      "via": "TR8/TR9",
+      "protocol": null,
+      "note": "DC24V(TR8/TR9) — IFC DI/DO·EMS 계통. 신도림 DC분전반(TBM-2) 실측 결선표 기준."
     },
     {
       "from": "ECDSTT",
@@ -752,7 +888,8 @@ var CONN = {
     "2026-09-07: EC/DSTT 확장 — 기존 'ECDSTT' 노드는 그대로 유지하고(신도림 T51/T52 같은 역별 캐비닛 대수는 여기 넣지 않음), SICAS↔ECDSTT 엣지에 ECDSTT_STEKOP boardRef 추가. ATO_PANEL·RB_RACK·FIELD_SWITCH·FIELD_SIGNAL 노드와 그 사이 엣지(전원공급/DEWEMO/DESIMO/AR계전기 경유) 신규 추가 — 모두 역에 무관한 범용 구조로 작성. 역별 실측값(전원단자 번호, 계전기 이름 등)은 rack-layout.json / board-info.json에 station 표시와 함께 기록.",
     "2026-09-07: 사용자가 업로드한 'SICAS 지침서.pdf'의 통신망 구성도(p.48~50)를 반영해 FTGS·TWC·관제시스템(LCC/LMC/SSC/TMS) 노드와 관련 엣지 5건 추가. FTGS는 ID랙 내부에 위치하는 것으로 확인되어 SICAS가 아닌 ID_RACK을 경유해 연결함. 기존 SICAS-ECDSTT/LZB700M/IFC/인접역/ID랙 5개 핵심 엣지는 새 자료와 대조해 불일치 없음을 확인, 변경 없음.",
     "2026-09-07: 'ATO LOOP 지침서.pdf' 및 실사진(ATO Loop 컨트롤러 함 내부 결선도)을 반영해 'ATOLOOP'(ATO Loop 제어함)과 'FIELD_ATOLOOP'(현장 ATO Loop 코일/C-B Box) 노드, LZB700M↔ATOLOOP(STELA3 X6 경유)·ATOLOOP↔FIELD_ATOLOOP(REMEMO 릴레이보드 경유) 엣지 2건 신규 추가. ATOLOOP의 정확한 물리적 설치 위치(승강장 트랙사이드 vs 신호기계실 FTGS 랙 인접)는 자료 간 표현이 엇갈려 note로 남기고 확정하지 않음 — 현장 확인 필요. 기존 FTGS 노드/엣지는 변경 없음.",
-    "2026-09-07: 사용자가 첨부한 'LZB 지침서.pdf'(p.96~97 LZB 통신망 구성도·LZB↔기타장치간 흐름도) 반영 — LZB700M 노드에 rackRef:'LZB700M' 추가(v3 뷰어에서 랙 상세로 드릴다운 가능하게 함) 및 신도림 L51/L52 실측 캐비닛 note 추가. SICAS↔LZB700M 엣지에 boardRefs(LZB_BUMA)와 통신망 구성도 상세(OLM 4개, Route정보) 보강. FTGS→LZB700M 엣지에 via:'FTGS Distributor', boardRefs(LZB_FTGS_DISTRIBUTOR) 추가. LZB700M↔TWC(PSD 제어/TWC 정보), LZB700M↔IFC(EMS 제어, 경로 미확인) 엣지 2건 신규 추가. 기존 SICAS/ECDSTT/FTGS/ATO Loop 관련 다른 노드·엣지는 변경 없음."
+    "2026-09-07: 사용자가 첨부한 'LZB 지침서.pdf'(p.96~97 LZB 통신망 구성도·LZB↔기타장치간 흐름도) 반영 — LZB700M 노드에 rackRef:'LZB700M' 추가(v3 뷰어에서 랙 상세로 드릴다운 가능하게 함) 및 신도림 L51/L52 실측 캐비닛 note 추가. SICAS↔LZB700M 엣지에 boardRefs(LZB_BUMA)와 통신망 구성도 상세(OLM 4개, Route정보) 보강. FTGS→LZB700M 엣지에 via:'FTGS Distributor', boardRefs(LZB_FTGS_DISTRIBUTOR) 추가. LZB700M↔TWC(PSD 제어/TWC 정보), LZB700M↔IFC(EMS 제어, 경로 미확인) 엣지 2건 신규 추가. 기존 SICAS/ECDSTT/FTGS/ATO Loop 관련 다른 노드·엣지는 변경 없음.",
+    "2026-09-22: 사용자 질문('ATO 분전반 → EC/DSTT 외 다른 설비 전원공급 여부 미확인') 계기로 rack-layout.json/board-info.json의 분전반(AC)/(DC) 실측 결선표(loadTable)를 대조한 결과, EC/DSTT 전용이 아니라 SICAS/LZB700M/IFC/ATO Loop/관제시스템/TWC/FTGS/현장 신호기·선로전환기까지 급전하는 공용 분전반임을 확인. 기존 'ATO_PANEL' 단일 노드(EC/DSTT 1개 엣지만 존재)를 'AC_PANEL'(분전반(AC) 랙 연결)·'DC_PANEL'(분전반(DC) 랙 연결) 2개 노드로 분리하고, 실측 결선표 기준 엣지 14건 신규 추가(AC 9건, DC 5건). 선이 많아져 복잡해 보이지 않도록 전원 엣지는 kind:'power'로 표시해 얇은 점선·라벨없음 스타일로 나머지 데이터/통신선과 시각적으로 구분(렌더링 쪽 .edge-line.power CSS, 라벨 렌더 루프에서 kind==='power' 건너뜀). 두 패널 노드는 화면 하단 '전원' 구역에 나란히 배치, 좌표를 손으로 꺾어 맞춘 경로가 아니라 자동 직선 폴백을 사용해 유지보수 부담을 줄임."
   ]
 };
 var RACK = {
@@ -6878,9 +7015,6 @@ var FCASES = {
     {"id":"FLT_ILK_06","domain":"연동장치","symptom":"연동장치에 대한 채널 접속 중단","errorSource":"연동장치 캐비닛 SVK2102 전원장치","diagnosis":["연동장치 스위치 Off","캐비닛 내의 모든 장치가 꺼짐","3개의 SVK2102에서 출력 전원 미공급 (LED UA 꺼짐)","STEKOP 연결 장애: 채널 1의 LED L4 깜박거림"],"cause":"전원장치 입력전압이 기준 미만: UE < 33V","remedy":["연동장치의 전원 스위치를 Off 하고 UE = 60V로 조정"],"measurePointRef":"MP_SICAS_S51_DC60","manualRefs":["3.12 레벨 N에서의 터미널 스트립","3.1 연동 캐비닛 구조"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
     {"id":"FLT_ILK_07","domain":"연동장치","symptom":"연동장치에 대한 채널 접속 중단","errorSource":"연동 캐비닛용 SVK2102 전원장치","diagnosis":["연동장치 스위치 Off","캐비닛 내의 모든 장치가 꺼짐","3개의 SVK2102에서 출력 전원 미공급 (LED UA 꺼짐), 장치 전면 F2 퓨즈 끊김","STEKOP 연결 장애: 채널 1의 LED L4 깜박거림"],"cause":"전원장치 입력전압이 기준 초과: UE > 89V","remedy":["연동장치의 전원 스위치를 Off 하고 UE = 60V로 조정","SVK2102에서의 퓨즈 F2 교체"],"measurePointRef":"MP_SICAS_S51_DC60","manualRefs":["3.8 SVK2102-전원장치","3.12 레벨 N에서의 터미널 스트립"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
     {"id":"FLT_ILK_08","domain":"연동장치","symptom":"연동장치에 대한 채널 접속 중단","errorSource":"KOMDA용 24V 전원","diagnosis":["연동 스위치 off","VENUS 디스플레이: F0002 / F801E / F0002"],"cause":"KOMDA에 24V 전원 공급 장애","remedy":["KOMDA 24V 전원 공급 라인 점검"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
-    {"id":"FLT_ILK_09","domain":"연동장치","symptom":"팬 장애","errorSource":"팬유닛","diagnosis":["팬유닛 LED 알람 적색"],"cause":"팬 장애","remedy":["팬 라인 교체"],"manualRefs":["3.9 팬 유닛"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
-    {"id":"FLT_ILK_10","domain":"연동장치","symptom":"팬 정지","errorSource":"팬유닛","diagnosis":["팬유닛의 모든 LED 꺼짐"],"cause":"220V 전원 없음","remedy":["퓨즈와 케이블 점검"],"manualRefs":["3.9 팬 유닛","3.12 레벨 N에서의 터미널 스트립"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
-    {"id":"FLT_ILK_11","domain":"연동장치","symptom":"팬 모니터링 이상","errorSource":"팬유닛","diagnosis":[],"cause":"장애 모니터링 24V 전원 없음","remedy":["팬 라인 플러그에서의 전류 모니터링 점검","전류 모니터링 라인 점검"],"manualRefs":["3.9 팬 유닛","3.12 레벨 N에서의 터미널 스트립"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
     {"id":"FLT_ILK_12","domain":"연동장치","symptom":"채널 정지","errorSource":"전자연동 컴퓨터 5V 전원 공급","diagnosis":["SVK2102 LED UE와 UA 꺼짐","관련 채널의 장치 꺼짐","인접 채널 VESUV3 VL 또는 VR 적색","BUMA VR 또는 VL 적색"],"cause":"5V 전원 없음","remedy":["SVK2102 장치, 필터 라인, 퓨즈 및 라인 점검"],"manualRefs":["3.8 SVK2102-전원장치","3.10 필터 유닛","2.3.7.5 실행중인 2-of-2 컴퓨터의 3채널 활성화"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
     {"id":"FLT_ILK_13","domain":"연동장치","symptom":"채널 정지","errorSource":"VENUS3","diagnosis":["관련 채널의 VENUS3 꺼짐"],"cause":"VENUS3 장비 장애","remedy":["VENUS3 장치 교체 후 컴퓨터 Reset"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.2"}},
     {"id":"FLT_PWR_01","domain":"전원","symptom":"캐비닛 내 모든 요소들로의 연결 장애","errorSource":"STEKOP에 대한 60V/8V 전원 공급","diagnosis":["SV2602 LED UE 및 UA 꺼짐","STEKOP 장치 LED ASS(채널 1a, 2) 적색"],"cause":"STEKOP에 대한 60V/8V 전원 공급 장애","remedy":["SV2602 장치, 필터, 퓨즈 및 배선 점검"],"manualRefs":["4.5 SV2602-전원장치","4.1 캐비닛 배치","4.7.1 터미널 스트립 레벨 G(수직)"],"source":{"doc":"SICAS 유지보수 매뉴얼","section":"6.4"}},
@@ -7077,6 +7211,7 @@ var GROUPS = {
 var GROUP_ORDER = ['SICAS','EC/DSTT','LZB700M','IFC','FTGS','ATO Loop 제어함','TWC','분기부 안전설비','PSD 인터페이스','분전반(AC)','분전반(DC)','전원장치(UPS)'];
 /* map system-map node id -> board-info group key, for nodes that are drillable into rack view */
 var NODE_ID_TO_GROUPKEY = { SICAS:'SICAS', ECDSTT:'EC/DSTT', LZB700M:'LZB700M', IFC:'IFC', FTGS:'FTGS', TWC:'TWC', ATOLOOP:'ATO Loop 제어함',
+  AC_PANEL:'분전반(AC)', DC_PANEL:'분전반(DC)',
   /* [2026-09-16] FIELD_ATOLOOP(현장 ATO Loop 코일/C-B Box)은 별도 랙은 없지만, ATO Loop
      제어함 랙의 "현장설비" 탭(코일)이 바로 이 장비를 가리키므로 그리로 연결한다 — 아래
      NODE_ID_TO_SIDE에서 어느 side로 갈지 지정. */
@@ -7945,8 +8080,8 @@ function saveFaultFavorites(){ try { localStorage.setItem(FAULT_FAV_KEY, JSON.st
    선이 여럿일 때는 서로 다른 '레인(lane) y/x'를 배정해 나란히 지나가되 절대 겹치지
    않도록 했다. */
 var MAP_W = 1050, MAP_H = 800;
-/* [2026-09-16] 기계실 설비(위)와 현장설비(아래) 사이에 점선 구분선을 긋기 위한 y좌표.
-   ATO_PANEL(전원 계통, group:"전원")은 기계실 쪽에 남기고, group:"현장설비"인 3개
+/* [2026-09-22] 기계실 설비(위)와 현장설비(아래) 사이에 점선 구분선을 긋기 위한 y좌표.
+   AC_PANEL/DC_PANEL(전원 계통, group:"전원")은 기계실 쪽에 남기고, group:"현장설비"인 3개
    (FIELD_SWITCH/FIELD_SIGNAL/FIELD_ATOLOOP)만 이 선 아래로 배치한다. */
 var MAP_FIELD_DIVIDER_Y = 635;
 var NODE_POS = {
@@ -7962,9 +8097,13 @@ var NODE_POS = {
   ID_RACK:                { x: 280, y: 430, w: 110, h: 56 },
   ECDSTT:                 { x: 420, y: 430, w: 170, h: 70 },
   ATOLOOP:                { x: 640, y: 430, w: 160, h: 56 },
-  /* [2026-09-16] 확대 + 재배치 — 기존(140×56)보다 큰 220×76. FTGS/ID_RACK 행 바로 아래,
-     ECDSTT 왼쪽 아래 여백에 배치해 ECDSTT→FIELD_SWITCH/FIELD_SIGNAL 하강선과 겹치지 않음. */
-  ATO_PANEL:              { x: 150, y: 540, w: 220, h: 76 },
+  /* [2026-09-22] 전원 계통 1개(ATO_PANEL) → 2개(AC_PANEL/DC_PANEL)로 분리해 나란히 배치
+     (ATO 분전반 → EC/DSTT 외 다른 설비 전원공급 여부 확인 요청 반영). 각 패널에서 나가는
+     선은 전부 얇은 점선(.power 클래스, 별도 색)으로 그려 기존 데이터/통신선과 시각적으로
+     구분되게 하고, 라벨 박스도 달지 않아(renderSystemMap 라벨 루프에서 kind:'power' 건너뜀)
+     선이 많아져도 화면이 복잡해 보이지 않도록 했다. */
+  AC_PANEL:               { x: 40,  y: 545, w: 290, h: 66 },
+  DC_PANEL:               { x: 360, y: 545, w: 290, h: 66 },
   /* 아래 3개(현장설비)는 모두 점선(y=635) 아래 한 줄로 배치. */
   FIELD_SWITCH:           { x: 425, y: 650, w: 160, h: 56 },
   FIELD_SIGNAL:           { x: 605, y: 650, w: 150, h: 56 },
@@ -7997,10 +8136,6 @@ var MAP_EDGE_PATHS = {
   'SICAS|IFC':                     [[350,290],[350,245],[610,245],[610,178]],
   'SICAS|SICAS_ADJACENT_STATION':  [[250,290],[250,245],[120,245],[120,206]],
   'SICAS|ID_RACK':                 [[335,360],[335,430]],
-  /* [2026-09-16 재배치] ATO_PANEL이 ECDSTT 왼쪽 아래로 이동하면서 새로 계산.
-     ECDSTT 밑변에는 세 선(ATO_PANEL 진입, FIELD_SWITCH·FIELD_SIGNAL 하강)이 모이므로
-     x=450/505/560으로 서로 겹치지 않게 간격을 두었다. */
-  'ATO_PANEL|ECDSTT':              [[370,540],[370,520],[450,520],[450,500]],
   'ECDSTT|FIELD_SWITCH':           [[505,500],[505,650]],
   'ECDSTT|FIELD_SIGNAL':           [[560,500],[560,600],[680,600],[680,650]],
   'IFC|TWC':                       [[780,178],[850,178]],
@@ -8342,7 +8477,7 @@ function renderSystemMap(){
     var markerIdx = cableColorLabel().map(function(c){return c[0];}).indexOf(col);
     if (markerIdx < 0) markerIdx = 0;
     h += '<path class="edge-hit" data-act="edge" data-edge="' + i + '" d="' + d + '"></path>';
-    h += '<path class="edge-line' + (active?' active':'') + '" stroke="' + col + '" marker-end="url(#arrow' + markerIdx + ')" d="' + d + '"></path>';
+    h += '<path class="edge-line' + (active?' active':'') + (edge.kind==='power'?' power':'') + '" stroke="' + col + '" marker-end="url(#arrow' + markerIdx + ')" d="' + d + '"></path>';
   });
 
   Object.keys(NODE_POS).forEach(function(id){
@@ -8369,6 +8504,7 @@ function renderSystemMap(){
      또한 배경 사각형에 실선 테두리를 둘러 "이 글씨는 이 선의 설명"이라는 소속을
      시각적으로 분명히 했다(색은 해당 선의 케이블 색과 동일). */
   CONN.edges.forEach(function(edge, i){
+    if (edge.kind === 'power') return; /* 전원선은 라벨 박스 없이 점선만 — 14개나 되어 라벨까지 달면 지저분해짐 */
     var mid = edgeMids[i];
     var col = cableColor(edge);
     var lbl = edge.protocol || (edge.cable ? edge.cable.split(' ')[0] : '');

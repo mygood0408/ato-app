@@ -400,67 +400,6 @@
       }
     },
     {
-      "id": "FLT_ILK_09",
-      "domain": "연동장치",
-      "symptom": "팬 장애",
-      "errorSource": "팬유닛",
-      "diagnosis": [
-        "팬유닛 LED 알람 적색"
-      ],
-      "cause": "팬 장애",
-      "remedy": [
-        "팬 라인 교체"
-      ],
-      "manualRefs": [
-        "3.9 팬 유닛"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
-      }
-    },
-    {
-      "id": "FLT_ILK_10",
-      "domain": "연동장치",
-      "symptom": "팬 정지",
-      "errorSource": "팬유닛",
-      "diagnosis": [
-        "팬유닛의 모든 LED 꺼짐"
-      ],
-      "cause": "220V 전원 없음",
-      "remedy": [
-        "퓨즈와 케이블 점검"
-      ],
-      "manualRefs": [
-        "3.9 팬 유닛",
-        "3.12 레벨 N에서의 터미널 스트립"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
-      }
-    },
-    {
-      "id": "FLT_ILK_11",
-      "domain": "연동장치",
-      "symptom": "팬 모니터링 이상",
-      "errorSource": "팬유닛",
-      "diagnosis": [],
-      "cause": "장애 모니터링 24V 전원 없음",
-      "remedy": [
-        "팬 라인 플러그에서의 전류 모니터링 점검",
-        "전류 모니터링 라인 점검"
-      ],
-      "manualRefs": [
-        "3.9 팬 유닛",
-        "3.12 레벨 N에서의 터미널 스트립"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
-      }
-    },
-    {
       "id": "FLT_ILK_12",
       "domain": "연동장치",
       "symptom": "채널 정지",
