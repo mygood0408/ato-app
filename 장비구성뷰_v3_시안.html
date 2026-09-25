@@ -9236,7 +9236,6 @@ document.addEventListener('click', function(e){
   else if (act === 'drivepick') { openDrivePickerGeneral(); }
   else if (act === 'drivesync') { driveSyncNow(); }
   else if (act === 'drivepickdirect') { if (state.photoCurate) { state.photoCurate = null; renderPhotoCurateRoot(); } openDrivePickerDirect(t.getAttribute('data-section'), t.getAttribute('data-group'), t.getAttribute('data-label')); }
-  else if (act === 'photoexport') { downloadPhotoExport(); }
   else if (act === 'photoopen') { openPhotoModal(t.getAttribute('data-folder'), t.getAttribute('data-name')); }
   else if (act === 'photoclose') { closePhotoModal(); }
   else if (act === 'photonoop') { /* 모달 내부 빈 영역 클릭 — 아무 동작 없음 */ }
@@ -9641,29 +9640,6 @@ function renderPhotoCurateRoot(){
   root.innerHTML = h;
 }
 
-/* ---- 작업 JSON 내보내기(photo-markers.json v2.1 형식, videos 필드 추가) ---- */
-function buildPhotoExport(){
-  var out = { schemaVersion: '2.2', description: '사진/동영상별 마커·메모. x,y는 이미지 좌상단 기준 0~1 비율. kind가 video인 항목은 markers 없이 note만 사용. sectionPhotoAssignments는 특정 장비(sectionId)에 "이 장비에 사진 지정"으로 골라둔 folder/file 목록(2.2 신규).', generatedAt: new Date().toISOString(), photos: [], sectionPhotoAssignments: {} };
-  Object.keys(photoData).sort().forEach(function(k){
-    var r = photoData[k]; if (!r.markers.length && !r.isRef && !r.note) return;
-    var i = k.indexOf('/');
-    out.photos.push({ folder: k.slice(0, i), file: k.slice(i+1), role: r.isRef ? 'reference' : 'measure', kind: r.kind || 'photo', markers: r.markers || [], note: r.note || undefined });
-  });
-  Object.keys(photoManualItems).sort().forEach(function(sid){
-    if (photoManualItems[sid] && photoManualItems[sid].length) out.sectionPhotoAssignments[sid] = photoManualItems[sid];
-  });
-  return out;
-}
-function downloadPhotoExport(){
-  var blob = new Blob([JSON.stringify(buildPhotoExport(), null, 2)], { type: 'application/json' });
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob); a.download = 'photo-markers-export.json';
-  document.body.appendChild(a); a.click(); a.remove();
-}
-
-/* =========================================================
-   STATE
-   ========================================================= */
 var state = {
   tab: 'map',
   group: 'SICAS',
@@ -10173,14 +10149,11 @@ window.addEventListener('resize', function(){
 });
 
 function renderTopbar(){
-  var photoCnt = photoFolderList.length;
-  var markCnt = Object.keys(photoData).filter(function(k){ var r = photoData[k]; return (r.markers && r.markers.length) || r.isRef || r.note; }).length;
   return '<div class="topbar">'
     + '<h1>2호선 ATO 시스템</h1>'
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivesync" title="다른 기기(PC/모바일)에서 드라이브로 넣은 사진 받아오기">🔄 드라이브 연동' + ((Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) ? ' (저장 대기 ' + (Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) + ')' : '') + '</button>'
-    + (markCnt ? '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photoexport">작업 JSON 내려받기 (' + markCnt + ')</button>' : '')
     + '</div>'
     + '</div>';
 }
