@@ -495,12 +495,11 @@ img,svg{max-width:100%}
   display:flex;align-items:center;justify-content:center;cursor:grab}
 .qp-imgbox{position:absolute;transform-origin:center center}
 .qp-imgbox img{width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
-.qp-pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;
-  align-items:center;gap:2px;pointer-events:none}
+.qp-pin{position:absolute;transform:translate(-50%,-50%);pointer-events:none}
 .qp-pin .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--bad);
   background:rgba(168,42,34,.88);color:#fff;display:flex;align-items:center;justify-content:center;
   font-size:10px;font-weight:700;font-family:var(--mono)}
-.qp-pin .lbl{font-size:10.5px;background:rgba(0,0,0,.68);color:#fff;padding:1px 7px;
+.qp-pin .lbl{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:2px;font-size:10.5px;background:rgba(0,0,0,.68);color:#fff;padding:1px 7px;
   border-radius:8px;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis}
 .qp-nav{display:flex;align-items:center;gap:14px;margin-top:10px;color:#fff}
 .qp-navbtn{min-width:40px;min-height:40px;border-radius:20px;border:none;
@@ -1006,25 +1005,95 @@ var RACK = {
       ],
       "powerFlow": [
         {
-          "stage": "UPS / 분전반",
-          "desc": "무정전전원장치(UPS)로부터 60V/24V/230V 공급. SICAS는 UPS로부터 케이블 거리 최대 20m 이내여야 합니다."
+          "id": "0",
+          "stage": "분전반 → SICAS 급전",
+          "desc": "UPS에서 정류된 DC가 분전반(DC) TR6/TR7(DC60V, S51/S52 MAIN)과 TR8/TR9(DC24V, S51/S52 AUX)로 나뉘어 SICAS로 급전됩니다. 230V 계통은 분전반(AC) DIRECT LINE에서 옵니다. SICAS는 UPS로부터 케이블 거리 최대 20m 이내여야 합니다.",
+          "boardRef": "PANEL_DC_TR6_TR7"
         },
         {
-          "stage": "N레벨 배전반 (캐비닛 후면)",
-          "desc": "60V·24V·230V가 여기서 각 채널로 분기됩니다. 60V는 5,6,7번(+)/1,2,3번(−), 24V는 40~49번(+, 퓨즈 4A~6.3A)/51~59번(−) 단자에서 측정합니다.",
-          "measurePointRef": [
-            "MP_SICAS_S51_DC60",
-            "MP_SICAS_S51_DC24"
+          "id": "cable",
+          "stage": "케이블 인입부 (전면 P행)",
+          "desc": "분전반에서 온 전원 케이블이 캐비닛 하단 인입부로 들어옵니다.",
+          "rows": [
+            [
+              "전면",
+              "P"
+            ]
           ]
         },
         {
-          "stage": "채널별 SVK2102 전원장치 (주전원 A/B/C)",
-          "desc": "채널마다 60V를 받아 5V로 변환. 과전압(UE 89V 이상) 또는 저전압(UA 6.3V 이하) 시 스위치가 차단됩니다. 전면 LED로 UE(입력 60V)/UA(출력 5V) 상태를 확인합니다.",
-          "boardRef": "SICAS_SVK2102"
+          "id": "1",
+          "stage": "N레벨 배전반 (후면 K행) — 60V/24V/230V 분기",
+          "desc": "60V·24V·230V가 여기서 각 채널로 분기됩니다. 60V는 5,6,7번(+)/1,2,3번(−), 24V는 40~49번(+)/51~59번(−) 단자에서 측정합니다.",
+          "measurePointRef": [
+            "MP_SICAS_S51_DC60",
+            "MP_SICAS_S51_DC24"
+          ],
+          "rows": [
+            [
+              "후면",
+              "K"
+            ]
+          ]
         },
         {
-          "stage": "각 보드 (VESUV3~KOMDA2)",
-          "desc": "SVK2102가 공급하는 5V로 동작합니다."
+          "id": "fuse24",
+          "stage": "24V 퓨즈 (N레벨 40~49번, 4A~6.3A)",
+          "desc": "24V는 N레벨 배전반 40~49번 단자의 퓨즈(4A~6.3A)를 거쳐 나갑니다. 퓨즈가 끊기면 그 계통 24V만 없어지므로, 24V가 안 나오면 이 퓨즈부터 확인합니다.",
+          "measurePointRef": [
+            "MP_SICAS_S51_DC24"
+          ],
+          "rows": [
+            [
+              "후면",
+              "K"
+            ]
+          ]
+        },
+        {
+          "id": "filter",
+          "stage": "필터장치 (전면 L행)",
+          "desc": "캐비닛 전원 필터장치 위치입니다(주전원 바로 아래 행). 배선 순서는 현장 도면으로 확인하세요.",
+          "rows": [
+            [
+              "전면",
+              "L"
+            ]
+          ]
+        },
+        {
+          "id": "2",
+          "stage": "주전원 A/B/C — SVK2102 (전면 K행)",
+          "desc": "채널마다 60V를 받아 5V로 변환합니다. 과전압(UE 89V 이상) 또는 저전압(UA 6.3V 이하) 시 스위치가 차단됩니다. 전면 LED로 UE(입력 60V)/UA(출력 5V) 상태를 확인합니다.",
+          "boardRef": "SICAS_SVK2102",
+          "measurePointRef": [
+            "MP_SICAS_S51_DC60"
+          ],
+          "rows": [
+            [
+              "전면",
+              "K"
+            ]
+          ]
+        },
+        {
+          "id": "3",
+          "stage": "채널 A/B/C 보드 (전면 B·D·F행)",
+          "desc": "SVK2102가 공급하는 5V로 VESUV3~KOMDA2 각 보드가 동작합니다.",
+          "rows": [
+            [
+              "전면",
+              "B"
+            ],
+            [
+              "전면",
+              "D"
+            ],
+            [
+              "전면",
+              "F"
+            ]
+          ]
         }
       ],
       "boards": [
@@ -1455,39 +1524,163 @@ var RACK = {
       ],
       "powerFlow": [
         {
-          "stage": "1. ATO 분전반 60V",
-          "desc": "Fuse(4A) → filter → SV2602 x4 (60/8V 변환)",
-          "boardRef": null
+          "id": "src",
+          "stage": "분전반 → EC/DSTT 급전",
+          "desc": "분전반(DC) TR6/TR7에서 DC60V(T52 EC MAIN), TR8/TR9에서 DC24V(T51A/T52A OLM, T51B/T52B POINT CONTROL), 분전반(AC) TR4/TR5에서 AC110V(T51/T52 신호기·선로전환기)가 EC/DSTT 캐비닛으로 급전됩니다.",
+          "boardRef": "PANEL_DC_TR6_TR7"
         },
         {
-          "stage": "2. ATO 분전반 24V",
-          "desc": "Fuse(10A) → STEKOP",
-          "boardRef": "ECDSTT_STEKOP"
+          "id": "6",
+          "stage": "EC/DSTT 전원 입력단자 (-X3, 전면 G행)",
+          "desc": "T51 G전원단자: 24V-1/24V-2 DC (P51 TR7-3/TR8-3). T52 G전원단자: 60V-1/60V-2 DC (P51 TR5-9/TR6-11), 24V-1/24V-2 DC (P51 TR7-5/TR8-5). 이 실측값은 신도림 사례이며, 다른 역은 캐비닛 이름과 단자 번호가 다를 수 있습니다.",
+          "rows": [
+            [
+              "전면",
+              "G"
+            ]
+          ]
         },
         {
-          "stage": "3. ATO 분전반 24V",
-          "desc": "Fuse(6.3A) → filter → Fuse(2A) → OLM 전원",
-          "boardRef": "ECDSTT_OLM"
+          "id": "0",
+          "stage": "60V 퓨즈(4A) → 필터",
+          "desc": "입력 DC60V가 퓨즈(4A)와 필터를 거쳐 전원공급장치(SV2602)로 갑니다."
         },
         {
-          "stage": "4. ATO 분전반 110V",
-          "desc": "Fuse(0.2A) x2 → DESIMO X2(12,14) 신호기 램프전원",
-          "boardRef": "ECDSTT_DESIMO"
+          "id": "ps",
+          "stage": "전원공급장치 SV2602 ×4 (전면 A행) — 60V → 8V",
+          "desc": "SV2602 4대가 60V를 8V로 바꿔 STEKOP-Platter 전원으로 공급합니다. 전면 LED UE(입력)/UA(출력)로 상태를 확인합니다.",
+          "boardRef": "ECDSTT_PS",
+          "rows": [
+            [
+              "전면",
+              "A"
+            ]
+          ]
         },
         {
-          "stage": "5. STEKOP → DEWEMO",
-          "desc": "24V: X1(1,2) 표시전원 / X2(4,6) 모타전원(AC110V) / X2(7,10) 제어전원(DC24V). 쌍동시 Fuse(0.4A)/Fuse(16A)로 용량 상이",
-          "boardRef": "ECDSTT_DEWEMO"
+          "id": "platter",
+          "stage": "Platter (-X4, 후면 N행)",
+          "desc": "SV2602의 8V가 Platter를 거쳐 STEKOP으로 분배됩니다.",
+          "boardRef": "ECDSTT_PLATTER",
+          "rows": [
+            [
+              "후면",
+              "N"
+            ]
+          ]
         },
         {
-          "stage": "6. STEKOP → DESIMO",
-          "desc": "24V: X1(4,8) 공급전원",
-          "boardRef": "ECDSTT_DESIMO"
+          "id": "1",
+          "stage": "24V 퓨즈(10A) — STEKOP용",
+          "desc": "DC24V가 퓨즈(10A)를 거쳐 STEKOP으로 갑니다."
         },
         {
-          "stage": "7. [신도림 실측] 캐비닛 입력단자",
-          "desc": "T51 G전원단자: 24V-1/24V-2 DC (P51 TR7-3/TR8-3). T52 G전원단자: 60V-1/60V-2 DC (P51 TR5-9/TR6-11), 24V-1/24V-2 DC (P51 TR7-5/TR8-5). 이 실측값은 신도림 사례이며, 다른 역은 캐비닛 배선표를 따로 확인해야 합니다.",
-          "boardRef": null
+          "id": "stekop",
+          "stage": "STEKOP (전면 B행)",
+          "desc": "STEKOP이 24V로 동작하며 DEWEMO·DESIMO로 전원과 제어신호를 보냅니다.",
+          "boardRef": "ECDSTT_STEKOP",
+          "rows": [
+            [
+              "전면",
+              "B"
+            ]
+          ]
+        },
+        {
+          "id": "2",
+          "stage": "24V 퓨즈(6.3A) → 필터 → 퓨즈(2A) — OLM용",
+          "desc": "DC24V가 퓨즈(6.3A), 필터, 퓨즈(2A)를 차례로 거쳐 OLM으로 갑니다."
+        },
+        {
+          "id": "olm",
+          "stage": "OLM (후면 M행)",
+          "desc": "광링크모듈(OLM)이 24V로 동작합니다.",
+          "boardRef": "ECDSTT_OLM",
+          "rows": [
+            [
+              "후면",
+              "M"
+            ]
+          ]
+        },
+        {
+          "id": "dwfuse",
+          "stage": "DEWEMO 제어·모터 휴즈 (전면 H행)",
+          "desc": "STEKOP에서 DEWEMO로 가는 제어·모터 전원의 퓨즈입니다. 쌍동시 Fuse(0.4A)/Fuse(16A)로 용량이 다릅니다.",
+          "rows": [
+            [
+              "전면",
+              "H"
+            ]
+          ]
+        },
+        {
+          "id": "4",
+          "stage": "DEWEMO (전면 D~F행)",
+          "desc": "X1(1,2) 표시전원 / X2(4,6) 모타전원(AC110V) / X2(7,10) 제어전원(DC24V).",
+          "boardRef": "ECDSTT_DEWEMO",
+          "rows": [
+            [
+              "전면",
+              "D"
+            ],
+            [
+              "전면",
+              "E"
+            ],
+            [
+              "전면",
+              "F"
+            ]
+          ]
+        },
+        {
+          "id": "3",
+          "stage": "110V 퓨즈(0.2A)×2 — DESIMO 휴즈 (후면 T행)",
+          "desc": "AC110V 신호기 램프전원이 퓨즈(0.2A) 2개를 거쳐 DESIMO로 갑니다.",
+          "rows": [
+            [
+              "후면",
+              "T"
+            ]
+          ]
+        },
+        {
+          "id": "5",
+          "stage": "DESIMO (후면 P·Q행)",
+          "desc": "STEKOP 24V가 X1(4,8)로 공급전원, AC110V가 X2(12,14)로 신호기 램프전원으로 들어갑니다.",
+          "boardRef": "ECDSTT_DESIMO",
+          "rows": [
+            [
+              "후면",
+              "P"
+            ],
+            [
+              "후면",
+              "Q"
+            ]
+          ]
+        },
+        {
+          "id": "ot",
+          "stage": "OT 및 I/F 터미널단자 (-X1 전면 L행 / -X2 후면 W행) → OT반 → 현장",
+          "desc": "DEWEMO·DESIMO 출력이 OT 및 I/F 터미널단자에서 OT반을 거쳐 현장 선로전환기·신호기로 나갑니다. OT반에서 재면 기계실 쪽과 현장 쪽 중 어디가 문제인지 가를 수 있습니다.",
+          "measurePointRef": [
+            "MP_OT_SW_CONTROL",
+            "MP_OT_SW_INDICATION",
+            "MP_OT_SW_MOTOR",
+            "MP_OT_SIG_LAMP"
+          ],
+          "rows": [
+            [
+              "전면",
+              "L"
+            ],
+            [
+              "후면",
+              "W"
+            ]
+          ]
         }
       ]
     },
@@ -1849,12 +2042,53 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. 외부전원 입력 → 전원장치",
-          "desc": "AC220V(+10%/-15%), 60Hz(±2%)가 FTGS 랙 후면 전원장치(PULS)로 입력됩니다.",
-          "boardRef": "FTGS_POWER_UNIT"
+          "id": "src",
+          "stage": "분전반(AC) TR1/TR2 → FTGS",
+          "desc": "분전반(AC) TR1(FTGS-1, 퓨즈 F51~F59)과 TR2(FTGS-2) 계통에서 AC220V가 FTGS 랙으로 급전됩니다.",
+          "boardRef": "PANEL_AC_TR1"
         },
         {
-          "stage": "2. 송신 PCB → 증폭&필터 PCB",
+          "id": "0",
+          "stage": "전원장치 PULS (후면 A~J행) — AC220V 입력",
+          "desc": "AC220V(+10%/-15%), 60Hz(±2%)가 FTGS 랙 후면 전원장치(PULS)로 입력됩니다. 전원장치 1대가 궤도회로 2개분을 공유합니다.",
+          "boardRef": "FTGS_POWER_UNIT",
+          "rows": [
+            [
+              "후면",
+              "A"
+            ],
+            [
+              "후면",
+              "C"
+            ],
+            [
+              "후면",
+              "E"
+            ],
+            [
+              "후면",
+              "G"
+            ],
+            [
+              "후면",
+              "J"
+            ]
+          ]
+        },
+        {
+          "id": "fuse",
+          "stage": "퓨즈 레일 (전면 L행, 궤도회로 공통)",
+          "desc": "궤도회로 공통 퓨즈 레일입니다. 특정 궤도회로만 전원이 없으면 이 퓨즈부터 확인합니다.",
+          "rows": [
+            [
+              "전면",
+              "L"
+            ]
+          ]
+        },
+        {
+          "id": "1",
+          "stage": "송신 PCB → 증폭&필터 PCB",
           "desc": "송신 PCB가 만든 변조신호가 증폭&필터 PCB로 전달됩니다.",
           "boardRef": "FTGS_AMP_FILTER_PCB",
           "measurePointRef": [
@@ -1862,15 +2096,55 @@ var RACK = {
           ]
         },
         {
-          "stage": "3. 브릿지저항 → 현장 송신",
-          "desc": "후면 브릿지저항으로 전압을 조정한 뒤 현장 레일로 송신합니다.",
-          "measurePointRef": [
-            "MP_FTGS_TX_FIELD"
+          "id": "2",
+          "stage": "브릿지저항 (후면 L행) — 송신전압 조정",
+          "desc": "후면 브릿지저항으로 현장 송신전압을 조정합니다.",
+          "rows": [
+            [
+              "후면",
+              "L"
+            ]
           ]
         },
         {
-          "stage": "4. 현장 수신 → 수신-1 PCB",
-          "desc": "현장 C/B Box에서 돌아온 수신신호가 수신-1 PCB로 들어옵니다.",
+          "id": "term",
+          "stage": "단자대 (전면 M행) → OT반 → 현장",
+          "desc": "송·수신 케이블이 단자대에서 인출되어 OT반을 거쳐 현장 C/B박스로 연결됩니다. 기계실 송신은 정상인데 OT반/현장 수신이 없으면 현장 쪽(튜닝 유니트, 전환 모듈, 케이블)을 의심합니다.",
+          "measurePointRef": [
+            "MP_OT_FTGS_TX",
+            "MP_OT_FTGS_RX"
+          ],
+          "rows": [
+            [
+              "전면",
+              "M"
+            ]
+          ]
+        },
+        {
+          "id": "cb",
+          "stage": "현장 C/B박스 — 레일 송·수신",
+          "desc": "현장 C/B박스(튜닝 유닛·인터페이스/전환 모듈)를 거쳐 레일로 송신하고, 레일에서 돌아온 신호를 다시 기계실로 보냅니다.",
+          "boardRef": "FTGS_CB_UNI",
+          "measurePointRef": [
+            "MP_FTGS_TX_FIELD",
+            "MP_FTGS_RX_FIELD"
+          ],
+          "rows": [
+            [
+              "현장설비",
+              "1"
+            ],
+            [
+              "현장설비",
+              "2"
+            ]
+          ]
+        },
+        {
+          "id": "3",
+          "stage": "현장 수신 → 수신-1 PCB",
+          "desc": "현장 C/B박스에서 돌아온 수신신호가 수신-1 PCB로 들어옵니다.",
           "boardRef": "FTGS_RX1_PCB",
           "measurePointRef": [
             "MP_FTGS_RX1_E",
@@ -1878,7 +2152,8 @@ var RACK = {
           ]
         },
         {
-          "stage": "5. 복조 → 수신2 → GF계전기 PCB",
+          "id": "4",
+          "stage": "복조 → 수신2 → GF계전기 PCB",
           "desc": "GF계전기 PCB가 점유/비점유 접점신호를 SICAS·LZB로 출력합니다.",
           "boardRef": "FTGS_GF_RELAY_PCB",
           "measurePointRef": [
@@ -1962,31 +2237,84 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. 전원 입력",
-          "desc": "AC230V(+10%/-15%), 60Hz가 X2 단자를 통해 Power supply module로 입력되어 DC5V±3%·DC12V±3%를 만듭니다.",
-          "boardRef": "ATOLOOP_POWER_UNIT"
+          "id": "src",
+          "stage": "전원 공급 (AC230V / 분전반(DC) DC60V)",
+          "desc": "제어함 전원은 AC230V로, REMEMO 릴레이 전원은 분전반(DC) TR6/TR7의 DC60V(F58 ATOLOOP REMEMO)로 급전됩니다.",
+          "boardRef": "PANEL_DC_TR6_TR7"
         },
         {
-          "stage": "2. Module Rack: 필터→증폭→송신 (좌우 대칭 2라인)",
-          "desc": "Module Rack 내 6PCB(필터-증폭-송신-송신-증폭-필터)를 거쳐 현장 ATO Loop C/B로 송신합니다.",
-          "boardRef": "ATOLOOP_FILTER_BOARD"
-        },
-        {
-          "stage": "3. 현장 Loop 전류",
-          "desc": "현장 ATO Loop C/B Box 내에서 전류를 측정합니다. 정상범위 1.6~1.9A.",
-          "measurePointRef": [
-            "MP_ATO_LOOP_CURRENT"
+          "id": "x2",
+          "stage": "전원입력 단자대 X2 (함체 하단)",
+          "desc": "AC230V(+10%/-15%), 60Hz가 X2 단자로 들어옵니다.",
+          "rows": [
+            [
+              "ATO Loop 제어함",
+              "5"
+            ]
           ]
         },
         {
-          "stage": "4. 현장 에러메시지 → REMEMO 릴레이",
-          "desc": "REMEMO 릴레이보드를 거쳐 OT랙 → LZB700M(STELA3)으로 전달됩니다.",
-          "boardRef": "ATOLOOP_REMEMO"
+          "id": "0",
+          "stage": "Power supply module (함체 중앙)",
+          "desc": "X2로 들어온 AC230V로 DC5V±3%·DC12V±3%를 만듭니다.",
+          "boardRef": "ATOLOOP_POWER_UNIT",
+          "rows": [
+            [
+              "ATO Loop 제어함",
+              "3"
+            ]
+          ]
         },
         {
-          "stage": "5. FUUELL 감시·경보",
+          "id": "1",
+          "stage": "Module Rack: 필터→증폭→송신 (좌우 대칭 2라인)",
+          "desc": "Module Rack 내 6PCB(필터-증폭-송신-송신-증폭-필터)를 거쳐 현장 ATO Loop C/B로 송신합니다.",
+          "boardRef": "ATOLOOP_FILTER_BOARD",
+          "rows": [
+            [
+              "ATO Loop 제어함",
+              "1"
+            ]
+          ]
+        },
+        {
+          "id": "2",
+          "stage": "현장 ATO Loop C/B박스 — Loop 전류",
+          "desc": "현장 ATO Loop C/B Box 내에서 전류를 측정합니다. 정상범위 1.6~1.9A.",
+          "boardRef": "ATOLOOP_CB",
+          "measurePointRef": [
+            "MP_ATO_LOOP_CURRENT"
+          ],
+          "rows": [
+            [
+              "현장설비",
+              "1"
+            ]
+          ]
+        },
+        {
+          "id": "3",
+          "stage": "현장 에러메시지 → REMEMO 릴레이",
+          "desc": "REMEMO 릴레이보드를 거쳐 OT랙 → LZB700M(STELA3)으로 전달됩니다.",
+          "boardRef": "ATOLOOP_REMEMO",
+          "rows": [
+            [
+              "ATO Loop 제어함",
+              "4"
+            ]
+          ]
+        },
+        {
+          "id": "4",
+          "stage": "FUUELL 감시·경보",
           "desc": "Loop1/Loop2/FAN 상태를 감시하며 이상 시 적색 LED + 릴레이 개방으로 표시합니다.",
-          "boardRef": "ATOLOOP_FUUELL"
+          "boardRef": "ATOLOOP_FUUELL",
+          "rows": [
+            [
+              "ATO Loop 제어함",
+              "4"
+            ]
+          ]
         }
       ]
     },
@@ -2164,41 +2492,108 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. P51 캐비닛 → 전원 단말레일",
-          "desc": "L51은 TR5-3/TR6-3/DIRECT3, L52는 TR5-4/TR6-4/DIRECT4 단자를 통해 급전받습니다."
+          "id": "0",
+          "stage": "분전반(DC) → LZB 급전",
+          "desc": "분전반(DC) TR6/TR7의 DC60V(L51/L52 ATP)가 급전됩니다. L51은 TR5-3/TR6-3/DIRECT3, L52는 TR5-4/TR6-4/DIRECT4 단자를 통해 급전받습니다.",
+          "boardRef": "PANEL_DC_TR6_TR7"
         },
         {
-          "stage": "2. 전원 단말레일 (F1~F8 퓨즈레일)",
-          "desc": "+60V가 F1/F2/F3(10A, 채널별)·F4(3A, 예비)·F5~F8(6A×4, SV1~4)로 분배됩니다.",
-          "measurePointRef": [
-            "MP_LZB_DC60",
-            "MP_LZB_DC24"
+          "id": "in",
+          "stage": "케이블 인입부 (전면 R행)",
+          "desc": "전원 케이블이 캐비닛 최하단으로 들어옵니다(위치 추정 — 현장 확인).",
+          "rows": [
+            [
+              "전면",
+              "R"
+            ]
           ]
         },
         {
-          "stage": "3. SVK2102 ×3 (5V전원, L행)",
+          "id": "1",
+          "stage": "전원 단말레일 F1~F8 퓨즈 (전면 Q행)",
+          "desc": "+60V가 F1/F2/F3(10A, 채널별)·F4(3A, 예비)·F5~F8(6A×4, SV1~4)로 분배됩니다. 한 채널만 죽었으면 해당 채널 퓨즈(F1~F3)를 먼저 봅니다.",
+          "measurePointRef": [
+            "MP_LZB_DC60",
+            "MP_LZB_DC24"
+          ],
+          "rows": [
+            [
+              "전면",
+              "Q"
+            ]
+          ]
+        },
+        {
+          "id": "2",
+          "stage": "SVK2102 ×3 — 5V 전원 (전면 L행)",
           "desc": "채널 A/B/C 각각 60V를 받아 5V로 변환합니다.",
           "boardRef": "LZB_SVK2102",
           "measurePointRef": [
             "MP_LZB_DC5"
+          ],
+          "rows": [
+            [
+              "전면",
+              "L"
+            ]
           ]
         },
         {
-          "stage": "4. SVK2402 ×4 (24V전원, M행)",
+          "id": "3",
+          "stage": "SVK2402 ×4 — 24V 전원 (전면 M행)",
           "desc": "SV1~SV4 24V Periphery 계통에 60V를 받아 24V로 변환합니다.",
           "boardRef": "LZB_SVK2402",
           "measurePointRef": [
             "MP_LZB_DC24"
+          ],
+          "rows": [
+            [
+              "전면",
+              "M"
+            ]
           ]
         },
         {
-          "stage": "5. 각 채널 보드 (VESUV3~MELDE2, STELA3)",
-          "desc": "SVK2102(5V)·SVK2402(24V)가 공급하는 전원으로 동작합니다."
+          "id": "4",
+          "stage": "채널 A/B/C 보드 (전면 B·D·F행)",
+          "desc": "SVK2102(5V)·SVK2402(24V)가 공급하는 전원으로 VESUV3~MELDE2, STELA3가 동작합니다.",
+          "rows": [
+            [
+              "전면",
+              "B"
+            ],
+            [
+              "전면",
+              "D"
+            ],
+            [
+              "전면",
+              "F"
+            ]
+          ]
         },
         {
-          "stage": "6. FAN (N행)",
-          "desc": "21~24번 단자(F0.2A)로 급전됩니다.",
-          "boardRef": "LZB_FAN"
+          "id": "5",
+          "stage": "FAN (전면 N행)",
+          "desc": "21~24번 단자(F0.2A 퓨즈)로 급전됩니다.",
+          "boardRef": "LZB_FAN",
+          "rows": [
+            [
+              "전면",
+              "N"
+            ]
+          ]
+        },
+        {
+          "id": "out",
+          "stage": "출력 단자대 (전면 P행)",
+          "desc": "캐비닛 밖으로 나가는 출력 배선이 연결되는 단자대입니다.",
+          "rows": [
+            [
+              "전면",
+              "P"
+            ]
+          ]
         }
       ]
     },
@@ -2310,32 +2705,38 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. 분전반 → IFC",
+          "id": "0",
+          "stage": "분전반 → IFC",
           "desc": "AC220V 직결라인(분전반(AC) PANEL_AC_DIRECT 신C51IFCA/신C51IFCB)에서 IFC A계/B계 컴퓨터로 직접 급전.",
           "boardRef": "IFC_COMPUTER"
         },
         {
-          "stage": "2. DC24V 계통 → IFC DI/DO·EMS",
+          "id": "1",
+          "stage": "DC24V 계통 → IFC DI/DO·EMS",
           "desc": "분전반(DC) TR8/TR9(DC24V)의 신C51_DIDO·신C51_EMS 계통에서 급전. (DI/DO는 IFC 컴퓨터 내장 슬롯)",
           "boardRef": "IFC_COMPUTER"
         },
         {
-          "stage": "3. DC24V 계통 → D/L Relay",
+          "id": "2",
+          "stage": "DC24V 계통 → D/L Relay",
           "desc": "분전반(DC) TR10/TR11(DC24V)의 신C51_D_L_RELAY 계통에서 급전, 32개 릴레이(D/L 신도림03) 동작.",
           "boardRef": "IFC_DL_RELAY"
         },
         {
-          "stage": "4. IFC ↔ SICAS",
+          "id": "3",
+          "stage": "IFC ↔ SICAS",
           "desc": "Profibus 카드(슬롯③)를 통해 SICAS와 연동정보 교환. (IFC 컴퓨터 내장 슬롯)",
           "boardRef": "IFC_COMPUTER"
         },
         {
-          "stage": "5. IFC ↔ TWC",
+          "id": "4",
+          "stage": "IFC ↔ TWC",
           "desc": "4채널 RS-232(슬롯⑦)로 TWC1~4(IMU-100 TWC2/TWC3 등)와 텔레그램 송수신.",
           "boardRef": "IFC_RS232_PORT"
         },
         {
-          "stage": "6. IFC ↔ 관제",
+          "id": "5",
+          "stage": "IFC ↔ 관제",
           "desc": "LAN카드(슬롯⑥ LAN-1, 슬롯⑧ LAN-2)를 통해 HUB→FDF→MAU 경유 LCC/LMC/SSC/관제CDTS와 통신. (LAN카드는 IFC 컴퓨터 내장 슬롯)",
           "boardRef": "IFC_COMPUTER"
         }
@@ -2400,7 +2801,8 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. UPS → IMU-100",
+          "id": "0",
+          "stage": "UPS → IMU-100",
           "desc": "전원장치(UPS)에서 DC24V가 TWC2/TWC3 IMU-100 'From.UPS' 단자로 공급됩니다.",
           "boardRef": "TWC_IMU100",
           "measurePointRef": [
@@ -2408,7 +2810,8 @@ var RACK = {
           ]
         },
         {
-          "stage": "2. TWC Loop 코일 → 증폭모듈 → IMU-100",
+          "id": "1",
+          "stage": "TWC Loop 코일 → 증폭모듈 → IMU-100",
           "desc": "현장 Loop코일이 받은 텔레그램 신호를 증폭모듈(S1/S2로 1~13배 증폭)이 증폭해 IMU-100으로 전송.",
           "boardRef": "TWC_AMP_MODULE",
           "measurePointRef": [
@@ -2416,12 +2819,14 @@ var RACK = {
           ]
         },
         {
-          "stage": "3. IMU-100 → IFC/CAM",
+          "id": "2",
+          "stage": "IMU-100 → IFC/CAM",
           "desc": "COM2/3/4(RS-232)로 IFC 및 CAM(TO.IF_C 텔레그램)에 수신 정보 전달.",
           "boardRef": "TWC_IMU100"
         },
         {
-          "stage": "4. IMU-100 → PSD",
+          "id": "3",
+          "stage": "IMU-100 → PSD",
           "desc": "25핀 커넥터(TO.PSD)로 PSD 제어반에 릴레이 접점 정보 전달.",
           "boardRef": "TWC_IMU100"
         }
@@ -2462,21 +2867,25 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. PSD relay 전원",
+          "id": "0",
+          "stage": "PSD relay 전원",
           "desc": "PSD/Relay 모듈 1~4번 단자에 DC60V(분전반(DC) TR6/TR7 F55_PSD 계통)가 공급됩니다.",
           "boardRef": "PSD_RELAY_MODULE"
         },
         {
-          "stage": "2. PSD/Relay → IFC",
+          "id": "1",
+          "stage": "PSD/Relay → IFC",
           "desc": "10,11,12,13번(N/C 방식)으로 IFC D I/O(DC24V)에 PSD 열림/닫힘 정보 전달.",
           "boardRef": "PSD_RELAY_MODULE"
         },
         {
-          "stage": "3. PSD/Relay → LZB",
+          "id": "2",
+          "stage": "PSD/Relay → LZB",
           "desc": "8,9,14,15번(N/O 방식)으로 LZB에 PSD 정보 전달."
         },
         {
-          "stage": "4. VS26_R → 실외 PSD 제어함",
+          "id": "3",
+          "stage": "VS26_R → 실외 PSD 제어함",
           "desc": "pin8,10에서 실외 PSD 제어함으로 배선."
         }
       ]
@@ -2566,14 +2975,59 @@ var RACK = {
       },
       "powerFlow": [
         {
-          "stage": "1. 분전반 → 분기부 안전설비",
+          "id": "0",
+          "stage": "분전반(AC) TR4/TR5 → 분기부 안전설비",
           "desc": "분전반(AC) TR4/TR5(AC110~125V) 계통에서 취급실 판넬 MR/PR계전기로 급전됩니다.",
           "boardRef": "TURNOUT_SAFETY_MR_RELAY"
         },
         {
-          "stage": "2. TPR릴레이 → 경보벨",
-          "desc": "EIB-24 DC전원으로 구동되는 TPR릴레이 조합이 TYPE C-1/C-2를 거쳐 경보벨1/2를 동작시킵니다.",
-          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY"
+          "id": "nfb",
+          "stage": "TYPE A — NFB 30A · 전자접촉기 22A · SMPS DC24V (전면 2·5행)",
+          "desc": "지선/본선 TYPE A 유닛의 NFB(BKM-b 30A)와 전자접촉기(MC 22A)를 거치고, SMPS(VSF100)가 DC24V를 만듭니다. 전원이 없으면 NFB 트립부터 확인합니다.",
+          "rows": [
+            [
+              "전면",
+              "2"
+            ],
+            [
+              "전면",
+              "5"
+            ]
+          ]
+        },
+        {
+          "id": "nfb15",
+          "stage": "TYPE B-1 — NFB 15A×2 (전면 3·6행)",
+          "desc": "TYPE B-1 유닛의 NFB(BKM-b 15A) 2개로 분기됩니다.",
+          "rows": [
+            [
+              "전면",
+              "3"
+            ],
+            [
+              "전면",
+              "6"
+            ]
+          ]
+        },
+        {
+          "id": "1",
+          "stage": "TPR릴레이 → 경보벨 (TYPE C-1/C-2, 전면 7·8행)",
+          "desc": "DC24V로 구동되는 TPR릴레이 조합이 TYPE C-1/C-2를 거쳐 경보벨1/2를 동작시킵니다.",
+          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
+          "measurePointRef": [
+            "MP_TURNOUT_SAFETY_ALARM"
+          ],
+          "rows": [
+            [
+              "전면",
+              "7"
+            ],
+            [
+              "전면",
+              "8"
+            ]
+          ]
         }
       ]
     },
@@ -2627,22 +3081,26 @@ var RACK = {
       "overviewImageRef": "PANEL_AC_OVERVIEW",
       "powerFlow": [
         {
-          "stage": "1. 상용전원/UPS → TBM-1",
+          "id": "0",
+          "stage": "상용전원/UPS → TBM-1",
           "desc": "UPS OUTPUT TRANSFORMER → UPS OUTPUT 1φ2W220V → TBM-1 (전원장치(UPS) UPS_OUTPUT_DISTRIBUTION 참고).",
           "boardRef": "UPS_OUTPUT_DISTRIBUTION"
         },
         {
-          "stage": "2. TBM-1 → TR1/TR2 (FTGS)",
+          "id": "1",
+          "stage": "TBM-1 → TR1/TR2 (FTGS)",
           "desc": "FTGS-1/2 퓨즈군(F51~F59)을 거쳐 각 역 궤도회로(신대방~당산)로 급전.",
           "boardRef": "PANEL_AC_TR1"
         },
         {
-          "stage": "3. TBM-1 → DIRECT LINE",
+          "id": "2",
+          "stage": "TBM-1 → DIRECT LINE",
           "desc": "변압기 없이 SICAS/LZB FAN, IFC A/B계 컴퓨터 등에 직결 급전.",
           "boardRef": "PANEL_AC_DIRECT"
         },
         {
-          "stage": "4. TBM-1 → TR4/TR5 (110V)",
+          "id": "3",
+          "stage": "TBM-1 → TR4/TR5 (110V)",
           "desc": "신호기·선로전환기·정차등·분기부안전설비·가상신호기(VS)에 AC110V 급전.",
           "boardRef": "PANEL_AC_TR4"
         }
@@ -2690,22 +3148,26 @@ var RACK = {
       "overviewImageRef": "PANEL_DC_OVERVIEW",
       "powerFlow": [
         {
-          "stage": "1. UPS 정류·인버터 → TBM-2",
+          "id": "0",
+          "stage": "UPS 정류·인버터 → TBM-2",
           "desc": "UPS_RECTIFIER_UNIT에서 정류된 DC 전원이 TBM-2 각 TR로 분배됩니다.",
           "boardRef": "UPS_RECTIFIER_UNIT"
         },
         {
-          "stage": "2. TR6/TR7 → SICAS/LZB/ATOLOOP/EC-DSTT/PSD",
+          "id": "1",
+          "stage": "TR6/TR7 → SICAS/LZB/ATOLOOP/EC-DSTT/PSD",
           "desc": "DC60V로 MAIN/ATP/REMEMO/EC MAIN/PSD 계전기를 구동.",
           "boardRef": "PANEL_DC_TR6_TR7"
         },
         {
-          "stage": "3. TR8/TR9 → SICAS AUX/LZB STEKOP·OLM/IFC DI-DO·EMS",
+          "id": "2",
+          "stage": "TR8/TR9 → SICAS AUX/LZB STEKOP·OLM/IFC DI-DO·EMS",
           "desc": "DC24V로 보조전원 및 IFC DI/DO·EMS 구동.",
           "boardRef": "PANEL_DC_TR8_TR9"
         },
         {
-          "stage": "4. TR10/TR11 → TWC/신호MELDE/IFC D-L릴레이/통합감시",
+          "id": "3",
+          "stage": "TR10/TR11 → TWC/신호MELDE/IFC D-L릴레이/통합감시",
           "desc": "DC24V로 TWC IMU-100, IFC D/L Relay(정차등) 등 구동.",
           "boardRef": "PANEL_DC_TR10_TR11"
         }
@@ -2741,22 +3203,26 @@ var RACK = {
       ],
       "powerFlow": [
         {
-          "stage": "1. 상용 AC 입력 → ATS&AVR",
+          "id": "0",
+          "stage": "상용 AC 입력 → ATS&AVR",
           "desc": "AC INPUT-1/2(3P4W 380V 60Hz) → MCCB1/2 → ATS CONTROL이 절체 감시, TRIAC 드라이버(MDS-102)+제어보드(MDS-101)가 AVR/BYPASS를 제어.",
           "boardRef": "UPS_ATS_AVR_UNIT"
         },
         {
-          "stage": "2. UPS 입력 → 정류 → 배터리 충전/인버터",
+          "id": "1",
+          "stage": "UPS 입력 → 정류 → 배터리 충전/인버터",
           "desc": "UPS INPUT(3P4W380V60Hz)이 정류(SC1~6)되고, BATTERY와 연계된 인버터가 SNUBBER BOARD를 거쳐 안정된 출력을 만듭니다.",
           "boardRef": "UPS_RECTIFIER_UNIT"
         },
         {
-          "stage": "3. UPS 출력 → TBM-1/분전반(AC)",
+          "id": "2",
+          "stage": "UPS 출력 → TBM-1/분전반(AC)",
           "desc": "TBL1~4의 8계통 출력이 UPS OUTPUT TRANSFORMER를 거쳐 TBM-1(분전반(AC))으로 공급되어 ATO전원 등으로 분배됩니다.",
           "boardRef": "UPS_OUTPUT_DISTRIBUTION"
         },
         {
-          "stage": "4. UPS → 분전반(DC) TR12(경보회로)",
+          "id": "3",
+          "stage": "UPS → 분전반(DC) TR12(경보회로)",
           "desc": "UPS 자체 경보회로는 분전반(DC) TR12(DC28V)에서 별도 급전됩니다."
         }
       ]
@@ -7068,6 +7534,145 @@ var MPOINTS = {
         "doc": "2line 정기점검.pdf",
         "section": "제12절 기타 신호설비 - 1.분기부 안전설비 (신호설비보수규정 시행내규 제76조)"
       }
+    },
+    {
+      "id": "MP_OT_FTGS_TX",
+      "facility": "OT반",
+      "acdc": "AC",
+      "title": "OT반 AF궤도회로 송신전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "thresholds": [
+        {
+          "label": "11/14번",
+          "min": 30,
+          "max": 50,
+          "unit": "V"
+        },
+        {
+          "label": "9/10번",
+          "min": 3.5,
+          "max": 8,
+          "unit": "V"
+        }
+      ],
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FTGS_TX_FIELD.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_FTGS_RX",
+      "facility": "OT반",
+      "acdc": "AC",
+      "title": "OT반 AF궤도회로 수신전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "thresholds": [
+        {
+          "label": "9/10번",
+          "min": 0.3,
+          "max": 6,
+          "unit": "V"
+        }
+      ],
+      "diagnosticTip": "기계실 송신전압은 정상인데 OT반 수신전압이 없으면 현장측 튜닝 유니트, 전환 모듈, 제어 케이블 이상.",
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ],
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FTGS_RX_FIELD.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SW_CONTROL",
+      "facility": "OT반",
+      "acdc": "DC",
+      "title": "OT반 선로전환기 제어전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 26.4,
+        "unit": "V",
+        "nominal": 24
+      },
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_CONTROL.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SW_INDICATION",
+      "facility": "OT반",
+      "acdc": "DC",
+      "title": "OT반 선로전환기 표시전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "range": {
+        "min": 54,
+        "max": 66,
+        "unit": "V",
+        "nominal": 60
+      },
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_INDICATION(2호선 본선 DC60V).",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SW_MOTOR",
+      "facility": "OT반",
+      "acdc": "AC",
+      "title": "OT반 선로전환기 모터전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "range": {
+        "min": 100,
+        "max": 120,
+        "unit": "V",
+        "nominal": 110
+      },
+      "diagnosticTip": "전환 동작 중에만 인가되는 값 — 평상시 0V는 정상. OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_MOTOR.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SIG_LAMP",
+      "facility": "OT반",
+      "title": "OT반 신호기 램프전원",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "normalState": "AC110V 계통(분전반(AC) TR4/TR5 → DESIMO 퓨즈 0.2A → DESIMO X2(12,14)). 허용범위는 현장 기준 확인.",
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "2026-09-25 신규. 정상범위 수치 자료 없음 — 공칭 AC110V만 표기.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_PSD_SWITCHOVER",
+      "facility": "OT반",
+      "title": "O.T반 PSD 절체보드 상태",
+      "measureType": "visual",
+      "position": {
+        "desc": "O.T반 PSD 절체보드 (C01~10 / A01~10 / B01~10)"
+      },
+      "boardRef": "PSD_OT_SWITCHOVER_BOARD",
+      "normalState": "정상 운영 시 스위치 Off(Loop케이블 결선, PSD 닫힘 동작). C01~C10은 PSD relay 전원 DC60V.",
+      "checkItems": [
+        "스위치 Off 상태(정상 운영) 확인",
+        "C01~C10 PSD relay 전원 DC60V 확인",
+        "A01~A10(Loop케이블)·B01~B10(현장케이블) 단자 체결 상태"
+      ],
+      "caution": "PSD 인터페이스 개량 작업(신설/교체) 시에만 스위치를 조작 — 순서를 지키지 않으면 PSD 표시 오류 발생.",
+      "note": "출처: PSDIFC.pdf 7. O.T반 절체보드 설치 (board-info PSD_OT_SWITCHOVER_BOARD)."
     }
   ],
   "station": "신도림",
@@ -7406,6 +8011,7 @@ var FOLDER_ALIASES = {
   '신호기': ['현장시설물', 'T51', 'T52'],
   'OTS': ['T51', 'T52'],
   'ATO Loop': ['현장시설물', 'LZB'],
+  'OT반': ['OT반', 'O.T반'],
   'TMS': [],
   '기타': []
 };
@@ -8239,7 +8845,9 @@ function openQuickPreview(sectionId, groupKey, label){
   if (!items.length) {
     /* [2026-09-16] 모바일에서는 "폴더 선택"이 지원되지 않아 아무 반응이 없던 문제 수정 —
        기기에 따라 폴더 열기(PC) / 사진 여러 장 직접 선택(모바일)으로 분기. */
-    if (isMobileDevice()) openPhotoPickerDirect(sectionId, groupKey, label); else openPhotoPicker();
+    /* [2026-09-25] 사진이 없으면 그 항목에 바로 연결되는 구글 드라이브 선택 창을 연다(PC·모바일 공통,
+       기기 간 연동됨). 예전엔 PC에서 폴더 통째 열기 창이 떠서 무엇을 하라는 건지 알기 어려웠음. */
+    openDrivePickerDirect(sectionId, groupKey, label);
     return;
   }
   state.quickPreview = { sectionId: sectionId, groupKey: groupKey, index: 0 };
@@ -9560,6 +10168,13 @@ function firstSide(groupKey){
 }
 
 /* ---- cabinet level (SICAS / EC-DSTT / ...) ---- */
+/* [2026-09-25] 랙 행의 사진 키 — 행 상세 화면(row:)·보드 상세 화면(board:)에서 등록한 사진이 목록의
+   카메라 아이콘에서도 똑같이 보이도록 같은 키를 쓴다(예전엔 목록만 cabrow: 키라 사진이 안 뜸). */
+function rackRowSection(groupKey, row, idx){
+  if (!row.boardRef && !row.frameRef && !(row.boardOrder && row.boardOrder.length)) return 'row:' + groupKey + ':' + idx;
+  if (row.boardRef && !row.frameRef && !(row.boardOrder && row.boardOrder.length) && !(row.count > 1 && !row.noThumb)) return 'board:' + row.boardRef;
+  return 'cabrow:' + groupKey + ':' + idx;
+}
 function renderCabinetLevel(groupKey){
   var g = GROUPS[groupKey];
   var rack = RACK.racks[g.rackKey];
@@ -9634,7 +10249,7 @@ function renderCabinetLevel(groupKey){
         }
       });
       restHtml += '</div>';
-      restHtml += '<div class="cmm-label">' + (isBlank ? '' : cameraIconBtn('cabrow:' + groupKey + ':' + idx, groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
+      restHtml += '<div class="cmm-label">' + (isBlank ? '' : cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
         + (row.count ? '<span class="cm-count">×' + row.count + '</span>' : '') + '</div>';
       restHtml += '</div>';
       restHtml += '<div class="cab-letter">' + escapeHtml(row.row) + '</div>';
@@ -9666,7 +10281,7 @@ function renderCabinetLevel(groupKey){
         cardsHtml += '<div class="field-card-img">' + nsSvg(BOARD_SVG[thumbBid], 'fc' + idx) + '</div>';
       }
       cardsHtml += '<div class="field-card-label">'
-        + '<div class="fcl-top">' + cameraIconBtn('cabrow:' + groupKey + ':' + idx, groupKey, row.label)
+        + '<div class="fcl-top">' + cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)
         + (row.count ? '<span class="cm-count">×' + row.count + '</span>' : '') + '</div>'
         + '<div class="fcl-text">' + escapeHtml(row.label) + '</div></div>';
       cardsHtml += '</div>';
@@ -9679,14 +10294,14 @@ function renderCabinetLevel(groupKey){
       restHtml += '<div class="cab-row"><div class="cab-main-multi clickable" data-act="cabrow" data-idx="' + idx + '">'
         + '<div class="cmm-thumbs" data-fill="1"><div class="cmm-thumb" style="width:' + Math.round(CMM_THUMB_H * sar) + 'px;height:' + CMM_THUMB_H + 'px" data-ar="' + sar + '">'
         + nsSvg(BOARD_SVG[thumbBid], 'cab' + idx) + '</div></div>'
-        + '<div class="cmm-label">' + (isBlank ? '' : cameraIconBtn('cabrow:' + groupKey + ':' + idx, groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
+        + '<div class="cmm-label">' + (isBlank ? '' : cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
         + (row.count ? '<span class="cm-count">×' + row.count + '</span>' : '') + '</div>'
         + '</div><div class="cab-letter">' + escapeHtml(row.row) + '</div></div>';
       return;
     }
     restHtml += '<div class="cab-row">';
     restHtml += '<div class="cab-main' + (clickable?' clickable':'') + '"' + (clickable ? ' data-act="cabrow" data-idx="' + idx + '"' : '') + '>';
-    if (!isBlank) restHtml += cameraIconBtn('cabrow:' + groupKey + ':' + idx, groupKey, row.label);
+    if (!isBlank) restHtml += cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label);
     restHtml += '<span>' + escapeHtml(row.label) + '</span>';
     if (row.count) restHtml += '<span class="cm-count">×' + row.count + '</span>';
     restHtml += '</div>';
@@ -10171,7 +10786,7 @@ function renderRowDetail(){
 /* =========================================================
    TAB 4 — 측정지점 (범용, 역 무관 — 마커편집기 정보 재사용)
    ========================================================= */
-var MEASURE_FACILITY_ORDER = ['SICAS','LZB700M','ATO Loop','IFC','FTGS','TWC','선로전환기','TMS','신호기','분기부 안전설비'];
+var MEASURE_FACILITY_ORDER = ['SICAS','LZB700M','ATO Loop','IFC','FTGS','TWC','OT반','선로전환기','TMS','신호기','분기부 안전설비'];
 /* [2026-09-23] OTS 측정지점은 선로전환기 탭과 내용이 겹쳐 측정지점 탭에서만 숨김(사용자 요청).
    데이터(measure-points.json)와 보드·고장상황의 참조 링크는 그대로 둔다. */
 var MEASURE_HIDDEN_FACILITY = { 'OTS': true };
@@ -10278,6 +10893,7 @@ function renderMeasureTab(){
 function stageLocatorHtml(rack, stage){
   if (!rack || !rack.boards) return '';
   var matches = rack.boards.filter(function(r){
+    if (stage.rows) return stage.rows.some(function(p){ return p[0] === r.side && p[1] === r.row; });
     var byBoard = stage.boardRef && r.boardRef === stage.boardRef;
     var byMp = stage.measurePointRef && r.measurePointRef && stage.measurePointRef.some(function(m){ return r.measurePointRef.indexOf(m) >= 0; });
     return byBoard || byMp;
@@ -10304,10 +10920,13 @@ function renderPowerFlow(){
   var stages = rack.powerFlow || [];
   var h = '<div class="stepper">';
   stages.forEach(function(stage, i){
+    /* [2026-09-25] 사진 연결 키를 순번(i) 대신 단계 id로 — 단계를 세분화하며 순서가 바뀌어도 이미
+       등록한 사진이 다른 단계로 밀리지 않게 함. 기존 단계는 옛 순번을 id로 유지. */
+    var psec = 'power:' + g.rackKey + ':' + (stage.id != null ? stage.id : i);
     h += '<div class="stage-card">';
     h += '<div class="stage-title"><span class="stage-num" style="background:' + accent + '">' + (i + 1) + '</span>'
-      + cameraIconBtn('power:' + g.rackKey + ':' + i, state.group, stage.stage)
-      + escapeHtml(stage.stage) + photoEditBtn('power:' + g.rackKey + ':' + i, state.group) + '</div>';
+      + cameraIconBtn(psec, state.group, stage.stage)
+      + escapeHtml(stage.stage) + photoEditBtn(psec, state.group) + '</div>';
     h += '<div class="stage-desc">' + escapeHtml(stage.desc) + '</div>';
     h += stageLocatorHtml(rack, stage);
 
@@ -10326,7 +10945,7 @@ function renderPowerFlow(){
     if (stage.measurePointRef) {
       stage.measurePointRef.forEach(function(mpid){ if (state.mpExpanded[mpid]) h += renderMpDetail(mpid); });
     }
-    h += renderPhotoSection('power:' + g.rackKey + ':' + i, state.group, '이 단계 실물 사진 / 동영상');
+    h += renderPhotoSection(psec, state.group, '이 단계 실물 사진 / 동영상');
     h += '</div>';
     if (i < stages.length - 1) h += '<div class="stage-connector">↓</div>';
   });

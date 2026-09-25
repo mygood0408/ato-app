@@ -1597,6 +1597,145 @@
         "doc": "2line 정기점검.pdf",
         "section": "제12절 기타 신호설비 - 1.분기부 안전설비 (신호설비보수규정 시행내규 제76조)"
       }
+    },
+    {
+      "id": "MP_OT_FTGS_TX",
+      "facility": "OT반",
+      "acdc": "AC",
+      "title": "OT반 AF궤도회로 송신전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "thresholds": [
+        {
+          "label": "11/14번",
+          "min": 30,
+          "max": 50,
+          "unit": "V"
+        },
+        {
+          "label": "9/10번",
+          "min": 3.5,
+          "max": 8,
+          "unit": "V"
+        }
+      ],
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FTGS_TX_FIELD.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_FTGS_RX",
+      "facility": "OT반",
+      "acdc": "AC",
+      "title": "OT반 AF궤도회로 수신전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "thresholds": [
+        {
+          "label": "9/10번",
+          "min": 0.3,
+          "max": 6,
+          "unit": "V"
+        }
+      ],
+      "diagnosticTip": "기계실 송신전압은 정상인데 OT반 수신전압이 없으면 현장측 튜닝 유니트, 전환 모듈, 제어 케이블 이상.",
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ],
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FTGS_RX_FIELD.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SW_CONTROL",
+      "facility": "OT반",
+      "acdc": "DC",
+      "title": "OT반 선로전환기 제어전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 26.4,
+        "unit": "V",
+        "nominal": 24
+      },
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_CONTROL.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SW_INDICATION",
+      "facility": "OT반",
+      "acdc": "DC",
+      "title": "OT반 선로전환기 표시전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "range": {
+        "min": 54,
+        "max": 66,
+        "unit": "V",
+        "nominal": 60
+      },
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_INDICATION(2호선 본선 DC60V).",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SW_MOTOR",
+      "facility": "OT반",
+      "acdc": "AC",
+      "title": "OT반 선로전환기 모터전압",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "range": {
+        "min": 100,
+        "max": 120,
+        "unit": "V",
+        "nominal": 110
+      },
+      "diagnosticTip": "전환 동작 중에만 인가되는 값 — 평상시 0V는 정상. OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_MOTOR.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_SIG_LAMP",
+      "facility": "OT반",
+      "title": "OT반 신호기 램프전원",
+      "measureType": "voltage",
+      "position": {
+        "desc": "OT반 — 기계실 장비와 현장 케이블이 만나는 중계 단자반. 해당 회로 케이블 단자(단자 번호는 역·회로마다 다르므로 현장 도면 확인)"
+      },
+      "normalState": "AC110V 계통(분전반(AC) TR4/TR5 → DESIMO 퓨즈 0.2A → DESIMO X2(12,14)). 허용범위는 현장 기준 확인.",
+      "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
+      "note": "2026-09-25 신규. 정상범위 수치 자료 없음 — 공칭 AC110V만 표기.",
+      "verify": true
+    },
+    {
+      "id": "MP_OT_PSD_SWITCHOVER",
+      "facility": "OT반",
+      "title": "O.T반 PSD 절체보드 상태",
+      "measureType": "visual",
+      "position": {
+        "desc": "O.T반 PSD 절체보드 (C01~10 / A01~10 / B01~10)"
+      },
+      "boardRef": "PSD_OT_SWITCHOVER_BOARD",
+      "normalState": "정상 운영 시 스위치 Off(Loop케이블 결선, PSD 닫힘 동작). C01~C10은 PSD relay 전원 DC60V.",
+      "checkItems": [
+        "스위치 Off 상태(정상 운영) 확인",
+        "C01~C10 PSD relay 전원 DC60V 확인",
+        "A01~A10(Loop케이블)·B01~B10(현장케이블) 단자 체결 상태"
+      ],
+      "caution": "PSD 인터페이스 개량 작업(신설/교체) 시에만 스위치를 조작 — 순서를 지키지 않으면 PSD 표시 오류 발생.",
+      "note": "출처: PSDIFC.pdf 7. O.T반 절체보드 설치 (board-info PSD_OT_SWITCHOVER_BOARD)."
     }
   ],
   "station": "신도림",
