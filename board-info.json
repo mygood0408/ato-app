@@ -230,7 +230,15 @@
             "normalState": "평상시 노랑색 점멸"
           }
         ],
-        "networkNote": "[2026-09-26 사용자 제공 자료] BUMA는 채널마다 0~4번. ① BUMA0: SICAS 내 OLM(P12)로 PROFIBUS(Plastic) 연결 — LZB700M의 BUMA도 같은 OLM(P12)로 들어옴 → OLM(P12) CH1이 Cu 케이블로 OLM(G12) CH1과 연결 → OLM(G12) CH2/CH3가 PROFIBUS(Glass)로 인접 연동역과 연결(채널 A·B가 각각 OLM(P12)/(G12) 한 쌍씩 사용). ② BUMA2: SICAS 내 OLM(P12)을 거쳐 IFC A계 또는 B계의 PROFIBUS(Profibus 카드)로 연결(OLM(P12)끼리는 Copper 케이블). ③ BUMA3·BUMA4: EC/DSTT 후면 OLM(P12)을 거쳐 EC/DSTT의 STEKOP과 통신. (BUMA1은 이 자료에 경로 표시 없음)"
+        "networkNote": [
+          "채널마다 BUMA 0~4번",
+          "BUMA0 → SICAS 내 OLM(P12) → OLM(G12) → 인접 연동역 (PROFIBUS Glass)",
+          "LZB700M의 BUMA도 BUMA0와 같은 SICAS 내 OLM(P12)로 합류",
+          "BUMA2 → SICAS 내 OLM(P12) → IFC A계/B계 PROFIBUS",
+          "BUMA3·BUMA4 → EC/DSTT 후면 OLM(P12) → STEKOP",
+          "BUMA1: 자료에 경로 표시 없음",
+          "채널 A·B가 OLM(P12)/(G12)를 한 쌍씩 사용 (P12 ↔ G12는 Cu 케이블)"
+        ]
       },
       {
         "id": "SICAS_MELDE2",
@@ -250,7 +258,9 @@
             "normalState": "데이터 Read시 노랑색으로 점멸"
           }
         ],
-        "networkNote": "[2026-09-26 사용자 제공 자료] SICAS 채널 A/B/C의 MELDE2는 ID랙의 FTGS(및 FTGS/UPS)와 연결되어 궤도회로 점유 정보 등을 받는다."
+        "networkNote": [
+          "MELDE2(채널 A/B/C) ↔ ID랙의 FTGS · FTGS/UPS — 궤도회로 점유 정보 등 수신"
+        ]
       },
       {
         "id": "SICAS_KOMDA2",
@@ -335,7 +345,11 @@
           "LED CH2·CH3": "평상시 황색 점등 / 네트워크 버스로 데이터 전송 없음 → 황색 점멸 / 상대편 광단국 장비 미접속·전원OFF·손상·데이터 전송시간 초과 → 적색 점등 / 광접속 커넥터 접속 불량 → 적색·황색 점멸 / 송·수신 케이블이 바뀐 경우·상대편 광단국 모듈 손상·데이터 전송비 인지 안 됨 → 소등",
           "P12 / G12 차이": "OLM(P12)=플라스틱 광 PROFIBUS, OLM(G12)=유리 광 PROFIBUS. 유리가 광파장이 더 짧아 수신감도가 좋아 인접 연동역 통신(장거리)에 사용"
         },
-        "networkNote": "[2026-09-26 사용자 제공 자료] SICAS 내 OLM: BUMA0용 OLM(P12)↔OLM(G12) 쌍(LZB700M BUMA 합류, G12에서 인접 연동역으로 PROFIBUS Glass), BUMA2용 OLM(P12)(IFC A/B계 PROFIBUS). EC/DSTT용 OLM(P12)은 EC/DSTT 캐비닛 후면에 있음."
+        "networkNote": [
+          "BUMA0용: OLM(P12) ↔ OLM(G12) → 인접 연동역 (LZB700M BUMA 합류)",
+          "BUMA2용: OLM(P12) → IFC A계/B계 PROFIBUS",
+          "EC/DSTT용 OLM(P12)은 EC/DSTT 캐비닛 후면에 있음"
+        ]
       },
       {
         "id": "SICAS_SVK2102",
@@ -375,6 +389,20 @@
             "normalState": "평상시 황색 점등 (출력측 과전압시[6.3V 이상] 소등 — 전원모듈 교체)"
           }
         ]
+      },
+      {
+        "id": "SICAS_N_LEVEL_PANEL",
+        "name": "N레벨 배전반 (후면 전원 터미널)",
+        "function": "1) SICAS 랙 후면 N레벨 터미널에서 전원장치·각 채널·FAN으로 전원 공급 2) 60V DC → 필터장치 및 전원장치 (채널 A·B·C) 3) 24V DC → 주변기기: OLM 채널 A·B (퓨즈 4A), KOMDA 채널 A·B·C (퓨즈 1A), 퓨즈 6.3A 4) 220V AC → FAN (66~73번 단자) 5) 측정: 60V 5,6,7번(+)/1,2,3번(−), 24V 40~49번(+)/51~59번(−)",
+        "relatedMeasurePoints": [
+          "MP_SICAS_S51_DC60",
+          "MP_SICAS_S51_DC24"
+        ],
+        "note": "[2026-09-26] 사용자 제공 \"SICAS 전원공급 계통도\" 반영. 원본 사진은 📎 참고자료.",
+        "source": {
+          "doc": "SICAS 전원공급 계통도 (사용자 제공, 2026-09-26)",
+          "section": ""
+        }
       }
     ],
     "EC/DSTT": [
@@ -471,7 +499,10 @@
           66,
           67
         ],
-        "networkNote": "[2026-09-26 사용자 제공 자료] SICAS BUMA3·BUMA4 → PROFIBUS(Plastic) → EC/DSTT 후면 OLM(P12) → Cu → STEKOP(8~15) → DEWEMO(선로전환기 제어)·DESIMO(신호기 제어)."
+        "networkNote": [
+          "SICAS BUMA3·BUMA4 → EC/DSTT 후면 OLM(P12) → STEKOP(8~15)",
+          "STEKOP → DEWEMO(선로전환기 제어) · DESIMO(신호기 제어)"
+        ]
       },
       {
         "id": "ECDSTT_DEWEMO",
@@ -725,7 +756,7 @@
       {
         "id": "ECDSTT_OLM",
         "name": "OLM (P12, 광링크모듈) — EC/DSTT 후면",
-        "function": "EC/DSTT 후면 M행의 OLM(P12, 플라스틱 광 PROFIBUS) 2대. SICAS 채널의 BUMA3·BUMA4에서 PROFIBUS(Plastic)로 들어와, CH1이 Cu 케이블로 STEKOP(8~15) 버스에 연결되어 STEKOP과 통신한다. STEKOP은 DEWEMO(선로전환기)·DESIMO(신호기)를 제어한다. SICAS_OLM과 같은 OLM(P12) 제품.",
+        "function": "1) EC/DSTT 후면 M행의 OLM(P12, 플라스틱 광 PROFIBUS) 2대 2) SICAS의 BUMA3·BUMA4와 STEKOP 사이에서 광 ↔ 전기 신호를 변환 3) SICAS_OLM과 같은 OLM(P12) 제품",
         "rackPosition": "후면 M행",
         "source": {
           "doc": "ECDSTT 지침서.pdf (외부 자료, 프로젝트 미보관)",
@@ -746,7 +777,11 @@
           "LED CH1": "평상시 황색 점등 / 산발적인 데이터 접속·네트워크 간섭·드라이버 손상 시 적색 점멸 / 데이터 버스에 연결이 안 되거나 커넥터 불량 시 소등",
           "LED CH2·CH3": "평상시 황색 점등 / 네트워크 버스로 데이터 전송 없음 → 황색 점멸 / 상대편 광단국 장비 미접속·전원OFF·손상·데이터 전송시간 초과 → 적색 점등 / 광접속 커넥터 접속 불량 → 적색·황색 점멸 / 송·수신 케이블이 바뀐 경우·상대편 광단국 모듈 손상·데이터 전송비 인지 안 됨 → 소등",
           "P12 / G12 차이": "OLM(P12)=플라스틱 광 PROFIBUS, OLM(G12)=유리 광 PROFIBUS. 유리가 광파장이 더 짧아 수신감도가 좋아 인접 연동역 통신(장거리)에 사용"
-        }
+        },
+        "networkNote": [
+          "SICAS BUMA3·BUMA4 → PROFIBUS(Plastic) → OLM(P12) CH3",
+          "OLM(P12) CH1 → Cu 케이블 → STEKOP(8~15) 버스"
+        ]
       },
       {
         "id": "ECDSTT_ARRELAY",
@@ -1007,7 +1042,10 @@
             "normalState": "평상시 노랑색 점멸"
           }
         ],
-        "networkNote": "채널별 BUMA는 캐비닛 외부의 OLM(P12, 플라스틱) 4개를 거쳐 SICAS(2개소)와 PROFIBUS(Plastic)로 연결됨(LZB 지침서.pdf p.96 LZB 통신망 구성도 기준). SICAS_BUMA와 달리 OLM(G12, 유리)을 통한 인접역 간 직접 연결은 이 자료에서 확인되지 않음 — SICAS를 경유해 인접 LZB700M과 통신하는 구조로 추정. [2026-09-26 사용자 제공 자료] LZB700M의 BUMA는 SICAS 내 OLM(P12)(SICAS BUMA0와 같은 OLM)으로 들어가 OLM(G12)를 거쳐 인접 연동역과 통신한다. LZB 통신망 구성도: LZB700M [1]·[2]의 채널 A/B/C BUMA가 OLM(P12) 쌍(Cu 케이블 연결)을 거쳐 SICAS로 연결.",
+        "networkNote": [
+          "BUMA(채널 A/B/C) → SICAS 내 OLM(P12) (SICAS BUMA0와 같은 OLM) → OLM(G12) → 인접 연동역",
+          "LZB700M [1]·[2] 각 채널 BUMA → OLM(P12) 쌍(Cu 케이블 연결) → SICAS (PROFIBUS Plastic)"
+        ],
         "profibusAddressing": {
           "note": "[2026-09-08 신규, 19차] 'ATP HW Design_SIN1.pdf'의 BUMA 배면 커넥터(C53/G53) 슬롯코딩 보조배선도에서 확인한 Profibus 주소 설정표입니다. 레지스터 비트 RE7-P~RE0-P가 아래 단자 핀에 대응하며, 각 자리값(가중치)을 더해 주소를 정합니다.",
           "bitToTerminal": [
@@ -1224,7 +1262,10 @@
           "doc": "3. ATP.pdf",
           "section": "LZB700M 각 보드별 기능 (p.99~113)"
         },
-        "networkNote": "[2026-09-26 사용자 제공 자료] LZB 통신망 구성도: 채널별 STELA3 출력이 FTGS Distributor를 거쳐 FTGS로, 또 ATO Controller(ATO Loop 제어함)로 연결된다(LZB700M [1]·[2] 공통)."
+        "networkNote": [
+          "STELA3 → FTGS Distributor → FTGS",
+          "STELA3 → ATO Controller (ATO Loop 제어함)"
+        ]
       },
       {
         "id": "LZB_SECOP",
@@ -1252,7 +1293,9 @@
           "doc": "3. ATP.pdf",
           "section": "LZB700M 각 보드별 기능 (p.99~113)"
         },
-        "networkNote": "[2026-09-26 사용자 제공 자료] LZB 통신망 구성도: LZB700M [1]·[2] 각각의 FTGS Distributor가 STELA3 출력을 모아 FTGS로 보낸다."
+        "networkNote": [
+          "LZB700M [1]·[2] 각각: STELA3 출력 → FTGS Distributor → FTGS"
+        ]
       },
       {
         "id": "LZB_SVK2102",
@@ -1346,7 +1389,7 @@
       {
         "id": "LZB_OUTPUT_TERMINAL",
         "name": "출력 단자대 (Conductor Plug)",
-        "function": "LZB 캐비닛 전면 P행 출력 단자대. 각 보드 전면 플러그를 캐비닛 밖 배선과 커플링하는 Conductor Plug들이 상단/하단 두 줄로 배치되어 있다.",
+        "function": "1) LZB 캐비닛 전면 P행 출력 단자대 2) 각 보드 전면 플러그를 캐비닛 밖 배선과 커플링하는 Conductor Plug가 상단/하단 두 줄로 배치 (아래 배치도 참고)",
         "connectors": {
           "[상단] DIAG ×2": "V24KOP와 인터페이스 — 9-pole 표준 전면 플러그 2개, 서비스PC 연결",
           "[상단] Plug 3": "V24KOP와 인터페이스 — 9-pole 표준 전면 플러그 2개",
@@ -1372,7 +1415,7 @@
       {
         "id": "LZB_POWER_RAIL",
         "name": "전원 단말레일",
-        "function": "LZB 캐비닛 전면 Q행 전원 단말레일. +60V UPS 입력이 퓨즈 F1~F3(10A, SVK2102 5V comp. channel A/B/C), F4(3A, not used), F5~F8(6A, SVK2402 SV1~SV4 24V Periphery)로 분배된다. 단자 4~6 → SVK2102 입력, 9~12 → SVK2402 입력(+60V UPS 입력). 20번 → 필터 입력(Fan, 5V Module). 230V UPS 입력은 F10(1A)을 거쳐 Power supply module(V24KOP)로. 21~24번 → FAN 입력(필터 입력 경유).",
+        "function": "1) +60V UPS 입력 → 퓨즈 분배: F1~F3 10A (SVK2102 5V, 채널 A/B/C) · F4 3A (not used) · F5~F8 6A (SVK2402 SV1~SV4 24V Periphery) 2) 단자 4~6 → SVK2102 입력, 단자 9~12 → SVK2402 입력 3) 20번 → 필터 입력 (Fan, 5V Module) 4) 230V UPS 입력 → F10(1A) → Power supply module (V24KOP) 5) 21~24번 → FAN 입력 (필터 입력 경유)",
         "relatedMeasurePoints": [
           "MP_LZB_DC60",
           "MP_LZB_DC24",
@@ -1397,7 +1440,14 @@
           "doc": "4. IFCLCC LMC 표시상태.pdf",
           "section": "IFC 장치 (p.150~180)"
         },
-        "networkNote": "[2026-09-26 사용자 제공 자료] SICAS 채널 BUMA2 → SICAS 내 OLM(P12) → PROFIBUS(Plastic) → IFC A계/B계 Profibus 카드(OLM(P12)끼리는 Copper 케이블). IFC A/B는 CAM으로 이중계 절체되고 관제·LCC·LMC·SSC와 연결. 정차등 관련 DI/DO보드 → 정차등(Dwell Light), 비상정지·이중계 관련 DI/DO보드 → 비상정지(EMS). TWC UNIT(IMU-100)은 TWC LOOP코일 신호를 받아 IFC와 연결."
+        "networkNote": [
+          "SICAS BUMA2 → SICAS 내 OLM(P12) → IFC A계/B계 Profibus 카드 (OLM끼리 Copper 케이블)",
+          "IFC A/B 이중계 — CAM으로 절체",
+          "관제 · LCC · LMC · SSC와 연결",
+          "정차등 관련 DI/DO보드 → 정차등(Dwell Light)",
+          "비상정지·이중계 관련 DI/DO보드 → 비상정지(EMS)",
+          "TWC LOOP코일 → TWC UNIT(IMU-100) → IFC"
+        ]
       },
       {
         "id": "IFC_CAM",

@@ -63,15 +63,27 @@
               "후면",
               "K"
             ]
-          ]
+          ],
+          "boardRef": "SICAS_N_LEVEL_PANEL"
         },
         {
           "id": "fuse24",
-          "stage": "24V 퓨즈 (N레벨 40~49번, 4A~6.3A)",
-          "desc": "24V는 N레벨 배전반 40~49번 단자의 퓨즈(4A~6.3A)를 거쳐 나갑니다. 퓨즈가 끊기면 그 계통 24V만 없어지므로, 24V가 안 나오면 이 퓨즈부터 확인합니다.",
+          "stage": "24V 퓨즈 (N레벨: OLM 4A · KOMDA 1A · 6.3A)",
+          "desc": "24V DC가 N레벨 배전반 퓨즈를 거쳐 주변기기로 갑니다 — OLM 채널 A·B 퓨즈 4A, KOMDA 채널 A·B·C 퓨즈 1A, 퓨즈 6.3A. 퓨즈가 끊기면 그 계통 24V만 없어지므로, 24V가 안 나오면 이 퓨즈부터 확인합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC24"
           ],
+          "rows": [
+            [
+              "후면",
+              "K"
+            ]
+          ]
+        },
+        {
+          "id": "fan",
+          "stage": "220V AC → FAN (N레벨 66~73번)",
+          "desc": "N레벨 배전반 66~73번 단자에서 220V AC가 FAN으로 공급됩니다.",
           "rows": [
             [
               "후면",
@@ -278,7 +290,8 @@
           "measurePointRef": [
             "MP_SICAS_S51_DC60",
             "MP_SICAS_S51_DC24"
-          ]
+          ],
+          "boardRef": "SICAS_N_LEVEL_PANEL"
         },
         {
           "row": "L",
@@ -1368,7 +1381,7 @@
     },
     "LZB700M": {
       "title": "LZB700M (ATP) 캐비닛 구성도",
-      "note": "SIEMENS LZB700M ATP 지상설비 캐비닛. 채널 A/B/C 3중화 구조이며, 채널마다 VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2(×2)·STELA3(×14) 보드가 배치됩니다. [2026-09-26 사용자 제공 자료] [LZB↔기타 장치 흐름도] SICAS → LZB700M: Route(정보) · LZB700M → FTGS: FTGS(제어) · LZB700M → REMEMO: REMEMO(제어) → ATO Loop → O.T · O.T ↔ LZB700M: PSD(정보) · O.T ↔ TWC: PSD(제어)·TWC(정보) · LZB700M → IFC: EMS(제어) · TWC → IFC: TWC(정보) · SICAS ↔ IFC. [LZB 통신망] LZB700M [1]·[2] 채널 A/B/C BUMA → OLM(P12) 쌍 → SICAS / STELA3 → FTGS Distributor → FTGS, STELA3 → ATO Controller.",
+      "note": "SIEMENS LZB700M ATP 지상설비 캐비닛. 채널 A/B/C 3중화 구조이며, 채널마다 VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2(×2)·STELA3(×14) 보드가 배치됩니다.",
       "station": "신도림",
       "scopeNote": "채널(A/B/C) 3중화 구조와 보드 종류·순서는 SICAS와 동일하게 SIEMENS 표준 규격입니다. 캐비닛 대수(신도림 기준 L51/L52 2대)와 담당범위는 역마다 다릅니다.",
       "channels": [
@@ -1654,7 +1667,22 @@
             ]
           ]
         }
-      ]
+      ],
+      "flowNotes": {
+        "title": "LZB ↔ 타 장치 연결",
+        "items": [
+          "SICAS → LZB700M : Route(정보)",
+          "LZB700M → FTGS : FTGS(제어)",
+          "LZB700M → REMEMO : REMEMO(제어) → ATO Loop → O.T",
+          "O.T ↔ LZB700M : PSD(정보)",
+          "O.T ↔ TWC : PSD(제어) · TWC(정보)",
+          "LZB700M → IFC : EMS(제어)",
+          "TWC → IFC : TWC(정보)",
+          "SICAS ↔ IFC",
+          "통신망: LZB700M [1]·[2] 채널 A/B/C BUMA → OLM(P12) 쌍 → SICAS",
+          "STELA3 → FTGS Distributor → FTGS / STELA3 → ATO Controller"
+        ]
+      }
     },
     "IFC": {
       "title": "IFC 장치 캐비닛 구성도",
