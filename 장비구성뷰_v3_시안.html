@@ -9365,7 +9365,8 @@ var state = {
   rackDrill: null,        // { title, note, boardIds:[...], instanceLabels:[...] }
   boardDetail: null,
   boardDetailFrom: null,
-  boardDetailList: null,   // { ids:[...], idx:N } — 같은 level(칸/행)에 여러 보드가 있을 때 이전/다음 이동용
+  boardDetailList: null,
+  boardCtx: null,          // { g, side } — 보드 상세를 연 설비·면(사진 키 구분용). 없으면 그 보드의 첫 위치   // { ids:[...], idx:N } — 같은 level(칸/행)에 여러 보드가 있을 때 이전/다음 이동용
   imgZoom: null,           // 보드 이미지 확대 팝업에 표시 중인 boardId (닫으면 null → 원래 자리로 복귀)
   refDocs: null,           // { board, index } — 보드 상세화면 "참고자료" 팝업 상태 (닫으면 null)
   selectedEdge: null,
@@ -10428,11 +10429,30 @@ function firstSide(groupKey){
 /* [2026-09-25] 같은 보드가 들어간 행(DEWEMO ×2 행 여러 개, OLM 1·2행 등)은 보드 키(board:)를 공유 —
    한 곳에 사진을 넣으면 같은 보드 전부와 그 보드 상세 화면에 같은 사진이 보인다(사용자 요청).
    서로 다른 보드가 섞인 행(채널 프레임 등)만 행 고유 키(cabrow:)를 쓴다. */
+/* [2026-09-25 수정] 같은 보드라도 설치 설비나 면(전면/후면 등)이 다르면 다른 사진을 넣을 수 있도록,
+   보드 사진 키에 설비와 면을 포함한다: board:<설비>:<면>:<보드id>. 같은 설비·같은 면의 같은 보드끼리만 공유. */
+function boardSec(groupKey, side, bid){ return 'board:' + groupKey + ':' + (side || '') + ':' + bid; }
+/* 설비·면 정보 없이 열린 보드 상세(측정지점·전원흐름의 "보드 상세" 버튼 등)는 그 보드가 랙에 처음 나오는 위치로 본다. */
+function boardDefaultCtx(bid){
+  var gk = BOARDINFO_GROUP_BY_ID[bid], g = GROUPS[gk];
+  var rack = g && g.kind === 'cabinet' ? RACK.racks[g.rackKey] : null;
+  if (!rack) return null;
+  var hit = (rack.boards || []).filter(function(r){
+    if (r.boardRef === bid || (r.boardOrder || []).indexOf(bid) >= 0) return true;
+    var fr = r.frameRef && rack.channelFrames && rack.channelFrames[r.frameRef];
+    return !!(fr && (fr.boardOrder || []).indexOf(bid) >= 0);
+  })[0];
+  return hit ? { g: gk, side: hit.side } : null;
+}
+function boardPhotoSec(bid, ctx){
+  ctx = ctx || boardDefaultCtx(bid);
+  return ctx ? boardSec(ctx.g, ctx.side, bid) : 'board:' + bid;
+}
 function rackRowSection(groupKey, row, idx){
   var order = (row.boardOrder || []).filter(function(x){ return x !== '__SEP__' && x.indexOf('__LABEL__') !== 0; });
   if (!row.boardRef && !row.frameRef && !order.length) return 'row:' + groupKey + ':' + idx;
-  if (row.boardRef && !row.frameRef && !order.length) return 'board:' + row.boardRef;
-  if (!row.frameRef && order.length && order.every(function(x){ return x === order[0]; })) return 'board:' + order[0];
+  if (row.boardRef && !row.frameRef && !order.length) return boardSec(groupKey, row.side, row.boardRef);
+  if (!row.frameRef && order.length && order.every(function(x){ return x === order[0]; })) return boardSec(groupKey, row.side, order[0]);
   return 'cabrow:' + groupKey + ':' + idx;
 }
 /* 예전 키(cabrow:그룹:행번호)로 연결해 둔 사진을 새 키로 옮긴다(한 번만 실행돼도 되고, 반복해도 무해). */
@@ -10456,6 +10476,23 @@ function migrateRackPhotoKeys(){
         delete driveLinks[oldK]; driveDirty[oldK] = true; driveDirty[newK] = true; moved = true;
       }
     });
+  });
+  function moveKey(oldK, newK){
+    if (oldK === newK) return;
+    if (photoManualItems[oldK]) {
+      var arr = photoManualItems[newK] = photoManualItems[newK] || [];
+      photoManualItems[oldK].forEach(function(k){ if (arr.indexOf(k) < 0) arr.push(k); });
+      delete photoManualItems[oldK]; moved = true;
+    }
+    if (driveLinks[oldK]) {
+      var list = driveLinks[newK] = driveLinks[newK] || [];
+      driveLinks[oldK].forEach(function(d){ if (!list.some(function(x){ return x.id === d.id; })) list.push(d); });
+      delete driveLinks[oldK]; driveDirty[oldK] = true; driveDirty[newK] = true; moved = true;
+    }
+  }
+  Object.keys(photoManualItems).concat(Object.keys(driveLinks)).forEach(function(k){
+    var m = /^board:([^:]+)$/.exec(k);
+    if (m) moveKey(k, boardPhotoSec(m[1]));
   });
   if (moved) { savePhotoCurate(); saveDriveLinks(); }
 }
@@ -10530,10 +10567,10 @@ function renderCabinetLevel(groupKey){
         if (BOARD_SVG[bid]) {
           var ar = svgAspect(bid);
           var w = Math.max(28, Math.round(CMM_THUMB_H * ar));
-          restHtml += '<div class="cmm-thumb" style="width:' + w + 'px;height:' + CMM_THUMB_H + 'px" data-ar="' + ar + '" data-act="board" data-board="' + bid + '" data-from="rack"' + sibAttr + ' title="' + escapeHtml(lbl) + '">'
+          restHtml += '<div class="cmm-thumb" style="width:' + w + 'px;height:' + CMM_THUMB_H + 'px" data-ar="' + ar + '" data-act="board" data-board="' + bid + '" data-from="rack" data-ctx="' + escapeHtml(groupKey + '|' + row.side) + '"' + sibAttr + ' title="' + escapeHtml(lbl) + '">'
             + nsSvg(BOARD_SVG[bid], 'cmm' + idx + '_' + bi) + '</div>';
         } else {
-          restHtml += '<div class="cmm-thumb cmm-text" data-act="board" data-board="' + bid + '" data-from="rack"' + sibAttr + '>' + escapeHtml(lbl) + '</div>';
+          restHtml += '<div class="cmm-thumb cmm-text" data-act="board" data-board="' + bid + '" data-from="rack" data-ctx="' + escapeHtml(groupKey + '|' + row.side) + '"' + sibAttr + '>' + escapeHtml(lbl) + '</div>';
         }
       });
       restHtml += '</div>';
@@ -10642,7 +10679,7 @@ function renderBoardRowLevel(){
     var fnShort = info && info.function ? info.function.slice(0, 46) + (info.function.length>46?'…':'') : '';
     var idxLabel = drill.instanceLabels ? drill.instanceLabels[i] : boardLabel(bid);
     var img = BOARD_SVG[bid] ? nsSvg(BOARD_SVG[bid], 'row' + i) : '';
-    h += '<div class="row-board-tile" data-act="board" data-board="' + bid + '" data-from="rack"' + drillSibAttr + '>';
+    h += '<div class="row-board-tile" data-act="board" data-board="' + bid + '" data-from="rack"' + (drill.ctx ? ' data-ctx="' + escapeHtml(drill.ctx) + '"' : '') + drillSibAttr + '>';
     h += '<div class="rbt-idx">' + escapeHtml(idxLabel) + '</div>';
     h += '<div class="rbt-slot' + (img ? '' : ' empty') + '">' + img + '</div>';
     h += '<div class="rbt-fn">' + escapeHtml(fnShort) + '</div>';
@@ -10958,7 +10995,8 @@ function renderBoardDetail(boardId){
   if (refDocs && refDocs.length) {
     h += '<button type="button" class="refdocs-btn" data-act="refdocsopen" data-board="' + boardId + '">📎 참고자료' + (refDocs.length > 1 ? ' (' + refDocs.length + ')' : '') + '</button>';
   }
-  h += photoEditBtn('board:' + boardId, group);
+  var bsec = boardPhotoSec(boardId, state.boardCtx);
+  h += photoEditBtn(bsec, group);
   h += '</div>';
   h += '<div class="sub">' + escapeHtml(boardId) + (info && info.rackPosition ? ' · ' + escapeHtml(info.rackPosition) : '') + '</div>';
 
@@ -11035,7 +11073,7 @@ function renderBoardDetail(boardId){
      있는 곳은 사진을 넣고 마커를 놓을 수 없었다"는 문제. 이제 실물풍 이미지가 이미 있는
      보드를 포함해 모든 보드 상세페이지에 이 섹션을 항상 보여준다(위 "이 장비에 사진
      지정" 기능으로 이 보드만의 사진을 정확히 골라 연결할 수 있음). */
-  h += renderPhotoSection('board:' + boardId, group, '실물 사진 / 동영상');
+  h += renderPhotoSection(bsec, group, '실물 사진 / 동영상');
 
   h += '</div>';
   return h;
@@ -11279,22 +11317,22 @@ document.addEventListener('click', function(e){
     if (row.noThumb && row.boardRef) {
       /* rows marked noThumb (e.g. IFC's 인접랙 relay racks) skip the repeated-image
          drill-down entirely and go straight to the single text-based board detail page. */
-      state.boardDetail = row.boardRef; state.boardDetailFrom = 'rack'; state.boardDetailList = null;
+      state.boardDetail = row.boardRef; state.boardDetailFrom = 'rack'; state.boardDetailList = null; state.boardCtx = { g: state.group, side: row.side };
       render(); window.scrollTo(0,0);
     } else if (row.frameRef) {
       var frame = rack.channelFrames[row.frameRef];
-      state.rackDrill = { title: (row.channel ? '채널 ' + row.channel + ' — ' : '') + frame.title, note: frame.note, boardIds: frame.boardOrder.slice() };
+      state.rackDrill = { title: (row.channel ? '채널 ' + row.channel + ' — ' : '') + frame.title, note: frame.note, boardIds: frame.boardOrder.slice(), ctx: state.group + '|' + row.side };
       render(); window.scrollTo(0,0);
     } else if (row.boardOrder && row.boardOrder.length) {
-      state.rackDrill = { title: row.label, note: row.note || null, boardIds: row.boardOrder.slice() };
+      state.rackDrill = { title: row.label, note: row.note || null, boardIds: row.boardOrder.slice(), ctx: state.group + '|' + row.side };
       render(); window.scrollTo(0,0);
     } else if (row.boardRef && row.count > 1) {
       var base = boardLabel(row.boardRef);
       var labels = []; for (var i2 = 1; i2 <= row.count; i2++) labels.push(base + '-' + i2);
-      state.rackDrill = { title: row.label, note: row.note || null, boardIds: new Array(row.count).fill(row.boardRef), instanceLabels: labels };
+      state.rackDrill = { title: row.label, note: row.note || null, boardIds: new Array(row.count).fill(row.boardRef), instanceLabels: labels, ctx: state.group + '|' + row.side };
       render(); window.scrollTo(0,0);
     } else if (row.boardRef) {
-      state.boardDetail = row.boardRef; state.boardDetailFrom = 'rack'; state.boardDetailList = null;
+      state.boardDetail = row.boardRef; state.boardDetailFrom = 'rack'; state.boardDetailList = null; state.boardCtx = { g: state.group, side: row.side };
       render(); window.scrollTo(0,0);
     } else {
       /* 보드 정보 자체가 없는 순수 텍스트 행(예: EC/DSTT G/H/L 레벨의 터미널단자·휴즈) —
@@ -11332,6 +11370,8 @@ document.addEventListener('click', function(e){
     render();
   } else if (act === 'board') {
     var bdid = t.getAttribute('data-board');
+    var bctx = t.getAttribute('data-ctx');
+    state.boardCtx = bctx ? { g: bctx.split('|')[0], side: bctx.split('|')[1] } : null;
     state.boardDetail = bdid;
     state.rowDetail = null;
     var from = t.getAttribute('data-from');
