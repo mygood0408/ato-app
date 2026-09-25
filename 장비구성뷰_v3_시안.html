@@ -479,6 +479,10 @@ img,svg{max-width:100%}
   width:26px;height:26px;margin-right:6px;padding:0;border:none;background:transparent;
   color:var(--ink3);cursor:pointer;border-radius:6px}
 .cam-btn:active{background:var(--steelbg);color:var(--steel)}
+.photo-edit-btn{flex:0 0 auto;margin-left:auto;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--steelline);
+  background:#fff;color:var(--steel);display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.photo-edit-btn.on{background:var(--steel);color:#fff;border-color:var(--steel)}
+.photo-edit-btn:active{filter:brightness(.93)}
 .qp-overlay{position:fixed;inset:0;background:rgba(10,10,10,.86);z-index:70;
   display:flex;align-items:center;justify-content:center;padding:14px}
 .qp-modal{position:relative;width:100%;max-width:960px;height:100%;max-height:94dvh;
@@ -7454,7 +7458,9 @@ function galleryItemsFor(sectionId, groupKey){
   if (curated && curated.length) {
     var out = [];
     curated.forEach(function(k){
-      var i = k.indexOf('/');
+      /* 폴더명에 "/"가 들어갈 수 있어(예: "… 사진 / 동영상 (Google Drive)") 마지막 "/"에서 자른다 —
+         첫 "/"에서 자르던 버그로 지정한 사진이 한 장도 안 보였음(2026-09-25 사용자 제보). */
+      var i = k.lastIndexOf('/');
       var item = findLoadedItem(k.slice(0, i), k.slice(i + 1));
       if (item && !(item.kind === 'video' && item.rejected)) out.push(item);
     });
@@ -7483,13 +7489,24 @@ function photoThumbHtml(item){
   h += '</div>';
   return h;
 }
+/* [2026-09-25] 사진이 이미 있는 항목은 사진 등록 화면을 숨기고(사진은 제목 옆 카메라 아이콘으로 봄),
+   제목 줄 오른쪽 끝의 원형 연필 버튼(photoEditBtn)을 눌렀을 때만 등록/편집 화면을 펼친다(사용자 요청). */
+function sectionHasPhotos(sectionId, groupKey){ return galleryItemsFor(sectionId, groupKey).length > 0; }
+function photoEditBtn(sectionId, groupKey){
+  if (!sectionHasPhotos(sectionId, groupKey)) return '';
+  var on = !!state.photoEdit[sectionId];
+  return '<button type="button" class="photo-edit-btn' + (on ? ' on' : '') + '" data-act="photoedit" data-section="' + escapeHtml(sectionId) + '" aria-label="사진 등록/편집" title="사진 등록/편집">'
+    + '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+    + '<path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></button>';
+}
 function renderPhotoSection(sectionId, groupKey, title){
+  if (sectionHasPhotos(sectionId, groupKey) && !state.photoEdit[sectionId]) return '';
   var curated = isCurated(sectionId);
   var h = '<div class="photo-section" data-photosection="' + escapeHtml(sectionId) + '">';
   h += '<div class="photo-section-head"><span class="t">📷 ' + escapeHtml(title || '실물 사진 / 동영상') + '</span>'
     + '<button class="photo-mini-btn pri" data-act="photopick">사진/동영상 폴더 열기</button>'
     + '<button class="photo-mini-btn" data-act="drivepickdirect" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🗂 Google Drive</button>'
-    + (photoFolderList.length ? '<button class="photo-mini-btn" data-act="photocurate" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🖼 이 장비에 사진 지정</button>' : '')
+    + (photoFolderList.length ? '<button class="photo-mini-btn" data-act="photocurate" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🖼 보여줄 사진 고르기</button>' : '')
     + (photoFolderList.length && !curated ? photoFolderPickerHtml(sectionId) : '')
     + '</div>';
   if (!photoFolderList.length) {
@@ -7499,9 +7516,9 @@ function renderPhotoSection(sectionId, groupKey, title){
   }
   if (curated) {
     var citems = galleryItemsFor(sectionId, groupKey);
-    h += '<div class="photo-curate-note">🖼 이 장비에 지정한 사진 ' + citems.length + '장만 표시 중 — 다른 사진은 숨겨져 있습니다. '
+    h += '<div class="photo-curate-note">🖼 고른 사진 ' + citems.length + '장만 표시 중. '
       + '<button type="button" class="photo-mini-btn" data-act="photocurateclear" data-section="' + escapeHtml(sectionId) + '">지정 해제</button></div>';
-    if (!citems.length) { h += '<div class="photo-empty-hint">지정된 사진이 없습니다. 위 "이 장비에 사진 지정"으로 골라주세요.</div></div>'; return h; }
+    if (!citems.length) { h += '<div class="photo-empty-hint">고른 사진 파일을 이 브라우저에서 찾지 못했습니다(다른 기기이거나 브라우저 데이터가 지워진 경우). Google Drive 또는 폴더 열기로 다시 불러오세요.</div></div>'; return h; }
     h += '<div class="photo-gallery">' + citems.map(photoThumbHtml).join('') + '</div>';
     h += '</div>';
     return h;
@@ -7583,6 +7600,47 @@ function openPhotoPicker(){
   });
   inp.click();
 }
+/* [2026-09-25] 새로고침해도 사진이 남도록(사용자 요청) — 항목에 연결한 사진(구글 드라이브에서 고른 것,
+   카메라 아이콘으로 직접 고른 것)의 파일 자체를 이 브라우저의 IndexedDB에 저장해 두고, 페이지를 열 때
+   다시 photoByFolder에 채운다. 항목↔사진 연결(photoManualItems)과 마커(photoData)는 원래부터
+   localStorage에 남아 있었으므로, 파일만 남으면 새로고침 전과 똑같이 보인다. 로그인 불필요.
+   "사진/동영상 폴더 열기"로 폴더를 통째로 불러온 사진은 양이 많아 저장하지 않는다.
+   ponytail: 연결을 해제한 사진의 파일도 캐시에 그대로 남음 — 용량이 문제 되면 연결 안 된 것 정리 추가. */
+var PHOTO_DB_NAME = 'rackview-photo-files', PHOTO_DB_STORE = 'files';
+function photoDb(cb){
+  try {
+    var req = indexedDB.open(PHOTO_DB_NAME, 1);
+    req.onupgradeneeded = function(){ req.result.createObjectStore(PHOTO_DB_STORE, { keyPath: 'key' }); };
+    req.onsuccess = function(){ cb(req.result); };
+    req.onerror = function(){};
+  } catch(e){}
+}
+function photoCachePut(item, blob){
+  photoDb(function(db){
+    try {
+      db.transaction(PHOTO_DB_STORE, 'readwrite').objectStore(PHOTO_DB_STORE)
+        .put({ key: photoKeyOf(item.folder, item.name), folder: item.folder, name: item.name, kind: item.kind, duration: item.duration || null, blob: blob });
+    } catch(e){}
+  });
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}
+}
+function photoCacheRestore(){
+  photoDb(function(db){
+    try {
+      var req = db.transaction(PHOTO_DB_STORE).objectStore(PHOTO_DB_STORE).getAll();
+      req.onsuccess = function(){
+        var recs = req.result || [];
+        var added = 0;
+        recs.forEach(function(r){
+          if (findLoadedItem(r.folder, r.name)) return;
+          (photoByFolder[r.folder] = photoByFolder[r.folder] || []).push({ folder: r.folder, name: r.name, url: URL.createObjectURL(r.blob), kind: r.kind, duration: r.duration });
+          added++;
+        });
+        if (added) finishPhotoLoad();
+      };
+    } catch(e){}
+  });
+}
 function finishPhotoLoad(){
   Object.keys(photoByFolder).forEach(function(k){ photoByFolder[k].sort(function(a,b){ return a.name.localeCompare(b.name); }); });
   photoFolderList = Object.keys(photoByFolder).sort();
@@ -7605,19 +7663,26 @@ function openPhotoPickerDirect(sectionId, groupKey, label){
     if (!inp.files || !inp.files.length) { inp.remove(); return; }
     var imgRe = /\.(jpe?g|png|webp|heic)$/i;
     var vidRe = /\.(mp4|webm|mov|m4v)$/i;
-    var folder = (label || groupKey || '사진') + ' (직접 선택)';
-    var vids = [];
+    var folder = '직접 선택';
+    var vids = [], picked = [];
     Array.prototype.forEach.call(inp.files, function(f){
       var isImg = imgRe.test(f.name) || (f.type && f.type.indexOf('image/') === 0);
       var isVid = vidRe.test(f.name) || (f.type && f.type.indexOf('video/') === 0);
       if (!isImg && !isVid) return;
-      var item = { folder: folder, name: f.name, url: URL.createObjectURL(f), kind: isVid ? 'video' : 'photo' };
+      var item = { folder: folder, name: f.name, url: URL.createObjectURL(f), kind: isVid ? 'video' : 'photo', file: f };
+      picked.push(item);
       if (isVid) { vids.push(item); } else { (photoByFolder[folder] = photoByFolder[folder] || []).push(item); }
     });
     inp.remove();
-    (photoManualFolders[sectionId] = photoManualFolders[sectionId] || []);
-    if (photoManualFolders[sectionId].indexOf(folder) < 0) photoManualFolders[sectionId].push(folder);
     function finish(){
+      var arr = photoManualItems[sectionId] = photoManualItems[sectionId] || [];
+      picked.forEach(function(it){
+        if (it.rejected) return;
+        photoCachePut(it, it.file);
+        var k = photoKeyOf(it.folder, it.name);
+        if (arr.indexOf(k) < 0) arr.push(k);
+      });
+      savePhotoCurate();
       finishPhotoLoad();
       openQuickPreview(sectionId, groupKey, label);
     }
@@ -7796,10 +7861,16 @@ function driveDocsToPhotoItems(docs, token, folder, cb){
         var isVid = /^video\//.test(doc.mimeType);
         var url = URL.createObjectURL(blob);
         var item = { folder: folder, name: doc.name, url: url, kind: isVid ? 'video' : 'photo' };
-        if (!isVid) { (photoByFolder[folder] = photoByFolder[folder] || []).push(item); if (--remaining <= 0) cb(); return; }
+        var old = findLoadedItem(folder, doc.name);
+        if (old) { var list0 = photoByFolder[folder]; list0.splice(list0.indexOf(old), 1); }
+        if (!isVid) { (photoByFolder[folder] = photoByFolder[folder] || []).push(item); photoCachePut(item, blob); if (--remaining <= 0) cb(); return; }
         var v = document.createElement('video');
         v.preload = 'metadata'; v.muted = true;
-        var settle = function(){ (photoByFolder[folder] = photoByFolder[folder] || []).push(item); if (--remaining <= 0) cb(); };
+        var settle = function(){
+          (photoByFolder[folder] = photoByFolder[folder] || []).push(item);
+          if (!item.rejected) photoCachePut(item, blob);
+          if (--remaining <= 0) cb();
+        };
         v.onloadedmetadata = function(){
           item.duration = v.duration;
           if (!isFinite(v.duration) || v.duration > PHOTO_MAX_VIDEO_SEC + 0.4) { item.rejected = true; photoRejectedVideoCount++; }
@@ -7819,10 +7890,12 @@ function openDrivePickerGeneral(){
 function openDrivePickerDirect(sectionId, groupKey, label){
   ensureDriveApis(function(){ requestDriveToken(function(token){
     openDrivePickerUI(token, function(docs, tok){
-      var folder = (label || groupKey || '사진') + ' (Google Drive)';
+      var folder = 'Google Drive';
       driveDocsToPhotoItems(docs, tok, folder, function(){
-        (photoManualFolders[sectionId] = photoManualFolders[sectionId] || []);
-        if (photoManualFolders[sectionId].indexOf(folder) < 0) photoManualFolders[sectionId].push(folder);
+        var arr = photoManualItems[sectionId] = photoManualItems[sectionId] || [];
+        docs.forEach(function(d){ var k = photoKeyOf(folder, d.name); if (arr.indexOf(k) < 0) arr.push(k); });
+        savePhotoCurate();
+        state.photoEdit[sectionId] = false;
         finishPhotoLoad();
         openQuickPreview(sectionId, groupKey, label);
       });
@@ -8194,9 +8267,9 @@ function renderPhotoCurateRoot(){
   var sectionId = state.photoCurate.sectionId, label = state.photoCurate.label;
   var selected = photoManualItems[sectionId] || [];
   var h = '<div class="photo-modal-overlay" data-act="curateclose"><div class="photo-modal" data-act="photonoop">';
-  h += '<div class="photo-modal-head"><span class="nm">🖼 ' + escapeHtml(label || '이 장비') + ' — 사진 지정 (' + selected.length + '장 선택됨)</span>'
+  h += '<div class="photo-modal-head"><span class="nm">🖼 ' + escapeHtml(label || '이 장비') + ' — 보여줄 사진 고르기 (' + selected.length + '장 선택됨)</span>'
     + '<button class="photo-modal-close" data-act="curateclose">×</button></div>';
-  h += '<div class="photo-hint">불러온 사진 중에서 이 장비/항목에 보여줄 사진만 체크하세요. 체크한 사진만 이 항목의 카메라 아이콘·사진 갤러리에 표시됩니다(다른 장비의 사진은 숨겨짐). 전부 체크 해제하면 자동매칭(폴더 전체)으로 되돌아갑니다.</div>';
+  h += '<div class="photo-hint">이 항목에 보여줄 사진만 체크하세요. 체크한 사진만 보이고 나머지는 숨겨집니다. 전부 체크 해제하면 폴더의 사진이 전부 보입니다.</div>';
   if (!photoFolderList.length) {
     h += '<div class="photo-empty-hint">아직 불러온 사진이 없습니다. 먼저 "사진/동영상 폴더 열기"로 사진을 불러오세요.</div>';
   } else {
@@ -8266,7 +8339,8 @@ var state = {
   photoModal: null,        // { folder, name }
   photoSelMk: -1,
   quickPreview: null,      // { sectionId, groupKey, index } — 카메라 아이콘 빠른보기 팝업
-  photoCurate: null,       // { sectionId, groupKey, label } — "이 장비에 사진 지정" 선택 팝업
+  photoCurate: null,
+  photoEdit: {},           // sectionId -> true: 사진이 있는 항목의 등록/편집 화면 펼침(기본 접힘)       // { sectionId, groupKey, label } — "이 장비에 사진 지정" 선택 팝업
   dismissed: { globalBanner: false, mapBanner: false }
 };
 
@@ -9797,6 +9871,7 @@ function renderBoardDetail(boardId){
   if (refDocs && refDocs.length) {
     h += '<button type="button" class="refdocs-btn" data-act="refdocsopen" data-board="' + boardId + '">📎 참고자료' + (refDocs.length > 1 ? ' (' + refDocs.length + ')' : '') + '</button>';
   }
+  h += photoEditBtn('board:' + boardId, group);
   h += '</div>';
   h += '<div class="sub">' + escapeHtml(boardId) + (info && info.rackPosition ? ' · ' + escapeHtml(info.rackPosition) : '') + '</div>';
 
@@ -9892,7 +9967,7 @@ function renderRowDetail(){
 
   var h = '<button class="back-btn" data-act="rowback">← 뒤로</button>';
   h += '<div class="board-detail" style="border-top:4px solid ' + accent + '">';
-  h += '<h2>' + escapeHtml(rd.label) + '</h2>';
+  h += '<div style="display:flex;align-items:center;gap:10px"><h2 style="margin:0">' + escapeHtml(rd.label) + '</h2>' + photoEditBtn('row:' + rd.groupKey + ':' + rd.idx, rd.groupKey) + '</div>';
   h += '<div class="sub">' + escapeHtml(g ? g.label : rd.groupKey) + (row && row.row ? ' · 행 ' + escapeHtml(row.row) : '') + '</div>';
   if (row && row.note) h += '<div class="note-text">' + escapeHtml(row.note) + '</div>';
   if (row && row.measurePointRef && row.measurePointRef.length) {
@@ -9971,6 +10046,7 @@ function renderMeasureList(points){
       + cameraIconBtn('mp:' + mp.id, mp.facility || '기타', mp.title)
       + '<span style="flex:1 1 auto;min-width:140px">' + escapeHtml(mp.title) + '</span>'
       + '<span class="mono" style="font-size:13.5px;color:var(--ink3);font-weight:400">' + measurePointSummary(mp) + '</span>'
+      + (expanded ? photoEditBtn('mp:' + mp.id, mp.facility || '기타') : '')
       + '</div>';
     var mpBoards = mp.boardRefs || (mp.boardRef ? [mp.boardRef] : []);
     if (mpBoards.length) {
@@ -10048,7 +10124,7 @@ function renderPowerFlow(){
     h += '<div class="stage-card">';
     h += '<div class="stage-title"><span class="stage-num" style="background:' + accent + '">' + (i + 1) + '</span>'
       + cameraIconBtn('power:' + g.rackKey + ':' + i, state.group, stage.stage)
-      + escapeHtml(stage.stage) + '</div>';
+      + escapeHtml(stage.stage) + photoEditBtn('power:' + g.rackKey + ':' + i, state.group) + '</div>';
     h += '<div class="stage-desc">' + escapeHtml(stage.desc) + '</div>';
     h += stageLocatorHtml(rack, stage);
 
@@ -10243,6 +10319,10 @@ document.addEventListener('click', function(e){
     var bkey = t.getAttribute('data-banner');
     state.dismissed[bkey] = true;
     render();
+  } else if (act === 'photoedit') {
+    var peSec = t.getAttribute('data-section');
+    state.photoEdit[peSec] = !state.photoEdit[peSec];
+    render();
   } else if (act === 'qpopen') {
     openQuickPreview(t.getAttribute('data-section'), t.getAttribute('data-group'), t.getAttribute('data-label'));
   } else if (act === 'qpclose') {
@@ -10269,6 +10349,7 @@ document.addEventListener('click', function(e){
 });
 
 render();
+photoCacheRestore();
 </script>
 </body>
 </html>
