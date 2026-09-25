@@ -949,7 +949,8 @@
           "row": "M",
           "side": "후면",
           "label": "후면 커넥터 (PLUG 21/25/31-35/51-55/61-62)",
-          "count": 0
+          "count": 0,
+          "boardRef": "FTGS_REAR_CONNECTOR"
         },
         {
           "row": "P",
@@ -1138,7 +1139,7 @@
         {
           "id": "2",
           "stage": "브릿지저항 (후면 L행) — 송신전압 조정",
-          "desc": "후면 브릿지저항으로 현장 송신전압을 조정합니다.",
+          "desc": "후면 브릿지저항으로 현장 송신전압을 조정한 뒤, 후면 PLUG 21(실외 송신)로 현장에 내보냅니다.",
           "rows": [
             [
               "후면",
@@ -1184,7 +1185,7 @@
         {
           "id": "3",
           "stage": "현장 수신 → 수신-1 PCB",
-          "desc": "현장 C/B박스에서 돌아온 수신신호가 수신-1 PCB로 들어옵니다.",
+          "desc": "현장 C/B박스에서 돌아온 수신신호가 후면 PLUG 61(실외 수신-1)·62(실외 수신-2)로 들어와 수신-1 PCB로 갑니다.",
           "boardRef": "FTGS_RX1_PCB",
           "measurePointRef": [
             "MP_FTGS_RX1_E",
@@ -1194,7 +1195,7 @@
         {
           "id": "4",
           "stage": "복조 → 수신2 → GF계전기 PCB",
-          "desc": "GF계전기 PCB가 점유/비점유 접점신호를 SICAS·LZB로 출력합니다.",
+          "desc": "GF계전기 PCB가 점유/비점유 접점신호를 출력합니다. 후면 PLUG 51~55로 LZB에 궤도정보를, PLUG 34·35로 ID랙을 거쳐 SICAS에 연결하고, PLUG 25(GF계전기 루트 접점)는 AR계전기 회로를 구성합니다.",
           "boardRef": "FTGS_GF_RELAY_PCB",
           "measurePointRef": [
             "MP_FTGS_RELAY"
