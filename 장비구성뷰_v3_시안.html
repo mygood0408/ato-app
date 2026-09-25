@@ -7620,7 +7620,7 @@ function photoCachePut(item, blob){
   photoDb(function(db){
     try {
       db.transaction(PHOTO_DB_STORE, 'readwrite').objectStore(PHOTO_DB_STORE)
-        .put({ key: photoKeyOf(item.folder, item.name), folder: item.folder, name: item.name, kind: item.kind, duration: item.duration || null, blob: blob });
+        .put({ key: photoKeyOf(item.folder, item.name), folder: item.folder, name: item.name, kind: item.kind, duration: item.duration || null, driveId: item.driveId || null, mimeType: item.mimeType || null, blob: blob });
     } catch(e){}
   });
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}
@@ -7634,7 +7634,7 @@ function photoCacheRestore(){
         var added = 0;
         recs.forEach(function(r){
           if (findLoadedItem(r.folder, r.name)) return;
-          (photoByFolder[r.folder] = photoByFolder[r.folder] || []).push({ folder: r.folder, name: r.name, url: URL.createObjectURL(r.blob), kind: r.kind, duration: r.duration });
+          (photoByFolder[r.folder] = photoByFolder[r.folder] || []).push({ folder: r.folder, name: r.name, url: URL.createObjectURL(r.blob), kind: r.kind, duration: r.duration, driveId: r.driveId, mimeType: r.mimeType });
           added++;
         });
         if (added) finishPhotoLoad();
@@ -7733,18 +7733,23 @@ function ensureDriveApis(cb){
     cb();
   });
 }
+var driveTokenExp = 0;
 function requestDriveToken(cb){
-  if (driveAccessToken) { cb(driveAccessToken); return; }
+  if (driveAccessToken && Date.now() < driveTokenExp) { cb(driveAccessToken); return; }
   var client = google.accounts.oauth2.initTokenClient({
     client_id: GOOGLE_CLIENT_ID,
     /* [2026-09-25] drive.file → drive.readonly: 구글 Picker는 모바일 브라우저(서드파티 쿠키 차단)에서
        썸네일이 체크무늬로만 보여 사진을 구분할 수 없었음(사용자 제보). 자체 탐색 창(openDrivePickerUI)이
        폴더 내용·썸네일을 Drive API로 직접 읽어오려면 읽기 전용 범위가 필요하다. 쓰기 권한은 없음. */
-    scope: 'https://www.googleapis.com/auth/drive.readonly',
+    /* [2026-09-25] drive.appdata 추가: 기기 간 사진 연결 정보(driveSync*)를 드라이브의 "앱 전용 숨김 폴더"에
+       저장하기 위함. 이 폴더는 이 앱만 읽고 쓸 수 있고, 사용자의 다른 드라이브 파일에는 쓰기 권한이 없다. */
+    scope: 'https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.appdata',
     callback: function(resp){
       if (resp.error) { alert('구글 드라이브 로그인에 실패했습니다: ' + resp.error); return; }
       driveAccessToken = resp.access_token;
+      driveTokenExp = Date.now() + Math.max(60, (resp.expires_in || 3600) - 120) * 1000;
       cb(driveAccessToken);
+      driveSyncPull(driveAccessToken);
     }
   });
   client.requestAccessToken();
@@ -7861,7 +7866,7 @@ function driveDocsToPhotoItems(docs, token, folder, cb){
       .then(function(blob){
         var isVid = /^video\//.test(doc.mimeType);
         var url = URL.createObjectURL(blob);
-        var item = { folder: folder, name: doc.name, url: url, kind: isVid ? 'video' : 'photo' };
+        var item = { folder: folder, name: doc.name, url: url, kind: isVid ? 'video' : 'photo', driveId: doc.id, mimeType: doc.mimeType };
         var old = findLoadedItem(folder, doc.name);
         if (old) { var list0 = photoByFolder[folder]; list0.splice(list0.indexOf(old), 1); }
         if (!isVid) { (photoByFolder[folder] = photoByFolder[folder] || []).push(item); photoCachePut(item, blob); if (--remaining <= 0) cb(); return; }
@@ -7896,12 +7901,129 @@ function openDrivePickerDirect(sectionId, groupKey, label){
         var arr = photoManualItems[sectionId] = photoManualItems[sectionId] || [];
         docs.forEach(function(d){ var k = photoKeyOf(folder, d.name); if (arr.indexOf(k) < 0) arr.push(k); });
         savePhotoCurate();
+        driveLinksFromCurate(sectionId);
+        driveSyncPush(tok);
         state.photoEdit[sectionId] = false;
         finishPhotoLoad();
         openQuickPreview(sectionId, groupKey, label);
       });
     });
   }); });
+}
+
+/* =========================================================
+   [2026-09-25] 기기 간 사진 연동 (사용자 요청 — 모바일에서 넣은 사진이 PC에 안 보였음)
+   항목↔사진 연결은 원래 그 브라우저(localStorage)에만 있었다. 구글 드라이브에서 고른 사진의 연결 정보
+   {항목 sectionId: [{id,name,mimeType}]}를 드라이브의 앱 전용 숨김 폴더(appDataFolder)에
+   rackview-sync.json으로 저장하고, 다른 기기에서 로그인하면 읽어와 사진을 드라이브에서 받아온다.
+   사진 원본은 복사하지 않고 원래 드라이브 파일 id를 가리킨다.
+   - 올리기(push): 이 기기에서 바꾼 항목(dirty)만 원격 목록을 덮어씀 → 다른 기기에서 넣은 항목은 안 지워짐
+   - 받기(pull): 드라이브 로그인할 때마다 자동 실행, 원격 목록을 이 기기에 반영(아직 못 올린 항목은 제외)
+   - 로컬 폴더("사진/동영상 폴더 열기", "직접 선택")에서 불러온 사진은 드라이브에 없어 연동 대상 아님
+   ponytail: 사진 마커는 연동 안 함(연결만). 같은 파일명의 서로 다른 드라이브 사진은 한 장으로 취급됨.
+   ========================================================= */
+var DRIVE_SYNC_FILE = 'rackview-sync.json';
+var DRIVE_LINKS_KEY = 'rackview-drive-links-v1', DRIVE_DIRTY_KEY = 'rackview-drive-dirty-v1';
+var driveLinks = {}, driveDirty = {};
+(function loadDriveLinks(){
+  try { driveLinks = JSON.parse(localStorage.getItem(DRIVE_LINKS_KEY) || '{}') || {}; } catch(e){}
+  try { driveDirty = JSON.parse(localStorage.getItem(DRIVE_DIRTY_KEY) || '{}') || {}; } catch(e){}
+})();
+function saveDriveLinks(){
+  try { localStorage.setItem(DRIVE_LINKS_KEY, JSON.stringify(driveLinks)); localStorage.setItem(DRIVE_DIRTY_KEY, JSON.stringify(driveDirty)); } catch(e){}
+}
+/* 이 항목의 지정 사진(photoManualItems) 중 드라이브 사진만 골라 연결 목록으로 다시 만든다. */
+function driveLinksFromCurate(sectionId){
+  var list = [];
+  (photoManualItems[sectionId] || []).forEach(function(k){
+    var i = k.lastIndexOf('/');
+    var it = findLoadedItem(k.slice(0, i), k.slice(i + 1));
+    if (it && it.driveId) list.push({ id: it.driveId, name: it.name, mimeType: it.mimeType || (it.kind === 'video' ? 'video/mp4' : 'image/jpeg') });
+  });
+  var prev = JSON.stringify(driveLinks[sectionId] || []);
+  if (list.length) driveLinks[sectionId] = list; else delete driveLinks[sectionId];
+  if (JSON.stringify(driveLinks[sectionId] || []) !== prev) { driveDirty[sectionId] = true; saveDriveLinks(); }
+}
+function driveSyncApi(token, url, opts){
+  opts = opts || {};
+  opts.headers = Object.assign({ Authorization: 'Bearer ' + token }, opts.headers || {});
+  return fetch(url, opts).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r; });
+}
+function driveSyncFind(token){
+  var q = encodeURIComponent("name='" + DRIVE_SYNC_FILE + "' and trashed=false");
+  return driveSyncApi(token, 'https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id)&q=' + q)
+    .then(function(r){ return r.json(); })
+    .then(function(d){ return d.files && d.files[0] ? d.files[0].id : null; });
+}
+function driveSyncRead(token){
+  return driveSyncFind(token).then(function(fid){
+    if (!fid) return { fid: null, data: { links: {} } };
+    return driveSyncApi(token, 'https://www.googleapis.com/drive/v3/files/' + fid + '?alt=media')
+      .then(function(r){ return r.json(); })
+      .then(function(d){ return { fid: fid, data: d && d.links ? d : { links: {} } }; });
+  });
+}
+var driveSyncBusy = false, driveSyncAgain = false;
+function driveSyncPush(token){
+  if (!Object.keys(driveDirty).length) return;
+  if (driveSyncBusy) { driveSyncAgain = true; return; }
+  driveSyncBusy = true;
+  var sent = Object.keys(driveDirty);
+  driveSyncRead(token).then(function(res){
+    var data = res.data;
+    sent.forEach(function(sec){ if (driveLinks[sec]) data.links[sec] = driveLinks[sec]; else delete data.links[sec]; });
+    data.version = 1; data.updated = new Date().toISOString();
+    var body = JSON.stringify(data);
+    if (res.fid) {
+      return driveSyncApi(token, 'https://www.googleapis.com/upload/drive/v3/files/' + res.fid + '?uploadType=media',
+        { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: body });
+    }
+    var boundary = 'rv' + Date.now();
+    var multipart = '--' + boundary + '\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n'
+      + JSON.stringify({ name: DRIVE_SYNC_FILE, parents: ['appDataFolder'] })
+      + '\r\n--' + boundary + '\r\nContent-Type: application/json\r\n\r\n' + body + '\r\n--' + boundary + '--';
+    return driveSyncApi(token, 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',
+      { method: 'POST', headers: { 'Content-Type': 'multipart/related; boundary=' + boundary }, body: multipart });
+  }).then(function(){
+    sent.forEach(function(sec){ delete driveDirty[sec]; });
+    saveDriveLinks();
+  }).catch(function(err){
+    console.warn('드라이브 연동 저장 실패(다음 로그인 때 다시 시도):', err);
+  }).then(function(){
+    driveSyncBusy = false;
+    if (driveSyncAgain) { driveSyncAgain = false; driveSyncPush(token); }
+  });
+}
+function driveSyncPull(token){
+  driveSyncRead(token).then(function(res){
+    var remote = res.data.links || {};
+    var need = {}, changed = false;
+    Object.keys(remote).concat(Object.keys(driveLinks)).forEach(function(sec){
+      if (driveDirty[sec]) return; /* 이 기기에서 바꾸고 아직 못 올린 항목은 이 기기 값 유지 */
+      var list = remote[sec] || [];
+      if (JSON.stringify(list) === JSON.stringify(driveLinks[sec] || [])) return;
+      changed = true;
+      if (list.length) driveLinks[sec] = list; else delete driveLinks[sec];
+      var keep = (photoManualItems[sec] || []).filter(function(k){ return k.indexOf('Google Drive/') !== 0; });
+      list.forEach(function(d){ keep.push(photoKeyOf('Google Drive', d.name)); });
+      if (keep.length) photoManualItems[sec] = keep; else delete photoManualItems[sec];
+    });
+    Object.keys(driveLinks).forEach(function(sec){
+      driveLinks[sec].forEach(function(d){ if (!findLoadedItem('Google Drive', d.name)) need[d.id] = d; });
+    });
+    if (changed) { saveDriveLinks(); savePhotoCurate(); }
+    var docs = Object.keys(need).map(function(k){ return need[k]; });
+    if (docs.length) driveDocsToPhotoItems(docs, token, 'Google Drive', finishPhotoLoad);
+    else if (changed) render();
+    driveSyncPush(token);
+  }).catch(function(err){ console.warn('드라이브 연동 불러오기 실패:', err); });
+}
+/* 상단 "드라이브 연동" 버튼 — 다른 기기에서 넣은 사진을 받아오기(로그인하면 pull이 자동 실행). */
+function driveSyncNow(){
+  ensureDriveApis(function(){
+    if (driveAccessToken && Date.now() < driveTokenExp) { driveSyncPull(driveAccessToken); return; }
+    requestDriveToken(function(){});
+  });
 }
 
 /* ---- 마커 편집 모달 ---- */
@@ -7993,6 +8115,7 @@ document.addEventListener('click', function(e){
   var act = t.getAttribute('data-act');
   if (act === 'photopick') { openPhotoPicker(); }
   else if (act === 'drivepick') { openDrivePickerGeneral(); }
+  else if (act === 'drivesync') { driveSyncNow(); }
   else if (act === 'drivepickdirect') { openDrivePickerDirect(t.getAttribute('data-section'), t.getAttribute('data-group'), t.getAttribute('data-label')); }
   else if (act === 'photoexport') { downloadPhotoExport(); }
   else if (act === 'photoopen') { openPhotoModal(t.getAttribute('data-folder'), t.getAttribute('data-name')); }
@@ -8258,6 +8381,8 @@ function togglePhotoCurateItem(folder, name){
   var idx = arr.indexOf(key);
   if (idx >= 0) arr.splice(idx, 1); else arr.push(key);
   savePhotoCurate();
+  driveLinksFromCurate(sectionId);
+  if (driveAccessToken && Date.now() < driveTokenExp) driveSyncPush(driveAccessToken);
   renderPhotoCurateRoot();
 }
 function renderPhotoCurateRoot(){
@@ -8830,6 +8955,7 @@ function renderTopbar(){
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photopick">📷 사진/동영상 폴더 열기' + (photoCnt ? ' <span class="mono" style="opacity:.8">(' + photoCnt + '개 폴더)</span>' : '') + '</button>'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
+    + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivesync" title="다른 기기(PC/모바일)에서 드라이브로 넣은 사진 받아오기">🔄 드라이브 연동' + (Object.keys(driveDirty).length ? ' (저장 대기 ' + Object.keys(driveDirty).length + ')' : '') + '</button>'
     + (markCnt ? '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photoexport">작업 JSON 내려받기 (' + markCnt + ')</button>' : '')
     + '</div>'
     + '</div>';
@@ -10347,6 +10473,8 @@ document.addEventListener('click', function(e){
     var clrSection = t.getAttribute('data-section');
     photoManualItems[clrSection] = [];
     savePhotoCurate();
+    driveLinksFromCurate(clrSection);
+    if (driveAccessToken && Date.now() < driveTokenExp) driveSyncPush(driveAccessToken);
     render();
   }
 });
