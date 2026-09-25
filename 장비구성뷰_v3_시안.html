@@ -7492,15 +7492,16 @@ function photoThumbHtml(item){
 /* [2026-09-25] 사진이 이미 있는 항목은 사진 등록 화면을 숨기고(사진은 제목 옆 카메라 아이콘으로 봄),
    제목 줄 오른쪽 끝의 원형 연필 버튼(photoEditBtn)을 눌렀을 때만 등록/편집 화면을 펼친다(사용자 요청). */
 function sectionHasPhotos(sectionId, groupKey){ return galleryItemsFor(sectionId, groupKey).length > 0; }
+/* [2026-09-25] 사진이 없는 항목에도 버튼을 항상 보여준다(사용자 요청 — 사진이 있는 항목에만 보여서
+   다른 장비·측정지점·고장상황에는 버튼이 없는 것처럼 보였음). 등록 화면도 항상 버튼으로만 펼친다. */
 function photoEditBtn(sectionId, groupKey){
-  if (!sectionHasPhotos(sectionId, groupKey)) return '';
   var on = !!state.photoEdit[sectionId];
   return '<button type="button" class="photo-edit-btn' + (on ? ' on' : '') + '" data-act="photoedit" data-section="' + escapeHtml(sectionId) + '" aria-label="사진 등록/편집" title="사진 등록/편집">'
     + '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
     + '<path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></button>';
 }
 function renderPhotoSection(sectionId, groupKey, title){
-  if (sectionHasPhotos(sectionId, groupKey) && !state.photoEdit[sectionId]) return '';
+  if (!state.photoEdit[sectionId]) return '';
   var curated = isCurated(sectionId);
   var h = '<div class="photo-section" data-photosection="' + escapeHtml(sectionId) + '">';
   h += '<div class="photo-section-head"><span class="t">📷 ' + escapeHtml(title || '실물 사진 / 동영상') + '</span>'
@@ -9835,10 +9836,13 @@ function renderFaultTab(){
     h += '<div class="stage-card" style="margin-bottom:10px' + (fav ? ';border-left:4px solid var(--warn)' : '') + '">';
     h += '<div class="stage-title" style="cursor:pointer;gap:8px" data-act="fault" data-fault="' + c.id + '">'
       + '<button class="fav-star' + (fav?' on':'') + '" data-act="favfault" data-fault="' + c.id + '" title="즐겨찾기">' + (fav ? '★' : '☆') + '</button>'
-      + '<span style="flex:1 1 auto;min-width:140px">' + escapeHtml(c.symptom) + (c.titleTag ? ' <span style="font-weight:500;color:var(--steel)">· ' + escapeHtml(c.titleTag) + '</span>' : '') + '</span>'
-      + '<span class="mono" style="font-size:11px;color:var(--ink3);font-weight:400">' + escapeHtml(c.domain) + '</span>'
+      + cameraIconBtn('fault:' + c.id, c.domain, faultTitle(c))
+      + '<span style="flex:1 1 0;min-width:0">' + escapeHtml(c.symptom) + (c.titleTag ? ' <span style="font-weight:500;color:var(--steel)">· ' + escapeHtml(c.titleTag) + '</span>' : '')
+      + '<span class="mono" style="display:block;font-size:11px;color:var(--ink3);font-weight:400;margin-top:2px">' + escapeHtml(c.domain) + '</span></span>'
+      + photoEditBtn('fault:' + c.id, c.domain)
       + '</div>';
     if (open) h += renderFaultDetail(c.id);
+    h += renderPhotoSection('fault:' + c.id, c.domain, '이 고장상황 실물 사진 / 동영상');
     h += '</div>';
   });
   h += '</div>';
@@ -10044,9 +10048,10 @@ function renderMeasureList(points){
     h += '<div class="stage-card" style="margin-bottom:10px">';
     h += '<div class="stage-title" style="cursor:pointer" data-act="mp" data-mp="' + mp.id + '">'
       + cameraIconBtn('mp:' + mp.id, mp.facility || '기타', mp.title)
-      + '<span style="flex:1 1 auto;min-width:140px">' + escapeHtml(mp.title) + '</span>'
-      + '<span class="mono" style="font-size:13.5px;color:var(--ink3);font-weight:400">' + measurePointSummary(mp) + '</span>'
-      + (expanded ? photoEditBtn('mp:' + mp.id, mp.facility || '기타') : '')
+      /* 편집 버튼이 항상 제목 줄 오른쪽 끝에 붙도록, 정상범위 요약은 제목 아래 줄로 내림 */
+      + '<span style="flex:1 1 0;min-width:0">' + escapeHtml(mp.title)
+      + (measurePointSummary(mp) ? '<span class="mono" style="display:block;font-size:12.5px;color:var(--ink3);font-weight:400;margin-top:2px">' + measurePointSummary(mp) + '</span>' : '') + '</span>'
+      + photoEditBtn('mp:' + mp.id, mp.facility || '기타')
       + '</div>';
     var mpBoards = mp.boardRefs || (mp.boardRef ? [mp.boardRef] : []);
     if (mpBoards.length) {
@@ -10056,10 +10061,8 @@ function renderMeasureList(points){
         return '<button class="chip-btn board" data-act="board" data-board="' + bid + '" data-from="measure">보드 상세: ' + escapeHtml(nm) + ' →</button>';
       }).join('') + '</div>';
     }
-    if (expanded) {
-      h += renderMpDetail(mp.id);
-      h += renderPhotoSection('mp:' + mp.id, mp.facility || '기타', '이 측정지점 실물 사진 / 동영상');
-    }
+    if (expanded) h += renderMpDetail(mp.id);
+    h += renderPhotoSection('mp:' + mp.id, mp.facility || '기타', '이 측정지점 실물 사진 / 동영상');
     h += '</div>';
   });
   h += '</div>';
