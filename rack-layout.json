@@ -1368,7 +1368,7 @@
     },
     "LZB700M": {
       "title": "LZB700M (ATP) 캐비닛 구성도",
-      "note": "SIEMENS LZB700M ATP 지상설비 캐비닛. 채널 A/B/C 3중화 구조이며, 채널마다 VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2(×2)·STELA3(×14) 보드가 배치됩니다.",
+      "note": "SIEMENS LZB700M ATP 지상설비 캐비닛. 채널 A/B/C 3중화 구조이며, 채널마다 VESUV3·VENUS2·VESPE·VESIN·BUMA·V24KOP·MELDE2(×2)·STELA3(×14) 보드가 배치됩니다. [2026-09-26 사용자 제공 자료] [LZB↔기타 장치 흐름도] SICAS → LZB700M: Route(정보) · LZB700M → FTGS: FTGS(제어) · LZB700M → REMEMO: REMEMO(제어) → ATO Loop → O.T · O.T ↔ LZB700M: PSD(정보) · O.T ↔ TWC: PSD(제어)·TWC(정보) · LZB700M → IFC: EMS(제어) · TWC → IFC: TWC(정보) · SICAS ↔ IFC. [LZB 통신망] LZB700M [1]·[2] 채널 A/B/C BUMA → OLM(P12) 쌍 → SICAS / STELA3 → FTGS Distributor → FTGS, STELA3 → ATO Controller.",
       "station": "신도림",
       "scopeNote": "채널(A/B/C) 3중화 구조와 보드 종류·순서는 SICAS와 동일하게 SIEMENS 표준 규격입니다. 캐비닛 대수(신도림 기준 L51/L52 2대)와 담당범위는 역마다 다릅니다.",
       "channels": [
@@ -1486,7 +1486,8 @@
           "row": "P",
           "side": "전면",
           "label": "출력 단자대",
-          "count": 0
+          "count": 0,
+          "boardRef": "LZB_OUTPUT_TERMINAL"
         },
         {
           "row": "Q",
@@ -1497,7 +1498,8 @@
             "MP_LZB_DC60",
             "MP_LZB_DC24",
             "MP_LZB_DC5"
-          ]
+          ],
+          "boardRef": "LZB_POWER_RAIL"
         },
         {
           "row": "R",
