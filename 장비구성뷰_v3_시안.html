@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>장비 구성 뷰 (v3 시안)</title>
+<title>2호선 ATO 시스템</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -157,6 +157,8 @@ img,svg{max-width:100%}
   font:inherit;font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer}
 .rack-photo-bar{display:flex;align-items:center;gap:2px;margin:0 0 10px;padding:6px 10px;background:var(--sheet);
   border:1px dashed var(--rule2);border-radius:8px;font-size:12.5px;color:var(--ink2);cursor:pointer}
+.side-toggle.sub{margin-top:-4px}
+.side-toggle.sub .side-btn{min-height:34px;font-size:12.5px}
 .side-btn.active{border-color:var(--ink);background:var(--ink);color:#fff}
 .cabinet-frame{background:var(--cabframe);border:3px solid var(--ink);border-radius:6px;padding:5px;
   box-shadow:0 2px 8px rgba(0,0,0,.12)}
@@ -1489,6 +1491,26 @@ var RACK = {
           "side": "후면",
           "label": "OT 및 I/F 터미널단자 (-X2)",
           "count": 0
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "subTab": "선로전환기",
+          "label": "선로전환기 (현장)",
+          "measurePointRef": [
+            "MP_FIELD_SW_CONTROL",
+            "MP_FIELD_SW_INDICATION",
+            "MP_FIELD_SW_MOTOR"
+          ]
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "subTab": "신호기",
+          "label": "신호기 (현장)",
+          "measurePointRef": [
+            "MP_FIELD_SIG_LAMP"
+          ]
         }
       ],
       "stekopSlotAssignment": [
@@ -8278,6 +8300,15 @@ function escapeHtml(s){
   });
 }
 /* "1) ... 2) ... 3) ..." 형태의 번호매김 기능 설명을, 각 번호 앞에서 줄바꿈해서 보여준다. */
+/* [2026-09-26] 값이 확정되어 더 이상 필요 없는 설명(작업 이력) 문장을 화면에서만 걷어낸다 — 데이터 파일은 그대로.
+   "[2026-09-06 확정] …"·"[2026-09-07 정정] …" 같은 날짜 태그 구간은 통째로 빼고, 그 밖의 날짜 태그는 태그만 지운다. */
+function cleanDoneText(t){
+  if (!t) return '';
+  var parts = String(t).split(/(?=\[20\d\d-\d\d-\d\d[^\]]*\])/);
+  return parts.filter(function(p){ return !/^\[20\d\d-\d\d-\d\d[^\]]*(확정|정정|확인|반영)[^\]]*\]/.test(p); })
+    .map(function(p){ return p.replace(/^\[20\d\d-\d\d-\d\d[^\]]*\]\s*/, ''); })
+    .join(' ').replace(/\s*\((확정|사용자 확정)\)/g, '').replace(/확정 전압:\s*/g, '전압: ').replace(/\s+/g, ' ').trim();
+}
 function formatNumberedFunction(text){
   var esc = escapeHtml(text);
   esc = esc.replace(/(^|\s)(\d+\))/g, function(m, pre, num){
@@ -8306,7 +8337,7 @@ var GROUPS = {
   '분기부 안전설비':    { label:'분기부 안전설비', kind:'cabinet', rackKey:'분기부 안전설비', accent:'#616a3a', accentBg:'#eef0e2' },
   'PSD 인터페이스':     { label:'PSD 인터페이스', kind:'cabinet', rackKey:'PSD 인터페이스', accent:'#3a5f6a', accentBg:'#e3edf0' },
   /* [2026-09-26] 분전반(AC)/(DC)를 한 장비군으로 통합 — 랙 구성·전원흐름에서 AC/DC 탭으로 나뉨 */
-  '분전반':            { label:'분전반',        kind:'cabinet', rackKey:'분전반', accent:'#a13c3c', accentBg:'#f6e4e4' },
+  '분전반':            { label:'분전반',        kind:'cabinet', rackKey:'분전반', accent:'#a13c3c', accentBg:'#f6e4e4', noRowPhotos:true },
   '전원장치(UPS)':      { label:'전원장치(UPS)', kind:'cabinet', rackKey:'전원장치(UPS)', accent:'#8a7a2a', accentBg:'#f5f0dc' }
 };
 var GROUP_ORDER = ['SICAS','EC/DSTT','LZB700M','IFC','FTGS','ATO Loop 제어함','TWC','분기부 안전설비','PSD 인터페이스','분전반','전원장치(UPS)'];
@@ -8487,13 +8518,11 @@ function renderPhotoSection(sectionId, groupKey, title){
   var curated = isCurated(sectionId);
   var h = '<div class="photo-section" data-photosection="' + escapeHtml(sectionId) + '">';
   h += '<div class="photo-section-head"><span class="t">📷 ' + escapeHtml(title || '실물 사진 / 동영상') + '</span>'
-    + '<button class="photo-mini-btn pri" data-act="photopick">사진/동영상 폴더 열기</button>'
-    + '<button class="photo-mini-btn" data-act="drivepickdirect" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🗂 Google Drive</button>'
+    + '<button class="photo-mini-btn pri" data-act="drivepickdirect" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🗂 Google Drive</button>'
     + (photoFolderList.length ? '<button class="photo-mini-btn" data-act="photocurate" data-section="' + escapeHtml(sectionId) + '" data-group="' + escapeHtml(groupKey) + '" data-label="' + escapeHtml(title || '') + '">🖼 보여줄 사진 고르기</button>' : '')
-    + (photoFolderList.length && !curated ? photoFolderPickerHtml(sectionId) : '')
     + '</div>';
-  if (!photoFolderList.length) {
-    h += '<div class="photo-empty-hint">아직 이 브라우저에 불러온 사진이 없습니다. "사진/동영상 폴더 열기"를 눌러 캐비닛 사진이 들어있는 폴더를 선택하면, 이 화면에 자동으로 관련 사진을 보여줍니다.</div>';
+  if (!galleryItemsFor(sectionId, groupKey).length) {
+    h += '<div class="photo-empty-hint">아직 사진이 없습니다. 위 "🗂 Google Drive" 버튼으로 이 항목에 사진을 넣어주세요.</div>';
     h += '</div>';
     return h;
   }
@@ -8501,14 +8530,14 @@ function renderPhotoSection(sectionId, groupKey, title){
     var citems = galleryItemsFor(sectionId, groupKey);
     h += '<div class="photo-curate-note">🖼 고른 사진 ' + citems.length + '장만 표시 중. '
       + '<button type="button" class="photo-mini-btn" data-act="photocurateclear" data-section="' + escapeHtml(sectionId) + '">지정 해제</button></div>';
-    if (!citems.length) { h += '<div class="photo-empty-hint">고른 사진 파일을 이 브라우저에서 찾지 못했습니다(다른 기기이거나 브라우저 데이터가 지워진 경우). Google Drive 또는 폴더 열기로 다시 불러오세요.</div></div>'; return h; }
+    if (!citems.length) { h += '<div class="photo-empty-hint">고른 사진 파일을 이 브라우저에서 찾지 못했습니다(다른 기기이거나 브라우저 데이터가 지워진 경우). 상단 "🔄 드라이브 연동"을 누르거나 Google Drive에서 다시 넣어주세요.</div></div>'; return h; }
     h += '<div class="photo-gallery">' + citems.map(photoThumbHtml).join('') + '</div>';
     h += '</div>';
     return h;
   }
   var folders = galleryFoldersFor(sectionId, groupKey);
   if (!folders.length) {
-    h += '<div class="photo-empty-hint">불러온 폴더 중 이 항목과 자동으로 매칭되는 폴더가 없습니다. 위 "이 장비에 사진 지정" 또는 "다른 폴더에서 사진 선택"으로 직접 골라주세요.</div>';
+    h += '<div class="photo-empty-hint">아직 사진이 없습니다. 위 "🗂 Google Drive" 버튼으로 이 항목에 사진을 넣어주세요.</div>';
     h += '</div>';
     return h;
   }
@@ -9590,7 +9619,7 @@ function renderPhotoCurateRoot(){
     h += '</div>';
   }
   if (!photoFolderList.length) {
-    h += '<div class="photo-empty-hint">아직 불러온 사진이 없습니다. 먼저 "사진/동영상 폴더 열기"로 사진을 불러오세요.</div>';
+    h += '<div class="photo-empty-hint">아직 불러온 사진이 없습니다. 위 "🗂 Google Drive에서 추가"로 사진을 넣어주세요.</div>';
   } else {
     photoFolderList.forEach(function(folder){
       h += '<div class="photo-folder-label">' + escapeHtml(folder) + '</div><div class="photo-gallery">';
@@ -10147,10 +10176,8 @@ function renderTopbar(){
   var photoCnt = photoFolderList.length;
   var markCnt = Object.keys(photoData).filter(function(k){ var r = photoData[k]; return (r.markers && r.markers.length) || r.isRef || r.note; }).length;
   return '<div class="topbar">'
-    + '<h1>장비 구성 뷰 <span class="tag-proto">v3 시안</span></h1>'
-    + '<div class="sub">캐비닛 구성도 → 보드 열 → 개별 보드 순으로 들어가는 방식</div>'
+    + '<h1>2호선 ATO 시스템</h1>'
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
-    + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photopick">📷 사진/동영상 폴더 열기' + (photoCnt ? ' <span class="mono" style="opacity:.8">(' + photoCnt + '개 폴더)</span>' : '') + '</button>'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivesync" title="다른 기기(PC/모바일)에서 드라이브로 넣은 사진 받아오기">🔄 드라이브 연동' + ((Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) ? ' (저장 대기 ' + (Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) + ')' : '') + '</button>'
     + (markCnt ? '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photoexport">작업 JSON 내려받기 (' + markCnt + ')</button>' : '')
@@ -10367,7 +10394,7 @@ function renderSystemMap(){
       h += '<dt>관련 보드</dt><dd>' + escapeHtml(edge.boardRefs.join(', ')) + '</dd>';
     }
     h += '</dl>';
-    if (edge.note) h += '<div style="margin-top:8px;font-family:inherit;color:var(--ink2)">' + escapeHtml(edge.note) + '</div>';
+    if (cleanDoneText(edge.note)) h += '<div style="margin-top:8px;font-family:inherit;color:var(--ink2)">' + escapeHtml(cleanDoneText(edge.note)) + '</div>';
     h += '</div>';
   }
 
@@ -10810,18 +10837,28 @@ function renderCabinetLevel(groupKey){
      row at once (a full panel/circuit drawing) rather than a distinct image per row.
      Show that once here, then let each row below be a plain clickable text entry
      (noThumb) that jumps straight to its own text description — no per-row image. */
-  var ovRef = rack.overviewBySide ? rack.overviewBySide[state.cabSide] : rack.overviewImageRef;
-  if (ovRef && BOARD_SVG[ovRef]) {
-    h += '<div class="panel-overview"><div class="po-caption">전체 구성도 (아래 각 행을 누르면 해당 항목 설명으로 이동)</div>'
-      + nsSvg(BOARD_SVG[ovRef], 'povw') + '</div>';
-  }
-
   if (sides.length > 1) {
     h += '<div class="side-toggle">';
     sides.forEach(function(s){
       h += '<button class="side-btn' + (state.cabSide===s?' active':'') + '" data-act="cabside" data-side="' + s + '">' + escapeHtml(s) + '</button>';
     });
     h += '</div>';
+  }
+  /* [2026-09-26] 한 탭 안의 하위 탭(예: EC/DSTT 현장설비 → 선로전환기/신호기) — 행의 subTab으로 구분 */
+  var subTabs = [];
+  rack.boards.forEach(function(r){ if (r.side === state.cabSide && r.subTab && subTabs.indexOf(r.subTab) < 0) subTabs.push(r.subTab); });
+  if (subTabs.length && subTabs.indexOf(state.cabSub) < 0) state.cabSub = subTabs[0];
+  if (subTabs.length) {
+    h += '<div class="side-toggle sub">';
+    subTabs.forEach(function(st){
+      h += '<button class="side-btn' + (state.cabSub===st?' active':'') + '" data-act="cabsub" data-sub="' + escapeHtml(st) + '">' + escapeHtml(st) + '</button>';
+    });
+    h += '</div>';
+  }
+  var ovRef = rack.overviewBySide ? rack.overviewBySide[state.cabSide] : rack.overviewImageRef;
+  if (ovRef && BOARD_SVG[ovRef]) {
+    h += '<div class="panel-overview"><div class="po-caption">전체 구성도 (아래 각 행을 누르면 해당 항목 설명으로 이동)</div>'
+      + nsSvg(BOARD_SVG[ovRef], 'povw') + '</div>';
   }
   /* [2026-09-25] 면(전면/후면 등)별 랙 전체 사진 — 사용자 요청 */
   /* 현장설비/현장 탭은 랙이 아니라서 전체 사진 칸을 두지 않음. LZB700M처럼 배치도에는 한 면만 있지만
@@ -10839,6 +10876,7 @@ function renderCabinetLevel(groupKey){
   var restHtml = '';
   rack.boards.forEach(function(row, idx){
     if (row.side !== state.cabSide) return;
+    if (row.subTab && row.subTab !== state.cabSub) return;
     /* [2026-09-15] 예전에는 frameRef/boardRef가 있는 행만 클릭 가능했음 — 보드 정보가
        아예 없는 순수 텍스트 행(G/H/L 레벨의 터미널단자·휴즈 등, 59건)은 눌러도 아무 반응이
        없었다. 이제 그런 행도 눌러서 실물 사진을 보고 마커를 찍을 수 있도록(renderRowDetail)
@@ -10885,7 +10923,7 @@ function renderCabinetLevel(groupKey){
         }
       });
       restHtml += '</div>';
-      restHtml += '<div class="cmm-label">' + (isBlank ? '' : cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
+      restHtml += '<div class="cmm-label">' + ((isBlank || g.noRowPhotos) ? '' : cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
         + (row.count ? '<span class="cm-count">×' + row.count + '</span>' : '') + '</div>';
       restHtml += '</div>';
       restHtml += '<div class="cab-letter">' + escapeHtml(row.row) + '</div>';
@@ -10930,14 +10968,14 @@ function renderCabinetLevel(groupKey){
       restHtml += '<div class="cab-row"><div class="cab-main-multi clickable" data-act="cabrow" data-idx="' + idx + '">'
         + '<div class="cmm-thumbs" data-fill="1"><div class="cmm-thumb" style="width:' + Math.round(CMM_THUMB_H * sar) + 'px;height:' + CMM_THUMB_H + 'px" data-ar="' + sar + '">'
         + nsSvg(BOARD_SVG[thumbBid], 'cab' + idx) + '</div></div>'
-        + '<div class="cmm-label">' + (isBlank ? '' : cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
+        + '<div class="cmm-label">' + ((isBlank || g.noRowPhotos) ? '' : cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label)) + '<span>' + escapeHtml(row.label) + '</span>'
         + (row.count ? '<span class="cm-count">×' + row.count + '</span>' : '') + '</div>'
         + '</div><div class="cab-letter">' + escapeHtml(row.row) + '</div></div>';
       return;
     }
     restHtml += '<div class="cab-row">';
     restHtml += '<div class="cab-main' + (clickable?' clickable':'') + '"' + (clickable ? ' data-act="cabrow" data-idx="' + idx + '"' : '') + '>';
-    if (!isBlank) restHtml += cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label);
+    if (!isBlank && !g.noRowPhotos) restHtml += cameraIconBtn(rackRowSection(groupKey, row, idx), groupKey, row.label);
     restHtml += '<span>' + escapeHtml(row.label) + '</span>';
     if (row.count) restHtml += '<span class="cm-count">×' + row.count + '</span>';
     restHtml += '</div>';
@@ -10947,7 +10985,6 @@ function renderCabinetLevel(groupKey){
   if (cardsHtml) h += '<div class="field-card-grid">' + cardsHtml + '</div>';
   h += '<div class="cabinet-frame">' + restHtml + '</div>';
 
-  h += '<div class="legend-note">파란 테두리가 있는 행을 탭하면 그 안의 보드들을 볼 수 있습니다. 오른쪽 글자는 원본 캐비닛 구성도의 행 번호입니다.</div>';
 
   /* [2026-09-26] "기타 항목(배치도에 없는 보드)" 목록은 사용자 요청으로 삭제 */
   var orphans = [];
@@ -10968,7 +11005,7 @@ function renderCabinetLevel(groupKey){
     h += '<div class="section-title" style="margin-top:14px">' + escapeHtml(rack.flowNotes.title) + '</div><ul class="info-list">'
       + rack.flowNotes.items.map(function(x){ return '<li>' + escapeHtml(x) + '</li>'; }).join('') + '</ul>';
   }
-  if (rack.note) h += renderAccordion('racknote-' + g.rackKey, '안내', escapeHtml(rack.note));
+  if (cleanDoneText(rack.note)) h += renderAccordion('racknote-' + g.rackKey, '안내', escapeHtml(cleanDoneText(rack.note)));
   return h;
 }
 
@@ -11164,9 +11201,9 @@ function renderMpDetail(mpid){
   if (mp.method && mp.method.length) h += '<div style="margin-top:8px"><b>측정 방법</b><ul>' + mp.method.map(function(s){ return '<li>' + escapeHtml(s) + '</li>'; }).join('') + '</ul></div>';
   if (mp.checkItems && mp.checkItems.length) h += '<div style="margin-top:8px"><b>점검 항목</b><ul>' + mp.checkItems.map(function(c){ return '<li>' + escapeHtml(c) + '</li>'; }).join('') + '</ul></div>';
   if (mp.diagnosticTip) h += '<div class="confirmed-box" style="margin-top:10px"><b>진단 팁</b> — ' + escapeHtml(mp.diagnosticTip) + '</div>';
-  if (mp.caution) h += '<div class="caution-box" style="margin-top:10px">' + escapeHtml(mp.caution) + '</div>';
+  if (cleanDoneText(mp.caution)) h += '<div class="caution-box" style="margin-top:10px">' + escapeHtml(cleanDoneText(mp.caution)) + '</div>';
   if (mp.verify) h += '<div class="verify-box"><b>⚠ 미확정 값</b> — 이 항목의 수치는 자료 간 확인이 끝나지 않았습니다. 현장 실측으로 재확인 후 사용하세요.</div>';
-  if (mp.conflictNote) h += '<div class="verify-box"><b>⚠ 자료 간 불일치</b> — ' + escapeHtml(mp.conflictNote) + '</div>';
+  if (mp.conflictNote && mp.verify) h += '<div class="verify-box"><b>⚠ 자료 간 불일치</b> — ' + escapeHtml(mp.conflictNote) + '</div>';
   if (mp.relatedFaults && mp.relatedFaults.length) h += renderFaultBadges(mp.relatedFaults, mp.id);
   h += '</div>';
   return h;
@@ -11199,7 +11236,7 @@ function renderFaultDetail(fid){
   h += '</dl>';
   if (fc.diagnosis && fc.diagnosis.length) h += '<div style="margin-top:8px"><b>진단(증상)</b><ul>' + fc.diagnosis.map(function(d){ return '<li>' + escapeHtml(d) + '</li>'; }).join('') + '</ul></div>';
   if (fc.remedy && fc.remedy.length) h += '<div style="margin-top:8px"><b>조치</b><ul>' + fc.remedy.map(function(r){ return '<li>' + escapeHtml(r) + '</li>'; }).join('') + '</ul></div>';
-  if (fc.caution) h += '<div class="caution-box" style="margin-top:10px">' + escapeHtml(fc.caution) + '</div>';
+  if (cleanDoneText(fc.caution)) h += '<div class="caution-box" style="margin-top:10px">' + escapeHtml(cleanDoneText(fc.caution)) + '</div>';
   if (fc.measurePointRef) {
     var mp = MPOINTS_BY_ID[fc.measurePointRef];
     h += '<div class="stage-actions"><button class="chip-btn" data-act="mp" data-mp="' + fc.measurePointRef + '">측정지점: ' + escapeHtml(mp ? mp.title : fc.measurePointRef) + ' ›</button></div>';
@@ -11312,7 +11349,8 @@ function renderBoardDetail(boardId){
     h += '<button type="button" class="refdocs-btn" data-act="refdocsopen" data-board="' + boardId + '">📎 참고자료' + (refDocs.length > 1 ? ' (' + refDocs.length + ')' : '') + '</button>';
   }
   var bsec = boardPhotoSec(boardId, state.boardCtx);
-  h += photoEditBtn(bsec, group);
+  var noBoardPhoto = !!(GROUPS[group] && GROUPS[group].noRowPhotos);
+  if (!noBoardPhoto) h += photoEditBtn(bsec, group);
   h += '</div>';
   h += '<div class="sub">' + escapeHtml(boardId) + (info && info.rackPosition ? ' · ' + escapeHtml(info.rackPosition) : '') + '</div>';
 
@@ -11364,15 +11402,16 @@ function renderBoardDetail(boardId){
         + Object.keys(info.spec).map(function(k){ return '<tr><td>' + escapeHtml(k) + '</td><td>' + escapeHtml(info.spec[k]) + '</td></tr>'; }).join('')
         + '</table>';
     }
-    if (info.terminalMapping && info.terminalMapping.confirmedVoltages) {
+    if (false && info.terminalMapping && info.terminalMapping.confirmedVoltages) { /* 확정 전압 칸 숨김(2026-09-26) */
       var cv = info.terminalMapping.confirmedVoltages;
       h += '<div class="section-title">확정 전압</div><div class="confirmed-box">';
       Object.keys(cv).forEach(function(k){ if (k === 'source') return; h += '<div><b>' + escapeHtml(k) + '</b>: ' + escapeHtml(cv[k]) + '</div>'; });
       if (cv.source) h += '<div style="margin-top:6px;color:var(--ink3);font-size:11.5px">출처: ' + escapeHtml(cv.source) + '</div>';
       h += '</div>';
     }
-    if (info.caution) h += '<div class="caution-box">' + escapeHtml(info.caution) + '</div>';
-    if (info.note) h += '<div class="note-text" style="margin-top:12px">' + escapeHtml(info.note) + '</div>';
+    var cau = cleanDoneText(info.caution);
+    if (cau) h += '<div class="caution-box">' + escapeHtml(cau) + '</div>';
+    /* 보드 note(자료 출처·작업 이력)는 화면에 표시하지 않음 */
 
     if (info.relatedMeasurePoints && info.relatedMeasurePoints.length) {
       h += '<div class="section-title">관련 측정지점</div><div class="stage-actions">';
@@ -11394,7 +11433,7 @@ function renderBoardDetail(boardId){
      있는 곳은 사진을 넣고 마커를 놓을 수 없었다"는 문제. 이제 실물풍 이미지가 이미 있는
      보드를 포함해 모든 보드 상세페이지에 이 섹션을 항상 보여준다(위 "이 장비에 사진
      지정" 기능으로 이 보드만의 사진을 정확히 골라 연결할 수 있음). */
-  h += renderPhotoSection(bsec, group, '실물 사진 / 동영상');
+  if (!noBoardPhoto) h += renderPhotoSection(bsec, group, '실물 사진 / 동영상');
 
   h += '</div>';
   return h;
@@ -11415,7 +11454,7 @@ function renderRowDetail(){
   h += '<div class="board-detail" style="border-top:4px solid ' + accent + '">';
   h += '<div style="display:flex;align-items:center;gap:10px"><h2 style="margin:0">' + escapeHtml(rd.label) + '</h2>' + photoEditBtn('row:' + rd.groupKey + ':' + rd.idx, rd.groupKey) + '</div>';
   h += '<div class="sub">' + escapeHtml(g ? g.label : rd.groupKey) + (row && row.row ? ' · 행 ' + escapeHtml(row.row) : '') + '</div>';
-  if (row && row.note) h += '<div class="note-text">' + escapeHtml(row.note) + '</div>';
+  if (row && cleanDoneText(row.note)) h += '<div class="note-text">' + escapeHtml(cleanDoneText(row.note)) + '</div>';
   if (row && row.measurePointRef && row.measurePointRef.length) {
     h += '<div class="section-title">관련 측정지점</div><div class="stage-actions">';
     row.measurePointRef.forEach(function(mpid){
@@ -11626,8 +11665,12 @@ document.addEventListener('click', function(e){
     state.group = t.getAttribute('data-group');
     state.rackDrill = null; state.boardDetail = null; state.boardDetailList = null; state.rowDetail = null; state.cabSide = firstSide(state.group);
     render();
+  } else if (act === 'cabsub') {
+    state.cabSub = t.getAttribute('data-sub');
+    render();
   } else if (act === 'cabside') {
     state.cabSide = t.getAttribute('data-side');
+    state.cabSub = null;
     state.boardDetail = null; state.boardDetailList = null;
     render();
   } else if (act === 'cabrow') {

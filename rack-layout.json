@@ -496,6 +496,26 @@
           "side": "후면",
           "label": "OT 및 I/F 터미널단자 (-X2)",
           "count": 0
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "subTab": "선로전환기",
+          "label": "선로전환기 (현장)",
+          "measurePointRef": [
+            "MP_FIELD_SW_CONTROL",
+            "MP_FIELD_SW_INDICATION",
+            "MP_FIELD_SW_MOTOR"
+          ]
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "subTab": "신호기",
+          "label": "신호기 (현장)",
+          "measurePointRef": [
+            "MP_FIELD_SIG_LAMP"
+          ]
         }
       ],
       "stekopSlotAssignment": [
