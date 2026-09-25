@@ -1939,9 +1939,46 @@
           "desc": "8,9,14,15번(N/O 방식)으로 LZB에 PSD 정보 전달."
         },
         {
+          "id": "vs-ifc",
+          "stage": "IFC DI/DO Digital out B24(+)/C24(−) — 가상신호기 ON 명령",
+          "desc": "IFC DI/DO 출력(A계·B계 B24 +, 공통 C24 −)이 가상신호기(VS26) ON 명령으로 나갑니다.",
+          "boardRef": "IFC_COMPUTER"
+        },
+        {
+          "id": "vs-ec",
+          "stage": "EC/DSTT 단자대 경유",
+          "desc": "B24/C24가 EC/DSTT 단자대에서 가상신호기 정보전송설비 접속함으로 연결됩니다. 기존 EC/DSTT 계전기는 쓰지 않고(정보전송설비 내 계전기로 대체) 기존 계전기 동작전원 2개(B24, C24)는 제거됐습니다. 현재 ATS 신호기 사용중지로 이 부분 인터페이스 점등 여부는 의미 없음(향후 철거 예정)."
+        },
+        {
+          "id": "vs-box",
+          "stage": "가상신호기 정보전송설비 접속함 1·2번 → VS26_R 계전기",
+          "desc": "EC/DSTT↔접속함 접속 포인트(1번 B24, 2번 C24)로 들어온 DC24V가 VS26_R 계전기를 동작시킵니다.",
+          "boardRef": "PSD_VS26R_TERMINAL_BOX",
+          "measurePointRef": [
+            "MP_VS26_CTRL"
+          ],
+          "rows": [
+            [
+              "방폭함",
+              "신호기계실"
+            ]
+          ]
+        },
+        {
+          "id": "vs-pwr",
+          "stage": "ATO분전함 BX110/CX110 (AC110V) → 접속함 4·6번",
+          "desc": "분전함↔접속함 접속 포인트(4·6번)로 AC110V가 들어옵니다. 분기부안전설비 전원과 공동사용(\"VS 전원\" 단자).",
+          "measurePointRef": [
+            "MP_VS26_PWR"
+          ]
+        },
+        {
           "id": "3",
-          "stage": "VS26_R → 실외 PSD 제어함",
-          "desc": "pin8,10에서 실외 PSD 제어함으로 배선."
+          "stage": "VS26_R 접점 → 서지보호기 → 8·10번 → 승강장 승무원조작반",
+          "desc": "VS26_R 계전기 접점과 서지보호기를 거쳐 8·10번(접속함↔승무원조작반 접속 포인트)에서 승강장 더미부 내부 접속(차장측)으로 연결되고, 가상신호기 ON 시 승무원조작반 표시등이 기관사·차장 측 동시에 점등됩니다.",
+          "measurePointRef": [
+            "MP_VS26_LAMP"
+          ]
         }
       ]
     },
@@ -1949,77 +1986,57 @@
       "title": "신도림역 분기부 신호안전설비 제어랙 구성도",
       "note": "[2026-09-08 신규] '신도림역 분기부 신호안전설비 제어랙' 실측사진 + '분기부 안전설비 경보벨 동작 케이블 조건(신도림)' 도면(C-16, 2011.10, 서울메트로/서우전설산업) 반영. 제어랙사이즈 2000mm에 TYPE A~E 5종 부품유닛이 조합 설치됩니다.",
       "station": "신도림",
-      "scopeNote": "TYPE A~E 부품 리스트는 표준 규격 조합이나, 신도림 제어랙의 TYPE별 수량(A×2, B×2, C×3, D×1, E×1)은 신도림 실측값입니다.",
+      "scopeNote": "[2026-09-25 사용자 현장 확인] 실제 제어랙 구성은 TYPE A / B-1 / B-2 / C-1 / C-2 / D 입니다(기존 도면 기준 A~E·지선/본선 구분과 다름). 부품 목록은 도면 기준 값이며, TYPE B-2 구성품과 TYPE별 수량은 현장 확인이 필요합니다.",
       "rackComposition": {
         "제어랙사이즈": "2000mm",
-        "TYPE A": 2,
-        "TYPE B": 2,
-        "TYPE C": 3,
-        "TYPE D": 1,
-        "TYPE E": 1
+        "구성": "TYPE A, TYPE B-1, TYPE B-2, TYPE C-1, TYPE C-2, TYPE D (2026-09-25 사용자 현장 확인)"
       },
       "boards": [
         {
-          "row": "1(최상단)",
-          "side": "전면",
-          "label": "TYPE SP (예비, 빈 슬롯)",
-          "count": 0
+          "row": "1",
+          "side": "분기부안전설비랙(기계실)",
+          "label": "TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
+          "count": 1
         },
         {
           "row": "2",
-          "side": "전면",
-          "label": "(지선) TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
+          "side": "분기부안전설비랙(기계실)",
+          "label": "TYPE B-1 — NFB BKM-b 15A×2, 단자대BHTN 10A×16",
           "count": 1
         },
         {
           "row": "3",
-          "side": "전면",
-          "label": "(지선) TYPE B-1 — NFB BKM-b 15A×2, 단자대BHTN 10A×16",
+          "side": "분기부안전설비랙(기계실)",
+          "label": "TYPE B-2 (구성품 현장 확인 필요)",
           "count": 1
         },
         {
           "row": "4",
-          "side": "전면",
-          "label": "(지선) TYPE C — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MY4N DC24V×2+소켓×2, 단자대BHTN 60A×13",
+          "side": "분기부안전설비랙(기계실)",
+          "label": "TYPE C-1 — 경보벨1 동작조건 담당(460TPR+L440TPR)",
+          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
           "count": 1
         },
         {
           "row": "5",
-          "side": "전면",
-          "label": "(본선) TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
+          "side": "분기부안전설비랙(기계실)",
+          "label": "TYPE C-2 — 경보벨2 동작조건 담당(370TPR+350TPR)",
+          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
           "count": 1
         },
         {
           "row": "6",
-          "side": "전면",
-          "label": "(본선) TYPE B-1 — NFB BKM-b 15A×2, 단자대BHTN 10A×16",
-          "count": 1
-        },
-        {
-          "row": "7",
-          "side": "전면",
-          "label": "(본선) TYPE C-1 — 경보벨1 동작조건 담당(460TPR+L440TPR)",
-          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
-          "count": 1
-        },
-        {
-          "row": "8",
-          "side": "전면",
-          "label": "(본선) TYPE C-2 — 경보벨2 동작조건 담당(370TPR+350TPR)",
-          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
-          "count": 1
-        },
-        {
-          "row": "9",
-          "side": "전면",
+          "side": "분기부안전설비랙(기계실)",
           "label": "TYPE D — RELAY MY4N DC24V×2+소켓×2",
           "count": 1
         },
         {
-          "row": "10(최하단)",
-          "side": "전면",
-          "label": "TYPE E — 단자대BHTN 60A×20",
-          "count": 1
+          "row": "1",
+          "side": "현장설비",
+          "label": "경보벨 (시작등, 종료등)",
+          "measurePointRef": [
+            "MP_TURNOUT_SAFETY_ALARM"
+          ]
         }
       ],
       "alarmTpr": {
@@ -2037,50 +2054,65 @@
         },
         {
           "id": "nfb",
-          "stage": "TYPE A — NFB 30A · 전자접촉기 22A · SMPS DC24V (전면 2·5행)",
-          "desc": "지선/본선 TYPE A 유닛의 NFB(BKM-b 30A)와 전자접촉기(MC 22A)를 거치고, SMPS(VSF100)가 DC24V를 만듭니다. 전원이 없으면 NFB 트립부터 확인합니다.",
+          "stage": "TYPE A — NFB 30A · 전자접촉기 22A · SMPS DC24V",
+          "desc": "TYPE A 유닛의 NFB(BKM-b 30A)와 전자접촉기(MC 22A)를 거치고, SMPS(VSF100)가 DC24V를 만듭니다. 전원이 없으면 NFB 트립부터 확인합니다.",
           "rows": [
             [
-              "전면",
-              "2"
-            ],
-            [
-              "전면",
-              "5"
+              "분기부안전설비랙(기계실)",
+              "1"
             ]
           ]
         },
         {
           "id": "nfb15",
-          "stage": "TYPE B-1 — NFB 15A×2 (전면 3·6행)",
-          "desc": "TYPE B-1 유닛의 NFB(BKM-b 15A) 2개로 분기됩니다.",
+          "stage": "TYPE B-1 / B-2 — NFB 분기",
+          "desc": "TYPE B-1 유닛의 NFB(BKM-b 15A) 2개로 분기됩니다. TYPE B-2 구성품은 현장 확인이 필요합니다.",
           "rows": [
             [
-              "전면",
-              "3"
+              "분기부안전설비랙(기계실)",
+              "2"
             ],
             [
-              "전면",
-              "6"
+              "분기부안전설비랙(기계실)",
+              "3"
             ]
           ]
         },
         {
+          "id": "vs",
+          "stage": "AC110V 공동사용 — 가상신호기(VS26) 전원",
+          "desc": "ATO분전함의 BX110/CX110(AC110V)은 분기부안전설비 전원과 함께 쓰며, \"VS 전원\" 단자에서 가상신호기 정보전송설비 접속함 4·6번으로 갑니다.",
+          "measurePointRef": [
+            "MP_VS26_PWR"
+          ]
+        },
+        {
           "id": "1",
-          "stage": "TPR릴레이 → 경보벨 (TYPE C-1/C-2, 전면 7·8행)",
-          "desc": "DC24V로 구동되는 TPR릴레이 조합이 TYPE C-1/C-2를 거쳐 경보벨1/2를 동작시킵니다.",
+          "stage": "TPR릴레이 → 경보벨 조건 (TYPE C-1/C-2)",
+          "desc": "DC24V로 구동되는 TPR릴레이 조합이 TYPE C-1(경보벨1: 460TPR+L440TPR)/C-2(경보벨2: 370TPR+350TPR) 동작조건을 만듭니다.",
           "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
+          "rows": [
+            [
+              "분기부안전설비랙(기계실)",
+              "4"
+            ],
+            [
+              "분기부안전설비랙(기계실)",
+              "5"
+            ]
+          ]
+        },
+        {
+          "id": "bell",
+          "stage": "현장 경보벨 (시작등·종료등)",
+          "desc": "조건이 만족되면 현장 경보벨과 시작등/종료등이 동작합니다. 사용전원 AC100~125V(현장 실측 100~120V).",
           "measurePointRef": [
             "MP_TURNOUT_SAFETY_ALARM"
           ],
           "rows": [
             [
-              "전면",
-              "7"
-            ],
-            [
-              "전면",
-              "8"
+              "현장설비",
+              "1"
             ]
           ]
         }

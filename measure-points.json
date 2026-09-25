@@ -1736,6 +1736,58 @@
       ],
       "caution": "PSD 인터페이스 개량 작업(신설/교체) 시에만 스위치를 조작 — 순서를 지키지 않으면 PSD 표시 오류 발생.",
       "note": "출처: PSDIFC.pdf 7. O.T반 절체보드 설치 (board-info PSD_OT_SWITCHOVER_BOARD)."
+    },
+    {
+      "id": "MP_VS26_CTRL",
+      "facility": "가상신호기(VS26)",
+      "acdc": "DC",
+      "title": "VS26 접속함 제어입력 (1·2번)",
+      "measureType": "voltage",
+      "position": {
+        "desc": "가상신호기 정보전송설비 접속함(VS26_R) 1번(+)·2번(−) — EC/DSTT↔접속함 접속 포인트"
+      },
+      "probe": {
+        "positive": "1번 (B24)",
+        "negative": "2번 (C24)"
+      },
+      "normalState": "가상신호기 ON 명령 시 DC24V, OFF 시 0V",
+      "diagnosticTip": "ON 명령인데 0V면 IFC DI/DO 출력과 EC/DSTT 단자대 배선을 확인. 24V가 있는데 표시등이 안 켜지면 VS26_R 계전기·4/6번 AC110V·8/10번 이후를 확인.",
+      "boardRef": "PSD_VS26R_TERMINAL_BOX",
+      "note": "출처: 신도림 내선 가상신호기(VS26) 정보전송설비 흐름도(2026-09-25). 허용오차 자료 없음 — 공칭값만 표기."
+    },
+    {
+      "id": "MP_VS26_PWR",
+      "facility": "가상신호기(VS26)",
+      "acdc": "AC",
+      "title": "VS26 접속함 전원 (4·6번)",
+      "measureType": "voltage",
+      "position": {
+        "desc": "가상신호기 정보전송설비 접속함(VS26_R) 4번·6번 — 분전함↔접속함 접속 포인트"
+      },
+      "probe": {
+        "positive": "4번 (BX110)",
+        "negative": "6번 (CX110)"
+      },
+      "normalState": "AC110V (ATO분전함 BX110/CX110, 분기부안전설비 전원과 공동사용)",
+      "diagnosticTip": "0V면 ATO분전함 \"VS 전원\" 단자와 분기부안전설비 전원 계통(분전반(AC) TR4/TR5)을 확인.",
+      "boardRef": "PSD_VS26R_TERMINAL_BOX",
+      "note": "출처: 신도림 내선 가상신호기(VS26) 정보전송설비 흐름도(2026-09-25). 허용오차 자료 없음 — 공칭값만 표기."
+    },
+    {
+      "id": "MP_VS26_LAMP",
+      "facility": "가상신호기(VS26)",
+      "title": "승무원조작반 가상신호기 표시등",
+      "measureType": "visual",
+      "position": {
+        "desc": "승강장 승무원조작반 (기관사측·차장측)"
+      },
+      "normalState": "가상신호기(VS26) ON 시 점등 — 기관사·차장 측 동시",
+      "checkItems": [
+        "VS26 ON 시 기관사측·차장측 표시등이 동시에 점등되는지",
+        "접속함 8·10번 → 서지보호기 → 승강장 더미부 내부 접속(차장측) 배선 상태"
+      ],
+      "boardRef": "PSD_VS26R_TERMINAL_BOX",
+      "note": "출처: 신도림 내선 가상신호기(VS26) 정보전송설비 흐름도(2026-09-25)."
     }
   ],
   "station": "신도림",
