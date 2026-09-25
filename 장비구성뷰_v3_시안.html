@@ -356,6 +356,8 @@ img,svg{max-width:100%}
 
 .caution-box{background:var(--warnbg);border:1px solid #eccf98;border-radius:8px;padding:10px 12px;
   margin-top:12px;font-size:12.5px;color:#6b4a06;line-height:1.55}
+.safety-box{background:var(--badbg);border:1.5px solid var(--bad);border-radius:8px;padding:10px 12px;
+  margin-top:12px;font-size:12.5px;color:var(--bad);font-weight:600;line-height:1.55}
 .confirmed-box{background:var(--okbg);border:1px solid #bcdcc8;border-radius:8px;padding:10px 12px;
   margin-top:12px;font-size:12.5px;color:#12472b;line-height:1.6}
 .confirmed-box b{color:var(--ok)}
@@ -370,6 +372,17 @@ img,svg{max-width:100%}
 .fault-detail dt{color:var(--ink3);font-size:11px;padding-top:1px}
 .fault-detail dd{margin:0;font-size:12px;line-height:1.5}
 .fault-detail ul{padding-left:18px;margin:4px 0}
+.fault-search{position:relative;margin:8px 0}
+.fault-search input{width:100%;min-height:48px;padding:0 46px 0 14px;font-size:16px;font-family:inherit;color:var(--ink);
+  border:1.5px solid var(--steelline);border-radius:10px;background:var(--sheet)}
+.fault-search input:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px var(--steelbg)}
+.fault-search-clear{position:absolute;right:3px;top:50%;transform:translateY(-50%);width:var(--tap);height:var(--tap);
+  border:0;background:none;font-size:16px;color:var(--ink3);cursor:pointer}
+#faultSearch:placeholder-shown + .fault-search-clear{display:none}
+.fault-count{font-size:12px;color:var(--ink2);margin:0 0 8px}
+.fault-snip{display:block;font-size:12px;color:var(--ink2);font-weight:400;margin-top:3px;line-height:1.45}
+.fault-snip b{color:var(--ink3);font-weight:600;margin-right:4px}
+mark.fhl{background:#ffe27a;color:inherit;border-radius:2px;padding:0 1px}
 .fav-star{min-width:32px;min-height:32px;border:1px solid var(--rule2);background:#fff;border-radius:8px;
   font-size:16px;line-height:1;cursor:pointer;color:var(--ink3);flex:0 0 auto;padding:0}
 .fav-star.on{color:var(--warn);border-color:#eccf98;background:var(--warnbg)}
@@ -9641,7 +9654,7 @@ function renderPhotoCurateRoot(){
 }
 
 var state = {
-  tab: 'map',
+  tab: 'fault',
   group: 'SICAS',
   cabSide: '전면',
   rackDrill: null,        // { title, note, boardIds:[...], instanceLabels:[...] }
@@ -9661,6 +9674,7 @@ var state = {
   measureFacility: 'all',
   faultDomain: 'all',
   faultFavOnly: false,
+  faultQuery: '',          // 고장상황 검색어
   rowDetail: null,         // { groupKey, idx, label } — 보드 정보 없는 텍스트 전용 행(예: G/H/L 레벨) 클릭 시
   photoModal: null,        // { folder, name }
   photoSelMk: -1,
@@ -10149,8 +10163,12 @@ window.addEventListener('resize', function(){
 });
 
 function renderTopbar(){
+  var mapActive = (state.tab === 'map');
   return '<div class="topbar">'
-    + '<h1>2호선 ATO 시스템</h1>'
+    + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
+    + '<h1 style="margin:0">2호선 ATO 시스템</h1>'
+    + '<button class="photo-mini-btn' + (mapActive ? ' pri' : '') + '" data-act="tab" data-tab="map">🗺 시스템 지도</button>'
+    + '</div>'
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivesync" title="다른 기기(PC/모바일)에서 드라이브로 넣은 사진 받아오기">🔄 드라이브 연동' + ((Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) ? ' (저장 대기 ' + (Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) + ')' : '') + '</button>'
@@ -10159,7 +10177,7 @@ function renderTopbar(){
 }
 
 function renderTabbar(){
-  var tabs = [['map','시스템 지도'], ['rack','랙 구성'], ['power','전원흐름'], ['measure','측정지점'], ['fault','고장상황']];
+  var tabs = [['fault','고장상황'], ['rack','랙 구성'], ['power','전원흐름'], ['measure','측정지점']];
   var h = '<div class="tabbar">';
   tabs.forEach(function(t){
     var cls = (state.tab === t[0]) ? 'tab-btn active' : 'tab-btn';
@@ -11139,7 +11157,7 @@ function renderAutoBoardFace(ledInfo, boardId){
   return h;
 }
 
-function renderMpDetail(mpid){
+function renderMpDetail(mpid, noFaults){
   var mp = MPOINTS_BY_ID[mpid];
   if (!mp) return '';
   var h = '<div class="mp-detail">';
@@ -11174,10 +11192,11 @@ function renderMpDetail(mpid){
   if (mp.method && mp.method.length) h += '<div style="margin-top:8px"><b>측정 방법</b><ul>' + mp.method.map(function(s){ return '<li>' + escapeHtml(s) + '</li>'; }).join('') + '</ul></div>';
   if (mp.checkItems && mp.checkItems.length) h += '<div style="margin-top:8px"><b>점검 항목</b><ul>' + mp.checkItems.map(function(c){ return '<li>' + escapeHtml(c) + '</li>'; }).join('') + '</ul></div>';
   if (mp.diagnosticTip) h += '<div class="confirmed-box" style="margin-top:10px"><b>진단 팁</b> — ' + escapeHtml(mp.diagnosticTip) + '</div>';
-  if (cleanDoneText(mp.caution)) h += '<div class="caution-box" style="margin-top:10px">' + escapeHtml(cleanDoneText(mp.caution)) + '</div>';
+  if (cleanDoneText(mp.caution)) h += '<div class="safety-box" style="margin-top:10px">⚠ ' + escapeHtml(cleanDoneText(mp.caution)) + '</div>';
   if (mp.verify) h += '<div class="verify-box"><b>⚠ 미확정 값</b> — 이 항목의 수치는 자료 간 확인이 끝나지 않았습니다. 현장 실측으로 재확인 후 사용하세요.</div>';
   if (mp.conflictNote && mp.verify) h += '<div class="verify-box"><b>⚠ 자료 간 불일치</b> — ' + escapeHtml(mp.conflictNote) + '</div>';
-  if (mp.relatedFaults && mp.relatedFaults.length) h += renderFaultBadges(mp.relatedFaults, mp.id);
+  /* noFaults: 고장상황 상세 안에 끼워 넣을 때는 관련 장애 뱃지를 빼서 서로 무한히 펼쳐지지 않게 함 */
+  if (!noFaults && mp.relatedFaults && mp.relatedFaults.length) h += renderFaultBadges(mp.relatedFaults, mp.id);
   h += '</div>';
   return h;
 }
@@ -11192,99 +11211,152 @@ function renderFaultBadges(ids, ownerKey){
     return '<span class="fault-badge" data-act="fault" data-fault="' + escapeHtml(fid) + '" title="' + escapeHtml(fid) + '">' + escapeHtml(label) + ' ›</span>';
   }).join('') + '</div>';
   ids.forEach(function(fid){
-    if (state.faultOpenId === fid) h += renderFaultDetail(fid);
+    if (state.faultOpenId === fid) h += renderFaultDetail(fid, ownerKey);
   });
   return h;
 }
 
-function renderFaultDetail(fid){
+/* ownerKey: 이 상세를 품고 있는 측정지점/보드 id — 같은 곳으로 가는 버튼·중복 펼침을 막는다. */
+function renderFaultDetail(fid, ownerKey){
   var fc = FCASES_BY_ID[fid];
   if (!fc) return '<div class="fault-detail"><div class="fault-title">' + escapeHtml(fid) + '</div><div style="margin-top:6px;color:var(--ink3)">장애사례 데이터를 찾을 수 없습니다.</div></div>';
   var h = '<div class="fault-detail">';
-  h += '<div class="fault-title">' + escapeHtml(faultTitle(fc)) + ' <span class="mono" style="font-weight:400;color:var(--ink3);font-size:10.5px">(' + escapeHtml(fc.id) + ')</span></div>';
+  h += '<div class="fault-title">' + faultHl(faultTitle(fc)) + ' <span class="mono" style="font-weight:400;color:var(--ink3);font-size:10.5px">(' + escapeHtml(fc.id) + ')</span></div>';
   h += '<dl>';
-  h += '<dt>분류</dt><dd>' + escapeHtml(fc.domain) + '</dd>';
-  if (fc.errorSource) h += '<dt>발생요소</dt><dd>' + escapeHtml(fc.errorSource) + '</dd>';
-  if (fc.cause) h += '<dt>원인</dt><dd>' + escapeHtml(fc.cause) + '</dd>';
+  h += '<dt>분류</dt><dd>' + faultHl(fc.domain) + '</dd>';
+  if (fc.errorSource) h += '<dt>발생요소</dt><dd>' + faultHl(fc.errorSource) + '</dd>';
+  if (fc.cause) h += '<dt>원인</dt><dd>' + faultHl(fc.cause) + '</dd>';
+  if (fc.manualRefs && fc.manualRefs.length) h += '<dt>매뉴얼</dt><dd>' + faultHl(fc.manualRefs.join(', ')) + '</dd>';
+  if (fc.source && fc.source.doc) h += '<dt>출처</dt><dd>' + escapeHtml(fc.source.doc + (fc.source.section ? ' ' + fc.source.section : '')) + '</dd>';
   h += '</dl>';
-  if (fc.diagnosis && fc.diagnosis.length) h += '<div style="margin-top:8px"><b>진단(증상)</b><ul>' + fc.diagnosis.map(function(d){ return '<li>' + escapeHtml(d) + '</li>'; }).join('') + '</ul></div>';
-  if (fc.remedy && fc.remedy.length) h += '<div style="margin-top:8px"><b>조치</b><ul>' + fc.remedy.map(function(r){ return '<li>' + escapeHtml(r) + '</li>'; }).join('') + '</ul></div>';
-  if (cleanDoneText(fc.caution)) h += '<div class="caution-box" style="margin-top:10px">' + escapeHtml(cleanDoneText(fc.caution)) + '</div>';
-  if (fc.measurePointRef) {
-    var mp = MPOINTS_BY_ID[fc.measurePointRef];
-    h += '<div class="stage-actions"><button class="chip-btn" data-act="mp" data-mp="' + fc.measurePointRef + '">측정지점: ' + escapeHtml(mp ? mp.title : fc.measurePointRef) + ' ›</button></div>';
+  if (fc.diagnosis && fc.diagnosis.length) h += '<div style="margin-top:8px"><b>진단(증상)</b><ul>' + fc.diagnosis.map(function(d){ return '<li>' + faultHl(d) + '</li>'; }).join('') + '</ul></div>';
+  /* [2026-09-26] 사용자 요청: 안전 주의사항은 조치보다 먼저, 빨간 텍스트박스로 눈에 띄게 */
+  if (cleanDoneText(fc.caution)) h += '<div class="safety-box" style="margin-top:10px">⚠ ' + faultHl(cleanDoneText(fc.caution)) + '</div>';
+  if (fc.remedy && fc.remedy.length) h += '<div style="margin-top:8px"><b>조치</b><ul>' + fc.remedy.map(function(r){ return '<li>' + faultHl(r) + '</li>'; }).join('') + '</ul></div>';
+  if (fc.verify) h += '<div class="verify-box"><b>⚠ 미확정 값</b> — 이 고장사례의 수치는 자료 간 확인이 끝나지 않았습니다. 현장 실측으로 재확인 후 사용하세요.</div>';
+  var acts = '';
+  if (fc.boardRef && fc.boardRef !== ownerKey) {
+    acts += '<button class="chip-btn board" data-act="board" data-board="' + escapeHtml(fc.boardRef) + '" data-from="' + escapeHtml(state.tab) + '">보드 상세: ' + escapeHtml(boardLabel(fc.boardRef)) + ' →</button>';
   }
+  var mpRef = fc.measurePointRef;
+  if (mpRef && mpRef !== ownerKey) {
+    var mp = MPOINTS_BY_ID[mpRef];
+    acts += '<button class="chip-btn" data-act="mp" data-mp="' + escapeHtml(mpRef) + '">📍 측정지점: ' + escapeHtml(mp ? mp.title : mpRef) + (state.mpExpanded[mpRef] ? ' ▾' : ' ›') + '</button>';
+  }
+  if (acts) h += '<div class="stage-actions">' + acts + '</div>';
+  /* [2026-09-26] 예전엔 이 버튼이 측정지점 탭의 펼침 상태만 바꿔서 고장상황 탭에서는 눌러도
+     아무 변화가 없었음 — 측정위치·정상범위·측정단자를 이 자리에 바로 펼쳐 보여준다. */
+  if (mpRef && mpRef !== ownerKey && state.mpExpanded[mpRef]) h += renderMpDetail(mpRef, true);
   h += '</div>';
   return h;
 }
 
 /* =========================================================
-   TAB 5 — 고장상황 (fault-cases.json 전체 목록 + 즐겨찾기)
+   TAB 5 — 고장상황 (fault-cases.json 전체 목록 + 검색 + 즐겨찾기)
    ========================================================= */
 var FAULT_DOMAIN_ORDER = ['연동장치', 'EC/DSTT', '전원', '신호기', '선로전환기', '선로전환기 감시(OTS)', 'ATO Loop', 'TWC', 'AF궤도회로'];
 
-function faultDomainCounts(){
+/* ---- 고장상황 검색 ----
+   검색어를 공백으로 나눈 단어가 전부(AND) 제목·내용(발생요소/원인/진단/조치/주의/측정지점/매뉴얼/ID)
+   어딘가에 있으면 결과에 나온다. 대소문자와 띄어쓰기 차이("전원장애" / "전원 장애")는 무시. */
+function faultNorm(s){ return String(s == null ? '' : s).toLowerCase().replace(/\s+/g, ''); }
+function faultQueryTokens(){ return (state.faultQuery || '').toLowerCase().split(/\s+/).filter(Boolean); }
+/* 검색어를 노란 형광펜(<mark>)으로 강조 — 검색 중이 아니거나 고장상황 탭이 아니면 escapeHtml과 같다.
+   ponytail: 띄어쓰기를 무시하고 걸린 단어("전원장애" ↔ "전원 장애")는 강조되지 않음(결과에는 나옴). */
+function faultHl(text){
+  var toks = state.tab === 'fault' ? faultQueryTokens() : [];
+  if (!toks.length) return escapeHtml(text);
+  var re = new RegExp('(' + toks.map(function(t){ return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }).join('|') + ')', 'gi');
+  return String(text).split(re).map(function(p, i){ return i % 2 ? '<mark class="fhl">' + escapeHtml(p) + '</mark>' : escapeHtml(p); }).join('');
+}
+function faultFields(c){
+  var mp = c.measurePointRef ? MPOINTS_BY_ID[c.measurePointRef] : null;
+  var f = [['분류', c.domain], ['발생요소', c.errorSource], ['원인', c.cause]];
+  (c.diagnosis || []).forEach(function(d){ f.push(['진단', d]); });
+  (c.remedy || []).forEach(function(r){ f.push(['조치', r]); });
+  f.push(['주의', cleanDoneText(c.caution)], ['측정지점', mp ? mp.title : ''], ['매뉴얼', (c.manualRefs || []).join(', ')], ['ID', c.id]);
+  return f;
+}
+/* null = 불일치. 일치하면 { title: 제목에 모든 단어가 있는지, snip: 제목 밖에서 처음 걸린 [항목명, 문장] } */
+function faultMatch(c, toks){
+  var title = faultNorm(faultTitle(c));
+  var fields = faultFields(c);
+  var all = title + '|' + fields.map(function(x){ return faultNorm(x[1]); }).join('|');
+  if (!toks.every(function(t){ return all.indexOf(t) >= 0; })) return null;
+  var inTitle = toks.every(function(t){ return title.indexOf(t) >= 0; });
+  var snip = null;
+  if (!inTitle) fields.some(function(x){
+    var n = faultNorm(x[1]);
+    if (x[0] !== 'ID' && toks.some(function(t){ return title.indexOf(t) < 0 && n.indexOf(t) >= 0; })) { snip = x; return true; }
+    return false;
+  });
+  return { title: inTitle, snip: snip };
+}
+
+function faultDomainCounts(cases){
   var counts = {};
-  (FCASES.cases || []).forEach(function(c){ var d = c.domain || '기타'; counts[d] = (counts[d] || 0) + 1; });
+  cases.forEach(function(c){ var d = c.domain || '기타'; counts[d] = (counts[d] || 0) + 1; });
   return counts;
 }
 function faultFavCount(){
   return Object.keys(faultFavorites).filter(function(k){ return faultFavorites[k]; }).length;
 }
-function renderFaultDomainSwitch(){
-  var counts = faultDomainCounts();
-  var order = FAULT_DOMAIN_ORDER.filter(function(f){ return counts[f]; });
-  Object.keys(counts).forEach(function(f){ if (order.indexOf(f) < 0) order.push(f); });
-  var total = (FCASES.cases || []).length;
+/* 개수는 검색·즐겨찾기 필터를 거친 건수. 선택된 분류는 0건이어도 버튼을 남긴다. */
+function renderFaultDomainSwitch(cases){
+  var counts = faultDomainCounts(cases);
+  var order = FAULT_DOMAIN_ORDER.concat(Object.keys(counts)).filter(function(f, i, a){
+    return a.indexOf(f) === i && (counts[f] || state.faultDomain === f);
+  });
   var h = '<div class="group-switch">';
   var totalActive = (state.faultDomain === 'all');
-  h += '<button class="group-chip' + (totalActive?' active':'') + '" style="' + (totalActive ? 'color:var(--steel);background:var(--steelbg)' : '') + '" data-act="faultdomain" data-domain="all">전체 (' + total + ')</button>';
+  h += '<button class="group-chip' + (totalActive?' active':'') + '" style="' + (totalActive ? 'color:var(--steel);background:var(--steelbg)' : '') + '" data-act="faultdomain" data-domain="all">전체 (' + cases.length + ')</button>';
   order.forEach(function(f){
     var active = (state.faultDomain === f);
-    h += '<button class="group-chip' + (active?' active':'') + '" style="' + (active ? 'color:var(--steel);background:var(--steelbg)' : '') + '" data-act="faultdomain" data-domain="' + escapeHtml(f) + '">' + escapeHtml(f) + ' (' + counts[f] + ')</button>';
+    h += '<button class="group-chip' + (active?' active':'') + '" style="' + (active ? 'color:var(--steel);background:var(--steelbg)' : '') + '" data-act="faultdomain" data-domain="' + escapeHtml(f) + '">' + escapeHtml(f) + ' (' + (counts[f] || 0) + ')</button>';
   });
   h += '</div>';
   return h;
 }
-function renderFaultTab(){
-  /* 안내 배너는 화면 맨 아래로(사용자 요청) — 두 return 지점 모두에서 덧붙임. */
-  var topBanner = renderAccordion('faultnote', 'ℹ 안내', '진단 매뉴얼에 정리된 고장상황(총 ' + ((FCASES.cases||[]).length) + '건)을 한 화면에서 훑어볼 수 있습니다. ★을 눌러 자주 보는 것을 즐겨찾기하면 목록 맨 위로 올라오고, "즐겨찾기만 보기"로 나머지를 잠시 숨길 수 있습니다.');
-  var h = '';
 
-  var favN = faultFavCount();
-  h += '<div style="display:flex;align-items:center;gap:8px;margin:8px 0 4px;flex-wrap:wrap">'
-    + '<button class="photo-mini-btn' + (state.faultFavOnly ? ' pri' : '') + '" data-act="faultfavtoggle">' + (state.faultFavOnly ? '★ 즐겨찾기만 보는 중' : '☆ 즐겨찾기만 보기') + (favN ? ' (' + favN + ')' : '') + '</button>'
-    + '</div>';
+/* 검색창 아래 전부(분류 버튼 + 목록). 글자를 칠 때마다 이 부분만 다시 그려서 입력창의
+   포커스와 한글 조합 중인 글자가 끊기지 않게 한다(render() 전체를 다시 그리면 끊김). */
+function renderFaultResults(){
+  var toks = faultQueryTokens();
+  var items = (FCASES.cases || []).map(function(c, i){
+    return { c: c, i: i, m: toks.length ? faultMatch(c, toks) : { title: false, snip: null } };
+  }).filter(function(x){ return x.m && (!state.faultFavOnly || faultFavorites[x.c.id]); });
 
-  h += renderFaultDomainSwitch();
+  var h = renderFaultDomainSwitch(items.map(function(x){ return x.c; }));
+  if (state.faultDomain !== 'all') items = items.filter(function(x){ return x.c.domain === state.faultDomain; });
+  /* 즐겨찾기 → 제목에서 걸린 것 → 원래 순서(도메인/자료상 순서) */
+  items.sort(function(a, b){
+    var fa = faultFavorites[a.c.id] ? 1 : 0, fb = faultFavorites[b.c.id] ? 1 : 0;
+    if (fa !== fb) return fb - fa;
+    if (a.m.title !== b.m.title) return a.m.title ? -1 : 1;
+    return a.i - b.i;
+  });
 
-  var cases = (FCASES.cases || []).slice();
-  if (state.faultDomain !== 'all') cases = cases.filter(function(c){ return c.domain === state.faultDomain; });
-  if (state.faultFavOnly) cases = cases.filter(function(c){ return !!faultFavorites[c.id]; });
-  /* 즐겨찾기를 맨 위로 — 그 안에서는 원래 순서(도메인/자료상 순서) 유지 */
-  cases = cases.map(function(c, i){ return { c: c, i: i }; })
-    .sort(function(a, b){
-      var fa = faultFavorites[a.c.id] ? 1 : 0, fb = faultFavorites[b.c.id] ? 1 : 0;
-      if (fa !== fb) return fb - fa;
-      return a.i - b.i;
-    }).map(function(x){ return x.c; });
-
-  if (!cases.length) {
-    h += '<div class="photo-empty-hint">' + (state.faultFavOnly ? '즐겨찾기한 고장상황이 아직 없습니다. ☆을 눌러 추가해보세요.' : '해당 분류의 고장상황이 없습니다.') + '</div>';
-    h += topBanner;
+  if (toks.length) h += '<div class="fault-count">"' + escapeHtml(state.faultQuery.trim()) + '" 검색결과 ' + items.length + '건' + (items.length ? ' — 눌러서 조치방법·측정지점 확인' : '') + '</div>';
+  if (!items.length) {
+    h += '<div class="photo-empty-hint">' + (toks.length
+      ? '찾는 고장상황이 없습니다. 다른 단어로 검색해보세요 — LED 색(적색, 꺼짐), 보드 이름(OLM, STEKOP), 전압(24V), 장비(선로전환기, 궤도) 등.' + (state.faultDomain !== 'all' || state.faultFavOnly ? ' 분류/즐겨찾기 필터도 확인하세요.' : '')
+      : (state.faultFavOnly ? '즐겨찾기한 고장상황이 아직 없습니다. ☆을 눌러 추가해보세요.' : '해당 분류의 고장상황이 없습니다.')) + '</div>';
     return h;
   }
 
   h += '<div class="mp-list">';
-  cases.forEach(function(c){
+  items.forEach(function(x){
+    var c = x.c;
     var fav = !!faultFavorites[c.id];
     var open = (state.faultOpenId === c.id);
     h += '<div class="stage-card" style="margin-bottom:10px' + (fav ? ';border-left:4px solid var(--warn)' : '') + '">';
     h += '<div class="stage-title" style="cursor:pointer;gap:8px" data-act="fault" data-fault="' + c.id + '">'
       + '<button class="fav-star' + (fav?' on':'') + '" data-act="favfault" data-fault="' + c.id + '" title="즐겨찾기">' + (fav ? '★' : '☆') + '</button>'
       + cameraIconBtn('fault:' + c.id, c.domain, faultTitle(c))
-      + '<span style="flex:1 1 0;min-width:0">' + escapeHtml(c.symptom) + (c.titleTag ? ' <span style="font-weight:500;color:var(--steel)">· ' + escapeHtml(c.titleTag) + '</span>' : '')
-      + '<span class="mono" style="display:block;font-size:11px;color:var(--ink3);font-weight:400;margin-top:2px">' + escapeHtml(c.domain) + '</span></span>'
+      + '<span style="flex:1 1 0;min-width:0">' + faultHl(c.symptom) + (c.titleTag ? ' <span style="font-weight:500;color:var(--steel)">· ' + faultHl(c.titleTag) + '</span>' : '')
+      + '<span class="mono" style="display:block;font-size:11px;color:var(--ink3);font-weight:400;margin-top:2px">' + escapeHtml(c.domain) + '</span>'
+      + (x.m.snip && !open ? '<span class="fault-snip"><b>' + escapeHtml(x.m.snip[0]) + '</b> ' + faultHl(x.m.snip[1]) + '</span>' : '')
+      + '</span>'
       + photoEditBtn('fault:' + c.id, c.domain)
       + '</div>';
     if (open) h += renderFaultDetail(c.id);
@@ -11292,7 +11364,24 @@ function renderFaultTab(){
     h += '</div>';
   });
   h += '</div>';
-  h += topBanner;
+  return h;
+}
+
+function renderFaultTab(){
+  var h = '<div class="fault-search">'
+    + '<input id="faultSearch" type="text" inputmode="search" enterkeyhint="search" autocomplete="off" aria-label="고장상황 검색"'
+    + ' placeholder="증상·LED·보드·조치 검색 (예: 적색, 24V, OLM)" value="' + escapeHtml(state.faultQuery) + '">'
+    + '<button type="button" class="fault-search-clear" data-act="faultqclear" aria-label="검색어 지우기">✕</button>'
+    + '</div>';
+
+  var favN = faultFavCount();
+  h += '<div style="display:flex;align-items:center;gap:8px;margin:0 0 8px;flex-wrap:wrap">'
+    + '<button class="photo-mini-btn' + (state.faultFavOnly ? ' pri' : '') + '" data-act="faultfavtoggle">' + (state.faultFavOnly ? '★ 즐겨찾기만 보는 중' : '☆ 즐겨찾기만 보기') + (favN ? ' (' + favN + ')' : '') + '</button>'
+    + '</div>';
+
+  h += '<div id="faultResults">' + renderFaultResults() + '</div>';
+  /* 안내 배너는 화면 맨 아래로(사용자 요청). */
+  h += renderAccordion('faultnote', 'ℹ 안내', '진단 매뉴얼에 정리된 고장상황(총 ' + ((FCASES.cases||[]).length) + '건)입니다. 맨 위 검색창에 현장에서 보이는 증상(LED 색, 보드 이름, 전압 등)을 입력하면 제목·진단·조치·측정지점 내용 중 해당 단어가 들어간 항목만 추려집니다. 여러 단어는 모두 포함된 것만 보여줍니다. ★을 눌러 자주 보는 것을 즐겨찾기하면 목록 맨 위로 올라오고, "즐겨찾기만 보기"로 나머지를 잠시 숨길 수 있습니다.');
   return h;
 }
 
@@ -11775,6 +11864,11 @@ document.addEventListener('click', function(e){
   } else if (act === 'faultfavtoggle') {
     state.faultFavOnly = !state.faultFavOnly;
     render();
+  } else if (act === 'faultqclear') {
+    state.faultQuery = '';
+    render();
+    var fsi = document.getElementById('faultSearch');
+    if (fsi) fsi.focus();
   } else if (act === 'faultdomain') {
     state.faultDomain = t.getAttribute('data-domain');
     render();
@@ -11825,6 +11919,21 @@ document.addEventListener('click', function(e){
   }
 });
 
+/* 고장상황 검색 — 입력창은 그대로 두고 결과(#faultResults)만 다시 그린다(포커스·한글 조합 유지). */
+document.addEventListener('input', function(e){
+  if (e.target.id !== 'faultSearch') return;
+  state.faultQuery = e.target.value;
+  state.faultOpenId = null;
+  var box = document.getElementById('faultResults');
+  var sw = box.querySelector('.group-switch'), sl = sw ? sw.scrollLeft : 0;
+  box.innerHTML = renderFaultResults();
+  sw = box.querySelector('.group-switch');
+  if (sw) sw.scrollLeft = sl;
+});
+/* 모바일: 검색(Enter) 누르면 키보드를 내려 결과가 보이게 */
+document.addEventListener('keydown', function(e){
+  if (e.target.id === 'faultSearch' && e.key === 'Enter' && !e.isComposing) e.target.blur();
+});
 migrateRackPhotoKeys();
 render();
 photoCacheRestore();
