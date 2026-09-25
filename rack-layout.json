@@ -943,7 +943,8 @@
           "side": "후면",
           "label": "브릿지저항 (현장 송신전압 조정용)",
           "count": 0,
-          "note": "브릿지저항과 switchingLevelShelf의 브릿징/스위칭 유닛은 서로 다른 별개 제품(확정)."
+          "note": "브릿지저항과 switchingLevelShelf의 브릿징/스위칭 유닛은 서로 다른 별개 제품(확정).",
+          "boardRef": "FTGS_BRIDGE_RESISTOR"
         },
         {
           "row": "M",
@@ -1709,7 +1710,7 @@
         },
         {
           "row": "D/L Relay 랙",
-          "side": "인접랙",
+          "side": "전면",
           "label": "D/L(정차등) Relay 랙 — 32개 계전기(Relay1~32), IDO_0~IDO_55 매핑",
           "boardRef": "IFC_DL_RELAY",
           "count": 32,
@@ -1717,11 +1718,18 @@
         },
         {
           "row": "EMS T/B",
-          "side": "인접랙",
+          "side": "전면",
           "label": "EMS(비상정지) T/B",
           "boardRef": "IFC_EMS_RELAY",
           "count": 0,
           "noThumb": true
+        },
+        {
+          "row": "접속함",
+          "side": "가상신호기",
+          "label": "VS26_R 가상신호기 정보전송설비 접속함 (Phoenix Contact, IP66/ATEX)",
+          "boardRef": "PSD_VS26R_TERMINAL_BOX",
+          "count": 1
         }
       ],
       "fdfHubMauRack": {
@@ -1795,6 +1803,48 @@
           "stage": "IFC ↔ 관제",
           "desc": "LAN카드(슬롯⑥ LAN-1, 슬롯⑧ LAN-2)를 통해 HUB→FDF→MAU 경유 LCC/LMC/SSC/관제CDTS와 통신. (LAN카드는 IFC 컴퓨터 내장 슬롯)",
           "boardRef": "IFC_COMPUTER"
+        },
+        {
+          "id": "vs-ifc",
+          "stage": "[가상신호기] IFC DI/DO Digital out B24(+)/C24(−) — 가상신호기 ON 명령",
+          "desc": "IFC DI/DO 출력(A계·B계 B24 +, 공통 C24 −)이 가상신호기(VS26) ON 명령으로 나갑니다.",
+          "boardRef": "IFC_COMPUTER"
+        },
+        {
+          "id": "vs-ec",
+          "stage": "[가상신호기] EC/DSTT 단자대 경유",
+          "desc": "B24/C24가 EC/DSTT 단자대에서 가상신호기 정보전송설비 접속함으로 연결됩니다. 기존 EC/DSTT 계전기는 쓰지 않고(정보전송설비 내 계전기로 대체) 기존 계전기 동작전원 2개(B24, C24)는 제거됐습니다. 현재 ATS 신호기 사용중지로 이 부분 인터페이스 점등 여부는 의미 없음(향후 철거 예정)."
+        },
+        {
+          "id": "vs-box",
+          "stage": "[가상신호기] 가상신호기 정보전송설비 접속함 1·2번 → VS26_R 계전기",
+          "desc": "EC/DSTT↔접속함 접속 포인트(1번 B24, 2번 C24)로 들어온 DC24V가 VS26_R 계전기를 동작시킵니다.",
+          "boardRef": "PSD_VS26R_TERMINAL_BOX",
+          "measurePointRef": [
+            "MP_VS26_CTRL"
+          ],
+          "rows": [
+            [
+              "가상신호기",
+              "접속함"
+            ]
+          ]
+        },
+        {
+          "id": "vs-pwr",
+          "stage": "[가상신호기] ATO분전함 BX110/CX110 (AC110V) → 접속함 4·6번",
+          "desc": "분전함↔접속함 접속 포인트(4·6번)로 AC110V가 들어옵니다. 분기부안전설비 전원과 공동사용(\"VS 전원\" 단자).",
+          "measurePointRef": [
+            "MP_VS26_PWR"
+          ]
+        },
+        {
+          "id": "vs-lamp",
+          "stage": "[가상신호기] VS26_R 접점 → 서지보호기 → 8·10번 → 승강장 승무원조작반",
+          "desc": "VS26_R 계전기 접점과 서지보호기를 거쳐 8·10번(접속함↔승무원조작반 접속 포인트)에서 승강장 더미부 내부 접속(차장측)으로 연결되고, 가상신호기 ON 시 승무원조작반 표시등이 기관사·차장 측 동시에 점등됩니다.",
+          "measurePointRef": [
+            "MP_VS26_LAMP"
+          ]
         }
       ]
     },
@@ -1907,13 +1957,6 @@
           "label": "O.T반 PSD 절체보드 (C01~10/A01~10/B01~10)",
           "boardRef": "PSD_OT_SWITCHOVER_BOARD",
           "count": 1
-        },
-        {
-          "row": "신호기계실",
-          "side": "방폭함",
-          "label": "VS26_R 단자함 (Phoenix Contact, IP66/ATEX)",
-          "boardRef": "PSD_VS26R_TERMINAL_BOX",
-          "count": 1
         }
       ],
       "vs26rWiring": {
@@ -1938,48 +1981,6 @@
           "id": "2",
           "stage": "PSD/Relay → LZB",
           "desc": "8,9,14,15번(N/O 방식)으로 LZB에 PSD 정보 전달."
-        },
-        {
-          "id": "vs-ifc",
-          "stage": "IFC DI/DO Digital out B24(+)/C24(−) — 가상신호기 ON 명령",
-          "desc": "IFC DI/DO 출력(A계·B계 B24 +, 공통 C24 −)이 가상신호기(VS26) ON 명령으로 나갑니다.",
-          "boardRef": "IFC_COMPUTER"
-        },
-        {
-          "id": "vs-ec",
-          "stage": "EC/DSTT 단자대 경유",
-          "desc": "B24/C24가 EC/DSTT 단자대에서 가상신호기 정보전송설비 접속함으로 연결됩니다. 기존 EC/DSTT 계전기는 쓰지 않고(정보전송설비 내 계전기로 대체) 기존 계전기 동작전원 2개(B24, C24)는 제거됐습니다. 현재 ATS 신호기 사용중지로 이 부분 인터페이스 점등 여부는 의미 없음(향후 철거 예정)."
-        },
-        {
-          "id": "vs-box",
-          "stage": "가상신호기 정보전송설비 접속함 1·2번 → VS26_R 계전기",
-          "desc": "EC/DSTT↔접속함 접속 포인트(1번 B24, 2번 C24)로 들어온 DC24V가 VS26_R 계전기를 동작시킵니다.",
-          "boardRef": "PSD_VS26R_TERMINAL_BOX",
-          "measurePointRef": [
-            "MP_VS26_CTRL"
-          ],
-          "rows": [
-            [
-              "방폭함",
-              "신호기계실"
-            ]
-          ]
-        },
-        {
-          "id": "vs-pwr",
-          "stage": "ATO분전함 BX110/CX110 (AC110V) → 접속함 4·6번",
-          "desc": "분전함↔접속함 접속 포인트(4·6번)로 AC110V가 들어옵니다. 분기부안전설비 전원과 공동사용(\"VS 전원\" 단자).",
-          "measurePointRef": [
-            "MP_VS26_PWR"
-          ]
-        },
-        {
-          "id": "3",
-          "stage": "VS26_R 접점 → 서지보호기 → 8·10번 → 승강장 승무원조작반",
-          "desc": "VS26_R 계전기 접점과 서지보호기를 거쳐 8·10번(접속함↔승무원조작반 접속 포인트)에서 승강장 더미부 내부 접속(차장측)으로 연결되고, 가상신호기 ON 시 승무원조작반 표시등이 기관사·차장 측 동시에 점등됩니다.",
-          "measurePointRef": [
-            "MP_VS26_LAMP"
-          ]
         }
       ]
     },
@@ -1996,8 +1997,9 @@
         {
           "row": "1",
           "side": "분기부안전설비랙(기계실)",
-          "label": "TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
-          "count": 1
+          "label": "TYPE A — NFB BKM-b 30A×1, 전자접촉기MC 22A×1(MR계전기), RELAY MK3P AC110V×1+소켓×1, SMPS VSF100 DC24V×1, 단자대BHTN 60A×14",
+          "count": 1,
+          "boardRef": "TURNOUT_SAFETY_MR_RELAY"
         },
         {
           "row": "2",
@@ -2014,16 +2016,24 @@
         {
           "row": "4",
           "side": "분기부안전설비랙(기계실)",
-          "label": "TYPE C-1 (TYPE C) — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MY4N DC24V×2+소켓×2, 단자대BHTN 60A×13 / 경보벨1 동작조건 담당(460TPR+L440TPR)",
-          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
-          "count": 1
+          "label": "TYPE C-1 (TYPE C) — NFB BKM-b 30A×1, 전자접촉기MC 22A×1(MR계전기), RELAY MY4N DC24V×2(PR계전기)+소켓×2, 단자대BHTN 60A×13 / 경보벨1 동작조건 담당(460TPR+L440TPR)",
+          "count": 1,
+          "boardOrder": [
+            "TURNOUT_SAFETY_MR_RELAY",
+            "TURNOUT_SAFETY_PR_RELAY",
+            "TURNOUT_SAFETY_ALARM_TPR_RELAY"
+          ]
         },
         {
           "row": "5",
           "side": "분기부안전설비랙(기계실)",
-          "label": "TYPE C-2 (TYPE C) — NFB BKM-b 30A×1, 전자접촉기MC 22A×1, RELAY MY4N DC24V×2+소켓×2, 단자대BHTN 60A×13 / 경보벨2 동작조건 담당(370TPR+350TPR)",
-          "boardRef": "TURNOUT_SAFETY_ALARM_TPR_RELAY",
-          "count": 1
+          "label": "TYPE C-2 (TYPE C) — NFB BKM-b 30A×1, 전자접촉기MC 22A×1(MR계전기), RELAY MY4N DC24V×2(PR계전기)+소켓×2, 단자대BHTN 60A×13 / 경보벨2 동작조건 담당(370TPR+350TPR)",
+          "count": 1,
+          "boardOrder": [
+            "TURNOUT_SAFETY_MR_RELAY",
+            "TURNOUT_SAFETY_PR_RELAY",
+            "TURNOUT_SAFETY_ALARM_TPR_RELAY"
+          ]
         },
         {
           "row": "6",
@@ -2119,15 +2129,19 @@
         }
       ]
     },
-    "분전반(AC)": {
-      "title": "신도림 AC분전반 (TBM-1) 구성도",
-      "note": "[2026-09-08 신규] '신도림 AC분전반표'(손글씨 주석 실측사진) + '신도림 전원반회로도'(TBM-1) 반영. 헤더 범례: A=ATOLOOP, C=IFC, D=ID, L=LZB, M=TMS, S=SICAS, T=EC/DSTT랙, B=TCM100.",
+    "분전반": {
+      "title": "신도림 분전반 구성도 (AC: TBM-1 / DC: TBM-2)",
+      "note": "[2026-09-26] 분전반(AC)·분전반(DC)를 한 장비군 \"분전반\" 아래 AC/DC 탭으로 통합. [2026-09-08 신규] '신도림 AC분전반표'(손글씨 주석 실측사진) + '신도림 전원반회로도'(TBM-1) 반영. 헤더 범례: A=ATOLOOP, C=IFC, D=ID, L=LZB, M=TMS, S=SICAS, T=EC/DSTT랙, B=TCM100. / [2026-09-08 신규] '신도림 DC분전반표'(손글씨 주석 실측사진) + '신도림 전원반회로도'(TBM-2) 반영.",
       "station": "신도림",
-      "scopeNote": "TR1/TR2/TR4/TR5 변압기 용량(10KVA·20KVA)과 직결라인 구성은 신도림 실측값 — 다른 역은 분전반 배선표를 별도 확인해야 합니다.",
+      "scopeNote": "TR1/TR2/TR4/TR5 변압기 용량(10KVA·20KVA)과 직결라인 구성은 신도림 실측값 — 다른 역은 분전반 배선표를 별도 확인해야 합니다. TR6~TR13 변압기 용량(35A/40A)과 부하배정은 신도림 실측값입니다.",
+      "overviewBySide": {
+        "AC": "PANEL_AC_OVERVIEW",
+        "DC": "PANEL_DC_OVERVIEW"
+      },
       "boards": [
         {
           "row": "TR1",
-          "side": "-",
+          "side": "AC",
           "label": "220/220V 10KVA — FTGS-1(F51~F59) + A51신대방/A52구로디지털/A53대림/A54신도림400T(각32A)",
           "boardRef": "PANEL_AC_TR1",
           "count": 1,
@@ -2135,7 +2149,7 @@
         },
         {
           "row": "TR2",
-          "side": "-",
+          "side": "AC",
           "label": "220/220V 10KVA — FTGS-2 + A55신도림L420T/A56신도림410T/A57문래/A58영등포구청/A59당산",
           "boardRef": "PANEL_AC_TR2",
           "count": 1,
@@ -2143,7 +2157,7 @@
         },
         {
           "row": "DIRECT LINE",
-          "side": "-",
+          "side": "AC",
           "label": "220VAC 2P50A 직결 — SICAS/LZB FAN, IFC A/B계, LMC51, LCC51, M51통합감시, C52A/B(HUB/TWC감시), M51TMS",
           "boardRef": "PANEL_AC_DIRECT",
           "count": 1,
@@ -2151,7 +2165,7 @@
         },
         {
           "row": "TR4",
-          "side": "-",
+          "side": "AC",
           "label": "220/110V 20KVA 125A — T51/T52신호기-1, T51/T52선로전환기-2, 기구함진로표시기, 분기부안전설비",
           "boardRef": "PANEL_AC_TR4",
           "count": 1,
@@ -2159,50 +2173,15 @@
         },
         {
           "row": "TR5",
-          "side": "-",
+          "side": "AC",
           "label": "220/110V 20KVA — T51/T52신호기-2, T51/T52선로전환기-1, C51DWELLLIGHT, VS전원(가상신호기)",
           "boardRef": "PANEL_AC_TR5",
           "count": 1,
           "noThumb": true
-        }
-      ],
-      "overviewImageRef": "PANEL_AC_OVERVIEW",
-      "powerFlow": [
-        {
-          "id": "0",
-          "stage": "상용전원/UPS → TBM-1",
-          "desc": "UPS OUTPUT TRANSFORMER → UPS OUTPUT 1φ2W220V → TBM-1 (전원장치(UPS) UPS_OUTPUT_DISTRIBUTION 참고).",
-          "boardRef": "UPS_OUTPUT_DISTRIBUTION"
         },
-        {
-          "id": "1",
-          "stage": "TBM-1 → TR1/TR2 (FTGS)",
-          "desc": "FTGS-1/2 퓨즈군(F51~F59)을 거쳐 각 역 궤도회로(신대방~당산)로 급전.",
-          "boardRef": "PANEL_AC_TR1"
-        },
-        {
-          "id": "2",
-          "stage": "TBM-1 → DIRECT LINE",
-          "desc": "변압기 없이 SICAS/LZB FAN, IFC A/B계 컴퓨터 등에 직결 급전.",
-          "boardRef": "PANEL_AC_DIRECT"
-        },
-        {
-          "id": "3",
-          "stage": "TBM-1 → TR4/TR5 (110V)",
-          "desc": "신호기·선로전환기·정차등·분기부안전설비·가상신호기(VS)에 AC110V 급전.",
-          "boardRef": "PANEL_AC_TR4"
-        }
-      ]
-    },
-    "분전반(DC)": {
-      "title": "신도림 DC분전반 (TBM-2) 구성도",
-      "note": "[2026-09-08 신규] '신도림 DC분전반표'(손글씨 주석 실측사진) + '신도림 전원반회로도'(TBM-2) 반영.",
-      "station": "신도림",
-      "scopeNote": "TR6~TR13 변압기 용량(35A/40A)과 부하배정은 신도림 실측값입니다.",
-      "boards": [
         {
           "row": "TR6/TR7",
-          "side": "-",
+          "side": "DC",
           "label": "DC60V 35A 220/47V — S51/S52MAIN, L51/L52ATP, F58ATOLOOP REMEMO, T52ECMAIN, F55PSD I/F",
           "boardRef": "PANEL_DC_TR6_TR7",
           "count": 1,
@@ -2210,7 +2189,7 @@
         },
         {
           "row": "TR8/TR9",
-          "side": "-",
+          "side": "DC",
           "label": "DC24V 40A 220/19.7V — S51/S52AUX, T51A/T52A OLM, T51B/T52B POINTCONTROL, 신C51DI/DO, 신C51EMS, O52정반위표시등",
           "boardRef": "PANEL_DC_TR8_TR9",
           "count": 1,
@@ -2218,7 +2197,7 @@
         },
         {
           "row": "TR10/TR11",
-          "side": "-",
+          "side": "DC",
           "label": "DC24V 40A — 구C52TWC, D51MELDE, 신C51D/LRELAY, M52통합감시DI/DO",
           "boardRef": "PANEL_DC_TR10_TR11",
           "count": 1,
@@ -2226,36 +2205,59 @@
         },
         {
           "row": "TR12/TR13",
-          "side": "-",
+          "side": "DC",
           "label": "DC28V 40A 220/23V — UPS경보회로(TR12), 나머지 SPARE",
           "boardRef": "PANEL_DC_TR12_TR13",
           "count": 1,
           "noThumb": true
         }
       ],
-      "overviewImageRef": "PANEL_DC_OVERVIEW",
       "powerFlow": [
         {
-          "id": "0",
-          "stage": "UPS 정류·인버터 → TBM-2",
+          "id": "ac-0",
+          "stage": "[AC] 상용전원/UPS → TBM-1",
+          "desc": "UPS OUTPUT TRANSFORMER → UPS OUTPUT 1φ2W220V → TBM-1 (전원장치(UPS) UPS_OUTPUT_DISTRIBUTION 참고).",
+          "boardRef": "UPS_OUTPUT_DISTRIBUTION"
+        },
+        {
+          "id": "ac-1",
+          "stage": "[AC] TBM-1 → TR1/TR2 (FTGS)",
+          "desc": "FTGS-1/2 퓨즈군(F51~F59)을 거쳐 각 역 궤도회로(신대방~당산)로 급전.",
+          "boardRef": "PANEL_AC_TR1"
+        },
+        {
+          "id": "ac-2",
+          "stage": "[AC] TBM-1 → DIRECT LINE",
+          "desc": "변압기 없이 SICAS/LZB FAN, IFC A/B계 컴퓨터 등에 직결 급전.",
+          "boardRef": "PANEL_AC_DIRECT"
+        },
+        {
+          "id": "ac-3",
+          "stage": "[AC] TBM-1 → TR4/TR5 (110V)",
+          "desc": "신호기·선로전환기·정차등·분기부안전설비·가상신호기(VS)에 AC110V 급전.",
+          "boardRef": "PANEL_AC_TR4"
+        },
+        {
+          "id": "dc-0",
+          "stage": "[DC] UPS 정류·인버터 → TBM-2",
           "desc": "UPS_RECTIFIER_UNIT에서 정류된 DC 전원이 TBM-2 각 TR로 분배됩니다.",
           "boardRef": "UPS_RECTIFIER_UNIT"
         },
         {
-          "id": "1",
-          "stage": "TR6/TR7 → SICAS/LZB/ATOLOOP/EC-DSTT/PSD",
+          "id": "dc-1",
+          "stage": "[DC] TR6/TR7 → SICAS/LZB/ATOLOOP/EC-DSTT/PSD",
           "desc": "DC60V로 MAIN/ATP/REMEMO/EC MAIN/PSD 계전기를 구동.",
           "boardRef": "PANEL_DC_TR6_TR7"
         },
         {
-          "id": "2",
-          "stage": "TR8/TR9 → SICAS AUX/LZB STEKOP·OLM/IFC DI-DO·EMS",
+          "id": "dc-2",
+          "stage": "[DC] TR8/TR9 → SICAS AUX/LZB STEKOP·OLM/IFC DI-DO·EMS",
           "desc": "DC24V로 보조전원 및 IFC DI/DO·EMS 구동.",
           "boardRef": "PANEL_DC_TR8_TR9"
         },
         {
-          "id": "3",
-          "stage": "TR10/TR11 → TWC/신호MELDE/IFC D-L릴레이/통합감시",
+          "id": "dc-3",
+          "stage": "[DC] TR10/TR11 → TWC/신호MELDE/IFC D-L릴레이/통합감시",
           "desc": "DC24V로 TWC IMU-100, IFC D/L Relay(정차등) 등 구동.",
           "boardRef": "PANEL_DC_TR10_TR11"
         }
