@@ -36,6 +36,7 @@
     {
       "id": "MP_FTGS_AMP_OUT",
       "facility": "FTGS",
+      "acdc": "AC",
       "title": "증폭&필터 PCB 출력전압 (3,4번)",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -64,6 +65,7 @@
     {
       "id": "MP_FTGS_RX1_E",
       "facility": "FTGS",
+      "acdc": "AC",
       "title": "수신-1 PCB 입력전압 (E1/E2)",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -91,6 +93,7 @@
     {
       "id": "MP_FTGS_RX1_I",
       "facility": "FTGS",
+      "acdc": "AC",
       "title": "수신-1 PCB 입력전압 (I5/II8)",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -127,6 +130,7 @@
     {
       "id": "MP_FTGS_RELAY",
       "facility": "FTGS",
+      "acdc": "DC",
       "title": "계전기 동작전압",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -251,12 +255,17 @@
     {
       "id": "MP_FTGS_TX_FIELD",
       "facility": "FTGS",
+      "acdc": "AC",
       "title": "현장 송신전압 측정",
       "measureType": "voltage",
       "cycle": "6개월",
       "position": {
-        "desc": "현장 송신부 단자"
+        "desc": "현장 FTGS C/B박스 송신부 단자"
       },
+      "boardRefs": [
+        "FTGS_CB_UNI",
+        "FTGS_CB_BI"
+      ],
       "thresholds": [
         {
           "label": "11/14번",
@@ -280,11 +289,12 @@
     {
       "id": "MP_FTGS_RX_FIELD",
       "facility": "FTGS",
+      "acdc": "AC",
       "title": "현장 수신전압 측정",
       "measureType": "voltage",
       "cycle": "6개월",
       "position": {
-        "desc": "현장 수신부 단자"
+        "desc": "현장 FTGS C/B박스 수신부 단자"
       },
       "thresholds": [
         {
@@ -303,7 +313,10 @@
       "source": {
         "doc": "시설물검사표준안"
       },
-      "boardRef": "FTGS_RX1_PCB",
+      "boardRefs": [
+        "FTGS_CB_UNI",
+        "FTGS_CB_BI"
+      ],
       "note": "2026-09-06: '2line 정기점검.pdf'에서 동일 기준(현장레일수신 9/10번 0.3~6V, 기계실수신입력 15~20번 0.3~3V) 재확인됨."
     },
     {
@@ -327,6 +340,7 @@
     {
       "id": "MP_SICAS_S51_DC60",
       "facility": "SICAS",
+      "acdc": "DC",
       "title": "전원전압 구동 DC 60V",
       "measureType": "voltage",
       "cycle": "1개월",
@@ -381,6 +395,7 @@
     {
       "id": "MP_SICAS_S51_DC24",
       "facility": "SICAS",
+      "acdc": "DC",
       "title": "전원전압 구동 DC 24V",
       "measureType": "voltage",
       "cycle": "1개월",
@@ -495,6 +510,7 @@
     {
       "id": "MP_LZB_DC60",
       "facility": "LZB700M",
+      "acdc": "DC",
       "title": "LZB 전원전압 DC 60V",
       "measureType": "voltage",
       "cycle": "3개월",
@@ -525,6 +541,7 @@
     {
       "id": "MP_LZB_DC24",
       "facility": "LZB700M",
+      "acdc": "DC",
       "title": "LZB 전원전압 DC 24V",
       "measureType": "voltage",
       "cycle": "3개월",
@@ -554,6 +571,7 @@
     {
       "id": "MP_LZB_DC5",
       "facility": "LZB700M",
+      "acdc": "DC",
       "title": "LZB 전원전압 DC 5V",
       "measureType": "voltage",
       "cycle": "3개월",
@@ -582,7 +600,7 @@
     },
     {
       "id": "MP_LZB_LOOPCOIL",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
       "title": "ATO Loop Coil 손상 유무",
       "measureType": "visual",
       "cycle": "3개월",
@@ -619,7 +637,7 @@
     },
     {
       "id": "MP_LZB_ATO_TEST",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
       "title": "ATO 컨트롤러 동작시험",
       "measureType": "functional",
       "cycle": "3개월",
@@ -633,7 +651,8 @@
     },
     {
       "id": "MP_LZB_ATO_TX",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
+      "acdc": "AC",
       "title": "ATO 컨트롤러 송신전압",
       "measureType": "voltage",
       "cycle": "3개월",
@@ -669,7 +688,7 @@
     },
     {
       "id": "MP_LZB_LOOP_CB",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
       "title": "ATO Loop C/B 내부 접속상태",
       "measureType": "visual",
       "cycle": "3개월",
@@ -687,7 +706,7 @@
     },
     {
       "id": "MP_ATO_LOOP_CURRENT",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
       "title": "ATO Loop 전류 측정",
       "measureType": "current",
       "cycle": "3개월",
@@ -835,6 +854,7 @@
     {
       "id": "MP_TWC_OUT",
       "facility": "TWC",
+      "acdc": "DC",
       "title": "출력전압",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -874,6 +894,7 @@
     {
       "id": "MP_TWC_RX_FREQ",
       "facility": "TWC",
+      "acdc": "AC",
       "title": "TWC 수신주파수",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -929,6 +950,7 @@
     {
       "id": "MP_OTS_CONTROL",
       "facility": "OTS",
+      "acdc": "DC",
       "title": "제어전압 (14, 13번 전압계)",
       "measureType": "voltage",
       "cycle": "미상",
@@ -954,6 +976,7 @@
     {
       "id": "MP_OTS_MOTOR",
       "facility": "OTS",
+      "acdc": "AC",
       "title": "모터전원 (모터 C-D, A호/B호 전압계)",
       "measureType": "voltage",
       "cycle": "미상",
@@ -984,6 +1007,7 @@
     {
       "id": "MP_OTS_IND_OUT",
       "facility": "OTS",
+      "acdc": "DC",
       "title": "표시출력전압 (N4, 10번 전압계)",
       "measureType": "voltage",
       "cycle": "미상",
@@ -1018,6 +1042,7 @@
     {
       "id": "MP_OTS_IND_IN",
       "facility": "OTS",
+      "acdc": "DC",
       "title": "표시입력전압 (4, 3번 전압계)",
       "measureType": "voltage",
       "cycle": "미상",
@@ -1052,6 +1077,7 @@
     {
       "id": "MP_FIELD_SW_CONTROL",
       "facility": "선로전환기",
+      "acdc": "DC",
       "title": "현장 단자반 제어전압",
       "measureType": "voltage",
       "cycle": "미상",
@@ -1076,6 +1102,7 @@
     {
       "id": "MP_FIELD_SW_INDICATION",
       "facility": "선로전환기",
+      "acdc": "DC",
       "title": "현장 단자반 표시전압",
       "measureType": "voltage",
       "cycle": "미상",
@@ -1109,6 +1136,7 @@
     {
       "id": "MP_FIELD_SW_MOTOR",
       "facility": "선로전환기",
+      "acdc": "AC",
       "title": "현장 단자반 모터전압",
       "measureType": "voltage",
       "cycle": "미상",
@@ -1398,7 +1426,7 @@
     },
     {
       "id": "MP_ATO_CONTROLLER_LED_TEST",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
       "title": "ATO 컨트롤러 동작시험 (LED 점검)",
       "measureType": "functional",
       "cycle": "3개월",
@@ -1443,7 +1471,7 @@
     },
     {
       "id": "MP_ATO_LOOP_INSULATION",
-      "facility": "LZB700M",
+      "facility": "ATO Loop",
       "title": "ATO Loop전원케이블 절연저항 측정",
       "measureType": "voltage",
       "cycle": "4년",
@@ -1514,6 +1542,7 @@
     {
       "id": "MP_TWC_RX_WAVEFORM",
       "facility": "TWC",
+      "acdc": "AC",
       "title": "TWC 수신주파수 파형 및 레벨측정",
       "measureType": "voltage",
       "cycle": "6개월",
@@ -1545,6 +1574,7 @@
     {
       "id": "MP_TURNOUT_SAFETY_ALARM",
       "facility": "분기부 안전설비",
+      "acdc": "AC",
       "title": "경보벨(등, 전광판) 동작상태 및 입력전압",
       "measureType": "functional",
       "cycle": "6개월",

@@ -1432,8 +1432,7 @@
         "caution": "PCB 교체 시 초기 DIP S/W 번호가 2/7번으로 되어 있으므로 기존 번호와 일치시켜야 한다.",
         "relatedMeasurePoints": [
           "MP_FTGS_RX1_E",
-          "MP_FTGS_RX1_I",
-          "MP_FTGS_RX_FIELD"
+          "MP_FTGS_RX1_I"
         ],
         "source": {
           "doc": "02.AF궤도회로 (김영추).pptx",
@@ -1573,6 +1572,10 @@
         "function": "단방향(T형) 궤도회로용 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 두 튜닝 유닛 중앙 하단에 인터페이스 모듈 1개가 공용으로 자리한다.",
         "note": "[2026-09-15] 사용자 설명(2026-09-15)을 바탕으로 신규 이미지화. 인터페이스 모듈은 사용자가 확정본으로 제공한 이미지 적용(ATO Loop C/B박스와 공용 부품). 실측 사진으로 좌우 배치·비율 검증 필요.",
         "forcePhotoSection": true,
+        "relatedMeasurePoints": [
+          "MP_FTGS_TX_FIELD",
+          "MP_FTGS_RX_FIELD"
+        ],
         "source": {
           "doc": "사용자 설명(2026-09-15)",
           "section": "FTGS 현장설비 — C/B박스 구성"
@@ -1584,6 +1587,10 @@
         "function": "양방향(ST형) 궤도회로용 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 각 튜닝 유닛 하단에 전환 모듈이 개별로 1개씩(총 2개) 자리한다.",
         "note": "[2026-09-15] 사용자 설명(2026-09-15)을 바탕으로 신규 이미지화. 전환 모듈은 사용자가 확정본으로 제공한 이미지 적용(양방향(ST형) 전용, 송신/수신 상태 LED 표시 포함). 실측 사진으로 좌우 배치·비율 검증 필요. 양방향 궤도 2개가 나란히 있는 경우(양방향끼리)에 쓰는 구성이며, 단방향 궤도와 섞여 있는 경우는 FTGS_CB_MIXED(혼합형) 참고 — [2026-09-16 해소] 이전에 남겨두었던 centerPadDetail.cbBoxStructure와의 '불일치'는 실제로는 서로 다른 두 유형(양방향끼리=이 보드 / 단방향+양방향 혼재=FTGS_CB_MIXED)을 가리키는 것이었을 뿐, 데이터 오류가 아니었음(사용자 확인, 2026-09-16).",
         "forcePhotoSection": true,
+        "relatedMeasurePoints": [
+          "MP_FTGS_TX_FIELD",
+          "MP_FTGS_RX_FIELD"
+        ],
         "source": {
           "doc": "사용자 설명(2026-09-15)",
           "section": "FTGS 현장설비 — C/B박스 구성"

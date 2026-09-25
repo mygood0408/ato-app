@@ -53,6 +53,7 @@
       "id": "FLT_ECD_02",
       "domain": "EC/DSTT",
       "symptom": "스위치 점검에서의 오류",
+      "titleTag": "DSTT/STEKOP H/W",
       "errorSource": "DSTT 또는 STEKOP",
       "diagnosis": [],
       "cause": "DSTT 또는 STEKOP 하드웨어 오류, 잘못된 메시지 전송",
@@ -74,6 +75,7 @@
       "id": "FLT_ECD_03",
       "domain": "EC/DSTT",
       "symptom": "선로전환기 불일치",
+      "titleTag": "DEWEMO 드라이브 중단",
       "errorSource": "선로전환기 또는 DEWEMO-드라이브",
       "diagnosis": [
         "DEWEMO 위치 LED 꺼짐",
@@ -96,6 +98,7 @@
       "id": "FLT_ECD_04",
       "domain": "EC/DSTT",
       "symptom": "선로전환기 불일치",
+      "titleTag": "DEWEMO 24V 전원",
       "errorSource": "DEWEMO용 24V 전원",
       "diagnosis": [
         "DEWEMO 모든 LED 꺼짐"
@@ -116,6 +119,7 @@
       "id": "FLT_ECD_05",
       "domain": "EC/DSTT",
       "symptom": "선로전환기 불일치",
+      "titleTag": "STEKOP-DEWEMO 접속",
       "errorSource": "STEKOP-DEWEMO",
       "diagnosis": [
         "DEWEMO 선로전환기 위치 LED 노란색, 방향 LED 꺼짐",
@@ -139,6 +143,7 @@
       "id": "FLT_ECD_06",
       "domain": "EC/DSTT",
       "symptom": "신호기가 꺼짐",
+      "titleTag": "STEKOP-DESIMO 연결",
       "errorSource": "DESIMO",
       "diagnosis": [
         "DESIMO 모든 LED 꺼짐"
@@ -160,6 +165,7 @@
       "id": "FLT_ECD_07",
       "domain": "EC/DSTT",
       "symptom": "신호기가 꺼짐",
+      "titleTag": "DESIMO 24V 없음",
       "errorSource": "DESIMO",
       "diagnosis": [
         "DESIMO LED IK1, IK2 꺼짐"
@@ -224,6 +230,7 @@
       "id": "FLT_ILK_01",
       "domain": "연동장치",
       "symptom": "BUMA로 연결되는 모든 요소들에 대한 접속 장애",
+      "titleTag": "BUMA-STEKOP 회선",
       "errorSource": "BUMA 3,4,5,6의 광접속",
       "diagnosis": [
         "OLM 각 채널의 LED 꺼짐",
@@ -265,6 +272,7 @@
       "id": "FLT_ILK_03",
       "domain": "연동장치",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "BUMA2 PROFIBUS",
       "errorSource": "BUMA2 광접속",
       "diagnosis": [
         "인접 연동역 및 LCC로의 연결이 없음"
@@ -286,6 +294,7 @@
       "id": "FLT_ILK_04",
       "domain": "연동장치",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "연동 60V 전원",
       "errorSource": "연동장치 캐비닛용 60V 전원 공급",
       "diagnosis": [
         "연동장치 스위치 Off",
@@ -311,6 +320,7 @@
       "id": "FLT_ILK_05",
       "domain": "연동장치",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "연동 24V 전원",
       "errorSource": "연동장치 캐비닛용 24V 전원 공급",
       "diagnosis": [
         "연동장치 캐비닛 내의 모든 OLM 꺼짐",
@@ -334,6 +344,7 @@
       "id": "FLT_ILK_06",
       "domain": "연동장치",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "SVK2102 입력 저전압(UE<33V)",
       "errorSource": "연동장치 캐비닛 SVK2102 전원장치",
       "diagnosis": [
         "연동장치 스위치 Off",
@@ -359,6 +370,7 @@
       "id": "FLT_ILK_07",
       "domain": "연동장치",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "SVK2102 입력 과전압(UE>89V)",
       "errorSource": "연동 캐비닛용 SVK2102 전원장치",
       "diagnosis": [
         "연동장치 스위치 Off",
@@ -385,6 +397,7 @@
       "id": "FLT_ILK_08",
       "domain": "연동장치",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "KOMDA 24V 전원",
       "errorSource": "KOMDA용 24V 전원",
       "diagnosis": [
         "연동 스위치 off",
@@ -403,6 +416,7 @@
       "id": "FLT_ILK_12",
       "domain": "연동장치",
       "symptom": "채널 정지",
+      "titleTag": "5V 전원 없음",
       "errorSource": "전자연동 컴퓨터 5V 전원 공급",
       "diagnosis": [
         "SVK2102 LED UE와 UA 꺼짐",
@@ -428,6 +442,7 @@
       "id": "FLT_ILK_13",
       "domain": "연동장치",
       "symptom": "채널 정지",
+      "titleTag": "VENUS3 장애",
       "errorSource": "VENUS3",
       "diagnosis": [
         "관련 채널의 VENUS3 꺼짐"
@@ -445,6 +460,7 @@
       "id": "FLT_PWR_01",
       "domain": "전원",
       "symptom": "캐비닛 내 모든 요소들로의 연결 장애",
+      "titleTag": "STEKOP 60V/8V 전원",
       "errorSource": "STEKOP에 대한 60V/8V 전원 공급",
       "diagnosis": [
         "SV2602 LED UE 및 UA 꺼짐",
@@ -468,6 +484,7 @@
       "id": "FLT_PWR_02",
       "domain": "전원",
       "symptom": "EC/DSTT 캐비닛 내 모든 요소들의 접속 장애",
+      "titleTag": "EC/DSTT 24V 전원",
       "errorSource": "EC/DSTT 캐비닛용 24V 전원 공급",
       "diagnosis": [
         "STEKOP(FEMES) LED ASS 및 RASS(채널 1a, 2) 적색"
@@ -490,6 +507,7 @@
       "id": "FLT_PWR_03",
       "domain": "전원",
       "symptom": "STEKOP에 대한 접속 장애",
+      "titleTag": "SV2602 입력 저전압(UE<42V)",
       "errorSource": "EC/DSTT 캐비닛용 SV2602 전원장치",
       "diagnosis": [
         "전원장치에서 출력 전압이 공급되지 않음: LED UA 꺼짐"
@@ -513,6 +531,7 @@
       "id": "FLT_PWR_04",
       "domain": "전원",
       "symptom": "STEKOP에 대한 접속 장애",
+      "titleTag": "SV2602 입력 과전압(UE>75V)",
       "errorSource": "EC/DSTT 캐비닛용 SV2602 전원장치",
       "diagnosis": [
         "전원장치에서 출력 전압이 공급되지 않음: LED UA 꺼짐",
@@ -538,6 +557,7 @@
       "id": "FLT_PWR_05",
       "domain": "전원",
       "symptom": "STEKOP에 대한 접속 장애",
+      "titleTag": "SV2602 출력 저전압(UA<6.3V)",
       "errorSource": "EC/DSTT 캐비닛용 SV2602 전원장치",
       "diagnosis": [
         "전원장치에서 출력 전압이 공급되지 않음: LED UA 꺼짐"
@@ -559,6 +579,7 @@
       "id": "FLT_PWR_06",
       "domain": "전원",
       "symptom": "STEKOP에 대한 접속 장애",
+      "titleTag": "SV2602 출력 과전압(UA>10V)",
       "errorSource": "EC/DSTT 캐비닛용 SV2602 전원장치",
       "diagnosis": [
         "전원장치에서 출력 전압이 공급되지 않음: LED UA 꺼짐",
@@ -582,6 +603,7 @@
       "id": "FLT_PWR_07",
       "domain": "전원",
       "symptom": "STEKOP에 대한 접속 장애",
+      "titleTag": "SV2602 내부전압 >21V",
       "errorSource": "EC/DSTT 캐비닛용 SV2602 전원장치",
       "diagnosis": [
         "전원장치에서 출력 전압이 공급되지 않음: LED UA 꺼짐",
@@ -604,6 +626,7 @@
       "id": "FLT_PWR_08",
       "domain": "전원",
       "symptom": "연동장치에 대한 채널 접속 중단",
+      "titleTag": "연동 60V 전원",
       "errorSource": "연동장치 캐비닛용 60V 전원 공급",
       "diagnosis": [
         "연동장치 스위치 Off",
@@ -628,6 +651,7 @@
       "id": "FLT_SIG_01",
       "domain": "신호기",
       "symptom": "EC/DSTT 캐비닛 내 모든 요소들의 접속 장애",
+      "titleTag": "EC/DSTT 24V 전원",
       "errorSource": "EC/DSTT 캐비닛용 24V 전원 공급",
       "diagnosis": [
         "STEKOP(FEMES) LED ASS 및 RASS(채널 1a, 2) 적색",
@@ -652,6 +676,7 @@
       "id": "FLT_SIG_02",
       "domain": "신호기",
       "symptom": "BUMA로 연결되는 모든 요소들에 대한 접속 장애",
+      "titleTag": "BUMA-STEKOP 회선",
       "errorSource": "BUMA 3,4,5,6의 광접속",
       "diagnosis": [
         "OLM 각 채널의 LED 꺼짐",
@@ -674,6 +699,7 @@
       "id": "FLT_SIG_03",
       "domain": "신호기",
       "symptom": "캐비닛 내 모든 요소들로의 연결 장애",
+      "titleTag": "STEKOP 60V/8V 전원",
       "errorSource": "STEKOP에 대한 60V/8V 전원 공급",
       "diagnosis": [
         "SV2602 LED UE 및 UA 꺼짐",
@@ -736,6 +762,7 @@
       "id": "FLT_SIG_06",
       "domain": "신호기",
       "symptom": "스위치 점검에서의 오류",
+      "titleTag": "DSTT/STEKOP H/W",
       "errorSource": "DSTT 또는 STEKOP",
       "diagnosis": [],
       "cause": "DSTT 또는 STEKOP 하드웨어 오류, 잘못된 메시지 전송",
@@ -756,6 +783,7 @@
       "id": "FLT_SIG_07",
       "domain": "신호기",
       "symptom": "신호기가 꺼짐",
+      "titleTag": "STEKOP-DESIMO 연결",
       "errorSource": "DESIMO",
       "diagnosis": [
         "DESIMO 상에서 모든 LED가 꺼짐"
@@ -776,6 +804,7 @@
       "id": "FLT_SIG_08",
       "domain": "신호기",
       "symptom": "신호기가 꺼짐",
+      "titleTag": "DESIMO 24V 없음",
       "errorSource": "DESIMO",
       "diagnosis": [
         "DESIMO LED IK1, IK2 꺼짐"
@@ -796,6 +825,7 @@
       "id": "FLT_SIG_09",
       "domain": "신호기",
       "symptom": "신호기가 꺼짐",
+      "titleTag": "신호기 전류부족·LED 이상",
       "errorSource": "신호기",
       "diagnosis": [
         "DESIMO에서 LED IK1, IK2 꺼짐"
