@@ -7370,7 +7370,16 @@ var photoRejectedVideoCount = 0;
 (function loadPhotoCache(){
   try { var s = localStorage.getItem(PHOTO_CACHE_KEY); if (s) photoData = JSON.parse(s) || {}; } catch(e){}
 })();
-function savePhotoCache(){ try { localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(photoData)); } catch(e){} }
+var _mkPushTimer = null;
+function savePhotoCache(){
+  try { localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(photoData)); } catch(e){}
+  /* [2026-09-25] 드라이브 사진의 마커는 기기 간 연동 — 로그인 상태면 2초 뒤 드라이브에 저장,
+     아니면 다음 로그인 때 저장(driveSyncPull 끝에서 push). */
+  clearTimeout(_mkPushTimer);
+  _mkPushTimer = setTimeout(function(){
+    if (typeof driveSyncPush === 'function' && driveAccessToken && Date.now() < driveTokenExp) driveSyncPush(driveAccessToken);
+  }, 2000);
+}
 function photoKeyOf(folder, name){ return folder + '/' + name; }
 function photoRec(folder, name){
   var k = photoKeyOf(folder, name);
@@ -7920,7 +7929,9 @@ function openDrivePickerDirect(sectionId, groupKey, label){
    - 올리기(push): 이 기기에서 바꾼 항목(dirty)만 원격 목록을 덮어씀 → 다른 기기에서 넣은 항목은 안 지워짐
    - 받기(pull): 드라이브 로그인할 때마다 자동 실행, 원격 목록을 이 기기에 반영(아직 못 올린 항목은 제외)
    - 로컬 폴더("사진/동영상 폴더 열기", "직접 선택")에서 불러온 사진은 드라이브에 없어 연동 대상 아님
-   ponytail: 사진 마커는 연동 안 함(연결만). 같은 파일명의 서로 다른 드라이브 사진은 한 장으로 취급됨.
+   - 마커(드라이브 사진에 찍은 점·이름·메모·참고사진 표시)도 같은 파일의 markers에 함께 연동
+   ponytail: 같은 파일명의 서로 다른 드라이브 사진은 한 장으로 취급됨. 두 기기가 같은 사진의 마커를
+   동시에 고치면 나중에 올린 쪽이 이김.
    ========================================================= */
 var DRIVE_SYNC_FILE = 'rackview-sync.json';
 var DRIVE_LINKS_KEY = 'rackview-drive-links-v1', DRIVE_DIRTY_KEY = 'rackview-drive-dirty-v1';
@@ -7929,7 +7940,22 @@ var driveLinks = {}, driveDirty = {};
   try { driveLinks = JSON.parse(localStorage.getItem(DRIVE_LINKS_KEY) || '{}') || {}; } catch(e){}
   try { driveDirty = JSON.parse(localStorage.getItem(DRIVE_DIRTY_KEY) || '{}') || {}; } catch(e){}
 })();
+/* 드라이브 사진("Google Drive/파일명")의 마커 기록 연동. 마지막으로 드라이브와 맞춘 값(driveMkSnap)과
+   지금 값이 다르면 이 기기에서 바뀐 것(dirty)으로 보고 올린다. 받을 때는 이 기기에서 안 바뀐 것만 덮어쓴다. */
+var DRIVE_MKSNAP_KEY = 'rackview-drive-mksnap-v1';
+var driveMkSnap = {};
+try { driveMkSnap = JSON.parse(localStorage.getItem(DRIVE_MKSNAP_KEY) || '{}') || {}; } catch(e){}
+function mkNorm(r){
+  if (!r || (!(r.markers && r.markers.length) && !r.isRef && !r.note)) return null;
+  return JSON.stringify(r);
+}
+function driveMarkerDirtyKeys(){
+  var keys = {};
+  Object.keys(photoData).concat(Object.keys(driveMkSnap)).forEach(function(k){ if (k.indexOf('Google Drive/') === 0) keys[k] = true; });
+  return Object.keys(keys).filter(function(k){ return mkNorm(photoData[k]) !== (driveMkSnap[k] || null); });
+}
 function saveDriveLinks(){
+  try { localStorage.setItem(DRIVE_MKSNAP_KEY, JSON.stringify(driveMkSnap)); } catch(e){}
   try { localStorage.setItem(DRIVE_LINKS_KEY, JSON.stringify(driveLinks)); localStorage.setItem(DRIVE_DIRTY_KEY, JSON.stringify(driveDirty)); } catch(e){}
 }
 /* 이 항목의 지정 사진(photoManualItems) 중 드라이브 사진만 골라 연결 목록으로 다시 만든다. */
@@ -7965,13 +7991,18 @@ function driveSyncRead(token){
 }
 var driveSyncBusy = false, driveSyncAgain = false;
 function driveSyncPush(token){
-  if (!Object.keys(driveDirty).length) return;
+  var mkKeys = driveMarkerDirtyKeys();
+  if (!Object.keys(driveDirty).length && !mkKeys.length) return;
   if (driveSyncBusy) { driveSyncAgain = true; return; }
   driveSyncBusy = true;
   var sent = Object.keys(driveDirty);
+  var mkSent = {};
+  mkKeys.forEach(function(k){ mkSent[k] = mkNorm(photoData[k]); });
   driveSyncRead(token).then(function(res){
     var data = res.data;
     sent.forEach(function(sec){ if (driveLinks[sec]) data.links[sec] = driveLinks[sec]; else delete data.links[sec]; });
+    data.markers = data.markers || {};
+    Object.keys(mkSent).forEach(function(k){ if (mkSent[k]) data.markers[k] = JSON.parse(mkSent[k]); else delete data.markers[k]; });
     data.version = 1; data.updated = new Date().toISOString();
     var body = JSON.stringify(data);
     if (res.fid) {
@@ -7986,6 +8017,7 @@ function driveSyncPush(token){
       { method: 'POST', headers: { 'Content-Type': 'multipart/related; boundary=' + boundary }, body: multipart });
   }).then(function(){
     sent.forEach(function(sec){ delete driveDirty[sec]; });
+    Object.keys(mkSent).forEach(function(k){ if (mkSent[k]) driveMkSnap[k] = mkSent[k]; else delete driveMkSnap[k]; });
     saveDriveLinks();
   }).catch(function(err){
     console.warn('드라이브 연동 저장 실패(다음 로그인 때 다시 시도):', err);
@@ -8011,7 +8043,29 @@ function driveSyncPull(token){
     Object.keys(driveLinks).forEach(function(sec){
       driveLinks[sec].forEach(function(d){ if (!findLoadedItem('Google Drive', d.name)) need[d.id] = d; });
     });
-    if (changed) { saveDriveLinks(); savePhotoCurate(); }
+    var rmk = res.data.markers || {};
+    var mkDirty = {};
+    driveMarkerDirtyKeys().forEach(function(k){ mkDirty[k] = true; });
+    var mkChanged = false;
+    Object.keys(rmk).concat(Object.keys(driveMkSnap)).forEach(function(k){
+      if (mkDirty[k]) return; /* 이 기기에서 고치고 아직 못 올린 마커는 이 기기 값 유지 */
+      var rv = rmk[k] ? JSON.stringify(rmk[k]) : null;
+      if (rv === (driveMkSnap[k] || null) && rv === mkNorm(photoData[k])) return;
+      mkChanged = true;
+      if (rv) {
+        /* 열려 있는 마커 편집창이 같은 객체를 쥐고 있을 수 있어 교체 대신 내용만 바꿔 넣음 */
+        var tgt = photoData[k] || (photoData[k] = {});
+        Object.keys(tgt).forEach(function(p){ delete tgt[p]; });
+        Object.assign(tgt, JSON.parse(rv));
+        driveMkSnap[k] = rv;
+      } else {
+        delete photoData[k];
+        delete driveMkSnap[k];
+      }
+    });
+    if (mkChanged) { try { localStorage.setItem(PHOTO_CACHE_KEY, JSON.stringify(photoData)); } catch(e){} }
+    if (changed || mkChanged) { saveDriveLinks(); savePhotoCurate(); }
+    if (mkChanged && !changed) render();
     var docs = Object.keys(need).map(function(k){ return need[k]; });
     if (docs.length) driveDocsToPhotoItems(docs, token, 'Google Drive', finishPhotoLoad);
     else if (changed) render();
@@ -8955,7 +9009,7 @@ function renderTopbar(){
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photopick">📷 사진/동영상 폴더 열기' + (photoCnt ? ' <span class="mono" style="opacity:.8">(' + photoCnt + '개 폴더)</span>' : '') + '</button>'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
-    + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivesync" title="다른 기기(PC/모바일)에서 드라이브로 넣은 사진 받아오기">🔄 드라이브 연동' + (Object.keys(driveDirty).length ? ' (저장 대기 ' + Object.keys(driveDirty).length + ')' : '') + '</button>'
+    + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivesync" title="다른 기기(PC/모바일)에서 드라이브로 넣은 사진 받아오기">🔄 드라이브 연동' + ((Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) ? ' (저장 대기 ' + (Object.keys(driveDirty).length + driveMarkerDirtyKeys().length) + ')' : '') + '</button>'
     + (markCnt ? '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="photoexport">작업 JSON 내려받기 (' + markCnt + ')</button>' : '')
     + '</div>'
     + '</div>';
