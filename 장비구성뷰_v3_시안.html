@@ -11260,7 +11260,29 @@ var FAULT_DOMAIN_ORDER = ['연동장치', 'EC/DSTT', '전원', '신호기', '선
    검색어를 공백으로 나눈 단어가 전부(AND) 제목·내용(발생요소/원인/진단/조치/주의/측정지점/매뉴얼/ID)
    어딘가에 있으면 결과에 나온다. 대소문자와 띄어쓰기 차이("전원장애" / "전원 장애")는 무시. */
 function faultNorm(s){ return String(s == null ? '' : s).toLowerCase().replace(/\s+/g, ''); }
-function faultQueryTokens(){ return (state.faultQuery || '').toLowerCase().split(/\s+/).filter(Boolean); }
+/* 영문 약어의 한글 발음 표기 → 자료에 실제 쓰인 영문 토큰(소문자). 한 단어를 통째로 입력했을 때만 치환.
+   ponytail: 부분 포함("스테콥보드"처럼 붙여 쓴 경우)까지는 처리 안 함 — 필요해지면 그때 확장. */
+var FAULT_KOREAN_ALIAS = {
+  '스테콥':'stekop', '스태콥':'stekop',
+  '데베모':'dewemo',
+  '데지모':'desimo',
+  '시카스':'sicas',
+  '엘제비':'lzb',
+  '아이에프씨':'ifc',
+  '티더블유씨':'twc',
+  '씨비':'c/b',
+  '피에스디':'psd',
+  '비너스':'venus',
+  '베수부':'vesuv', '베스브':'vesuv', '배수부':'vesuv', '베수브':'vesuv', '배수브':'vesuv', '배스브':'vesuv',
+  '부마':'buma',
+  '멜데':'melde',
+  '콤다':'komda',
+  '오엘엠':'olm'
+};
+function faultQueryTokens(){
+  return (state.faultQuery || '').toLowerCase().split(/\s+/).filter(Boolean)
+    .map(function(t){ return FAULT_KOREAN_ALIAS[t] || t; });
+}
 /* 검색어를 노란 형광펜(<mark>)으로 강조 — 검색 중이 아니거나 고장상황 탭이 아니면 escapeHtml과 같다.
    ponytail: 띄어쓰기를 무시하고 걸린 단어("전원장애" ↔ "전원 장애")는 강조되지 않음(결과에는 나옴). */
 function faultHl(text){
