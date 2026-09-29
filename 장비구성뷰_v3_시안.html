@@ -1061,6 +1061,7 @@ var RACK = {
         {
           "id": "1",
           "stage": "N레벨 배전반 (후면 K행) — 60V/24V/230V 분기",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 대응 도면 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "60V·24V·230V가 여기서 각 채널로 분기됩니다. 60V는 5,6,7번(+)/1,2,3번(−), 24V는 40~49번(+)/51~59번(−) 단자에서 측정합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC60",
@@ -1077,6 +1078,7 @@ var RACK = {
         {
           "id": "fuse24",
           "stage": "24V 퓨즈 (N레벨: OLM 4A · KOMDA 1A · 6.3A)",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "24V DC가 N레벨 배전반 퓨즈를 거쳐 주변기기로 갑니다 — OLM 채널 A·B 퓨즈 4A, KOMDA 채널 A·B·C 퓨즈 1A, 퓨즈 6.3A. 퓨즈가 끊기면 그 계통 24V만 없어지므로, 24V가 안 나오면 이 퓨즈부터 확인합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC24"
@@ -1091,6 +1093,7 @@ var RACK = {
         {
           "id": "fan",
           "stage": "220V AC → FAN (N레벨 66~73번)",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "N레벨 배전반 66~73번 단자에서 220V AC가 FAN으로 공급됩니다.",
           "rows": [
             [
@@ -1613,11 +1616,13 @@ var RACK = {
         {
           "id": "0",
           "stage": "60V 퓨즈(4A) → 필터",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230], "note": "T52 G단자 도면 직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "입력 DC60V가 퓨즈(4A)와 필터를 거쳐 전원공급장치(SV2602)로 갑니다."
         },
         {
           "id": "ps",
           "stage": "전원공급장치 SV2602 ×4 (전면 A행) — 60V → 8V",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230, 206, 224], "note": "p.230 직접 확인 — 전원 경로 ⚡ 있음, 확인필요 (Filter→SV2602 배선은 도면에 없음)"}],
           "desc": "SV2602 4대가 60V를 8V로 바꿔 STEKOP-Platter 전원으로 공급합니다. 전면 LED UE(입력)/UA(출력)로 상태를 확인합니다.",
           "boardRef": "ECDSTT_PS",
           "rows": [
@@ -1630,6 +1635,7 @@ var RACK = {
         {
           "id": "platter",
           "stage": "Platter (-X4, 후면 N행)",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [106], "note": "STEKOP 8V 공급 조건 회로(8V 생성 회로는 아님) — 확인필요"}],
           "desc": "SV2602의 8V가 Platter를 거쳐 STEKOP으로 분배됩니다.",
           "boardRef": "ECDSTT_PLATTER",
           "rows": [
@@ -2161,6 +2167,7 @@ var RACK = {
         {
           "id": "fuse",
           "stage": "퓨즈 레일 (전면 L행, 궤도회로 공통)",
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "note": "FTGS 궤도회로 전원 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [36, 40, 44, 48], "note": "SIN2 F56~F59 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "궤도회로 공통 퓨즈 레일입니다. 특정 궤도회로만 전원이 없으면 이 퓨즈부터 확인합니다.",
           "rows": [
             [
@@ -4606,7 +4613,8 @@ var BOARDINFO_RAW = {
           }
         ],
         "relatedDrawings": [
-          {"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "S51 캐비닛 N레벨 전원 도면 직접 확인(전원 경로 ⚡ 있음, 확인필요)"}
+          {"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "S51 캐비닛 N레벨 전원 도면 직접 확인(전원 경로 ⚡ 있음, 확인필요)"},
+          {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 S52 N레벨 대응 도면(전원 경로 ⚡ 있음, 확인필요)"}
         ]
       }
     ],
@@ -6434,7 +6442,8 @@ var BOARDINFO_RAW = {
           }
         ],
         "relatedDrawings": [
-          {"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "note": "FTGS 궤도회로 전원(ID캐비닛 24V→퓨즈→릴레이접점→TR) F51~F55 도면(전원 경로 ⚡ 있음, 확인필요; 보드 대응 관계 미확인)"}
+          {"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "note": "FTGS 궤도회로 전원(ID캐비닛 24V→퓨즈→릴레이접점→TR) F51~F55 도면(전원 경로 ⚡ 있음, 확인필요; 보드 대응 관계 미확인)"},
+          {"doc": "SICAS_HW_Design_SIN2", "pages": [36, 40, 44, 48], "note": "SIN2 F56~F59 도면(전원 경로 ⚡ 있음, 확인필요; 보드 대응 관계 미확인)"}
         ]
       },
       {
@@ -15318,6 +15327,7 @@ function renderPowerFlow(){
       + escapeHtml(stage.stage) + photoEditBtn(psec, state.group) + '</div>';
     h += '<div class="stage-desc">' + escapeHtml(stage.desc) + '</div>';
     h += stageLocatorHtml(rack, stage);
+    if (stage.drawings && stage.drawings.length) h += renderKbRefs(stage.drawings, '관련 도면');
 
     var actions = '';
     if (stage.measurePointRef) {

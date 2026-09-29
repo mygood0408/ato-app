@@ -594,7 +594,8 @@
           }
         ],
         "relatedDrawings": [
-          {"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "S51 캐비닛 N레벨 전원 도면 직접 확인(전원 경로 ⚡ 있음, 확인필요)"}
+          {"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "S51 캐비닛 N레벨 전원 도면 직접 확인(전원 경로 ⚡ 있음, 확인필요)"},
+          {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 S52 N레벨 대응 도면(전원 경로 ⚡ 있음, 확인필요)"}
         ]
       }
     ],
@@ -2422,7 +2423,8 @@
           }
         ],
         "relatedDrawings": [
-          {"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "note": "FTGS 궤도회로 전원(ID캐비닛 24V→퓨즈→릴레이접점→TR) F51~F55 도면(전원 경로 ⚡ 있음, 확인필요; 보드 대응 관계 미확인)"}
+          {"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "note": "FTGS 궤도회로 전원(ID캐비닛 24V→퓨즈→릴레이접점→TR) F51~F55 도면(전원 경로 ⚡ 있음, 확인필요; 보드 대응 관계 미확인)"},
+          {"doc": "SICAS_HW_Design_SIN2", "pages": [36, 40, 44, 48], "note": "SIN2 F56~F59 도면(전원 경로 ⚡ 있음, 확인필요; 보드 대응 관계 미확인)"}
         ]
       },
       {
