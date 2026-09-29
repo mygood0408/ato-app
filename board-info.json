@@ -964,6 +964,17 @@
         "function": "STEKOP 채널1/채널2 전원 공급모듈. SVK2102와 같은 계열의 보드로, 입력전압 60V를 받아 출력전압 8V로 변환해 STEKOP-Platter에 공급한다.",
         "rackPosition": "전면 A행 (CH1×2, CH2×2, 총 4개)",
         "partNumber": "SV 2602 (SIEMENS, 정확한 부품번호는 미확인)",
+        "relatedDrawings": [
+          {
+            "doc": "SICAS_HW_Design_SIN1",
+            "pages": [
+              230,
+              206,
+              224
+            ],
+            "note": "T52 G단자 60V→퓨즈4A→Filter Z1~Z4 (p.230, 전원 경로 ⚡ 있음, 확인필요). SV2602 랙 배치 p.224, T51 p.206은 X200/X203 8V분배 주석만 있고 배선 없음"
+          }
+        ],
         "ledInfo": [
           {
             "id": "ue",
