@@ -230,6 +230,19 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 156,
@@ -242,6 +255,19 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -279,6 +305,22 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 238,
@@ -291,6 +333,22 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -305,6 +363,19 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 145,
@@ -317,6 +388,19 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -781,6 +865,19 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 156,
@@ -793,6 +890,19 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -830,6 +940,22 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 238,
@@ -842,6 +968,22 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -856,6 +998,19 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 145,
@@ -868,6 +1023,19 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -1227,6 +1395,21 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                109,
+                198,
+                199,
+                200,
+                204
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -1245,6 +1428,21 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                109,
+                198,
+                199,
+                200,
+                204
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -1295,6 +1493,25 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                149,
+                151,
+                152,
+                153,
+                157,
+                253,
+                254,
+                255,
+                259
+              ],
+              "totalPagesFound": 12,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -1316,6 +1533,25 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                149,
+                151,
+                152,
+                153,
+                157,
+                253,
+                254,
+                255,
+                259
+              ],
+              "totalPagesFound": 12,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 8,
@@ -1333,6 +1569,21 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                68,
+                180,
+                181,
+                182,
+                186
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -1354,6 +1605,21 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                68,
+                180,
+                181,
+                182,
+                186
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -1660,6 +1926,19 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 4,
@@ -1683,6 +1962,19 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -1742,6 +2034,22 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 6,
@@ -1765,6 +2073,22 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -1790,6 +2114,19 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 4,
@@ -1813,6 +2150,19 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -4880,6 +5230,19 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 156,
@@ -4892,6 +5255,19 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -4929,6 +5305,22 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 238,
@@ -4941,6 +5333,22 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -4955,6 +5363,19 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 145,
@@ -4967,6 +5388,19 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -5141,8 +5575,36 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -5155,10 +5617,72 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -5310,8 +5834,36 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -5324,10 +5876,72 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -5532,6 +6146,19 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 156,
@@ -5544,6 +6171,19 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -5581,6 +6221,22 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 238,
@@ -5593,6 +6249,22 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -5607,6 +6279,19 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 145,
@@ -5619,6 +6304,19 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -6035,6 +6733,21 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                109,
+                198,
+                199,
+                200,
+                204
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -6053,6 +6766,21 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                109,
+                198,
+                199,
+                200,
+                204
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -6103,6 +6831,25 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                149,
+                151,
+                152,
+                153,
+                157,
+                253,
+                254,
+                255,
+                259
+              ],
+              "totalPagesFound": 12,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -6124,6 +6871,25 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                149,
+                151,
+                152,
+                153,
+                157,
+                253,
+                254,
+                255,
+                259
+              ],
+              "totalPagesFound": 12,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 8,
@@ -6141,6 +6907,21 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                68,
+                180,
+                181,
+                182,
+                186
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -6162,6 +6943,21 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                68,
+                180,
+                181,
+                182,
+                186
+              ],
+              "totalPagesFound": 8,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -6377,8 +7173,36 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -6391,10 +7215,72 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -6663,6 +7549,19 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 4,
@@ -6686,6 +7585,19 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -6745,6 +7657,22 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 6,
@@ -6768,6 +7696,22 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -6793,6 +7737,19 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 4,
@@ -6816,6 +7773,19 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -7032,8 +8002,36 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                103,
+                104,
+                105,
+                198,
+                199,
+                200
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -7046,10 +8044,72 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                143,
+                144,
+                145,
+                151,
+                152,
+                153,
+                253,
+                254,
+                255
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                62,
+                63,
+                64,
+                180,
+                181,
+                182
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -7152,8 +8212,28 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                106,
+                201
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                106,
+                201
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -7164,10 +8244,52 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                146,
+                154,
+                256
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                146,
+                154,
+                256
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                65,
+                183
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                65,
+                183
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -7518,6 +8640,28 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                11,
+                12,
+                13,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22
+              ],
+              "totalPagesFound": 157,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 2,
@@ -7541,6 +8685,28 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                11,
+                12,
+                13,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22
+              ],
+              "totalPagesFound": 157,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -7612,6 +8778,28 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                16,
+                17,
+                18,
+                19,
+                20
+              ],
+              "totalPagesFound": 188,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 2,
@@ -7635,6 +8823,28 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                16,
+                17,
+                18,
+                19,
+                20
+              ],
+              "totalPagesFound": 188,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -7660,6 +8870,28 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                3,
+                5,
+                6,
+                8,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21
+              ],
+              "totalPagesFound": 141,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 2,
@@ -7683,6 +8915,28 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                3,
+                5,
+                6,
+                8,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21
+              ],
+              "totalPagesFound": 141,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -8682,6 +9936,24 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                91,
+                102,
+                103,
+                104,
+                105,
+                109,
+                197,
+                198,
+                199,
+                200,
+                204
+              ],
+              "totalPagesFound": 11,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -8694,6 +9966,24 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                91,
+                102,
+                103,
+                104,
+                105,
+                109,
+                197,
+                198,
+                199,
+                200,
+                204
+              ],
+              "totalPagesFound": 11,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -8732,6 +10022,28 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                125,
+                142,
+                143,
+                144,
+                145,
+                149,
+                150,
+                151,
+                152,
+                153,
+                157,
+                240,
+                252,
+                253,
+                254
+              ],
+              "totalPagesFound": 17,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -8747,6 +10059,28 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                125,
+                142,
+                143,
+                144,
+                145,
+                149,
+                150,
+                151,
+                152,
+                153,
+                157,
+                240,
+                252,
+                253,
+                254
+              ],
+              "totalPagesFound": 17,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 9,
@@ -8757,6 +10091,25 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                53,
+                61,
+                62,
+                63,
+                64,
+                68,
+                170,
+                179,
+                180,
+                181,
+                182,
+                186
+              ],
+              "totalPagesFound": 12,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -8781,6 +10134,25 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                53,
+                61,
+                62,
+                63,
+                64,
+                68,
+                170,
+                179,
+                180,
+                181,
+                182,
+                186
+              ],
+              "totalPagesFound": 12,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -9213,6 +10585,28 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "totalPagesFound": 204,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 1,
@@ -9236,6 +10630,28 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "totalPagesFound": 204,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -9307,6 +10723,28 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "totalPagesFound": 259,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 1,
@@ -9330,6 +10768,28 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "totalPagesFound": 259,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -9355,6 +10815,28 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "totalPagesFound": 186,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 1,
@@ -9378,6 +10860,28 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "totalPagesFound": 186,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -10477,8 +11981,36 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                7,
+                8,
+                9,
+                115,
+                116,
+                117
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                7,
+                8,
+                9,
+                115,
+                116,
+                117
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -10490,10 +12022,72 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                164,
+                165,
+                166,
+                167
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                164,
+                165,
+                166,
+                167
+              ],
+              "totalPagesFound": 9,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                5,
+                6,
+                74,
+                75,
+                76,
+                77
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                5,
+                6,
+                74,
+                75,
+                76,
+                77
+              ],
+              "totalPagesFound": 6,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -10811,6 +12405,28 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                7,
+                8,
+                9,
+                10,
+                90,
+                94,
+                98,
+                102,
+                115,
+                116,
+                117,
+                118,
+                190,
+                192,
+                197
+              ],
+              "totalPagesFound": 15,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -10834,6 +12450,28 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                7,
+                8,
+                9,
+                10,
+                90,
+                94,
+                98,
+                102,
+                115,
+                116,
+                117,
+                118,
+                190,
+                192,
+                197
+              ],
+              "totalPagesFound": 15,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -10894,6 +12532,28 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                124,
+                138,
+                142,
+                150,
+                164,
+                165,
+                166,
+                167
+              ],
+              "totalPagesFound": 18,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 17,
@@ -10917,6 +12577,28 @@
             }
           ],
           "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                124,
+                138,
+                142,
+                150,
+                164,
+                165,
+                166,
+                167
+              ],
+              "totalPagesFound": 18,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -10942,6 +12624,24 @@
           ],
           "SPO1": [
             {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                5,
+                6,
+                7,
+                57,
+                61,
+                74,
+                75,
+                76,
+                77,
+                78,
+                179
+              ],
+              "totalPagesFound": 11,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 14,
@@ -10965,6 +12665,24 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                5,
+                6,
+                7,
+                57,
+                61,
+                74,
+                75,
+                76,
+                77,
+                78,
+                179
+              ],
+              "totalPagesFound": 11,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -11218,6 +12936,16 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                14,
+                15
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -11228,6 +12956,16 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                14,
+                15
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -11259,6 +12997,18 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                159,
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 5,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -11270,6 +13020,18 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                159,
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 5,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 9
@@ -11279,6 +13041,16 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                9,
+                10
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -11290,6 +13062,16 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                9,
+                10
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -11474,6 +13256,16 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                14,
+                15
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -11484,6 +13276,16 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                14,
+                15
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -11515,6 +13317,18 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                159,
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 5,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -11526,6 +13340,18 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                159,
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 5,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 9
@@ -11535,6 +13361,16 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                9,
+                10
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -11546,6 +13382,16 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                9,
+                10
+              ],
+              "totalPagesFound": 3,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -11798,8 +13644,54 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SNU1": [],
-          "SNU2": [],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                11,
+                12,
+                13,
+                14,
+                15,
+                95,
+                96,
+                97,
+                111,
+                119,
+                120,
+                121,
+                191,
+                192
+              ],
+              "totalPagesFound": 16,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                2,
+                11,
+                12,
+                13,
+                14,
+                15,
+                95,
+                96,
+                97,
+                111,
+                119,
+                120,
+                121,
+                191,
+                192
+              ],
+              "totalPagesFound": 16,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "SOL": [
             {
               "doc": "ATP_HW_Design_SOL",
@@ -11817,10 +13709,102 @@
               "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
             }
           ],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                2,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                128,
+                129,
+                130,
+                135,
+                136,
+                137,
+                159,
+                169
+              ],
+              "totalPagesFound": 26,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                2,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                128,
+                129,
+                130,
+                135,
+                136,
+                137,
+                159,
+                169
+              ],
+              "totalPagesFound": 26,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                8,
+                9,
+                10,
+                55,
+                56,
+                70,
+                79,
+                80,
+                81,
+                82,
+                172,
+                173,
+                174,
+                175
+              ],
+              "totalPagesFound": 15,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                2,
+                8,
+                9,
+                10,
+                55,
+                56,
+                70,
+                79,
+                80,
+                81,
+                82,
+                172,
+                173,
+                174,
+                175
+              ],
+              "totalPagesFound": 15,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            }
+          ],
           "YAN": [
             {
               "doc": "ATP_HW_Design_YAN",
@@ -12180,6 +14164,14 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                9
+              ],
+              "totalPagesFound": 1,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 45,
@@ -12197,6 +14189,14 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                9
+              ],
+              "totalPagesFound": 1,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -12494,6 +14494,15 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                14,
+                15
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -12506,6 +14515,15 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                14,
+                15
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -12540,6 +14558,17 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 4,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -12555,6 +14584,17 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 4,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 8,
@@ -12566,6 +14606,15 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                9,
+                10
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -12585,6 +14634,15 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                9,
+                10
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
@@ -12788,6 +14846,15 @@
           ],
           "SNU1": [
             {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                14,
+                15
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
                 12,
@@ -12800,6 +14867,15 @@
             }
           ],
           "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                14,
+                15
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
@@ -12834,6 +14910,17 @@
           ],
           "SON1": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 4,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 16,
@@ -12849,6 +14936,17 @@
           ],
           "SON2": [
             {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                173,
+                174,
+                175,
+                176
+              ],
+              "totalPagesFound": 4,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
+            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 8,
@@ -12860,6 +14958,15 @@
             }
           ],
           "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                9,
+                10
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -12879,6 +14986,15 @@
             }
           ],
           "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                9,
+                10
+              ],
+              "totalPagesFound": 2,
+              "note": "자동매칭(키워드 검색), 시각확인 필요 · SIN1 기준 키워드 그대로 적용, 내용 동일 여부 미확인"
+            },
             {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [

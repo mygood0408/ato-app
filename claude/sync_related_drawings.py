@@ -35,6 +35,7 @@ def main(base='SIN1',targets=('SIN2',)):
                 for r in rd[base]:
                     if not r['note'].startswith('자동매칭'): continue
                     doc2=r['doc'].replace(base,tg)
+                    if not os.path.isdir(os.path.join(KB,'01_pages',doc2)) and not os.path.isdir(os.path.join(KB,'03_ocr',doc2)): doc2=r['doc'].replace(base,re.sub(r'\d$','',tg))  # ATP 는 시스템 번호 없는 문서(SNU/SON/SPO) 공유
                     if any(x['doc']==doc2 for x in keep): continue
                     if doc2 not in P: P[doc2]=pages(doc2)
                     m=match(b,P[doc2])
