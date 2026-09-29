@@ -23,8 +23,9 @@ for d in docs:
         if not f.endswith('.md'):continue
         pg=int(re.search(r'(\d+)',f).group(1))
         t=open(os.path.join(dp,f),encoding='utf-8',errors='ignore').read()
+        tn=re.sub(r'\s+',' ',t)
         for k,rx in KW.items():
-            m=re.search(rx,t,re.I)
+            m=re.search(rx,tn,re.I)
             if m:
                 res[k][d].append(pg)
                 if (k,d) not in ex:
