@@ -1,9 +1,10 @@
 """FTGS 궤도회로 전원 대표 경로(첫 회로) 생성 후 power-paths.json 에 추가/교체.
 p.109/113/117/121/125 는 선 구조 동일(sameStructure 로 검증) → 같은 좌표 재사용.
 페이지별: 캐비닛, 회로 5개(회로명·퓨즈·ID단자쌍) 를 텍스트에서 추출. 좌표 px = 100dpi 이미지 기준."""
-import pymupdf, json, re
-PDF = r"C:/Users/김영추/Desktop/2호선 PDF 자료/SICAS HW Design White_SIN1.pdf"
-PAGES = [109, 113, 117, 121, 125]
+import pymupdf, json, re, sys
+STN = sys.argv[1] if len(sys.argv) > 1 else "SIN1"  # 역: SIN1(기본) / SIN2 (SIN2 는 페이지 36/40/44/48)
+PDF = r"C:/Users/김영추/Desktop/2호선 PDF 자료/SICAS HW Design White_%s.pdf" % STN
+PAGES = [109, 113, 117, 121, 125] if STN == "SIN1" else [36, 40, 44, 48]
 pg = pymupdf.open(PDF); s = 72 / 100
 X24, X0, PITCH = 316, 433, 236  # 첫 회로 +24V/0V 세로선 px, 회로 간격 px
 def vlines(p):
@@ -52,8 +53,8 @@ def inst_of(pn):
     return {"cab": (cab or ['?'])[0][1:], "circuits": ckts, "sameStructure": ok}
 inst = {str(pn): inst_of(pn) for pn in PAGES}
 for k, v in inst.items(): print(k, v['cab'], v['sameStructure'], [c['ckt'] + ':' + '/'.join(c['term']) for c in v['circuits']])
-path = {"id": "PWR_FTGS_TRACK_C1", "title": "FTGS 궤도회로 전원 (ID캐비닛 24V → 퓨즈 → 릴레이접점 → 단자 → TR → 0V), 첫 회로 대표", "station": "SIN1",
-        "verified": False, "steps": [{"doc": "SICAS_HW_Design_SIN1", "page": PAGES[0], "pages": PAGES, "segments": seg24, "segments0": seg0, "parts": parts,
+path = {"id": "PWR_FTGS_TRACK_C1" + ("" if STN == "SIN1" else "_" + STN), "title": "FTGS 궤도회로 전원 (ID캐비닛 24V → 퓨즈 → 릴레이접점 → 단자 → TR → 0V), 첫 회로 대표", "station": STN,
+        "verified": False, "steps": [{"doc": "SICAS_HW_Design_" + STN, "page": PAGES[0], "pages": PAGES, "segments": seg24, "segments0": seg0, "parts": parts,
         "label": "+24V DC → 퓨즈 → 릴레이접점 → ID단자 → TR → 0V DC 복귀", "instances": inst,
         "continues": "ID캐비닛 D51 24V 공급원·TR 이후 릴레이연동 쪽은 미확인"}]}
 P = json.load(open('power-paths.json', encoding='utf-8')); P = [x for x in P if x['id'] != path['id']] + [path]

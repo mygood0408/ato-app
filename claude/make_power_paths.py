@@ -1,8 +1,9 @@
 """SICAS HW Design p.188 (S51 Level N 전원)의 벡터 선을 net으로 묶어 power-paths.json 생성.
 T자 접점(끝점이 다른 선 위)도 연결로 본다. 좌표는 페이지 크기 대비 0~1 비율."""
-import pymupdf, json, sys
-PDF = r"C:/Users/김영추/Desktop/2호선 PDF 자료/SICAS HW Design White_SIN1.pdf"
-PAGE = 188
+import pymupdf, json, sys, os
+STN = os.environ.get("STN", "SIN1")  # SIN2: STN=SIN2 (N레벨 = p.107, 기존 json 에 id 기준 추가)
+PDF = r"C:/Users/김영추/Desktop/2호선 PDF 자료/SICAS HW Design White_%s.pdf" % STN
+PAGE = 188 if STN == "SIN1" else 107
 pg = pymupdf.open(PDF)[PAGE - 1]
 W, H = pg.rect.width, pg.rect.height
 segs = []
@@ -52,9 +53,11 @@ starts = [("60V DC 인입 1 (−) → 단자 1~3 블록", 216, 1030), ("60V DC �
           ("60V DC 인입 2 (−) → 단자 1~3 블록", 519, 1030), ("60V DC 인입 2 (+) → 단자 5~7 블록", 601, 1030)]
 steps = []
 for lab, x, y in starts:
-    sg = net(x, y); steps.append({"doc": "SICAS_HW_Design_SIN1", "page": PAGE, "segments": sg, "label": lab,
+    sg = net(x, y); steps.append({"doc": "SICAS_HW_Design_" + STN, "page": PAGE, "segments": sg, "label": lab,
         "continues": "SV2602(T52) 연결 도면은 미확인"})
     print(lab, len(sg), 'segs', file=sys.stderr)
-out = [{"id": "PWR_SICAS_N_60V", "title": "SICAS 캐비닛 S51 N레벨 60V DC 인입 → 채널 A/B/C 단자", "station": "SIN1",
+out = [{"id": "PWR_SICAS_N_60V" + ("" if STN == "SIN1" else "_" + STN), "title": "SICAS 캐비닛 S51 N레벨 60V DC 인입 → 채널 A/B/C 단자", "station": STN,
         "verified": False, "steps": steps}]
+if STN != "SIN1":  # 다른 역은 기존 json 을 덮어쓰지 않고 id 기준 추가/교체
+    old = json.load(open("power-paths.json", encoding="utf-8")); out = [x for x in old if x["id"] != out[0]["id"]] + out
 json.dump(out, open(sys.argv[1] if len(sys.argv) > 1 else "power-paths.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(',', ':'))
