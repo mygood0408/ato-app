@@ -680,7 +680,7 @@
                 113
               ],
               "totalPagesFound": 7,
-              "note": "구성 다름 · 도면 확인 (토큰 차집합 표 기준)"
+              "note": "구성 다름 · SIN1 S51 캐비닛 OLM 6개 ↔ SIN2 S52 캐비닛 OLM 4개(SIN1과 상호연결), 도면 대조함"
             }
           ]
         }
@@ -1362,7 +1362,7 @@
                 113
               ],
               "totalPagesFound": 7,
-              "note": "구성 다름 · 도면 확인 (토큰 차집합 표 기준)"
+              "note": "구성 다름 · SIN1 S51 캐비닛 OLM 6개 ↔ SIN2 S52 캐비닛 OLM 4개(SIN1과 상호연결), 도면 대조함"
             }
           ]
         }
@@ -3651,7 +3651,7 @@
                 94
               ],
               "totalPagesFound": 10,
-              "note": "구성 다름 · 도면 확인"
+              "note": "구성 다름 · SIN1 ATO loop 캐비닛은 신도림, SIN2는 신대방·구로공단 표기(제목 기준)"
             },
             {
               "doc": "SICAS_HW_Design_SIN2",
@@ -4167,7 +4167,7 @@
                 140
               ],
               "totalPagesFound": 7,
-              "note": "구성 다름 · 도면 확인 (토큰 차집합 표 기준)"
+              "note": "구성 다름 · SIN1은 EC/DSTT 캐비닛(T52), SIN2는 SICAS 캐비닛 S52에 60V/24V/230V·UPS P51 연결, 도면 대조함"
             }
           ]
         }
@@ -4221,7 +4221,7 @@
                 107
               ],
               "totalPagesFound": 3,
-              "note": "구성 다름 · 도면 확인 (SIN2 ATP 도면엔 UPS 없음)"
+              "note": "구성 다름 · SIN1은 EC/DSTT 캐비닛(T52), SIN2는 SICAS 캐비닛 S52에 60V/24V/230V·UPS P51 연결, 도면 대조함"
             }
           ]
         }
@@ -4270,7 +4270,7 @@
                 107
               ],
               "totalPagesFound": 3,
-              "note": "구성 다름 · 도면 확인 (SIN2 ATP 도면엔 UPS 없음)"
+              "note": "구성 다름 · SIN1은 EC/DSTT 캐비닛(T52), SIN2는 SICAS 캐비닛 S52에 60V/24V/230V·UPS P51 연결, 도면 대조함"
             }
           ]
         }
