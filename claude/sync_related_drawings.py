@@ -41,7 +41,7 @@ def main():
                 s2.append({'doc':doc2,'pages':m[:15],'totalPagesFound':len(m),'note':NOTE}); st['auto']+=1
             b['relatedDrawings']={'SIN1':rd['SIN1'],'SIN2':s2}
     s=json.dumps(d,ensure_ascii=False,indent=2)
-    open(JS,'w',encoding='utf-8',newline='').write(s+'\n')
+    open(JS,'w',encoding='utf-8',newline='').write(s)
     t=open(HTML,encoding='utf-8').read()
     i=t.index('var BOARDINFO_RAW = ')+len('var BOARDINFO_RAW = ')
     _,e=json.JSONDecoder().raw_decode(t[i:])
