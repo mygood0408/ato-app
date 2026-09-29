@@ -1091,6 +1091,21 @@ var RACK = {
           ]
         },
         {
+          "id": "d51_24v",
+          "stage": "D51 ID캐비닛 24V DC (SDS 전원 → ID_T 단자대 → MELDE2)",
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                127,
+                128
+              ],
+              "note": "24V(p.127) / 0V 복귀(p.128) — 전원 경로 ⚡ 있음, 확인필요"
+            }
+          ],
+          "desc": "ID 캐비닛(D51)에서 24V DC_1/2가 ID_T 단자대 버스를 거쳐 MELDE2 보드(X2/X4)로 공급됩니다. 24V는 p.127, 0V 복귀는 p.128입니다."
+        },
+        {
           "id": "fan",
           "stage": "220V AC → FAN (N레벨 66~73번)",
           "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
