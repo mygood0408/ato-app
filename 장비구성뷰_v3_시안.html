@@ -26338,7 +26338,7 @@ function renderKbRefs(list, title, isFault){
   return '<div style="margin-top:8px">' + (title ? '<b>' + title + '</b>' : '') + '<ul style="font-size:12px">' + lines + '</ul></div>';
 }
 /* ---- 페이지 이미지 팝업 뷰어 (휠/핀치 확대, 드래그 이동, 이전/다음, 썸네일) ---- */
-var kbv = { doc:'', pages:[], i:0, s:1, x:0, y:0, pw:false };
+var kbv = { doc:'', pages:[], i:0, s:1, x:0, y:0, pw:false, auto:false };  /* auto: 여러 쪽 자동 전환, 기본 꺼짐 */
 /* 전원 경로 흐름 애니메이션 데이터 (power-paths.json 과 동일 — 같이 갱신). verified:false 는 화면에 '확인필요' 표시 */
 /* 역 목록 (stations.json 과 동일 — 같이 갱신) */
 var STATIONS = {"EUL":{"station":"EUL","sicas":"SICAS HW Design White_EUL.pdf","sicasPages":290,"atp":"ATP HW Design_EUL.pdf","cabinet":"S01","paths":{"N":196,"FTGS":[110,114,118,122,126,130,134]},"titleCab":"S01","dcab":"D01"},"GCD":{"station":"GCD","sicas":"SICAS HW Design White_GCD.pdf","sicasPages":408,"atp":"ATP HW Design_GCD.pdf","cabinet":"S95","paths":{"N":257,"FTGS":[181,185,189,193]},"titleCab":"S95","dcab":"D95"},"GYO":{"station":"GYO","sicas":"SICAS HW Design White_GYO.pdf","sicasPages":224,"atp":"ATP HW Design_GYO.pdf","cabinet":"S31","paths":{"N":154,"FTGS":[72,76,80,84,88,92]},"titleCab":"S31","dcab":"D31"},"HON":{"station":"HON","sicas":"SICAS HW Design White_HON.pdf","sicasPages":277,"atp":"ATP HW Design_HON.pdf","cabinet":"S61","paths":{"N":181,"FTGS":[95,99,103,107,111,115,119]},"titleCab":"S61","dcab":"D61"},"SCD":{"station":"SCD","sicas":"SICAS HW Design White_SCD.pdf","sicasPages":50,"atp":"ATP HW Design_SCD.pdf","cabinet":"(S 없음","paths":{"FTGS":[29]},"titleCab":"(S 없음","dcab":"D91"},"SIN1":{"station":"SIN","sicas":"SICAS HW Design White_SIN1.pdf","sicasPages":286,"atp":"ATP HW Design_SIN1.pdf","cabinet":"S51","paths":{"N":188,"FTGS":[109,113,117,121,125]},"titleCab":"S51"},"SIN2":{"station":"SIN","sicas":"SICAS HW Design White_SIN2.pdf","sicasPages":150,"atp":"ATP HW Design_SIN2.pdf","cabinet":"S52","paths":{"N":107,"FTGS":[36,40,44,48]},"titleCab":"S51"},"SNU1":{"station":"SNU","sicas":"SICAS HW Design White_SNU1.pdf","sicasPages":261,"atp":"ATP HW Design_SNU.pdf","cabinet":"S41","paths":{"N":155,"FTGS":[77,81,85,89,93]},"titleCab":"S41","dcab":"D41"},"SNU2":{"station":"SNU","sicas":"SICAS HW Design White_SNU2.pdf","sicasPages":127,"atp":"ATP HW Design_SNU.pdf","cabinet":"S42","paths":{"N":117,"FTGS":[42,46,50,54,58]},"titleCab":"S42","dcab":"D41"},"SOL":{"station":"SOL","sicas":"SICAS HW Design White_SOL.pdf","sicasPages":235,"atp":"ATP HW Design_SOL.pdf","cabinet":"S81","paths":{"N":149,"FTGS":[80,84,88]},"titleCab":"S81","dcab":"D81"},"SON1":{"station":"SON","sicas":"SICAS HW Design White_SON1.pdf","sicasPages":360,"atp":"ATP HW Design_SON.pdf","cabinet":"S11","paths":{"N":237,"FTGS":[149,153,157,161,165,169,173]},"titleCab":"S11","dcab":"D11"},"SON2":{"station":"SON","sicas":"SICAS HW Design White_SON2.pdf","sicasPages":150,"atp":"ATP HW Design_SON.pdf","cabinet":"S12","paths":{"N":107,"FTGS":[36,40,44,48]},"titleCab":"S12","dcab":"D11"},"SPO1":{"station":"SPO","sicas":"SICAS HW Design White_SPO1.pdf","sicasPages":272,"atp":"ATP HW Design_SPO.pdf","cabinet":"S21","paths":{"N":144,"FTGS":[73,77,81]},"titleCab":"S21","dcab":"D21"},"SPO2":{"station":"SPO","sicas":"SICAS HW Design White_SPO2.pdf","sicasPages":183,"atp":"ATP HW Design_SPO.pdf","cabinet":"S22","paths":{"N":153,"FTGS":[73,77,81,85,89,93]},"titleCab":"S22","dcab":"D21"},"YAN":{"station":"YAN","sicas":"SICAS HW Design White_YAN.pdf","sicasPages":352,"atp":"ATP HW Design_YAN.pdf","cabinet":"S71","paths":{"FTGS":[143,147,151,155,159,163]},"titleCab":"S71","dcab":"D71"}};
@@ -26346,7 +26346,7 @@ var POWER_PATHS = [{"id":"PWR_SICAS_N_60V","title":"SICAS 캐비닛 S51 N레벨 
 function kbvPathSteps(){ var o = []; POWER_PATHS.forEach(function(P){ P.steps.forEach(function(s){ if (s.doc === kbv.doc && (s.pages ? s.pages.indexOf(kbv.pages[kbv.i]) >= 0 : s.page === kbv.pages[kbv.i])) o.push({ P: P, s: s }); }); }); return o; }
 function kbvPathDraw(){
   var sv = document.getElementById('kbvOv'), bt = document.getElementById('kbvPw'), tx = document.getElementById('kbvOvT'), lb = document.getElementById('kbvPwLbl'); if (!sv) return;
-  var st = kbvPathSteps(); bt.style.display = st.length ? '' : 'none'; bt.style.background = kbv.pw ? 'var(--steel)' : '';
+  clearTimeout(kbv.tm); var st = kbvPathSteps(); bt.style.display = st.length ? '' : 'none'; bt.style.background = kbv.pw ? 'var(--steel)' : '';
   if (!st.length || !kbv.pw) { sv.innerHTML = ''; tx.innerHTML = ''; lb.style.display = 'none'; return; }
   var ln = function(q, c){ return '<line' + (c ? ' class="' + c + '"' : '') + ' x1="' + q[0] + '" y1="' + q[1] + '" x2="' + q[2] + '" y2="' + q[3] + '"/>'; };
   sv.innerHTML = st.map(function(t){ return t.s.segments.map(function(q){ return ln(q); }).join('') + (t.s.segments0 || []).map(function(q){ return ln(q, 'z'); }).join(''); }).join('');
@@ -26354,10 +26354,15 @@ function kbvPathDraw(){
   var cur = kbv.pages[kbv.i], bs = 'height:24px;padding:0 8px;border:none;border-radius:4px;background:#444;color:#fff;font-size:12px;margin-right:4px';
   lb.style.display = 'block'; lb.innerHTML = st.map(function(t){
     var I = t.s.instances && t.s.instances[cur], pl = t.s.pages || [], ix = pl.indexOf(cur), o = '';
+    /* 다음 쪽: 같은 경로의 다음 step 쪽(예: D51 p.127→128), 없으면 step.pages 의 다음 쪽 */
+    var sx = t.P.steps.indexOf(t.s), ns = t.P.steps[sx + 1], nx = ns && ns.doc === kbv.doc ? (ns.page || (ns.pages || [])[0]) : (ix >= 0 && ix < pl.length - 1 ? pl[ix + 1] : 0);
+    if (nx === cur) nx = 0;
+    if (kbv.auto && nx) kbv.tm = setTimeout(function(){ var r = document.getElementById('kbvRoot'); if (r && r.style.display !== 'none') kbvGo(nx); }, 5000);
     o += '<div><span style="color:#ff6b6b">▬ +24V(공급)</span> <span style="color:#5aa9ff">▬ 0V(복귀)</span> ' + escapeHtml(t.s.label) + (I ? ' — 캐비닛 ' + I.cab : '') + '</div>';
     o += '<div style="margin:4px 0">' + (I ? '<button data-kbv="pwd" style="' + bs + '">회로 5개 ' + (kbv.pwDetail ? '▴' : '▾') + '</button>' : '')
       + (ix > 0 ? '<button data-kbv="pwp" data-pg="' + pl[ix - 1] + '" style="' + bs + '">◀ ' + escapeHtml(t.s.instances[pl[ix - 1]].cab) + '</button>' : '')
-      + (ix >= 0 && ix < pl.length - 1 ? '<button data-kbv="pwp" data-pg="' + pl[ix + 1] + '" style="' + bs + '">' + escapeHtml(t.s.instances[pl[ix + 1]].cab) + ' ▶</button>' : '') + '</div>';
+      + (ix >= 0 && ix < pl.length - 1 ? '<button data-kbv="pwp" data-pg="' + pl[ix + 1] + '" style="' + bs + '">' + escapeHtml(t.s.instances[pl[ix + 1]].cab) + ' ▶</button>' : '') + (nx ? '<button data-kbv="pwn" data-pg="' + nx + '" style="' + bs + '">다음 쪽 p.' + nx + ' ▶</button>' : '')
+      + (nx ? '<button data-kbv="pwa" style="' + bs + '">자동 전환 ' + (kbv.auto ? '켜짐' : '꺼짐') + '</button>' : '') + '</div>';
     if (I && kbv.pwDetail) o += '<table style="border-collapse:collapse;font-size:12px"><tr><th>퓨즈</th><th>회로</th><th>ID단자(+24V / 0V)</th></tr>' + I.circuits.map(function(c, k){
       return '<tr' + (k === 0 ? ' style="color:#ffd27f"' : '') + '><td>' + escapeHtml(c.fuse) + '</td><td>' + escapeHtml(c.ckt) + '</td><td>' + escapeHtml(c.term.join(' / ')) + '</td></tr>'; }).join('') + '</table><div>선은 첫 회로(노랑) 기준. 나머지 4개는 구조 동일, 회로명·단자번호만 다름.</div>';
     return o + '<div style="color:#ffb4b4">⚠ 확인필요 — ' + escapeHtml(t.s.continues || '') + '</div>';
@@ -26365,6 +26370,7 @@ function kbvPathDraw(){
 }
 function kbvApply(){ var im = document.getElementById('kbvImg'); if (!im) return; var t = 'translate(-50%,-50%) translate(' + kbv.x + 'px,' + kbv.y + 'px) scale(' + kbv.s + ')'; im.style.transform = t;
   ['kbvOv', 'kbvOvT'].forEach(function(id){ var e = document.getElementById(id); if (e) { e.style.width = im.offsetWidth + 'px'; e.style.height = im.offsetHeight + 'px'; e.style.transform = t; } }); }
+function kbvGo(tg){ if (kbv.pages.indexOf(tg) < 0) kbv.pages.push(tg); kbvShow(kbv.pages.indexOf(tg)); }
 function kbvShow(i){
   kbv.i = Math.max(0, Math.min(kbv.pages.length - 1, i)); kbv.s = 1; kbv.x = 0; kbv.y = 0;
   var p = kbv.pages[kbv.i], im = document.getElementById('kbvImg'), miss = document.getElementById('kbvMiss');
@@ -26423,6 +26429,8 @@ function kbvOpen(doc, pages, p){
       else if (k === 'close') kbvClose();
       else if (k === 'pw') { kbv.pw = !kbv.pw; kbvPathDraw(); }
       else if (k === 'pwd') { kbv.pwDetail = !kbv.pwDetail; kbvPathDraw(); }
+      else if (k === 'pwa') { kbv.auto = !kbv.auto; kbvPathDraw(); }
+      else if (k === 'pwn') kbvGo(+b.getAttribute('data-pg'));
       else if (k === 'pwp') { var tg = +b.getAttribute('data-pg'); if (kbv.pages.indexOf(tg) < 0) kbv.pages.push(tg); kbvShow(kbv.pages.indexOf(tg)); }
       else if (k === 'prev') kbvShow(kbv.i - 1);
       else if (k === 'next') kbvShow(kbv.i + 1);
@@ -26435,7 +26443,7 @@ function kbvOpen(doc, pages, p){
   el.style.display = 'flex'; kbv.doc = doc; kbv.pages = pages; kbv.pw = false;
   kbvShow(Math.max(0, pages.indexOf(p)));
 }
-function kbvClose(){ var el = document.getElementById('kbvRoot'); if (el) el.style.display = 'none'; }
+function kbvClose(){ clearTimeout(kbv.tm); var el = document.getElementById('kbvRoot'); if (el) el.style.display = 'none'; }
 document.addEventListener('click', function(e){
   var a = e.target.closest('.kb-pg'); if (!a) return;
   e.preventDefault(); e.stopPropagation();
