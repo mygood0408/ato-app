@@ -52,10 +52,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.7.1",
@@ -63,7 +63,8 @@
             "pdfPages": [
               106
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "터미널 스트립 레벨 G(수직)"
           },
           {
             "section": "4.1",
@@ -71,7 +72,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -101,10 +103,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.3",
@@ -112,7 +114,8 @@
             "pdfPages": [
               92
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           },
           {
             "section": "4.4",
@@ -120,7 +123,8 @@
             "pdfPages": [
               95
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           },
           {
             "section": "4.2",
@@ -128,7 +132,8 @@
             "pdfPages": [
               82
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           }
         ]
       }
@@ -159,10 +164,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.4",
@@ -170,7 +175,8 @@
             "pdfPages": [
               95
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           }
         ]
       }
@@ -199,10 +205,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.4",
@@ -210,7 +216,8 @@
             "pdfPages": [
               95
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           }
         ]
       }
@@ -242,10 +249,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.2",
@@ -253,7 +260,8 @@
             "pdfPages": [
               82
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           },
           {
             "section": "4.4",
@@ -261,7 +269,8 @@
             "pdfPages": [
               95
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           }
         ]
       }
@@ -291,10 +300,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.3",
@@ -302,7 +311,8 @@
             "pdfPages": [
               92
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
       }
@@ -331,10 +341,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           },
           {
             "section": "4.3",
@@ -342,7 +352,8 @@
             "pdfPages": [
               92
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
       }
@@ -372,10 +383,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           }
         ]
       }
@@ -405,10 +416,10 @@
             "section": "6.1",
             "kbDoc": "SICAS_유지보수_매뉴얼",
             "pdfPages": [
-              65,
               129
             ],
-            "confidence": "확인필요(후보다수)"
+            "confidence": "확정",
+            "title": "수리 지침 – EC/DSTT"
           }
         ]
       }
@@ -450,7 +461,8 @@
             "pdfPages": [
               51
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "BUMA-장치"
           },
           {
             "section": "4.2",
@@ -458,7 +470,8 @@
             "pdfPages": [
               82
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP)-장치"
           },
           {
             "section": "5.2",
@@ -466,7 +479,8 @@
             "pdfPages": [
               112
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "OLM(Optical Link Module)"
           }
         ]
       }
@@ -534,7 +548,8 @@
             "pdfPages": [
               112
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "OLM(Optical Link Module)"
           }
         ]
       }
@@ -578,7 +593,8 @@
             "pdfPages": [
               73
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "필터 라인"
           },
           {
             "section": "3.12",
@@ -586,7 +602,8 @@
             "pdfPages": [
               75
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "레벨 N에서의 터미널 스트립"
           },
           {
             "section": "3.1",
@@ -594,7 +611,8 @@
             "pdfPages": [
               36
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "연동 캐비닛 구조"
           }
         ]
       }
@@ -636,7 +654,8 @@
             "pdfPages": [
               75
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "레벨 N에서의 터미널 스트립"
           },
           {
             "section": "3.1",
@@ -644,7 +663,8 @@
             "pdfPages": [
               36
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "연동 캐비닛 구조"
           }
         ]
       }
@@ -688,7 +708,8 @@
             "pdfPages": [
               75
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "레벨 N에서의 터미널 스트립"
           },
           {
             "section": "3.1",
@@ -696,7 +717,8 @@
             "pdfPages": [
               36
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "연동 캐비닛 구조"
           }
         ]
       }
@@ -741,7 +763,8 @@
             "pdfPages": [
               66
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SVK2102-전원장치"
           },
           {
             "section": "3.12",
@@ -749,7 +772,8 @@
             "pdfPages": [
               75
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "레벨 N에서의 터미널 스트립"
           }
         ]
       }
@@ -822,7 +846,8 @@
             "pdfPages": [
               66
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SVK2102-전원장치"
           },
           {
             "section": "3.10",
@@ -830,7 +855,8 @@
             "pdfPages": [
               73
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "필터 유닛"
           },
           {
             "section": "2.3.7.5",
@@ -838,7 +864,8 @@
             "pdfPages": [
               34
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "실행중인 2-of-2 컴퓨터의 3채널 활성화"
           }
         ]
       }
@@ -908,7 +935,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "4.1",
@@ -916,7 +944,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           },
           {
             "section": "4.7.1",
@@ -924,7 +953,8 @@
             "pdfPages": [
               106
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "터미널 스트립 레벨 G(수직)"
           }
         ]
       }
@@ -965,7 +995,8 @@
             "pdfPages": [
               106
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "터미널 스트립 레벨 G(수직)"
           },
           {
             "section": "4.1",
@@ -973,7 +1004,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1015,7 +1047,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "4.7.1",
@@ -1023,7 +1056,8 @@
             "pdfPages": [
               106
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "터미널 스트립 레벨 G(수직)"
           },
           {
             "section": "4.1",
@@ -1031,7 +1065,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1075,7 +1110,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "4.7.1",
@@ -1083,7 +1119,8 @@
             "pdfPages": [
               106
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "터미널 스트립 레벨 G(수직)"
           },
           {
             "section": "4.1",
@@ -1091,7 +1128,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1131,7 +1169,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "4.1",
@@ -1139,7 +1178,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1181,7 +1221,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "4.1",
@@ -1189,7 +1230,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1230,7 +1272,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "2.3.7.5",
@@ -1238,7 +1281,8 @@
             "pdfPages": [
               34
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "실행중인 2-of-2 컴퓨터의 3채널 활성화"
           }
         ]
       }
@@ -1281,7 +1325,8 @@
             "pdfPages": [
               73
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "필터 라인"
           },
           {
             "section": "3.12",
@@ -1289,7 +1334,8 @@
             "pdfPages": [
               75
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "레벨 N에서의 터미널 스트립"
           },
           {
             "section": "3.1",
@@ -1297,7 +1343,8 @@
             "pdfPages": [
               36
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "연동 캐비닛 구조"
           }
         ]
       }
@@ -1340,7 +1387,8 @@
             "pdfPages": [
               106
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "터미널 스트립 레벨 G(수직)"
           },
           {
             "section": "4.1",
@@ -1348,7 +1396,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1389,7 +1438,8 @@
             "pdfPages": [
               51
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "BUMA-장치"
           },
           {
             "section": "5.2",
@@ -1397,7 +1447,8 @@
             "pdfPages": [
               112
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "OLM(Optical Link Module)"
           }
         ]
       }
@@ -1438,7 +1489,8 @@
             "pdfPages": [
               101
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
           },
           {
             "section": "4.1",
@@ -1446,7 +1498,8 @@
             "pdfPages": [
               76
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       }
@@ -1484,7 +1537,8 @@
             "pdfPages": [
               82
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP)-장치"
           }
         ]
       }
@@ -1522,7 +1576,8 @@
             "pdfPages": [
               82
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP)-장치"
           }
         ]
       }
@@ -1561,7 +1616,8 @@
             "pdfPages": [
               92
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           },
           {
             "section": "4.2",
@@ -1569,7 +1625,8 @@
             "pdfPages": [
               82
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           }
         ]
       }
@@ -1608,7 +1665,8 @@
             "pdfPages": [
               92
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
       }
@@ -1647,7 +1705,8 @@
             "pdfPages": [
               92
             ],
-            "confidence": "확정"
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
       }
