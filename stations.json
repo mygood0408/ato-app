@@ -5,7 +5,18 @@
   "sicasPages": 290,
   "atp": "ATP HW Design_EUL.pdf",
   "cabinet": "S01",
-  "paths": {},
+  "paths": {
+   "N": 196,
+   "FTGS": [
+    110,
+    114,
+    118,
+    122,
+    126,
+    130,
+    134
+   ]
+  },
   "titleCab": "S01"
  },
  "GCD": {
@@ -14,7 +25,15 @@
   "sicasPages": 408,
   "atp": "ATP HW Design_GCD.pdf",
   "cabinet": "S95",
-  "paths": {},
+  "paths": {
+   "N": 257,
+   "FTGS": [
+    181,
+    185,
+    189,
+    193
+   ]
+  },
   "titleCab": "S95"
  },
  "GYO": {
@@ -23,7 +42,17 @@
   "sicasPages": 224,
   "atp": "ATP HW Design_GYO.pdf",
   "cabinet": "S31",
-  "paths": {},
+  "paths": {
+   "N": 154,
+   "FTGS": [
+    72,
+    76,
+    80,
+    84,
+    88,
+    92
+   ]
+  },
   "titleCab": "S31"
  },
  "HON": {
