@@ -64,8 +64,20 @@
   "sicasPages": 277,
   "atp": "ATP HW Design_HON.pdf",
   "cabinet": "S61",
-  "paths": {},
-  "titleCab": "S61"
+  "paths": {
+   "N": 181,
+   "FTGS": [
+    95,
+    99,
+    103,
+    107,
+    111,
+    115,
+    119
+   ]
+  },
+  "titleCab": "S61",
+  "dcab": "D61"
  },
  "SCD": {
   "station": "SCD",
@@ -73,8 +85,13 @@
   "sicasPages": 50,
   "atp": "ATP HW Design_SCD.pdf",
   "cabinet": "(S 없음",
-  "paths": {},
-  "titleCab": "(S 없음"
+  "paths": {
+   "FTGS": [
+    29
+   ]
+  },
+  "titleCab": "(S 없음",
+  "dcab": "D91"
  },
  "SIN1": {
   "station": "SIN",
@@ -117,8 +134,18 @@
   "sicasPages": 261,
   "atp": "ATP HW Design_SNU.pdf",
   "cabinet": "S41",
-  "paths": {},
-  "titleCab": "S41"
+  "paths": {
+   "N": 155,
+   "FTGS": [
+    77,
+    81,
+    85,
+    89,
+    93
+   ]
+  },
+  "titleCab": "S41",
+  "dcab": "D41"
  },
  "SNU2": {
   "station": "SNU",
@@ -126,8 +153,18 @@
   "sicasPages": 127,
   "atp": "ATP HW Design_SNU.pdf",
   "cabinet": "S42",
-  "paths": {},
-  "titleCab": "S42"
+  "paths": {
+   "N": 117,
+   "FTGS": [
+    42,
+    46,
+    50,
+    54,
+    58
+   ]
+  },
+  "titleCab": "S42",
+  "dcab": "D41"
  },
  "SOL": {
   "station": "SOL",
@@ -135,8 +172,16 @@
   "sicasPages": 235,
   "atp": "ATP HW Design_SOL.pdf",
   "cabinet": "S81",
-  "paths": {},
-  "titleCab": "S81"
+  "paths": {
+   "N": 149,
+   "FTGS": [
+    80,
+    84,
+    88
+   ]
+  },
+  "titleCab": "S81",
+  "dcab": "D81"
  },
  "SON1": {
   "station": "SON",
@@ -144,8 +189,20 @@
   "sicasPages": 360,
   "atp": "ATP HW Design_SON.pdf",
   "cabinet": "S11",
-  "paths": {},
-  "titleCab": "S11"
+  "paths": {
+   "N": 237,
+   "FTGS": [
+    149,
+    153,
+    157,
+    161,
+    165,
+    169,
+    173
+   ]
+  },
+  "titleCab": "S11",
+  "dcab": "D11"
  },
  "SON2": {
   "station": "SON",
@@ -153,8 +210,17 @@
   "sicasPages": 150,
   "atp": "ATP HW Design_SON.pdf",
   "cabinet": "S12",
-  "paths": {},
-  "titleCab": "S12"
+  "paths": {
+   "N": 107,
+   "FTGS": [
+    36,
+    40,
+    44,
+    48
+   ]
+  },
+  "titleCab": "S12",
+  "dcab": "D11"
  },
  "SPO1": {
   "station": "SPO",
@@ -162,8 +228,16 @@
   "sicasPages": 272,
   "atp": "ATP HW Design_SPO.pdf",
   "cabinet": "S21",
-  "paths": {},
-  "titleCab": "S21"
+  "paths": {
+   "N": 144,
+   "FTGS": [
+    73,
+    77,
+    81
+   ]
+  },
+  "titleCab": "S21",
+  "dcab": "D21"
  },
  "SPO2": {
   "station": "SPO",
@@ -171,8 +245,19 @@
   "sicasPages": 183,
   "atp": "ATP HW Design_SPO.pdf",
   "cabinet": "S22",
-  "paths": {},
-  "titleCab": "S22"
+  "paths": {
+   "N": 153,
+   "FTGS": [
+    73,
+    77,
+    81,
+    85,
+    89,
+    93
+   ]
+  },
+  "titleCab": "S22",
+  "dcab": "D21"
  },
  "YAN": {
   "station": "YAN",
@@ -180,7 +265,17 @@
   "sicasPages": 352,
   "atp": "ATP HW Design_YAN.pdf",
   "cabinet": "S71",
-  "paths": {},
-  "titleCab": "S71"
+  "paths": {
+   "FTGS": [
+    143,
+    147,
+    151,
+    155,
+    159,
+    163
+   ]
+  },
+  "titleCab": "S71",
+  "dcab": "D71"
  }
 }
