@@ -11,7 +11,7 @@ def walk(o):
         for v in o.values(): walk(v)
     elif isinstance(o,list):
         for v in o: walk(v)
-for f in ('board-info.json','fault-cases.json'): walk(json.load(open(f,encoding='utf-8')))
+for f in ('board-info.json','fault-cases.json','power-paths.json'): walk(json.load(open(f,encoding='utf-8')))
 n=miss=0
 for d,ps in need.items():
     os.makedirs(f'{OUT}/{d}',exist_ok=True)
