@@ -14706,7 +14706,7 @@ function kbvOpen(doc, pages, p){
     };
     var pts = {};
     st.addEventListener('wheel', function(e){ e.preventDefault(); zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX, e.clientY); }, { passive: false });
-    st.addEventListener('pointerdown', function(e){ st.setPointerCapture(e.pointerId); pts[e.pointerId] = [e.clientX, e.clientY]; st.style.cursor = 'grabbing'; });
+    st.addEventListener('pointerdown', function(e){ if (e.target.closest('button')) return; st.setPointerCapture(e.pointerId); pts[e.pointerId] = [e.clientX, e.clientY]; st.style.cursor = 'grabbing'; });
     st.addEventListener('pointermove', function(e){
       var old = pts[e.pointerId]; if (!old) return;
       var ids = Object.keys(pts);
