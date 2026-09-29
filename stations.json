@@ -17,7 +17,8 @@
     134
    ]
   },
-  "titleCab": "S01"
+  "titleCab": "S01",
+  "dcab": "D01"
  },
  "GCD": {
   "station": "GCD",
@@ -34,7 +35,8 @@
     193
    ]
   },
-  "titleCab": "S95"
+  "titleCab": "S95",
+  "dcab": "D95"
  },
  "GYO": {
   "station": "GYO",
@@ -53,7 +55,8 @@
     92
    ]
   },
-  "titleCab": "S31"
+  "titleCab": "S31",
+  "dcab": "D31"
  },
  "HON": {
   "station": "HON",

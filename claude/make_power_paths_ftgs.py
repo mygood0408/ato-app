@@ -48,7 +48,7 @@ def inst_of(pn):
     ckts = []
     for k in range(5):
         a, b = X24 + PITCH * k, X0 + PITCH * k
-        ck = [q[4] for q in words(p, a, 385, a + 95, 415) if '234' in q[4]]
+        ck = [q[4] for q in words(p, a, 385, a + 95, 415) if re.fullmatch(r'[A-Z]?\d{3}-[\w-]+', q[4])]
         fu = [q[4] for q in words(p, a - 45, 235, a, 255) if re.fullmatch(r'F2\d', q[4])]
         tm = [q[4] for q in words(p, a - 4, 795, a + 30, 825) + words(p, b - 4, 795, b + 30, 825) if q[4].isdigit()]
         ckts.append({"ckt": (ck or ['?'])[0], "fuse": (fu or ['?'])[0], "term": tm})
