@@ -1,8 +1,9 @@
 """C1: T52 G단자(SIN1 p.230) 60V DC 인입 → 단자 8/7 → 퓨즈 4A → Filter Z1~Z4 경로를 power-paths.json 에 추가/교체.
 p.188 스크립트와 같은 net 묶기(T접점) 사용. 시드 px = 100dpi 이미지 기준. 인자: --preview 이면 색입힌 png 저장."""
 import pymupdf, json, sys, os
-PDF = r"C:/Users/김영추/Desktop/2호선 PDF 자료/SICAS HW Design White_SIN1.pdf"
-PAGE = 230
+from stn import STN, PDF, pid, page   # --station <접미사>(기본 SIN1); --dry 는 개수만 출력
+PAGE = page("SV2602")[0]
+X = STN != "SIN1"   # SIN1 외 역은 T52·p.224 등 SIN1 고유 표기를 쓰지 않음
 pg = pymupdf.open(PDF)[PAGE - 1]
 W, H = pg.rect.width, pg.rect.height
 s = 100 / 72
@@ -57,15 +58,16 @@ seg0 = net([(1200, 827), (1200, 918)], False)      # 0V1, 0V2 (단자 4/3까지)
 seg0 += [br(392, 892, 258, 892), br(392, 918, 258, 918)]
 seg0 += net([(487, 760), (555, 760), (625, 760), (693, 760)], False)  # Filter 0V 선 → 단자 5~1 쪽
 def pt(txt, x, y): return [txt, round(x / s / W, 4), round(y / s / H, 4)]
-parts = [pt("60V 인입 (P51 전원반)", 1240, 806), pt("단자 8/7 (+60V1/2)", 262, 800), pt("퓨즈 4A ×4", 330, 703), pt("Filter Z1~Z4 →", 440, 625)]
-print('60V segs', len(seg60), '0V segs', len(seg0), file=sys.stderr)
-path = {"id": "PWR_SICAS_T52_60V", "title": "SICAS 캐비닛 T52 G단자 60V DC (P51 전원반 → 단자 → 퓨즈 4A → Filter Z1~Z4 → SV2602)", "station": "SIN1",
-        "verified": False, "steps": [{"doc": "SICAS_HW_Design_SIN1", "page": PAGE, "segments": seg60, "segments0": seg0, "parts": parts,
+parts = [pt("60V 인입 (전원반)" if X else "60V 인입 (P51 전원반)", 1240, 806), pt("단자 8/7 (+60V1/2)", 262, 800), pt("퓨즈 4A ×4", 330, 703), pt("Filter Z1~Z4 →", 440, 625)]
+print(STN, PAGE, '60V segs', len(seg60), '0V segs', len(seg0), file=sys.stderr)
+path = {"id": pid("PWR_SICAS_T52_60V"), "title": ("SICAS " + STN + " G단자 60V DC (전원반 → 단자 → 퓨즈 4A → Filter Z1~Z4 → SV2602)") if X else "SICAS 캐비닛 T52 G단자 60V DC (P51 전원반 → 단자 → 퓨즈 4A → Filter Z1~Z4 → SV2602)", "station": STN,
+        "verified": False, "steps": [{"doc": "SICAS_HW_Design_" + STN, "page": PAGE, "segments": seg60, "segments0": seg0, "parts": parts,
         "label": "+60V DC 인입 → 단자 8/7 → 퓨즈 4A → Filter Z1~Z4 (0V 복귀 파랑)",
-        "continues": "Filter Z1~Z4 이후 SV2602(p.224 랙 배치, 채널1·1·2·2)로의 배선은 도면에 없음(확인필요). T51(p.206)과는 X200/X203 플러그 8V 분배 주석만 있고 배선 없음"}]}
-P = json.load(open(os.path.join(os.path.dirname(__file__), '..', 'power-paths.json'), encoding='utf-8'))
-P = [x for x in P if x['id'] != path['id']] + [path]
-json.dump(P, open(os.path.join(os.path.dirname(__file__), '..', 'power-paths.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+        "continues": ("Filter Z1~Z4 이후 SV2602(p.%d 랙 배치)로의 배선은 도면에 없음(확인필요). SIN1 기준 쪽과 도면 일치를 스크립트로 확인, 역별 현장 확인 전" % page("SV2602")[1]) if X else "Filter Z1~Z4 → SV2602 전원장치 프레임 X1(채널1·2) 결선은 SICAS 유지보수 매뉴얼 p.78 「그림 35 60V/8V 배전 배선」에 있음(일반 도면, 이 T52 도면과 직접 대응은 미검증). 랙 배치 p.224·매뉴얼 p.81(채널1·1·2·2). 8V는 매뉴얼 상 X200/X201/X202 플러그로 분배, 상대 캐비닛 X203 접속은 T51 p.206 주석뿐이고 상세도 A25140-J209-A3-*-11은 참조만 있어 PDF에 없음"}]}
+if '--dry' not in sys.argv:
+    fp = os.path.join(os.path.dirname(__file__), '..', 'power-paths.json'); P = json.load(open(fp, encoding='utf-8'))
+    P = [x for x in P if x['id'] != path['id']] + [path]
+    json.dump(P, open(fp, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 if '--preview' in sys.argv:
     sh = pg.new_shape()
     for col, L in (((1, 0, 0), seg60), ((0, 0, 1), seg0)):
