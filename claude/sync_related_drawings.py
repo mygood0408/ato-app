@@ -1,6 +1,6 @@
 """board-info.json 의 relatedDrawings({SIN1:[..],SIN2:[..]})를 갱신하고 HTML 내장 BOARDINFO_RAW 도 같이 교체.
 멱등: 몇 번 돌려도 같은 결과. 옛 배열 구조가 남아 있으면 doc 접미사(SIN1/SIN2)로 나눠 변환.
-- SIN1 항목은 손대지 않는다.
+- SIN1 항목은 손대지 않는다 (confirmed 필드 포함 모든 필드 보존). 자동매칭 재생성 SIN2 항목은 confirmed 없음=확인필요.
 - SIN2 의 note 가 '자동매칭'으로 시작하는 항목만 SIN1 자동매칭 항목의 키워드 규칙으로 다시 만든다. 수동 항목은 유지.
 사용: python claude/sync_related_drawings.py"""
 import json,re,os

@@ -53,7 +53,7 @@
         {
           "id": "1",
           "stage": "N레벨 배전반 (후면 K행) — 60V/24V/230V 분기",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 대응 도면 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 대응 도면 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "60V·24V·230V가 여기서 각 채널로 분기됩니다. 60V는 5,6,7번(+)/1,2,3번(−), 24V는 40~49번(+)/51~59번(−) 단자에서 측정합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC60",
@@ -70,7 +70,7 @@
         {
           "id": "fuse24",
           "stage": "24V 퓨즈 (N레벨: OLM 4A · KOMDA 1A · 6.3A)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "24V DC가 N레벨 배전반 퓨즈를 거쳐 주변기기로 갑니다 — OLM 채널 A·B 퓨즈 4A, KOMDA 채널 A·B·C 퓨즈 1A, 퓨즈 6.3A. 퓨즈가 끊기면 그 계통 24V만 없어지므로, 24V가 안 나오면 이 퓨즈부터 확인합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC24"
@@ -85,7 +85,7 @@
         {
           "id": "fan",
           "stage": "220V AC → FAN (N레벨 66~73번)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
           "desc": "N레벨 배전반 66~73번 단자에서 220V AC가 FAN으로 공급됩니다.",
           "rows": [
             [
@@ -608,13 +608,13 @@
         {
           "id": "0",
           "stage": "60V 퓨즈(4A) → 필터",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230], "note": "T52 G단자 도면 직접 확인 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230], "note": "T52 G단자 도면 직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}],
           "desc": "입력 DC60V가 퓨즈(4A)와 필터를 거쳐 전원공급장치(SV2602)로 갑니다."
         },
         {
           "id": "ps",
           "stage": "전원공급장치 SV2602 ×4 (전면 A행) — 60V → 8V",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230, 206, 224], "note": "p.230 직접 확인 — 전원 경로 ⚡ 있음, 확인필요 (Filter→SV2602 배선은 도면에 없음)"}],
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230, 206, 224], "note": "p.230 직접 확인 — 전원 경로 ⚡ 있음, 확인필요 (Filter→SV2602 배선은 도면에 없음)", "confirmed": true}],
           "desc": "SV2602 4대가 60V를 8V로 바꿔 STEKOP-Platter 전원으로 공급합니다. 전면 LED UE(입력)/UA(출력)로 상태를 확인합니다.",
           "boardRef": "ECDSTT_PS",
           "rows": [
