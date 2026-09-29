@@ -46,7 +46,34 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.7.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              106
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -68,7 +95,42 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              95
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -91,7 +153,26 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              95
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -112,7 +193,26 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              95
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -136,7 +236,34 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              95
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -158,7 +285,26 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -179,7 +325,26 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -201,7 +366,18 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          }
+        ]
       }
     },
     {
@@ -223,7 +399,18 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1"
+        "section": "6.1",
+        "sectionPageCandidates": [
+          {
+            "section": "6.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              65,
+              129
+            ],
+            "confidence": "확인필요(후보다수)"
+          }
+        ]
       }
     },
     {
@@ -247,7 +434,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              51
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "5.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              112
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -265,7 +486,17 @@
       "measurePointRef": "MP_SICAS_S51_DC60",
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -287,7 +518,25 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "5.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              112
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -313,7 +562,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.10",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              73
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.12",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              75
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              36
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -337,7 +620,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.12",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              75
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              36
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -363,7 +672,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.12",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              75
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              36
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -390,7 +725,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.8",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              66
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.12",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              75
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -409,7 +770,17 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -435,7 +806,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.8",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              66
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.10",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              73
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "2.3.7.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              34
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -453,7 +858,17 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2"
+        "section": "6.2",
+        "sectionPageCandidates": [
+          {
+            "section": "6.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              131
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -477,7 +892,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.7.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              106
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -500,7 +949,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.7.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              106
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -524,7 +999,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.7.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              106
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -550,7 +1059,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.7.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              106
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -572,7 +1115,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -596,7 +1165,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -619,7 +1214,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "2.3.7.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              34
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -644,7 +1265,41 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4"
+        "section": "6.4",
+        "sectionPageCandidates": [
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.10",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              73
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.12",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              75
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              36
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -669,7 +1324,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.7.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              106
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -692,7 +1373,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              51
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "5.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              112
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -715,7 +1422,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -735,7 +1468,25 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -755,7 +1506,25 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -776,7 +1545,33 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -797,7 +1592,25 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -818,7 +1631,25 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -836,7 +1667,17 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5"
+        "section": "6.5",
+        "sectionPageCandidates": [
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -877,7 +1718,17 @@
       "caution": "VENUS3 오류 출력만으로는 어느 모듈이 고장인지 특정할 수 없음. 매뉴얼에 명시된 한계.",
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "2.3.5.1"
+        "section": "2.3.5.1",
+        "sectionPageCandidates": [
+          {
+            "section": "2.3.5.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              15
+            ],
+            "confidence": "확정"
+          }
+        ]
       }
     },
     {
@@ -901,7 +1752,15 @@
       "caution": "프로브의 흔촉, 전원의 합선에 주의",
       "source": {
         "doc": "TWC 유지보수 매뉴얼",
-        "section": "4.3 전원 / 2.4.1 모듈의 오류 제거"
+        "section": "4.3 전원 / 2.4.1 모듈의 오류 제거",
+        "sectionPageCandidates": [
+          {
+            "section": "4.3 전원 / 2.4.1 모듈의 오류 제거",
+            "kbDoc": "TWC_유지보수_매뉴얼",
+            "pdfPages": [],
+            "confidence": "확인필요(못찾음)"
+          }
+        ]
       }
     },
     {
@@ -922,7 +1781,15 @@
       ],
       "source": {
         "doc": "TWC 유지보수 매뉴얼",
-        "section": "4.4 수신기 부분 / 2.4.1"
+        "section": "4.4 수신기 부분 / 2.4.1",
+        "sectionPageCandidates": [
+          {
+            "section": "4.4 수신기 부분 / 2.4.1",
+            "kbDoc": "TWC_유지보수_매뉴얼",
+            "pdfPages": [],
+            "confidence": "확인필요(못찾음)"
+          }
+        ]
       }
     },
     {
@@ -941,7 +1808,15 @@
       ],
       "source": {
         "doc": "TWC 유지보수 매뉴얼",
-        "section": "2.3.3.3 장애 모듈의 처리"
+        "section": "2.3.3.3 장애 모듈의 처리",
+        "sectionPageCandidates": [
+          {
+            "section": "2.3.3.3 장애 모듈의 처리",
+            "kbDoc": "TWC_유지보수_매뉴얼",
+            "pdfPages": [],
+            "confidence": "확인필요(못찾음)"
+          }
+        ]
       }
     },
     {
