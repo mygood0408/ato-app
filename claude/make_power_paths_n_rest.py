@@ -1,9 +1,8 @@
 """C2: SIN1 p.188 24V 주변기기(단자 40~49) 및 230V 팬(단자 66~81) 전원 경로를 power-paths.json 에 추가/교체.
 p.188 스크립트와 같은 net 묶기(T접점) 사용. 시드 px = 100dpi 이미지 기준. 인자: --preview 이면 색입힌 png 저장."""
 import pymupdf, json, sys, os
-STN = os.environ.get("STN", "SIN1")  # SIN2: STN=SIN2 (p.107)
-PDF = r"C:/Users/김영추/Desktop/2호선 PDF 자료/SICAS HW Design White_%s.pdf" % STN
-PAGE = 188 if STN == "SIN1" else 107
+from stn import STN, PDF, CAB, PCAB, DCAB, pid as mkid, page
+PAGE = page("N")
 pg = pymupdf.open(PDF)[PAGE - 1]
 W, H = pg.rect.width, pg.rect.height
 s = 100 / 72
@@ -57,13 +56,13 @@ def mk(pid, title, plus, minus, label, cont, parts):
         return [q for q in L if (q[1] + q[3]) / 2 < .5 or (abs(q[0] - q[2]) < 1e-4 and min(abs(q[0] - x) for x in xs) < .004)]
     a, b = clean(a), clean(b)
     print(pid, 'supply segs', len(a), 'return segs', len(b), file=sys.stderr)
-    return {"id": pid + ("" if STN == "SIN1" else "_" + STN), "title": title, "station": STN, "verified": False, "steps": [{"doc": "SICAS_HW_Design_" + STN, "page": PAGE,
+    return {"id": mkid(pid), "title": title, "station": STN, "verified": False, "steps": [{"doc": "SICAS_HW_Design_" + STN, "page": PAGE,
             "segments": a, "segments0": b, "parts": parts, "label": label, "continues": cont}]}
-new = [mk("PWR_SICAS_N_24V", "SICAS 캐비닛 S51 N레벨 24V DC 주변기기 (P51 전원반 → 단자 40~49, 퓨즈 4A/1A/6.3A)", [871, 1160], [950, 1240],
+new = [mk("PWR_SICAS_N_24V", "SICAS 캐비닛 " + CAB + " N레벨 24V DC 주변기기 (" + PCAB + " 전원반 → 단자 40~49, 퓨즈 4A/1A/6.3A)", [871, 1160], [950, 1240],
           "24V DC 인입(+ 붉은선) → 단자 40~49 퓨즈 (0V 복귀 파랑)", "단자 40~49 이후 각 주변기기 배선은 이 도면에 없음(확인필요)",
-          [pt("24V DC 인입 (P51 전원반)", 830, 950), pt("단자 40~49 (4A×4, 1A×3, 6.3A×3)", 650, 270)]),
-       mk("PWR_SICAS_N_230V", "SICAS 캐비닛 S51 N레벨 230V AC 팬 (P51 전원반 → 단자 66~81, fan1/fan2)", [1340], [1394],
-          "230V AC L(붉은선) / N(파랑) → 단자 66~81 → 팬 1·2", "팬 fan1/fan2 및 fan failure(ID캐비닛 D51) 신호는 이 도면 표기만 있고 배선 근거 확인필요",
+          [pt("24V DC 인입 (" + PCAB + " 전원반)", 830, 950), pt("단자 40~49 (4A×4, 1A×3, 6.3A×3)", 650, 270)]),
+       mk("PWR_SICAS_N_230V", "SICAS 캐비닛 " + CAB + " N레벨 230V AC 팬 (" + PCAB + " 전원반 → 단자 66~81, fan1/fan2)", [1340], [1394],
+          "230V AC L(붉은선) / N(파랑) → 단자 66~81 → 팬 1·2", "팬 fan1/fan2 및 fan failure(ID캐비닛 " + DCAB + ") 신호는 이 도면 표기만 있고 배선 근거 확인필요",
           [pt("230V AC 인입 (L/N)", 1330, 950), pt("단자 66~81 (fan1/fan2)", 1330, 270)])]
 ids = {x['id'] for x in new}
 P = json.load(open(os.path.join(os.path.dirname(__file__), '..', 'power-paths.json'), encoding='utf-8'))

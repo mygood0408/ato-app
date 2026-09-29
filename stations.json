@@ -1,0 +1,154 @@
+{
+ "EUL": {
+  "station": "EUL",
+  "sicas": "SICAS HW Design White_EUL.pdf",
+  "sicasPages": 290,
+  "atp": "ATP HW Design_EUL.pdf",
+  "cabinet": "S01",
+  "paths": {},
+  "titleCab": "S01"
+ },
+ "GCD": {
+  "station": "GCD",
+  "sicas": "SICAS HW Design White_GCD.pdf",
+  "sicasPages": 408,
+  "atp": "ATP HW Design_GCD.pdf",
+  "cabinet": "S95",
+  "paths": {},
+  "titleCab": "S95"
+ },
+ "GYO": {
+  "station": "GYO",
+  "sicas": "SICAS HW Design White_GYO.pdf",
+  "sicasPages": 224,
+  "atp": "ATP HW Design_GYO.pdf",
+  "cabinet": "S31",
+  "paths": {},
+  "titleCab": "S31"
+ },
+ "HON": {
+  "station": "HON",
+  "sicas": "SICAS HW Design White_HON.pdf",
+  "sicasPages": 277,
+  "atp": "ATP HW Design_HON.pdf",
+  "cabinet": "S61",
+  "paths": {},
+  "titleCab": "S61"
+ },
+ "SCD": {
+  "station": "SCD",
+  "sicas": "SICAS HW Design White_SCD.pdf",
+  "sicasPages": 50,
+  "atp": "ATP HW Design_SCD.pdf",
+  "cabinet": "(S 없음",
+  "paths": {},
+  "titleCab": "(S 없음"
+ },
+ "SIN1": {
+  "station": "SIN",
+  "sicas": "SICAS HW Design White_SIN1.pdf",
+  "sicasPages": 286,
+  "atp": "ATP HW Design_SIN1.pdf",
+  "cabinet": "S51",
+  "paths": {
+   "N": 188,
+   "FTGS": [
+    109,
+    113,
+    117,
+    121,
+    125
+   ]
+  },
+  "titleCab": "S51"
+ },
+ "SIN2": {
+  "station": "SIN",
+  "sicas": "SICAS HW Design White_SIN2.pdf",
+  "sicasPages": 150,
+  "atp": "ATP HW Design_SIN2.pdf",
+  "cabinet": "S52",
+  "paths": {
+   "N": 107,
+   "FTGS": [
+    36,
+    40,
+    44,
+    48
+   ]
+  },
+  "titleCab": "S51"
+ },
+ "SNU1": {
+  "station": "SNU",
+  "sicas": "SICAS HW Design White_SNU1.pdf",
+  "sicasPages": 261,
+  "atp": "ATP HW Design_SNU.pdf",
+  "cabinet": "S41",
+  "paths": {},
+  "titleCab": "S41"
+ },
+ "SNU2": {
+  "station": "SNU",
+  "sicas": "SICAS HW Design White_SNU2.pdf",
+  "sicasPages": 127,
+  "atp": "ATP HW Design_SNU.pdf",
+  "cabinet": "S42",
+  "paths": {},
+  "titleCab": "S42"
+ },
+ "SOL": {
+  "station": "SOL",
+  "sicas": "SICAS HW Design White_SOL.pdf",
+  "sicasPages": 235,
+  "atp": "ATP HW Design_SOL.pdf",
+  "cabinet": "S81",
+  "paths": {},
+  "titleCab": "S81"
+ },
+ "SON1": {
+  "station": "SON",
+  "sicas": "SICAS HW Design White_SON1.pdf",
+  "sicasPages": 360,
+  "atp": "ATP HW Design_SON.pdf",
+  "cabinet": "S11",
+  "paths": {},
+  "titleCab": "S11"
+ },
+ "SON2": {
+  "station": "SON",
+  "sicas": "SICAS HW Design White_SON2.pdf",
+  "sicasPages": 150,
+  "atp": "ATP HW Design_SON.pdf",
+  "cabinet": "S12",
+  "paths": {},
+  "titleCab": "S12"
+ },
+ "SPO1": {
+  "station": "SPO",
+  "sicas": "SICAS HW Design White_SPO1.pdf",
+  "sicasPages": 272,
+  "atp": "ATP HW Design_SPO.pdf",
+  "cabinet": "S21",
+  "paths": {},
+  "titleCab": "S21"
+ },
+ "SPO2": {
+  "station": "SPO",
+  "sicas": "SICAS HW Design White_SPO2.pdf",
+  "sicasPages": 183,
+  "atp": "ATP HW Design_SPO.pdf",
+  "cabinet": "S22",
+  "paths": {},
+  "titleCab": "S22"
+ },
+ "YAN": {
+  "station": "YAN",
+  "sicas": "SICAS HW Design White_YAN.pdf",
+  "sicasPages": 352,
+  "atp": "ATP HW Design_YAN.pdf",
+  "cabinet": "S71",
+  "paths": {},
+  "titleCab": "S71"
+ }
+}
