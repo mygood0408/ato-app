@@ -14612,6 +14612,41 @@ function faultTitle(fc){ return fc.symptom + (fc.titleTag ? ' — ' + fc.titleTa
 /* 페이지 이미지 경로 규칙 — 저장 위치를 바꾸면 KB_IMG_BASE 한 줄만 수정 */
 var KB_IMG_BASE = 'kb_pages/';
 function kbImgUrl(doc, p){ return KB_IMG_BASE + doc + '/p' + ('0000' + p).slice(-4) + '.webp'; }
+/* 저장소가 구글 드라이브인 경우: 내 드라이브의 KB_DRIVE_ROOT/<문서>/p0024.webp 를 읽기 전용 토큰으로 받아 blob으로 표시.
+   로컬 kb_pages/ 가 있으면 그걸 먼저 쓰고(개발용), 없을 때(404)만 드라이브로 넘어간다. */
+var KB_DRIVE_ROOT = 'ATO_kb_pages', kbDriveIds = {}, kbBlobs = {};
+function kbDriveGet(token, url){ return fetch(url, { headers: { Authorization: 'Bearer ' + token } }); }
+function kbDriveFolderIds(token, doc){
+  if (kbDriveIds[doc]) return Promise.resolve(kbDriveIds[doc]);
+  var q = function(s){ return 'https://www.googleapis.com/drive/v3/files?fields=files(id,name)&pageSize=1000&q=' + encodeURIComponent(s); };
+  return kbDriveGet(token, q("name='" + KB_DRIVE_ROOT + "' and mimeType='application/vnd.google-apps.folder' and trashed=false")).then(function(r){ return r.json(); }).then(function(j){
+    if (!j.files || !j.files.length) throw new Error('드라이브에 ' + KB_DRIVE_ROOT + ' 폴더 없음');
+    return kbDriveGet(token, q("name='" + doc + "' and '" + j.files[0].id + "' in parents and trashed=false")).then(function(r){ return r.json(); });
+  }).then(function(j){
+    if (!j.files || !j.files.length) throw new Error(doc + ' 폴더 없음');
+    return kbDriveGet(token, q("'" + j.files[0].id + "' in parents and trashed=false")).then(function(r){ return r.json(); });
+  }).then(function(j){
+    var m = {}; (j.files || []).forEach(function(f){ m[f.name] = f.id; }); return (kbDriveIds[doc] = m);
+  });
+}
+function kbDriveImage(doc, p, token){
+  var key = doc + '/' + p;
+  if (kbBlobs[key]) return Promise.resolve(kbBlobs[key]);
+  return kbDriveFolderIds(token, doc).then(function(m){
+    var id = m['p' + ('0000' + p).slice(-4) + '.webp']; if (!id) throw new Error('없음');
+    return kbDriveGet(token, 'https://www.googleapis.com/drive/v3/files/' + id + '?alt=media');
+  }).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); }).then(function(b){ return (kbBlobs[key] = URL.createObjectURL(b)); });
+}
+function kbvFromDrive(){
+  var doc = kbv.doc, i = kbv.i, p = kbv.pages[i], miss = document.getElementById('kbvMiss');
+  miss.textContent = '드라이브에서 불러오는 중…';
+  ensureDriveApis(function(){ requestDriveToken(function(tok){
+    kbDriveImage(doc, p, tok).then(function(u){
+      if (kbv.doc !== doc || kbv.i !== i) return;
+      var im = document.getElementById('kbvImg'); miss.style.display = 'none'; im.style.display = 'block'; im.dataset.drv = '1'; im.src = u;
+    }).catch(function(){ miss.textContent = '이미지 없음'; });
+  }); });
+}
 /* 쪽수 링크: 누르면 뷰어. data-kbdoc/kbpages(같은 묶음 전체)/kbp(시작 쪽) */
 function kbPageLinks(doc, pages, sep){
   var all = escapeHtml(pages.join(','));
@@ -14637,7 +14672,7 @@ function kbvApply(){ var im = document.getElementById('kbvImg'); if (im) im.styl
 function kbvShow(i){
   kbv.i = Math.max(0, Math.min(kbv.pages.length - 1, i)); kbv.s = 1; kbv.x = 0; kbv.y = 0;
   var p = kbv.pages[kbv.i], im = document.getElementById('kbvImg'), miss = document.getElementById('kbvMiss');
-  miss.style.display = 'none'; im.style.display = 'block'; im.src = kbImgUrl(kbv.doc, p); kbvApply();
+  miss.style.display = 'none'; im.style.display = 'block'; delete im.dataset.drv; im.src = kbImgUrl(kbv.doc, p); kbvApply();
   document.getElementById('kbvTitle').textContent = kbv.doc.replace(/_/g, ' ') + ' p.' + p + ' (' + (kbv.i + 1) + '/' + kbv.pages.length + ')';
   var th = document.getElementById('kbvThumbs');
   th.innerHTML = kbv.pages.map(function(q, k){ return '<button data-k="' + k + '" style="min-width:36px;height:30px;border:none;border-radius:4px;background:' + (k === kbv.i ? 'var(--steel)' : 'rgba(255,255,255,.18)') + ';color:#fff">' + q + '</button>'; }).join('');
@@ -14657,7 +14692,13 @@ function kbvOpen(doc, pages, p){
       + '<div id="kbvThumbs" style="display:flex;gap:4px;overflow-x:auto;padding:8px"></div>';
     document.body.appendChild(el);
     var st = document.getElementById('kbvStage'), im = document.getElementById('kbvImg');
-    im.addEventListener('error', function(){ im.style.display = 'none'; document.getElementById('kbvMiss').style.display = 'flex'; });
+    im.addEventListener('error', function(){
+      im.style.display = 'none'; var m = document.getElementById('kbvMiss'); m.style.display = 'flex';
+      if (im.dataset.drv) { m.textContent = '이미지 없음'; return; }
+      if (driveAccessToken && Date.now() < driveTokenExp) { kbvFromDrive(); return; }
+      m.innerHTML = '<button id="kbvDrv" style="height:40px;padding:0 16px;border:none;border-radius:6px;background:var(--steel);color:#fff;font-size:14px">구글 드라이브에서 불러오기</button>';
+      document.getElementById('kbvDrv').onclick = kbvFromDrive;
+    });
     var zoomAt = function(f, cx, cy){
       var r = st.getBoundingClientRect(), ox = cx - r.left - r.width / 2, oy = cy - r.top - r.height / 2;
       var ns = Math.max(0.5, Math.min(8, kbv.s * f)); f = ns / kbv.s;
