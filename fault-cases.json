@@ -39,7 +39,11 @@
       "remedy": [
         "분전반으로부터의 24V 전원 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC24",
+      "measurePointRef": [
+        "MP_ECD_24V_FEED",
+        "MP_ECD_LEVEL_M_24V",
+        "MP_ECD_OLM_LED"
+      ],
       "manualRefs": [
         "4.7.1 터미널 스트립 레벨 G(수직)",
         "4.1 캐비닛 배치"
@@ -136,7 +140,11 @@
             "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_STEKOP_LED",
+        "MP_ECD_STEKOP_24V"
+      ]
     },
     {
       "id": "FLT_ECD_03",
@@ -179,7 +187,10 @@
             "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DEWEMO_LED"
+      ]
     },
     {
       "id": "FLT_ECD_04",
@@ -220,7 +231,11 @@
             "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DEWEMO_24V",
+        "MP_ECD_DEWEMO_LED"
+      ]
     },
     {
       "id": "FLT_ECD_05",
@@ -273,7 +288,11 @@
             "title": "선로전환기 DEWEMO-W 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_STEKOP_LED",
+        "MP_ECD_DEWEMO_LED"
+      ]
     },
     {
       "id": "FLT_ECD_06",
@@ -315,7 +334,11 @@
             "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DESIMO",
+        "MP_FIELD_SIG_LAMP"
+      ]
     },
     {
       "id": "FLT_ECD_07",
@@ -356,7 +379,11 @@
             "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DESIMO",
+        "MP_FIELD_SIG_LAMP"
+      ]
     },
     {
       "id": "FLT_ECD_08",
@@ -389,7 +416,11 @@
             "title": "수리 지침 – EC/DSTT"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DEWEMO_MOTOR110",
+        "MP_FIELD_SW_MOTOR"
+      ]
     },
     {
       "id": "FLT_ECD_09",
@@ -422,7 +453,11 @@
             "title": "수리 지침 – EC/DSTT"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DEWEMO_MOTOR110",
+        "MP_FIELD_SW_MOTOR"
+      ]
     },
     {
       "id": "FLT_ILK_01",
@@ -497,7 +532,9 @@
       "remedy": [
         "분전반으로부터의 전원 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
         "section": "6.2",
@@ -569,7 +606,9 @@
       "remedy": [
         "분전반으로부터의 60V 전원, 필터 및 라인 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "manualRefs": [
         "3.10 필터 라인",
         "3.12 레벨 N에서의 터미널 스트립",
@@ -631,7 +670,9 @@
       "remedy": [
         "분전반으로부터의 24V 전원 및 라인 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC24",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC24"
+      ],
       "manualRefs": [
         "3.12 레벨 N에서의 터미널 스트립",
         "3.1 연동 캐비닛 구조"
@@ -685,7 +726,9 @@
       "remedy": [
         "연동장치의 전원 스위치를 Off 하고 UE = 60V로 조정"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "manualRefs": [
         "3.12 레벨 N에서의 터미널 스트립",
         "3.1 연동 캐비닛 구조"
@@ -740,7 +783,9 @@
         "연동장치의 전원 스위치를 Off 하고 UE = 60V로 조정",
         "SVK2102에서의 퓨즈 F2 교체"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "manualRefs": [
         "3.8 SVK2102-전원장치",
         "3.12 레벨 N에서의 터미널 스트립"
@@ -805,7 +850,10 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_S51_DC24"
+      ]
     },
     {
       "id": "FLT_ILK_12",
@@ -957,7 +1005,11 @@
             "title": "터미널 스트립 레벨 G(수직)"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_IN",
+        "MP_ECD_SV2602_OUT"
+      ]
     },
     {
       "id": "FLT_PWR_02",
@@ -972,7 +1024,9 @@
       "remedy": [
         "분전반으로부터의 24V 전원 및 라인 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC24",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC24"
+      ],
       "manualRefs": [
         "4.7.1 터미널 스트립 레벨 G(수직)",
         "4.1 캐비닛 배치"
@@ -1023,7 +1077,9 @@
       "remedy": [
         "UE = 60V로 조정"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "manualRefs": [
         "4.5 SV2602-전원장치",
         "4.7.1 터미널 스트립 레벨 G(수직)",
@@ -1086,7 +1142,9 @@
         "UE = 60V로 조정",
         "퓨즈 F2 교환"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "manualRefs": [
         "4.5 SV2602-전원장치",
         "4.7.1 터미널 스트립 레벨 G(수직)",
@@ -1301,7 +1359,9 @@
       "remedy": [
         "분전반으로부터의 60V 전원, 필터 및 라인 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC60",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60"
+      ],
       "manualRefs": [
         "3.10 필터 라인",
         "3.12 레벨 N에서의 터미널 스트립",
@@ -1364,7 +1424,9 @@
       "remedy": [
         "분전반으로부터의 24V 전원 및 라인 점검"
       ],
-      "measurePointRef": "MP_SICAS_S51_DC24",
+      "measurePointRef": [
+        "MP_SICAS_S51_DC24"
+      ],
       "manualRefs": [
         "4.7.1 터미널 스트립 레벨 G(수직)",
         "4.1 캐비닛 배치"
@@ -1502,7 +1564,11 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_IN",
+        "MP_ECD_SV2602_OUT"
+      ]
     },
     {
       "id": "FLT_SIG_04",
@@ -1709,7 +1775,10 @@
             "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DESIMO"
+      ]
     },
     {
       "id": "FLT_SIG_09",
@@ -1754,7 +1823,9 @@
         "전류값 확인 후 상향 조정",
         "튜닝 재수행"
       ],
-      "measurePointRef": "MP_ATO_LOOP_CURRENT",
+      "measurePointRef": [
+        "MP_ATO_LOOP_CURRENT"
+      ],
       "source": {
         "doc": "ATO LOOP·TWC 장애처리 절차",
         "section": "튜닝 시 참고사항"
@@ -1807,7 +1878,9 @@
         "3W3 플러그 A1 핀(24VDC 플러스) 결선 확인",
         "케이블, 퓨즈, 전원 순으로 점검"
       ],
-      "measurePointRef": "MP_TWC_OUT",
+      "measurePointRef": [
+        "MP_TWC_OUT"
+      ],
       "caution": "프로브의 흔촉, 전원의 합선에 주의",
       "source": {
         "doc": "TWC 유지보수 매뉴얼",
@@ -1959,7 +2032,9 @@
         "Loop1측 배선·커넥터 점검 및 필요시 튜닝 재수행",
         "조치 후 ATO 캐비닛 FUUELL 보드 Reset 버튼을 눌러 LED 소등 확인"
       ],
-      "measurePointRef": "MP_ATO_LOOP_CURRENT",
+      "measurePointRef": [
+        "MP_ATO_LOOP_CURRENT"
+      ],
       "caution": "FUUELL 판독법: 정상(장애상태0)일 때는 장애발생 신호가 계속 H레벨. 장애 발생 시(장애상태 1~7)에는 '2초간 Low + (N+1)초간 High'가 주기적으로 반복됨(N=장애상태 번호). 상태표: 0=정상/ 1=FAN만 장애 / 2=Loop2만 장애 / 3=Loop2+FAN / 4=Loop1만 장애 / 5=Loop1+FAN / 6=Loop1+Loop2 / 7=Loop1+Loop2+FAN 전체 장애. ★ 장애 조치 후 반드시 ATO 캐비닛 FUUELL 보드의 Reset 버튼을 눌러 LED가 꺼지는지 확인할 것.",
       "source": {
         "doc": "03.ATO LOOP(김영추).pptx",
@@ -1982,7 +2057,9 @@
         "Loop2측 배선·커넥터 점검 및 필요시 튜닝 재수행",
         "조치 후 ATO 캐비닛 FUUELL 보드 Reset 버튼을 눌러 LED 소등 확인"
       ],
-      "measurePointRef": "MP_ATO_LOOP_CURRENT",
+      "measurePointRef": [
+        "MP_ATO_LOOP_CURRENT"
+      ],
       "caution": "FUUELL 판독법: 정상(장애상태0)일 때는 장애발생 신호가 계속 H레벨. 장애 발생 시(장애상태 1~7)에는 '2초간 Low + (N+1)초간 High'가 주기적으로 반복됨(N=장애상태 번호). 상태표: 0=정상/ 1=FAN만 장애 / 2=Loop2만 장애 / 3=Loop2+FAN / 4=Loop1만 장애 / 5=Loop1+FAN / 6=Loop1+Loop2 / 7=Loop1+Loop2+FAN 전체 장애. ★ 장애 조치 후 반드시 ATO 캐비닛 FUUELL 보드의 Reset 버튼을 눌러 LED가 꺼지는지 확인할 것.",
       "source": {
         "doc": "03.ATO LOOP(김영추).pptx",
@@ -2009,7 +2086,10 @@
       "source": {
         "doc": "03.ATO LOOP(김영추).pptx",
         "section": "ATO-LOOP 제어함(Controller Box) - 기능제어보드(FUUELL) 장애상태표"
-      }
+      },
+      "measurePointRef": [
+        "MP_ATO_CONTROLLER_LED_TEST"
+      ]
     },
     {
       "id": "FLT_OTS_03",

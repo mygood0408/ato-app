@@ -14,7 +14,8 @@
     "2026-09-06: SICAS HW Design White_SIN1.pdf(P201A/B, P203A/B, P204A/B 회로도) 반영 — OTS/현장 선로전환기 제어·표시·모터 측정지점 7건에 drawingRef(정확한 단자번호 찾는 법)와 boardRef(ECDSTT_DEWEMO) 추가.",
     "2026-09-06: 03.ATO LOOP(김영추).pptx 재검토로 MP_ATO_LOOP_CURRENT에 실제 측정 절차(C/B Box 내 점퍼 변경, 10/12번 단자 측정) 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
-    "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true."
+    "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true.",
+    "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -468,7 +469,6 @@
         }
       ],
       "relatedFaults": [
-        "FLT_ECD_01",
         "FLT_PWR_02",
         "FLT_ILK_05",
         "FLT_SIG_01"
@@ -1055,6 +1055,8 @@
       "boardRef": "ECDSTT_DEWEMO",
       "diagnosticTip": "모터전원 케이블에는 표시전원(DC)이 병렬로 결선되어 있어 평상시에도 DC 전압이 상시 인가된다. 장애(단선, 혼촉 등) 발생 시 모터전원 케이블의 DC 전압을 측정하면 고장개소 파악이 가능하다 (3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf).",
       "relatedFaults": [
+        "FLT_ECD_08",
+        "FLT_ECD_09",
         "FLT_SW_01"
       ],
       "drawingLinks": {
@@ -1691,6 +1693,448 @@
       ],
       "boardRef": "PSD_VS26R_TERMINAL_BOX",
       "note": "출처: 신도림 내선 가상신호기(VS26) 정보전송설비 흐름도(2026-09-25)."
+    },
+    {
+      "id": "MP_ECD_24V_FEED",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "EC/DSTT 캐비닛 24V 전원 (분전반 인입)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "EC/DSTT 캐비닛 후면 터미널 스트립 레벨 G(수직, 전원공급장치 프레임 포함). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 31.2,
+        "unit": "V",
+        "nominal": 24
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "DMM을 DC로 놓고 터미널 스트립 레벨 G의 24V 인입 단자(+)와 0V 단자(−) 사이 측정",
+        "분전반부터 이 단자까지 24V 및 라인 점검"
+      ],
+      "caution": "전원단자 측정 시 주변 단자와 단락 주의",
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.84, p.107, p.129, p.134"
+      },
+      "relatedFaults": [
+        "FLT_ECD_01"
+      ],
+      "note": "범위는 STEKOP 공급전압 사양(21.6/24/31.2V) 기준. 전원이 없으면 STEKOP LED ASS·RASS 적색, Command·message LED 소등, OLM 전 LED 소등. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_LEVEL_M_24V",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "EC/DSTT 레벨 M 터미널 24V (DSTT용, -X4)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "EC/DSTT 캐비닛 후면 레벨 M 터미널 스트립(Line Load Filter 16A, Z5 2A×2 옆). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 31.2,
+        "unit": "V",
+        "nominal": 24
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "레벨 M 터미널 스트립에서 \"24V DC for the DSTT's -X4\" 단자 측정",
+        "레벨 G에서 넘어오는 24V(24V DC from level G)와 같은 값이어야 함"
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.108"
+      },
+      "relatedFaults": [
+        "FLT_ECD_01"
+      ],
+      "note": "전압 범위는 DSTT 24V 사양(STEKOP·DEWEMO 21.6~31.2V)을 적용한 값(매뉴얼 도면에는 범위 수치 없음). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_SV2602_IN",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "SV2602 입력전압 (60V)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "EC/DSTT 랙 전원공급장치 프레임 SV2602, 후면 플러그 X1 4번(+)·6번(−). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 42,
+        "max": 75,
+        "unit": "V",
+        "nominal": 60
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "SV2602 X1 플러그 4번(+)·6번(−) 사이를 DC로 측정",
+        "42V 미만이면 출력 없음. 75V 초과 시 출력 차단·프론트 퓨즈 F2 차단(회복: 42~75V로 조정 후 F2 재투입, 퓨즈 종류 확인)"
+      ],
+      "ledCheck": [
+        {
+          "led": "UE",
+          "meaning": "입력전압 가용",
+          "normal": "점등"
+        },
+        {
+          "led": "INH",
+          "meaning": "외부 스위치 OFF 명령",
+          "normal": "소등"
+        }
+      ],
+      "caution": "SV2602는 전면 스위치가 OFF일 때만 프레임에 삽입·제거(플러그 스파크 방지)",
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.101~105"
+      },
+      "boardRef": "ECDSTT_PS",
+      "relatedFaults": [
+        "FLT_PWR_01",
+        "FLT_SIG_03"
+      ],
+      "note": "SV2602는 60V→8V 변환 전원장치(STEKOP용). 스위치오프 과전압 ≥89V. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_SV2602_OUT",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "SV2602 출력전압 (8V)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "SV2602 후면 플러그 X1 20·22번(+8V), 28·30번(0V). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 7.5,
+        "max": 9,
+        "unit": "V",
+        "nominal": 8
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "SV2602 X1 플러그 20/22번(+8V)과 28/30번(0V) 사이 측정",
+        "6.3V 미만이면 출력 차단, 10V 초과 시 출력 차단·F2 차단"
+      ],
+      "ledCheck": [
+        {
+          "led": "UA",
+          "meaning": "출력전압 가용",
+          "normal": "점등"
+        },
+        {
+          "led": "UE",
+          "meaning": "입력전압 가용",
+          "normal": "점등"
+        }
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.101~105"
+      },
+      "boardRef": "ECDSTT_PS",
+      "relatedFaults": [
+        "FLT_PWR_01",
+        "FLT_SIG_03"
+      ],
+      "note": "출력 전류 최대 14A(120W). 출력측 미전압 원인(과부하)을 제거하고 스위치 OFF→UE 소등 확인→ON. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_STEKOP_LED",
+      "facility": "EC/DSTT",
+      "title": "STEKOP 전면 LED (ASS·RASS·5V·L1~L4)",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "checkItems": [
+        "STEKOP 전 LED 소등이면 STEKOP 장애: 교체(교체 후 Reset 키)",
+        "LED ASS·RASS 적색+Command/message LED 소등+OLM 전 소등이면 24V 전원 장애"
+      ],
+      "ledCheck": [
+        {
+          "led": "ASS(적색)",
+          "meaning": "안전 스위치 OFF 릴레이 해제 표시",
+          "normal": "평상시 소등(점등=스위치 OFF 발생)"
+        },
+        {
+          "led": "RASS(적색)",
+          "meaning": "되돌릴 수 없는(irreversible) 스위치 OFF 발생",
+          "normal": "평상시 소등"
+        },
+        {
+          "led": "5V VK / 5V UK(녹색)",
+          "meaning": "처리채널/감시채널 공급전압 정상",
+          "normal": "점등"
+        },
+        {
+          "led": "L1~L4(황색)",
+          "meaning": "오류 메시지 진단용, 접속 장애는 채널1 L4 깜박임",
+          "normal": "평상시 오류번호 없음"
+        }
+      ],
+      "caution": "STEKOP 모듈은 전원 ON 상태로 뺄 수 있음. 이때 스위치를 OFF하면 연동장치 완전 정지 — 전원 스위치 OFF 금지",
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.20~22, p.82, p.83"
+      },
+      "boardRef": "ECDSTT_STEKOP",
+      "relatedFaults": [
+        "FLT_ECD_02",
+        "FLT_ECD_05"
+      ],
+      "note": "STEKOP 컴퓨터 정지 등 오류는 L1~L4를 약 1초 간격으로 순환 표시(오류번호, 진단용). 리셋은 FEMES Reset-key(유지보수 담당자만). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_STEKOP_24V",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "STEKOP 공급전압 (플러그 X1, 24V)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "STEKOP 후면 플러그 X1 2번(24V)·32번(0V). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 31.2,
+        "unit": "V",
+        "nominal": 24
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "STEKOP 후면 프레임 플러그 X1의 24V 핀과 0V 핀 사이 측정",
+        "24V 전하 레일 1.2A, 0V 전하 레일 0.26A, 무부하 전류 0.03~0.4A"
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.84, p.85"
+      },
+      "boardRef": "ECDSTT_STEKOP",
+      "relatedFaults": [
+        "FLT_ECD_02"
+      ],
+      "note": "2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_DEWEMO_24V",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "DEWEMO 24V 전원 (플러그 X1)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "DEWEMO-W 전면 플러그 X1(24V 전원), 핀레일 X1-1(0V)·X1-2(+24V). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 31.2,
+        "unit": "V",
+        "nominal": 24
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "DEWEMO X1 핀레일 X1-2(+24V)와 X1-1(0V) 사이 DC 측정",
+        "공급전류 약 100mA"
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.95, p.97, p.99"
+      },
+      "boardRef": "ECDSTT_DEWEMO",
+      "relatedFaults": [
+        "FLT_ECD_04"
+      ],
+      "note": "2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_DEWEMO_LED",
+      "facility": "EC/DSTT",
+      "title": "DEWEMO LED (방향명령·선로전환기 표시)",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "checkItems": [
+        "표에 없는 조합은 오류(선로 접지·누전·방해)",
+        "방향 명령 LED와 선로전환기 표시 LED가 일치하지 않으면 FLT_ECD_03~05·08·09 참고"
+      ],
+      "ledCheck": [
+        {
+          "led": "검지기1+ · 검지기2−",
+          "meaning": "우측 선로전환기 정상 표시",
+          "normal": "두 LED 점등"
+        },
+        {
+          "led": "검지기1− · 검지기2+",
+          "meaning": "좌측 선로전환기 정상 표시",
+          "normal": "두 LED 점등"
+        },
+        {
+          "led": "검지기1+ · 검지기2+",
+          "meaning": "선로전환기 드라이브에 크랭크 삽입",
+          "normal": "크랭크 삽입 중에만"
+        },
+        {
+          "led": "전부 소등",
+          "meaning": "전환 중이면 정상, 끝 위치 도달 후에는 오류",
+          "normal": "전환 중에만"
+        }
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.95, p.96"
+      },
+      "boardRef": "ECDSTT_DEWEMO",
+      "relatedFaults": [
+        "FLT_ECD_03",
+        "FLT_ECD_05"
+      ],
+      "note": "명령 LED(녹색)·메시지 LED(황색). 출력 후 메시지는 약 300ms 뒤에 읽는다. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_DEWEMO_MOTOR110",
+      "facility": "EC/DSTT",
+      "acdc": "AC",
+      "title": "DEWEMO 모터전원 입력 (X2-6, AC 110V)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "DEWEMO-W 핀레일 X2-6(110V AC 입력). 랙 쪽 측정 — 현장 쪽은 MP_FIELD_SW_MOTOR. EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 100,
+        "max": 120,
+        "unit": "V",
+        "nominal": 110
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "선로전환기 전환 명령 순간에 X2-6 핀에서 AC 110V 확인",
+        "평상시(정지)는 0V가 정상, 전환 중에만 인가"
+      ],
+      "caution": "전환 명령 순간에만 전압이 인가되므로 타이밍에 맞춰 측정",
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.99, p.130, p.136, p.139"
+      },
+      "boardRef": "ECDSTT_DEWEMO",
+      "relatedFaults": [
+        "FLT_ECD_08",
+        "FLT_ECD_09"
+      ],
+      "note": "매뉴얼에는 \"110V AC\"만 명시. 범위 100~120V는 MP_FIELD_SW_MOTOR와 동일하게 적용. 모터 시작전류 최대 4s(10% ED)·끝위치 검지기 0.8A. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_DESIMO",
+      "facility": "EC/DSTT",
+      "acdc": "DC",
+      "title": "DESIMO 24V 공급 및 LED (IK1·IK2·S0·S1)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "DESIMO-WEZ 전면 플러그 4번(+24V)/8번(−24V) 및 전면 LED. EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "range": {
+        "min": 21.6,
+        "max": 26.4,
+        "unit": "V",
+        "nominal": 24
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "DESIMO 전면 플러그 24V 공급단자 사이 DC 측정(21.6~26.4V)",
+        "전면 LED IK1·IK2로 램프 전류 정상 여부 확인"
+      ],
+      "checkItems": [
+        "IK1·IK2 소등: 24V 없음 → DESIMO 플러그 연결 점검",
+        "IK1·IK2 소등+24V 정상: 신호기 기준 이하 전류 또는 LED 클러스터 손상 → 신호기 수리"
+      ],
+      "ledCheck": [
+        {
+          "led": "S0 / S1",
+          "meaning": "채널 0/1 제어라인 활성",
+          "normal": "해당 신호 현시 시 점등"
+        },
+        {
+          "led": "IK1 / IK2",
+          "meaning": "채널 1/2 램프전류 정상(Current OK)",
+          "normal": "신호기 점등 시 점등"
+        }
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.92, p.93, p.130, p.142"
+      },
+      "boardRef": "ECDSTT_DESIMO",
+      "relatedFaults": [
+        "FLT_ECD_06",
+        "FLT_ECD_07",
+        "FLT_SIG_08"
+      ],
+      "note": "점등 시 램프전류 제한 26mA(24.7~27.3mA), 공급전류 20~25mA. 전면 플러그 번호는 p.93 표 기준. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_ECD_OLM_LED",
+      "facility": "EC/DSTT",
+      "title": "OLM 전면 LED (EC/DSTT 캐비닛)",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+      },
+      "checkItems": [
+        "BUMA↔STEKOP 광접속 장애 시 OLM LED 각 채널 소등, STEKOP 채널1 L4 깜박임(p.131)"
+      ],
+      "ledCheck": [
+        {
+          "led": "OLM 채널 LED",
+          "meaning": "데이터 전송 인식",
+          "normal": "녹색 점등"
+        },
+        {
+          "led": "LED 소등",
+          "meaning": "전원 없음 또는 광 PROFIBUS 프레임 미수신",
+          "normal": "-"
+        },
+        {
+          "led": "LED 적색",
+          "meaning": "송·수신 뒤바뀜, 상대 장비 미접속·전원 OFF·손상, 광케이블 길이 초과·접촉불량",
+          "normal": "-"
+        },
+        {
+          "led": "LED 황색 깜빡임",
+          "meaning": "네트워크 버스로 데이터 전송 없음(광접속은 정상)",
+          "normal": "-"
+        }
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.106, p.112, p.124, p.129, p.131"
+      },
+      "boardRef": "ECDSTT_OLM",
+      "relatedFaults": [
+        "FLT_ECD_01"
+      ],
+      "note": "OLM 작동전압은 24V DC. 캐비닛 24V 전원이 없으면 OLM 전 LED 소등. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
     }
   ],
   "station": "신도림",
