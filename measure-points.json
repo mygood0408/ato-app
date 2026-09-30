@@ -15,7 +15,8 @@
     "2026-09-06: 03.ATO LOOP(김영추).pptx 재검토로 MP_ATO_LOOP_CURRENT에 실제 측정 절차(C/B Box 내 점퍼 변경, 10/12번 단자 측정) 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
     "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true.",
-    "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음."
+    "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음.",
+    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -380,11 +381,12 @@
         }
       ],
       "relatedFaults": [
-        "FLT_PWR_03",
-        "FLT_PWR_04",
         "FLT_ILK_04",
         "FLT_ILK_06",
-        "FLT_ILK_07"
+        "FLT_ILK_07",
+        "FLT_ILK_12",
+        "FLT_PWR_03",
+        "FLT_PWR_04"
       ],
       "drawingRef": "=SIN1/08.01.01 p.2",
       "source": {
@@ -1798,6 +1800,7 @@
       "boardRef": "ECDSTT_PS",
       "relatedFaults": [
         "FLT_PWR_01",
+        "FLT_PWR_05",
         "FLT_SIG_03"
       ],
       "note": "SV2602는 60V→8V 변환 전원장치(STEKOP용). 스위치오프 과전압 ≥89V. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -1843,6 +1846,7 @@
       "boardRef": "ECDSTT_PS",
       "relatedFaults": [
         "FLT_PWR_01",
+        "FLT_PWR_05",
         "FLT_SIG_03"
       ],
       "note": "출력 전류 최대 14A(120W). 출력측 미전압 원인(과부하)을 제거하고 스위치 OFF→UE 소등 확인→ON. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -1891,7 +1895,11 @@
       "boardRef": "ECDSTT_STEKOP",
       "relatedFaults": [
         "FLT_ECD_02",
-        "FLT_ECD_05"
+        "FLT_ECD_05",
+        "FLT_ILK_01",
+        "FLT_SIG_04",
+        "FLT_SIG_05",
+        "FLT_SIG_07"
       ],
       "note": "STEKOP 컴퓨터 정지 등 오류는 L1~L4를 약 1초 간격으로 순환 표시(오류번호, 진단용). 리셋은 FEMES Reset-key(유지보수 담당자만). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
@@ -1923,7 +1931,8 @@
       },
       "boardRef": "ECDSTT_STEKOP",
       "relatedFaults": [
-        "FLT_ECD_02"
+        "FLT_ECD_02",
+        "FLT_SIG_04"
       ],
       "note": "2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
@@ -2086,6 +2095,7 @@
       "relatedFaults": [
         "FLT_ECD_06",
         "FLT_ECD_07",
+        "FLT_SIG_07",
         "FLT_SIG_08"
       ],
       "note": "점등 시 램프전류 제한 26mA(24.7~27.3mA), 공급전류 20~25mA. 전면 플러그 번호는 p.93 표 기준. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -2134,6 +2144,143 @@
         "FLT_ECD_01"
       ],
       "note": "OLM 작동전압은 24V DC. 캐비닛 24V 전원이 없으면 OLM 전 LED 소등. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_SICAS_OLM_LED",
+      "facility": "SICAS",
+      "title": "연동 캐비닛 OLM 전면 LED (BUMA 광접속)",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "연동 컴퓨터 캐비닛 OLM(BUMA 3·4·5·6 광접속). 슬롯 위치는 역별 H/W Design \"연동역 구성\" 확인"
+      },
+      "checkItems": [
+        "BUMA↔STEKOP 광접속 장애 시 OLM 각 채널 LED 소등",
+        "광케이블 접속 단자·플러그·라인 점검"
+      ],
+      "ledCheck": [
+        {
+          "led": "채널 LED",
+          "meaning": "데이터 전송 인식",
+          "normal": "녹색 점등"
+        },
+        {
+          "led": "소등",
+          "meaning": "전원 없음 또는 광 PROFIBUS 프레임 미수신",
+          "normal": "-"
+        },
+        {
+          "led": "적색",
+          "meaning": "송·수신 뒤바뀜, 상대 장비 미접속·전원 OFF·손상, 광케이블 길이 초과·접촉불량",
+          "normal": "-"
+        },
+        {
+          "led": "황색 깜빡임",
+          "meaning": "네트워크 버스로 데이터 전송 없음(광접속은 정상)",
+          "normal": "-"
+        }
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.112, p.124, p.131, p.138"
+      },
+      "boardRef": "SICAS_OLM",
+      "relatedFaults": [
+        "FLT_ILK_01",
+        "FLT_ILK_03"
+      ],
+      "note": "OLM 작동전압 24V DC. 광 PROFIBUS 채널별 LED로 판정. FLT_ILK_01은 STEKOP 채널1 L4 깜박임(MP_ECD_STEKOP_LED)도 함께 본다. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_SICAS_SVK2102_5V",
+      "facility": "SICAS",
+      "acdc": "DC",
+      "title": "SVK2102 출력전압 5V 및 LED (UE·UA)",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "연동 컴퓨터 캐비닛 SVK2102 전원장치(채널별 3개) 전면 LED. 출력 측정 단자는 자료에 없음 — LED 우선 확인"
+      },
+      "range": {
+        "min": 4.5,
+        "max": 6.3,
+        "unit": "V",
+        "nominal": 5
+      },
+      "method": [
+        "전면 LED UE·UA 점등 확인",
+        "두 LED 모두 소등이면 SVK2102 장치·필터 라인·퓨즈·라인 점검(유지 p.69 표)"
+      ],
+      "ledCheck": [
+        {
+          "led": "UE",
+          "meaning": "입력전압 가용",
+          "normal": "점등"
+        },
+        {
+          "led": "UA",
+          "meaning": "출력전압 가용",
+          "normal": "점등"
+        }
+      ],
+      "caution": "SVK2102 스위치 조작 시 채널 정지 가능 — 컴퓨터 재시동 절차(1.3.7.4) 확인",
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.66, p.67, p.69"
+      },
+      "boardRef": "SICAS_SVK2102",
+      "relatedFaults": [
+        "FLT_ILK_12"
+      ],
+      "note": "SVK2102는 입력 60V를 5V로 변환(입력 정상 36~84V). UA 4.5V 미만이면 출력 차단, 6.3V 초과 시 출력 차단·프론트 퓨즈 F2 차단. 입력측 60V는 MP_SICAS_S51_DC60. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_SICAS_VENUS3_LED",
+      "facility": "SICAS",
+      "title": "VENUS3 모듈 전면 LED · 7세그먼트 오류코드",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "연동 컴퓨터 캐비닛 각 채널 VENUS3(프로세서·메모리) 모듈 전면 패널"
+      },
+      "checkItems": [
+        "관련 채널 VENUS3 LED 전부 꺼짐 → VENUS3 장치 교체 후 컴퓨터 Reset",
+        "교체 시 EPROM 버전 확인"
+      ],
+      "ledCheck": [
+        {
+          "led": "RS",
+          "meaning": "채널 리셋 상태(리셋 중 적색)",
+          "normal": "소등"
+        },
+        {
+          "led": "SD",
+          "meaning": "프로그램 오류(오류 시 적색, 점검 시 채널전원 차단)",
+          "normal": "소등"
+        },
+        {
+          "led": "1",
+          "meaning": "다른 채널과의 동기 상태",
+          "normal": "녹색 점등"
+        },
+        {
+          "led": "2",
+          "meaning": "다른 채널과의 동기 상태",
+          "normal": "소등"
+        }
+      ],
+      "source": {
+        "doc": "SICAS 유지보수 매뉴얼(SICAS_유지보수_매뉴얼)",
+        "page": "p.15, p.46"
+      },
+      "boardRef": "SICAS_VENUS3",
+      "relatedFaults": [
+        "FLT_ILK_13"
+      ],
+      "note": "LED 밝은 점등이 정상 상태(p.46). 오류는 7세그먼트에 F.0000 형태 코드로 표시. 모듈 교체 후 컴퓨터 Reset. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
     }
   ],

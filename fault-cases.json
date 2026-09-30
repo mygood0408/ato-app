@@ -518,7 +518,11 @@
             "title": "OLM(Optical Link Module)"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_OLM_LED",
+        "MP_ECD_STEKOP_LED"
+      ]
     },
     {
       "id": "FLT_ILK_02",
@@ -589,7 +593,10 @@
             "title": "OLM(Optical Link Module)"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_OLM_LED"
+      ]
     },
     {
       "id": "FLT_ILK_04",
@@ -916,7 +923,11 @@
             "title": "실행중인 2-of-2 컴퓨터의 3채널 활성화"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_S51_DC60",
+        "MP_SICAS_SVK2102_5V"
+      ]
     },
     {
       "id": "FLT_ILK_13",
@@ -944,7 +955,10 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_VENUS3_LED"
+      ]
     },
     {
       "id": "FLT_PWR_01",
@@ -1240,7 +1254,11 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_OUT",
+        "MP_ECD_SV2602_IN"
+      ]
     },
     {
       "id": "FLT_PWR_06",
@@ -1607,7 +1625,11 @@
             "title": "인터페이스 모듈 커플러(STEKOP)-장치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_STEKOP_LED",
+        "MP_ECD_STEKOP_24V"
+      ]
     },
     {
       "id": "FLT_SIG_05",
@@ -1646,7 +1668,10 @@
             "title": "인터페이스 모듈 커플러(STEKOP)-장치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_STEKOP_LED"
+      ]
     },
     {
       "id": "FLT_SIG_06",
@@ -1735,7 +1760,11 @@
             "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DESIMO",
+        "MP_ECD_STEKOP_LED"
+      ]
     },
     {
       "id": "FLT_SIG_08",
