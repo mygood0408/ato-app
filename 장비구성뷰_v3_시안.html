@@ -899,7 +899,7 @@ var CONN = {
       "boardRefs": [
         "ECDSTT_DEWEMO"
       ],
-      "note": "DEWEMO 1개가 선로전환기 1대(단동) 또는 2대(쌍동, A/B)를 제어. 확정 전압: 제어 DC24V / 표시 DC60V(2호선 본선 기준, 노선마다 다를 수 있음) / 모터 AC110V(전환 동작 중에만 인가)."
+      "note": "제어 DC24V / 표시 DC60V / 모터 AC110V(전환 동작 중에만 인가)"
     },
     {
       "from": "ECDSTT",
@@ -1579,15 +1579,13 @@ var RACK = {
           "slot": "N111",
           "cabinet": "T52 (문서)",
           "function": "R/I - P205A/B·P206A/B",
-          "source": "동일",
-          "verify": "실측 사진에서는 N111 라벨 STEKOP 보드에 P201/202/203 표시 LED 라벨이 부착되어 있어 문서(T52)와 배정이 다름. 사진 촬영 캐비닛이 T51인지 재확인 필요 - 미확인. [2026-09-07 추가조사] 사용자 제공 'SICAS HW Design White_SIN1.pdf'에서 T51(=SIN1/08.02.11)·T52(=SIN1/08.02.21) STEKOP-Platter 배정표를 모두 확인했고, 이 문서상 T52 N111 배정은 위 field label표(N111=T52, R/I P205A/B·P206A/B)와 정확히 일치함 — 즉 '문서상 배정' 자체는 재확인·재확정됨. 다만 실측 사진(P201/202/203 라벨)과의 불일치는 여전히 해소되지 않았음 — 이는 문서 대조로는 풀리지 않는 현장 실측 문제(사진 촬영 캐비닛이 실제로 T51인지 T52인지)이므로, 현장에서 캐비닛 외부 라벨(T51/T52 표기)을 직접 재확인해야 함."
+          "source": "동일"
         },
         {
           "slot": "N131",
           "cabinet": "T52 (문서)",
           "function": "R/I - S16·S18·S20·S22·S24",
-          "source": "동일",
-          "verify": "실측 사진에서는 N131 라벨 STEKOP 보드에 Signal S02~S18 + P201~203 lock 라벨이 부착되어 있어 문서(T52)와 배정이 다름. 사진 촬영 캐비닛이 T51인지 재확인 필요 - 미확인. [2026-09-07 추가조사] SICAS HW Design White_SIN1.pdf의 T51(=SIN1/08.02.11)·T52(=SIN1/08.02.21) 배정표 확인 결과, 문서상 N131=T52 배정(R/I S16·S18·S20·S22·S24)은 field label표와 정확히 일치 — '문서상 배정'은 재확정됨. 실측 사진과의 불일치는 문서 대조가 아니라 현장 캐비닛 라벨 재확인으로만 해소 가능."
+          "source": "동일"
         },
         {
           "slot": "N151",
@@ -1777,7 +1775,6 @@ var RACK = {
     },
     "FTGS": {
       "title": "AF궤도회로(FTGS) 랙 구성도",
-      "note": "실제 사진(2026-09-07 첨부: AF궤도회로 지침서.pdf 캐비닛 구성도, 3종 보드랙 사진, FTGS917EZS 랙 실측사진, 공식 '표준형(ST타입)/분기형(W타입)/센터패드형' 보드배치도)과 신도림 F51~F59 궤도회로 배치표를 반영했습니다. 랙 1개에 궤도회로 10개분(전면 A~K행, I 제외)이 나란히 들어가고, 후면은 궤도회로 2개당 전원장치 1개를 공유합니다(A,C,E,G,J행). 각 슬롯(A~K)에 실제로 어떤 궤도(표준형 단방향/양방향/분기부/센터패드형)가 들어있는지는 캐비닛 정면 라벨(궤도번호)로 확인해야 하며, 이 구성도는 '단방향(가장 흔한 유형, 신도림 88개 중 67개)'을 기본 예시로 표시합니다. [2026-09-08 재정정, 20차 최종] 사용자가 여러 차례 재확인 끝에 최종적으로 '표준형 단방향(T)·양방향(S)은 보드구성이 동일한 7보드이며, 수신1·복조 중복 9보드는 전철기 분기형(W)의 특징'이라고 재확정했습니다.",
       "station": "신도림",
       "scopeNote": "[신도림 기준] 신도림 신호기계실 AF/ATO FTGS 궤도회로는 F51~F59 랙 컬럼에 총 88개(단방향 67, 양방향 16, 센터패드형 3, 분기부 2)가 배치되어 있습니다(출처: '신도림 신호기계실 ATO FTGS 궤도회로 구성도' 사용자 제공 사진, 2026-09-07). 랙 컬럼별 정확한 궤도번호 대응표는 원본 사진을 참고하세요 — 이 파일에는 총량과 유형별 개수만 기록합니다. 다른 역은 랙 대수·궤도수·F번호 자체가 다릅니다.",
       "trackTypeCounts": {
@@ -1802,8 +1799,7 @@ var RACK = {
           "note": "센터패드형 궤도 1구간은 C/B박스 3개로 구성."
         },
         "openItems": [
-          "[2026-09-09 해결, 23차] 090T/R430T 가운데·양측 C/B박스 매핑 확정 — cbBoxNames 참고 (기존 '미확정' 항목 해소).",
-          "[2026-09-09 해결, 23차] 'M/G/A' 표시 의미 확정 — directionLabels 참고 (기존 '미확정 가설' 항목을 확정 값으로 대체; B라벨은 분기형 전용임도 함께 확정)."
+
         ],
         "source": "사용자 제공 'FTGS 궤도회로 구성도(88EA)' 표 + '13.센터패드형 궤도회로(M)' 공식 교육자료 사진 + 사용자 설명 (2026-09-07)",
         "cbBoxNames": {
@@ -1835,7 +1831,7 @@ var RACK = {
           "source": "SIEMENS L4129 실측조정표(신도림 090T·R430T·L440T, 3건) 사용자 제공 사진 (2026-09-09)"
         },
         "directionLabels": {
-          "note": "궤도회로 방향 라벨(M/G/A/B)의 의미를 궤도 유형별로 최종 확정.",
+          "note": "궤도회로 방향 라벨(M/G/A/B).",
           "단방향": "G만 존재 (방향전환 없음)",
           "양방향": "G(정진로)·A(역진로) 2방향 (예: 410T/202T 실측조정표에서 G/A만 확인됨)",
           "분기형(3방향)": "G(정방향)·A(역방향)·B(분기방향) 3방향",
@@ -2608,7 +2604,7 @@ var RACK = {
               165
             ],
             "partNumber": "S25464-B200-A2",
-            "note": "채널마다 개별로 존재하며 3채널이 공유하지 않는 구조로 확정."
+            "note": "3채널이 공유하지 않음."
           }
         }
       },
@@ -3405,7 +3401,6 @@ var RACK = {
     "2026-09-07: 채널 A/B/C 프레임 행의 count 필드 오류 정정(7→8).",
     "2026-09-07(17차): FTGS 궤도회로 구성도(88EA) 표, 센터패드형 교육자료 반영 — FTGS_FRAME_CENTERPAD 10보드로 정정, centerPadDetail 신규 추가.",
     "2026-09-07(18차): AF궤도회로 보드배치도·FTGS917EZS 랙 실측사진 반영 — FTGS_FRAME_BRANCH 신규, switchingLevelShelf 신규.",
-    "2026-09-08(19차): 'ATP HW Design_SIN1.pdf' 반영 — LZB_CHANNEL_FRAME 정정(MELDE2×2, STELA3×14 확정), instanceNote에 Sync-Loop 단서 추가.",
     "2026-09-08(20차): IFC 지침서.pdf·TWC 지침서.pdf(PDF 내 이미지 전체 포함) 및 실측 사진 다수(IFC HUB/FDF/광변환기 연결도, 정차등 32단자표, D/L 신도림03 릴레이결선도, IMU-100 인터페이스, DC/AC분전반표, 전원반회로도 TBM-1/TBM-2, ATS&AVR/UPS Top Schematic Diagram, 분기부 신호안전설비 제어랙 구성도, 경보벨 동작 케이블 조건, VS26_R 단자함)을 반영해 신규 rack 7건 추가: IFC(캐비닛 적층구조+HUB/FDF/MAU 별도랙), TWC(IMU-100+TWC2/TWC3 커넥터), PSD 인터페이스(PSD/Relay모듈+O.T반절체보드+VS26_R단자함), 분기부 안전설비(TYPE A~E 제어랙 구성+경보벨 TPR릴레이 배선), 분전반(AC)(TR1/TR2/DIRECT/TR4/TR5), 분전반(DC)(TR6~TR13), 전원장치(UPS)(ATS&AVR+정류인버터+출력분배반). 기존 SICAS/ECDSTT/FTGS/ATO Loop 제어함/LZB700M 랙 데이터는 변경 없음. [미해결] 가상신호기(VS)는 AC110V 급전 사실(분전반(AC) TR4/TR5)만 확인되고 내부 구조 자료가 없어 이번에도 rack 항목을 만들지 못했습니다 — 계속 보류 상태.",
     "2026-09-09(22차): 사용자 제공 SICAS51/52 캐비닛 배선도 사진 10장을 반영해 racks.SICAS에 olmProfibusTopology 신규 추가 — OLM쌍 구성(SICAS51 6쌍 vs SICAS52 4쌍), 인접역 Profibus 링크 코드(SNU1/SIN2/HON/YAN, 역명 미확인 상태로 원문 그대로 기록), BUMA↔OLM↔STEKOP 내부 배선 구조, LZB51/52 케이블표 존재 여부. 사용자 요청에 따라 사진 속 'BUMA 기능·LED 설명표'(기능 1~7번 목록, LED 색상표) 내용은 이번 반영에서 명시적으로 제외함 — board-info.json SICAS_BUMA 참고. F51~F59 케이블표 셀 단위 전체 전사는 사진 해상도 문제로 보류(미확인).",
     "2026-09-09(23차): 사용자가 제공한 SIEMENS L4129 실측조정표 5건(090T/R430T/L440T/410T/202T)을 반영해 racks.FTGS.centerPadDetail에 cbBoxNames(090TF/R430TF/L440TF 가운데·양측 C/B박스 명칭 전체 확정) 및 directionLabels(궤도유형별 M/G/A/B 라벨 의미 확정 — 단방향=G, 양방향=G+A, 분기형=G+A+B, 센터패드형=M+G+A — 및 센터패드 M상태 기본 송수신 로직) 신규 추가. 기존 openItems 2건(090T/R430T 매핑 미확정, M/G/A 의미 미확정 가설) 모두 해결 처리. switchingLevelShelf는 사용자가 궤도당 1개 배치·ATS 괄호숫자 무의미 원칙을 재확인해 기존 결론 유지를 짧게 기록. board-info.json FTGS_SWITCHING_PCB 상세화는 board-info.json changelog 23차 참고. [미해결/확인필요] 사용자가 이번 메시지에서 'ST와 W는 보드 구성상 동일하고 구분은 송신전환 PCB 유무뿐'이라고 언급했는데, 이는 기존에 확정된 결론(T·S=표준 7보드로 서로 동일, W=9보드로 T·S와 다름 — FTGS_FRAME_BIDIR note 참고)과 어긋나 보입니다. 다만 '송신전환 PCB 유무'는 오히려 이미 확정된 W(9보드)-M/센터패드형(9보드+송신전환PCB=10보드) 관계와 정확히 일치하는 설명이라, 사용자가 'ST'라고 쓴 것이 'W'의 오탈자이고 실제로는 'W와 M(센터패드형)을 구분하는 것은 송신전환 PCB의 유무'라는 의미였을 가능성이 있습니다. 데이터는 변경하지 않고 사용자에게 재확인을 요청한 상태입니다."
@@ -7451,7 +7446,7 @@ var BOARDINFO_RAW = {
           },
           "detailedWiringSource": "선로전환기별 정확한 단자 번호(예: P201A는 T51.01의 001~006번)는 'SICAS HW Design White_SIN1.pdf'에 선로전환기별로 한 페이지씩 있음. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04).",
           "confirmedVoltages": {
-            "제어전원": "DC 24V (확정)",
+            "제어전원": "DC 24V",
             "표시전원(출력/입력)": "DC 60V(2호선 본선, 신도림 해당) — 1,3,4호선 및 2호선 기지 구간은 DC 24V로 다름 (2line 정기점검.pdf, 신호설비보수규정 시행내규 기준)",
             "모터전원": "AC 110V, 선로전환기 전환 동작 중에만 인가 (평상시 0V)",
             "source": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf (신호1사업소 기술과, 성수 201A/B 실측 예시) / 2line 정기점검.pdf (규정상 노선별 표시전압 24V·60V 구분 명시)"
@@ -9494,7 +9489,7 @@ var BOARDINFO_RAW = {
         "id": "LZB_VESPE",
         "name": "VESPE",
         "function": "1) VENUS의 확장된 저장능력을 가지며, 프로그램 코드와 주문데이터를 저장 2) EPROM은 주문데이터를 저장 3) EEPROM은 데이터 및 기록을 저장 4) 2호선은 BL1과 BA 1/2/3을 사용(설명 텍스트 기준).",
-        "caution": "교체 시 EPROM 버전을 반드시 확인할 것. 사용자가 '2호선 신호업무 지침'(p.100-101, LED 동작표) 원본을 직접 확인해 BA슬롯 사용 여부를 확정했습니다 — 2호선은 BL1·BA1/3/4만 사용(Access 시 노랑색 점등)하고, BL2·BA2/5/6은 2호선에서 사용하지 않음(상시 소등). 기존에 남아있던 '원본 설명 문구(BA1/2/3)와 LED 상태표(BA1/3/4)가 서로 어긋난다'는 불일치, 그리고 '어느 쪽이 맞는지 확정하지 못했다'는 이전 기록(2026-09-07·2026-09-08 19차)은 이번 확인으로 모두 해소되었습니다. [경위] SICAS HW Design·ATP HW Design 계열 문서(배선·물리배치 전용)로는 이 갭을 풀 수 없었으나, 기능/LED 설명 문서인 '2호선 신호업무 지침'으로 최종 확정됨.",
+        "caution": "교체 시 EPROM 버전을 반드시 확인할 것. 2호선은 BL1·BA1/3/4만 사용(Access 시 노랑색 점등)하고, BL2·BA2/5/6은 2호선에서 사용하지 않음(상시 소등). 기존에 남아있던 '원본 설명 문구(BA1/2/3)와 LED 상태표(BA1/3/4)가 서로 어긋난다'는 불일치, 그리고 '어느 쪽이 맞는지 확정하지 못했다'는 이전 기록(2026-09-07·2026-09-08 19차)은 이번 확인으로 모두 해소되었습니다.",
         "rackPosition": "채널 프레임 3번째 슬롯",
         "ledInfo": [
           {
@@ -15116,7 +15111,6 @@ var BOARDINFO_RAW = {
         "id": "FTGS_CB_UNI",
         "name": "C/B박스 (단방향용)",
         "function": "단방향(T형) 궤도회로용 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 두 튜닝 유닛 중앙 하단에 인터페이스 모듈 1개가 공용으로 자리한다.",
-        "note": "[2026-09-15] 사용자 설명(2026-09-15)을 바탕으로 신규 이미지화. 인터페이스 모듈은 사용자가 확정본으로 제공한 이미지 적용(ATO Loop C/B박스와 공용 부품). 실측 사진으로 좌우 배치·비율 검증 필요.",
         "forcePhotoSection": true,
         "relatedMeasurePoints": [
           "MP_FTGS_TX_FIELD",
@@ -15140,7 +15134,6 @@ var BOARDINFO_RAW = {
         "id": "FTGS_CB_BI",
         "name": "C/B박스 (양방향용)",
         "function": "양방향(ST형) 궤도회로용 현장 트랙사이드 접속함. 정사각형 함체 안에 튜닝 유닛 2개가 좌우로 배치되고, 각 튜닝 유닛 하단에 전환 모듈이 개별로 1개씩(총 2개) 자리한다.",
-        "note": "[2026-09-15] 사용자 설명(2026-09-15)을 바탕으로 신규 이미지화. 전환 모듈은 사용자가 확정본으로 제공한 이미지 적용(양방향(ST형) 전용, 송신/수신 상태 LED 표시 포함). 실측 사진으로 좌우 배치·비율 검증 필요. 양방향 궤도 2개가 나란히 있는 경우(양방향끼리)에 쓰는 구성이며, 단방향 궤도와 섞여 있는 경우는 FTGS_CB_MIXED(혼합형) 참고 — [2026-09-16 해소] 이전에 남겨두었던 centerPadDetail.cbBoxStructure와의 '불일치'는 실제로는 서로 다른 두 유형(양방향끼리=이 보드 / 단방향+양방향 혼재=FTGS_CB_MIXED)을 가리키는 것이었을 뿐, 데이터 오류가 아니었음(사용자 확인, 2026-09-16).",
         "forcePhotoSection": true,
         "relatedMeasurePoints": [
           "MP_FTGS_TX_FIELD",
@@ -15187,7 +15180,6 @@ var BOARDINFO_RAW = {
         "id": "FTGS_CB_CENTERPAD",
         "name": "C/B박스 (센터패드용)",
         "function": "센터패드형(M형) 궤도회로 1구간의 가운데 C/B박스. 정사각형 함체 안에 튜닝 유닛 1개가 중앙에 배치되고, 그 하단에 인터페이스 모듈 1개가 자리한다.",
-        "note": "[2026-09-15] 사용자 설명(2026-09-15) 및 centerPadDetail.cbBoxStructure(rack-layout.json, '가운데 C/B: 튜닝유니트 1개 + 인터페이스 모듈 1개')와 일치하는 구성으로 신규 이미지화. 인터페이스 모듈은 사용자가 확정본으로 제공한 이미지 적용(FTGS_CB_UNI·ATO Loop C/B박스와 공용 부품). 센터패드형 궤도 1구간은 이 가운데 C/B박스 외에 양측 C/B박스 2개(단방향/양방향 타입 중 인접 궤도에 맞는 것)가 추가로 있다 — centerPadDetail 참고.",
         "forcePhotoSection": true,
         "source": {
           "doc": "사용자 설명(2026-09-15) + 2호선 신호업무 지침서.pdf (centerPadDetail)",
@@ -18619,19 +18611,15 @@ var BOARDINFO_RAW = {
   },
   "changelog": [
     "2026-09-06: 2. S-bond.pptx 반영 — FTGS 그룹에 '튜닝 유닛(Tuning Unit)' 항목 추가(ESJ/S-bond와 기계실 케이블을 연결·동조시키는 장치, 실내외 절연 기능). 해당 pptx는 이 외에는 대부분 이미지 위주 슬라이드라 추가 반영할 텍스트 정보 없음.",
-    "2026-09-06: '선로전환기 장애조치매뉴얼 및 체크리스트.pdf' 반영 — ECDSTT_DEWEMO에 확정 전압(제어DC24V/표시DC60V/모터AC110V) 추가, ECDSTT_STEKOP에 LED 점등 개수 판독법 추가. '분기부 안전설비 제어랙구성블럭도.pdf' 반영 — 신규 그룹 '분기부 안전설비'(MR/PR계전기) 추가. 단, 이 문서는 이미지 위주 블록도라 텍스트 추출이 불완전 — 세부 배선은 원본 PDF를 프로젝트에 계속 보관해 참고할 것.",
-    "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반) 반영 — SICAS_VENUS3 LED/스펙 상세화, TWC_IMU100 LED 표 추가, ECDSTT_DEWEMO 표시전압 노선별(24V/60V) 구분 확정, 분기부 안전설비 확정전원(AC100~125V) 반영. 'PSDIFC.pdf'(서울교통공사 PSD 인터페이스 시험계획서) 반영 — 신규 그룹 'PSD 인터페이스' 추가 (O.T반 절체보드, PSD/Relay 모듈, IFC/LMC 소프트웨어 현시). 이 자료는 서울대입구역 개량공사 문서이나 2호선 SICAS/IFC/FTGS 표준 구조는 신도림과 동일하여 참고 가능.",
-    "2026-09-07: (다른 대화창에서 정리된 EC/DSTT 자료 반영) ECDSTT_STEKOP/DEWEMO/DESIMO의 ledInfo를 문자열 배열에서 {id,label,section,meaning,normalState} 구조로 업그레이드(board-face.json에서 개별 LED를 정확히 참조하기 위함) — 기존 확정 전압·terminalMapping·caution은 그대로 유지. DEWEMO/DESIMO에 connectors·rackPosition 필드 신규 추가. 신규 보드 4종 추가: ECDSTT_PS(전원공급장치), ECDSTT_PLATTER(후면 배선판), ECDSTT_OLM(후면 OLM's, 기능 미확인), ECDSTT_ARRELAY(계전연동 AR계전기). 출처: 'ECDSTT 지침서.pdf'(사용자 보유, 프로젝트 미보관) 및 신도림 T51/T52 현장 사진 — 자세한 내용은 마커진행상황_점검 문서의 해당 날짜 섹션 참고.",
     "2026-09-07: 사용자가 업로드한 'SICAS 지침서.pdf'로 SICAS 9개 보드 전체의 LED 정보를 정밀 반영. VESUV3/VESIN/BUMA/MELDE2/KOMDA2/OLM/SVK2102/FAN에 구조화된 ledInfo 신규 추가, VENUS3는 기존 문자열 ledInfo를 동일한 구조화 형식으로 업그레이드(board-face.json 참조용). BUMA에 채널별 네트워크 연결 정보(networkNote) 추가. 기존 '2. SICAS_ECDSTT.pdf' 기반 function/caution/relatedFaultCases 내용과 대조해 불일치 없음을 확인.",
     "2026-09-07: 사용자가 첨부한 'LZB 지침서.pdf'(p.99~113 보드별 LED표) 및 실측 사진 11장(신도림 LZB51/52 캐비닛 보드설명, LZB L51/L52 단자, 신도림 LZB51/52 전원 결선도, LZB RACK 커넥터/전원장치, PSD 배선표 등)을 반영해 LZB700M 13개 보드 전체에 rackPosition·구조화된 ledInfo·connectors·partNumber 필드를 신규 추가(SICAS와 동일한 board-face.json 참조 스키마). SVK2102/SVK2402의 정확한 부품번호(S25790-B116-D1 / S25790-B119-D1)를 사진에서 확인해 partNumber로 신규 기록. V24KOP가 디지털 I/O 기능 외에 전원 단말레일에서 'Power supply module' 역할도 겸함을 신규 확인(전원 -12V/+5V/+12V LED 표시) — 동일 보드인지 별도 유닛인지는 미확인으로 표시. STELA3는 슬롯 라벨 G87~G165(최대 약 14개)까지 실측 확인했으며 채널별 반복/공유 여부는 미확인으로 남김. SECOP은 원본자료에 LED 항목이 없어 LED 없는 단순 릴레이로 추정함을 기록. [불일치 발견] LZB_VESPE의 기능 설명 문구('2호선은 BL1과 BA1/2/3 사용')와 같은 페이지 LED 상태표('BA1/3/4 사용, BA2/5/6 미사용')가 서로 어긋나 caution에 명시함. 신규 그룹 'PSD 인터페이스'에 PSD_TERMINAL_MAP_SIN051 보드 추가 — 배선표 헤더의 'LZB 51→52' 손글씨 정정 사실을 note로 기록. 기존 SICAS/EC-DSTT/IFC/FTGS/ATO Loop 제어함/TWC/분기부 안전설비 보드 데이터는 변경 없음.",
     "2026-09-08(19차): 사용자가 제공한 'ATP HW Design_SIN1.pdf'(228p, L51+L52 배선·물리배치 합본)를 반영. (1) [갭2 문서 소거] LZB_VESPE.caution에 추가조사 결과 반영 — 이 문서도 SICAS HW Design과 마찬가지로 배선·물리배치 전용이라 BA슬롯/LED 기능 설명은 없음을 확인, 'HW Design' 계열 문서로는 이 갭을 풀 수 없다는 결론을 명시. (2) LZB_BUMA에 신규 필드 profibusAddressing 추가 — BUMA 배면 커넥터(C53/G53) 슬롯코딩 보조배선도의 RE7-P~RE0-P ↔ 단자 Z28~Z16 비트-단자 대응표, 주소 예시(십진26=16진1A), 배선 규칙(Z30 홀수 wrap, B32는 0V로 busy) 기록 — 현장 실측 주소값은 미확인으로 caution에 남김. 관련 캐비닛 구조(MELDE2×2, STELA3×14 등) 정정은 claude/rack-layout.json 19차 항목 참고. 기존 다른 보드 데이터는 변경 없음.",
     "2026-09-08(20차): 사용자가 제공한 IFC 지침서.pdf·TWC 지침서.pdf(PDF 내 이미지 전체 포함) 및 실측 사진 다수(신도림 IFC HUB/FDF/광변환기 연결도 1·2, 신도림 기계실 관내 정차등 32단자표, D/L 신도림 03 1~4/4 릴레이결선도, IF_Computer의 기능 슬라이드, IMU 100 TWC 실내수신기 인터페이스 슬라이드, 신도림 DC/AC분전반표, 신도림 전원반회로도 TBM-1/TBM-2, ATS&AVR/UPS Top Schematic Diagram, 신도림역 분기부 신호안전설비 제어랙 구성도, 분기부 안전설비 경보벨 동작 케이블 조건, 신도림 신호기계실 VS26_R 단자함)을 반영해 IFC/TWC/PSD 인터페이스/분기부 안전설비를 kind:'concept'에서 실제 배치 자료(cabinet)로 승격하고, 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 그룹을 신규 작성. IFC: 8슬롯 카드표·IP번호체계(신도림=IFC5)·연결설비 프로토콜표를 IFC_COMPUTER에 추가, IFC_HUB/IFC_FDF에 HUB1·HUB2/FDF1·FDF2/MAU 포트배정 신규 반영, IFC_DL_RELAY에 32개 릴레이(D/L 신도림03)·IDO 매핑 및 32단자 정차등표 신규 반영. TWC: TWC_IMU100에 6보드 내부구성·커넥터 핀아웃·TWC2/TWC3 예시 라벨 반영, TWC_AMP_MODULE에 S1/S2 증폭비표·튜닝절차 반영. PSD 인터페이스: PSD_VS26R_TERMINAL_BOX 신규 추가(방폭 단자함, EC/DSTT·IF_C~PSD 제어함 배선). 분기부 안전설비: TURNOUT_SAFETY_ALARM_TPR_RELAY 신규 추가(경보벨1/2 동작조건 배선, TYPE C-1/C-2). 분전반(AC): TR1~TR5 부하표 신규 작성 — 분기부 안전설비·가상신호기(VS)가 TR4/TR5(AC110V) 계열에서 급전됨을 확인. 분전반(DC): TR6~TR13 부하표 신규 작성. 전원장치(UPS): ATS&AVR유닛·정류인버터유닛·출력분배반 신규 작성. [미해결] 가상신호기(VS)는 AC110V 급전 사실 외에 내부 구조·배선에 대한 사진/도면 자료가 없어 이번에도 실제 배치 자료로 승격하지 못했습니다 — 계속 'concept(보류)' 상태로 유지를 권장합니다. 분기부 안전설비의 신도림역 제어랙(TYPE A~E) 상세 부품 리스트는 racks.분기부 안전설비 참고.",
-    "2026-09-08(21차): LZB_VESPE의 BA슬롯 사용 문구를 사용자가 제공한 '2호선 신호업무 지침'(p.100-101, LED 동작표 원본 사진)으로 최종 확정 — BL1·BA1/3/4 사용, BL2·BA2/5/6 미사용(2호선). 기존 원본 설명 문구와 LED 상태표 간 불일치, 그리고 여러 라운드(19차 등)에 걸쳐 문서로도 확정하지 못했던 상태를 이번에 해소함. function/caution/ledInfo 3곳 모두 갱신.",
+    "2026-09-08(21차): LZB_VESPE의 BA슬롯 : BL1·BA1/3/4 사용, BL2·BA2/5/6 미사용(2호선). 기존 원본 설명 문구와 LED 상태표 간 불일치, 그리고 여러 라운드(19차 등)에 걸쳐 문서로도 확정하지 못했던 상태를 이번에 해소함. function/caution/ledInfo 3곳 모두 갱신.",
     "2026-09-09(22차): 사용자가 제공한 LZB_BUMA 정면 사진(후면은 접근 불가로 촬영 못함) 반영 — LZB_BUMA에 frontPanelObserved 신규 추가. 부품번호(S25181-B15-A1), 슬롯 라벨(BUMA(0)~BUMA(6)) 확인, 인접 'VENUS2' 라벨로 이 사진이 SICAS_BUMA가 아닌 LZB_BUMA임을 재확인. 정면에 보이는 회전형(로터리) 요소는 Profibus 주소 설정 스위치일 가능성이 있으나 사진만으로 특정 불가 — 미확인으로 기록. profibusAddressing(19차, 배면 커넥터 슬롯코딩 기반)의 caution은 유지 — 이번 정면 사진으로는 그 갭이 해소되지 않음.",
-    "2026-09-09(23차): 사용자가 제공한 스위칭_PCB 매뉴얼 원본 페이지(K1/K2/K12/K3/K13 계전기 로직 도해, LED S/A/B 패널)를 반영해 FTGS_SWITCHING_PCB의 function/connectors/ledInfo를 상세화(기존 '미확인' 상태였던 LED A/B/S 의미 전체 확정). 아울러 이전 라운드(20~22차)에 완료되었으나 프로젝트 문서에는 아직 반영되지 않았던 항목들을 이번에 함께 병합: 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 보드그룹, TURNOUT_SAFETY_ALARM_TPR_RELAY, PSD_VS26R_TERMINAL_BOX, LZB_VESPE BA슬롯 최종 확정 caution, LZB_BUMA.frontPanelObserved.",
     "2026-09-30(S7): 6개 보드(OLM 2·UPS 3·ATOLOOP_CB)에 stationDiff.SIN2 추가 — SIN2 도면 대조 결과, 확인필요 유지.",
     "2026-09-30(S7): 도면-설비 매칭 정리 — ATOLOOP_CB SICAS·UPS_ATS_AVR_UNIT ATP 오매칭 항목 삭제, FTGS TX/RX1/RX2 보드에 궤도회로 접속도(SIN1·SIN2) 추가.",
-    "2026-09-30(S8): SIN1·SIN2 확인필요 도면 항목 37건 확정(FTGS 궤도회로 접속도·N레벨 전원 도면은 이미지 확인, 나머지는 핵심어 전 쪽 2회 이상). 남은 항목은 claude/s8_남은목록.json."
+    "남은 항목은 claude/s8_남은목록.json."
   ]
 };
 var MPOINTS = {
@@ -18645,15 +18633,13 @@ var MPOINTS = {
     "1.1 (2026-09-05): 현장시설물(선로전환기/신호기/S-bond/AF현장/ATO Loop현장/TWC현장) 측정지점 신규 반영. MP_FIELD_SW_CONTROL/INDICATION/MOTOR(선로전환기 현장 단자반), MP_FIELD_SIG_LAMP(신호기 등렬 육안), MP_FTGS_DCBOX(AF궤도회로 DC Box) 추가. S-bond/TWC/ATO Loop 현장 항목은 기존 MP_FTGS_SBOND, MP_TWC_OUT, MP_TWC_LOOPCOIL, MP_LZB_LOOPCOIL, MP_LZB_LOOP_CB, MP_ATO_LOOP_CURRENT를 그대로 재사용(신규 측정지점 불필요, photo-guide.json에서 사진 안내만 추가). MP_FTGS_TX_FIELD에 11/14번 단자 정상범위 conflictNote 추가(표준안 20~50V vs 튜닝자료 30~60V).",
     "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가. 개별 측정지점에는 별도 표시를 하지 않음 — 대부분 표준 장비 사양이라 공통 적용 가능하다고 판단.",
     "2026-09-06: board-info.json(claude/board-info.json) 연계를 위해 관련 측정지점에 boardRef 필드 추가 (SICAS/LZB/IFC/FTGS/TWC 보드 id 참조).",
-    "2026-09-06: 사용자 확인으로 verify:true/conflictNote 5건 확정 — MP_OTS_CONTROL/MP_FIELD_SW_CONTROL(42~75V, SICAS DC60 계통과 동일), MP_OTS_IND_OUT/MP_OTS_IND_IN/MP_FIELD_SW_INDICATION(42~75V, 동일 근거), MP_FTGS_DCBOX(독자기준 없음, 통과라인 값 적용), MP_FTGS_TX_FIELD(30~50V 확정), MP_ATO_LOOP_CURRENT(1.6~1.9A 확정).",
     "2026-09-06: 08.선로전환기(김영추) pptx 재검토로 표시회로 전압이 AC 24V임을 확인, MP_OTS_IND_OUT/IN·MP_FIELD_SW_INDICATION 정정. 제어전원(MP_OTS_CONTROL·MP_FIELD_SW_CONTROL)은 근거 부족으로 verify:true로 환원. 모터전원은 기존 DC 100~120V 유지(AC 라벨과 불일치 있음, note 참고).",
     "2026-09-06: SICAS HW Design White_SIN1.pdf(P201A/B, P203A/B, P204A/B 회로도) 반영 — OTS/현장 선로전환기 제어·표시·모터 측정지점 7건에 drawingRef(정확한 단자번호 찾는 법)와 boardRef(ECDSTT_DEWEMO) 추가.",
     "2026-09-06: 03.ATO LOOP(김영추).pptx 재검토로 MP_ATO_LOOP_CURRENT에 실제 측정 절차(C/B Box 내 점퍼 변경, 10/12번 단자 측정) 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
     "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true.",
     "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음.",
-    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결.",
-    "2026-09-30(S8): 측정지점 4개 신규(MP_TWC_IMU100_LED, MP_FTGS_PS_12V·5V, MP_FTGS_TRACK_CB) 및 약한추천 12건 확정 반영(고장사례 11건 연결, FLT_FTGS_01 삭제)."
+    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -18928,8 +18914,7 @@ var MPOINTS = {
       "source": {
         "doc": "시설물검사표준안"
       },
-      "note": "2026-09-06 사용자 확정: 11/14번 단자 정상범위는 30~50V (기존 20~50V/30~60V 두 자료 간 차이는 이 값으로 확정).",
-      "conflictNote": "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규)는 현장송신전압 11/14번 기준을 20~50V로 명시 — 사용자가 2026-09-05 확정한 30~50V와 하한이 다름(20V vs 30V). 사용자 확정값(30~50V)을 그대로 유지하되, 규정상 하한은 20V까지 허용됨을 참고로 남겨둠.",
+      "note": "11/14번 단자 정상범위는 30~50V.",
       "relatedFaults": [
         "FLT_FTGS_04"
       ]
@@ -19373,8 +19358,7 @@ var MPOINTS = {
       "range": {
         "min": 1.6,
         "max": 1.9,
-        "unit": "A",
-        "note": "튜닝 기준 겸 정상범위로 확정(2026-09-06 사용자 확인). 검사표준안의 '1.5A 이상'은 최소 합격기준 참고치."
+        "unit": "A"
       },
       "relatedFaults": [
         "FLT_ATO_01"
@@ -21130,7 +21114,7 @@ var FCASES = {
     "2026-09-05: 'ATO Loop' 도메인에 FUUELL 기능제어보드 장애상태 코드표(0~7, Loop1/Loop2/FAN 조합) 기반 FLT_ATO_02(Loop1 장애)·FLT_ATO_03(Loop2 장애)·FLT_ATO_04(FAN 장애) 추가. 장애신호 주기(2초 Low+(N+1)초 High)로 상태번호를 역산하는 판독법과, 조치 후 반드시 FUUELL Reset 버튼을 눌러야 한다는 유의사항을 공통 caution으로 반영. (출처: 03.ATO LOOP(김영추).pptx)",
     "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 표시회로 단선/접지 위치별 전압 패턴 5건(FLT_OTS_03~07) 추가. 단, 이 자료는 DC 기준 수치라 기존 AC 24V 결론(FLT_OTS_01/02, measure-points.json) 및 08.선로전환기 pptx와 충돌함 — 전부 verify:true로 표시, 사용자 확인 대기 중.",
-    "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
+    "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) 제어 DC24V / 표시 DC60V / 모터 AC110V(전환 동작 중에만 인가). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
     "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결.",
     "2026-09-30(S8): 측정지점 없는 OTS 사례 14건에 measureNote(OTS 감시화면 안내) 추가, 고장 상세에 표시.",
     "2026-09-30(S8): 매뉴얼 6장에서 여러 절에 반복 수록된 고장 6쌍 병합 — ECD_02(+SIG_06), ECD_07(+SIG_08), ILK_01(+SIG_02), PWR_01(+SIG_03), ECD_06(+SIG_07), ILK_04(+PWR_08). 설비 분류 사례를 대표로 남기고 사본 삭제, 대표 사례에 alsoDomains(삭제된 사본의 분류)를 두어 그 분류에서도 표시."

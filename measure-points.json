@@ -9,15 +9,13 @@
     "1.1 (2026-09-05): 현장시설물(선로전환기/신호기/S-bond/AF현장/ATO Loop현장/TWC현장) 측정지점 신규 반영. MP_FIELD_SW_CONTROL/INDICATION/MOTOR(선로전환기 현장 단자반), MP_FIELD_SIG_LAMP(신호기 등렬 육안), MP_FTGS_DCBOX(AF궤도회로 DC Box) 추가. S-bond/TWC/ATO Loop 현장 항목은 기존 MP_FTGS_SBOND, MP_TWC_OUT, MP_TWC_LOOPCOIL, MP_LZB_LOOPCOIL, MP_LZB_LOOP_CB, MP_ATO_LOOP_CURRENT를 그대로 재사용(신규 측정지점 불필요, photo-guide.json에서 사진 안내만 추가). MP_FTGS_TX_FIELD에 11/14번 단자 정상범위 conflictNote 추가(표준안 20~50V vs 튜닝자료 30~60V).",
     "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가. 개별 측정지점에는 별도 표시를 하지 않음 — 대부분 표준 장비 사양이라 공통 적용 가능하다고 판단.",
     "2026-09-06: board-info.json(claude/board-info.json) 연계를 위해 관련 측정지점에 boardRef 필드 추가 (SICAS/LZB/IFC/FTGS/TWC 보드 id 참조).",
-    "2026-09-06: 사용자 확인으로 verify:true/conflictNote 5건 확정 — MP_OTS_CONTROL/MP_FIELD_SW_CONTROL(42~75V, SICAS DC60 계통과 동일), MP_OTS_IND_OUT/MP_OTS_IND_IN/MP_FIELD_SW_INDICATION(42~75V, 동일 근거), MP_FTGS_DCBOX(독자기준 없음, 통과라인 값 적용), MP_FTGS_TX_FIELD(30~50V 확정), MP_ATO_LOOP_CURRENT(1.6~1.9A 확정).",
     "2026-09-06: 08.선로전환기(김영추) pptx 재검토로 표시회로 전압이 AC 24V임을 확인, MP_OTS_IND_OUT/IN·MP_FIELD_SW_INDICATION 정정. 제어전원(MP_OTS_CONTROL·MP_FIELD_SW_CONTROL)은 근거 부족으로 verify:true로 환원. 모터전원은 기존 DC 100~120V 유지(AC 라벨과 불일치 있음, note 참고).",
     "2026-09-06: SICAS HW Design White_SIN1.pdf(P201A/B, P203A/B, P204A/B 회로도) 반영 — OTS/현장 선로전환기 제어·표시·모터 측정지점 7건에 drawingRef(정확한 단자번호 찾는 법)와 boardRef(ECDSTT_DEWEMO) 추가.",
     "2026-09-06: 03.ATO LOOP(김영추).pptx 재검토로 MP_ATO_LOOP_CURRENT에 실제 측정 절차(C/B Box 내 점퍼 변경, 10/12번 단자 측정) 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
     "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true.",
     "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음.",
-    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결.",
-    "2026-09-30(S8): 측정지점 4개 신규(MP_TWC_IMU100_LED, MP_FTGS_PS_12V·5V, MP_FTGS_TRACK_CB) 및 약한추천 12건 확정 반영(고장사례 11건 연결, FLT_FTGS_01 삭제)."
+    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -292,8 +290,7 @@
       "source": {
         "doc": "시설물검사표준안"
       },
-      "note": "2026-09-06 사용자 확정: 11/14번 단자 정상범위는 30~50V (기존 20~50V/30~60V 두 자료 간 차이는 이 값으로 확정).",
-      "conflictNote": "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규)는 현장송신전압 11/14번 기준을 20~50V로 명시 — 사용자가 2026-09-05 확정한 30~50V와 하한이 다름(20V vs 30V). 사용자 확정값(30~50V)을 그대로 유지하되, 규정상 하한은 20V까지 허용됨을 참고로 남겨둠.",
+      "note": "11/14번 단자 정상범위는 30~50V.",
       "relatedFaults": [
         "FLT_FTGS_04"
       ]
@@ -737,8 +734,7 @@
       "range": {
         "min": 1.6,
         "max": 1.9,
-        "unit": "A",
-        "note": "튜닝 기준 겸 정상범위로 확정(2026-09-06 사용자 확인). 검사표준안의 '1.5A 이상'은 최소 합격기준 참고치."
+        "unit": "A"
       },
       "relatedFaults": [
         "FLT_ATO_01"
