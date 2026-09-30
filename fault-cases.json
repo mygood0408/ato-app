@@ -1919,7 +1919,6 @@
         "해당 선로전환기 번호를 OTS 선택 버튼으로 지정 후 8개 전압계 값 재확인",
         "표시회로 배선(DEWEMO~O.T랙~현장 선로전환기 표시접점) 단선 구간 점검"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "caution": "OTS 기준값 카드에 명시된 패턴. 선로전환기 번호별 정상값과 대조해 판단할 것 — 정상값 표는 재확인 후 반영 예정.",
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
@@ -1939,7 +1938,6 @@
         "해당 선로전환기 번호를 OTS 선택 버튼으로 지정 후 8개 전압계 값 재확인",
         "표시회로 배선 및 단자 접지(누전) 구간 점검"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "caution": "OTS 기준값 카드에 명시된 패턴. 단선(FLT_OTS_01)과 달리 표시출력측도 0V로 떨어지는 것이 특징.",
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
@@ -2142,7 +2140,6 @@
         "제어 휴즈 교체",
         "관제와 협의 후 STEKOP RESET"
       ],
-      "measurePointRef": "MP_OTS_CONTROL",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 제어 휴즈 장애"
@@ -2161,7 +2158,6 @@
         "DEWEMO 교체",
         "관제와 협의 후 STEKOP RESET"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
@@ -2180,7 +2176,6 @@
         "모터 휴즈(+, -) 용단 상태 점검",
         "DEWEMO 상태 점검"
       ],
-      "measurePointRef": "MP_OTS_MOTOR",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
@@ -2200,7 +2195,6 @@
         "회로제어기, 제어계전기, 배선세트 등 현장설비 점검",
         "텅레일 밀착·쇄정 상태(MP_FIELD_SW_LOCK)도 함께 확인"
       ],
-      "measurePointRef": "MP_OTS_IND_IN",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
@@ -2220,7 +2214,6 @@
         "쌍동 2대 모두 정상 전환되는지 확인",
         "DEWEMO HS1/HS2 접점 점검"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
@@ -2240,7 +2233,6 @@
         "해당 구간 케이블 점검·교체"
       ],
       "caution": "모터 자체 전압(AC110V)은 전환 순간에만 흐르므로 그 값으로는 상시 진단이 어렵다. 반면 표시전원(DC30V)은 모터전원 케이블에 병렬로 항상 걸려 있으므로, 평상시에도 DC 전압 측정만으로 케이블 이상 유무·구간을 판별할 수 있다.",
-      "measurePointRef": "MP_OTS_MOTOR",
       "source": {
         "doc": "3. 교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf"
       }

@@ -19422,165 +19422,6 @@ var MPOINTS = {
       }
     },
     {
-      "id": "MP_OTS_CONTROL",
-      "facility": "OTS",
-      "acdc": "DC",
-      "title": "제어전압 (14, 13번 전압계)",
-      "measureType": "voltage",
-      "cycle": "미상",
-      "position": {
-        "cabinet": "T51 / T52",
-        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '제어' 라벨 전압계(14,13) 판독"
-      },
-      "range": {
-        "min": 21.6,
-        "max": 26.4,
-        "unit": "V",
-        "nominal": 24,
-        "note": "DC. '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(신호1사업소 기술과, 성수 201A/B 실측 예시)로 확인됨 — DEWEMO/OTS/기구함 제어전원 전 구간 DC24V로 일관되게 표기됨."
-      },
-      "note": "2026-09-06 정정: 이전에 넣은 DC 42~75V는 '표시회로=SICAS DC60 계통과 동일'이라는 잘못된 가정에 기반한 값이었음. 도면 표기가 AC 계열이 맞다는 것은 확인됐으나, 제어전원(14,13번) 자체의 정확한 전압(AC인지, 몇 V인지)은 아직 자료에서 확인 못함. 현장 실측 또는 추가 자료로 재확인 필요. 2026-09-06 확정: 제어전원은 DC 24V (선로전환기 장애조치매뉴얼 및 체크리스트.pdf 근거). 이전 verify:true 상태 해제. 2026-09-06 삼중 확인: '2line 정기점검.pdf'에도 제어전압 DC24V로 명시되어 있어 최종 확정됨.",
-      "source": {
-        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
-      },
-      "verify": false,
-      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO",
-      "drawingLinks": {
-        "kind": "SIN1",
-        "pages": [
-          46,
-          52,
-          58
-        ]
-      }
-    },
-    {
-      "id": "MP_OTS_MOTOR",
-      "facility": "OTS",
-      "acdc": "AC",
-      "title": "모터전원 (모터 C-D, A호/B호 전압계)",
-      "measureType": "voltage",
-      "cycle": "미상",
-      "position": {
-        "cabinet": "T51 / T52",
-        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '모터 C-D' 라벨 전압계(A호/B호) 판독"
-      },
-      "range": {
-        "min": 100,
-        "max": 120,
-        "unit": "V",
-        "nominal": 110,
-        "note": "AC. 모터가 실제로 전환 동작 중일 때만 인가되는 순간값 — 평상시(정지 상태)에는 0V가 정상이며 고장이 아님."
-      },
-      "caution": "전환 동작이 끝나면 곧바로 0V로 돌아가므로, 값을 보려면 선로전환기 전환 순간에 맞춰 확인해야 함.",
-      "source": {
-        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
-      },
-      "note": "2026-09-06 정정: '3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf'와 '선로전환기 장애조치매뉴얼 및 체크리스트.pdf' 두 공식 자료 모두 모터전원=AC110V(전환시에만 인가)로 명시. 기존에 'DC 100~120V(OTS 카드 실측)'로 기록했던 것은 계측기를 AC로 전환하지 않고 측정했거나 실측 당시 오독이었을 가능성이 높음 — 단위를 DC에서 AC로 정정. 범위(100~120)는 기존 실측값 유지, 단위/명목값만 정정. 2026-09-06 삼중 확인: '2line 정기점검.pdf'(신호설비보수규정 시행내규)에도 '전동기 동작전압 AC110V, 운전전류 8.5A 이하'로 명시되어 있어, 앞서 확정한 AC110V(전환시만 인가)가 최종 확정됨. 전압범위는 정격의 0.8~1.2배, 전류범위는 정격의 0.9~1.2배를 정상범위로 함(신호설비보수규정 시행내규 제15조).",
-      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 '평상시 단동DC60V/쌍동DC30V'라는 다른 수치를 제시 — 이번에 확인된 AC110V(전환시만 인가)와 단위·크기가 모두 다름. 공식 매뉴얼 2건(AC110V)의 근거가 더 강하다고 판단되나, 확정 짓지 않고 참고로 남겨둠.",
-      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO",
-      "diagnosticTip": "모터전원 케이블에는 표시전원(DC)이 병렬로 결선되어 있어 평상시에도 DC 전압이 상시 인가된다. 장애(단선, 혼촉 등) 발생 시 모터전원 케이블의 DC 전압을 측정하면 고장개소 파악이 가능하다 (3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf).",
-      "relatedFaults": [
-        "FLT_SW_01"
-      ],
-      "drawingLinks": {
-        "kind": "SIN1",
-        "pages": [
-          46,
-          52,
-          58
-        ]
-      }
-    },
-    {
-      "id": "MP_OTS_IND_OUT",
-      "facility": "OTS",
-      "acdc": "DC",
-      "title": "표시출력전압 (N4, 10번 전압계)",
-      "measureType": "voltage",
-      "cycle": "미상",
-      "position": {
-        "cabinet": "T51 / T52",
-        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '표시출력' 라벨 전압계(N4/10) 판독"
-      },
-      "range": {
-        "min": 54,
-        "max": 66,
-        "unit": "V",
-        "nominal": 60,
-        "note": "DC. '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반)에 노선별 표시전압 기준이 명시됨: 1,3,4호선 및 2호선 기지(차량기지) 구간 = DC 24V, 2호선 본선 = DC 60V. 신도림은 2호선 본선 구간이므로 DC 60V가 적용됨 — '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(성수, 역시 2호선 본선)의 DC60V와도 정확히 일치. 3개 공식 자료가 교차 확인되어 신뢰도 높음."
-      },
-      "note": "2026-09-06 재확인: 08.선로전환기(김영추) pptx의 'AC 24V' 서술은 2호선 기지 구간(24V, 하지만 AC가 아닌 DC) 관련 내용을 잘못 인용했거나 다른 노선 자료를 참고했을 가능성이 있음 — 신도림(2호선 본선)에는 DC60V가 적용되는 것으로 최종 판단.",
-      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 단선/접지 위치별로 DC30~120V의 세부 패턴을 제시 — 이는 DC60V 기준선 위에서 여러 단선·접지 조합이 만들어내는 값일 가능성이 있으나 정확한 회로 해석(전압분배)까지는 확인 못함. 참고자료로 fault-cases.json(FLT_OTS_03~07)에 남겨둠.",
-      "relatedFaults": [
-        "FLT_OTS_01",
-        "FLT_OTS_02",
-        "FLT_OTS_03",
-        "FLT_OTS_04",
-        "FLT_OTS_05",
-        "FLT_OTS_06",
-        "FLT_OTS_07"
-      ],
-      "source": {
-        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
-      },
-      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO",
-      "drawingLinks": {
-        "kind": "SIN1",
-        "pages": [
-          46,
-          52,
-          58
-        ]
-      }
-    },
-    {
-      "id": "MP_OTS_IND_IN",
-      "facility": "OTS",
-      "acdc": "DC",
-      "title": "표시입력전압 (4, 3번 전압계)",
-      "measureType": "voltage",
-      "cycle": "미상",
-      "position": {
-        "cabinet": "T51 / T52",
-        "desc": "T00 서브랙 OTS 패널. 선로전환기 선택 버튼으로 대상 선택 후 '표시입력' 라벨 전압계(4/3) 판독"
-      },
-      "range": {
-        "min": 54,
-        "max": 66,
-        "unit": "V",
-        "nominal": 60,
-        "note": "DC. '2line 정기점검.pdf'(신호설비보수규정 시행내규 기반)에 노선별 표시전압 기준이 명시됨: 1,3,4호선 및 2호선 기지(차량기지) 구간 = DC 24V, 2호선 본선 = DC 60V. 신도림은 2호선 본선 구간이므로 DC 60V가 적용됨 — '선로전환기 장애조치매뉴얼 및 체크리스트.pdf'(성수, 역시 2호선 본선)의 DC60V와도 정확히 일치. 3개 공식 자료가 교차 확인되어 신뢰도 높음."
-      },
-      "note": "2026-09-06 재확인: 08.선로전환기(김영추) pptx의 'AC 24V' 서술은 2호선 기지 구간(24V, 하지만 AC가 아닌 DC) 관련 내용을 잘못 인용했거나 다른 노선 자료를 참고했을 가능성이 있음 — 신도림(2호선 본선)에는 DC60V가 적용되는 것으로 최종 판단.",
-      "conflictNote": "2026-09-06: 4-3.선로전환기감시시스템.pptx는 단선/접지 위치별로 DC30~120V의 세부 패턴을 제시 — 이는 DC60V 기준선 위에서 여러 단선·접지 조합이 만들어내는 값일 가능성이 있으나 정확한 회로 해석(전압분배)까지는 확인 못함. 참고자료로 fault-cases.json(FLT_OTS_03~07)에 남겨둠.",
-      "relatedFaults": [
-        "FLT_OTS_01",
-        "FLT_OTS_02",
-        "FLT_OTS_03",
-        "FLT_OTS_04",
-        "FLT_OTS_05",
-        "FLT_OTS_06",
-        "FLT_OTS_07"
-      ],
-      "source": {
-        "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
-      },
-      "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO",
-      "drawingLinks": {
-        "kind": "SIN1",
-        "pages": [
-          46,
-          52,
-          58
-        ]
-      }
-    },
-    {
       "id": "MP_FIELD_SW_CONTROL",
       "facility": "선로전환기",
       "acdc": "DC",
@@ -19621,7 +19462,7 @@ var MPOINTS = {
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "선로전환기 현장 단자반(터미널). 기계실 T51/T52의 OTS 표시출력/표시입력(MP_OTS_IND_OUT/MP_OTS_IND_IN)과 같은 회로를 현장 쪽 끝에서 측정."
+        "desc": "선로전환기 현장 단자반(터미널). 기계실 T51/T52의 OTS 표시 회로와 같은 회로를 현장 쪽 끝에서 측정."
       },
       "range": {
         "min": 54,
@@ -22257,7 +22098,6 @@ var FCASES = {
         "해당 선로전환기 번호를 OTS 선택 버튼으로 지정 후 8개 전압계 값 재확인",
         "표시회로 배선(DEWEMO~O.T랙~현장 선로전환기 표시접점) 단선 구간 점검"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "caution": "OTS 기준값 카드에 명시된 패턴. 선로전환기 번호별 정상값과 대조해 판단할 것 — 정상값 표는 재확인 후 반영 예정.",
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
@@ -22277,7 +22117,6 @@ var FCASES = {
         "해당 선로전환기 번호를 OTS 선택 버튼으로 지정 후 8개 전압계 값 재확인",
         "표시회로 배선 및 단자 접지(누전) 구간 점검"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "caution": "OTS 기준값 카드에 명시된 패턴. 단선(FLT_OTS_01)과 달리 표시출력측도 0V로 떨어지는 것이 특징.",
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
@@ -22480,7 +22319,6 @@ var FCASES = {
         "제어 휴즈 교체",
         "관제와 협의 후 STEKOP RESET"
       ],
-      "measurePointRef": "MP_OTS_CONTROL",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 제어 휴즈 장애"
@@ -22499,7 +22337,6 @@ var FCASES = {
         "DEWEMO 교체",
         "관제와 협의 후 STEKOP RESET"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
@@ -22518,7 +22355,6 @@ var FCASES = {
         "모터 휴즈(+, -) 용단 상태 점검",
         "DEWEMO 상태 점검"
       ],
-      "measurePointRef": "MP_OTS_MOTOR",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
@@ -22538,7 +22374,6 @@ var FCASES = {
         "회로제어기, 제어계전기, 배선세트 등 현장설비 점검",
         "텅레일 밀착·쇄정 상태(MP_FIELD_SW_LOCK)도 함께 확인"
       ],
-      "measurePointRef": "MP_OTS_IND_IN",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
@@ -22558,7 +22393,6 @@ var FCASES = {
         "쌍동 2대 모두 정상 전환되는지 확인",
         "DEWEMO HS1/HS2 접점 점검"
       ],
-      "measurePointRef": "MP_OTS_IND_OUT",
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
@@ -22578,7 +22412,6 @@ var FCASES = {
         "해당 구간 케이블 점검·교체"
       ],
       "caution": "모터 자체 전압(AC110V)은 전환 순간에만 흐르므로 그 값으로는 상시 진단이 어렵다. 반면 표시전원(DC30V)은 모터전원 케이블에 병렬로 항상 걸려 있으므로, 평상시에도 DC 전압 측정만으로 케이블 이상 유무·구간을 판별할 수 있다.",
-      "measurePointRef": "MP_OTS_MOTOR",
       "source": {
         "doc": "3. 교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf"
       }
