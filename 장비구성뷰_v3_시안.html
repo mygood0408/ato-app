@@ -26325,14 +26325,14 @@ function kbPageLinks(doc, pages, sep){
     return '<a href="#" class="kb-pg" data-kbdoc="' + escapeHtml(doc) + '" data-kbpages="' + all + '" data-kbp="' + p + '" style="color:var(--steel);text-decoration:underline">p.' + p + '</a>';
   }).join(sep || ', ');
 }
-function kbRefLine(doc, pages, tag){
-  return '<li>' + escapeHtml(String(doc).replace(/_/g, ' ')) + ' ' + kbPageLinks(doc, pages) + (tag ? ' <span style="color:var(--ink3)">(' + escapeHtml(tag) + ')</span>' : '') + '</li>';
+function kbRefLine(doc, pages, tag, note){
+  return '<li>' + escapeHtml(String(doc).replace(/_/g, ' ')) + ' ' + kbPageLinks(doc, pages) + (tag ? ' <span style="color:var(--ink3)">(' + escapeHtml(tag) + ')</span>' : '') + (note ? '<div style="font-size:11px;color:var(--ink3)">' + escapeHtml(note) + '</div>' : '') + '</li>';
 }
 function renderKbRefs(list, title, isFault){
   if (!list || !list.length) return '';
   var lines = list.map(function(r){
     if (isFault) return r.pdfPages && r.pdfPages.length ? '<li>' + escapeHtml(r.section + (r.title ? ' ' + r.title : '')) + ' → ' + kbPageLinks(r.kbDoc, r.pdfPages, ' / ') + (r.confidence === '확정' ? '' : ' <span style="color:var(--ink3)">(' + escapeHtml(r.confidence) + ')</span>') + '</li>' : '';
-    return kbRefLine(r.doc, r.pages, r.confirmed ? '' : '확인필요');
+    return kbRefLine(r.doc, r.pages, r.confirmed ? '' : '확인필요', r.note);
   }).join('');
   if (!lines) return '';
   return '<div style="margin-top:8px">' + (title ? '<b>' + title + '</b>' : '') + '<ul style="font-size:12px">' + lines + '</ul></div>';
