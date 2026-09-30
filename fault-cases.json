@@ -17,7 +17,8 @@
     "2026-09-05: 'ATO Loop' 도메인에 FUUELL 기능제어보드 장애상태 코드표(0~7, Loop1/Loop2/FAN 조합) 기반 FLT_ATO_02(Loop1 장애)·FLT_ATO_03(Loop2 장애)·FLT_ATO_04(FAN 장애) 추가. 장애신호 주기(2초 Low+(N+1)초 High)로 상태번호를 역산하는 판독법과, 조치 후 반드시 FUUELL Reset 버튼을 눌러야 한다는 유의사항을 공통 caution으로 반영. (출처: 03.ATO LOOP(김영추).pptx)",
     "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 표시회로 단선/접지 위치별 전압 패턴 5건(FLT_OTS_03~07) 추가. 단, 이 자료는 DC 기준 수치라 기존 AC 24V 결론(FLT_OTS_01/02, measure-points.json) 및 08.선로전환기 pptx와 충돌함 — 전부 verify:true로 표시, 사용자 확인 대기 중.",
-    "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가."
+    "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
+    "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결."
   ],
   "fieldNotes": {
     "measurePointRef": "measure-points.json의 id를 참조. 해당 단계에서 측정 화면으로 이동.",
@@ -1310,7 +1311,11 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_OUT",
+        "MP_ECD_SV2602_IN"
+      ]
     },
     {
       "id": "FLT_PWR_07",
@@ -1361,7 +1366,11 @@
             "title": "실행중인 2-of-2 컴퓨터의 3채널 활성화"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_OUT",
+        "MP_ECD_SV2602_IN"
+      ]
     },
     {
       "id": "FLT_PWR_08",
@@ -1531,7 +1540,11 @@
             "title": "OLM(Optical Link Module)"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_OLM_LED",
+        "MP_ECD_STEKOP_LED"
+      ]
     },
     {
       "id": "FLT_SIG_03",
@@ -1720,7 +1733,11 @@
             "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_STEKOP_LED",
+        "MP_ECD_STEKOP_24V"
+      ]
     },
     {
       "id": "FLT_SIG_07",
@@ -1835,7 +1852,11 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DESIMO",
+        "MP_FIELD_SIG_LAMP"
+      ]
     },
     {
       "id": "FLT_ATO_01",
@@ -1888,7 +1909,10 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_VENUS3_LED"
+      ]
     },
     {
       "id": "FLT_TWC_01",
@@ -1975,7 +1999,11 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_TWC_IMU100_LED",
+        "MP_TWC_RX_WAVEFORM"
+      ]
     },
     {
       "id": "FLT_TWC_03",
@@ -2005,7 +2033,11 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_TWC_IMU100_LED",
+        "MP_TWC_CB_DETAIL"
+      ]
     },
     {
       "id": "FLT_OTS_01",
@@ -2347,26 +2379,6 @@
       }
     },
     {
-      "id": "FLT_FTGS_01",
-      "domain": "AF궤도회로",
-      "symptom": "ATO 열차는 정상 운행되나 ATS 열차만 궤도 낙하로 운행 지장",
-      "errorSource": "AR계전기 또는 GF계전기",
-      "diagnosis": [
-        "ATO(SSC) 감시 정상",
-        "ATS(AMS) 감시에서만 장애 발생"
-      ],
-      "cause": "AR계전기 또는 GF계전기 불량",
-      "remedy": [
-        "AR계전기 교체",
-        "GF계전기 교체"
-      ],
-      "note": "[2026-09-15] AR계전기(FTGS_AR_RELAY)는 더 이상 사용하지 않는 장비로 확인되어 board-info에서 제거됨 — 이 장애사례는 과거 자료로 유지, GF계전기 쪽만 유효.",
-      "source": {
-        "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
-        "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
-    },
-    {
       "id": "FLT_FTGS_02",
       "domain": "AF궤도회로",
       "symptom": "연속된 2개 궤도회로 동시 낙하",
@@ -2385,7 +2397,11 @@
       "source": {
         "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
         "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
+      },
+      "measurePointRef": [
+        "MP_FTGS_PS_12V",
+        "MP_FTGS_PS_5V"
+      ]
     },
     {
       "id": "FLT_FTGS_03",
@@ -2405,7 +2421,10 @@
       "source": {
         "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
         "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
+      },
+      "measurePointRef": [
+        "MP_FTGS_RELAY"
+      ]
     },
     {
       "id": "FLT_FTGS_04",
@@ -2425,7 +2444,14 @@
       "source": {
         "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
         "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
+      },
+      "measurePointRef": [
+        "MP_FTGS_DCBOX",
+        "MP_FTGS_TX_FIELD",
+        "MP_FTGS_RX_FIELD",
+        "MP_FTGS_SBOND",
+        "MP_FTGS_TRACK_CB"
+      ]
     }
   ],
   "station": "신도림",

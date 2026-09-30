@@ -18654,7 +18654,8 @@ var MPOINTS = {
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
     "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true.",
     "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음.",
-    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결."
+    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결.",
+    "2026-09-30(S8): 측정지점 4개 신규(MP_TWC_IMU100_LED, MP_FTGS_PS_12V·5V, MP_FTGS_TRACK_CB) 및 약한추천 12건 확정 반영(고장사례 11건 연결, FLT_FTGS_01 삭제)."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -18793,7 +18794,10 @@ var MPOINTS = {
         "여자시간": "1.0~1.5초",
         "낙하시간": "0.6초",
         "type": "DC바이어스형"
-      }
+      },
+      "relatedFaults": [
+        "FLT_FTGS_03"
+      ]
     },
     {
       "id": "MP_FTGS_FREQ",
@@ -18890,7 +18894,10 @@ var MPOINTS = {
       "note": "S-bond는 ESJ(전기절연이음매, Electrical Separating Joint)의 한 형식. 현장 접속함(트랙사이드 커넥션 박스, C/B박스) 내 튜닝유닛(Tuning unit)이 ESJ/IRJ(절연이음매)와 기계실 송수신 케이블을 연결해주며, 궤도회로 주파수(자기 채널 + 인접 채널)에 맞춰 동조시키는 역할을 함. 튜닝유닛 내 변압기가 실내(기계실)와 실외(궤도) 장비를 전기적으로 절연시킴 (2. S-bond.pptx). [2026-09-15] 튜닝유닛은 더 이상 단독 보드 항목이 아니라 FTGS의 C/B박스 3종(단방향/양방향/센터패드용) 이미지 안에 조립된 형태로만 존재 — 상세 화면 이동 링크는 C/B박스 랙 배치(현장설비 탭)에서 확인.",
       "source": {
         "doc": "시설물검사표준안"
-      }
+      },
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ]
     },
     {
       "id": "MP_FTGS_TX_FIELD",
@@ -18924,7 +18931,10 @@ var MPOINTS = {
         "doc": "시설물검사표준안"
       },
       "note": "2026-09-06 사용자 확정: 11/14번 단자 정상범위는 30~50V (기존 20~50V/30~60V 두 자료 간 차이는 이 값으로 확정).",
-      "conflictNote": "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규)는 현장송신전압 11/14번 기준을 20~50V로 명시 — 사용자가 2026-09-05 확정한 30~50V와 하한이 다름(20V vs 30V). 사용자 확정값(30~50V)을 그대로 유지하되, 규정상 하한은 20V까지 허용됨을 참고로 남겨둠."
+      "conflictNote": "2026-09-06: '2line 정기점검.pdf'(신호설비보수규정 시행내규)는 현장송신전압 11/14번 기준을 20~50V로 명시 — 사용자가 2026-09-05 확정한 30~50V와 하한이 다름(20V vs 30V). 사용자 확정값(30~50V)을 그대로 유지하되, 규정상 하한은 20V까지 허용됨을 참고로 남겨둠.",
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ]
     },
     {
       "id": "MP_FTGS_RX_FIELD",
@@ -18957,7 +18967,10 @@ var MPOINTS = {
         "FTGS_CB_UNI",
         "FTGS_CB_BI"
       ],
-      "note": "2026-09-06: '2line 정기점검.pdf'에서 동일 기준(현장레일수신 9/10번 0.3~6V, 기계실수신입력 15~20번 0.3~3V) 재확인됨."
+      "note": "2026-09-06: '2line 정기점검.pdf'에서 동일 기준(현장레일수신 9/10번 0.3~6V, 기계실수신입력 15~20번 0.3~3V) 재확인됨.",
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ]
     },
     {
       "id": "MP_SICAS_TERMINAL",
@@ -19752,7 +19765,10 @@ var MPOINTS = {
       "note": "2026-09-06 사용자 확인: DC Box 인입/인출 전압은 해당 라인에 해당하는 전압값과 같음(통과 지점이라 자체 기준값 없음). 각 역 C/B Box에 걸리는 전압 조정은 기계실 내 브릿지저항으로 하며, DC Box는 그 경로 중간의 점검 포인트.",
       "source": {
         "doc": "02.AF궤도회로(김영추).pptx + 사용자 확인(2026-09-05)"
-      }
+      },
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ]
     },
     {
       "id": "MP_FIELD_SW_LOCK",
@@ -20082,7 +20098,10 @@ var MPOINTS = {
       "source": {
         "doc": "2line 정기점검.pdf",
         "section": "제11절 ATO 장치 - 3.TWC 장치 - 3)TWC 접속박스 내부접속 상태"
-      }
+      },
+      "relatedFaults": [
+        "FLT_TWC_03"
+      ]
     },
     {
       "id": "MP_TWC_RX_WAVEFORM",
@@ -20114,7 +20133,10 @@ var MPOINTS = {
       "source": {
         "doc": "2line 정기점검.pdf",
         "section": "제11절 ATO 장치 - 3.TWC 장치 - 4)TWC 수신주파수 파형 및 레벨측정"
-      }
+      },
+      "relatedFaults": [
+        "FLT_TWC_02"
+      ]
     },
     {
       "id": "MP_TURNOUT_SAFETY_ALARM",
@@ -20439,6 +20461,8 @@ var MPOINTS = {
       "relatedFaults": [
         "FLT_PWR_01",
         "FLT_PWR_05",
+        "FLT_PWR_06",
+        "FLT_PWR_07",
         "FLT_SIG_03"
       ],
       "note": "SV2602는 60V→8V 변환 전원장치(STEKOP용). 스위치오프 과전압 ≥89V. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -20485,6 +20509,8 @@ var MPOINTS = {
       "relatedFaults": [
         "FLT_PWR_01",
         "FLT_PWR_05",
+        "FLT_PWR_06",
+        "FLT_PWR_07",
         "FLT_SIG_03"
       ],
       "note": "출력 전류 최대 14A(120W). 출력측 미전압 원인(과부하)을 제거하고 스위치 OFF→UE 소등 확인→ON. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -20535,8 +20561,10 @@ var MPOINTS = {
         "FLT_ECD_02",
         "FLT_ECD_05",
         "FLT_ILK_01",
+        "FLT_SIG_02",
         "FLT_SIG_04",
         "FLT_SIG_05",
+        "FLT_SIG_06",
         "FLT_SIG_07"
       ],
       "note": "STEKOP 컴퓨터 정지 등 오류는 L1~L4를 약 1초 간격으로 순환 표시(오류번호, 진단용). 리셋은 FEMES Reset-key(유지보수 담당자만). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -20570,7 +20598,8 @@ var MPOINTS = {
       "boardRef": "ECDSTT_STEKOP",
       "relatedFaults": [
         "FLT_ECD_02",
-        "FLT_SIG_04"
+        "FLT_SIG_04",
+        "FLT_SIG_06"
       ],
       "note": "2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
@@ -20734,7 +20763,8 @@ var MPOINTS = {
         "FLT_ECD_06",
         "FLT_ECD_07",
         "FLT_SIG_07",
-        "FLT_SIG_08"
+        "FLT_SIG_08",
+        "FLT_SIG_09"
       ],
       "note": "점등 시 램프전류 제한 26mA(24.7~27.3mA), 공급전류 20~25mA. 전면 플러그 번호는 p.93 표 기준. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
@@ -20826,7 +20856,8 @@ var MPOINTS = {
       "boardRef": "SICAS_OLM",
       "relatedFaults": [
         "FLT_ILK_01",
-        "FLT_ILK_03"
+        "FLT_ILK_03",
+        "FLT_SIG_02"
       ],
       "note": "OLM 작동전압 24V DC. 광 PROFIBUS 채널별 LED로 판정. FLT_ILK_01은 STEKOP 채널1 L4 깜박임(MP_ECD_STEKOP_LED)도 함께 본다. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
@@ -20916,9 +20947,163 @@ var MPOINTS = {
       },
       "boardRef": "SICAS_VENUS3",
       "relatedFaults": [
-        "FLT_ILK_13"
+        "FLT_ILK_13",
+        "FLT_VEN_01"
       ],
       "note": "LED 밝은 점등이 정상 상태(p.46). 오류는 7세그먼트에 F.0000 형태 코드로 표시. 모듈 교체 후 컴퓨터 Reset. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_TWC_IMU100_LED",
+      "facility": "TWC",
+      "title": "IMU-100(PTI 수신기) 전면 LED (Data1~8·전원·장애)",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "TWC 연동역 모듈(서브랙) IMU-100 PTI 수신기 전면 패널"
+      },
+      "checkItems": [
+        "적색 LED 상시 점등·점멸 → 커넥션 박스 자체 이상이면 박스 교환, 연동역 모듈 이상이면 TWC 서브랙 교환",
+        "교체 후 \"TWC 시험 절차서\"에 따라 증폭 조정"
+      ],
+      "ledCheck": [
+        {
+          "led": "초록",
+          "meaning": "일반 동작 상태",
+          "normal": "점등 또는 점멸"
+        },
+        {
+          "led": "황색",
+          "meaning": "상태의 변이",
+          "normal": "소등 또는 점멸"
+        },
+        {
+          "led": "적색",
+          "meaning": "장애 발생",
+          "normal": "소등(상시 점등·점멸 = 장애)"
+        },
+        {
+          "led": "Power / Vint / Vext(녹색)",
+          "meaning": "외부 24V 입력 / 내부 동작전원 / 안테나 공급전원",
+          "normal": "항시 점등"
+        },
+        {
+          "led": "Data1~Data8(황색)",
+          "meaning": "채널별 수신 데이터",
+          "normal": "짧은 점멸(유효 데이터 수신) 또는 점멸(계속 수신)"
+        },
+        {
+          "led": "Data LED 소등",
+          "meaning": "수신 채널 케이블 미배선·비활성 또는 유효 데이터 미수신",
+          "normal": "-"
+        },
+        {
+          "led": "Data LED 항시 점등",
+          "meaning": "수신채널 장애 가능, 장비 교체 필요할 수 있음",
+          "normal": "-"
+        }
+      ],
+      "source": {
+        "doc": "TWC 유지보수 매뉴얼(TWC_유지보수_매뉴얼)",
+        "page": "p.13, p.14"
+      },
+      "boardRef": "TWC_IMU100",
+      "relatedFaults": [
+        "FLT_TWC_02",
+        "FLT_TWC_03"
+      ],
+      "note": "수신기는 채널별 Lemo 커넥터 Core[n]/Rim[n] 신호라인. 장애 시 장애 시간·장애 주파수·전면 패널 표시를 기록하고 예비품으로 교체, 그래도 안 되면 케이블·퓨즈(F1 M 2.5A 5x20)·전원 점검. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_FTGS_PS_12V",
+      "facility": "FTGS",
+      "acdc": "DC",
+      "title": "FTGS 후면 전원공급장치 출력 12V",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "FTGS 캐비닛 후면 전원공급장치(V25913-Z150-C1, 궤도회로 2개당 1개). 측정소켓 \"12V / 0V power supply\""
+      },
+      "range": {
+        "min": 11,
+        "max": 13,
+        "unit": "V",
+        "nominal": 12
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "측정소켓 12V/0V 사이 DC 측정(측정범위 30V DC)",
+        "송신보드 LED L9(12V 전원 공급)로도 확인"
+      ],
+      "caution": "전원공급장치의 전원 연결 플러그를 뽑으면 두 궤도회로가 동시에 영향받음",
+      "source": {
+        "doc": "FTGS 유지보수 매뉴얼(FTGS_유지보수_매뉴얼)",
+        "page": "p.18, p.34"
+      },
+      "boardRef": "FTGS_POWER_UNIT",
+      "relatedFaults": [
+        "FLT_FTGS_02"
+      ],
+      "note": "전원공급장치 입력 AC 220/230V(187~264V, 47~63Hz). 퓨즈 내장 안 됨. 출력은 과부하·단락 보호. 전원 공급장치를 뽑기 전 관련 궤도회로가 진로에 없도록(가능하면 진로 취소) 할 것. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_FTGS_PS_5V",
+      "facility": "FTGS",
+      "acdc": "DC",
+      "title": "FTGS 후면 전원공급장치 출력 5V",
+      "measureType": "voltage",
+      "cycle": "미상",
+      "position": {
+        "desc": "FTGS 캐비닛 후면 전원공급장치(V25913-Z150-C1). 측정소켓 \"5V / 0V power supply\""
+      },
+      "range": {
+        "min": 4.5,
+        "max": 5.5,
+        "unit": "V",
+        "nominal": 5
+      },
+      "instrument": "Digital Multimeter",
+      "method": [
+        "측정소켓 5V/0V 사이 DC 측정(측정범위 10V DC)"
+      ],
+      "source": {
+        "doc": "FTGS 유지보수 매뉴얼(FTGS_유지보수_매뉴얼)",
+        "page": "p.18, p.34"
+      },
+      "boardRef": "FTGS_POWER_UNIT",
+      "relatedFaults": [
+        "FLT_FTGS_02"
+      ],
+      "note": "입력 AC 220/230V. 보드 Vcc/Vcc2(-B44 소켓)도 5V±0.5V. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "verify": true
+    },
+    {
+      "id": "MP_FTGS_TRACK_CB",
+      "facility": "FTGS",
+      "title": "궤도 접속상자 내부 (튜닝보드·스위치 전환보드·배선)",
+      "measureType": "visual",
+      "cycle": "미상",
+      "position": {
+        "desc": "현장 궤도 접속상자(C/B) 내부. 1개 접속상자에 인접 궤도회로 2개 설비"
+      },
+      "checkItems": [
+        "튜닝보드 물품번호 뒷자리가 해당 궤도회로 주파수와 일치하는지",
+        "스위치 전환보드(S25533-A55-A1~A8) 주파수 일치",
+        "낙뢰방지 퓨즈 상태, 접속상자 접지",
+        "전환모듈 입력 11/14·출력 15/16 결선, 튜닝보드 저항 브리지(터미널 2-7-8 등)",
+        "튜닝보드·전환보드 교체 후에는 늦어도 다음날까지 궤도계전기 낙하시험"
+      ],
+      "source": {
+        "doc": "FTGS 유지보수 매뉴얼(FTGS_유지보수_매뉴얼)",
+        "page": "p.35, p.36, p.37, p.38"
+      },
+      "boardRef": "FTGS_CB_UNI",
+      "relatedFaults": [
+        "FLT_FTGS_04"
+      ],
+      "note": "튜닝보드는 주파수별로 종류가 다름(S25533-D10/D22/D16-A..). 전환모듈 입력 터미널 11(파랑)·14(빨강), 출력 15(회색)·16(노랑), 전원선은 전환모듈 터미널 1·2. 궤도 연결 케이블 A·C는 튜닝보드 터미널 9, B·D는 터미널 10. 접속상자와 실내설비 사이는 낙뢰·과전압 보호(낙뢰방지 퓨즈). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
     }
   ],
@@ -20957,7 +21142,8 @@ var FCASES = {
     "2026-09-05: 'ATO Loop' 도메인에 FUUELL 기능제어보드 장애상태 코드표(0~7, Loop1/Loop2/FAN 조합) 기반 FLT_ATO_02(Loop1 장애)·FLT_ATO_03(Loop2 장애)·FLT_ATO_04(FAN 장애) 추가. 장애신호 주기(2초 Low+(N+1)초 High)로 상태번호를 역산하는 판독법과, 조치 후 반드시 FUUELL Reset 버튼을 눌러야 한다는 유의사항을 공통 caution으로 반영. (출처: 03.ATO LOOP(김영추).pptx)",
     "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 표시회로 단선/접지 위치별 전압 패턴 5건(FLT_OTS_03~07) 추가. 단, 이 자료는 DC 기준 수치라 기존 AC 24V 결론(FLT_OTS_01/02, measure-points.json) 및 08.선로전환기 pptx와 충돌함 — 전부 verify:true로 표시, 사용자 확인 대기 중.",
-    "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가."
+    "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
+    "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결."
   ],
   "fieldNotes": {
     "measurePointRef": "measure-points.json의 id를 참조. 해당 단계에서 측정 화면으로 이동.",
@@ -22250,7 +22436,11 @@ var FCASES = {
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_OUT",
+        "MP_ECD_SV2602_IN"
+      ]
     },
     {
       "id": "FLT_PWR_07",
@@ -22301,7 +22491,11 @@ var FCASES = {
             "title": "실행중인 2-of-2 컴퓨터의 3채널 활성화"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_SV2602_OUT",
+        "MP_ECD_SV2602_IN"
+      ]
     },
     {
       "id": "FLT_PWR_08",
@@ -22471,7 +22665,11 @@ var FCASES = {
             "title": "OLM(Optical Link Module)"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_OLM_LED",
+        "MP_ECD_STEKOP_LED"
+      ]
     },
     {
       "id": "FLT_SIG_03",
@@ -22660,7 +22858,11 @@ var FCASES = {
             "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_STEKOP_LED",
+        "MP_ECD_STEKOP_24V"
+      ]
     },
     {
       "id": "FLT_SIG_07",
@@ -22775,7 +22977,11 @@ var FCASES = {
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_ECD_DESIMO",
+        "MP_FIELD_SIG_LAMP"
+      ]
     },
     {
       "id": "FLT_ATO_01",
@@ -22828,7 +23034,10 @@ var FCASES = {
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_SICAS_VENUS3_LED"
+      ]
     },
     {
       "id": "FLT_TWC_01",
@@ -22915,7 +23124,11 @@ var FCASES = {
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_TWC_IMU100_LED",
+        "MP_TWC_RX_WAVEFORM"
+      ]
     },
     {
       "id": "FLT_TWC_03",
@@ -22945,7 +23158,11 @@ var FCASES = {
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "measurePointRef": [
+        "MP_TWC_IMU100_LED",
+        "MP_TWC_CB_DETAIL"
+      ]
     },
     {
       "id": "FLT_OTS_01",
@@ -23287,26 +23504,6 @@ var FCASES = {
       }
     },
     {
-      "id": "FLT_FTGS_01",
-      "domain": "AF궤도회로",
-      "symptom": "ATO 열차는 정상 운행되나 ATS 열차만 궤도 낙하로 운행 지장",
-      "errorSource": "AR계전기 또는 GF계전기",
-      "diagnosis": [
-        "ATO(SSC) 감시 정상",
-        "ATS(AMS) 감시에서만 장애 발생"
-      ],
-      "cause": "AR계전기 또는 GF계전기 불량",
-      "remedy": [
-        "AR계전기 교체",
-        "GF계전기 교체"
-      ],
-      "note": "[2026-09-15] AR계전기(FTGS_AR_RELAY)는 더 이상 사용하지 않는 장비로 확인되어 board-info에서 제거됨 — 이 장애사례는 과거 자료로 유지, GF계전기 쪽만 유효.",
-      "source": {
-        "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
-        "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
-    },
-    {
       "id": "FLT_FTGS_02",
       "domain": "AF궤도회로",
       "symptom": "연속된 2개 궤도회로 동시 낙하",
@@ -23325,7 +23522,11 @@ var FCASES = {
       "source": {
         "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
         "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
+      },
+      "measurePointRef": [
+        "MP_FTGS_PS_12V",
+        "MP_FTGS_PS_5V"
+      ]
     },
     {
       "id": "FLT_FTGS_03",
@@ -23345,7 +23546,10 @@ var FCASES = {
       "source": {
         "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
         "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
+      },
+      "measurePointRef": [
+        "MP_FTGS_RELAY"
+      ]
     },
     {
       "id": "FLT_FTGS_04",
@@ -23365,7 +23569,14 @@ var FCASES = {
       "source": {
         "doc": "궤도회로 유지보수매뉴얼체크포인트.pdf",
         "section": "AF궤도회로(FTGS-917) 장애 발생시 체크포인트"
-      }
+      },
+      "measurePointRef": [
+        "MP_FTGS_DCBOX",
+        "MP_FTGS_TX_FIELD",
+        "MP_FTGS_RX_FIELD",
+        "MP_FTGS_SBOND",
+        "MP_FTGS_TRACK_CB"
+      ]
     }
   ],
   "station": "신도림",
