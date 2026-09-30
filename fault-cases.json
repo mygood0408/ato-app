@@ -19,7 +19,8 @@
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 표시회로 단선/접지 위치별 전압 패턴 5건(FLT_OTS_03~07) 추가. 단, 이 자료는 DC 기준 수치라 기존 AC 24V 결론(FLT_OTS_01/02, measure-points.json) 및 08.선로전환기 pptx와 충돌함 — 전부 verify:true로 표시, 사용자 확인 대기 중.",
     "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
     "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결.",
-    "2026-09-30(S8): 측정지점 없는 OTS 사례 14건에 measureNote(OTS 감시화면 안내) 추가, 고장 상세에 표시."
+    "2026-09-30(S8): 측정지점 없는 OTS 사례 14건에 measureNote(OTS 감시화면 안내) 추가, 고장 상세에 표시.",
+    "2026-09-30(S8): 매뉴얼 6장에서 여러 절에 반복 수록된 고장 4쌍 병합 — ECD_02(+SIG_06), ECD_07(+SIG_08), ILK_01(+SIG_02), PWR_01(+SIG_03). 설비 분류 사례를 대표로 남기고 신호기 사본 삭제, 대표 사례에 alsoDomains=[\"신호기\"]를 두어 신호기 분류에서도 표시."
   ],
   "fieldNotes": {
     "measurePointRef": "measure-points.json의 id를 참조. 해당 단계에서 측정 화면으로 이동.",
@@ -103,7 +104,7 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1",
+        "section": "6.1, 6.5",
         "sectionPageCandidates": [
           {
             "section": "6.1",
@@ -140,12 +141,41 @@
             ],
             "confidence": "확정",
             "title": "인터페이스 모듈 커플러(STEKOP) 장치"
+          },
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
+          },
+          {
+            "section": "4.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              82
+            ],
+            "confidence": "확정",
+            "title": "인터페이스 모듈 커플러(STEKOP) 장치"
           }
         ]
       },
       "measurePointRef": [
         "MP_ECD_STEKOP_LED",
         "MP_ECD_STEKOP_24V"
+      ],
+      "alsoDomains": [
+        "신호기"
       ]
     },
     {
@@ -360,7 +390,7 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1",
+        "section": "6.1, 6.5",
         "sectionPageCandidates": [
           {
             "section": "6.1",
@@ -379,12 +409,32 @@
             ],
             "confidence": "확정",
             "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
+          },
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
       },
       "measurePointRef": [
         "MP_ECD_DESIMO",
         "MP_FIELD_SIG_LAMP"
+      ],
+      "alsoDomains": [
+        "신호기"
       ]
     },
     {
@@ -482,7 +532,7 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2",
+        "section": "6.2, 6.5",
         "sectionPageCandidates": [
           {
             "section": "6.2",
@@ -518,12 +568,41 @@
             ],
             "confidence": "확정",
             "title": "OLM(Optical Link Module)"
+          },
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              51
+            ],
+            "confidence": "확정",
+            "title": "BUMA-장치"
+          },
+          {
+            "section": "5.2",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              112
+            ],
+            "confidence": "확정",
+            "title": "OLM(Optical Link Module)"
           }
         ]
       },
       "measurePointRef": [
         "MP_SICAS_OLM_LED",
         "MP_ECD_STEKOP_LED"
+      ],
+      "alsoDomains": [
+        "신호기"
       ]
     },
     {
@@ -983,7 +1062,7 @@
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4",
+        "section": "6.4, 6.5",
         "sectionPageCandidates": [
           {
             "section": "6.4",
@@ -1019,12 +1098,41 @@
             ],
             "confidence": "확정",
             "title": "터미널 스트립 레벨 G(수직)"
+          },
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              101
+            ],
+            "confidence": "확정",
+            "title": "SV2602-전원장치"
+          },
+          {
+            "section": "4.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              76
+            ],
+            "confidence": "확정",
+            "title": "캐비닛 배치"
           }
         ]
       },
       "measurePointRef": [
         "MP_ECD_SV2602_IN",
         "MP_ECD_SV2602_OUT"
+      ],
+      "alsoDomains": [
+        "신호기"
       ]
     },
     {
@@ -1493,116 +1601,6 @@
       }
     },
     {
-      "id": "FLT_SIG_02",
-      "domain": "신호기",
-      "symptom": "BUMA로 연결되는 모든 요소들에 대한 접속 장애",
-      "titleTag": "BUMA-STEKOP 회선",
-      "errorSource": "BUMA 3,4,5,6의 광접속",
-      "diagnosis": [
-        "OLM 각 채널의 LED 꺼짐",
-        "STEKOP LED L4(채널 1) 깜박거림"
-      ],
-      "cause": "BUMA와 STEKOP 사이의 회선 장애",
-      "remedy": [
-        "플러그와 라인 점검"
-      ],
-      "manualRefs": [
-        "3.5 BUMA-장치",
-        "5.2 OLM(Optical Link Module)"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5",
-        "sectionPageCandidates": [
-          {
-            "section": "6.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              141
-            ],
-            "confidence": "확정"
-          },
-          {
-            "section": "3.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              51
-            ],
-            "confidence": "확정",
-            "title": "BUMA-장치"
-          },
-          {
-            "section": "5.2",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              112
-            ],
-            "confidence": "확정",
-            "title": "OLM(Optical Link Module)"
-          }
-        ]
-      },
-      "measurePointRef": [
-        "MP_SICAS_OLM_LED",
-        "MP_ECD_STEKOP_LED"
-      ]
-    },
-    {
-      "id": "FLT_SIG_03",
-      "domain": "신호기",
-      "symptom": "캐비닛 내 모든 요소들로의 연결 장애",
-      "titleTag": "STEKOP 60V/8V 전원",
-      "errorSource": "STEKOP에 대한 60V/8V 전원 공급",
-      "diagnosis": [
-        "SV2602 LED UE 및 UA 꺼짐",
-        "STEKOP 장치 LED ASS(채널 1a, 2) 적색"
-      ],
-      "cause": "STEKOP에 대한 60V/8V 전원 공급 장애",
-      "remedy": [
-        "SV2602 장치, 필터, 퓨즈 및 배선 점검"
-      ],
-      "manualRefs": [
-        "4.5 SV2602-전원장치",
-        "4.1 캐비닛 배치"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5",
-        "sectionPageCandidates": [
-          {
-            "section": "6.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              141
-            ],
-            "confidence": "확정"
-          },
-          {
-            "section": "4.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              101
-            ],
-            "confidence": "확정",
-            "title": "SV2602-전원장치"
-          },
-          {
-            "section": "4.1",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              76
-            ],
-            "confidence": "확정",
-            "title": "캐비닛 배치"
-          }
-        ]
-      },
-      "measurePointRef": [
-        "MP_ECD_SV2602_IN",
-        "MP_ECD_SV2602_OUT"
-      ]
-    },
-    {
       "id": "FLT_SIG_04",
       "domain": "신호기",
       "symptom": "STEKOP에 의해 제어되는 모든 요소들에 대한 연결 장애 / 통신채널 연결장애 / 컴퓨터 연결 장애",
@@ -1688,59 +1686,6 @@
       ]
     },
     {
-      "id": "FLT_SIG_06",
-      "domain": "신호기",
-      "symptom": "스위치 점검에서의 오류",
-      "titleTag": "DSTT/STEKOP H/W",
-      "errorSource": "DSTT 또는 STEKOP",
-      "diagnosis": [],
-      "cause": "DSTT 또는 STEKOP 하드웨어 오류, 잘못된 메시지 전송",
-      "remedy": [
-        "STEKOP과 DSTT를 점검",
-        "STEKOP를 리셋"
-      ],
-      "manualRefs": [
-        "4.3 신호 DESIMO-WEZ 분산 인터페이스 모듈",
-        "4.2 인터페이스 모듈 커플러(STEKOP) 장치"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5",
-        "sectionPageCandidates": [
-          {
-            "section": "6.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              141
-            ],
-            "confidence": "확정"
-          },
-          {
-            "section": "4.3",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              92
-            ],
-            "confidence": "확정",
-            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
-          },
-          {
-            "section": "4.2",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              82
-            ],
-            "confidence": "확정",
-            "title": "인터페이스 모듈 커플러(STEKOP) 장치"
-          }
-        ]
-      },
-      "measurePointRef": [
-        "MP_ECD_STEKOP_LED",
-        "MP_ECD_STEKOP_24V"
-      ]
-    },
-    {
       "id": "FLT_SIG_07",
       "domain": "신호기",
       "symptom": "신호기가 꺼짐",
@@ -1782,49 +1727,6 @@
       "measurePointRef": [
         "MP_ECD_DESIMO",
         "MP_ECD_STEKOP_LED"
-      ]
-    },
-    {
-      "id": "FLT_SIG_08",
-      "domain": "신호기",
-      "symptom": "신호기가 꺼짐",
-      "titleTag": "DESIMO 24V 없음",
-      "errorSource": "DESIMO",
-      "diagnosis": [
-        "DESIMO LED IK1, IK2 꺼짐"
-      ],
-      "cause": "24V 없음",
-      "remedy": [
-        "DESIMO에서의 플러그 연결 점검"
-      ],
-      "manualRefs": [
-        "4.3 신호 DESIMO-WEZ 분산 인터페이스 모듈"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5",
-        "sectionPageCandidates": [
-          {
-            "section": "6.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              141
-            ],
-            "confidence": "확정"
-          },
-          {
-            "section": "4.3",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              92
-            ],
-            "confidence": "확정",
-            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
-          }
-        ]
-      },
-      "measurePointRef": [
-        "MP_ECD_DESIMO"
       ]
     },
     {
