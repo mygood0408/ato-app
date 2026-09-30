@@ -63,7 +63,7 @@ print(STN, PAGE, '60V segs', len(seg60), '0V segs', len(seg0), file=sys.stderr)
 path = {"id": pid("PWR_SICAS_T52_60V"), "title": ("SICAS " + STN + " G단자 60V DC (전원반 → 단자 → 퓨즈 4A → Filter Z1~Z4 → SV2602)") if X else "SICAS 캐비닛 T52 G단자 60V DC (P51 전원반 → 단자 → 퓨즈 4A → Filter Z1~Z4 → SV2602)", "station": STN,
         "verified": False, "steps": [{"doc": "SICAS_HW_Design_" + STN, "page": PAGE, "segments": seg60, "segments0": seg0, "parts": parts,
         "label": "+60V DC 인입 → 단자 8/7 → 퓨즈 4A → Filter Z1~Z4 (0V 복귀 파랑)",
-        "continues": ("Filter Z1~Z4 이후 SV2602(p.%d 랙 배치)로의 배선은 도면에 없음(확인필요). SIN1 기준 쪽과 도면 일치를 스크립트로 확인, 역별 현장 확인 전" % page("SV2602")[1]) if X else "Filter Z1~Z4 → SV2602 전원장치 프레임 X1(채널1·2) 결선은 SICAS 유지보수 매뉴얼 p.78 「그림 35 60V/8V 배전 배선」에 있음(일반 도면, 이 T52 도면과 직접 대응은 미검증). 랙 배치 p.224·매뉴얼 p.81(채널1·1·2·2). 8V는 매뉴얼 상 X200/X201/X202 플러그로 분배, 상대 캐비닛 X203 접속은 T51 p.206 주석뿐이고 상세도 A25140-J209-A3-*-11은 참조만 있어 PDF에 없음"}]}
+        "continues": ("Filter Z1~Z4 → SV2602 전원장치 프레임 X1(채널1·2) 결선은 SICAS 유지보수 매뉴얼 p.78 「그림 35 60V/8V 배전 배선」에 있음(일반 도면, 이 도면과 직접 대응은 미검증). 랙 배치 p.%d·매뉴얼 p.81(채널1·1·2·2). 8V는 매뉴얼 상 X200/X201/X202 플러그로 분배(상대 캐비닛 연결 상세는 이 역 도면에서 확인필요). SIN1 기준 텍스트, 이 역은 도면 확인" % page("SV2602")[1]) if X else "Filter Z1~Z4 → SV2602 전원장치 프레임 X1(채널1·2) 결선은 SICAS 유지보수 매뉴얼 p.78 「그림 35 60V/8V 배전 배선」에 있음(일반 도면, 이 T52 도면과 직접 대응은 미검증). 랙 배치 p.224·매뉴얼 p.81(채널1·1·2·2). 8V는 매뉴얼 상 X200/X201/X202 플러그로 분배, 상대 캐비닛 X203 접속은 T51 p.206 주석뿐이고 상세도 A25140-J209-A3-*-11은 참조만 있어 PDF에 없음"}]}
 if '--dry' not in sys.argv:
     fp = os.path.join(os.path.dirname(__file__), '..', 'power-paths.json'); P = json.load(open(fp, encoding='utf-8'))
     P = [x for x in P if x['id'] != path['id']] + [path]
