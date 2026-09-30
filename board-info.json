@@ -11774,7 +11774,7 @@
                 94
               ],
               "totalPagesFound": 10,
-              "note": "구성 다름 · SIN1 ATO loop 캐비닛은 신도림, SIN2는 신대방·구로공단 표기(제목 기준)"
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SIN2",
@@ -11796,7 +11796,7 @@
                 61
               ],
               "totalPagesFound": 21,
-              "note": "구성 다름 · 도면 확인"
+              "note": "자동 매칭 쪽(FTGS 궤도회로 도면 등) — ATO loop 전용 도면 아님"
             }
           ],
           "EUL": [
@@ -12312,11 +12312,12 @@
             "pages": [
               6
             ],
-            "confirmed": false,
+            "confirmed": true,
             "items": [
               "SIN1 p.7 \"ATO loops Cabinet Sindorim\" ↔ SIN2 p.6 \"ATO loops Cabinet Sindaebang\" (둘 다 Sync-Loop interface 도면)",
-              "연결 회로명: SIN1 L52.001·L52.002·F59.001 계열 ↔ SIN2 L51.001·F58.001 계열 (텍스트 발췌 기준)",
-              "도면 텍스트만 비교, 이미지 미확인"
+              "FTGS 캐비닛: SIN1 +F59(케이블 L52.001~003, F59.001) ↔ SIN2 +F58(L51.001~003, F58.001)",
+              "REMEMO 621 릴레이 모듈 → O.T. 캐비닛 단자: SIN1 043·044·013~017(F59.001 5선) ↔ SIN2 037·038·001~004(F58.001 3선)",
+              "ATO loop 캐비닛 X4 접속: SIN1 A234-1·A234-3 ↔ SIN2 A231-1·A231-2"
             ]
           }
         }

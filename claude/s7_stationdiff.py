@@ -15,21 +15,28 @@ ups = {'summary': 'SIN2는 SICAS 캐비닛 S52에 UPS 캐비닛 P51의 60V/24V/2
            'SIN1 T52 도면(p.106)의 STEKOP 8V·PSM-K91·24V ORD 공급 조건은 SIN2 p.107에 없음']}
 loop = {'summary': 'ATO loop 캐비닛 표기가 SIN1은 신도림(ATP +L51), SIN2는 신대방(ATP +L52)', 'doc': 'ATP_HW_Design_SIN2', 'pages': [6], 'confirmed': False,
  'items': ['SIN1 p.7 "ATO loops Cabinet Sindorim" ↔ SIN2 p.6 "ATO loops Cabinet Sindaebang" (둘 다 Sync-Loop interface 도면)',
-           '연결 회로명: SIN1 L52.001·L52.002·F59.001 계열 ↔ SIN2 L51.001·F58.001 계열 (텍스트 발췌 기준)',
-           '도면 텍스트만 비교, 이미지 미확인']}
+           'FTGS 캐비닛: SIN1 +F59(케이블 L52.001~003, F59.001) ↔ SIN2 +F58(L51.001~003, F58.001)',
+           'REMEMO 621 릴레이 모듈 → O.T. 캐비닛 단자: SIN1 043·044·013~017(F59.001 5선) ↔ SIN2 037·038·001~004(F58.001 3선)',
+           'ATO loop 캐비닛 X4 접속: SIN1 A234-1·A234-3 ↔ SIN2 A231-1·A231-2']}
 D = {'SICAS_OLM': olm, 'ECDSTT_OLM': olm, 'UPS_ATS_AVR_UNIT': ups, 'UPS_RECTIFIER_UNIT': ups, 'UPS_OUTPUT_DISTRIBUTION': ups, 'ATOLOOP_CB': loop}
 n = 0
 for g in b['boards'].values():
     for x in g:
         if x['id'] in D: x['stationDiff'] = {'SIN2': D[x['id']]}; n += 1
 # 사용자 확인 후 확정(note 제거+confirmed): UPS 3·OLM 2 보드의 SICAS SIN2 항목과 stationDiff. ATOLOOP_CB·UPS_ATS_AVR_UNIT의 ATP 항목은 확인필요 유지.
-CONF = {'SICAS_OLM', 'ECDSTT_OLM', 'UPS_ATS_AVR_UNIT', 'UPS_RECTIFIER_UNIT', 'UPS_OUTPUT_DISTRIBUTION'}
+CONF = {'ATOLOOP_CB', 'SICAS_OLM', 'ECDSTT_OLM', 'UPS_ATS_AVR_UNIT', 'UPS_RECTIFIER_UNIT', 'UPS_OUTPUT_DISTRIBUTION'}
 for g in b['boards'].values():
     for x in g:
         if x['id'] in CONF:
             x['stationDiff']['SIN2']['confirmed'] = True
             for r in x['relatedDrawings']['SIN2']:
-                if r['doc'] == S: r.pop('note', None); r['confirmed'] = True
+                if r['doc'] == S and x['id'] != 'ATOLOOP_CB' or x['id'] == 'ATOLOOP_CB' and r['doc'] == 'ATP_HW_Design_SIN2': r.pop('note', None); r['confirmed'] = True
+# ATOLOOP_CB SICAS SIN2 쪽(18·25·30·31·34)은 FTGS 궤도회로 도면 = 키워드 자동매칭, ATO loop 전용 아님 → note 정정(확인필요 유지)
+for g in b['boards'].values():
+    for x in g:
+        if x['id'] == 'ATOLOOP_CB':
+            for r in x['relatedDrawings']['SIN2']:
+                if r['doc'] == S: r.pop('confirmed', None); r['note'] = '자동 매칭 쪽(FTGS 궤도회로 도면 등) — ATO loop 전용 도면 아님'
 MSG = '2026-09-30(S7): 6개 보드(OLM 2·UPS 3·ATOLOOP_CB)에 stationDiff.SIN2 추가 — SIN2 도면 대조 결과, 확인필요 유지.'
 if MSG not in b['changelog']: b['changelog'].append(MSG)
 open(J, 'w', encoding='utf-8', newline='\r\n').write(json.dumps(b, ensure_ascii=False, indent=2))
