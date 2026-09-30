@@ -10613,19 +10613,161 @@
               "confirmed": true
             }
           ],
-          "EUL": [],
-          "GCD": [],
-          "GYO": [],
-          "HON": [],
-          "SCD": [],
-          "SNU1": [],
-          "SNU2": [],
-          "SOL": [],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
-          "YAN": []
+          "EUL": [
+            {
+              "doc": "SICAS_HW_Design_EUL",
+              "pages": [
+                110,
+                114,
+                118,
+                122,
+                126,
+                130,
+                134
+              ]
+            }
+          ],
+          "GCD": [
+            {
+              "doc": "SICAS_HW_Design_GCD",
+              "pages": [
+                181,
+                185,
+                189,
+                193
+              ]
+            }
+          ],
+          "GYO": [
+            {
+              "doc": "SICAS_HW_Design_GYO",
+              "pages": [
+                72,
+                76,
+                80,
+                84,
+                88,
+                92
+              ]
+            }
+          ],
+          "HON": [
+            {
+              "doc": "SICAS_HW_Design_HON",
+              "pages": [
+                95,
+                99,
+                103,
+                107,
+                111,
+                115,
+                119
+              ]
+            }
+          ],
+          "SCD": [
+            {
+              "doc": "SICAS_HW_Design_SCD",
+              "pages": [
+                29
+              ]
+            }
+          ],
+          "SNU1": [
+            {
+              "doc": "SICAS_HW_Design_SNU1",
+              "pages": [
+                77,
+                81,
+                85,
+                89,
+                93
+              ]
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "SICAS_HW_Design_SNU2",
+              "pages": [
+                42,
+                46,
+                50,
+                54,
+                58
+              ]
+            }
+          ],
+          "SOL": [
+            {
+              "doc": "SICAS_HW_Design_SOL",
+              "pages": [
+                80,
+                84,
+                88
+              ]
+            }
+          ],
+          "SON1": [
+            {
+              "doc": "SICAS_HW_Design_SON1",
+              "pages": [
+                149,
+                153,
+                157,
+                161,
+                165,
+                169,
+                173
+              ]
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "SICAS_HW_Design_SON2",
+              "pages": [
+                36,
+                40,
+                44,
+                48
+              ]
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "SICAS_HW_Design_SPO1",
+              "pages": [
+                73,
+                77,
+                81
+              ]
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "SICAS_HW_Design_SPO2",
+              "pages": [
+                73,
+                77,
+                81,
+                85,
+                89,
+                93
+              ]
+            }
+          ],
+          "YAN": [
+            {
+              "doc": "SICAS_HW_Design_YAN",
+              "pages": [
+                143,
+                147,
+                151,
+                155,
+                159,
+                163
+              ]
+            }
+          ]
         }
       },
       {
