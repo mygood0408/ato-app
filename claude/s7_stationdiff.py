@@ -14,7 +14,7 @@ ups = {'summary': 'SIN2는 SICAS 캐비닛 S52에 UPS 캐비닛 P51의 60V/24V/2
            '230V AC (팬용): L/N 단자 66~73 → 팬1·팬2, 팬 고장 신호(단자 76~81, V25132-Z18-A30·2×1.5㎟) → ID캐비닛 D51',
            'SIN1 T52 도면(p.106)의 STEKOP 8V·PSM-K91·24V ORD 공급 조건은 SIN2 p.107에 없음']}
 loop = {'summary': 'ATO loop 캐비닛 표기가 SIN1은 신도림(ATP +L51), SIN2는 신대방(ATP +L52)', 'doc': 'ATP_HW_Design_SIN2', 'pages': [6], 'confirmed': False,
- 'items': ['SIN1 p.7 "ATO loops Cabinet Sindorim" ↔ SIN2 p.6 "ATO loops Cabinet Sindaebang" (둘 다 Sync-Loop interface 도면)',
+ 'items': ['SIN1 p.7 "ATO loops Cabinet Sindorim" ↔ SIN2 p.6 "ATO loops Cabinet Sindaebang"',
            'FTGS 캐비닛: SIN1 +F59(케이블 L52.001~003, F59.001) ↔ SIN2 +F58(L51.001~003, F58.001)',
            'REMEMO 621 릴레이 모듈 → O.T. 캐비닛 단자: SIN1 043·044·013~017(F59.001 5선) ↔ SIN2 037·038·001~004(F58.001 3선)',
            'ATO loop 캐비닛 X4 접속: SIN1 A234-1·A234-3 ↔ SIN2 A231-1·A231-2']}
