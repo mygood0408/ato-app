@@ -23,6 +23,8 @@ for s in ('SIN1', 'SIN2'):
         rd = B[k].setdefault('relatedDrawings', {}); rd[s] = [r for r in rd.get(s, []) if r['doc'] != d or 'note' not in r or '도면 제목 기준' not in r['note']]
         if p: rd[s].append({'doc': d, 'pages': p, 'totalPagesFound': len(p), 'note': '도면 제목 기준(FTGS 궤도회로 접속도)'})
     print(s, {k: len(v) for k, v in pg.items()})
+# 4) ATOLOOP_CB SICAS SIN1: 15쪽 전부 'loop' 단어 0회(키워드 오매칭) → 삭제. LZB_FTGS_DISTRIBUTOR는 FTGS-OT 배분 배선이라 유지.
+rd = B['ATOLOOP_CB']['relatedDrawings']; rd['SIN1'] = [r for r in rd['SIN1'] if not r['doc'].startswith('SICAS')]
 MSG = '2026-09-30(S7): 도면-설비 매칭 정리 — ATOLOOP_CB SICAS·UPS_ATS_AVR_UNIT ATP 오매칭 항목 삭제, FTGS TX/RX1/RX2 보드에 궤도회로 접속도(SIN1·SIN2) 추가.'
 if MSG not in b['changelog']: b['changelog'].append(MSG)
 open(J, 'w', encoding='utf-8', newline='\r\n').write(json.dumps(b, ensure_ascii=False, indent=2))
