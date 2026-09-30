@@ -21143,7 +21143,8 @@ var FCASES = {
     "2026-09-06: 다른 연동역 재사용을 대비해 station('신도림') 및 scopeNote 필드 추가.",
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 표시회로 단선/접지 위치별 전압 패턴 5건(FLT_OTS_03~07) 추가. 단, 이 자료는 DC 기준 수치라 기존 AC 24V 결론(FLT_OTS_01/02, measure-points.json) 및 08.선로전환기 pptx와 충돌함 — 전부 verify:true로 표시, 사용자 확인 대기 중.",
     "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
-    "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결."
+    "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결.",
+    "2026-09-30(S8): 측정지점 없는 OTS 사례 14건에 measureNote(OTS 감시화면 안내) 추가, 고장 상세에 표시."
   ],
   "fieldNotes": {
     "measurePointRef": "measure-points.json의 id를 참조. 해당 단계에서 측정 화면으로 이동.",
@@ -23181,7 +23182,8 @@ var FCASES = {
       "caution": "OTS 기준값 카드에 명시된 패턴. 선로전환기 번호별 정상값과 대조해 판단할 것 — 정상값 표는 재확인 후 반영 예정.",
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_02",
@@ -23200,7 +23202,8 @@ var FCASES = {
       "caution": "OTS 기준값 카드에 명시된 패턴. 단선(FLT_OTS_01)과 달리 표시출력측도 0V로 떨어지는 것이 특징.",
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_ATO_02",
@@ -23294,7 +23297,8 @@ var FCASES = {
       "source": {
         "doc": "4-3.선로전환기감시시스템.pptx",
         "section": "Indication power - N4 단선"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_04",
@@ -23313,7 +23317,8 @@ var FCASES = {
       "source": {
         "doc": "4-3.선로전환기감시시스템.pptx",
         "section": "Indication power - 10 단선"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_05",
@@ -23332,7 +23337,8 @@ var FCASES = {
       "source": {
         "doc": "4-3.선로전환기감시시스템.pptx",
         "section": "Indication power - N4,10 단선 or 3,4 단선"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_06",
@@ -23351,7 +23357,8 @@ var FCASES = {
       "source": {
         "doc": "4-3.선로전환기감시시스템.pptx",
         "section": "Indication power - N4 Ground"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_07",
@@ -23370,7 +23377,8 @@ var FCASES = {
       "source": {
         "doc": "4-3.선로전환기감시시스템.pptx",
         "section": "Indication power - 10 Ground"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_08",
@@ -23390,7 +23398,8 @@ var FCASES = {
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - STEKOP RESET 장애"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_09",
@@ -23409,7 +23418,8 @@ var FCASES = {
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 제어 휴즈 장애"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_10",
@@ -23427,7 +23437,8 @@ var FCASES = {
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_11",
@@ -23445,7 +23456,8 @@ var FCASES = {
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_12",
@@ -23464,7 +23476,8 @@ var FCASES = {
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_OTS_13",
@@ -23483,7 +23496,8 @@ var FCASES = {
       "source": {
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_SW_01",
@@ -23501,7 +23515,8 @@ var FCASES = {
       "caution": "모터 자체 전압(AC110V)은 전환 순간에만 흐르므로 그 값으로는 상시 진단이 어렵다. 반면 표시전원(DC30V)은 모터전원 케이블에 병렬로 항상 걸려 있으므로, 평상시에도 DC 전압 측정만으로 케이블 이상 유무·구간을 판별할 수 있다.",
       "source": {
         "doc": "3. 교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf"
-      }
+      },
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
     },
     {
       "id": "FLT_FTGS_02",
@@ -26863,6 +26878,7 @@ function renderFaultDetail(fid, ownerKey){
     acts += '<button class="chip-btn" data-act="mp" data-mp="' + escapeHtml(mpRef) + '">📍 측정지점: ' + escapeHtml(mp ? mp.title : mpRef) + (state.mpExpanded[mpRef] ? ' ▾' : ' ›') + '</button>';
   });
   if (acts) h += '<div class="stage-actions">' + acts + '</div>';
+  if (fc.measureNote && !mpRefs.length) h += '<div class="note-text" style="margin-top:8px">📍 ' + escapeHtml(fc.measureNote) + '</div>';
   /* [2026-09-26] 예전엔 이 버튼이 측정지점 탭의 펼침 상태만 바꿔서 고장상황 탭에서는 눌러도
      아무 변화가 없었음 — 측정위치·정상범위·측정단자를 이 자리에 바로 펼쳐 보여준다. */
   mpRefs.forEach(function(mpRef){ if (state.mpExpanded[mpRef]) h += renderMpDetail(mpRef, true); });
