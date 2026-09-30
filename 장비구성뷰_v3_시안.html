@@ -1865,8 +1865,6 @@ var RACK = {
         },
         "ledCountRule": "LED 3개 = 양방향(스위칭 유닛), LED 1개 = 단방향(브릿징 유닛).",
         "openItems": [
-          "브릿지저항과는 서로 다른 별개 제품(확정).",
-          "메인 숫자=실제 궤도번호, 괄호 숫자=철거된 ATS 궤도번호(무의미, 확정).",
           "랙별 정확한 궤도 대응은 미확정."
         ],
         "source": "사용자 제공 FTGS917EZS 랙 실측사진 + 손글씨 설명 (2026-09-07)"
@@ -2001,7 +1999,6 @@ var RACK = {
           "side": "후면",
           "label": "브릿지저항 (현장 송신전압 조정용)",
           "count": 0,
-          "note": "브릿지저항과 switchingLevelShelf의 브릿징/스위칭 유닛은 서로 다른 별개 제품(확정).",
           "boardRef": "FTGS_BRIDGE_RESISTOR"
         },
         {
@@ -3402,8 +3399,7 @@ var RACK = {
     "2026-09-07(17차): FTGS 궤도회로 구성도(88EA) 표, 센터패드형 교육자료 반영 — FTGS_FRAME_CENTERPAD 10보드로 정정, centerPadDetail 신규 추가.",
     "2026-09-07(18차): AF궤도회로 보드배치도·FTGS917EZS 랙 실측사진 반영 — FTGS_FRAME_BRANCH 신규, switchingLevelShelf 신규.",
     "2026-09-08(20차): IFC 지침서.pdf·TWC 지침서.pdf(PDF 내 이미지 전체 포함) 및 실측 사진 다수(IFC HUB/FDF/광변환기 연결도, 정차등 32단자표, D/L 신도림03 릴레이결선도, IMU-100 인터페이스, DC/AC분전반표, 전원반회로도 TBM-1/TBM-2, ATS&AVR/UPS Top Schematic Diagram, 분기부 신호안전설비 제어랙 구성도, 경보벨 동작 케이블 조건, VS26_R 단자함)을 반영해 신규 rack 7건 추가: IFC(캐비닛 적층구조+HUB/FDF/MAU 별도랙), TWC(IMU-100+TWC2/TWC3 커넥터), PSD 인터페이스(PSD/Relay모듈+O.T반절체보드+VS26_R단자함), 분기부 안전설비(TYPE A~E 제어랙 구성+경보벨 TPR릴레이 배선), 분전반(AC)(TR1/TR2/DIRECT/TR4/TR5), 분전반(DC)(TR6~TR13), 전원장치(UPS)(ATS&AVR+정류인버터+출력분배반). 기존 SICAS/ECDSTT/FTGS/ATO Loop 제어함/LZB700M 랙 데이터는 변경 없음. [미해결] 가상신호기(VS)는 AC110V 급전 사실(분전반(AC) TR4/TR5)만 확인되고 내부 구조 자료가 없어 이번에도 rack 항목을 만들지 못했습니다 — 계속 보류 상태.",
-    "2026-09-09(22차): 사용자 제공 SICAS51/52 캐비닛 배선도 사진 10장을 반영해 racks.SICAS에 olmProfibusTopology 신규 추가 — OLM쌍 구성(SICAS51 6쌍 vs SICAS52 4쌍), 인접역 Profibus 링크 코드(SNU1/SIN2/HON/YAN, 역명 미확인 상태로 원문 그대로 기록), BUMA↔OLM↔STEKOP 내부 배선 구조, LZB51/52 케이블표 존재 여부. 사용자 요청에 따라 사진 속 'BUMA 기능·LED 설명표'(기능 1~7번 목록, LED 색상표) 내용은 이번 반영에서 명시적으로 제외함 — board-info.json SICAS_BUMA 참고. F51~F59 케이블표 셀 단위 전체 전사는 사진 해상도 문제로 보류(미확인).",
-    "2026-09-09(23차): 사용자가 제공한 SIEMENS L4129 실측조정표 5건(090T/R430T/L440T/410T/202T)을 반영해 racks.FTGS.centerPadDetail에 cbBoxNames(090TF/R430TF/L440TF 가운데·양측 C/B박스 명칭 전체 확정) 및 directionLabels(궤도유형별 M/G/A/B 라벨 의미 확정 — 단방향=G, 양방향=G+A, 분기형=G+A+B, 센터패드형=M+G+A — 및 센터패드 M상태 기본 송수신 로직) 신규 추가. 기존 openItems 2건(090T/R430T 매핑 미확정, M/G/A 의미 미확정 가설) 모두 해결 처리. switchingLevelShelf는 사용자가 궤도당 1개 배치·ATS 괄호숫자 무의미 원칙을 재확인해 기존 결론 유지를 짧게 기록. board-info.json FTGS_SWITCHING_PCB 상세화는 board-info.json changelog 23차 참고. [미해결/확인필요] 사용자가 이번 메시지에서 'ST와 W는 보드 구성상 동일하고 구분은 송신전환 PCB 유무뿐'이라고 언급했는데, 이는 기존에 확정된 결론(T·S=표준 7보드로 서로 동일, W=9보드로 T·S와 다름 — FTGS_FRAME_BIDIR note 참고)과 어긋나 보입니다. 다만 '송신전환 PCB 유무'는 오히려 이미 확정된 W(9보드)-M/센터패드형(9보드+송신전환PCB=10보드) 관계와 정확히 일치하는 설명이라, 사용자가 'ST'라고 쓴 것이 'W'의 오탈자이고 실제로는 'W와 M(센터패드형)을 구분하는 것은 송신전환 PCB의 유무'라는 의미였을 가능성이 있습니다. 데이터는 변경하지 않고 사용자에게 재확인을 요청한 상태입니다."
+    "2026-09-09(22차): 사용자 제공 SICAS51/52 캐비닛 배선도 사진 10장을 반영해 racks.SICAS에 olmProfibusTopology 신규 추가 — OLM쌍 구성(SICAS51 6쌍 vs SICAS52 4쌍), 인접역 Profibus 링크 코드(SNU1/SIN2/HON/YAN, 역명 미확인 상태로 원문 그대로 기록), BUMA↔OLM↔STEKOP 내부 배선 구조, LZB51/52 케이블표 존재 여부. 사용자 요청에 따라 사진 속 'BUMA 기능·LED 설명표'(기능 1~7번 목록, LED 색상표) 내용은 이번 반영에서 명시적으로 제외함 — board-info.json SICAS_BUMA 참고. F51~F59 케이블표 셀 단위 전체 전사는 사진 해상도 문제로 보류(미확인)."
   ]
 };
 var BOARDFACE = {
