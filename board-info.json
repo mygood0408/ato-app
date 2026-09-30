@@ -2374,7 +2374,7 @@
                 113
               ],
               "totalPagesFound": 7,
-              "note": "구성 다름 · SIN1 S51 캐비닛 OLM 6개 ↔ SIN2 S52 캐비닛 OLM 4개(SIN1과 상호연결), 도면 대조함"
+              "confirmed": true
             }
           ],
           "EUL": [
@@ -2643,7 +2643,7 @@
             "pages": [
               104
             ],
-            "confirmed": false,
+            "confirmed": true,
             "items": [
               "OLM 4개(A1·A2·A5·A6) 모두 P12형. SIN1의 G12-1300형(모노모드 광섬유) 2개는 없음",
               "연결 대상: SIN2 ATP +L52, SIN1 SICAS +S51_BUMA0·BUMA2, S&D mobile. SIN1 도면의 HON·YAN·SNU1·IF-C 연결 표기는 SIN2에 없음",
@@ -4494,7 +4494,7 @@
                 113
               ],
               "totalPagesFound": 7,
-              "note": "구성 다름 · SIN1 S51 캐비닛 OLM 6개 ↔ SIN2 S52 캐비닛 OLM 4개(SIN1과 상호연결), 도면 대조함"
+              "confirmed": true
             }
           ],
           "EUL": [
@@ -4763,7 +4763,7 @@
             "pages": [
               104
             ],
-            "confirmed": false,
+            "confirmed": true,
             "items": [
               "OLM 4개(A1·A2·A5·A6) 모두 P12형. SIN1의 G12-1300형(모노모드 광섬유) 2개는 없음",
               "연결 대상: SIN2 ATP +L52, SIN1 SICAS +S51_BUMA0·BUMA2, S&D mobile. SIN1 도면의 HON·YAN·SNU1·IF-C 연결 표기는 SIN2에 없음",
@@ -13561,7 +13561,7 @@
                 140
               ],
               "totalPagesFound": 7,
-              "note": "구성 다름 · SIN1은 EC/DSTT 캐비닛(T52), SIN2는 SICAS 캐비닛 S52에 60V/24V/230V·UPS P51 연결, 도면 대조함"
+              "confirmed": true
             }
           ],
           "EUL": [
@@ -13816,7 +13816,7 @@
             "pages": [
               107
             ],
-            "confirmed": false,
+            "confirmed": true,
             "items": [
               "60V DC (채널 A/B/C용): 단자 1~38, 인입 2×6㎟ 2계통(−/+), UPS까지 최대 20m",
               "24V DC (주변장치용): 단자 40~59, 퓨즈 4A(40~43)·1A(44~46)·6.3A(47~49), 인입 24V DC Indoor(접지) 2×6㎟ 2계통",
@@ -13873,7 +13873,7 @@
                 107
               ],
               "totalPagesFound": 3,
-              "note": "구성 다름 · SIN1은 EC/DSTT 캐비닛(T52), SIN2는 SICAS 캐비닛 S52에 60V/24V/230V·UPS P51 연결, 도면 대조함"
+              "confirmed": true
             }
           ],
           "EUL": [
@@ -14161,7 +14161,7 @@
             "pages": [
               107
             ],
-            "confirmed": false,
+            "confirmed": true,
             "items": [
               "60V DC (채널 A/B/C용): 단자 1~38, 인입 2×6㎟ 2계통(−/+), UPS까지 최대 20m",
               "24V DC (주변장치용): 단자 40~59, 퓨즈 4A(40~43)·1A(44~46)·6.3A(47~49), 인입 24V DC Indoor(접지) 2×6㎟ 2계통",
@@ -14213,7 +14213,7 @@
                 107
               ],
               "totalPagesFound": 3,
-              "note": "구성 다름 · SIN1은 EC/DSTT 캐비닛(T52), SIN2는 SICAS 캐비닛 S52에 60V/24V/230V·UPS P51 연결, 도면 대조함"
+              "confirmed": true
             }
           ],
           "EUL": [
@@ -14501,7 +14501,7 @@
             "pages": [
               107
             ],
-            "confirmed": false,
+            "confirmed": true,
             "items": [
               "60V DC (채널 A/B/C용): 단자 1~38, 인입 2×6㎟ 2계통(−/+), UPS까지 최대 20m",
               "24V DC (주변장치용): 단자 40~59, 퓨즈 4A(40~43)·1A(44~46)·6.3A(47~49), 인입 24V DC Indoor(접지) 2×6㎟ 2계통",

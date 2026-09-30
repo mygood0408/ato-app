@@ -22,6 +22,14 @@ n = 0
 for g in b['boards'].values():
     for x in g:
         if x['id'] in D: x['stationDiff'] = {'SIN2': D[x['id']]}; n += 1
+# 사용자 확인 후 확정(note 제거+confirmed): UPS 3·OLM 2 보드의 SICAS SIN2 항목과 stationDiff. ATOLOOP_CB·UPS_ATS_AVR_UNIT의 ATP 항목은 확인필요 유지.
+CONF = {'SICAS_OLM', 'ECDSTT_OLM', 'UPS_ATS_AVR_UNIT', 'UPS_RECTIFIER_UNIT', 'UPS_OUTPUT_DISTRIBUTION'}
+for g in b['boards'].values():
+    for x in g:
+        if x['id'] in CONF:
+            x['stationDiff']['SIN2']['confirmed'] = True
+            for r in x['relatedDrawings']['SIN2']:
+                if r['doc'] == S: r.pop('note', None); r['confirmed'] = True
 MSG = '2026-09-30(S7): 6개 보드(OLM 2·UPS 3·ATOLOOP_CB)에 stationDiff.SIN2 추가 — SIN2 도면 대조 결과, 확인필요 유지.'
 if MSG not in b['changelog']: b['changelog'].append(MSG)
 open(J, 'w', encoding='utf-8', newline='\r\n').write(json.dumps(b, ensure_ascii=False, indent=2))
