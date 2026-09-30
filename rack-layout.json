@@ -92,7 +92,7 @@
                 127,
                 128
               ],
-              "note": "24V(p.127) / 0V 복귀(p.128) — 전원 경로 ⚡ 있음, 확인필요. 현장 단자 슬리브 'D51 24V (+/−) MELDE' 표기 확인"
+              "note": "전원 경로 ⚡ 있음, 확인필요"
             }
           ],
           "desc": "ID 캐비닛(D51)에서 24V DC_1/2가 ID_T 단자대 버스를 거쳐 MELDE2 보드(X2/X4)로 공급됩니다. 24V와 0V 복귀 도면은 관련 도면에서 봅니다."
@@ -1174,7 +1174,7 @@
         {
           "id": "fuse",
           "stage": "퓨즈 레일 (전면 L행, 궤도회로 공통)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "note": "FTGS 궤도회로 전원 — 전원 경로 ⚡ 있음, 확인필요"}, {"doc": "SICAS_HW_Design_SIN2", "pages": [36, 40, 44, 48], "note": "SIN2 F56~F59 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [36, 40, 44, 48], "confirmed": true}],
           "desc": "궤도회로 공통 퓨즈 레일입니다. 특정 궤도회로만 전원이 없으면 이 퓨즈부터 확인합니다.",
           "rows": [
             [
