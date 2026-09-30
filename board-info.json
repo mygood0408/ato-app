@@ -2635,6 +2635,22 @@
               "totalPagesFound": 23
             }
           ]
+        },
+        "stationDiff": {
+          "SIN2": {
+            "summary": "SIN2 S52 캐비닛 OLM 4개 (SIN1 S51 캐비닛은 6개)",
+            "doc": "SICAS_HW_Design_SIN2",
+            "pages": [
+              104
+            ],
+            "confirmed": false,
+            "items": [
+              "OLM 4개(A1·A2·A5·A6) 모두 P12형. SIN1의 G12-1300형(모노모드 광섬유) 2개는 없음",
+              "연결 대상: SIN2 ATP +L52, SIN1 SICAS +S51_BUMA0·BUMA2, S&D mobile. SIN1 도면의 HON·YAN·SNU1·IF-C 연결 표기는 SIN2에 없음",
+              "케이블: 플라스틱 광섬유 V25132-Z2811-A20·Z1803-A10, RS485 구리선 V25132-M971-A1 (SIN1은 모노모드 E10/125·M973-A1도 사용)",
+              "전원: -X14 +24V/0V (SIN1과 동일)"
+            ]
+          }
         }
       },
       {
@@ -4739,6 +4755,22 @@
               "totalPagesFound": 23
             }
           ]
+        },
+        "stationDiff": {
+          "SIN2": {
+            "summary": "SIN2 S52 캐비닛 OLM 4개 (SIN1 S51 캐비닛은 6개)",
+            "doc": "SICAS_HW_Design_SIN2",
+            "pages": [
+              104
+            ],
+            "confirmed": false,
+            "items": [
+              "OLM 4개(A1·A2·A5·A6) 모두 P12형. SIN1의 G12-1300형(모노모드 광섬유) 2개는 없음",
+              "연결 대상: SIN2 ATP +L52, SIN1 SICAS +S51_BUMA0·BUMA2, S&D mobile. SIN1 도면의 HON·YAN·SNU1·IF-C 연결 표기는 SIN2에 없음",
+              "케이블: 플라스틱 광섬유 V25132-Z2811-A20·Z1803-A10, RS485 구리선 V25132-M971-A1 (SIN1은 모노모드 E10/125·M973-A1도 사용)",
+              "전원: -X14 +24V/0V (SIN1과 동일)"
+            ]
+          }
         }
       },
       {
@@ -12272,6 +12304,21 @@
               "totalPagesFound": 54
             }
           ]
+        },
+        "stationDiff": {
+          "SIN2": {
+            "summary": "ATO loop 캐비닛 표기가 SIN1은 신도림(ATP +L51), SIN2는 신대방(ATP +L52)",
+            "doc": "ATP_HW_Design_SIN2",
+            "pages": [
+              6
+            ],
+            "confirmed": false,
+            "items": [
+              "SIN1 p.7 \"ATO loops Cabinet Sindorim\" ↔ SIN2 p.6 \"ATO loops Cabinet Sindaebang\" (둘 다 Sync-Loop interface 도면)",
+              "연결 회로명: SIN1 L52.001·L52.002·F59.001 계열 ↔ SIN2 L51.001·F58.001 계열 (텍스트 발췌 기준)",
+              "도면 텍스트만 비교, 이미지 미확인"
+            ]
+          }
         }
       }
     ],
@@ -13761,6 +13808,22 @@
               "totalPagesFound": 9
             }
           ]
+        },
+        "stationDiff": {
+          "SIN2": {
+            "summary": "SIN2는 SICAS 캐비닛 S52에 UPS 캐비닛 P51의 60V/24V/230V가 들어옴 (SIN1은 EC/DSTT 캐비닛 T52)",
+            "doc": "SICAS_HW_Design_SIN2",
+            "pages": [
+              107
+            ],
+            "confirmed": false,
+            "items": [
+              "60V DC (채널 A/B/C용): 단자 1~38, 인입 2×6㎟ 2계통(−/+), UPS까지 최대 20m",
+              "24V DC (주변장치용): 단자 40~59, 퓨즈 4A(40~43)·1A(44~46)·6.3A(47~49), 인입 24V DC Indoor(접지) 2×6㎟ 2계통",
+              "230V AC (팬용): L/N 단자 66~73 → 팬1·팬2, 팬 고장 신호(단자 76~81, V25132-Z18-A30·2×1.5㎟) → ID캐비닛 D51",
+              "SIN1 T52 도면(p.106)의 STEKOP 8V·PSM-K91·24V ORD 공급 조건은 SIN2 p.107에 없음"
+            ]
+          }
         }
       },
       {
@@ -14090,6 +14153,22 @@
               "totalPagesFound": 9
             }
           ]
+        },
+        "stationDiff": {
+          "SIN2": {
+            "summary": "SIN2는 SICAS 캐비닛 S52에 UPS 캐비닛 P51의 60V/24V/230V가 들어옴 (SIN1은 EC/DSTT 캐비닛 T52)",
+            "doc": "SICAS_HW_Design_SIN2",
+            "pages": [
+              107
+            ],
+            "confirmed": false,
+            "items": [
+              "60V DC (채널 A/B/C용): 단자 1~38, 인입 2×6㎟ 2계통(−/+), UPS까지 최대 20m",
+              "24V DC (주변장치용): 단자 40~59, 퓨즈 4A(40~43)·1A(44~46)·6.3A(47~49), 인입 24V DC Indoor(접지) 2×6㎟ 2계통",
+              "230V AC (팬용): L/N 단자 66~73 → 팬1·팬2, 팬 고장 신호(단자 76~81, V25132-Z18-A30·2×1.5㎟) → ID캐비닛 D51",
+              "SIN1 T52 도면(p.106)의 STEKOP 8V·PSM-K91·24V ORD 공급 조건은 SIN2 p.107에 없음"
+            ]
+          }
         }
       },
       {
@@ -14414,6 +14493,22 @@
               "totalPagesFound": 9
             }
           ]
+        },
+        "stationDiff": {
+          "SIN2": {
+            "summary": "SIN2는 SICAS 캐비닛 S52에 UPS 캐비닛 P51의 60V/24V/230V가 들어옴 (SIN1은 EC/DSTT 캐비닛 T52)",
+            "doc": "SICAS_HW_Design_SIN2",
+            "pages": [
+              107
+            ],
+            "confirmed": false,
+            "items": [
+              "60V DC (채널 A/B/C용): 단자 1~38, 인입 2×6㎟ 2계통(−/+), UPS까지 최대 20m",
+              "24V DC (주변장치용): 단자 40~59, 퓨즈 4A(40~43)·1A(44~46)·6.3A(47~49), 인입 24V DC Indoor(접지) 2×6㎟ 2계통",
+              "230V AC (팬용): L/N 단자 66~73 → 팬1·팬2, 팬 고장 신호(단자 76~81, V25132-Z18-A30·2×1.5㎟) → ID캐비닛 D51",
+              "SIN1 T52 도면(p.106)의 STEKOP 8V·PSM-K91·24V ORD 공급 조건은 SIN2 p.107에 없음"
+            ]
+          }
         }
       }
     ]
@@ -14429,6 +14524,7 @@
     "2026-09-08(20차): 사용자가 제공한 IFC 지침서.pdf·TWC 지침서.pdf(PDF 내 이미지 전체 포함) 및 실측 사진 다수(신도림 IFC HUB/FDF/광변환기 연결도 1·2, 신도림 기계실 관내 정차등 32단자표, D/L 신도림 03 1~4/4 릴레이결선도, IF_Computer의 기능 슬라이드, IMU 100 TWC 실내수신기 인터페이스 슬라이드, 신도림 DC/AC분전반표, 신도림 전원반회로도 TBM-1/TBM-2, ATS&AVR/UPS Top Schematic Diagram, 신도림역 분기부 신호안전설비 제어랙 구성도, 분기부 안전설비 경보벨 동작 케이블 조건, 신도림 신호기계실 VS26_R 단자함)을 반영해 IFC/TWC/PSD 인터페이스/분기부 안전설비를 kind:'concept'에서 실제 배치 자료(cabinet)로 승격하고, 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 그룹을 신규 작성. IFC: 8슬롯 카드표·IP번호체계(신도림=IFC5)·연결설비 프로토콜표를 IFC_COMPUTER에 추가, IFC_HUB/IFC_FDF에 HUB1·HUB2/FDF1·FDF2/MAU 포트배정 신규 반영, IFC_DL_RELAY에 32개 릴레이(D/L 신도림03)·IDO 매핑 및 32단자 정차등표 신규 반영. TWC: TWC_IMU100에 6보드 내부구성·커넥터 핀아웃·TWC2/TWC3 예시 라벨 반영, TWC_AMP_MODULE에 S1/S2 증폭비표·튜닝절차 반영. PSD 인터페이스: PSD_VS26R_TERMINAL_BOX 신규 추가(방폭 단자함, EC/DSTT·IF_C~PSD 제어함 배선). 분기부 안전설비: TURNOUT_SAFETY_ALARM_TPR_RELAY 신규 추가(경보벨1/2 동작조건 배선, TYPE C-1/C-2). 분전반(AC): TR1~TR5 부하표 신규 작성 — 분기부 안전설비·가상신호기(VS)가 TR4/TR5(AC110V) 계열에서 급전됨을 확인. 분전반(DC): TR6~TR13 부하표 신규 작성. 전원장치(UPS): ATS&AVR유닛·정류인버터유닛·출력분배반 신규 작성. [미해결] 가상신호기(VS)는 AC110V 급전 사실 외에 내부 구조·배선에 대한 사진/도면 자료가 없어 이번에도 실제 배치 자료로 승격하지 못했습니다 — 계속 'concept(보류)' 상태로 유지를 권장합니다. 분기부 안전설비의 신도림역 제어랙(TYPE A~E) 상세 부품 리스트는 racks.분기부 안전설비 참고.",
     "2026-09-08(21차): LZB_VESPE의 BA슬롯 사용 문구를 사용자가 제공한 '2호선 신호업무 지침'(p.100-101, LED 동작표 원본 사진)으로 최종 확정 — BL1·BA1/3/4 사용, BL2·BA2/5/6 미사용(2호선). 기존 원본 설명 문구와 LED 상태표 간 불일치, 그리고 여러 라운드(19차 등)에 걸쳐 문서로도 확정하지 못했던 상태를 이번에 해소함. function/caution/ledInfo 3곳 모두 갱신.",
     "2026-09-09(22차): 사용자가 제공한 LZB_BUMA 정면 사진(후면은 접근 불가로 촬영 못함) 반영 — LZB_BUMA에 frontPanelObserved 신규 추가. 부품번호(S25181-B15-A1), 슬롯 라벨(BUMA(0)~BUMA(6)) 확인, 인접 'VENUS2' 라벨로 이 사진이 SICAS_BUMA가 아닌 LZB_BUMA임을 재확인. 정면에 보이는 회전형(로터리) 요소는 Profibus 주소 설정 스위치일 가능성이 있으나 사진만으로 특정 불가 — 미확인으로 기록. profibusAddressing(19차, 배면 커넥터 슬롯코딩 기반)의 caution은 유지 — 이번 정면 사진으로는 그 갭이 해소되지 않음.",
-    "2026-09-09(23차): 사용자가 제공한 스위칭_PCB 매뉴얼 원본 페이지(K1/K2/K12/K3/K13 계전기 로직 도해, LED S/A/B 패널)를 반영해 FTGS_SWITCHING_PCB의 function/connectors/ledInfo를 상세화(기존 '미확인' 상태였던 LED A/B/S 의미 전체 확정). 아울러 이전 라운드(20~22차)에 완료되었으나 프로젝트 문서에는 아직 반영되지 않았던 항목들을 이번에 함께 병합: 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 보드그룹, TURNOUT_SAFETY_ALARM_TPR_RELAY, PSD_VS26R_TERMINAL_BOX, LZB_VESPE BA슬롯 최종 확정 caution, LZB_BUMA.frontPanelObserved."
+    "2026-09-09(23차): 사용자가 제공한 스위칭_PCB 매뉴얼 원본 페이지(K1/K2/K12/K3/K13 계전기 로직 도해, LED S/A/B 패널)를 반영해 FTGS_SWITCHING_PCB의 function/connectors/ledInfo를 상세화(기존 '미확인' 상태였던 LED A/B/S 의미 전체 확정). 아울러 이전 라운드(20~22차)에 완료되었으나 프로젝트 문서에는 아직 반영되지 않았던 항목들을 이번에 함께 병합: 분전반(AC)/분전반(DC)/전원장치(UPS) 3개 보드그룹, TURNOUT_SAFETY_ALARM_TPR_RELAY, PSD_VS26R_TERMINAL_BOX, LZB_VESPE BA슬롯 최종 확정 caution, LZB_BUMA.frontPanelObserved.",
+    "2026-09-30(S7): 6개 보드(OLM 2·UPS 3·ATOLOOP_CB)에 stationDiff.SIN2 추가 — SIN2 도면 대조 결과, 확인필요 유지."
   ]
 }
