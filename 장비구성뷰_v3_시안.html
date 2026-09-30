@@ -7774,7 +7774,6 @@ var BOARDINFO_RAW = {
         "relatedFaultCases": [
           "FLT_ECD_06",
           "FLT_ECD_07",
-          "FLT_SIG_07",
           "FLT_SIG_09"
         ],
         "source": {
@@ -19738,7 +19737,6 @@ var MPOINTS = {
       "relatedFaults": [
         "FLT_ECD_06",
         "FLT_ECD_07",
-        "FLT_SIG_07",
         "FLT_SIG_09"
       ],
       "source": {
@@ -20559,7 +20557,7 @@ var MPOINTS = {
         "FLT_ILK_01",
         "FLT_SIG_04",
         "FLT_SIG_05",
-        "FLT_SIG_07"
+        "FLT_ECD_06"
       ],
       "note": "STEKOP 컴퓨터 정지 등 오류는 L1~L4를 약 1초 간격으로 순환 표시(오류번호, 진단용). 리셋은 FEMES Reset-key(유지보수 담당자만). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
       "verify": true
@@ -20755,7 +20753,6 @@ var MPOINTS = {
       "relatedFaults": [
         "FLT_ECD_06",
         "FLT_ECD_07",
-        "FLT_SIG_07",
         "FLT_SIG_09"
       ],
       "note": "점등 시 램프전류 제한 26mA(24.7~27.3mA), 공급전류 20~25mA. 전면 플러그 번호는 p.93 표 기준. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
@@ -21136,7 +21133,7 @@ var FCASES = {
     "2026-09-06: 신규 자료 4건(선로전환기 장애조치매뉴얼 및 체크리스트.pdf, 3.교육자료2호선 모터전원 케이블 점검방법.pdf, 궤도회로 유지보수매뉴얼체크포인트.pdf) 반영. (1) OTS 제어/표시/모터 전원 확정치 갱신(measure-points.json: 제어DC24V, 표시DC60V, 모터AC110V-전환시만). (2) OTS/DEWEMO 장애 체크포인트 6건(FLT_OTS_08~13) 추가. (3) 모터전원 케이블 DC 진단법(FLT_SW_01) 추가. (4) AF궤도회로 도메인 신설, 체크포인트 4건(FLT_FTGS_01~04) 추가.",
     "2026-09-30(S8): FLT_FTGS_01(ATS 열차만 낙하) 삭제(사용자 지시: ATS 관련 불필요). 약한추천 11건 측정지점 연결.",
     "2026-09-30(S8): 측정지점 없는 OTS 사례 14건에 measureNote(OTS 감시화면 안내) 추가, 고장 상세에 표시.",
-    "2026-09-30(S8): 매뉴얼 6장에서 여러 절에 반복 수록된 고장 4쌍 병합 — ECD_02(+SIG_06), ECD_07(+SIG_08), ILK_01(+SIG_02), PWR_01(+SIG_03). 설비 분류 사례를 대표로 남기고 신호기 사본 삭제, 대표 사례에 alsoDomains=[\"신호기\"]를 두어 신호기 분류에서도 표시."
+    "2026-09-30(S8): 매뉴얼 6장에서 여러 절에 반복 수록된 고장 6쌍 병합 — ECD_02(+SIG_06), ECD_07(+SIG_08), ILK_01(+SIG_02), PWR_01(+SIG_03), ECD_06(+SIG_07), ILK_04(+PWR_08). 설비 분류 사례를 대표로 남기고 사본 삭제, 대표 사례에 alsoDomains(삭제된 사본의 분류)를 두어 그 분류에서도 표시."
   ],
   "fieldNotes": {
     "measurePointRef": "measure-points.json의 id를 참조. 해당 단계에서 측정 화면으로 이동.",
@@ -21461,7 +21458,7 @@ var FCASES = {
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.1",
+        "section": "6.1, 6.5",
         "sectionPageCandidates": [
           {
             "section": "6.1",
@@ -21480,12 +21477,33 @@ var FCASES = {
             ],
             "confidence": "확정",
             "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
+          },
+          {
+            "section": "6.5",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              141
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "4.3",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              92
+            ],
+            "confidence": "확정",
+            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
           }
         ]
       },
       "measurePointRef": [
         "MP_ECD_DESIMO",
-        "MP_FIELD_SIG_LAMP"
+        "MP_FIELD_SIG_LAMP",
+        "MP_ECD_STEKOP_LED"
+      ],
+      "alsoDomains": [
+        "신호기"
       ]
     },
     {
@@ -21820,7 +21838,7 @@ var FCASES = {
       ],
       "source": {
         "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.2",
+        "section": "6.2, 6.4",
         "sectionPageCandidates": [
           {
             "section": "6.2",
@@ -21856,9 +21874,47 @@ var FCASES = {
             ],
             "confidence": "확정",
             "title": "연동 캐비닛 구조"
+          },
+          {
+            "section": "6.4",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              137
+            ],
+            "confidence": "확정"
+          },
+          {
+            "section": "3.10",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              73
+            ],
+            "confidence": "확정",
+            "title": "필터 라인"
+          },
+          {
+            "section": "3.12",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              75
+            ],
+            "confidence": "확정",
+            "title": "레벨 N에서의 터미널 스트립"
+          },
+          {
+            "section": "3.1",
+            "kbDoc": "SICAS_유지보수_매뉴얼",
+            "pdfPages": [
+              36
+            ],
+            "confidence": "확정",
+            "title": "연동 캐비닛 구조"
           }
         ]
-      }
+      },
+      "alsoDomains": [
+        "전원"
+      ]
     },
     {
       "id": "FLT_ILK_05",
@@ -22598,70 +22654,6 @@ var FCASES = {
       ]
     },
     {
-      "id": "FLT_PWR_08",
-      "domain": "전원",
-      "symptom": "연동장치에 대한 채널 접속 중단",
-      "titleTag": "연동 60V 전원",
-      "errorSource": "연동장치 캐비닛용 60V 전원 공급",
-      "diagnosis": [
-        "연동장치 스위치 Off",
-        "연동장치 캐비닛 내의 모든 장치 꺼짐"
-      ],
-      "cause": "연동장치 캐비닛용 60V 전원 공급 장애",
-      "remedy": [
-        "분전반으로부터의 60V 전원, 필터 및 라인 점검"
-      ],
-      "measurePointRef": [
-        "MP_SICAS_S51_DC60"
-      ],
-      "manualRefs": [
-        "3.10 필터 라인",
-        "3.12 레벨 N에서의 터미널 스트립",
-        "3.1 연동 캐비닛 구조"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.4",
-        "sectionPageCandidates": [
-          {
-            "section": "6.4",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              137
-            ],
-            "confidence": "확정"
-          },
-          {
-            "section": "3.10",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              73
-            ],
-            "confidence": "확정",
-            "title": "필터 라인"
-          },
-          {
-            "section": "3.12",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              75
-            ],
-            "confidence": "확정",
-            "title": "레벨 N에서의 터미널 스트립"
-          },
-          {
-            "section": "3.1",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              36
-            ],
-            "confidence": "확정",
-            "title": "연동 캐비닛 구조"
-          }
-        ]
-      }
-    },
-    {
       "id": "FLT_SIG_01",
       "domain": "신호기",
       "symptom": "EC/DSTT 캐비닛 내 모든 요소들의 접속 장애",
@@ -22798,50 +22790,6 @@ var FCASES = {
         ]
       },
       "measurePointRef": [
-        "MP_ECD_STEKOP_LED"
-      ]
-    },
-    {
-      "id": "FLT_SIG_07",
-      "domain": "신호기",
-      "symptom": "신호기가 꺼짐",
-      "titleTag": "STEKOP-DESIMO 연결",
-      "errorSource": "DESIMO",
-      "diagnosis": [
-        "DESIMO 상에서 모든 LED가 꺼짐"
-      ],
-      "cause": "STEKOP-DESIMO 연결 장애",
-      "remedy": [
-        "연결 케이블과 플러그 점검"
-      ],
-      "manualRefs": [
-        "4.3 신호 DESIMO-WEZ 분산 인터페이스 모듈"
-      ],
-      "source": {
-        "doc": "SICAS 유지보수 매뉴얼",
-        "section": "6.5",
-        "sectionPageCandidates": [
-          {
-            "section": "6.5",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              141
-            ],
-            "confidence": "확정"
-          },
-          {
-            "section": "4.3",
-            "kbDoc": "SICAS_유지보수_매뉴얼",
-            "pdfPages": [
-              92
-            ],
-            "confidence": "확정",
-            "title": "신호 DESIMO-WEZ 분산 인터페이스 모듈"
-          }
-        ]
-      },
-      "measurePointRef": [
-        "MP_ECD_DESIMO",
         "MP_ECD_STEKOP_LED"
       ]
     },

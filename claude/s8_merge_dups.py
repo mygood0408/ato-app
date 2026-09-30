@@ -1,11 +1,13 @@
 # S8: 매뉴얼 6장에서 여러 절에 반복 수록된 고장 4쌍 병합 — 설비 분류 사례를 대표로 남기고 신호기 사본 삭제, alsoDomains=['신호기'] 추가. JSON·HTML 동기화. 재실행 가능.
 import json, re
 FCJ = 'fault-cases.json'; MPJ = 'measure-points.json'; BJ = 'board-info.json'; H = '장비구성뷰_v3_시안.html'
-PAIRS = {'FLT_ECD_02': 'FLT_SIG_06', 'FLT_ECD_07': 'FLT_SIG_08', 'FLT_ILK_01': 'FLT_SIG_02', 'FLT_PWR_01': 'FLT_SIG_03'}
+PAIRS = {'FLT_ECD_02': 'FLT_SIG_06', 'FLT_ECD_07': 'FLT_SIG_08', 'FLT_ILK_01': 'FLT_SIG_02', 'FLT_PWR_01': 'FLT_SIG_03',
+         'FLT_ECD_06': 'FLT_SIG_07', 'FLT_ILK_04': 'FLT_PWR_08'}  # 뒤 2쌍은 표현이 달라 2차로 발견
 DROP = {v: k for k, v in PAIRS.items()}
 fc = json.load(open(FCJ, encoding='utf-8')); F = {c['id']: c for c in fc['cases']}
-if all(d in F for d in DROP):
+if any(d in F for d in DROP):
     for keep, drop in PAIRS.items():
+        if drop not in F: continue
         k, d = F[keep], F[drop]
         k['alsoDomains'] = sorted(set(k.get('alsoDomains', [])) | {d['domain']})
         k['measurePointRef'] = list(dict.fromkeys((k.get('measurePointRef') or []) + (d.get('measurePointRef') or [])))
@@ -17,8 +19,9 @@ if all(d in F for d in DROP):
             ks['section'] = str(ks.get('section')) + ', ' + str(ds['section'])
         k['source'] = ks
     fc['cases'] = [c for c in fc['cases'] if c['id'] not in DROP]
-    MSG = '2026-09-30(S8): 매뉴얼 6장에서 여러 절에 반복 수록된 고장 4쌍 병합 — ECD_02(+SIG_06), ECD_07(+SIG_08), ILK_01(+SIG_02), PWR_01(+SIG_03). 설비 분류 사례를 대표로 남기고 신호기 사본 삭제, 대표 사례에 alsoDomains=["신호기"]를 두어 신호기 분류에서도 표시.'
-    if MSG not in fc['changelog']: fc['changelog'].append(MSG)
+    MSG = '2026-09-30(S8): 매뉴얼 6장에서 여러 절에 반복 수록된 고장 6쌍 병합 — ECD_02(+SIG_06), ECD_07(+SIG_08), ILK_01(+SIG_02), PWR_01(+SIG_03), ECD_06(+SIG_07), ILK_04(+PWR_08). 설비 분류 사례를 대표로 남기고 사본 삭제, 대표 사례에 alsoDomains(삭제된 사본의 분류)를 두어 그 분류에서도 표시.'
+    fc['changelog'] = [x for x in fc['changelog'] if not x.startswith('2026-09-30(S8): 매뉴얼 6장에서 여러 절에')]
+    fc['changelog'].append(MSG)
 open(FCJ, 'w', encoding='utf-8', newline='\r\n').write(json.dumps(fc, ensure_ascii=False, indent=2))
 # 다른 데이터의 참조 치환
 for jf in (MPJ, BJ):
