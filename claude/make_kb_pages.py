@@ -12,6 +12,11 @@ def walk(o):
     elif isinstance(o,list):
         for v in o: walk(v)
 for f in ('board-info.json','fault-cases.json','power-paths.json'): walk(json.load(open(f,encoding='utf-8')))
+# 역 선택기용 쪽: stations.json paths(N·FTGS·SV2602·STEKOP) + GF 접점 도면(gf-contacts.json)
+for k,c in json.load(open('stations.json',encoding='utf-8')).items():
+    for v in c['paths'].values(): need['SICAS_HW_Design_'+k].update(v if isinstance(v,list) else [v])
+for k,sets in json.load(open('gf-contacts.json',encoding='utf-8')).items():
+    for s in sets: need['SICAS_HW_Design_'+k].add(s['page'])
 n=miss=0
 for d,ps in need.items():
     os.makedirs(f'{OUT}/{d}',exist_ok=True)

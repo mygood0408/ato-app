@@ -24683,7 +24683,7 @@ function renderTopbar(){
     + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
     + '<h1 style="margin:0">2호선 ATO 시스템</h1>'
     + '<button class="photo-mini-btn' + (mapActive ? ' pri' : '') + '" data-act="tab" data-tab="map">🗺 시스템 지도</button>'
-    + '<label style="font-size:12px;color:var(--ink3)">역 <select id="stnSel" data-act="stn" class="photo-mini-btn" style="min-width:90px">' + stnGroups().map(function(k){ return '<option value="' + k + '"' + (k === state.stn ? ' selected' : '') + '>' + k + '</option>'; }).join('') + '</select></label>'
+    + '<label style="font-size:12px;color:var(--ink3)">역 <select id="stnSel" data-act="stn" class="photo-mini-btn" style="min-width:90px">' + stnGroups().map(function(k){ return '<option value="' + k + '"' + (k === state.stn ? ' selected' : '') + '>' + (STN_NAME[k] || k) + '</option>'; }).join('') + '</select></label>'
     + '</div>'
     + '<div style="margin-top:9px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
     + '<button class="photo-mini-btn" style="background:#2a2e34;border-color:#4a4f56;color:#e8ecef" data-act="drivepick">🗂 Google Drive에서 선택</button>'
@@ -26413,6 +26413,8 @@ function stageLocatorHtml(rack, stage){
 /* 전원흐름 단계의 관련 도면 — 데이터는 SIN1 기준 쪽. 선택한 역(state.stn)에 맞게 STATIONS[역].paths 로 대응 쪽을 바꿔 보여준다.
    SIN1 쪽 → 그룹: 188=N, 109..125=FTGS(그 역의 FTGS 쪽 전체), 230/224=SV2602[0]/[1], 106=STEKOP. 그 외(206, D51 127/128)와 대응 쪽 없는 역은 "이 역 데이터 없음". */
 /* 연동역 그룹: SIN1·SIN2 → 'SIN'. 한 연동역에 시스템이 둘인 역은 두 시스템 자료를 함께 보여준다 */
+/* 역 선택기 표시 이름 (값은 코드 그대로) */
+var STN_NAME = { EUL: '을지로입구', GCD: '군자기지', HON: '홍대입구', SNU: '서울대입구', SPO: '종합운동장', SON: '성수', SIN: '신도림', SCD: '신정기지', SOL: '신설동', YAN: '양천구청', GYO: '교대' };
 function stnGroups(){ var o = []; Object.keys(STATIONS).forEach(function(k){ var g = k.replace(/\d$/, ''); if (o.indexOf(g) < 0) o.push(g); }); return o; }
 function stnSystems(g){ return Object.keys(STATIONS).filter(function(k){ return k.replace(/\d$/, '') === g; }); }
 function stageDrawingsForStation(stage, stn){
