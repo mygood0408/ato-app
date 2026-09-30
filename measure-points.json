@@ -390,7 +390,10 @@
         "doc": "시설물검사표준안",
         "page": 256
       },
-      "boardRef": "SICAS_SVK2102"
+      "boardRef": "SICAS_SVK2102",
+      "drawingLinks": {
+        "kind": "N"
+      }
     },
     {
       "id": "MP_SICAS_S51_DC24",
@@ -474,6 +477,9 @@
       "source": {
         "doc": "시설물검사표준안",
         "page": 256
+      },
+      "drawingLinks": {
+        "kind": "N"
       }
     },
     {
@@ -971,7 +977,15 @@
       },
       "verify": false,
       "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO"
+      "boardRef": "ECDSTT_DEWEMO",
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_OTS_MOTOR",
@@ -1002,7 +1016,15 @@
       "diagnosticTip": "모터전원 케이블에는 표시전원(DC)이 병렬로 결선되어 있어 평상시에도 DC 전압이 상시 인가된다. 장애(단선, 혼촉 등) 발생 시 모터전원 케이블의 DC 전압을 측정하면 고장개소 파악이 가능하다 (3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf).",
       "relatedFaults": [
         "FLT_SW_01"
-      ]
+      ],
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_OTS_IND_OUT",
@@ -1037,7 +1059,15 @@
         "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
       },
       "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO"
+      "boardRef": "ECDSTT_DEWEMO",
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_OTS_IND_IN",
@@ -1072,7 +1102,15 @@
         "doc": "OTS-INT-SM7 실물 확인 (사용자, 2026-09-05)"
       },
       "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO"
+      "boardRef": "ECDSTT_DEWEMO",
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_FIELD_SW_CONTROL",
@@ -1097,7 +1135,15 @@
       },
       "verify": false,
       "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO"
+      "boardRef": "ECDSTT_DEWEMO",
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_FIELD_SW_INDICATION",
@@ -1131,7 +1177,15 @@
         "doc": "08.선로전환기(김영추).pptx + 사용자 확인(2026-09-05)"
       },
       "drawingRef": "선로전환기별 정확한 단자 번호는 'SICAS HW Design White_SIN1.pdf'에서 확인 가능. 확인된 페이지: P201A/B(=SIN1/03.02.02), P203A/B(=SIN1/03.02.03), P204A/B(=SIN1/03.02.04). 역할별 위치: Point Machine A 기준 제어전원 14,13번 / 모터전원 C,D번 / 표시전원 N4,10번 (B호기는 표시전원만 4,3번으로 다름).",
-      "boardRef": "ECDSTT_DEWEMO"
+      "boardRef": "ECDSTT_DEWEMO",
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_FIELD_SW_MOTOR",
@@ -1161,7 +1215,15 @@
       "diagnosticTip": "모터전원 케이블에는 표시전원(DC)이 병렬로 결선되어 있어 평상시에도 DC 전압이 상시 인가된다. 장애(단선, 혼촉 등) 발생 시 모터전원 케이블의 DC 전압을 측정하면 고장개소 파악이 가능하다 (3.교육자료2호선 선로전환기 모터전원 케이블 장애시 점검 방법.pdf).",
       "relatedFaults": [
         "FLT_SW_01"
-      ]
+      ],
+      "drawingLinks": {
+        "kind": "SIN1",
+        "pages": [
+          46,
+          52,
+          58
+        ]
+      }
     },
     {
       "id": "MP_FIELD_SIG_LAMP",
