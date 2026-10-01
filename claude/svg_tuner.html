@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>SVG 조정 도구</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;font:13px/1.4 sans-serif;display:flex;height:100vh;color:#222}
+#left{flex:1;overflow:auto;background:#ddd;position:relative}
+#stage{position:relative;display:inline-block;margin:10px;background:#fff}
+#stage svg{display:block}
+#photo{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:fill;pointer-events:none;opacity:.4}
+#right{width:300px;border-left:1px solid #999;overflow:auto;padding:8px;box-sizing:border-box;background:#fafafa}
+#list div{padding:2px 4px;cursor:pointer;border-bottom:1px solid #eee}
+#list div.on{background:#cde}
+label{display:flex;justify-content:space-between;margin:2px 0}
+input[type=number],input[type=text]{width:110px}
+button{margin:2px 2px 2px 0}
+.sel{outline:2px dashed #e0301e}
+textarea{width:100%;height:80px}
+</style></head><body>
+<div id="left"><div id="stage"><img id="photo" hidden></div></div>
+<div id="right">
+<b>SVG 열기</b> <input type="file" id="fsvg" accept=".svg"><br>
+<b>원본 사진 겹쳐보기</b> <input type="file" id="fimg" accept="image/*"><br>
+<label>투명도 <input type="range" id="op" min="0" max="100" value="40"></label>
+<label>확대 <input type="range" id="zoom" min="50" max="400" value="100"></label>
+<hr><div id="info">요소를 클릭하거나 목록에서 고르세요 (id 가 있는 요소만).</div>
+<div id="form"></div>
+<small>방향키 1px, Shift+방향키 10px. 숫자·색 변경은 즉시 반영.</small>
+<hr><button id="save">저장(SVG 다운로드)</button><button id="copy">변경 목록 복사</button>
+<textarea id="log" readonly></textarea>
+<hr><b>id 목록</b><div id="list"></div>
+</div>
+<script>
+var svg=null, sel=null, name='board.svg', changes={}, $=function(i){return document.getElementById(i)};
+$('fsvg').onchange=function(e){var f=e.target.files[0]; if(!f)return; name=f.name;
+  var r=new FileReader(); r.onload=function(){ load(r.result)}; r.readAsText(f)};
+$('fimg').onchange=function(e){var f=e.target.files[0]; if(!f)return; var p=$('photo'); p.src=URL.createObjectURL(f); p.hidden=false};
+$('op').oninput=function(){$('photo').style.opacity=this.value/100};
+$('zoom').oninput=function(){ if(svg) svg.style.width=(svg.viewBox.baseVal.width*this.value/100)+'px'; };
+function load(txt){
+  var st=$('stage'); var old=st.querySelector('svg'); if(old) old.remove();
+  st.insertAdjacentHTML('afterbegin',txt); svg=st.querySelector('svg'); changes={}; sel=null;
+  if(!svg.getAttribute('viewBox')) svg.setAttribute('viewBox','0 0 '+svg.getAttribute('width')+' '+svg.getAttribute('height'));
+  svg.style.width=svg.viewBox.baseVal.width+'px'; svg.removeAttribute('height'); $('zoom').value=100;
+  svg.addEventListener('click',function(e){var t=e.target.closest('[id]'); if(t&&t!==svg) pick(t); e.preventDefault()});
+  buildList(); $('log').value='';
+}
+function buildList(){var L=$('list'); L.innerHTML='';
+  svg.querySelectorAll('[id]').forEach(function(el){var d=document.createElement('div'); d.textContent=el.id+' <'+el.tagName+'>'; d.dataset.id=el.id;
+    d.onclick=function(){pick(el)}; L.appendChild(d)})}
+var PROPS=['x','y','cx','cy','width','height','r','fill','stroke','font-size'];
+function pick(el){ if(sel) sel.classList.remove('sel'); sel=el; el.classList.add('sel');
+  $('info').textContent='#'+el.id+' <'+el.tagName+'>';
+  document.querySelectorAll('#list div').forEach(function(d){d.classList.toggle('on',d.dataset.id===el.id)});
+  var h=''; PROPS.forEach(function(p){ if(el.hasAttribute(p)){ var v=el.getAttribute(p);
+    var num=(p!=='fill'&&p!=='stroke'); h+='<label>'+p+'<input data-p="'+p+'" type="'+(num?'number':'text')+'" step="1" value="'+v+'"></label>'}});
+  if(!/^(x|y|cx|cy)$/.test(h)&&!el.hasAttribute('x')&&!el.hasAttribute('cx')) h+='<label>이동 dx,dy (transform)<span><input id="tdx" type="number" value="0" style="width:50px"><input id="tdy" type="number" value="0" style="width:50px"></span></label>';
+  $('form').innerHTML=h;
+  $('form').querySelectorAll('input').forEach(function(i){i.oninput=function(){apply(i)}});
+}
+var base={};
+function apply(i){ if(!sel)return; var p=i.dataset.p;
+  if(p){ rec(sel.id,p,sel.getAttribute(p),i.value); sel.setAttribute(p,i.value); }
+  else { var dx=+$('tdx').value||0, dy=+$('tdy').value||0; base[sel.id]=base[sel.id]||(sel.getAttribute('transform')||'');
+    sel.setAttribute('transform',(base[sel.id]+' translate('+dx+','+dy+')').trim()); changes[sel.id]=changes[sel.id]||{}; changes[sel.id].move=dx+','+dy; showLog(); }
+}
+function rec(id,p,old,nw){ changes[id]=changes[id]||{}; var c=changes[id];
+  if(!(p in (c._o=c._o||{}))) c._o[p]=old; c[p]=nw; showLog()}
+function showLog(){ var out=[]; for(var id in changes){ var c=changes[id], s='#'+id;
+  for(var p in c){ if(p==='_o')continue; var o=c._o&&c._o[p];
+    s+=' '+p+':'+(p==='move'?c[p]:(isNaN(+c[p])||isNaN(+o)?c[p]:((c[p]-o)>=0?'+':'')+(c[p]-o)))} out.push(s)} $('log').value=out.join('\n')}
+document.addEventListener('keydown',function(e){ if(!sel||!/^Arrow/.test(e.key)||/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
+  var d=e.shiftKey?10:1, dx=e.key==='ArrowRight'?d:e.key==='ArrowLeft'?-d:0, dy=e.key==='ArrowDown'?d:e.key==='ArrowUp'?-d:0;
+  e.preventDefault();
+  var px=sel.hasAttribute('x')?'x':sel.hasAttribute('cx')?'cx':null;
+  if(px){ var py=px==='x'?'y':'cy'; var ix=$('form').querySelector('[data-p="'+px+'"]'), iy=$('form').querySelector('[data-p="'+py+'"]');
+    if(ix){ix.value=+ix.value+dx; apply(ix)} if(iy){iy.value=+iy.value+dy; apply(iy)} }
+  else if($('tdx')){ $('tdx').value=+$('tdx').value+dx; $('tdy').value=+$('tdy').value+dy; apply($('tdx')) }
+});
+$('save').onclick=function(){ if(!svg)return; if(sel)sel.classList.remove('sel');
+  var c=svg.cloneNode(true); c.removeAttribute('style'); var vb=svg.viewBox.baseVal;
+  c.setAttribute('width',vb.width); c.setAttribute('height',vb.height);
+  var txt=c.outerHTML.replace(/ xmlns="[^"]*"/,'').replace('<svg','<svg xmlns="http://www.w3.org/2000/svg"');
+  var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'image/svg+xml'})); a.download=name; a.click(); if(sel)sel.classList.add('sel')};
+$('copy').onclick=function(){ $('log').select(); document.execCommand('copy')};
+</script></body></html>
