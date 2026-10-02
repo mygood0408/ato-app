@@ -91,8 +91,20 @@ def emit(segs, H, ox, oy):
     return ''.join(o)
 
 
-def extract(page, clip, regions, skip=(), minsize=0.0):
-    """clip pt (x0,y0,x1,y1). regions [(id,(x0,y0,x1,y1))]. 반환 {gid: {attrkey: [d,...]}}, W, H"""
+def split_sub(segs):
+    out = []; cur = []
+    for c, pts in segs:
+        if c == 'M' and cur:
+            out.append(cur); cur = []
+        cur.append((c, pts))
+    if cur:
+        out.append(cur)
+    return out
+
+
+def extract(page, clip, regions, skip=(), minsize=0.0, subpaths=False):
+    """clip pt (x0,y0,x1,y1). regions [(id,(x0,y0,x1,y1))]. 반환 {gid: {attrkey: [d,...]}}, W, H
+    subpaths=True: 선(stroke) 경로를 M 단위 하위 경로로 쪼개 영역 판정(큰 경로 안의 접점 혀 등을 따로 숨기기 위함)."""
     s = page.get_svg_image(text_as_path=True)
     H = page.rect.height
     x0, y0, x1, y1 = clip
@@ -106,28 +118,36 @@ def extract(page, clip, regions, skip=(), minsize=0.0):
         dm = re.search(r' d="([^"]+)"', a)
         if not dm:
             continue
-        segs = tf(parse(dm.group(1)), M)
-        bb = bbox(segs, H)
-        if not bb:
-            continue
-        cx, cy = (bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2
-        if not (x0 <= cx <= x1 and y0 <= cy <= y1):
-            continue
-        if any(p <= cx <= q and r <= cy <= t for p, r, q, t in skip):
-            continue
-        if max(bb[2] - bb[0], bb[3] - bb[1]) < minsize:
-            continue
-        attrs = re.sub(r' d="[^"]+"', '', a)
-        attrs = re.sub(r'stroke-linecap="round" stroke-linejoin="round"', '', attrs).strip()
-        attrs = ' '.join(attrs.split())
-        if 'fill=' not in attrs:
-            attrs += ' fill="#000"'
-        tgt = 'rest'
-        for rid, (p, r, q, t) in regions:
-            if p <= cx <= q and r <= cy <= t:
-                tgt = rid
-                break
-        groups[tgt].setdefault(attrs, []).append(emit(segs, H, x0, y0))
+        all_segs = tf(parse(dm.group(1)), M)
+        parts = split_sub(all_segs) if (subpaths and 'stroke=' in a and 'fill="none"' in a) else [all_segs]
+        for segs in parts:
+            bb = bbox(segs, H)
+            if not bb:
+                continue
+            cx, cy = (bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2
+            if not (x0 <= cx <= x1 and y0 <= cy <= y1):
+                continue
+            if any(p <= cx <= q and r <= cy <= t for p, r, q, t in skip):
+                continue
+            if max(bb[2] - bb[0], bb[3] - bb[1]) < minsize:
+                continue
+            attrs = re.sub(r' d="[^"]+"', '', a)
+            attrs = re.sub(r'stroke-linecap="round" stroke-linejoin="round"', '', attrs).strip()
+            attrs = ' '.join(attrs.split())
+            if 'fill=' not in attrs:
+                attrs += ' fill="#000"'
+            tgt = 'rest'
+            for rid, (p, r, q, t) in regions:
+                if rid.startswith('ctb'):                  # 상자 안에 통째로 들어가는 도형만
+                    hit = bb[0] >= p - .3 and bb[2] <= q + .3 and bb[1] >= r - .3 and bb[3] <= t + .3
+                else:
+                    hit = p <= cx <= q and r <= cy <= t
+                if hit:
+                    tgt = rid
+                    break
+            if tgt.startswith('ct') and max(bb[2] - bb[0], bb[3] - bb[1]) < 5.2:   # 핀 점(원)은 접점 기호가 아니므로 남김
+                tgt = 'rest'
+            groups[tgt].setdefault(attrs, []).append(emit(segs, H, x0, y0))
     return groups, x1 - x0, y1 - y0
 
 

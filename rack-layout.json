@@ -547,7 +547,7 @@
           "subTab": "선로전환기/단자대/쌍동",
           "label": "선로전환기 단자대 — 쌍동 (A·B호기)",
           "boardRef": "FIELD_SW_DOUBLE_STRIP",
-          "wiringRef": "FIELD_SW_WIRING",
+          "wiringRef": "FIELD_SW_WIRING_DOUBLE",
           "count": 1,
           "measurePointRef": [
             "MP_FIELD_SW_CONTROL",

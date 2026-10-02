@@ -214,6 +214,5 @@ if __name__ == '__main__':
             t = fn(v)
             open(os.path.join(OUT, f'FIELD_SW_{v}_{kind}.svg'), 'w', encoding='utf-8').write(t)
             print(v, kind, len(t))
-    t = wiring_svg()
-    open(os.path.join(OUT, 'FIELD_SW_WIRING.svg'), 'w', encoding='utf-8').write(t)
-    print('WIRING', len(t))
+    import wiring_states
+    wiring_states.write_all(OUT)

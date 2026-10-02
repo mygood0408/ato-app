@@ -4849,7 +4849,7 @@
           "doc": "선로전환기 제작도면.pdf · 선로전환기 설치상세도(정반위표시등 포함).pdf",
           "section": "제작도면 p.21 외형(히터미적용)·p.23 단자반 회로조립도, 설치상세도 p.5 내부 단자반 결선도·p.7 정반위표시등"
         },
-        "wiringRef": "FIELD_SW_WIRING"
+        "wiringRef": "FIELD_SW_WIRING_DOUBLE"
       }
     ],
     "LZB700M": [
