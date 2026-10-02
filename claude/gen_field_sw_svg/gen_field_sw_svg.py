@@ -98,7 +98,7 @@ def body_svg(ver):
     ttl = 'NS-AM형 전기선로전환기(개량형) 외형 — 뚜껑 열림'
     if ver == 'SINGLE':
         inner = (f'<g id="body" transform="translate(0,{my})">{core}</g><g transform="translate(0,{my})">{hs("")}</g>'
-                 + labels(my, H) + lampsvg(0) + T(6, 10, ttl + ' (단동)', 'fsw-h', 'start'))
+                 + labels(my, H) + lampsvg(0) + T(6, 10, ttl + ' (단동·쌍동 동일)', 'fsw-h', 'start'))
         Ht = my + H + 24
     else:
         step = my + H + 24 + 14
@@ -209,6 +209,8 @@ def wiring_svg():
 if __name__ == '__main__':
     for v in ('SINGLE', 'DOUBLE'):
         for kind, fn in (('BODY', body_svg), ('STRIP', strip_svg)):
+            if kind == 'BODY' and v == 'DOUBLE':   # 외형은 단동·쌍동 동일 — 단동 이미지 하나만
+                continue
             t = fn(v)
             open(os.path.join(OUT, f'FIELD_SW_{v}_{kind}.svg'), 'w', encoding='utf-8').write(t)
             print(v, kind, len(t))

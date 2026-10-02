@@ -519,23 +519,13 @@
           "row": "1",
           "side": "현장설비",
           "subTab": "선로전환기/외함",
-          "label": "선로전환기 외형 — 단동 (뚜껑 열림, 내부 부품 보임)",
+          "label": "선로전환기 외형 — 단동·쌍동 동일 (뚜껑 열림, 내부 부품 보임)",
           "boardRef": "FIELD_SW_SINGLE_BODY",
           "count": 1,
           "measurePointRef": [
             "MP_FIELD_SW_LOCK"
-          ]
-        },
-        {
-          "row": "2",
-          "side": "현장설비",
-          "subTab": "선로전환기/외함",
-          "label": "선로전환기 외형 — 쌍동 (A·B호기, 뚜껑 열림)",
-          "boardRef": "FIELD_SW_DOUBLE_BODY",
-          "count": 1,
-          "measurePointRef": [
-            "MP_FIELD_SW_LOCK"
-          ]
+          ],
+          "note": "단동과 쌍동의 선로전환기 외형·내부 구성은 동일하다(쌍동은 같은 선로전환기 2대 A·B호기가 한 전환부에 설치되는 것)."
         },
         {
           "row": "1",
