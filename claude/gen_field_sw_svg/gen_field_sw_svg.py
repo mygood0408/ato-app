@@ -113,14 +113,6 @@ def body_svg(ver):
             f'{STYLE}<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/>{inner}</svg>')
 
 
-if __name__ == '__main__':
-    os.makedirs(OUT, exist_ok=True)
-    for v in ('SINGLE', 'DOUBLE'):
-        s = body_svg(v)
-        open(os.path.join(OUT, f'FIELD_SW_{v}_BODY.svg'), 'w', encoding='utf-8').write(s)
-        print(v, len(s))
-
-
 # ---------------- 단자반 보드 (제작도면 p.23 평면도 + 설치상세도 p.5 결선도) ----------------
 CELLS = {'+': 56.2, '-': 66.7, 'R3': 77.3, 'N4': 87.8, '8': 98.3, '10': 108.8, 'C': 142.0, 'D': 156.0,
          '5': 213.2, '3': 223.6, '1': 234.0, '2': 244.4, '4': 254.8, '6': 265.2}
@@ -171,37 +163,55 @@ def wiring_group():
     return render(g), W, H
 
 
-def term_svg(ver):
+def strip_svg(ver):
+    """단자대(단자반 평면)만 크게. 쌍동은 A·B 2세트."""
     core, sw, sh = strip_core()
-    wir, ww, wh = wiring_group()
-    Wt = ww + 20
+    core = '<g clip-path="url(#fswsc)">' + core + '</g>'  # 도면 치수선 등 단자대 밖 선 잘라냄
+    clipdef = '<clipPath id="fswsc"><rect x="-4" y="0" width="300" height="80"/></clipPath>'
     SC = 2.4
+    Wt = sw * SC + 80
     blocks = []
-    y = 24
+    y = 28
     if ver == 'SINGLE':
-        specs = [('', J_SINGLE, '선로전환기 단자반 — 단동 (제작도면 p.23 평면도)')]
-        defs = ''
+        specs = [('', J_SINGLE, '선로전환기 단자대 — 단동 (제작도면 p.23 평면도)')]
+        defs = f'<defs>{clipdef}</defs>'
     else:
-        specs = [('-A', J_A, 'A호기 단자반 — 쌍동 A'), ('-B', J_B, 'B호기 단자반 — 쌍동 B')]
-        defs = f'<defs><g id="stripcore">{core}</g></defs>'
+        specs = [('-A', J_A, 'A호기 단자대 — 쌍동 A'), ('-B', J_B, 'B호기 단자대 — 쌍동 B')]
+        defs = f'<defs>{clipdef}<g id="stripcore">{core}</g></defs>'
     for sfx, jm, title in specs:
         body = core if ver == 'SINGLE' else '<use href="#stripcore"/>'
-        blocks.append(T(10, y - 8, title, 'fsw-h', 'start')
+        blocks.append(T(10, y - 10, title, 'fsw-h', 'start')
                       + f'<g id="strip{sfx}" transform="translate(40,{y}) scale({SC})">{body}{strip_overlay(sfx, jm)}</g>')
-        y += 122 * SC + 14
-    wt = '선로전환기 내부 결선도 (설치상세도 p.5)' + (' — 점퍼는 위 단자반(단동/쌍동 A·B) 기준' if ver != 'SINGLE' else '')
-    # 결선도 측정지점 핫스팟(우측 단자열): 기준 좌표는 결선도 clip 원점
-    hw = (hot(803, 389, 160, 42, 'MP_FIELD_SW_CONTROL', 'wire-hot-control')
-          + hot(803, 318, 160, 72, 'MP_FIELD_SW_INDICATION', 'wire-hot-indication')
-          + hot(760, 238, 205, 36, 'MP_FIELD_SW_MOTOR', 'wire-hot-motor'))
-    blocks.append(T(10, y + 6, wt, 'fsw-h', 'start') + f'<g id="wiring" transform="translate(10,{y+14})">{wir}{hw}</g>')
-    Ht = y + 14 + wh + 10
+        y += 122 * SC + 24
+    Ht = y - 10
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">'
             f'{STYLE}<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/>{defs}{"".join(blocks)}</svg>')
 
 
+FLOW_STYLE = ('<style>.fsw-flowbase{fill:none;stroke-width:3.4;stroke-opacity:.16;stroke-linejoin:round}'
+              '.fsw-flow{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:.1 9;animation:fswflow .9s linear infinite}'
+              '.fsw-fb-ctrl,.fsw-fl-ctrl{stroke:#2563eb}.fsw-fb-ind,.fsw-fl-ind{stroke:#16a34a}.fsw-fb-mot,.fsw-fl-mot{stroke:#e11d48}'
+              '@keyframes fswflow{to{stroke-dashoffset:-9.1}}'
+              '@media (prefers-reduced-motion:reduce){.fsw-flow{animation:none;stroke-dasharray:none}}</style>')
+
+
+def wiring_svg():
+    """내부 결선도(설치상세도 p.5) + 전원 흐름 애니메이션. 참고자료 팝업용."""
+    import wiring_anim
+    wir, ww, wh = wiring_group()
+    ov = wiring_anim.overlay(wiring_anim.build())
+    Wt, Ht = ww + 20, wh + 20
+    return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">'
+            f'{STYLE}{FLOW_STYLE}<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/>'
+            f'<g id="wiring" transform="translate(10,10)">{wir}{ov}</g></svg>')
+
+
 if __name__ == '__main__':
     for v in ('SINGLE', 'DOUBLE'):
-        s = term_svg(v)
-        open(os.path.join(OUT, f'FIELD_SW_{v}_TERM.svg'), 'w', encoding='utf-8').write(s)
-        print(v, 'TERM', len(s))
+        for kind, fn in (('BODY', body_svg), ('STRIP', strip_svg)):
+            t = fn(v)
+            open(os.path.join(OUT, f'FIELD_SW_{v}_{kind}.svg'), 'w', encoding='utf-8').write(t)
+            print(v, kind, len(t))
+    t = wiring_svg()
+    open(os.path.join(OUT, 'FIELD_SW_WIRING.svg'), 'w', encoding='utf-8').write(t)
+    print('WIRING', len(t))

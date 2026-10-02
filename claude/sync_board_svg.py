@@ -5,7 +5,10 @@ t = open(H, 'rb').read().decode('utf-8')
 m = re.search(r'^(var BOARD_SVG = \{\r\n)(.*?)(^\};\r\n)', t, re.M | re.S)
 lines = [l for l in m.group(2).split('\r\n') if l]
 ents = {re.match(r' "([^"]+)": ', l).group(1): l.rstrip(',') for l in lines}
-for f in sorted(glob.glob('board_svg/*.svg')):
+files = sorted(glob.glob('board_svg/*.svg'))
+for k in [k for k in ents if k.startswith('FIELD_SW_') and 'board_svg/' + k + '.svg' not in [x.replace(chr(92), '/') for x in files]]:
+    print('삭제 ' + k); del ents[k]  # 파일이 없어진 현장설비 보드 제거
+for f in files:
     bid = os.path.basename(f)[:-4]
     svg = ' '.join(open(f, encoding='utf-8').read().split())  # 한 줄로
     new = ' ' + json.dumps(bid) + ': ' + json.dumps(svg, ensure_ascii=False)

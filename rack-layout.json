@@ -518,7 +518,7 @@
         {
           "row": "1",
           "side": "현장설비",
-          "subTab": "선로전환기",
+          "subTab": "선로전환기/외함",
           "label": "선로전환기 외형 — 단동 (뚜껑 열림, 내부 부품 보임)",
           "boardRef": "FIELD_SW_SINGLE_BODY",
           "count": 1,
@@ -529,20 +529,7 @@
         {
           "row": "2",
           "side": "현장설비",
-          "subTab": "선로전환기",
-          "label": "선로전환기 단자반·내부 결선 — 단동",
-          "boardRef": "FIELD_SW_SINGLE_TERM",
-          "count": 1,
-          "measurePointRef": [
-            "MP_FIELD_SW_CONTROL",
-            "MP_FIELD_SW_INDICATION",
-            "MP_FIELD_SW_MOTOR"
-          ]
-        },
-        {
-          "row": "3",
-          "side": "현장설비",
-          "subTab": "선로전환기",
+          "subTab": "선로전환기/외함",
           "label": "선로전환기 외형 — 쌍동 (A·B호기, 뚜껑 열림)",
           "boardRef": "FIELD_SW_DOUBLE_BODY",
           "count": 1,
@@ -551,17 +538,39 @@
           ]
         },
         {
-          "row": "4",
+          "row": "1",
           "side": "현장설비",
-          "subTab": "선로전환기",
-          "label": "선로전환기 단자반·내부 결선 — 쌍동 (A·B호기)",
-          "boardRef": "FIELD_SW_DOUBLE_TERM",
+          "subTab": "선로전환기/단자대/단동",
+          "label": "선로전환기 단자대 — 단동",
+          "boardRef": "FIELD_SW_SINGLE_STRIP",
+          "wiringRef": "FIELD_SW_WIRING",
           "count": 1,
           "measurePointRef": [
             "MP_FIELD_SW_CONTROL",
             "MP_FIELD_SW_INDICATION",
             "MP_FIELD_SW_MOTOR"
           ]
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "subTab": "선로전환기/단자대/쌍동",
+          "label": "선로전환기 단자대 — 쌍동 (A·B호기)",
+          "boardRef": "FIELD_SW_DOUBLE_STRIP",
+          "wiringRef": "FIELD_SW_WIRING",
+          "count": 1,
+          "measurePointRef": [
+            "MP_FIELD_SW_CONTROL",
+            "MP_FIELD_SW_INDICATION",
+            "MP_FIELD_SW_MOTOR"
+          ]
+        },
+        {
+          "row": "1",
+          "side": "현장설비",
+          "subTab": "선로전환기/간류",
+          "label": "간류세트 (밀착조절간·첨단간·접속간·연결간·유동방지간) — 보드 이미지 준비 중",
+          "note": "도면은 '선로전환기 제작도면' p.31~36(간류세트 제작도면)·설치상세도 p.2·3에 있음. 보드 이미지는 아직 만들지 않았다."
         },
         {
           "row": "1",
