@@ -1,0 +1,715 @@
+{
+ "FLT_ECD_01": [
+  {
+   "order": 1,
+   "action": "분전반으로부터의 24V 전원 점검",
+   "measurePointRef": [
+    "MP_ECD_24V_FEED",
+    "MP_ECD_LEVEL_M_24V",
+    "MP_ECD_OLM_LED"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ECD_02": [
+  {
+   "order": 1,
+   "action": "STEKOP과 DSTT를 점검",
+   "measurePointRef": [
+    "MP_ECD_STEKOP_LED",
+    "MP_ECD_STEKOP_24V"
+   ],
+   "boardRef": "ECDSTT_STEKOP"
+  },
+  {
+   "order": 2,
+   "action": "STEKOP을 리셋",
+   "measurePointRef": [
+    "MP_ECD_STEKOP_LED"
+   ],
+   "boardRef": "ECDSTT_STEKOP"
+  }
+ ],
+ "FLT_ECD_03": [
+  {
+   "order": 1,
+   "action": "선로전환기를 점검하고 화면상에서 운행",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "연결 DEWEMO-드라이브(DEWEMO의 플러그 X4) 점검",
+   "measurePointRef": [
+    "MP_ECD_DEWEMO_LED"
+   ],
+   "boardRef": "ECDSTT_DEWEMO"
+  }
+ ],
+ "FLT_ECD_04": [
+  {
+   "order": 1,
+   "action": "DEWEMO의 플러그 X1과 입력 케이블 점검",
+   "measurePointRef": [
+    "MP_ECD_DEWEMO_24V",
+    "MP_ECD_DEWEMO_LED"
+   ],
+   "boardRef": "ECDSTT_DEWEMO"
+  }
+ ],
+ "FLT_ECD_05": [
+  {
+   "order": 1,
+   "action": "연결 케이블과 플러그 점검",
+   "measurePointRef": [
+    "MP_ECD_STEKOP_LED",
+    "MP_ECD_DEWEMO_LED"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ECD_06": [
+  {
+   "order": 1,
+   "action": "연결 케이블과 플러그 점검",
+   "measurePointRef": [
+    "MP_ECD_DESIMO",
+    "MP_FIELD_SIG_LAMP"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ECD_07": [
+  {
+   "order": 1,
+   "action": "DESIMO의 플러그 연결 점검",
+   "measurePointRef": [
+    "MP_ECD_DESIMO",
+    "MP_FIELD_SIG_LAMP"
+   ],
+   "boardRef": "ECDSTT_DESIMO"
+  }
+ ],
+ "FLT_ECD_08": [
+  {
+   "order": 1,
+   "action": "퓨즈 교체",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "전원 공급 점검",
+   "measurePointRef": [
+    "MP_ECD_DEWEMO_MOTOR110",
+    "MP_FIELD_SW_MOTOR"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ECD_09": [
+  {
+   "order": 1,
+   "action": "퓨즈 교체",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "전원 공급 점검",
+   "measurePointRef": [
+    "MP_ECD_DEWEMO_MOTOR110",
+    "MP_FIELD_SW_MOTOR"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ILK_01": [
+  {
+   "order": 1,
+   "action": "플러그와 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_OLM_LED",
+    "MP_ECD_STEKOP_LED"
+   ],
+   "boardRef": "SICAS_OLM"
+  }
+ ],
+ "FLT_ILK_02": [
+  {
+   "order": 1,
+   "action": "분전반으로부터의 전원 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ILK_03": [
+  {
+   "order": 1,
+   "action": "플러그와 광라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_OLM_LED"
+   ],
+   "boardRef": "SICAS_OLM"
+  }
+ ],
+ "FLT_ILK_04": [
+  {
+   "order": 1,
+   "action": "분전반으로부터의 60V 전원, 필터 및 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ILK_05": [
+  {
+   "order": 1,
+   "action": "분전반으로부터의 24V 전원 및 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC24"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ILK_06": [
+  {
+   "order": 1,
+   "action": "연동장치의 전원 스위치를 Off 하고 UE = 60V로 조정",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ILK_07": [
+  {
+   "order": 1,
+   "action": "연동장치의 전원 스위치를 Off 하고 UE = 60V로 조정",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "SVK2102에서의 퓨즈 F2 교체",
+   "measurePointRef": null,
+   "boardRef": "SICAS_SVK2102"
+  }
+ ],
+ "FLT_ILK_08": [
+  {
+   "order": 1,
+   "action": "KOMDA 24V 전원 공급 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC24"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ILK_12": [
+  {
+   "order": 1,
+   "action": "SVK2102 장치, 필터 라인, 퓨즈 및 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60",
+    "MP_SICAS_SVK2102_5V"
+   ],
+   "boardRef": "SICAS_SVK2102"
+  }
+ ],
+ "FLT_ILK_13": [
+  {
+   "order": 1,
+   "action": "VENUS3 장치 교체 후 컴퓨터 Reset",
+   "measurePointRef": [
+    "MP_SICAS_VENUS3_LED"
+   ],
+   "boardRef": "SICAS_VENUS3"
+  }
+ ],
+ "FLT_PWR_01": [
+  {
+   "order": 1,
+   "action": "SV2602 장치, 필터, 퓨즈 및 배선 점검",
+   "measurePointRef": [
+    "MP_ECD_SV2602_IN",
+    "MP_ECD_SV2602_OUT"
+   ],
+   "boardRef": "ECDSTT_PS"
+  }
+ ],
+ "FLT_PWR_02": [
+  {
+   "order": 1,
+   "action": "분전반으로부터의 24V 전원 및 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC24"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_PWR_03": [
+  {
+   "order": 1,
+   "action": "UE = 60V로 조정",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_PWR_04": [
+  {
+   "order": 1,
+   "action": "UE = 60V로 조정",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC60"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "퓨즈 F2 교환",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_PWR_05": [
+  {
+   "order": 1,
+   "action": "출력측 미전압에 대한 이유 제거 (예: 과부하)",
+   "measurePointRef": [
+    "MP_ECD_SV2602_OUT",
+    "MP_ECD_SV2602_IN"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_PWR_06": [
+  {
+   "order": 1,
+   "action": "출력측 과전압에 대한 이유 제거",
+   "measurePointRef": [
+    "MP_ECD_SV2602_OUT"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "퓨즈 F2 재생",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_PWR_07": [
+  {
+   "order": 1,
+   "action": "SV2602 교체",
+   "measurePointRef": [
+    "MP_ECD_SV2602_OUT",
+    "MP_ECD_SV2602_IN"
+   ],
+   "boardRef": "ECDSTT_PS"
+  }
+ ],
+ "FLT_SIG_01": [
+  {
+   "order": 1,
+   "action": "분전반으로부터의 24V 전원 및 라인 점검",
+   "measurePointRef": [
+    "MP_SICAS_S51_DC24"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_SIG_04": [
+  {
+   "order": 1,
+   "action": "STEKOP을 교체",
+   "measurePointRef": [
+    "MP_ECD_STEKOP_LED",
+    "MP_ECD_STEKOP_24V"
+   ],
+   "boardRef": "ECDSTT_STEKOP"
+  }
+ ],
+ "FLT_SIG_05": [
+  {
+   "order": 1,
+   "action": "STEKOP을 교체",
+   "measurePointRef": [
+    "MP_ECD_STEKOP_LED"
+   ],
+   "boardRef": "ECDSTT_STEKOP"
+  }
+ ],
+ "FLT_SIG_09": [
+  {
+   "order": 1,
+   "action": "신호기 수리",
+   "measurePointRef": [
+    "MP_ECD_DESIMO",
+    "MP_FIELD_SIG_LAMP"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_ATO_01": [
+  {
+   "order": 1,
+   "action": "배선 재점검(터미널 보드 1, 2)",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "FTGS Unit 교체 (송신보드 품번 주의: AF궤도회로 B30-A5 / ATO Loop B30-A4, 호환 불가)",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "전류값 확인 후 상향 조정",
+   "measurePointRef": [
+    "MP_ATO_LOOP_CURRENT"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 4,
+   "action": "튜닝 재수행",
+   "measurePointRef": [
+    "MP_ATO_LOOP_CURRENT"
+   ],
+   "boardRef": null
+  }
+ ],
+ "FLT_VEN_01": [
+  {
+   "order": 1,
+   "action": "모듈 교체",
+   "measurePointRef": [
+    "MP_SICAS_VENUS3_LED"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "전원 차단 후 작업 (해당 전원 모듈 스위치를 0 위치로)",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_TWC_01": [
+  {
+   "order": 1,
+   "action": "접속박스 내부에서 DC 20~24V 측정",
+   "measurePointRef": [
+    "MP_TWC_OUT"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "퓨즈 F1 점검 (M 2.5A, 타입 5x20)",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "3W3 플러그 A1 핀(24VDC 플러스) 결선 확인",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 4,
+   "action": "케이블, 퓨즈, 전원 순으로 점검",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_TWC_02": [
+  {
+   "order": 1,
+   "action": "Lemo 커넥터 Core[n]/Rim[n] 채널별 신호 라인 점검",
+   "measurePointRef": [
+    "MP_TWC_RX_WAVEFORM"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "장애 시간, 장애 주파수, 전면 패널 표시 사항 기록",
+   "measurePointRef": [
+    "MP_TWC_IMU100_LED"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "모듈을 예비품으로 교체",
+   "measurePointRef": null,
+   "boardRef": "TWC_IMU100"
+  },
+  {
+   "order": 4,
+   "action": "교체 후에도 해결되지 않으면 케이블·퓨즈·전원 점검",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_TWC_03": [
+  {
+   "order": 1,
+   "action": "TWC 커넥션 박스 자체 이상이면 커넥션 박스 교환",
+   "measurePointRef": [
+    "MP_TWC_CB_DETAIL"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "TWC 연동역 모듈 이상이면 TWC 서브랙 교환",
+   "measurePointRef": [
+    "MP_TWC_IMU100_LED"
+   ],
+   "boardRef": "TWC_IMU100"
+  },
+  {
+   "order": 3,
+   "action": "장애 모듈은 오류 상황 설명서를 첨부해 제작사로 송부",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_OTS_01": [
+  {
+   "order": 1,
+   "action": "해당 선로전환기 번호를 OTS 선택 버튼으로 지정 후 8개 전압계 값 재확인",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "표시회로 배선(DEWEMO~O.T랙~현장 선로전환기 표시접점) 단선 구간 점검",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_DEWEMO"
+  }
+ ],
+ "FLT_ATO_02": [
+  {
+   "order": 1,
+   "action": "REMEMO 릴레이(전송릴레이 1개+수신릴레이 2개, Loop별 대칭 설치) 중 Loop1측 점검",
+   "measurePointRef": null,
+   "boardRef": "ATOLOOP_REMEMO"
+  },
+  {
+   "order": 2,
+   "action": "ATO Loop C/B Box에서 Loop1 전류값 측정 (정상범위 1.6~1.9A)",
+   "measurePointRef": [
+    "MP_ATO_LOOP_CURRENT"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "Loop1측 배선·커넥터 점검 및 필요시 튜닝 재수행",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 4,
+   "action": "조치 후 ATO 캐비닛 FUUELL 보드 Reset 버튼을 눌러 LED 소등 확인",
+   "measurePointRef": null,
+   "boardRef": "ATOLOOP_FUUELL"
+  }
+ ],
+ "FLT_ATO_03": [
+  {
+   "order": 1,
+   "action": "REMEMO 릴레이(전송릴레이 1개+수신릴레이 2개, Loop별 대칭 설치) 중 Loop2측 점검",
+   "measurePointRef": null,
+   "boardRef": "ATOLOOP_REMEMO"
+  },
+  {
+   "order": 2,
+   "action": "ATO Loop C/B Box에서 Loop2 전류값 측정 (정상범위 1.6~1.9A)",
+   "measurePointRef": [
+    "MP_ATO_LOOP_CURRENT"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "Loop2측 배선·커넥터 점검 및 필요시 튜닝 재수행",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 4,
+   "action": "조치 후 ATO 캐비닛 FUUELL 보드 Reset 버튼을 눌러 LED 소등 확인",
+   "measurePointRef": null,
+   "boardRef": "ATOLOOP_FUUELL"
+  }
+ ],
+ "FLT_ATO_04": [
+  {
+   "order": 1,
+   "action": "ATO Loop 전송장치(FTGS 46) 팬 동작 여부 육안 확인",
+   "measurePointRef": [
+    "MP_ATO_CONTROLLER_LED_TEST"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "팬 전원 및 모니터링 배선 점검",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "팬 불량 시 교체",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 4,
+   "action": "조치 후 ATO 캐비닛 FUUELL 보드 Reset 버튼을 눌러 LED 소등 확인",
+   "measurePointRef": [
+    "MP_ATO_CONTROLLER_LED_TEST"
+   ],
+   "boardRef": "ATOLOOP_FUUELL"
+  }
+ ],
+ "FLT_OTS_08": [
+  {
+   "order": 1,
+   "action": "관제와 협의 후 STEKOP RESET으로 복구",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_STEKOP"
+  },
+  {
+   "order": 2,
+   "action": "재발 가능성이 높으므로 야간 설비점검 필수",
+   "measurePointRef": null,
+   "boardRef": null
+  }
+ ],
+ "FLT_OTS_09": [
+  {
+   "order": 1,
+   "action": "제어 휴즈 교체",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "관제와 협의 후 STEKOP RESET",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_STEKOP"
+  }
+ ],
+ "FLT_OTS_10": [
+  {
+   "order": 1,
+   "action": "DEWEMO 교체",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_DEWEMO"
+  },
+  {
+   "order": 2,
+   "action": "관제와 협의 후 STEKOP RESET",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_STEKOP"
+  }
+ ],
+ "FLT_OTS_11": [
+  {
+   "order": 1,
+   "action": "모터 휴즈(+, -) 용단 상태 점검",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "DEWEMO 상태 점검",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_DEWEMO"
+  }
+ ],
+ "FLT_OTS_13": [
+  {
+   "order": 1,
+   "action": "현장 무부하 상태에 유의하여 점검",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "쌍동 2대 모두 정상 전환되는지 확인",
+   "measurePointRef": null,
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "DEWEMO HS1/HS2 접점 점검",
+   "measurePointRef": null,
+   "boardRef": "ECDSTT_DEWEMO"
+  }
+ ],
+ "FLT_FTGS_02": [
+  {
+   "order": 1,
+   "action": "파워 서플라이(전원장치) 교체",
+   "measurePointRef": [
+    "MP_FTGS_PS_12V",
+    "MP_FTGS_PS_5V"
+   ],
+   "boardRef": "FTGS_POWER_UNIT"
+  }
+ ],
+ "FLT_FTGS_03": [
+  {
+   "order": 1,
+   "action": "GF계전기 교체",
+   "measurePointRef": [
+    "MP_FTGS_RELAY"
+   ],
+   "boardRef": "FTGS_GF_RELAY_PCB"
+  }
+ ],
+ "FLT_FTGS_04": [
+  {
+   "order": 1,
+   "action": "튜닝 유니트 점검",
+   "measurePointRef": [
+    "MP_FTGS_TRACK_CB"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 2,
+   "action": "전환 모듈 점검",
+   "measurePointRef": [
+    "MP_FTGS_TRACK_CB"
+   ],
+   "boardRef": null
+  },
+  {
+   "order": 3,
+   "action": "제어 케이블 점검",
+   "measurePointRef": [
+    "MP_FTGS_DCBOX",
+    "MP_FTGS_TX_FIELD",
+    "MP_FTGS_RX_FIELD"
+   ],
+   "boardRef": null
+  }
+ ]
+}
