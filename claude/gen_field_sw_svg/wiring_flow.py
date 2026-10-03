@@ -9,6 +9,7 @@ ADJ = wg.build()
 XE = 922.0                     # 외부 화살표 끝
 EXT = {'rel46': 88.4, 'rel35': 135.3, 'indp': 348.1, 'indm': 383.6, 'motC': 262.5, 'motD': 247.7, 'sp1': 430.0, 'sp2': 447.0}
 ROW = {**wg.TERM, 'S1a': (838.5, 430.0), 'S1b': (838.5, 438.4), 'S2a': (838.5, 447.0), 'S2b': (838.5, 455.0)}  # 단자 y (S1·S2 = 예비단자 2칸, 칸마다 입·출 두 구멍)
+DIAG = 26                      # 기구함에서 들어오는 제어·모터 선의 비스듬한 길이
 LANE = 9                       # 쌍동 연결선 가로 간격
 CP = {  # 접점 간선: 이름 -> (핀, 핀)
     'NC1': ('pG', 'pA'), 'NC2': ('p1', 'p6'), 'N1': ('p9', 'p5'), 'N2': ('p10', 'p4'),
@@ -156,7 +157,7 @@ def double_flows(W, dy, LINK_Y):
     A = lambda pts: [(x + 10, y + 10) for x, y in pts]
     B = lambda pts: [(x + 10, y + 10 + dy) for x, y in pts]
     def link(i, ya, yb, rev=False):   # A 쪽 y(지역) <-> B 쪽 y(지역) 연결선, 기본 방향 A->B
-        xr = 10 + W - 15 + i * LANE
+        xr = 10 + W + 15 + i * LANE
         return [(X, 10 + ya), (xr, 10 + ya), (xr, 10 + dy + yb), (X, 10 + dy + yb)][::-1 if rev else 1]
     t = lambda n: (838.5, Y(n))
     # 한 호기 안의 표시 경로(단자 -> 단자). (+): 입력(N4/R3) -> 출력(5/6), (-): 입력(4/3) -> 출구(10/8)
@@ -188,7 +189,7 @@ def double_flows(W, dy, LINK_Y):
     C = ctrl_flows()
     # 제어전원: 기구함 선은 메인(밑 단 B) (+)(−) 단자로 들어오고, 같은 단자에서 보조(A) 단자로 건너감(계통도 205 제어전원 타원)
     from wiring_states import STATES
-    cl = lambda i, t, rev: (lambda p: p[::-1] if rev else p)([(X, 10 + dy + Y(t)), (10 + W - 15 + i * LANE, 10 + dy + Y(t)), (10 + W - 15 + i * LANE, 10 + Y(t)), (X, 10 + Y(t))])
+    cl = lambda i, t, rev: (lambda p: p[::-1] if rev else p)([(X, 10 + dy + Y(t)), (10 + W + 15 + i * LANE, 10 + dy + Y(t)), (10 + W + 15 + i * LANE, 10 + Y(t)), (X, 10 + Y(t))])
     for sid in C:
         for f in (A, B):
             F.setdefault(sid, []).extend((k, l, f(p), m) for k, l, p, m in C[sid])
@@ -196,14 +197,16 @@ def double_flows(W, dy, LINK_Y):
         F[sid] += [('ctrl', 'm' if rev else 'p', cl(4, 'CP', rev), ''), ('ctrl', 'p' if rev else 'm', cl(5, 'CM', not rev), '')]
         # 기구함 -> 메인(B) 제어 단자 (들어오는 선·나가는 선)
         i_t, o_t = ('CP', 'CM') if not rev else ('CM', 'CP')
-        F[sid] += [('ctrl', 'p', [(10 + XE, 10 + dy + Y(i_t)), (X, 10 + dy + Y(i_t))], ''), ('ctrl', 'm', [(X, 10 + dy + Y(o_t)), (10 + XE, 10 + dy + Y(o_t))], '')]
+        # 기구함에서 오는 선은 우상단에서 좌하단으로 비스듬히 들어온다(DIAG)
+        F[sid] += [('ctrl', 'p', [(10 + XE + DIAG, 10 + dy + Y(i_t) - DIAG), (10 + XE, 10 + dy + Y(i_t)), (X, 10 + dy + Y(i_t))], ''),
+                   ('ctrl', 'm', [(X, 10 + dy + Y(o_t)), (10 + XE, 10 + dy + Y(o_t)), (10 + XE + DIAG, 10 + dy + Y(o_t) - DIAG)], '')]
     # 모터전원: 기구함 -> 메인(B) 외부 단자 C -> B 와 A 로 병렬 -> D -> 기구함. A 는 B 의 C·D 외부점에서 연결선으로 받는다.
     XT = 10 + 910.6
-    ml = lambda i, name, rev=False: (lambda p: p[::-1] if rev else p)([(XT, 10 + dy + EXT[name]), (10 + W - 15 + i * LANE, 10 + dy + EXT[name]), (10 + W - 15 + i * LANE, 10 + EXT[name]), (XT, 10 + EXT[name])])
+    ml = lambda i, name, rev=False: (lambda p: p[::-1] if rev else p)([(XT, 10 + dy + EXT[name]), (10 + W + 15 + i * LANE, 10 + dy + EXT[name]), (10 + W + 15 + i * LANE, 10 + EXT[name]), (XT, 10 + EXT[name])])
     for sid, mot in (('mot_n1', mn), ('mot_n2', mn), ('mot_r1', mr), ('mot_r2', mr)):
         mod = 'dim' if sid.endswith('1') else ''
         (_, pc), (_, pd) = legs(mot, NAMED['Bc'])
-        F[sid] += [('mot', 'p', B(pc), mod), ('mot', 'm', B(pd), mod),
+        F[sid] += [('mot', 'p', [(XT + DIAG, 10 + dy + EXT['motC'] - DIAG)] + B(pc), mod), ('mot', 'm', B(pd) + [(XT + DIAG, 10 + dy + EXT['motD'] - DIAG)], mod),
                    ('mot', 'p', join(ml(6, 'motC'), A(pc)), mod), ('mot', 'm', join(A(pd), ml(7, 'motD', True)), mod)]
     return F
 

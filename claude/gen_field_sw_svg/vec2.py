@@ -102,7 +102,20 @@ def split_sub(segs):
     return out
 
 
-def extract(page, clip, regions, skip=(), minsize=0.0, subpaths=False):
+def cut_flat(segs, ys, tol=0.4):
+    """y 높이의 수평 선분만 지운다(앞뒤 선은 그대로: L 을 M 으로 바꿔 끊음)."""
+    out = []; cur = None
+    for c, pts in segs:
+        if c == 'L' and cur and any(abs(cur[1] - y) < tol and abs(pts[0][1] - y) < tol for y in ys):
+            out.append(('M', pts))
+        else:
+            out.append((c, pts))
+        if pts:
+            cur = pts[-1]
+    return out
+
+
+def extract(page, clip, regions, skip=(), minsize=0.0, subpaths=False, cut_y=None):
     """clip pt (x0,y0,x1,y1). regions [(id,(x0,y0,x1,y1))]. 반환 {gid: {attrkey: [d,...]}}, W, H
     subpaths=True: 선(stroke) 경로를 M 단위 하위 경로로 쪼개 영역 판정(큰 경로 안의 접점 혀 등을 따로 숨기기 위함)."""
     s = page.get_svg_image(text_as_path=True)
@@ -121,6 +134,8 @@ def extract(page, clip, regions, skip=(), minsize=0.0, subpaths=False):
         all_segs = tf(parse(dm.group(1)), M)
         parts = split_sub(all_segs) if (subpaths and 'stroke=' in a and 'fill="none"' in a) else [all_segs]
         for segs in parts:
+            if cut_y is not None:
+                segs = cut_flat(segs, cut_y)
             bb = bbox(segs, H)
             if not bb:
                 continue

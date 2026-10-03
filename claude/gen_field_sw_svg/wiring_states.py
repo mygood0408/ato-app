@@ -83,9 +83,9 @@ def jumpers(kind):
     return f'<g class="fsw-jmps">{o}</g>'
 
 
-def base():
+def base(cut=False):
     d = pymupdf.open(PDF_INST)
-    g, W, H = extract(d[4], CLIP, regions(), subpaths=True)
+    g, W, H = extract(d[4], CLIP, regions(), cut_y=(613.8, 647.3, 6.2) if cut else None, subpaths=True)   # skip: 도면 맨 아래 가로 구분선(쌍동에서 '회로제어기' 글씨와 겹침)
     hidden = {k: v for k, v in g.items() if k.startswith('ct')}
     keep = {k: v for k, v in g.items() if not k.startswith('ct')}
     # E·F 선(두꺼운 이중선)은 x=207.8 에서 끝나고 C1/C2 피벗은 14pt 위에 떠 있어 -> 세로선으로 이어 붙임
@@ -171,14 +171,16 @@ def state_texts(sid, dy):
     """쌍동: 기구함에서 메인(B) 로 들어오는 선 끝에 붙는 작은 글씨(극성은 상태별로 다르다)."""
     import wiring_flow as wf
     XE = 10 + wf.XE - 3
-    tx = lambda ey, s, up=True, xe=XE: f'<text x="{xe}" y="{10 + dy + ey + (-2 if up else 7):.1f}" class="fsw-gh" text-anchor="end">{s}</text>'
+    tx = lambda ey, s, up=True, xe=XE, an='end': f'<text x="{xe}" y="{10 + dy + ey + (-2 if up else 7):.1f}" class="fsw-gh" text-anchor="{an}">{s}</text>'
     rel = STATES[sid][0]
     ind = sid.startswith('ind')
     o = ''
     # 제어: CP 8 아래 칸, CM 위 칸. 정방향(N) 은 CP 가 (+)
     p_cp, p_cm = ('(+)', '(−)') if rel == 'N' else ('(−)', '(+)')
-    XC = 10 + 905
-    o += '<g class="fsw-k-ctrl">' + tx(wf.Y('CM'), f'기구함 {p_cm}', True, XC) + tx(wf.Y('CP'), f'기구함 {p_cp}', False, XC) + '</g>'
+    # 글씨는 비스듬한 선의 시작점(우상단) 왼쪽에 둔다
+    xc = 10 + wf.XE + wf.DIAG + 3
+    cy = lambda n: wf.Y(n) - wf.DIAG
+    o += '<g class="fsw-k-ctrl">' + tx(cy('CM'), f'기구함 {p_cm}', True, xc, 'start') + tx(cy('CP'), f'기구함 {p_cp}', True, xc, 'start') + '</g>'
     # 표시
     sp = tx(wf.EXT['sp1'], '기구함 (+)', True)
     if ind:
@@ -186,16 +188,16 @@ def state_texts(sid, dy):
         sp += tx(wf.EXT['sp2'], '기구함 (−)', True) + tx(wf.EXT[out_e], '기구함 (+)', True) + tx(wf.EXT[ret_e], '기구함 (−)', True)
     o += '<g class="fsw-k-ind">' + sp + '</g>'
     if not ind:
-        o += '<g class="fsw-k-mot">' + tx(wf.EXT['motD'], '기구함', True, XC) + tx(wf.EXT['motC'], '기구함', False, XC) + '</g>'
+        o += '<g class="fsw-k-mot">' + tx(wf.EXT['motD'] - wf.DIAG, '기구함', True, 10 + 910.6 + wf.DIAG + 3, 'start') + tx(wf.EXT['motC'] - wf.DIAG, '기구함', True, 10 + 910.6 + wf.DIAG + 3, 'start') + '</g>'
     return o
 
 
 def double_svg():
-    b, W, H, _ = base()
+    b, W, H, _ = base(True)
     states = ''.join(state_group(k) for k in SID)
-    gap = 40
+    gap = 56   # 메인 머리글·주석이 아래 단 '제어계전기' 글씨와 겹치지 않도록 간격을 둔다
     dy = H + gap
-    Wt, Ht = W + 70, 2 * H + gap + 40
+    Wt, Ht = W + 100, 2 * H + gap + 40
     X = 838.5 + 10
     import wiring_flow
     flows = wiring_flow.overlay(wiring_flow.double_flows(W, dy, None))
@@ -205,19 +207,19 @@ def double_svg():
         o = ''
         for i, a, bb_, col in lst:
             ya = 10 + Y(a); yb = 10 + dy + Y(bb_)
-            xr = 10 + W - 15 + i * wiring_flow.LANE
+            xr = 10 + W + 15 + i * wiring_flow.LANE
             o += f'<path d="M{X} {ya}H{xr}V{yb}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
         link += f'<g class="fsw-ws ws-{k}">{o}{state_texts(k, dy)}</g>'
     for i, (t, col, lab_) in enumerate((('CP', '#00b0f0', '제어(+)'), ('CM', '#002060', '제어(−)'))):
-        yb = 10 + dy + wiring_flow.Y(t); ya = 10 + wiring_flow.Y(t); xr = 10 + W - 15 + (4 + i) * wiring_flow.LANE
+        yb = 10 + dy + wiring_flow.Y(t); ya = 10 + wiring_flow.Y(t); xr = 10 + W + 15 + (4 + i) * wiring_flow.LANE
         link += (f'<path d="M{X} {yb}H{xr}V{ya}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
                  f'<text x="{xr+4}" y="{(ya+yb)/2 + 40*i - 20:.0f}" class="fsw-s">{lab_}</text>')
     for i, (name, col) in enumerate((('motC', '#c00000'), ('motD', '#ff9933'))):
-        xr = 10 + W - 15 + (6 + i) * wiring_flow.LANE; xt = 10 + 910.6
+        xr = 10 + W + 15 + (6 + i) * wiring_flow.LANE; xt = 10 + 910.6
         yb = 10 + dy + wiring_flow.EXT[name]; ya = 10 + wiring_flow.EXT[name]
         link += f'<path d="M{xt} {yb}H{xr}V{ya}H{xt}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
-    lab = (f'<text x="10" y="18" class="fsw-big">보조선로전환기</text><text x="10" y="{dy+18}" class="fsw-big">메인선로전환기</text>'
-           f'<text x="10" y="{dy+31}" class="fsw-note">예비단자를 쓰는 쪽, 기구함과 가까운 쪽이 메인선로전환기이다. (기구함 선은 메인으로 들어와 보조로 건너간다)</text>')
+    lab = (f'<text x="10" y="18" class="fsw-big">보조선로전환기</text><text x="10" y="{dy+2}" class="fsw-big">메인선로전환기</text>'
+           f'<text x="10" y="{dy+14}" class="fsw-note">예비단자를 쓰는 쪽, 기구함과 가까운 쪽이 메인선로전환기이다. (기구함 선은 메인으로 들어와 보조로 건너간다)</text>')
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><defs><g id="wcore">{b}</g></defs>{lab}'
             f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{jumpers('A')}{states}{wiring_flow.mot_labels()}</g>'
