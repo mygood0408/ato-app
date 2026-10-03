@@ -89,19 +89,63 @@ def motor(side):
 IND_LINK = [(XE, EXT['rel35']), (XE + 14, EXT['rel35']), (XE + 14, EXT['rel46']), (XE, EXT['rel46'])]
 
 
+def split_at(pts, pt):
+    """폴리라인을 pt 에 가장 가까운 지점에서 둘로 나눔 -> (앞, 뒤)"""
+    best = None
+    for k in range(len(pts) - 1):
+        (x1, y1), (x2, y2) = pts[k], pts[k + 1]
+        dx, dy = x2 - x1, y2 - y1
+        L2 = dx * dx + dy * dy
+        t = max(0, min(1, ((pt[0] - x1) * dx + (pt[1] - y1) * dy) / L2)) if L2 else 0
+        q = (x1 + t * dx, y1 + t * dy)
+        d = math.hypot(pt[0] - q[0], pt[1] - q[1])
+        if best is None or d < best[0]:
+            best = (d, k, q)
+    _, k, q = best
+    return pts[:k + 1] + [q], [q] + pts[k + 1:]
+
+
+def legs(pts, pt, rev=False):
+    """(+)구간·(−)구간으로 분리. rev=True 면 극성 반대(앞이 (−))."""
+    a, b = split_at(pts, pt)
+    return [('m' if rev else 'p', a), ('p' if rev else 'm', b)]
+
+
+def ctrl_flows():
+    """제어전원: {상태: [(종류, 구간, 폴리라인, 모양)]}  N=정방향 (+)->코일(+), R=역방향(반대)"""
+    import wiring_anim
+    from wiring_states import STATES
+    r = wiring_anim.build()['ctrl']      # [(+)단자->코일+, 코일(−)스텁, 코일(−)->(−)단자, 코일]
+    coil_mid = (326, 125)
+    N = [('p', r[0]), ('m', r[1]), ('m', r[2])] + legs(r[3], coil_mid)
+    R = [('m' if l == 'p' else 'p', p[::-1]) for l, p in N]
+    return {sid: [('ctrl', l, p, '') for l, p in (N if STATES[sid][0] == 'N' else R)] for sid in STATES}
+
+
+MID = (XE + 14, (EXT['rel35'] + EXT['rel46']) / 2)
+
+
 def single_flows():
-    """단동: {상태: [(클래스, 폴리라인)]}  (지역 좌표)"""
+    """단동: {상태: [(종류, 구간, 폴리라인, 모양)]}  (지역 좌표). 구간 p/m = (+)/(−), 모양 dim=연하게, x=차단 표시"""
     F = {}
     # 표시전원(계통도 기준): (+) 는 N4·R3 로 들어가 제어계전기 접점 -> 회로제어기 접점 -> 출구 단자 -> 기계실 감지부(연결선) -> 입구 단자 -> 회로제어기 접점 -> 단자 10·8 -> (-)
-    F['ind_n'] = [('ind', join(ext_in(EXT['indm'], Y('N4')), wire('N4', 'C4n'), [RELAY['C4'][1], RELAY['C4'][0]], wire('C4', 'p9'), seg('p9', 'p5'), wire('p5', 'T5'),
-                               ext_out(Y('T5'), EXT['rel35']), IND_LINK, ext_in(EXT['rel46'], Y('T4')), wire('T4', 'p4'), seg('p4', 'p10'), wire('p10', 'T10'),
-                               ext_out(Y('T10'), EXT['indp'])))]
-    F['ind_r'] = [('ind', join(ext_in(EXT['indm'], Y('R3')), wire('R3', 'C3r'), [RELAY['C3'][2], RELAY['C3'][0]], wire('C3', 'p7'), seg('p7', 'p6r'), wire('p6r', 'T6'),
-                               ext_out(Y('T6'), EXT['rel46']), IND_LINK[::-1], ext_in(EXT['rel35'], Y('T3')), wire('T3', 'p3'), seg('p3', 'p8'), wire('p8', 'T8'),
-                               ext_out(Y('T8'), EXT['indp'])))]
+    ind_n = join(ext_in(EXT['indm'], Y('N4')), wire('N4', 'C4n'), [RELAY['C4'][1], RELAY['C4'][0]], wire('C4', 'p9'), seg('p9', 'p5'), wire('p5', 'T5'),
+                 ext_out(Y('T5'), EXT['rel35']), IND_LINK, ext_in(EXT['rel46'], Y('T4')), wire('T4', 'p4'), seg('p4', 'p10'), wire('p10', 'T10'),
+                 ext_out(Y('T10'), EXT['indp']))
+    ind_r = join(ext_in(EXT['indm'], Y('R3')), wire('R3', 'C3r'), [RELAY['C3'][2], RELAY['C3'][0]], wire('C3', 'p7'), seg('p7', 'p6r'), wire('p6r', 'T6'),
+                 ext_out(Y('T6'), EXT['rel46']), IND_LINK[::-1], ext_in(EXT['rel35'], Y('T3')), wire('T3', 'p3'), seg('p3', 'p8'), wire('p8', 'T8'),
+                 ext_out(Y('T8'), EXT['indp']))
+    # 전환순간·전환중: (+) 가 회로제어기 접점(N1 / R2)에서 막힘
+    blk_n = join(ext_in(EXT['indm'], Y('N4')), wire('N4', 'C4n'), [RELAY['C4'][1], RELAY['C4'][0]], wire('C4', 'p9'))
+    blk_r = join(ext_in(EXT['indm'], Y('R3')), wire('R3', 'C3r'), [RELAY['C3'][2], RELAY['C3'][0]], wire('C3', 'p7'))
+    L = lambda cls, pts, pt, mod='': [(cls, l, p, mod) for l, p in legs(pts, pt)]
     mn, mr = motor('N'), motor('R')
-    F['mot_n1'] = F['mot_n2'] = [('mot', mn)]
-    F['mot_r1'] = F['mot_r2'] = [('mot', mr)]
+    C = ctrl_flows()
+    F['ind_n'] = C['ind_n'] + L('ind', ind_n, MID)
+    F['ind_r'] = C['ind_r'] + L('ind', ind_r, MID)
+    for sid, blk, mot in (('mot_n1', blk_n, mn), ('mot_n2', blk_n, mn), ('mot_r1', blk_r, mr), ('mot_r2', blk_r, mr)):
+        F[sid] = (C[sid] + [('ind', 'p', blk, ''), ('ind', 'x', [blk[-1]], 'x')]
+                  + L('mot', mot, NAMED['Bc'], 'dim' if sid.endswith('1') else ''))
     return F
 
 
@@ -112,41 +156,57 @@ def double_flows(W, dy, LINK_Y):
     B = lambda pts: [(x + 10, y + 10 + dy) for x, y in pts]
     link = lambda i, a, b, rev=False: ([(X, 10 + LINK_Y['out'][a]), (10 + W - 15 + i * 12, 10 + LINK_Y['out'][a]), (10 + W - 15 + i * 12, 10 + dy + LINK_Y['in'][b]), (X, 10 + dy + LINK_Y['in'][b])][::-1 if rev else 1])
     F = {}
+    # 표시 흐름은 S14 에서 계통도 기준으로 재작업 — 구간(+/−) 구분 없이 'p' 로 둔다
     F['ind_n'] = [
-        ('ind', join(A(join(ext_in(EXT['indp'], Y('T10')), wire('T10', 'p10'), seg('p10', 'p4'), wire('p4', 'T4'), hop(Y('T4'), Y('T2')))),
-                     link(0, 'T2', 'T10'),
-                     B(join([(838.5, Y('T10'))], wire('T10', 'p10'), seg('p10', 'p4'), wire('p4', 'T4'), ext_out(Y('T4'), EXT['rel46']))))),
-        ('ind', join(B(join(ext_in(EXT['rel35'], Y('T5')), wire('T5', 'p5'), seg('p5', 'p9'), wire('p9', 'C4'), relay('C4', 'N'), wire('C4n', 'N4'), [(838.5, Y('N4'))])),
-                     link(1, 'T5', 'N4', True),
-                     A(join([(838.5, Y('T5'))], wire('T5', 'p5'), seg('p5', 'p9'), wire('p9', 'C4'), relay('C4', 'N'), wire('C4n', 'N4'), ext_out(Y('N4'), EXT['indm']))))),
+        ('ind', 'p', join(A(join(ext_in(EXT['indp'], Y('T10')), wire('T10', 'p10'), seg('p10', 'p4'), wire('p4', 'T4'), hop(Y('T4'), Y('T2')))),
+                          link(0, 'T2', 'T10'),
+                          B(join([(838.5, Y('T10'))], wire('T10', 'p10'), seg('p10', 'p4'), wire('p4', 'T4'), ext_out(Y('T4'), EXT['rel46'])))), ''),
+        ('ind', 'p', join(B(join(ext_in(EXT['rel35'], Y('T5')), wire('T5', 'p5'), seg('p5', 'p9'), wire('p9', 'C4'), relay('C4', 'N'), wire('C4n', 'N4'), [(838.5, Y('N4'))])),
+                          link(1, 'T5', 'N4', True),
+                          A(join([(838.5, Y('T5'))], wire('T5', 'p5'), seg('p5', 'p9'), wire('p9', 'C4'), relay('C4', 'N'), wire('C4n', 'N4'), ext_out(Y('N4'), EXT['indm'])))), ''),
     ]
     F['ind_r'] = [
-        ('ind', join(A(join(ext_in(EXT['indp'], Y('T8')), wire('T8', 'p8'), seg('p8', 'p3'), wire('p3', 'T3'), hop(Y('T3'), Y('T1')))),
-                     link(0, 'T1', 'T8'),
-                     B(join([(838.5, Y('T8'))], wire('T8', 'p8'), seg('p8', 'p3'), wire('p3', 'T3'), ext_out(Y('T3'), EXT['rel35']))))),
-        ('ind', join(B(join(ext_in(EXT['rel46'], Y('T6')), wire('T6', 'p6r'), seg('p6r', 'p7'), wire('p7', 'C3'), relay('C3', 'R'), wire('C3r', 'R3'), [(838.5, Y('R3'))])),
-                     link(1, 'T6', 'R3', True),
-                     A(join([(838.5, Y('T6'))], wire('T6', 'p6r'), seg('p6r', 'p7'), wire('p7', 'C3'), relay('C3', 'R'), wire('C3r', 'R3'), ext_out(Y('R3'), EXT['indm']))))),
+        ('ind', 'p', join(A(join(ext_in(EXT['indp'], Y('T8')), wire('T8', 'p8'), seg('p8', 'p3'), wire('p3', 'T3'), hop(Y('T3'), Y('T1')))),
+                          link(0, 'T1', 'T8'),
+                          B(join([(838.5, Y('T8'))], wire('T8', 'p8'), seg('p8', 'p3'), wire('p3', 'T3'), ext_out(Y('T3'), EXT['rel35'])))), ''),
+        ('ind', 'p', join(B(join(ext_in(EXT['rel46'], Y('T6')), wire('T6', 'p6r'), seg('p6r', 'p7'), wire('p7', 'C3'), relay('C3', 'R'), wire('C3r', 'R3'), [(838.5, Y('R3'))])),
+                          link(1, 'T6', 'R3', True),
+                          A(join([(838.5, Y('T6'))], wire('T6', 'p6r'), seg('p6r', 'p7'), wire('p7', 'C3'), relay('C3', 'R'), wire('C3r', 'R3'), ext_out(Y('R3'), EXT['indm'])))), ''),
     ]
     mn, mr = motor('N'), motor('R')
-    F['mot_n1'] = F['mot_n2'] = [('mot', A(mn)), ('mot', B(mn))]
-    F['mot_r1'] = F['mot_r2'] = [('mot', A(mr)), ('mot', B(mr))]
+    C = ctrl_flows()
+    for sid in C:
+        for f in (A, B):
+            F.setdefault(sid, []).extend((k, l, f(p), m) for k, l, p, m in C[sid])
+    for sid, mot in (('mot_n1', mn), ('mot_n2', mn), ('mot_r1', mr), ('mot_r2', mr)):
+        for f in (A, B):
+            F[sid] += [('mot', l, f(p), 'dim' if sid.endswith('1') else '') for l, p in legs(mot, NAMED['Bc'])]
     return F
 
 
+def mot_labels():
+    """모터전원 단자 라벨(전원 하나 보기에서만 보임): C=BX110, D=CX110"""
+    t = lambda y, s: f'<text x="{XE - 2:.0f}" y="{y - 4:.0f}" class="fsw-mlab">{s}</text>'
+    return t(EXT['motC'], 'C (BX110)') + t(EXT['motD'], 'D (CX110)')
+
+
 def overlay(flows):
-    """{상태: [(cls, pts)]} -> SVG 조각(상태별 그룹, 지역/전역 좌표 그대로)"""
+    """{상태: [(종류, 구간, pts, 모양)]} -> SVG 조각(상태별 그룹, 지역/전역 좌표 그대로)"""
     out = []
     for sid, lst in flows.items():
         o = ''
-        for cls, pts in lst:
+        for cls, leg, pts, mod in lst:
+            if mod == 'x':
+                x, y = pts[0]
+                o += f'<path d="M{x-3.5:.1f} {y-3.5:.1f}l7 7m0 -7l-7 7" class="fsw-x"/>'
+                continue
             d = 'M' + ' L'.join('%.1f %.1f' % p for p in pts)
-            o += f'<path d="{d}" class="fsw-flowbase fsw-fb-{cls}"/><path d="{d}" class="fsw-flow fsw-fl-{cls}"/>'
+            o += (f'<g class="fsw-k-{cls} fsw-leg-{leg} fsw-mod-{mod or "n"}"><path d="{d}" class="fsw-flowbase fsw-fb-{cls}"/>'
+                  f'<path d="{d}" class="fsw-flow fsw-fl-{cls}"/></g>')
         out.append(f'<g class="fsw-ws ws-{sid}">{o}</g>')
     return ''.join(out)
 
 
 if __name__ == '__main__':
     for k, v in single_flows().items():
-        for cls, pl in v:
-            print(k, cls, len(pl), [tuple(round(c) for c in p) for p in pl])
+        print(k, [(c, l, m, len(p)) for c, l, p, m in v])

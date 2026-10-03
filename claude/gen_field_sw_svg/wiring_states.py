@@ -37,7 +37,6 @@ PIN = {  # 핀 좌표(클립)
 CPAIR = {'NC1': ('G', 'A'), 'NC2': ('1', '6'), 'N1': ('9', '5'), 'N2': ('10', '4'),
          'R1': ('3', '8'), 'R2': ('6r', '7'), 'RC1': ('5r', '2'), 'RC2': ('B', 'Gr')}
 STATES = {  # 상태: (제어계전기, 닫힌 회로제어기 접점)
-    'ctrl': ('N', ['NC1', 'NC2', 'N1', 'N2']),
     'ind_n': ('N', ['NC1', 'NC2', 'N1', 'N2']),
     'ind_r': ('R', ['R1', 'R2', 'RC1', 'RC2']),
     'mot_n1': ('N', ['R1', 'R2', 'RC1', 'RC2']),
@@ -137,7 +136,10 @@ if __name__ == '__main__':
 SID = list(STATES)
 STYLE = ('<style>.fsw-t{font:6px sans-serif;fill:#222}.fsw-h{font:bold 9px sans-serif;fill:#222}.fsw-s{font:5px sans-serif;fill:#444}'
          '.fsw-ws{display:none}' + ''.join(f'svg.wsv-{k} .ws-{k}{{display:inline}}' for k in SID) +
-         '.fsw-flowg{display:none}svg.wsv-ctrl .fsw-flowg{display:inline}'
+         '.fsw-x{fill:none;stroke:#111;stroke-width:2.2;stroke-linecap:round}.fsw-mlab{display:none;font:5px sans-serif;fill:#444}svg.only-mot .fsw-mlab{display:inline}'
+         '.fsw-mod-dim .fsw-flow{display:none}.fsw-mod-dim .fsw-flowbase{stroke-opacity:.32}'
+         + ''.join(f'svg.only-{k} .fsw-k-{j}{{display:none}}' for k, js in (('ctrl', ('ind', 'mot')), ('ind', ('ctrl', 'mot')), ('mot', ('ctrl', 'ind'))) for j in js) +
+         'svg.pol .fsw-leg-p .fsw-flowbase,svg.pol .fsw-leg-p .fsw-flow{stroke:#dc2626}svg.pol .fsw-leg-m .fsw-flowbase,svg.pol .fsw-leg-m .fsw-flow{stroke:#2563eb}'
          '.fsw-flowbase{fill:none;stroke-width:3.4;stroke-opacity:.16;stroke-linejoin:round}'
          '.fsw-flow{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:.1 9;animation:fswflow .9s linear infinite}'
          '.fsw-fb-ctrl,.fsw-fl-ctrl{stroke:#2563eb}.fsw-fb-ind,.fsw-fl-ind{stroke:#16a34a}.fsw-fb-mot,.fsw-fl-mot{stroke:#dc2626}@keyframes fswflow{to{stroke-dashoffset:-9.1}}'
@@ -145,12 +147,10 @@ STYLE = ('<style>.fsw-t{font:6px sans-serif;fill:#222}.fsw-h{font:bold 9px sans-
 
 
 def single_svg():
-    import wiring_anim
     b, W, H, _ = base()
-    ov = wiring_anim.overlay(wiring_anim.build())
     states = ''.join(state_group(k) for k in SID)
     import wiring_flow
-    ov += wiring_flow.overlay(wiring_flow.single_flows())
+    ov = wiring_flow.overlay(wiring_flow.single_flows()) + wiring_flow.mot_labels()
     Wt, Ht = W + 20, H + 20
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><g id="wiring" transform="translate(10,10)">{b}{jumpers('single')}{states}{ov}</g></svg>')
@@ -165,9 +165,7 @@ LINKS = {  # 상태: [(A 출력, B 입력, 색, 라벨)]
 
 
 def double_svg():
-    import wiring_anim
     b, W, H, _ = base()
-    ov = wiring_anim.overlay(wiring_anim.build())
     states = ''.join(state_group(k) for k in SID)
     gap = 40
     dy = H + gap
@@ -187,8 +185,8 @@ def double_svg():
     lab = (f'<text x="10" y="8" class="fsw-h">A호기</text><text x="10" y="{dy+8}" class="fsw-h">B호기</text>')
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><defs><g id="wcore">{b}</g></defs>{lab}'
-            f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{jumpers('A')}{states}{ov}</g>'
-            f'<g id="wiring-B" transform="translate(10,{10+dy:.0f})"><use href="#wcore"/>{jumpers('B')}{states}{ov}</g>{link}{flows}</svg>')
+            f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{jumpers('A')}{states}{wiring_flow.mot_labels()}</g>'
+            f'<g id="wiring-B" transform="translate(10,{10+dy:.0f})"><use href="#wcore"/>{jumpers('B')}{states}{wiring_flow.mot_labels()}</g>{link}{flows}</svg>')
 
 
 def write_all(out_dir):
