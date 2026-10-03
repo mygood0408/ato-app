@@ -5,10 +5,10 @@ sys.path.insert(0,'claude')
 from s11_lines import pg
 J='board-info.json';H='장비구성뷰_v3_시안.html'
 K={'SICAS_VENUS3':r'venus3','SICAS_KOMDA2':r'komda ?2','SICAS_OLM':r'\bolm\b','ECDSTT_OLM':r'\bolm\b','ECDSTT_STEKOP':r'stekop','ECDSTT_DEWEMO':r'dewemo','ECDSTT_DESIMO':r'desimo','ECDSTT_PLATTER':r'platter','ECDSTT_PS':r'sv ?2602',
-'LZB_FTGS_DISTRIBUTOR':r'distribut','LZB_SVK2402':r'svk ?2402','LZB_FAN':r'\bfan\b','ATOLOOP_FAN':r'\bfan\b','IFC_COMPUTER':r'\bifc\b','IFC_EMS_RELAY':r'\bems\b|emergency stop','FTGS_GF_RELAY_PCB':r'\bgf\b|gf.?relay',
+'LZB_FTGS_DISTRIBUTOR':r'distribut','LZB_SVK2402':r'svk ?2402','LZB_FAN':r'\bfan\b|ventilator','ATOLOOP_FAN':r'\bfan\b|ventilator','IFC_COMPUTER':r'\bifc\b|interface computer','IFC_EMS_RELAY':r'\bems\b|emergency stop','FTGS_GF_RELAY_PCB':r'\bgf\b|gf.?relay',
 'ATOLOOP_FUUELL':r'fuuell','ATOLOOP_REMEMO':r'rememo','ATOLOOP_CB':r'ato positioning loop','TWC_AMP_MODULE':r'line amplifier','TWC_LOOP_COIL':r'to loop twc|loop twc','PSD_TERMINAL_MAP_SIN051':r'\bpsd\b',
-'UPS_ATS_AVR_UNIT':r'\bats\b|\bavr\b','UPS_RECTIFIER_UNIT':r'rectifier|inverter','UPS_OUTPUT_DISTRIBUTION':r'\btbl\d|\btbm|output distribution'}
-SKIP=re.compile(r'list of documents|configuration overview|cable routing|cable  routing',re.I)
+'UPS_ATS_AVR_UNIT':r'\bats\b|\bavr\b','UPS_RECTIFIER_UNIT':r'rectifier|inverter|^ups$|/ups$','UPS_OUTPUT_DISTRIBUTION':r'\btbl\d|\btbm|output distribution'}
+SKIP=re.compile(r'list of documents|cable routing|cable  routing',re.I)
 def title(t):
     L=[l.strip() for l in t.split('\n') if l.strip()]
     for i,l in enumerate(L):

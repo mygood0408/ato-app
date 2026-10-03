@@ -1,0 +1,7393 @@
+[
+{
+"board": "SICAS_VENUS3",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+189,
+190,
+191,
+192
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+108,
+109,
+110,
+111
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+197,
+198,
+199,
+200
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+258,
+259,
+260,
+261
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+155,
+156,
+157,
+158
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+182,
+183,
+184,
+185
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+156,
+157,
+158,
+159
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+118,
+119,
+120,
+121
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+150,
+151,
+152,
+153
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+238,
+239,
+240,
+241
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+108,
+109,
+110,
+111
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+145,
+146,
+147,
+148
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+154,
+155,
+156,
+157
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_VENUS3",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+231,
+232,
+233,
+234
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+190,
+191,
+192
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+109,
+110,
+111
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+198,
+199,
+200
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+259,
+260,
+261
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+156,
+157,
+158
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+183,
+184,
+185
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+157,
+158,
+159
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+119,
+120,
+121
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+151,
+152,
+153
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+239,
+240,
+241
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+109,
+110,
+111
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+146,
+147,
+148
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+155,
+156,
+157
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_KOMDA2",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+232,
+233,
+234
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+6,
+14,
+15,
+183,
+184,
+185,
+186,
+187,
+194,
+199,
+207,
+222,
+231
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+6,
+14,
+15,
+191,
+192,
+193,
+194,
+195,
+202,
+207,
+217,
+231,
+238
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+8,
+18,
+19,
+20,
+21,
+250,
+251,
+252,
+253,
+254,
+255,
+256,
+263,
+268,
+277
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+5,
+11,
+12,
+150,
+151,
+152,
+153,
+160,
+165,
+173
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+6,
+13,
+14,
+15,
+176,
+177,
+178,
+179,
+180,
+187,
+192,
+200,
+213,
+220,
+229
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+5,
+6,
+31,
+40
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+5,
+12,
+13,
+151,
+152,
+153,
+154,
+161,
+166,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+4,
+8,
+9,
+16,
+19,
+114,
+115,
+116,
+120,
+123
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+5,
+12,
+13,
+14,
+144,
+145,
+146,
+147,
+148,
+155,
+160,
+168,
+180,
+189
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+7,
+16,
+17,
+18,
+231,
+232,
+233,
+234,
+235,
+236,
+243,
+248,
+256,
+268,
+278
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+4,
+8,
+9,
+104,
+105,
+106,
+113
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+5,
+13,
+14,
+15,
+16,
+139,
+140,
+141,
+142,
+143,
+150,
+151,
+156,
+165,
+178
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+5,
+10,
+11,
+12,
+149,
+150,
+151,
+152,
+159,
+164,
+172
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "SICAS_OLM",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+7,
+16,
+17,
+18,
+19,
+220,
+221,
+222,
+223,
+224,
+225,
+226,
+227,
+228,
+229
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+7,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": "SIN2 해당 없음 · 도면 확인 (SIN2엔 범례/언급 1쪽뿐, EC/DSTT 캐비닛 도면 없음)"
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+7,
+8,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+8,
+9,
+10,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27,
+28,
+29,
+30
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+6,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+7,
+13,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+3,
+5,
+6,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+6,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+6,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+8,
+9,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27,
+28,
+29
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+6,
+14,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27,
+28
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+6,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_STEKOP",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+8,
+9,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27,
+28,
+29
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+12,
+13,
+14,
+15,
+40,
+46,
+52,
+58,
+64,
+70,
+199,
+203,
+204,
+205,
+222
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": "SIN2 해당 없음 · 도면 확인 (SIN2엔 범례/언급 1쪽뿐, EC/DSTT 캐비닛 도면 없음)"
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+12,
+13,
+14,
+15,
+34,
+40,
+46,
+52,
+58,
+207,
+212,
+213,
+214,
+215,
+231
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+15,
+16,
+17,
+19,
+21,
+58,
+64,
+70,
+76,
+82,
+88,
+94,
+100,
+106,
+112
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+10,
+11,
+12,
+21,
+27,
+165,
+170,
+171
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+11,
+12,
+13,
+15,
+32,
+38,
+44,
+192,
+197,
+198,
+213,
+217,
+218
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+6,
+36,
+37,
+38
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+11,
+12,
+13,
+26,
+32,
+38,
+166,
+171,
+172,
+173,
+174
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+10,
+11,
+13,
+14,
+31,
+37,
+43,
+160,
+165,
+166,
+180,
+184,
+185,
+186,
+187
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+13,
+14,
+15,
+17,
+18,
+49,
+55,
+61,
+67,
+73,
+79,
+85,
+91,
+97,
+248
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+11,
+12,
+14,
+16,
+33,
+39,
+45,
+156,
+161,
+162,
+163,
+178,
+182,
+183
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+9,
+11,
+12,
+21,
+27,
+164,
+169,
+170
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DEWEMO",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+13,
+14,
+15,
+17,
+18,
+19,
+52,
+58,
+64,
+70,
+76,
+82,
+88,
+94,
+242
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+12,
+13,
+14,
+15,
+16,
+18,
+20,
+22,
+24,
+26,
+28,
+30,
+32,
+34,
+36
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": "SIN2 해당 없음 · 도면 확인 (SIN2엔 범례/언급 1쪽뿐, EC/DSTT 캐비닛 도면 없음)"
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+12,
+13,
+14,
+15,
+16,
+18,
+20,
+22,
+24,
+26,
+28,
+30,
+32,
+207,
+212
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+15,
+16,
+17,
+19,
+21,
+22,
+24,
+26,
+28,
+30,
+32,
+34,
+36,
+38,
+40
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+10,
+11,
+12,
+13,
+15,
+17,
+19,
+165,
+170,
+171,
+176,
+177
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+11,
+12,
+13,
+15,
+16,
+18,
+20,
+22,
+24,
+26,
+28,
+30,
+192,
+197,
+198
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+6,
+36,
+37,
+38
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+11,
+12,
+13,
+14,
+16,
+18,
+20,
+22,
+24,
+166,
+171,
+172,
+173,
+174,
+180
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+10,
+11,
+13,
+14,
+15,
+17,
+19,
+21,
+23,
+25,
+27,
+29,
+160,
+165,
+166
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+13,
+14,
+15,
+17,
+18,
+19,
+21,
+23,
+25,
+27,
+29,
+31,
+33,
+35,
+37
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+9
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+11,
+12,
+14,
+16,
+17,
+19,
+21,
+23,
+25,
+27,
+29,
+31,
+156,
+161,
+162
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+9,
+11,
+12,
+13,
+15,
+17,
+19,
+164,
+169,
+170,
+175,
+176
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_DESIMO",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+13,
+14,
+15,
+17,
+18,
+19,
+20,
+22,
+24,
+26,
+28,
+30,
+32,
+34,
+36
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_PS",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+230,
+206,
+224,
+106
+],
+"reason": "핵심어 범용/모호",
+"note": "T52 G단자 60V→퓨즈4A→Filter Z1~Z4 (p.230, 전원 경로 ⚡ 있음, 확인필요); p.106 T52 STEKOP 전원 조건(24V→전원모듈→계전기 PSM-K91 'STEKOP-PS o.k.', ⚡ 있음, 확인필요). SV2602 랙 배치 p.224, T51 p.206은 X200/X203 8V분배 주석만 있고 배선 없음"
+},
+{
+"board": "ECDSTT_PLATTER",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+8,
+9,
+10,
+22,
+23,
+24,
+25,
+26,
+27,
+28,
+29,
+30,
+31,
+32,
+33
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_PLATTER",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+6,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+26,
+27
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+6,
+14,
+15,
+183,
+184,
+185,
+186,
+187,
+194,
+199,
+207,
+222,
+231
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+6,
+14,
+15,
+191,
+192,
+193,
+194,
+195,
+202,
+207,
+217,
+231,
+238
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+8,
+18,
+19,
+20,
+21,
+250,
+251,
+252,
+253,
+254,
+255,
+256,
+263,
+268,
+277
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+5,
+11,
+12,
+150,
+151,
+152,
+153,
+160,
+165,
+173
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+6,
+13,
+14,
+15,
+176,
+177,
+178,
+179,
+180,
+187,
+192,
+200,
+213,
+220,
+229
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+5,
+6,
+31,
+40
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+5,
+12,
+13,
+151,
+152,
+153,
+154,
+161,
+166,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+4,
+8,
+9,
+16,
+19,
+114,
+115,
+116,
+120,
+123
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+5,
+12,
+13,
+14,
+144,
+145,
+146,
+147,
+148,
+155,
+160,
+168,
+180,
+189
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+7,
+16,
+17,
+18,
+231,
+232,
+233,
+234,
+235,
+236,
+243,
+248,
+256,
+268,
+278
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+4,
+8,
+9,
+104,
+105,
+106,
+113
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+5,
+13,
+14,
+15,
+16,
+139,
+140,
+141,
+142,
+143,
+150,
+151,
+156,
+165,
+178
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+5,
+10,
+11,
+12,
+149,
+150,
+151,
+152,
+159,
+164,
+172
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ECDSTT_OLM",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+7,
+16,
+17,
+18,
+19,
+220,
+221,
+222,
+223,
+224,
+225,
+226,
+227,
+228,
+229
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+2,
+3,
+4,
+7,
+8,
+9,
+10,
+11,
+12,
+15,
+16,
+17,
+18,
+19,
+25
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+2,
+3,
+4,
+5,
+10,
+11,
+14,
+15,
+76,
+77,
+78,
+79,
+80,
+81,
+82
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+2,
+3,
+6,
+7,
+8,
+10,
+11,
+12,
+14,
+15,
+16,
+17,
+18,
+19,
+20
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+2,
+3,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": "구성 다름 · 도면 확인 (토큰 차집합 표 기준)"
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+2,
+3,
+4,
+5,
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+18,
+19,
+20,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+2,
+3,
+4,
+5,
+10,
+11,
+14,
+15,
+65,
+66,
+67,
+68,
+69,
+70,
+71
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+2,
+3,
+6,
+7,
+8,
+10,
+11,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+2,
+4,
+5,
+6,
+13,
+14,
+18,
+21,
+118,
+119,
+120,
+121,
+122,
+123,
+124
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+2,
+3,
+4,
+8,
+9,
+10,
+11,
+12,
+15,
+16,
+17,
+18,
+19,
+20,
+25
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+2,
+3,
+4,
+8,
+9,
+11,
+12,
+33,
+34,
+35,
+36,
+37,
+38,
+39,
+40
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+2,
+3,
+4,
+5,
+9,
+10,
+11,
+12,
+13,
+14,
+17,
+18,
+19,
+20,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+2,
+3,
+4,
+9,
+10,
+13,
+15,
+50,
+51,
+52,
+53,
+54,
+55,
+56,
+57
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+2,
+4,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+26
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+2,
+4,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+27,
+28,
+29,
+30
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+3,
+4,
+7,
+8,
+9,
+11,
+12,
+13,
+17,
+18,
+19,
+20,
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+2,
+3,
+4,
+9,
+10,
+12,
+13,
+44,
+45,
+46,
+47,
+48,
+49,
+50,
+51
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+3,
+4,
+7,
+8,
+9,
+11,
+12,
+13,
+17,
+18,
+19,
+20,
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+2,
+3,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+2,
+3,
+5,
+6,
+8,
+9,
+10,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+2,
+3,
+4,
+8,
+9,
+12,
+14,
+49,
+50,
+51,
+52,
+53,
+54,
+55,
+56
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+2,
+3,
+4,
+5,
+8,
+9,
+10,
+11,
+12,
+13,
+16,
+17,
+18,
+19,
+20
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+2,
+4,
+5,
+6,
+11,
+12,
+16,
+18,
+104,
+105,
+106,
+107,
+108,
+109,
+110
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+2,
+3,
+4,
+5,
+8,
+9,
+10,
+11,
+12,
+13,
+16,
+17,
+18,
+19,
+20
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+2,
+3,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+3,
+5,
+6,
+8,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+2,
+3,
+4,
+9,
+10,
+13,
+16,
+51,
+52,
+53,
+54,
+55,
+56,
+57,
+58
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+3,
+5,
+6,
+8,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+20,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+2,
+3,
+4,
+7,
+8,
+10,
+12,
+33,
+34,
+35,
+36,
+37,
+38,
+39,
+40
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+2,
+3,
+4,
+6,
+7,
+8,
+9,
+10,
+13,
+14,
+15,
+16,
+20,
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FTGS_DISTRIBUTOR",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+2,
+4,
+5,
+6,
+11,
+12,
+16,
+19,
+101,
+102,
+103,
+104,
+105,
+106,
+107
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+193
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+112
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+201
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+262
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+159
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+186
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+160
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+122
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+154
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+242
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+112
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+149
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+158
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_SVK2402",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+235
+],
+"reason": "보드 계통↔도면 종류 불일치",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+100,
+201
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+158,
+179,
+187,
+188,
+196,
+270
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+74,
+86
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "LZB_FAN",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+100,
+106,
+107,
+109,
+110,
+115,
+134
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "LZB_FAN",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+80,
+98,
+187,
+195,
+196,
+204,
+230,
+231,
+273
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+238,
+239,
+242,
+246,
+256,
+257,
+265,
+288,
+392
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+40,
+65,
+66,
+142,
+146,
+153,
+154,
+162,
+207
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+136
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+10,
+164,
+165,
+166,
+169,
+172,
+180,
+181,
+189,
+229,
+235,
+260
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+125,
+147,
+154,
+155,
+163,
+218,
+242
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+16,
+83,
+98,
+100,
+101,
+110,
+116,
+117,
+125
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+140,
+148,
+149,
+157,
+220
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+209,
+220,
+227,
+236,
+237,
+245,
+333,
+343
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+18,
+100,
+106,
+107,
+110,
+115,
+134
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+10,
+66,
+122,
+135,
+143,
+144,
+153,
+174,
+194,
+200,
+231,
+254
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+45,
+53,
+138,
+145,
+152,
+153,
+161
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "LZB_FAN",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+115,
+125,
+216,
+229,
+230,
+239,
+336
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+120,
+121,
+122,
+123,
+127,
+221,
+222,
+223,
+224,
+228
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+14,
+15,
+189,
+208,
+232
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+94,
+95,
+96,
+97
+],
+"reason": "핵심어 범용/모호",
+"note": "SIN2 텍스트가 SIN1의 일부뿐 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+9,
+108
+],
+"reason": "핵심어 범용/모호",
+"note": "구성 다름 · 도면 확인 (토큰 차집합 표 기준)"
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+139,
+156,
+157,
+158,
+159,
+163,
+164,
+165,
+166,
+167,
+171
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+14,
+15,
+197,
+218,
+239
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+69,
+78,
+79,
+80,
+81,
+85
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+18,
+21,
+258,
+278,
+302,
+325,
+352
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+116,
+129,
+130,
+131,
+132,
+136,
+137,
+138,
+139,
+140,
+144
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+11,
+12,
+155,
+174
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+133,
+149,
+150,
+151,
+152,
+156,
+157,
+158,
+159,
+160,
+164
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+13,
+15,
+182,
+201,
+221
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+21,
+26,
+27,
+28,
+29,
+33
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+6,
+41
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+91,
+102,
+103,
+104,
+105,
+109,
+197,
+198,
+199,
+200,
+204
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+12,
+13,
+156,
+177
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+91,
+102,
+103,
+104,
+105,
+109,
+197,
+198,
+199,
+200,
+204
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+9,
+118
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+67,
+68,
+69,
+70,
+74
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+12,
+14,
+150,
+169,
+190
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+125,
+142,
+143,
+144,
+145,
+149,
+150,
+151,
+152,
+153,
+157,
+240,
+252,
+253,
+254
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+16,
+18,
+238,
+257,
+279,
+302
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+125,
+142,
+143,
+144,
+145,
+149,
+150,
+151,
+152,
+153,
+157,
+240,
+252,
+253,
+254
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+9,
+108
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+53,
+61,
+62,
+63,
+64,
+68,
+170,
+179,
+180,
+181,
+182,
+186
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+6,
+7,
+13,
+16,
+145,
+166,
+186,
+194,
+195,
+196,
+197,
+198,
+199,
+200,
+201
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+53,
+61,
+62,
+63,
+64,
+68,
+170,
+179,
+180,
+181,
+182,
+186
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+12,
+154,
+173
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+93,
+101,
+102,
+103,
+104,
+108
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_COMPUTER",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+16,
+19,
+231,
+252,
+273,
+298
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": "구성 다름 · 도면 확인 (토큰 차집합 표 기준)"
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "IFC_EMS_RELAY",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+110,
+114,
+118,
+122,
+126,
+130,
+134
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+181,
+185,
+189,
+193
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+72,
+76,
+80,
+84,
+88,
+92
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+95,
+99,
+103,
+107,
+111,
+115,
+119
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+29
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+77,
+81,
+85,
+89,
+93
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+42,
+46,
+50,
+54,
+58
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+80,
+84,
+88
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+149,
+153,
+157,
+161,
+165,
+169,
+173
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+36,
+40,
+44,
+48
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+73,
+77,
+81
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+73,
+77,
+81,
+85,
+89,
+93
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "FTGS_GF_RELAY_PCB",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+143,
+147,
+151,
+155,
+159,
+163
+],
+"reason": "FTGS/N레벨 도면 제목·이미지 확인 필요",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+100,
+201
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+158,
+179,
+187,
+188,
+196,
+270
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+74,
+86
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+100,
+106,
+107,
+109,
+110,
+115,
+134
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+80,
+98,
+187,
+195,
+196,
+204,
+230,
+231,
+273
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+238,
+239,
+242,
+246,
+256,
+257,
+265,
+288,
+392
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+40,
+65,
+66,
+142,
+146,
+153,
+154,
+162,
+207
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+136
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+10,
+164,
+165,
+166,
+169,
+172,
+180,
+181,
+189,
+229,
+235,
+260
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+125,
+147,
+154,
+155,
+163,
+218,
+242
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+16,
+83,
+98,
+100,
+101,
+110,
+116,
+117,
+125
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+140,
+148,
+149,
+157,
+220
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+209,
+220,
+227,
+236,
+237,
+245,
+333,
+343
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+18,
+100,
+106,
+107,
+110,
+115,
+134
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+10,
+66,
+122,
+135,
+143,
+144,
+153,
+174,
+194,
+200,
+231,
+254
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+45,
+53,
+138,
+145,
+152,
+153,
+161
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FAN",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+115,
+125,
+216,
+229,
+230,
+239,
+336
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_FUUELL",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+100,
+201
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_FUUELL",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+74
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_REMEMO",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+7,
+8,
+9,
+10,
+11,
+12,
+100,
+102,
+133,
+134,
+135,
+201,
+203
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_REMEMO",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+6,
+7,
+8,
+74,
+76
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": "SIN2 텍스트가 SIN1의 일부뿐 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "ATOLOOP_REMEMO",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+7,
+8,
+9,
+115,
+116,
+117
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_REMEMO",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+7,
+8,
+9,
+115,
+116,
+117
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_REMEMO",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+5,
+6,
+74,
+75,
+76,
+77
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_REMEMO",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+5,
+6,
+74,
+75,
+76,
+77
+],
+"reason": "일부 쪽 핵심어 1회 이하",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+49,
+64,
+70,
+82,
+85,
+94,
+120
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16,
+17,
+156,
+164
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+14,
+74,
+95,
+108,
+109,
+112,
+113,
+116,
+117,
+120,
+121,
+124,
+125,
+128,
+129
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+6,
+7,
+8,
+9,
+77,
+78
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+19,
+70,
+88,
+100,
+132,
+179,
+180,
+183,
+184,
+187,
+188,
+191,
+192,
+197,
+202
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+8,
+9,
+10,
+11,
+12,
+13,
+14,
+125,
+129,
+137
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+11,
+34,
+35,
+36,
+41,
+52,
+54,
+70,
+71,
+74,
+75,
+78,
+79,
+82,
+83
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+16,
+132,
+138,
+145,
+149,
+157
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+13,
+32,
+58,
+62,
+64,
+65,
+71,
+77,
+83,
+93,
+94,
+97,
+98,
+101,
+102
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+4,
+5,
+26
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+9,
+27,
+28,
+36,
+37,
+38
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+7,
+8,
+9,
+10,
+90,
+94,
+98,
+102,
+115,
+116,
+117,
+118,
+190,
+192,
+197
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+12,
+46,
+52,
+64,
+70,
+75,
+76,
+79,
+80,
+83,
+84,
+87,
+88,
+91,
+92
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+7,
+8,
+9,
+10,
+90,
+94,
+98,
+102,
+115,
+116,
+117,
+118,
+190,
+192,
+197
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+18,
+29,
+40,
+41,
+44,
+45,
+48,
+49,
+52,
+53,
+56,
+57,
+61,
+66,
+71
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+5,
+6,
+7,
+67
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+13,
+31,
+78,
+79,
+82,
+83,
+86,
+87,
+91,
+96,
+101,
+104,
+135,
+150,
+160
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+124,
+138,
+142,
+150,
+164,
+165,
+166,
+167
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+17,
+67,
+91,
+106,
+112,
+147,
+148,
+151,
+152,
+155,
+156,
+159,
+160,
+163,
+164
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+9,
+10,
+11,
+12,
+13,
+14,
+15,
+124,
+138,
+142,
+150,
+164,
+165,
+166,
+167
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+10,
+34,
+35,
+38,
+39,
+42,
+43,
+46,
+47,
+51,
+56,
+61,
+66,
+77,
+108
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+5,
+6,
+7,
+57,
+61,
+74,
+75,
+76,
+77,
+78,
+179
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+14,
+51,
+54,
+59,
+71,
+72,
+75,
+76,
+79,
+80,
+84,
+86,
+91,
+96,
+99
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+5,
+6,
+7,
+57,
+61,
+74,
+75,
+76,
+77,
+78,
+179
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+11,
+33,
+35,
+47,
+59,
+60,
+71,
+72,
+75,
+76,
+79,
+80,
+83,
+84,
+87
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+101
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "ATOLOOP_CB",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+17,
+18,
+104,
+107,
+131,
+141,
+142,
+145,
+146,
+149,
+150,
+153,
+154,
+157,
+158
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+2,
+20,
+21,
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": "SIN2 해당 없음 · 도면 확인 (SIN2엔 범례 1쪽에만 언급)"
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+2,
+25,
+26,
+27,
+28,
+29
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+2,
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+18,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+2,
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+11,
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+2,
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+13,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+2,
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+12,
+13
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+2,
+11
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+12,
+14
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+159,
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+16,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+159,
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+13,
+16
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+2,
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_AMP_MODULE",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+16,
+19
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+2,
+20,
+21,
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SIN2",
+"doc": "SICAS_HW_Design_SIN2",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": "SIN2 해당 없음 · 도면 확인 (SIN2엔 범례 1쪽에만 언급)"
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+2,
+25,
+26,
+27,
+28,
+29
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+2,
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+18,
+21
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+2,
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+11,
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+2,
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+13,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+2,
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+12,
+13
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+2,
+11
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+12,
+14
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+159,
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+16,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+159,
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+13,
+16
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+2,
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "TWC_LOOP_COIL",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+16,
+19
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+2,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+84,
+108,
+109,
+110,
+129
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SIN2",
+"doc": "ATP_HW_Design_SIN2",
+"pages": [
+2,
+10,
+11,
+12,
+82,
+83,
+84,
+85,
+86,
+87
+],
+"reason": "핵심어 범용/모호",
+"note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+2,
+18,
+19,
+20,
+21,
+22,
+23,
+24,
+25,
+27,
+28,
+29,
+145,
+146,
+147
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+2,
+10,
+11,
+12,
+71,
+72,
+73
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+2,
+15,
+16,
+17,
+18,
+19,
+20,
+21,
+22,
+118,
+119,
+120,
+121,
+122,
+123
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+2,
+17,
+18,
+19,
+20,
+21,
+22,
+23,
+135,
+136,
+137,
+142,
+143,
+144
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+11,
+12,
+13,
+14,
+15,
+95,
+96,
+97,
+111,
+119,
+120,
+121,
+191,
+192
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+2,
+11,
+12,
+13,
+14,
+15,
+95,
+96,
+97,
+111,
+119,
+120,
+121,
+191,
+192
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+2,
+8,
+9,
+10,
+11,
+61,
+62,
+63
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+2,
+16,
+17,
+18,
+19,
+20,
+21,
+128,
+129,
+130,
+135,
+136,
+137,
+159,
+169
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+2,
+16,
+17,
+18,
+19,
+20,
+21,
+128,
+129,
+130,
+135,
+136,
+137,
+159,
+169
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+8,
+9,
+10,
+55,
+56,
+70,
+79,
+80,
+81,
+82,
+172,
+173,
+174,
+175
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+2,
+8,
+9,
+10,
+55,
+56,
+70,
+79,
+80,
+81,
+82,
+172,
+173,
+174,
+175
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "PSD_TERMINAL_MAP_SIN051",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+2,
+13,
+14,
+15,
+16,
+17,
+18,
+98,
+99,
+100
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+77,
+80,
+83,
+85,
+87,
+89,
+90,
+95,
+97,
+100,
+104,
+105,
+188,
+191,
+200
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+155
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+18,
+84,
+97,
+288
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+28,
+122,
+123,
+129,
+137,
+141,
+257,
+402
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+115
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+37,
+55,
+66,
+67,
+134,
+168,
+204
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+9,
+10,
+11
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+28,
+30,
+60,
+68,
+73,
+75,
+87,
+181
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+10,
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+45,
+48,
+53,
+57,
+68,
+69,
+71,
+155,
+167
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+9
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+23,
+24,
+25,
+35
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+61,
+114,
+119,
+121,
+136,
+152
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+45,
+105,
+107,
+110,
+111,
+113,
+114,
+117,
+118,
+119,
+120,
+123,
+125,
+129,
+130
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+17,
+29,
+31,
+73,
+107
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+55,
+56,
+57,
+60,
+62,
+63,
+64,
+79,
+115,
+144
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+36,
+48,
+58,
+66,
+75
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+6,
+7,
+8,
+9,
+93
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_ATS_AVR_UNIT",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+7,
+102,
+105,
+109,
+120,
+123,
+134,
+215,
+234
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+20,
+21,
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+14,
+178,
+188,
+206,
+230
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+25,
+28,
+29
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+14,
+186,
+196,
+216,
+237
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+18,
+245,
+257,
+276,
+300,
+323,
+350
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+11,
+145,
+154,
+172
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+13,
+171,
+181,
+199,
+219,
+235
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+25,
+39
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+12,
+146,
+155,
+175
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+8,
+109,
+117
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+11
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+12,
+149,
+167,
+188
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+16,
+226,
+237,
+255,
+277,
+300
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+8,
+99,
+107
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+13,
+27,
+45,
+69,
+134,
+144,
+164,
+175,
+184,
+200
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+10,
+144,
+153,
+171
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_RECTIFIER_UNIT",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+16,
+137,
+139,
+230,
+250,
+260,
+271,
+296,
+307
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SIN1",
+"doc": "ATP_HW_Design_SIN1",
+"pages": [
+20,
+21,
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SIN1",
+"doc": "SICAS_HW_Design_SIN1",
+"pages": [
+14,
+178,
+188,
+206,
+230
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "EUL",
+"doc": "ATP_HW_Design_EUL",
+"pages": [
+25,
+28,
+29
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "EUL",
+"doc": "SICAS_HW_Design_EUL",
+"pages": [
+14,
+186,
+196,
+216,
+237
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "GCD",
+"doc": "ATP_HW_Design_GCD",
+"pages": [
+12
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "GCD",
+"doc": "SICAS_HW_Design_GCD",
+"pages": [
+18,
+245,
+257,
+276,
+300,
+323,
+350
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "GYO",
+"doc": "ATP_HW_Design_GYO",
+"pages": [
+21,
+22
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "GYO",
+"doc": "SICAS_HW_Design_GYO",
+"pages": [
+11,
+145,
+154,
+172
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "HON",
+"doc": "ATP_HW_Design_HON",
+"pages": [
+22,
+23
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "HON",
+"doc": "SICAS_HW_Design_HON",
+"pages": [
+13,
+171,
+181,
+199,
+219,
+235
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SCD",
+"doc": "ATP_HW_Design_SCD",
+"pages": [
+6
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SCD",
+"doc": "SICAS_HW_Design_SCD",
+"pages": [
+25,
+39
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SNU1",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SNU1",
+"doc": "SICAS_HW_Design_SNU1",
+"pages": [
+12,
+146,
+155,
+175
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SNU2",
+"doc": "ATP_HW_Design_SNU",
+"pages": [
+14,
+15
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SNU2",
+"doc": "SICAS_HW_Design_SNU2",
+"pages": [
+8,
+109,
+117
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SOL",
+"doc": "ATP_HW_Design_SOL",
+"pages": [
+11
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SOL",
+"doc": "SICAS_HW_Design_SOL",
+"pages": [
+12,
+149,
+167,
+188
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SON1",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SON1",
+"doc": "SICAS_HW_Design_SON1",
+"pages": [
+16,
+226,
+237,
+255,
+277,
+300
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SON2",
+"doc": "ATP_HW_Design_SON",
+"pages": [
+173,
+174,
+175,
+176
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SON2",
+"doc": "SICAS_HW_Design_SON2",
+"pages": [
+8,
+99,
+107
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SPO1",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SPO1",
+"doc": "SICAS_HW_Design_SPO1",
+"pages": [
+13,
+27,
+45,
+69,
+134,
+144,
+164,
+175,
+184,
+200
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SPO2",
+"doc": "ATP_HW_Design_SPO",
+"pages": [
+9,
+10
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "SPO2",
+"doc": "SICAS_HW_Design_SPO2",
+"pages": [
+10,
+144,
+153,
+171
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "YAN",
+"doc": "ATP_HW_Design_YAN",
+"pages": [
+17,
+18
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+},
+{
+"board": "UPS_OUTPUT_DISTRIBUTION",
+"stn": "YAN",
+"doc": "SICAS_HW_Design_YAN",
+"pages": [
+16,
+137,
+139,
+230,
+250,
+260,
+271,
+296,
+307
+],
+"reason": "핵심어 범용/모호",
+"note": ""
+}
+]
