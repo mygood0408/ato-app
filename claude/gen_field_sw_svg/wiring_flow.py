@@ -85,17 +85,20 @@ def motor(side):
     return join(head, mid, tail)
 
 
+# 출구 화살표 <-> 입구 화살표를 잇는 선(기계실 표시 감지부로 갔다 오는 선; 번호 없이 선만)
+IND_LINK = [(XE, EXT['rel35']), (XE + 14, EXT['rel35']), (XE + 14, EXT['rel46']), (XE, EXT['rel46'])]
+
+
 def single_flows():
     """단동: {상태: [(클래스, 폴리라인)]}  (지역 좌표)"""
     F = {}
-    F['ind_n'] = [
-        ('ind', join(ext_in(EXT['indp'], Y('T10')), wire('T10', 'p10'), seg('p10', 'p4'), wire('p4', 'T4'), ext_out(Y('T4'), EXT['rel46']))),
-        ('ind', join(ext_in(EXT['rel35'], Y('T5')), wire('T5', 'p5'), seg('p5', 'p9'), wire('p9', 'C4'), relay('C4', 'N'), wire('C4n', 'N4'), ext_out(Y('N4'), EXT['indm']))),
-    ]
-    F['ind_r'] = [
-        ('ind', join(ext_in(EXT['indp'], Y('T8')), wire('T8', 'p8'), seg('p8', 'p3'), wire('p3', 'T3'), ext_out(Y('T3'), EXT['rel35']))),
-        ('ind', join(ext_in(EXT['rel46'], Y('T6')), wire('T6', 'p6r'), seg('p6r', 'p7'), wire('p7', 'C3'), relay('C3', 'R'), wire('C3r', 'R3'), ext_out(Y('R3'), EXT['indm']))),
-    ]
+    # 표시전원(계통도 기준): (+) 는 N4·R3 로 들어가 제어계전기 접점 -> 회로제어기 접점 -> 출구 단자 -> 기계실 감지부(연결선) -> 입구 단자 -> 회로제어기 접점 -> 단자 10·8 -> (-)
+    F['ind_n'] = [('ind', join(ext_in(EXT['indm'], Y('N4')), wire('N4', 'C4n'), [RELAY['C4'][1], RELAY['C4'][0]], wire('C4', 'p9'), seg('p9', 'p5'), wire('p5', 'T5'),
+                               ext_out(Y('T5'), EXT['rel35']), IND_LINK, ext_in(EXT['rel46'], Y('T4')), wire('T4', 'p4'), seg('p4', 'p10'), wire('p10', 'T10'),
+                               ext_out(Y('T10'), EXT['indp'])))]
+    F['ind_r'] = [('ind', join(ext_in(EXT['indm'], Y('R3')), wire('R3', 'C3r'), [RELAY['C3'][2], RELAY['C3'][0]], wire('C3', 'p7'), seg('p7', 'p6r'), wire('p6r', 'T6'),
+                               ext_out(Y('T6'), EXT['rel46']), IND_LINK[::-1], ext_in(EXT['rel35'], Y('T3')), wire('T3', 'p3'), seg('p3', 'p8'), wire('p8', 'T8'),
+                               ext_out(Y('T8'), EXT['indp'])))]
     mn, mr = motor('N'), motor('R')
     F['mot_n1'] = F['mot_n2'] = [('mot', mn)]
     F['mot_r1'] = F['mot_r2'] = [('mot', mr)]

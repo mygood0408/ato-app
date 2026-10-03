@@ -58,6 +58,32 @@ def regions():
     return R
 
 
+STRIP_COLORS = [  # 단자대 블록 색(클립 좌표, 단자대 보드와 같은 배치): 초록=표시 출력, 노랑=표시 입력, 빨강=제어, 하늘=예비(Interface)
+    ('#00b050', 60.5, 92.7), ('#00b050', 96.2, 128.2), ('#00b050', 131.7, 163.7),
+    ('#ffd800', 320.3, 352.5), ('#ffd800', 356.0, 388.0), ('#ff2a2a', 391.5, 423.5), ('#19d3ff', 427.0, 459.0),
+]
+JUMP_Y = {'4': 80.2, '6': 72.2, '2': 107.7, '1': 115.7, '3': 143.2, '5': 151.2, '10': 332.0, '8': 340.0, 'N4': 367.5, 'R3': 375.5}
+JUMPERS = {  # 설치상세도 점퍼표
+    'single': [('R3', 'N4'), ('8', '10'), ('5', '3'), ('1', '2'), ('4', '6')],
+    'A': [('R3', 'N4'), ('8', '10'), ('3', '1'), ('2', '4')],
+    'B': [('5', '3'), ('1', '2'), ('4', '6')],
+}
+
+
+def strip_colors():
+    return '<g class="fsw-stripc">' + ''.join(
+        f'<rect x="831.8" y="{y0}" width="46.8" height="{y1 - y0:.1f}" fill="{c}" fill-opacity=".30"/>' for c, y0, y1 in STRIP_COLORS) + '</g>'
+
+
+def jumpers(kind):
+    o = ''
+    for a, b in JUMPERS[kind]:
+        y1, y2 = JUMP_Y[a], JUMP_Y[b]
+        x = 850.0 if abs(y1 - y2) > 12 else 846.0   # 블록을 건너는 점퍼는 한 칸 더 오른쪽
+        o += f'<path d="M838.5 {y1}H{x}V{y2}H838.5" fill="none" stroke="#e11d1d" stroke-width="2" stroke-linejoin="round"><title>점퍼 {a}-{b}</title></path>'
+    return f'<g class="fsw-jmps">{o}</g>'
+
+
 def base():
     d = pymupdf.open(PDF_INST)
     g, W, H = extract(d[4], CLIP, regions(), subpaths=True)
@@ -66,7 +92,7 @@ def base():
     # E·F 선(두꺼운 이중선)은 x=207.8 에서 끝나고 C1/C2 피벗은 14pt 위에 떠 있어 -> 세로선으로 이어 붙임
     join = ''.join(line((207.8, py), (207.8, wy), 1.5) for py, wy in ((110.0, 124.2), (170.0, 183.6)))
     join += line((213.6, 341.4), (213.5, 353.5), 1.4)  # 핀 1 으로 가는 선(접점 영역에 묻혀 끊김)
-    return render(keep) + join, W, H, hidden
+    return strip_colors() + render(keep) + join, W, H, hidden
 
 
 def line(a, b, w=1.4, extra=''):
@@ -127,7 +153,7 @@ def single_svg():
     ov += wiring_flow.overlay(wiring_flow.single_flows())
     Wt, Ht = W + 20, H + 20
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
-            f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><g id="wiring" transform="translate(10,10)">{b}{states}{ov}</g></svg>')
+            f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><g id="wiring" transform="translate(10,10)">{b}{jumpers('single')}{states}{ov}</g></svg>')
 
 
 # 쌍동: A 호기 표시출력 단자 -> B 호기 표시입력 단자 연결(계통도 205 정위/반위 페이지에서 읽음)
@@ -161,8 +187,8 @@ def double_svg():
     lab = (f'<text x="10" y="8" class="fsw-h">A호기</text><text x="10" y="{dy+8}" class="fsw-h">B호기</text>')
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><defs><g id="wcore">{b}</g></defs>{lab}'
-            f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{states}{ov}</g>'
-            f'<g id="wiring-B" transform="translate(10,{10+dy:.0f})"><use href="#wcore"/>{states}{ov}</g>{link}{flows}</svg>')
+            f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{jumpers('A')}{states}{ov}</g>'
+            f'<g id="wiring-B" transform="translate(10,{10+dy:.0f})"><use href="#wcore"/>{jumpers('B')}{states}{ov}</g>{link}{flows}</svg>')
 
 
 def write_all(out_dir):
