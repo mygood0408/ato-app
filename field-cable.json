@@ -1,0 +1,215 @@
+{
+ "_source": "SICAS HW Design White_SIN1.pdf: P205A/B p.64(도면 =SIN1/03.02.05), P206A/B p.70. DEWEMO-W 플러그(X3·X4) 핀 → T52 EC/DSTT 랙 하단(Level L) 단자 → O.T. 캐비닛(O52) 단자 049~060(205) / 061~072(206) → 선로전환기 단자. 206 은 205 와 도면 구조가 같고 T52 단자 +10, O.T. 번호 +12.",
+ "_note": "계통도(기계실 쪽)의 T52 5·6, 7·8 번호와 O52 51~54 는 HW Design 와 순서가 달라 HW Design 기준으로 적음(확인 필요). OT반·기구함 안의 번호는 표시하지 않는다. 제어전원은 기구함에서 메인으로 들어와 보조로 병렬(계통도 205 현장).",
+ "stations": {
+  "SIN1": {
+   "name": "신도림",
+   "points": {
+    "205": {
+     "label": "신도림 205",
+     "rack": "T52",
+     "otCab": "O52",
+     "roles": {
+      "A": "sub",
+      "B": "main"
+     },
+     "rows": [
+      {
+       "unit": "A",
+       "kind": "ctrl",
+       "label": "제어전원",
+       "dew": "X3-3",
+       "rack": "9",
+       "ot": "049",
+       "field": "14"
+      },
+      {
+       "unit": "A",
+       "kind": "ctrl",
+       "label": "제어전원",
+       "dew": "X3-5",
+       "rack": "10",
+       "ot": "050",
+       "field": "13"
+      },
+      {
+       "unit": "A",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-6",
+       "rack": "3",
+       "ot": "057",
+       "field": "C"
+      },
+      {
+       "unit": "A",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-8",
+       "rack": "4",
+       "ot": "058",
+       "field": "D"
+      },
+      {
+       "unit": "A",
+       "kind": "ind",
+       "label": "표시전원 입력",
+       "dew": "X4-4",
+       "rack": "6",
+       "ot": "051",
+       "field": "N4"
+      },
+      {
+       "unit": "A",
+       "kind": "ind",
+       "label": "표시전원 입력",
+       "dew": "X4-5",
+       "rack": "5",
+       "ot": "052",
+       "field": "10"
+      },
+      {
+       "unit": "B",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-1",
+       "rack": "1",
+       "ot": "059",
+       "field": "C"
+      },
+      {
+       "unit": "B",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-2",
+       "rack": "2",
+       "ot": "060",
+       "field": "D"
+      },
+      {
+       "unit": "B",
+       "kind": "ind",
+       "label": "표시 출력(→기구함)",
+       "dew": "X4-10",
+       "rack": "8",
+       "ot": "054",
+       "field": "3"
+      },
+      {
+       "unit": "B",
+       "kind": "ind",
+       "label": "표시 출력(→기구함)",
+       "dew": "X4-9",
+       "rack": "7",
+       "ot": "053",
+       "field": "4"
+      }
+     ],
+     "verify": true
+    },
+    "206": {
+     "label": "신도림 206",
+     "rack": "T52",
+     "otCab": "O52",
+     "roles": {
+      "A": "main",
+      "B": "sub"
+     },
+     "rows": [
+      {
+       "unit": "A",
+       "kind": "ctrl",
+       "label": "제어전원",
+       "dew": "X3-3",
+       "rack": "19",
+       "ot": "061",
+       "field": "14"
+      },
+      {
+       "unit": "A",
+       "kind": "ctrl",
+       "label": "제어전원",
+       "dew": "X3-5",
+       "rack": "20",
+       "ot": "062",
+       "field": "13"
+      },
+      {
+       "unit": "A",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-6",
+       "rack": "13",
+       "ot": "069",
+       "field": "C"
+      },
+      {
+       "unit": "A",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-8",
+       "rack": "14",
+       "ot": "070",
+       "field": "D"
+      },
+      {
+       "unit": "A",
+       "kind": "ind",
+       "label": "표시전원 입력",
+       "dew": "X4-4",
+       "rack": "16",
+       "ot": "063",
+       "field": "N4"
+      },
+      {
+       "unit": "A",
+       "kind": "ind",
+       "label": "표시전원 입력",
+       "dew": "X4-5",
+       "rack": "15",
+       "ot": "064",
+       "field": "10"
+      },
+      {
+       "unit": "B",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-1",
+       "rack": "11",
+       "ot": "071",
+       "field": "C"
+      },
+      {
+       "unit": "B",
+       "kind": "motor",
+       "label": "모터전원",
+       "dew": "X3-2",
+       "rack": "12",
+       "ot": "072",
+       "field": "D"
+      },
+      {
+       "unit": "B",
+       "kind": "ind",
+       "label": "표시 출력(→기구함)",
+       "dew": "X4-10",
+       "rack": "18",
+       "ot": "066",
+       "field": "3"
+      },
+      {
+       "unit": "B",
+       "kind": "ind",
+       "label": "표시 출력(→기구함)",
+       "dew": "X4-9",
+       "rack": "17",
+       "ot": "065",
+       "field": "4"
+      }
+     ],
+     "verify": true
+    }
+   }
+  }
+ }
+}
