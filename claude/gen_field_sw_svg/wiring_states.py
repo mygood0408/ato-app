@@ -182,6 +182,10 @@ def double_svg():
             o += (f'<path d="M{X} {ya}H{xr}V{yb}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
                   f'<text x="{xr+4}" y="{(ya+yb)/2:.0f}" class="fsw-s">{lab}</text>')
         link += f'<g class="fsw-ws ws-{k}">{o}</g>'
+    for i, (t, col, lab_) in enumerate((('CP', '#00b0f0', '제어(+)'), ('CM', '#002060', '제어(−)'))):
+        yb = 10 + dy + wiring_flow.Y(t); ya = 10 + wiring_flow.Y(t); xr = 10 + W - 15 + (2 + i) * 12
+        link += (f'<path d="M{X} {yb}H{xr}V{ya}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
+                 f'<text x="{xr+4}" y="{(ya+yb)/2 + 40*i - 20:.0f}" class="fsw-s">{lab_}</text>')
     lab = (f'<text x="10" y="8" class="fsw-h">A호기</text><text x="10" y="{dy+8}" class="fsw-h">B호기</text>')
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><defs><g id="wcore">{b}</g></defs>{lab}'

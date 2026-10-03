@@ -175,9 +175,14 @@ def double_flows(W, dy, LINK_Y):
     ]
     mn, mr = motor('N'), motor('R')
     C = ctrl_flows()
+    # 제어전원: 기구함 선은 메인(밑 단 B) (+)(−) 단자로 들어오고, 같은 단자에서 보조(A) 단자로 건너감(계통도 205 제어전원 타원)
+    from wiring_states import STATES
+    cl = lambda i, t, rev: (lambda p: p[::-1] if rev else p)([(X, 10 + dy + Y(t)), (10 + W - 15 + i * 12, 10 + dy + Y(t)), (10 + W - 15 + i * 12, 10 + Y(t)), (X, 10 + Y(t))])
     for sid in C:
         for f in (A, B):
             F.setdefault(sid, []).extend((k, l, f(p), m) for k, l, p, m in C[sid])
+        rev = STATES[sid][0] != 'N'     # N: B(+) -> A(+) ... A(−) -> B(−), R: 반대
+        F[sid] += [('ctrl', 'm' if rev else 'p', cl(2, 'CP', rev), ''), ('ctrl', 'p' if rev else 'm', cl(3, 'CM', not rev), '')]
     for sid, mot in (('mot_n1', mn), ('mot_n2', mn), ('mot_r1', mr), ('mot_r2', mr)):
         for f in (A, B):
             F[sid] += [('mot', l, f(p), 'dim' if sid.endswith('1') else '') for l, p in legs(mot, NAMED['Bc'])]
