@@ -1,6 +1,6 @@
 # KB 근거 재조사 결과 (S2, 2026-09-29)
 원본 PDF: 매뉴얼 p.78·81·103·137 = `매뉴얼 - SICAS 유지보수.pdf` (KB 폴더 SICAS_유지보수_매뉴얼, 143쪽, 표지 "Maintenance Manual SICAS").
-스크립트: `kb_search_c_open.py`(→`kb_search_c_open_result.md`), `s2_apply_continues.py`(경로 continues 반영). 이미지 확인: 매뉴얼 p.78·81, GCD p.293·276, SIN1 p.207 (전부 크롭 전체쪽 1장씩).
+스크립트: `kb_search_c_open.py`(결과는 스크립트 재실행으로 재생성). 이미지 확인: 매뉴얼 p.78·81, GCD p.293·276, SIN1 p.207 (전부 크롭 전체쪽 1장씩).
 판정: 근거 있음 / 부분 근거 / 없음. 다른 역 도면 결선은 SIN1 경로에 반영하지 않음(사용자 결정) — 판정표에만 기록.
 
 | # | 항목 | 판정 | 근거(문서·쪽) | 반영 |
