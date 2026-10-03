@@ -194,9 +194,17 @@ def double_flows(W, dy, LINK_Y):
             F.setdefault(sid, []).extend((k, l, f(p), m) for k, l, p, m in C[sid])
         rev = STATES[sid][0] != 'N'     # N: B(+) -> A(+) ... A(−) -> B(−), R: 반대
         F[sid] += [('ctrl', 'm' if rev else 'p', cl(4, 'CP', rev), ''), ('ctrl', 'p' if rev else 'm', cl(5, 'CM', not rev), '')]
+        # 기구함 -> 메인(B) 제어 단자 (들어오는 선·나가는 선)
+        i_t, o_t = ('CP', 'CM') if not rev else ('CM', 'CP')
+        F[sid] += [('ctrl', 'p', [(10 + XE, 10 + dy + Y(i_t)), (X, 10 + dy + Y(i_t))], ''), ('ctrl', 'm', [(X, 10 + dy + Y(o_t)), (10 + XE, 10 + dy + Y(o_t))], '')]
+    # 모터전원: 기구함 -> 메인(B) 외부 단자 C -> B 와 A 로 병렬 -> D -> 기구함. A 는 B 의 C·D 외부점에서 연결선으로 받는다.
+    XT = 10 + 910.6
+    ml = lambda i, name, rev=False: (lambda p: p[::-1] if rev else p)([(XT, 10 + dy + EXT[name]), (10 + W - 15 + i * LANE, 10 + dy + EXT[name]), (10 + W - 15 + i * LANE, 10 + EXT[name]), (XT, 10 + EXT[name])])
     for sid, mot in (('mot_n1', mn), ('mot_n2', mn), ('mot_r1', mr), ('mot_r2', mr)):
-        for f in (A, B):
-            F[sid] += [('mot', l, f(p), 'dim' if sid.endswith('1') else '') for l, p in legs(mot, NAMED['Bc'])]
+        mod = 'dim' if sid.endswith('1') else ''
+        (_, pc), (_, pd) = legs(mot, NAMED['Bc'])
+        F[sid] += [('mot', 'p', B(pc), mod), ('mot', 'm', B(pd), mod),
+                   ('mot', 'p', join(ml(6, 'motC'), A(pc)), mod), ('mot', 'm', join(A(pd), ml(7, 'motD', True)), mod)]
     return F
 
 

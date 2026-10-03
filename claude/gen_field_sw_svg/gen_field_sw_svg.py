@@ -10,7 +10,7 @@ PDF_INST = os.path.join(ROOT, '선로전환기 설치상세도(정반위표시�
 OUT = r'C:\Users\김영추\Desktop\ATO app\board_svg'
 doc = pymupdf.open(PDF)
 S = 2.4  # width/height 속성 배율(viewBox 는 pt 단위)
-STYLE = ('<style>.fsw-t{font:5px sans-serif;fill:#222}.fsw-h{font:bold 6px sans-serif;fill:#222}.fsw-s{font:3.8px sans-serif;fill:#333}'
+STYLE = ('<style>.fsw-t{font:5px sans-serif;fill:#222}.fsw-h{font:bold 6px sans-serif;fill:#222}.fsw-big{font:bold 9px sans-serif;fill:#1e3a8a}.fsw-s{font:3.8px sans-serif;fill:#333}'
          '.fsw-hot{fill:rgba(224,48,30,.14);stroke:#e0301e;stroke-width:1;stroke-dasharray:3 2;cursor:pointer}'
          '.fsw-jmp{fill:none;stroke:#c0392b;stroke-width:1.6}.fsw-tag{fill:#f2d21e;stroke:#333;stroke-width:.4}'
          '.fsw-role{fill:none;stroke:#555;stroke-width:.4}</style>')
@@ -106,7 +106,7 @@ def body_svg(ver):
         def one(sfx, dy):
             return (f'<g id="body{sfx}" transform="translate(0,{dy+my})"><use href="#core"/></g>'
                     f'<g transform="translate(0,{dy+my})">{hs(sfx)}</g><g transform="translate(0,{dy})">' + labels(my, H) + '</g>'
-                    + T(6, dy + 10, f'{sfx[1]}호기 — ' + ttl + ' (쌍동)', 'fsw-h', 'start'))
+                    + T(6, dy + 10, ('메인선로전환기 — ' if sfx == '-B' else '보조선로전환기 — ') + ttl + ' (쌍동)', 'fsw-big', 'start'))
         inner = f'<defs><g id="core">{core}</g></defs>' + one('-A', 0) + one('-B', step) + lampsvg(0)
         Ht = 2 * step - 14
     return (f'<svg width="{Wt*S:.0f}" height="{Ht*S:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">'
@@ -176,11 +176,11 @@ def strip_svg(ver):
         specs = [('', J_SINGLE, '선로전환기 단자대 — 단동 (제작도면 p.23 평면도)')]
         defs = f'<defs>{clipdef}</defs>'
     else:
-        specs = [('-A', J_A, 'A호기 단자대 — 쌍동 A'), ('-B', J_B, 'B호기 단자대 — 쌍동 B')]
+        specs = [('-A', J_A, '보조선로전환기 단자대 — 쌍동 A 점퍼'), ('-B', J_B, '메인선로전환기 단자대(예비단자 쪽, 기구함과 가까움) — 쌍동 B 점퍼')]
         defs = f'<defs>{clipdef}<g id="stripcore">{core}</g></defs>'
     for sfx, jm, title in specs:
         body = core if ver == 'SINGLE' else '<use href="#stripcore"/>'
-        blocks.append(T(10, y - 10, title, 'fsw-h', 'start')
+        blocks.append(T(10, y - 10, title, 'fsw-big' if ver != 'SINGLE' else 'fsw-h', 'start')
                       + f'<g id="strip{sfx}" transform="translate(40,{y}) scale({SC})">{body}{strip_overlay(sfx, jm)}</g>')
         y += 122 * SC + 24
     Ht = y - 10

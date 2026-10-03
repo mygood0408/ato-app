@@ -134,7 +134,7 @@ if __name__ == '__main__':
 
 # ---------------- 단동/쌍동 배선도 SVG (제어전원 흐름 + 접점 상태별 정지 화면) ----------------
 SID = list(STATES)
-STYLE = ('<style>.fsw-t{font:6px sans-serif;fill:#222}.fsw-h{font:bold 9px sans-serif;fill:#222}.fsw-s{font:5px sans-serif;fill:#444}'
+STYLE = ('<style>.fsw-t{font:6px sans-serif;fill:#222}.fsw-h{font:bold 9px sans-serif;fill:#222}.fsw-big{font:bold 15px sans-serif;fill:#1e3a8a}.fsw-note{font:7px sans-serif;fill:#444}.fsw-gh{font:bold 7px sans-serif;fill:#111}.fsw-s{font:5px sans-serif;fill:#444}'
          '.fsw-ws{display:none}' + ''.join(f'svg.wsv-{k} .ws-{k}{{display:inline}}' for k in SID) +
          '.fsw-x{fill:none;stroke:#111;stroke-width:2.2;stroke-linecap:round}.fsw-mlab{display:none;font:5px sans-serif;fill:#444}svg.only-mot .fsw-mlab{display:inline}'
          '.fsw-mod-dim .fsw-flow{display:none}.fsw-mod-dim .fsw-flowbase{stroke-opacity:.32}'
@@ -167,6 +167,29 @@ LINKS = {  # 상태: [(레인, A 단자, B 단자, 색)]
 }
 
 
+def state_texts(sid, dy):
+    """쌍동: 기구함에서 메인(B) 로 들어오는 선 끝에 붙는 작은 글씨(극성은 상태별로 다르다)."""
+    import wiring_flow as wf
+    XE = 10 + wf.XE - 3
+    tx = lambda ey, s, up=True, xe=XE: f'<text x="{xe}" y="{10 + dy + ey + (-2 if up else 7):.1f}" class="fsw-gh" text-anchor="end">{s}</text>'
+    rel = STATES[sid][0]
+    ind = sid.startswith('ind')
+    o = ''
+    # 제어: CP 8 아래 칸, CM 위 칸. 정방향(N) 은 CP 가 (+)
+    p_cp, p_cm = ('(+)', '(−)') if rel == 'N' else ('(−)', '(+)')
+    XC = 10 + 905
+    o += '<g class="fsw-k-ctrl">' + tx(wf.Y('CM'), f'기구함 {p_cm}', True, XC) + tx(wf.Y('CP'), f'기구함 {p_cp}', False, XC) + '</g>'
+    # 표시
+    sp = tx(wf.EXT['sp1'], '기구함 (+)', True)
+    if ind:
+        out_e, ret_e = ('rel35', 'rel46') if rel == 'N' else ('rel46', 'rel35')
+        sp += tx(wf.EXT['sp2'], '기구함 (−)', True) + tx(wf.EXT[out_e], '기구함 (+)', True) + tx(wf.EXT[ret_e], '기구함 (−)', True)
+    o += '<g class="fsw-k-ind">' + sp + '</g>'
+    if not ind:
+        o += '<g class="fsw-k-mot">' + tx(wf.EXT['motD'], '기구함', True, XC) + tx(wf.EXT['motC'], '기구함', False, XC) + '</g>'
+    return o
+
+
 def double_svg():
     b, W, H, _ = base()
     states = ''.join(state_group(k) for k in SID)
@@ -184,15 +207,17 @@ def double_svg():
             ya = 10 + Y(a); yb = 10 + dy + Y(bb_)
             xr = 10 + W - 15 + i * wiring_flow.LANE
             o += f'<path d="M{X} {ya}H{xr}V{yb}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
-        link += f'<g class="fsw-ws ws-{k}">{o}</g>'
-    XE = 10 + wiring_flow.XE
-    link += (f'<text x="{XE}" y="{10+dy+wiring_flow.EXT["sp1"]-3:.0f}" class="fsw-s" text-anchor="end">기구함 38(+)</text>'
-             f'<text x="{XE}" y="{10+dy+wiring_flow.EXT["sp2"]-3:.0f}" class="fsw-s" text-anchor="end">기구함 37(−)</text>')
+        link += f'<g class="fsw-ws ws-{k}">{o}{state_texts(k, dy)}</g>'
     for i, (t, col, lab_) in enumerate((('CP', '#00b0f0', '제어(+)'), ('CM', '#002060', '제어(−)'))):
         yb = 10 + dy + wiring_flow.Y(t); ya = 10 + wiring_flow.Y(t); xr = 10 + W - 15 + (4 + i) * wiring_flow.LANE
         link += (f'<path d="M{X} {yb}H{xr}V{ya}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
                  f'<text x="{xr+4}" y="{(ya+yb)/2 + 40*i - 20:.0f}" class="fsw-s">{lab_}</text>')
-    lab = (f'<text x="10" y="8" class="fsw-h">A호기</text><text x="10" y="{dy+8}" class="fsw-h">B호기</text>')
+    for i, (name, col) in enumerate((('motC', '#c00000'), ('motD', '#ff9933'))):
+        xr = 10 + W - 15 + (6 + i) * wiring_flow.LANE; xt = 10 + 910.6
+        yb = 10 + dy + wiring_flow.EXT[name]; ya = 10 + wiring_flow.EXT[name]
+        link += f'<path d="M{xt} {yb}H{xr}V{ya}H{xt}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
+    lab = (f'<text x="10" y="18" class="fsw-big">보조선로전환기</text><text x="10" y="{dy+18}" class="fsw-big">메인선로전환기</text>'
+           f'<text x="10" y="{dy+31}" class="fsw-note">예비단자를 쓰는 쪽, 기구함과 가까운 쪽이 메인선로전환기이다. (기구함 선은 메인으로 들어와 보조로 건너간다)</text>')
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><defs><g id="wcore">{b}</g></defs>{lab}'
             f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{jumpers('A')}{states}{wiring_flow.mot_labels()}</g>'
