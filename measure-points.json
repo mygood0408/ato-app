@@ -15,7 +15,8 @@
     "2026-09-06: 4-3.선로전환기감시시스템.pptx 반영 — 모터전원/표시전원에 대해 기존 값과 다른(DC 기준) 수치를 제시하는 자료를 발견. 기존 값을 덮어쓰지 않고 conflictNote로 병기, 사용자 확인 대기 중.",
     "2026-09-06: 사용자 제보로 선로전환기 콘덴서 측정지점(MP_SW_CAPACITOR) 신규 등록 — 정상범위·측정방법 미확정, verify:true.",
     "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음.",
-    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결."
+    "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결.",
+    "2026-10-03(S12): 신규 측정지점 18개 중 14개 SIN1 SICAS H/W Design 도면으로 위치 확정(verify 제거, position.sin1 추가), 4개(TWC IMU100·FTGS 전원 12V/5V·궤도 접속상자)는 도면 없어 verify 유지."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -1717,7 +1718,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "EC/DSTT 캐비닛 후면 터미널 스트립 레벨 G(수직, 전원공급장치 프레임 포함). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "EC/DSTT 캐비닛 후면 터미널 스트립 레벨 G(수직, 전원공급장치 프레임 포함). EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "G",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.206(T51), p.230(T52)",
+          "summary": "레벨 G: +24V1/+24V2 STEKOP 공급, 10A 과전압 보호 모듈, 6.3A·4A 퓨즈"
+        }
       },
       "range": {
         "min": 21.6,
@@ -1738,8 +1746,7 @@
       "relatedFaults": [
         "FLT_ECD_01"
       ],
-      "note": "범위는 STEKOP 공급전압 사양(21.6/24/31.2V) 기준. 전원이 없으면 STEKOP LED ASS·RASS 적색, Command·message LED 소등, OLM 전 LED 소등. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "범위는 STEKOP 공급전압 사양(21.6/24/31.2V) 기준. 전원이 없으면 STEKOP LED ASS·RASS 적색, Command·message LED 소등, OLM 전 LED 소등. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_LEVEL_M_24V",
@@ -1749,7 +1756,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "EC/DSTT 캐비닛 후면 레벨 M 터미널 스트립(Line Load Filter 16A, Z5 2A×2 옆). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "EC/DSTT 캐비닛 후면 레벨 M 터미널 스트립(Line Load Filter 16A, Z5 2A×2 옆). EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "M",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.207(T51), p.231(T52)",
+          "summary": "레벨 M: Z5 Line Load Filter 16A, 2A×2 분배, OLM P12"
+        }
       },
       "range": {
         "min": 21.6,
@@ -1769,8 +1783,7 @@
       "relatedFaults": [
         "FLT_ECD_01"
       ],
-      "note": "전압 범위는 DSTT 24V 사양(STEKOP·DEWEMO 21.6~31.2V)을 적용한 값(매뉴얼 도면에는 범위 수치 없음). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "전압 범위는 DSTT 24V 사양(STEKOP·DEWEMO 21.6~31.2V)을 적용한 값(매뉴얼 도면에는 범위 수치 없음). 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_SV2602_IN",
@@ -1780,7 +1793,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "EC/DSTT 랙 전원공급장치 프레임 SV2602, 후면 플러그 X1 4번(+)·6번(−). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "EC/DSTT 랙 전원공급장치 프레임 SV2602, 후면 플러그 X1 4번(+)·6번(−). EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T52",
+          "level": "A",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.224(T52); 8V 분배 p.206",
+          "summary": "SIN1은 T52에만 SV 2602-BG 60/8V 5개 프레임(랙 S25790-C18-A1). T51은 T52에서 8V 분배"
+        }
       },
       "range": {
         "min": 42,
@@ -1817,8 +1837,7 @@
         "FLT_PWR_06",
         "FLT_PWR_07"
       ],
-      "note": "SV2602는 60V→8V 변환 전원장치(STEKOP용). 스위치오프 과전압 ≥89V. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "SV2602는 60V→8V 변환 전원장치(STEKOP용). 스위치오프 과전압 ≥89V. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_SV2602_OUT",
@@ -1828,7 +1847,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "SV2602 후면 플러그 X1 20·22번(+8V), 28·30번(0V). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "SV2602 후면 플러그 X1 20·22번(+8V), 28·30번(0V). EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T52",
+          "level": "A",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.224(T52); 8V 분배 p.206",
+          "summary": "SIN1은 T52에만 SV 2602-BG 60/8V 5개 프레임(랙 S25790-C18-A1). T51은 T52에서 8V 분배"
+        }
       },
       "range": {
         "min": 7.5,
@@ -1864,8 +1890,7 @@
         "FLT_PWR_06",
         "FLT_PWR_07"
       ],
-      "note": "출력 전류 최대 14A(120W). 출력측 미전압 원인(과부하)을 제거하고 스위치 OFF→UE 소등 확인→ON. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "출력 전류 최대 14A(120W). 출력측 미전압 원인(과부하)을 제거하고 스위치 OFF→UE 소등 확인→ON. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_STEKOP_LED",
@@ -1874,7 +1899,14 @@
       "measureType": "visual",
       "cycle": "미상",
       "position": {
-        "desc": "EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "B",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.201, 209~216(T51), p.233~240(T52)",
+          "summary": "STEKOP 8장(슬롯 11·31·51·71·91·111·131·151), 레벨 B 네트워크 14"
+        }
       },
       "checkItems": [
         "STEKOP 전 LED 소등이면 STEKOP 장애: 교체(교체 후 Reset 키)",
@@ -1916,8 +1948,7 @@
         "FLT_SIG_05",
         "FLT_ECD_06"
       ],
-      "note": "STEKOP 컴퓨터 정지 등 오류는 L1~L4를 약 1초 간격으로 순환 표시(오류번호, 진단용). 리셋은 FEMES Reset-key(유지보수 담당자만). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "STEKOP 컴퓨터 정지 등 오류는 L1~L4를 약 1초 간격으로 순환 표시(오류번호, 진단용). 리셋은 FEMES Reset-key(유지보수 담당자만). 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_STEKOP_24V",
@@ -1927,7 +1958,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "STEKOP 후면 플러그 X1 2번(24V)·32번(0V). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "STEKOP 후면 플러그 X1 2번(24V)·32번(0V). EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "B",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.201, 209~216(T51), p.233~240(T52)",
+          "summary": "STEKOP 8장(슬롯 11·31·51·71·91·111·131·151), 레벨 B 네트워크 14"
+        }
       },
       "range": {
         "min": 21.6,
@@ -1949,8 +1987,7 @@
         "FLT_ECD_02",
         "FLT_SIG_04"
       ],
-      "note": "2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_DEWEMO_24V",
@@ -1960,7 +1997,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "DEWEMO-W 전면 플러그 X1(24V 전원), 핀레일 X1-1(0V)·X1-2(+24V). EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "DEWEMO-W 전면 플러그 X1(24V 전원), 핀레일 X1-1(0V)·X1-2(+24V). EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "-",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.199, 203~205(T51), p.227~229(T52)",
+          "summary": "DEWEMO·DESIMO 전면도 및 플러그 배선(포인트 P202 등, 슬롯 11·31·51…)"
+        }
       },
       "range": {
         "min": 21.6,
@@ -1981,8 +2025,7 @@
       "relatedFaults": [
         "FLT_ECD_04"
       ],
-      "note": "2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_DEWEMO_LED",
@@ -1991,7 +2034,14 @@
       "measureType": "visual",
       "cycle": "미상",
       "position": {
-        "desc": "EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "-",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.199, 203~205(T51), p.227~229(T52)",
+          "summary": "DEWEMO·DESIMO 전면도 및 플러그 배선(포인트 P202 등, 슬롯 11·31·51…)"
+        }
       },
       "checkItems": [
         "표에 없는 조합은 오류(선로 접지·누전·방해)",
@@ -2028,8 +2078,7 @@
         "FLT_ECD_03",
         "FLT_ECD_05"
       ],
-      "note": "명령 LED(녹색)·메시지 LED(황색). 출력 후 메시지는 약 300ms 뒤에 읽는다. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "명령 LED(녹색)·메시지 LED(황색). 출력 후 메시지는 약 300ms 뒤에 읽는다. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_DEWEMO_MOTOR110",
@@ -2039,7 +2088,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "DEWEMO-W 핀레일 X2-6(110V AC 입력). 랙 쪽 측정 — 현장 쪽은 MP_FIELD_SW_MOTOR. EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "DEWEMO-W 핀레일 X2-6(110V AC 입력). 랙 쪽 측정 — 현장 쪽은 MP_FIELD_SW_MOTOR. EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "-",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.199, 203~205(T51), p.227~229(T52)",
+          "summary": "DEWEMO·DESIMO 전면도 및 플러그 배선(포인트 P202 등, 슬롯 11·31·51…)"
+        }
       },
       "range": {
         "min": 100,
@@ -2062,8 +2118,7 @@
         "FLT_ECD_08",
         "FLT_ECD_09"
       ],
-      "note": "매뉴얼에는 \"110V AC\"만 명시. 범위 100~120V는 MP_FIELD_SW_MOTOR와 동일하게 적용. 모터 시작전류 최대 4s(10% ED)·끝위치 검지기 0.8A. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "매뉴얼에는 \"110V AC\"만 명시. 범위 100~120V는 MP_FIELD_SW_MOTOR와 동일하게 적용. 모터 시작전류 최대 4s(10% ED)·끝위치 검지기 0.8A. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_DESIMO",
@@ -2073,7 +2128,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "DESIMO-WEZ 전면 플러그 4번(+24V)/8번(−24V) 및 전면 LED. EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "DESIMO-WEZ 전면 플러그 4번(+24V)/8번(−24V) 및 전면 LED. EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "-",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.199, 203~205(T51), p.227~229(T52)",
+          "summary": "DEWEMO·DESIMO 전면도 및 플러그 배선(신호기 S02 등, 슬롯 11·31·51…)"
+        }
       },
       "range": {
         "min": 21.6,
@@ -2112,8 +2174,7 @@
         "FLT_ECD_07",
         "FLT_SIG_09"
       ],
-      "note": "점등 시 램프전류 제한 26mA(24.7~27.3mA), 공급전류 20~25mA. 전면 플러그 번호는 p.93 표 기준. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "점등 시 램프전류 제한 26mA(24.7~27.3mA), 공급전류 20~25mA. 전면 플러그 번호는 p.93 표 기준. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_ECD_OLM_LED",
@@ -2122,7 +2183,14 @@
       "measureType": "visual",
       "cycle": "미상",
       "position": {
-        "desc": "EC/DSTT 랙(기계실 T51/T52). 슬롯·단자 번호는 역별 EC/DSTT H/W Design으로 확인"
+        "desc": "EC/DSTT 랙.",
+        "sin1": {
+          "cabinet": "T51·T52",
+          "level": "M",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.207(T51), p.231(T52)",
+          "summary": "레벨 M: OLM P12 2개"
+        }
       },
       "checkItems": [
         "BUMA↔STEKOP 광접속 장애 시 OLM LED 각 채널 소등, STEKOP 채널1 L4 깜박임(p.131)"
@@ -2157,8 +2225,7 @@
       "relatedFaults": [
         "FLT_ECD_01"
       ],
-      "note": "OLM 작동전압은 24V DC. 캐비닛 24V 전원이 없으면 OLM 전 LED 소등. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "OLM 작동전압은 24V DC. 캐비닛 24V 전원이 없으면 OLM 전 LED 소등. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_SICAS_OLM_LED",
@@ -2167,7 +2234,14 @@
       "measureType": "visual",
       "cycle": "미상",
       "position": {
-        "desc": "연동 컴퓨터 캐비닛 OLM(BUMA 3·4·5·6 광접속). 슬롯 위치는 역별 H/W Design \"연동역 구성\" 확인"
+        "desc": "연동 컴퓨터 캐비닛 OLM(BUMA 3·4·5·6 광접속). 슬롯 위치는 역별 H/W Design \"연동역 구성\" 확인",
+        "sin1": {
+          "cabinet": "S51",
+          "level": "M·N",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.187, p.14",
+          "summary": "OLM P12 / G12-1300, PROFIBUS CH1~CH3"
+        }
       },
       "checkItems": [
         "BUMA↔STEKOP 광접속 장애 시 OLM 각 채널 LED 소등",
@@ -2204,8 +2278,7 @@
         "FLT_ILK_01",
         "FLT_ILK_03"
       ],
-      "note": "OLM 작동전압 24V DC. 광 PROFIBUS 채널별 LED로 판정. FLT_ILK_01은 STEKOP 채널1 L4 깜박임(MP_ECD_STEKOP_LED)도 함께 본다. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "OLM 작동전압 24V DC. 광 PROFIBUS 채널별 LED로 판정. FLT_ILK_01은 STEKOP 채널1 L4 깜박임(MP_ECD_STEKOP_LED)도 함께 본다. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_SICAS_SVK2102_5V",
@@ -2215,7 +2288,14 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "연동 컴퓨터 캐비닛 SVK2102 전원장치(채널별 3개) 전면 LED. 출력 측정 단자는 자료에 없음 — LED 우선 확인"
+        "desc": "연동 컴퓨터 캐비닛 SVK2102 전원장치(채널별 3개) 전면 LED. 출력 측정 단자는 자료에 없음 — LED 우선 확인",
+        "sin1": {
+          "cabinet": "S51",
+          "level": "L",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.193",
+          "summary": "SVK 2102-BG 60V/5V 3개(S25790-B116-D1)"
+        }
       },
       "range": {
         "min": 4.5,
@@ -2248,8 +2328,7 @@
       "relatedFaults": [
         "FLT_ILK_12"
       ],
-      "note": "SVK2102는 입력 60V를 5V로 변환(입력 정상 36~84V). UA 4.5V 미만이면 출력 차단, 6.3V 초과 시 출력 차단·프론트 퓨즈 F2 차단. 입력측 60V는 MP_SICAS_S51_DC60. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "SVK2102는 입력 60V를 5V로 변환(입력 정상 36~84V). UA 4.5V 미만이면 출력 차단, 6.3V 초과 시 출력 차단·프론트 퓨즈 F2 차단. 입력측 60V는 MP_SICAS_S51_DC60. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_SICAS_VENUS3_LED",
@@ -2258,7 +2337,14 @@
       "measureType": "visual",
       "cycle": "미상",
       "position": {
-        "desc": "연동 컴퓨터 캐비닛 각 채널 VENUS3(프로세서·메모리) 모듈 전면 패널"
+        "desc": "연동 컴퓨터 캐비닛 각 채널 VENUS3(프로세서·메모리) 모듈 전면 패널",
+        "sin1": {
+          "cabinet": "S51",
+          "level": "A·B·D·F",
+          "drawing": "SICAS HW Design White_SIN1.pdf",
+          "pages": "p.189~192, 187",
+          "summary": "채널별 VENUS3 모듈(프로세서 랙)"
+        }
       },
       "checkItems": [
         "관련 채널 VENUS3 LED 전부 꺼짐 → VENUS3 장치 교체 후 컴퓨터 Reset",
@@ -2295,8 +2381,7 @@
         "FLT_ILK_13",
         "FLT_VEN_01"
       ],
-      "note": "LED 밝은 점등이 정상 상태(p.46). 오류는 7세그먼트에 F.0000 형태 코드로 표시. 모듈 교체 후 컴퓨터 Reset. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
-      "verify": true
+      "note": "LED 밝은 점등이 정상 상태(p.46). 오류는 7세그먼트에 F.0000 형태 코드로 표시. 모듈 교체 후 컴퓨터 Reset. 2026-10-03(S12): 신도림(SIN1) 도면으로 랙 위치 확정. 정기점검 주기는 자료에 없어 미확정."
     },
     {
       "id": "MP_TWC_IMU100_LED",
@@ -2357,7 +2442,7 @@
         "FLT_TWC_02",
         "FLT_TWC_03"
       ],
-      "note": "수신기는 채널별 Lemo 커넥터 Core[n]/Rim[n] 신호라인. 장애 시 장애 시간·장애 주파수·전면 패널 표시를 기록하고 예비품으로 교체, 그래도 안 되면 케이블·퓨즈(F1 M 2.5A 5x20)·전원 점검. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "note": "수신기는 채널별 Lemo 커넥터 Core[n]/Rim[n] 신호라인. 장애 시 장애 시간·장애 주파수·전면 패널 표시를 기록하고 예비품으로 교체, 그래도 안 되면 케이블·퓨즈(F1 M 2.5A 5x20)·전원 점검. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 SICAS·ATP H/W Design에 IMU-100 표기 없음(TWC 쪽은 루프 배선 ATP p.20~23뿐). 정기점검 주기 미확정.",
       "verify": true
     },
     {
@@ -2390,7 +2475,7 @@
       "relatedFaults": [
         "FLT_FTGS_02"
       ],
-      "note": "전원공급장치 입력 AC 220/230V(187~264V, 47~63Hz). 퓨즈 내장 안 됨. 출력은 과부하·단락 보호. 전원 공급장치를 뽑기 전 관련 궤도회로가 진로에 없도록(가능하면 진로 취소) 할 것. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "note": "전원공급장치 입력 AC 220/230V(187~264V, 47~63Hz). 퓨즈 내장 안 됨. 출력은 과부하·단락 보호. 전원 공급장치를 뽑기 전 관련 궤도회로가 진로에 없도록(가능하면 진로 취소) 할 것. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 H/W Design에 FTGS 전원공급장치(V25913-Z150-C1) 표기 없음(ATP p.101은 Sync-Loop 캐비닛 전원). 정기점검 주기 미확정.",
       "verify": true
     },
     {
@@ -2421,7 +2506,7 @@
       "relatedFaults": [
         "FLT_FTGS_02"
       ],
-      "note": "입력 AC 220/230V. 보드 Vcc/Vcc2(-B44 소켓)도 5V±0.5V. 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "note": "입력 AC 220/230V. 보드 Vcc/Vcc2(-B44 소켓)도 5V±0.5V. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — 위와 동일. 정기점검 주기 미확정.",
       "verify": true
     },
     {
@@ -2448,7 +2533,7 @@
       "relatedFaults": [
         "FLT_FTGS_04"
       ],
-      "note": "튜닝보드는 주파수별로 종류가 다름(S25533-D10/D22/D16-A..). 전환모듈 입력 터미널 11(파랑)·14(빨강), 출력 15(회색)·16(노랑), 전원선은 전환모듈 터미널 1·2. 궤도 연결 케이블 A·C는 튜닝보드 터미널 9, B·D는 터미널 10. 접속상자와 실내설비 사이는 낙뢰·과전압 보호(낙뢰방지 퓨즈). 2026-09-30 신규(S8): 정기점검 주기·실측 위치는 자료에 없어 미확정.",
+      "note": "튜닝보드는 주파수별로 종류가 다름(S25533-D10/D22/D16-A..). 전환모듈 입력 터미널 11(파랑)·14(빨강), 출력 15(회색)·16(노랑), 전원선은 전환모듈 터미널 1·2. 궤도 연결 케이블 A·C는 튜닝보드 터미널 9, B·D는 터미널 10. 접속상자와 실내설비 사이는 낙뢰·과전압 보호(낙뢰방지 퓨즈). 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 H/W Design에 FTGS 궤도 접속상자(C/B) 도면 없음(ATP p.13·129·136은 Sync-Loop 트랙박스). 정기점검 주기 미확정.",
       "verify": true
     }
   ],
