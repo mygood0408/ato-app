@@ -156,11 +156,14 @@ def single_svg():
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><g id="wiring" transform="translate(10,10)">{b}{jumpers('single')}{states}{ov}</g></svg>')
 
 
-# 쌍동: A 호기 표시출력 단자 -> B 호기 표시입력 단자 연결(계통도 205 정위/반위 페이지에서 읽음)
-LINK_Y = {'out': {'T1': 116.0, 'T2': 108.0, 'T5': 151.0, 'T6': 72.0}, 'in': {'T10': 324.0, 'T8': 348.0, 'N4': 367.0, 'R3': 376.0}}
-LINKS = {  # 상태: [(A 출력, B 입력, 색, 라벨)]
-    'ind_r': [('T1', 'T8', '#808080', 'A 단자1 → B 단자8'), ('T6', 'R3', '#00b050', 'A 단자6 → B 단자R3')],
-    'ind_n': [('T2', 'T10', '#808080', 'A 단자2 → B 단자10'), ('T5', 'N4', '#00b050', 'A 단자5 → B 단자N4')],
+# 쌍동 표시 연결선(계통도 205): (A 쪽 단자, B 쪽 단자, 색) — 레인 0 A출력(+)->B입력, 1 B 10/8 -> A 2/1, 2 B 예비단자(+) -> A 입력, 3 A 10/8 -> B 예비단자(−)
+# 단자 좌표는 wiring_flow.ROW (S1b·S2b = 예비단자 출구 구멍)
+GRN, GRY = '#00b050', '#808080'
+LINKS = {  # 상태: [(레인, A 단자, B 단자, 색)]
+    'ind_n': [(0, 'T5', 'N4', GRN), (1, 'T2', 'T10', GRY), (2, 'N4', 'S1b', GRN), (3, 'T10', 'S2b', GRY)],
+    'ind_r': [(0, 'T6', 'R3', GRN), (1, 'T1', 'T8', GRY), (2, 'R3', 'S1b', GRN), (3, 'T8', 'S2b', GRY)],
+    'mot_n1': [(2, 'N4', 'S1b', GRN)], 'mot_n2': [(2, 'N4', 'S1b', GRN)],
+    'mot_r1': [(2, 'R3', 'S1b', GRN)], 'mot_r2': [(2, 'R3', 'S1b', GRN)],
 }
 
 
@@ -172,18 +175,21 @@ def double_svg():
     Wt, Ht = W + 70, 2 * H + gap + 40
     X = 838.5 + 10
     import wiring_flow
-    flows = wiring_flow.overlay(wiring_flow.double_flows(W, dy, LINK_Y))
+    flows = wiring_flow.overlay(wiring_flow.double_flows(W, dy, None))
     link = ''
+    Y = wiring_flow.Y
     for k, lst in LINKS.items():
         o = ''
-        for i, (a, bb_, col, lab) in enumerate(lst):
-            ya = 10 + LINK_Y['out'][a]; yb = 10 + dy + LINK_Y['in'][bb_]
-            xr = 10 + W - 15 + i * 12
-            o += (f'<path d="M{X} {ya}H{xr}V{yb}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
-                  f'<text x="{xr+4}" y="{(ya+yb)/2:.0f}" class="fsw-s">{lab}</text>')
+        for i, a, bb_, col in lst:
+            ya = 10 + Y(a); yb = 10 + dy + Y(bb_)
+            xr = 10 + W - 15 + i * wiring_flow.LANE
+            o += f'<path d="M{X} {ya}H{xr}V{yb}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
         link += f'<g class="fsw-ws ws-{k}">{o}</g>'
+    XE = 10 + wiring_flow.XE
+    link += (f'<text x="{XE}" y="{10+dy+wiring_flow.EXT["sp1"]-3:.0f}" class="fsw-s" text-anchor="end">기구함 38(+)</text>'
+             f'<text x="{XE}" y="{10+dy+wiring_flow.EXT["sp2"]-3:.0f}" class="fsw-s" text-anchor="end">기구함 37(−)</text>')
     for i, (t, col, lab_) in enumerate((('CP', '#00b0f0', '제어(+)'), ('CM', '#002060', '제어(−)'))):
-        yb = 10 + dy + wiring_flow.Y(t); ya = 10 + wiring_flow.Y(t); xr = 10 + W - 15 + (2 + i) * 12
+        yb = 10 + dy + wiring_flow.Y(t); ya = 10 + wiring_flow.Y(t); xr = 10 + W - 15 + (4 + i) * wiring_flow.LANE
         link += (f'<path d="M{X} {yb}H{xr}V{ya}H{X}" fill="none" stroke="{col}" stroke-width="2.4" stroke-linejoin="round"/>'
                  f'<text x="{xr+4}" y="{(ya+yb)/2 + 40*i - 20:.0f}" class="fsw-s">{lab_}</text>')
     lab = (f'<text x="10" y="8" class="fsw-h">A호기</text><text x="10" y="{dy+8}" class="fsw-h">B호기</text>')
