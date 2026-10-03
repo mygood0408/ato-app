@@ -26716,6 +26716,10 @@ function renderMpDetail(mpid, noFaults){
       return escapeHtml((mp.acdc ? mp.acdc + ' ' : '') + thresholdText(t));
     }).join('<br>') + '</dd>';
   }
+  /* [2026-10-03 S12] 예외·참고: 회로별 예외(exceptions)와 센터패드형 참고(centerPadNote) */
+  var xr = (mp.exceptions || []).map(function(e){ return '회로 ' + escapeHtml(e.circuit) + ': ' + escapeHtml(e.note); });
+  if (mp.centerPadNote) xr.push('센터패드형: ' + escapeHtml(mp.centerPadNote));
+  if (xr.length) h += '<dt>예외·참고</dt><dd style="font-family:inherit">' + xr.join('<br>') + '</dd>';
   if (mp.probe) h += '<dt>측정단자</dt><dd>(+) ' + escapeHtml(mp.probe.positive) + ' / (−) ' + escapeHtml(mp.probe.negative) + '</dd>';
   if (mp.instrument) h += '<dt>측정기기</dt><dd style="font-family:inherit">' + escapeHtml(mp.instrument) + '</dd>';
   if (mp.normalState) h += '<dt>정상상태</dt><dd style="font-family:inherit">' + escapeHtml(mp.normalState) + '</dd>';
