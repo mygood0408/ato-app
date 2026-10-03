@@ -17,7 +17,8 @@
     "2026-09-30(S8): EC/DSTT 측정지점 11개 신규(MP_ECD_*, 근거 SICAS 유지보수 매뉴얼) 추가. 측정 탭에 EC/DSTT 분류 신설. 기존 측정지점은 이동하지 않음.",
     "2026-09-30(S8): SICAS 측정지점 3개 신규(MP_SICAS_OLM_LED·SVK2102_5V·VENUS3_LED, 근거 SICAS 유지보수 매뉴얼) 및 STEKOP·연동장치 고장사례 8건 연결.",
     "2026-10-03(S12): 신규 측정지점 18개 중 14개 SIN1 SICAS H/W Design 도면으로 위치 확정(verify 제거, position.sin1 추가), 4개(TWC IMU100·FTGS 전원 12V/5V·궤도 접속상자)는 도면 없어 verify 유지.",
-    "2026-10-03(S12): position.sin1 → 역 공통 구조(cabinetType·level)+drawingLinks kind STN로 전환, 역별 쪽은 stations.json mpPages, EC/DSTT 캐비닛은 ecdCabinets(SIN2·SNU2·SON2는 ecdRef로 1호 역 도면 참조)."
+    "2026-10-03(S12): position.sin1 → 역 공통 구조(cabinetType·level)+drawingLinks kind STN로 전환, 역별 쪽은 stations.json mpPages, EC/DSTT 캐비닛은 ecdCabinets(SIN2·SNU2·SON2는 ecdRef로 1호 역 도면 참조).",
+    "2026-10-03(S12): verify 해소 7개(IMU100·FTGS 전원 12V/5V·OT 선로전환기 3·콘덴서). 남은 verify는 OT 궤도 송수신·신호기 램프·FTGS 접속상자."
   ],
   "measureTypes": {
     "voltage": "전압 (V)",
@@ -1161,18 +1162,30 @@
       "measureType": "functional",
       "cycle": "미상",
       "position": {
-        "desc": "선로전환기 함체 내 콘덴서 설치 위치 (정확한 위치는 현장 확인 필요)"
+        "desc": "선로전환기 가장 앞단 원형 함 내부 기동용 콘덴서(양 단자 사이 정전용량)"
       },
       "checkItems": [
         "외관 팽창/누액 여부",
         "단자 접속 상태",
         "정전용량(용량값) 또는 절연 측정값 — 정상범위 확인 필요"
       ],
-      "verify": true,
-      "note": "2026-09-06 사용자 제보: 선로전환기에 콘덴서를 측정하는 지점이 있으나, 현재 자료에는 정상범위·측정방법이 없음. 어떤 콘덴서인지(예: 모터 기동용 콘덴서), 측정 단위(정전용량 µF? 전압? 절연저항?)와 정상범위를 사용자가 알려주면 정식 측정지점으로 확정 예정.",
+      "note": "2026-09-06 사용자 제보: 선로전환기에 콘덴서를 측정하는 지점이 있으나, 현재 자료에는 정상범위·측정방법이 없음. 어떤 콘덴서인지(예: 모터 기동용 콘덴서), 측정 단위(정전용량 µF? 전압? 절연저항?)와 정상범위를 사용자가 알려주면 정식 측정지점으로 확정 예정. 2026-10-03(S12): 사용자(현장) 확인: 선로전환기 기동용 콘덴서, 선로전환기 가장 앞단 원형 함 내부. 기준 쌍동 135·단동 120(µF, 현장사진 Fluke 정전용량 측정 123µF 표시 확인). 값이 낮거나 불량이면 전환 모터 힘이 약해져 전환력 저하. 현장사진: 현장자료/콘덴서.",
       "source": {
-        "doc": "사용자 제보 (2026-09-06), 출처 자료 확인 필요"
-      }
+        "doc": "사용자(현장) 확인 2026-10-03 + 현장자료/콘덴서 사진"
+      },
+      "thresholds": [
+        {
+          "label": "단동",
+          "min": 120,
+          "unit": "µF"
+        },
+        {
+          "label": "쌍동",
+          "min": 135,
+          "unit": "µF"
+        }
+      ],
+      "instrument": "멀티미터 정전용량 측정(Fluke 87V 등)"
     },
     {
       "id": "MP_SW_CIRCUIT_CONTROLLER",
@@ -1587,8 +1600,7 @@
         "nominal": 24
       },
       "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
-      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_CONTROL.",
-      "verify": true
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_CONTROL. 2026-10-03(S12): 사용자(현장) 확인: 현장 측정전압·정상범위와 동일."
     },
     {
       "id": "MP_OT_SW_INDICATION",
@@ -1606,8 +1618,7 @@
         "nominal": 60
       },
       "diagnosticTip": "OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
-      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_INDICATION(2호선 본선 DC60V).",
-      "verify": true
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_INDICATION(2호선 본선 DC60V). 2026-10-03(S12): 사용자(현장) 확인: 현장 측정전압·정상범위와 동일."
     },
     {
       "id": "MP_OT_SW_MOTOR",
@@ -1625,8 +1636,7 @@
         "nominal": 110
       },
       "diagnosticTip": "전환 동작 중에만 인가되는 값 — 평상시 0V는 정상. OT반 값이 정상이면 기계실 쪽은 정상 → 현장 케이블·현장 설비를 의심. OT반부터 값이 없으면 기계실 장비·퓨즈·배선을 의심.",
-      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_MOTOR.",
-      "verify": true
+      "note": "같은 회로의 기계실/현장 측정지점 기준값을 그대로 적용한 값입니다(2026-09-25 신규, OT반 전용 자료 없음). 기준: MP_FIELD_SW_MOTOR. 2026-10-03(S12): 사용자(현장) 확인: 현장 측정전압·정상범위와 동일."
     },
     {
       "id": "MP_OT_SIG_LAMP",
@@ -2363,7 +2373,7 @@
       "measureType": "visual",
       "cycle": "미상",
       "position": {
-        "desc": "TWC 연동역 모듈(서브랙) IMU-100 PTI 수신기 전면 패널"
+        "desc": "기계실 TWC 실내장치 IMU-100 모듈(PTI 수신기) 전면 패널. TWC 실외케이블이 연결되는 전면 소켓 번호는 역별 ATP 도면으로 확인"
       },
       "checkItems": [
         "적색 LED 상시 점등·점멸 → 커넥션 박스 자체 이상이면 박스 교환, 연동역 모듈 이상이면 TWC 서브랙 교환",
@@ -2408,15 +2418,14 @@
       ],
       "source": {
         "doc": "TWC 유지보수 매뉴얼(TWC_유지보수_매뉴얼)",
-        "page": "p.13, p.14"
+        "page": "p.13, p.14; 지침서 p.226, p.228, p.232"
       },
       "boardRef": "TWC_IMU100",
       "relatedFaults": [
         "FLT_TWC_02",
         "FLT_TWC_03"
       ],
-      "note": "수신기는 채널별 Lemo 커넥터 Core[n]/Rim[n] 신호라인. 장애 시 장애 시간·장애 주파수·전면 패널 표시를 기록하고 예비품으로 교체, 그래도 안 되면 케이블·퓨즈(F1 M 2.5A 5x20)·전원 점검. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 SICAS·ATP H/W Design에 IMU-100 표기 없음(TWC 쪽은 루프 배선 ATP p.20~23뿐). 정기점검 주기 미확정.",
-      "verify": true
+      "note": "수신기는 채널별 Lemo 커넥터 Core[n]/Rim[n] 신호라인. 장애 시 장애 시간·장애 주파수·전면 패널 표시를 기록하고 예비품으로 교체, 그래도 안 되면 케이블·퓨즈(F1 M 2.5A 5x20)·전원 점검. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 SICAS·ATP H/W Design에 IMU-100 표기 없음(TWC 쪽은 루프 배선 ATP p.20~23뿐). 정기점검 주기 미확정. 2026-10-03(S12): 신호업무 지침서 p.226·228·232로 위치 확인(기계실 TWC 실내장치 IMU-100 모듈 전면). 역별 소켓 번호는 ATP 도면(신도림은 ATP p.20~23 TWC loops wiring)으로 확인."
     },
     {
       "id": "MP_FTGS_PS_12V",
@@ -2426,7 +2435,7 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "FTGS 캐비닛 후면 전원공급장치(V25913-Z150-C1, 궤도회로 2개당 1개). 측정소켓 \"12V / 0V power supply\""
+        "desc": "기계실 FTGS 랙 후면 상단 PULS 전원공급장치(V25913-Z150-C1, Vout1 12V/14A·Vout2 5V/6A, LED 12V·5V). FTGS 캐비닛 후면 전원공급장치(V25913-Z150-C1, 궤도회로 2개당 1개). 측정소켓 \"12V / 0V power supply\""
       },
       "range": {
         "min": 11,
@@ -2448,8 +2457,7 @@
       "relatedFaults": [
         "FLT_FTGS_02"
       ],
-      "note": "전원공급장치 입력 AC 220/230V(187~264V, 47~63Hz). 퓨즈 내장 안 됨. 출력은 과부하·단락 보호. 전원 공급장치를 뽑기 전 관련 궤도회로가 진로에 없도록(가능하면 진로 취소) 할 것. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 H/W Design에 FTGS 전원공급장치(V25913-Z150-C1) 표기 없음(ATP p.101은 Sync-Loop 캐비닛 전원). 정기점검 주기 미확정.",
-      "verify": true
+      "note": "전원공급장치 입력 AC 220/230V(187~264V, 47~63Hz). 퓨즈 내장 안 됨. 출력은 과부하·단락 보호. 전원 공급장치를 뽑기 전 관련 궤도회로가 진로에 없도록(가능하면 진로 취소) 할 것. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — SIN1 H/W Design에 FTGS 전원공급장치(V25913-Z150-C1) 표기 없음(ATP p.101은 Sync-Loop 캐비닛 전원). 정기점검 주기 미확정. 2026-10-03(S12): 신도림 FTGS 랙 후면 현장사진(현장자료/SIN1_FTGS랙_후면_전체.jpg)에서 전원공급장치 2대 위치·라벨 확인. 측정소켓 위치는 매뉴얼 근거."
     },
     {
       "id": "MP_FTGS_PS_5V",
@@ -2459,7 +2467,7 @@
       "measureType": "voltage",
       "cycle": "미상",
       "position": {
-        "desc": "FTGS 캐비닛 후면 전원공급장치(V25913-Z150-C1). 측정소켓 \"5V / 0V power supply\""
+        "desc": "기계실 FTGS 랙 후면 상단 PULS 전원공급장치(V25913-Z150-C1, Vout1 12V/14A·Vout2 5V/6A, LED 12V·5V). FTGS 캐비닛 후면 전원공급장치(V25913-Z150-C1). 측정소켓 \"5V / 0V power supply\""
       },
       "range": {
         "min": 4.5,
@@ -2479,8 +2487,7 @@
       "relatedFaults": [
         "FLT_FTGS_02"
       ],
-      "note": "입력 AC 220/230V. 보드 Vcc/Vcc2(-B44 소켓)도 5V±0.5V. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — 위와 동일. 정기점검 주기 미확정.",
-      "verify": true
+      "note": "입력 AC 220/230V. 보드 Vcc/Vcc2(-B44 소켓)도 5V±0.5V. 2026-10-03(S12): SIN1 H/W Design 확인 결과 도면 없음 — 위와 동일. 정기점검 주기 미확정. 2026-10-03(S12): 신도림 FTGS 랙 후면 현장사진(현장자료/SIN1_FTGS랙_후면_전체.jpg)에서 전원공급장치 2대 위치·라벨 확인. 측정소켓 위치는 매뉴얼 근거."
     },
     {
       "id": "MP_FTGS_TRACK_CB",
