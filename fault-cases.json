@@ -83,7 +83,16 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_24V_FEED",
+            "MP_ECD_LEVEL_M_24V",
+            "MP_ECD_OLM_LED"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_ECD_02",
@@ -176,6 +185,21 @@
       ],
       "alsoDomains": [
         "신호기"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_STEKOP_LED",
+            "MP_ECD_STEKOP_24V"
+          ],
+          "board": "ECDSTT_STEKOP"
+        },
+        {
+          "mp": [
+            "MP_ECD_STEKOP_LED"
+          ],
+          "board": "ECDSTT_STEKOP"
+        }
       ]
     },
     {
@@ -222,6 +246,15 @@
       },
       "measurePointRef": [
         "MP_ECD_DEWEMO_LED"
+      ],
+      "remedyLinks": [
+        null,
+        {
+          "mp": [
+            "MP_ECD_DEWEMO_LED"
+          ],
+          "board": "ECDSTT_DEWEMO"
+        }
       ]
     },
     {
@@ -267,6 +300,15 @@
       "measurePointRef": [
         "MP_ECD_DEWEMO_24V",
         "MP_ECD_DEWEMO_LED"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_DEWEMO_24V",
+            "MP_ECD_DEWEMO_LED"
+          ],
+          "board": "ECDSTT_DEWEMO"
+        }
       ]
     },
     {
@@ -324,6 +366,14 @@
       "measurePointRef": [
         "MP_ECD_STEKOP_LED",
         "MP_ECD_DEWEMO_LED"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_STEKOP_LED",
+            "MP_ECD_DEWEMO_LED"
+          ]
+        }
       ]
     },
     {
@@ -391,6 +441,14 @@
       ],
       "alsoDomains": [
         "신호기"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_DESIMO",
+            "MP_FIELD_SIG_LAMP"
+          ]
+        }
       ]
     },
     {
@@ -456,6 +514,15 @@
       ],
       "alsoDomains": [
         "신호기"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_DESIMO",
+            "MP_FIELD_SIG_LAMP"
+          ],
+          "board": "ECDSTT_DESIMO"
+        }
       ]
     },
     {
@@ -493,6 +560,15 @@
       "measurePointRef": [
         "MP_ECD_DEWEMO_MOTOR110",
         "MP_FIELD_SW_MOTOR"
+      ],
+      "remedyLinks": [
+        null,
+        {
+          "mp": [
+            "MP_ECD_DEWEMO_MOTOR110",
+            "MP_FIELD_SW_MOTOR"
+          ]
+        }
       ]
     },
     {
@@ -530,6 +606,15 @@
       "measurePointRef": [
         "MP_ECD_DEWEMO_MOTOR110",
         "MP_FIELD_SW_MOTOR"
+      ],
+      "remedyLinks": [
+        null,
+        {
+          "mp": [
+            "MP_ECD_DEWEMO_MOTOR110",
+            "MP_FIELD_SW_MOTOR"
+          ]
+        }
       ]
     },
     {
@@ -624,6 +709,15 @@
       ],
       "alsoDomains": [
         "신호기"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_OLM_LED",
+            "MP_ECD_STEKOP_LED"
+          ],
+          "board": "SICAS_OLM"
+        }
       ]
     },
     {
@@ -654,7 +748,14 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_ILK_03",
@@ -698,6 +799,14 @@
       },
       "measurePointRef": [
         "MP_SICAS_OLM_LED"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_OLM_LED"
+          ],
+          "board": "SICAS_OLM"
+        }
       ]
     },
     {
@@ -801,6 +910,13 @@
       },
       "alsoDomains": [
         "전원"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60"
+          ]
+        }
       ]
     },
     {
@@ -855,7 +971,14 @@
             "title": "연동 캐비닛 구조"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC24"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_ILK_06",
@@ -911,7 +1034,14 @@
             "title": "연동 캐비닛 구조"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_ILK_07",
@@ -968,7 +1098,17 @@
             "title": "레벨 N에서의 터미널 스트립"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60"
+          ]
+        },
+        {
+          "board": "SICAS_SVK2102"
+        }
+      ]
     },
     {
       "id": "FLT_ILK_08",
@@ -1000,6 +1140,13 @@
       },
       "measurePointRef": [
         "MP_SICAS_S51_DC24"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC24"
+          ]
+        }
       ]
     },
     {
@@ -1067,6 +1214,15 @@
       "measurePointRef": [
         "MP_SICAS_S51_DC60",
         "MP_SICAS_SVK2102_5V"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60",
+            "MP_SICAS_SVK2102_5V"
+          ],
+          "board": "SICAS_SVK2102"
+        }
       ]
     },
     {
@@ -1098,6 +1254,14 @@
       },
       "measurePointRef": [
         "MP_SICAS_VENUS3_LED"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_VENUS3_LED"
+          ],
+          "board": "SICAS_VENUS3"
+        }
       ]
     },
     {
@@ -1192,6 +1356,15 @@
       ],
       "alsoDomains": [
         "신호기"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_SV2602_IN",
+            "MP_ECD_SV2602_OUT"
+          ],
+          "board": "ECDSTT_PS"
+        }
       ]
     },
     {
@@ -1245,7 +1418,14 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC24"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_PWR_03",
@@ -1308,7 +1488,14 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_PWR_04",
@@ -1373,7 +1560,15 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC60"
+          ]
+        },
+        null
+      ]
     },
     {
       "id": "FLT_PWR_05",
@@ -1427,6 +1622,14 @@
       "measurePointRef": [
         "MP_ECD_SV2602_OUT",
         "MP_ECD_SV2602_IN"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_SV2602_OUT",
+            "MP_ECD_SV2602_IN"
+          ]
+        }
       ]
     },
     {
@@ -1483,6 +1686,14 @@
       "measurePointRef": [
         "MP_ECD_SV2602_OUT",
         "MP_ECD_SV2602_IN"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_SV2602_OUT"
+          ]
+        },
+        null
       ]
     },
     {
@@ -1538,6 +1749,15 @@
       "measurePointRef": [
         "MP_ECD_SV2602_OUT",
         "MP_ECD_SV2602_IN"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_SV2602_OUT",
+            "MP_ECD_SV2602_IN"
+          ],
+          "board": "ECDSTT_PS"
+        }
       ]
     },
     {
@@ -1593,7 +1813,14 @@
             "title": "캐비닛 배치"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_S51_DC24"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_SIG_04",
@@ -1636,6 +1863,15 @@
       "measurePointRef": [
         "MP_ECD_STEKOP_LED",
         "MP_ECD_STEKOP_24V"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_STEKOP_LED",
+            "MP_ECD_STEKOP_24V"
+          ],
+          "board": "ECDSTT_STEKOP"
+        }
       ]
     },
     {
@@ -1678,6 +1914,14 @@
       },
       "measurePointRef": [
         "MP_ECD_STEKOP_LED"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_STEKOP_LED"
+          ],
+          "board": "ECDSTT_STEKOP"
+        }
       ]
     },
     {
@@ -1710,6 +1954,14 @@
       "measurePointRef": [
         "MP_ECD_DESIMO",
         "MP_FIELD_SIG_LAMP"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ECD_DESIMO",
+            "MP_FIELD_SIG_LAMP"
+          ]
+        }
       ]
     },
     {
@@ -1733,7 +1985,21 @@
       "source": {
         "doc": "ATO LOOP·TWC 장애처리 절차",
         "section": "튜닝 시 참고사항"
-      }
+      },
+      "remedyLinks": [
+        null,
+        null,
+        {
+          "mp": [
+            "MP_ATO_LOOP_CURRENT"
+          ]
+        },
+        {
+          "mp": [
+            "MP_ATO_LOOP_CURRENT"
+          ]
+        }
+      ]
     },
     {
       "id": "FLT_VEN_01",
@@ -1766,6 +2032,14 @@
       },
       "measurePointRef": [
         "MP_SICAS_VENUS3_LED"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_SICAS_VENUS3_LED"
+          ]
+        },
+        null
       ]
     },
     {
@@ -1812,7 +2086,17 @@
             "confidence": "확정"
           }
         ]
-      }
+      },
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_TWC_OUT"
+          ]
+        },
+        null,
+        null,
+        null
+      ]
     },
     {
       "id": "FLT_TWC_02",
@@ -1857,6 +2141,22 @@
       "measurePointRef": [
         "MP_TWC_IMU100_LED",
         "MP_TWC_RX_WAVEFORM"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_TWC_RX_WAVEFORM"
+          ]
+        },
+        {
+          "mp": [
+            "MP_TWC_IMU100_LED"
+          ]
+        },
+        {
+          "board": "TWC_IMU100"
+        },
+        null
       ]
     },
     {
@@ -1891,6 +2191,20 @@
       "measurePointRef": [
         "MP_TWC_IMU100_LED",
         "MP_TWC_CB_DETAIL"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_TWC_CB_DETAIL"
+          ]
+        },
+        {
+          "mp": [
+            "MP_TWC_IMU100_LED"
+          ],
+          "board": "TWC_IMU100"
+        },
+        null
       ]
     },
     {
@@ -1911,7 +2225,13 @@
       "source": {
         "doc": "OTS-INT-SM7 기준값 카드 (사용자 촬영, 2026-09-05)"
       },
-      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다.",
+      "remedyLinks": [
+        null,
+        {
+          "board": "ECDSTT_DEWEMO"
+        }
+      ]
     },
     {
       "id": "FLT_OTS_02",
@@ -1956,7 +2276,21 @@
       "source": {
         "doc": "03.ATO LOOP(김영추).pptx",
         "section": "ATO-LOOP 제어함(Controller Box) - 기능제어보드(FUUELL) 장애상태표"
-      }
+      },
+      "remedyLinks": [
+        {
+          "board": "ATOLOOP_REMEMO"
+        },
+        {
+          "mp": [
+            "MP_ATO_LOOP_CURRENT"
+          ]
+        },
+        null,
+        {
+          "board": "ATOLOOP_FUUELL"
+        }
+      ]
     },
     {
       "id": "FLT_ATO_03",
@@ -1981,7 +2315,21 @@
       "source": {
         "doc": "03.ATO LOOP(김영추).pptx",
         "section": "ATO-LOOP 제어함(Controller Box) - 기능제어보드(FUUELL) 장애상태표"
-      }
+      },
+      "remedyLinks": [
+        {
+          "board": "ATOLOOP_REMEMO"
+        },
+        {
+          "mp": [
+            "MP_ATO_LOOP_CURRENT"
+          ]
+        },
+        null,
+        {
+          "board": "ATOLOOP_FUUELL"
+        }
+      ]
     },
     {
       "id": "FLT_ATO_04",
@@ -2006,6 +2354,21 @@
       },
       "measurePointRef": [
         "MP_ATO_CONTROLLER_LED_TEST"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_ATO_CONTROLLER_LED_TEST"
+          ]
+        },
+        null,
+        null,
+        {
+          "mp": [
+            "MP_ATO_CONTROLLER_LED_TEST"
+          ],
+          "board": "ATOLOOP_FUUELL"
+        }
       ]
     },
     {
@@ -2127,7 +2490,13 @@
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - STEKOP RESET 장애"
       },
-      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다.",
+      "remedyLinks": [
+        {
+          "board": "ECDSTT_STEKOP"
+        },
+        null
+      ]
     },
     {
       "id": "FLT_OTS_09",
@@ -2147,7 +2516,13 @@
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 제어 휴즈 장애"
       },
-      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다.",
+      "remedyLinks": [
+        null,
+        {
+          "board": "ECDSTT_STEKOP"
+        }
+      ]
     },
     {
       "id": "FLT_OTS_10",
@@ -2166,7 +2541,15 @@
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
       },
-      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다.",
+      "remedyLinks": [
+        {
+          "board": "ECDSTT_DEWEMO"
+        },
+        {
+          "board": "ECDSTT_STEKOP"
+        }
+      ]
     },
     {
       "id": "FLT_OTS_11",
@@ -2185,7 +2568,13 @@
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - DEWEMO 및 모터 장애"
       },
-      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다.",
+      "remedyLinks": [
+        null,
+        {
+          "board": "ECDSTT_DEWEMO"
+        }
+      ]
     },
     {
       "id": "FLT_OTS_12",
@@ -2225,7 +2614,14 @@
         "doc": "선로전환기 장애조치매뉴얼 및 체크리스트.pdf",
         "section": "장애 발생시 체크포인트 - 현장 설비 장애"
       },
-      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다."
+      "measureNote": "측정값은 OTS(선로전환기 감시시스템) 감시 화면에서 확인합니다. 이 앱에는 OTS 측정지점이 없습니다.",
+      "remedyLinks": [
+        null,
+        null,
+        {
+          "board": "ECDSTT_DEWEMO"
+        }
+      ]
     },
     {
       "id": "FLT_SW_01",
@@ -2269,6 +2665,15 @@
       "measurePointRef": [
         "MP_FTGS_PS_12V",
         "MP_FTGS_PS_5V"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_FTGS_PS_12V",
+            "MP_FTGS_PS_5V"
+          ],
+          "board": "FTGS_POWER_UNIT"
+        }
       ]
     },
     {
@@ -2292,6 +2697,14 @@
       },
       "measurePointRef": [
         "MP_FTGS_RELAY"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_FTGS_RELAY"
+          ],
+          "board": "FTGS_GF_RELAY_PCB"
+        }
       ]
     },
     {
@@ -2319,6 +2732,25 @@
         "MP_FTGS_RX_FIELD",
         "MP_FTGS_SBOND",
         "MP_FTGS_TRACK_CB"
+      ],
+      "remedyLinks": [
+        {
+          "mp": [
+            "MP_FTGS_TRACK_CB"
+          ]
+        },
+        {
+          "mp": [
+            "MP_FTGS_TRACK_CB"
+          ]
+        },
+        {
+          "mp": [
+            "MP_FTGS_DCBOX",
+            "MP_FTGS_TX_FIELD",
+            "MP_FTGS_RX_FIELD"
+          ]
+        }
       ]
     }
   ],
