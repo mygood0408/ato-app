@@ -19888,7 +19888,7 @@ var MPOINTS = {
       "checkItems": [
         "외관 팽창/누액 여부",
         "단자 접속 상태",
-        "정전용량(용량값) 또는 절연 측정값 — 정상범위 확인 필요"
+        "정전용량 측정값이 기준(단동 120µF·쌍동 135µF) 이상인지 — 낮거나 불량이면 전환 모터 힘이 약해져 전환력 저하"
       ],
       "note": "2026-09-06 사용자 제보: 선로전환기에 콘덴서를 측정하는 지점이 있으나, 현재 자료에는 정상범위·측정방법이 없음. 어떤 콘덴서인지(예: 모터 기동용 콘덴서), 측정 단위(정전용량 µF? 전압? 절연저항?)와 정상범위를 사용자가 알려주면 정식 측정지점으로 확정 예정. 2026-10-03(S12): 사용자(현장) 확인: 선로전환기 기동용 콘덴서, 선로전환기 가장 앞단 원형 함 내부. 기준 쌍동 135·단동 120(µF, 현장사진 Fluke 정전용량 측정 123µF 표시 확인). 값이 낮거나 불량이면 전환 모터 힘이 약해져 전환력 저하. 현장사진: 현장자료/콘덴서.",
       "source": {
@@ -19906,7 +19906,11 @@ var MPOINTS = {
           "unit": "µF"
         }
       ],
-      "instrument": "멀티미터 정전용량 측정(Fluke 87V 등)"
+      "instrument": "멀티미터 정전용량 측정(Fluke 87V 등)",
+      "method": [
+        "기동용 콘덴서 양 단자 사이를 멀티미터 정전용량(µF) 모드로 측정",
+        "단동은 120µF, 쌍동은 135µF 이상이면 정상"
+      ]
     },
     {
       "id": "MP_SW_CIRCUIT_CONTROLLER",
@@ -26784,7 +26788,7 @@ function mpDrawingLinks(mp){
     if (L.kind === 'STN' && mp.position.cabinetType === 'EC/DSTT') {
       var cb = STATIONS[s].ecdCabinets || [];
       if (STATIONS[s].ecdRef) { o.push('SICAS HW Design ' + s + ': EC/DSTT 캐비닛은 ' + STATIONS[s].ecdRef + ' 도면 참조'); return; }
-      if (pg.length) o.push('EC/DSTT 캐비닛 ' + cb.join('·') + ' 중 해당 쪽' + (mp.position.level !== '-' ? ' / 레벨 ' + mp.position.level : ''));
+      if (pg.length) o.push('EC/DSTT 캐비닛 ' + cb.join('·') + (cb.length > 1 ? ' 중 해당 쪽' : '') + (mp.position.level !== '-' ? ' / 레벨 ' + mp.position.level : ''));
     }
     if (pg.length) o.push('SICAS HW Design ' + s + ' ' + kbPageLinks('SICAS_HW_Design_' + s, pg));
   });

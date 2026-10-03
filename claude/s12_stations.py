@@ -42,7 +42,7 @@ NEW = ("    var pg = (L.kind === 'N' ? [(STATIONS[s].paths || {}).N] : L.kind ==
        "    if (L.kind === 'STN' && mp.position.cabinetType === 'EC/DSTT') {\n"
        "      var cb = STATIONS[s].ecdCabinets || [];\n"
        "      if (STATIONS[s].ecdRef) { o.push('SICAS HW Design ' + s + ': EC/DSTT 캐비닛은 ' + STATIONS[s].ecdRef + ' 도면 참조'); return; }\n"
-       "      if (pg.length) o.push('EC/DSTT 캐비닛 ' + cb.join('·') + ' 중 해당 쪽' + (mp.position.level !== '-' ? ' / 레벨 ' + mp.position.level : ''));\n"
+       "      if (pg.length) o.push('EC/DSTT 캐비닛 ' + cb.join('·') + (cb.length > 1 ? ' 중 해당 쪽' : '') + (mp.position.level !== '-' ? ' / 레벨 ' + mp.position.level : ''));\n"
        "    }\n")
 assert OLD in h
 h = h.replace(OLD, NEW)
