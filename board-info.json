@@ -134,7 +134,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -155,7 +156,8 @@
                 260,
                 261
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -179,7 +181,8 @@
                 157,
                 158
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -203,7 +206,8 @@
                 184,
                 185
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -238,7 +242,8 @@
                 158,
                 159
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -262,7 +267,8 @@
                 120,
                 121
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -283,7 +289,8 @@
                 152,
                 153
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -310,7 +317,8 @@
                 240,
                 241
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -337,7 +345,8 @@
                 110,
                 111
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -361,7 +370,8 @@
                 147,
                 148
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -385,7 +395,8 @@
                 156,
                 157
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -406,7 +417,8 @@
                 233,
                 234
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ]
         }
@@ -728,7 +740,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -749,7 +762,8 @@
                 260,
                 261
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -773,7 +787,8 @@
                 157,
                 158
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -797,7 +812,8 @@
                 184,
                 185
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -832,7 +848,8 @@
                 158,
                 159
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -856,7 +873,8 @@
                 120,
                 121
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -877,7 +895,8 @@
                 152,
                 153
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -904,7 +923,8 @@
                 240,
                 241
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -931,7 +951,8 @@
                 110,
                 111
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -955,7 +976,8 @@
                 147,
                 148
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -979,7 +1001,8 @@
                 156,
                 157
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -1000,7 +1023,8 @@
                 233,
                 234
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             }
           ]
         }
@@ -1193,7 +1217,8 @@
                 200,
                 202
               ],
-              "totalPagesFound": 11
+              "totalPagesFound": 11,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -1224,7 +1249,8 @@
                 261,
                 263
               ],
-              "totalPagesFound": 13
+              "totalPagesFound": 13,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -1256,7 +1282,8 @@
                 158,
                 160
               ],
-              "totalPagesFound": 10
+              "totalPagesFound": 10,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -1291,7 +1318,8 @@
                 187,
                 236
               ],
-              "totalPagesFound": 13
+              "totalPagesFound": 13,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -1311,7 +1339,8 @@
                 5,
                 6
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -1343,7 +1372,8 @@
                 159,
                 161
               ],
-              "totalPagesFound": 10
+              "totalPagesFound": 10,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -1374,7 +1404,8 @@
                 121,
                 123
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -1403,7 +1434,8 @@
                 153,
                 155
               ],
-              "totalPagesFound": 11
+              "totalPagesFound": 11,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -1441,7 +1473,8 @@
                 241,
                 243
               ],
-              "totalPagesFound": 12
+              "totalPagesFound": 12,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -1476,7 +1509,8 @@
                 111,
                 113
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -1510,7 +1544,8 @@
                 151,
                 201
               ],
-              "totalPagesFound": 12
+              "totalPagesFound": 12,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -1542,7 +1577,8 @@
                 157,
                 159
               ],
-              "totalPagesFound": 10
+              "totalPagesFound": 10,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -1574,7 +1610,8 @@
                 236,
                 237
               ],
-              "totalPagesFound": 14
+              "totalPagesFound": 14,
+              "confirmed": true
             }
           ]
         }
@@ -1702,7 +1739,8 @@
                 146,
                 147
               ],
-              "totalPagesFound": 65
+              "totalPagesFound": 65,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -1734,7 +1772,8 @@
                 205,
                 206
               ],
-              "totalPagesFound": 65
+              "totalPagesFound": 65,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -1769,7 +1808,8 @@
                 104,
                 105
               ],
-              "totalPagesFound": 66
+              "totalPagesFound": 66,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -1804,7 +1844,8 @@
                 131,
                 132
               ],
-              "totalPagesFound": 65
+              "totalPagesFound": 65,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -1850,7 +1891,8 @@
                 105,
                 106
               ],
-              "totalPagesFound": 66
+              "totalPagesFound": 66,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -1885,7 +1927,8 @@
                 70,
                 71
               ],
-              "totalPagesFound": 64
+              "totalPagesFound": 64,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -1917,7 +1960,8 @@
                 100,
                 101
               ],
-              "totalPagesFound": 64
+              "totalPagesFound": 64,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -1955,7 +1999,8 @@
                 185,
                 186
               ],
-              "totalPagesFound": 66
+              "totalPagesFound": 66,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -1993,7 +2038,8 @@
                 61,
                 62
               ],
-              "totalPagesFound": 63
+              "totalPagesFound": 63,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -2028,7 +2074,8 @@
                 94,
                 95
               ],
-              "totalPagesFound": 65
+              "totalPagesFound": 65,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -2063,7 +2110,8 @@
                 105,
                 106
               ],
-              "totalPagesFound": 64
+              "totalPagesFound": 64,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -2095,7 +2143,8 @@
                 176,
                 177
               ],
-              "totalPagesFound": 64
+              "totalPagesFound": 64,
+              "confirmed": true
             }
           ]
         }
@@ -2724,7 +2773,8 @@
               "pages": [
                 201
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -2733,7 +2783,8 @@
               "pages": [
                 262
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -2742,7 +2793,8 @@
               "pages": [
                 159
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -2751,7 +2803,8 @@
               "pages": [
                 186
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SCD": [],
@@ -2761,7 +2814,8 @@
               "pages": [
                 160
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -2770,7 +2824,8 @@
               "pages": [
                 122
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -2779,7 +2834,8 @@
               "pages": [
                 154
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -2788,7 +2844,8 @@
               "pages": [
                 242
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -2797,7 +2854,8 @@
               "pages": [
                 112
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -2806,7 +2864,8 @@
               "pages": [
                 149
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -2815,7 +2874,8 @@
               "pages": [
                 158
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -2824,7 +2884,8 @@
               "pages": [
                 235
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ]
         }
@@ -4184,7 +4245,8 @@
                 27,
                 28
               ],
-              "totalPagesFound": 76
+              "totalPagesFound": 76,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -4230,7 +4292,8 @@
                 25,
                 26
               ],
-              "totalPagesFound": 33
+              "totalPagesFound": 33,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -4253,7 +4316,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 57
+              "totalPagesFound": 57,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -4276,7 +4340,8 @@
                 25,
                 26
               ],
-              "totalPagesFound": 23
+              "totalPagesFound": 23,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -4308,7 +4373,8 @@
               "pages": [
                 116
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -4331,7 +4397,8 @@
                 27,
                 28
               ],
-              "totalPagesFound": 70
+              "totalPagesFound": 70,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -4354,7 +4421,8 @@
                 30,
                 31
               ],
-              "totalPagesFound": 127
+              "totalPagesFound": 127,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -4363,7 +4431,8 @@
               "pages": [
                 106
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -4386,7 +4455,8 @@
                 29,
                 30
               ],
-              "totalPagesFound": 59
+              "totalPagesFound": 59,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -4409,7 +4479,8 @@
                 25,
                 26
               ],
-              "totalPagesFound": 34
+              "totalPagesFound": 34,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -4432,7 +4503,8 @@
                 31,
                 32
               ],
-              "totalPagesFound": 125
+              "totalPagesFound": 125,
+              "confirmed": true
             }
           ]
         }
@@ -4965,7 +5037,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_EUL",
@@ -4986,7 +5059,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GCD",
@@ -5010,7 +5084,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GYO",
@@ -5034,7 +5109,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_HON",
@@ -5055,7 +5131,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -5069,7 +5146,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU1",
@@ -5093,7 +5171,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU2",
@@ -5114,7 +5193,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SOL",
@@ -5141,7 +5221,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON1",
@@ -5168,7 +5249,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON2",
@@ -5192,7 +5274,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO1",
@@ -5216,7 +5299,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO2",
@@ -5237,7 +5321,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_YAN",
@@ -5331,7 +5416,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -5342,7 +5428,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -5356,7 +5443,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -5370,7 +5458,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -5381,7 +5470,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -5395,7 +5485,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -5409,7 +5500,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -5420,7 +5512,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -5437,7 +5530,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -5454,7 +5548,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -5468,7 +5563,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -5482,7 +5578,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -5493,7 +5590,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ]
         }
@@ -5577,7 +5675,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -5588,7 +5687,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -5602,7 +5702,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -5616,7 +5717,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -5627,7 +5729,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -5641,7 +5744,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -5655,7 +5759,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -5666,7 +5771,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -5683,7 +5789,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -5700,7 +5807,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -5714,7 +5822,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -5728,7 +5837,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -5739,7 +5849,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ]
         }
@@ -5828,7 +5939,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_EUL",
@@ -5849,7 +5961,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GCD",
@@ -5873,7 +5986,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GYO",
@@ -5897,7 +6011,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_HON",
@@ -5918,7 +6033,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -5932,7 +6048,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU1",
@@ -5956,7 +6073,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU2",
@@ -5977,7 +6095,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SOL",
@@ -6004,7 +6123,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON1",
@@ -6031,7 +6151,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON2",
@@ -6055,7 +6176,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO1",
@@ -6079,7 +6201,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO2",
@@ -6100,7 +6223,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_YAN",
@@ -6343,7 +6467,8 @@
                 167,
                 171
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_EUL",
@@ -6372,7 +6497,8 @@
                 81,
                 85
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GCD",
@@ -6407,7 +6533,8 @@
                 140,
                 144
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GYO",
@@ -6439,7 +6566,8 @@
                 160,
                 164
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_HON",
@@ -6470,7 +6598,8 @@
                 29,
                 33
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SCD",
@@ -6494,7 +6623,8 @@
                 200,
                 204
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU1",
@@ -6526,7 +6656,8 @@
                 200,
                 204
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU2",
@@ -6553,7 +6684,8 @@
                 70,
                 74
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SOL",
@@ -6590,7 +6722,8 @@
                 255,
                 259
               ],
-              "totalPagesFound": 12
+              "totalPagesFound": 12,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON1",
@@ -6628,7 +6761,8 @@
                 255,
                 259
               ],
-              "totalPagesFound": 12
+              "totalPagesFound": 12,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON2",
@@ -6659,7 +6793,8 @@
                 182,
                 186
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO1",
@@ -6693,7 +6828,8 @@
                 182,
                 186
               ],
-              "totalPagesFound": 8
+              "totalPagesFound": 8,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO2",
@@ -6721,7 +6857,8 @@
                 104,
                 108
               ],
-              "totalPagesFound": 4
+              "totalPagesFound": 4,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_YAN",
@@ -6849,7 +6986,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -6860,7 +6998,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -6874,7 +7013,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -6888,7 +7028,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -6899,7 +7040,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -6913,7 +7055,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -6927,7 +7070,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -6938,7 +7082,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -6955,7 +7100,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -6972,7 +7118,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -6986,7 +7133,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -7000,7 +7148,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -7011,7 +7160,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ]
         }
@@ -7121,7 +7271,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_EUL",
@@ -7153,7 +7304,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GCD",
@@ -7188,7 +7340,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_GYO",
@@ -7223,7 +7376,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_HON",
@@ -7255,7 +7409,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -7269,7 +7424,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU1",
@@ -7304,7 +7460,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SNU2",
@@ -7336,7 +7493,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SOL",
@@ -7374,7 +7532,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON1",
@@ -7412,7 +7571,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SON2",
@@ -7447,7 +7607,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO1",
@@ -7482,7 +7643,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_SPO2",
@@ -7514,7 +7676,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             },
             {
               "doc": "SICAS_HW_Design_YAN",
@@ -7639,7 +7802,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -7650,7 +7814,8 @@
                 80,
                 81
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -7664,7 +7829,8 @@
                 139,
                 140
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -7678,7 +7844,8 @@
                 159,
                 160
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -7689,7 +7856,8 @@
                 28,
                 29
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -7703,7 +7871,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -7717,7 +7886,8 @@
                 199,
                 200
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -7728,7 +7898,8 @@
                 69,
                 70
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -7745,7 +7916,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -7762,7 +7934,8 @@
                 254,
                 255
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -7776,7 +7949,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -7790,7 +7964,8 @@
                 181,
                 182
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -7801,7 +7976,8 @@
                 103,
                 104
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ]
         }
@@ -7848,7 +8024,8 @@
                 160,
                 168
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -7857,7 +8034,8 @@
               "pages": [
                 82
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -7867,7 +8045,8 @@
                 133,
                 141
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -7877,7 +8056,8 @@
                 153,
                 161
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -7886,7 +8066,8 @@
               "pages": [
                 30
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -7896,7 +8077,8 @@
                 106,
                 201
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "SNU2": [
@@ -7906,7 +8088,8 @@
                 106,
                 201
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "SOL": [
@@ -7915,7 +8098,8 @@
               "pages": [
                 71
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -7926,7 +8110,8 @@
                 154,
                 256
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -7937,7 +8122,8 @@
                 154,
                 256
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -7947,7 +8133,8 @@
                 65,
                 183
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "SPO2": [
@@ -7957,7 +8144,8 @@
                 65,
                 183
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "YAN": [
@@ -7966,7 +8154,8 @@
               "pages": [
                 105
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ]
         }
@@ -11706,7 +11895,8 @@
                 14,
                 15
               ],
-              "totalPagesFound": 7
+              "totalPagesFound": 7,
+              "confirmed": true
             }
           ],
           "GCD": [
@@ -11717,7 +11907,8 @@
                 7,
                 8
               ],
-              "totalPagesFound": 3
+              "totalPagesFound": 3,
+              "confirmed": true
             }
           ],
           "GYO": [
@@ -11730,7 +11921,8 @@
                 11,
                 12
               ],
-              "totalPagesFound": 5
+              "totalPagesFound": 5,
+              "confirmed": true
             }
           ],
           "HON": [
@@ -11744,7 +11936,8 @@
                 13,
                 14
               ],
-              "totalPagesFound": 6
+              "totalPagesFound": 6,
+              "confirmed": true
             }
           ],
           "SCD": [
@@ -11753,7 +11946,8 @@
               "pages": [
                 4
               ],
-              "totalPagesFound": 1
+              "totalPagesFound": 1,
+              "confirmed": true
             }
           ],
           "SNU1": [
@@ -11791,7 +11985,8 @@
                 5,
                 6
               ],
-              "totalPagesFound": 2
+              "totalPagesFound": 2,
+              "confirmed": true
             }
           ],
           "SON1": [
@@ -11808,7 +12003,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SON2": [
@@ -11825,7 +12021,8 @@
                 166,
                 167
               ],
-              "totalPagesFound": 9
+              "totalPagesFound": 9,
+              "confirmed": true
             }
           ],
           "SPO1": [
@@ -11866,7 +12063,8 @@
                 9,
                 10
               ],
-              "totalPagesFound": 5
+              "totalPagesFound": 5,
+              "confirmed": true
             }
           ]
         }
@@ -14636,6 +14834,7 @@
     "2026-09-30(S7): 6개 보드(OLM 2·UPS 3·ATOLOOP_CB)에 stationDiff.SIN2 추가 — SIN2 도면 대조 결과, 확인필요 유지.",
     "2026-09-30(S7): 도면-설비 매칭 정리 — ATOLOOP_CB SICAS·UPS_ATS_AVR_UNIT ATP 오매칭 항목 삭제, FTGS TX/RX1/RX2 보드에 궤도회로 접속도(SIN1·SIN2) 추가.",
     "남은 항목은 claude/s8_남은목록.json.",
-    "2026-10-03(S12): C/B박스 4종 보드 이미지에 기계실 OT반 연결선(쓰는 단자만) 추가, 혼합형·센터패드 표현 기준 코멘트 추가."
+    "2026-10-03(S12): C/B박스 4종 보드 이미지에 기계실 OT반 연결선(쓰는 단자만) 추가, 혼합형·센터패드 표현 기준 코멘트 추가.",
+    "2026-10-03(S11): 전 역 확인필요 도면 항목 198건 확정(S8 규칙: 핵심어 전 쪽 2회 이상·계통 일치). 남은 항목은 claude/s11_남은목록.json."
   ]
 }
