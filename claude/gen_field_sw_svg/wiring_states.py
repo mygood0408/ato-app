@@ -63,7 +63,9 @@ def base():
     g, W, H = extract(d[4], CLIP, regions(), subpaths=True)
     hidden = {k: v for k, v in g.items() if k.startswith('ct')}
     keep = {k: v for k, v in g.items() if not k.startswith('ct')}
-    return render(keep), W, H, hidden
+    # E·F 선(두꺼운 이중선)은 x=207.8 에서 끝나고 C1/C2 피벗은 14pt 위에 떠 있어 -> 세로선으로 이어 붙임
+    join = ''.join(line((207.8, py), (207.8, wy), 1.5) for py, wy in ((110.0, 124.2), (170.0, 183.6)))
+    return render(keep) + join, W, H, hidden
 
 
 def line(a, b, w=1.4, extra=''):
