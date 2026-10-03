@@ -1079,7 +1079,23 @@ var RACK = {
         {
           "id": "1",
           "stage": "N레벨 배전반 (후면 K행) — 60V/24V/230V 분기",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 대응 도면 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                188
+              ],
+              "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요",
+              "confirmed": true
+            },
+            {
+              "doc": "SICAS_HW_Design_SIN2",
+              "pages": [
+                107
+              ],
+              "note": "SIN2 대응 도면 — 전원 경로 ⚡ 있음, 확인필요"
+            }
+          ],
           "desc": "60V·24V·230V가 여기서 각 채널로 분기됩니다. 60V는 5,6,7번(+)/1,2,3번(−), 24V는 40~49번(+)/51~59번(−) 단자에서 측정합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC60",
@@ -1096,7 +1112,23 @@ var RACK = {
         {
           "id": "fuse24",
           "stage": "24V 퓨즈 (N레벨: OLM 4A · KOMDA 1A · 6.3A)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                188
+              ],
+              "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요",
+              "confirmed": true
+            },
+            {
+              "doc": "SICAS_HW_Design_SIN2",
+              "pages": [
+                107
+              ],
+              "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"
+            }
+          ],
           "desc": "24V DC가 N레벨 배전반 퓨즈를 거쳐 주변기기로 갑니다 — OLM 채널 A·B 퓨즈 4A, KOMDA 채널 A·B·C 퓨즈 1A, 퓨즈 6.3A. 퓨즈가 끊기면 그 계통 24V만 없어지므로, 24V가 안 나오면 이 퓨즈부터 확인합니다.",
           "measurePointRef": [
             "MP_SICAS_S51_DC24"
@@ -1126,7 +1158,23 @@ var RACK = {
         {
           "id": "fan",
           "stage": "220V AC → FAN (N레벨 66~73번)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [188], "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [107], "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                188
+              ],
+              "note": "직접 확인 — 전원 경로 ⚡ 있음, 확인필요",
+              "confirmed": true
+            },
+            {
+              "doc": "SICAS_HW_Design_SIN2",
+              "pages": [
+                107
+              ],
+              "note": "SIN2 — 전원 경로 ⚡ 있음, 확인필요"
+            }
+          ],
           "desc": "N레벨 배전반 66~73번 단자에서 220V AC가 FAN으로 공급됩니다.",
           "rows": [
             [
@@ -1683,13 +1731,33 @@ var RACK = {
         {
           "id": "0",
           "stage": "60V 퓨즈(4A) → 필터",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230], "note": "T52 G단자 도면 직접 확인 — 전원 경로 ⚡ 있음, 확인필요", "confirmed": true}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                230
+              ],
+              "note": "T52 G단자 도면 직접 확인 — 전원 경로 ⚡ 있음, 확인필요",
+              "confirmed": true
+            }
+          ],
           "desc": "입력 DC60V가 퓨즈(4A)와 필터를 거쳐 전원공급장치(SV2602)로 갑니다."
         },
         {
           "id": "ps",
           "stage": "전원공급장치 SV2602 ×4 (전면 A행) — 60V → 8V",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [230, 206, 224], "note": "p.230 직접 확인 — 전원 경로 ⚡ 있음, 확인필요 (Filter→SV2602 배선은 도면에 없음)", "confirmed": true}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                230,
+                206,
+                224
+              ],
+              "note": "p.230 직접 확인 — 전원 경로 ⚡ 있음, 확인필요 (Filter→SV2602 배선은 도면에 없음)",
+              "confirmed": true
+            }
+          ],
           "desc": "SV2602 4대가 60V를 8V로 바꿔 STEKOP-Platter 전원으로 공급합니다. 전면 LED UE(입력)/UA(출력)로 상태를 확인합니다.",
           "boardRef": "ECDSTT_PS",
           "rows": [
@@ -1702,7 +1770,15 @@ var RACK = {
         {
           "id": "platter",
           "stage": "Platter (-X4, 후면 N행)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [106], "note": "STEKOP 8V 공급 조건 회로(8V 생성 회로는 아님) — 확인필요"}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                106
+              ],
+              "note": "STEKOP 8V 공급 조건 회로(8V 생성 회로는 아님) — 확인필요"
+            }
+          ],
           "desc": "SV2602의 8V가 Platter를 거쳐 STEKOP으로 분배됩니다.",
           "boardRef": "ECDSTT_PLATTER",
           "rows": [
@@ -1852,9 +1928,7 @@ var RACK = {
           "양측 C/B": "인접 궤도 타입에 따라 결정 — 단방향이면 튜닝유니트2+인터페이스1, 양방향이면 튜닝유니트2+인터페이스1+전환모듈1",
           "note": "센터패드형 궤도 1구간은 C/B박스 3개로 구성."
         },
-        "openItems": [
-
-        ],
+        "openItems": [],
         "source": "사용자 제공 'FTGS 궤도회로 구성도(88EA)' 표 + '13.센터패드형 궤도회로(M)' 공식 교육자료 사진 + 사용자 설명 (2026-09-07)",
         "cbBoxNames": {
           "note": "센터패드형 궤도 1구간당 C/B박스 3개(가운데 1 + 양측 2)의 실제 명칭. SIEMENS 실측조정표(L4129, 신도림 090T/R430T/L440T 3건)에서 가운데 박스는 궤도명 그대로 인쇄되어 있음(예: '090T', 'box no.*' 표기 = transmitter in basic position 담당 박스). 이 프로젝트에서는 궤도명 자체와 구분하기 위해 가운데 박스 명칭 끝에 'F'를 붙여 표기함(090T→090TF). 양측 박스는 인접한 두 궤도구간 이름을 딴 복합명칭이 매뉴얼에 그대로 인쇄되어 있어 그 표기를 그대로 사용함.",
@@ -2229,7 +2303,29 @@ var RACK = {
         {
           "id": "fuse",
           "stage": "퓨즈 레일 (전면 L행, 궤도회로 공통)",
-          "drawings": [{"doc": "SICAS_HW_Design_SIN1", "pages": [109, 113, 117, 121, 125], "confirmed": true}, {"doc": "SICAS_HW_Design_SIN2", "pages": [36, 40, 44, 48], "confirmed": true}],
+          "drawings": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                109,
+                113,
+                117,
+                121,
+                125
+              ],
+              "confirmed": true
+            },
+            {
+              "doc": "SICAS_HW_Design_SIN2",
+              "pages": [
+                36,
+                40,
+                44,
+                48
+              ],
+              "confirmed": true
+            }
+          ],
           "desc": "궤도회로 공통 퓨즈 레일입니다. 특정 궤도회로만 전원이 없으면 이 퓨즈부터 확인합니다.",
           "rows": [
             [
@@ -2376,7 +2472,8 @@ var RACK = {
           "measurePointRef": [
             "MP_LZB_LOOPCOIL"
           ],
-          "note": "[2026-09-15 신규] 세부 자료 미확보 — 우선 자리만 만들어둠(추후 보강 예정). 별도 보드 이미지는 없으나 실물 사진·동영상을 붙여둘 수 있음(행을 누르면 사진 첨부 화면으로 이동)."
+          "note": "[2026-10-04] 지침서 p.213~214·튜닝 매뉴얼 연결(보드 상세 참고). 별도 보드 이미지는 없으나 실물 사진·동영상을 붙여둘 수 있음.",
+          "boardRef": "ATOLOOP_COIL"
         }
       ],
       "channelFrames": {
@@ -13197,6 +13294,57 @@ var BOARDINFO_RAW = {
             ]
           }
         }
+      },
+      {
+        "id": "ATOLOOP_COIL",
+        "name": "ATO Loop 코일 (레일 사이 루프선)",
+        "function": "레일 사이에 설치하는 ATO Loop 루프선(코일). 거리 동기화에 쓰이며 ATO Loop C/B박스(변압기·콘덴서 조정)를 거쳐 ATO 제어함과 연결된다. 루프선은 한 레일 옆에서 시작해 두 레일 사이를 가로질러 반대편 레일 옆으로 이어진다(사진: 건넘 구간은 금속 보호관으로 지남).",
+        "relatedMeasurePoints": [
+          "MP_LZB_LOOPCOIL",
+          "MP_ATO_LOOP_CURRENT"
+        ],
+        "relatedFaultCases": [
+          "FLT_ATO_01"
+        ],
+        "forcePhotoSection": true,
+        "spec": {
+          "루프 길이(편성별)": "본선 10량 편성 200m±2cm / 신정지선 6량 160m±2cm / 성수지선 4량 125m±2cm (지침서 p.213)",
+          "루프 구성(그림)": "5m·2.5m 구간을 이어 붙이고 가운데 30m 구간 1개를 둔 모양 (지침서 p.213 현장 구성도)",
+          "C/B 설치 방식": "레일변 설치: C.B를 레일 옆에 두고 루프선이 두 레일 사이를 건너감, 레일 중앙선에서 C.B까지 최대 3.5m / 레일중앙 설치: C.B를 침목에서 0.5~1m 떨어진 레일 중앙에 둠 / 두 경우 모두 ATO 제어함~C.B 최대 500m (지침서 p.214)",
+          "주파수": "서울 2호선 4.75·5.25·6.25kHz (ATO Loop 튜닝 매뉴얼 p.8)",
+          "루프 전류": "정상 1.6~1.9Aeff. 1.9 초과 시 케이블 보상저항 RKA(0~400Ω)를 늘리고, 1.6 미만이면 줄임 (튜닝 매뉴얼 p.7)",
+          "케이블": "허용: shielded star four-stranded / shielded core stranded 철도신호 케이블 (튜닝 매뉴얼 p.6). 변압기 비율 n 표는 케이블 4×0.9mm p.11, 1×4×1.4mm p.12"
+        },
+        "note": "[2026-10-04 신규] 지침서 p.213~214와 ATO Loop 튜닝 매뉴얼로 구성. 실물 사진 2장(사용자 제공)은 프로젝트에 저장하지 않으며 규격 자료 외 새 정보는 없음(건넘 구간 보호관 확인). 코일 매설 규격·코일 손상 점검 기준은 시설물검사표준안 측정지점(MP_LZB_LOOPCOIL) 참고.",
+        "source": {
+          "doc": "2호선 신호업무 지침서 p.213~214 + ATO Loop 튜닝 매뉴얼 + 사용자 사진(2026-10-04)"
+        },
+        "guidePages": [
+          {
+            "doc": "2호선_신호업무_지침서",
+            "pages": [
+              213,
+              214
+            ],
+            "note": "ATO Loop 현장 구성도 / C/B 현장 구성도(사용자 지정 2026-10-04)"
+          },
+          {
+            "doc": "ATO_Loop_튜닝_매뉴얼",
+            "pages": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "note": "루프 용도·케이블·전류 조정·주파수별 C·n 표·RKA(2026-10-04)"
+          }
+        ]
       }
     ],
     "TWC": [
@@ -14248,7 +14396,8 @@ var BOARDINFO_RAW = {
     "2026-10-03(S11): LZB_FAN — ATP 캐비닛 Disposition 도면의 Ventilator(팬) 표기 쪽 27쪽 연결 추가.",
     "2026-10-03(S11): UPS_RECTIFIER_UNIT 구성개요 쪽 14쪽 연결 제거(개요에는 \"UPS messages\"만 있고 유닛 표기 없음, 이미지 확인).",
     "2026-10-03(S11): 기능·연결 기준 재검색 — LZB_SVK2402(ATP SV-24V 랙·±60V 인입 쪽), LZB_FTGS_DISTRIBUTOR(ATP→FTGS 캐비닛 연결도), FTGS_GF_RELAY_PCB(계전기 보드 S25533-B36-A7 쪽) 도면 연결 및 매뉴얼·지침서 쪽 연결. UPS_* 는 자료 없음으로 비움.",
-    "2026-10-03(S11): UPS_* 3개 보드 도면 연결 4건 비움(사용자 확인: 관련 자료 없음)."
+    "2026-10-03(S11): UPS_* 3개 보드 도면 연결 4건 비움(사용자 확인: 관련 자료 없음).",
+    "2026-10-04(S14): ATOLOOP_COIL(ATO Loop 코일) 보드 정보 신규 — 지침서 p.213~214·튜닝 매뉴얼 연결, 현장설비 탭 코일 행과 연결."
   ]
 };
 var MPOINTS = {
@@ -14889,7 +15038,8 @@ var MPOINTS = {
       ],
       "source": {
         "doc": "시설물검사표준안"
-      }
+      },
+      "boardRef": "ATOLOOP_COIL"
     },
     {
       "id": "MP_LZB_TEMP",

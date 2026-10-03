@@ -636,7 +636,8 @@
       ],
       "source": {
         "doc": "시설물검사표준안"
-      }
+      },
+      "boardRef": "ATOLOOP_COIL"
     },
     {
       "id": "MP_LZB_TEMP",
