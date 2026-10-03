@@ -65,6 +65,7 @@ def base():
     keep = {k: v for k, v in g.items() if not k.startswith('ct')}
     # E·F 선(두꺼운 이중선)은 x=207.8 에서 끝나고 C1/C2 피벗은 14pt 위에 떠 있어 -> 세로선으로 이어 붙임
     join = ''.join(line((207.8, py), (207.8, wy), 1.5) for py, wy in ((110.0, 124.2), (170.0, 183.6)))
+    join += line((213.6, 341.4), (213.5, 353.5), 1.4)  # 핀 1 으로 가는 선(접점 영역에 묻혀 끊김)
     return render(keep) + join, W, H, hidden
 
 
@@ -113,7 +114,7 @@ STYLE = ('<style>.fsw-t{font:6px sans-serif;fill:#222}.fsw-h{font:bold 9px sans-
          '.fsw-flowg{display:none}svg.wsv-ctrl .fsw-flowg{display:inline}'
          '.fsw-flowbase{fill:none;stroke-width:3.4;stroke-opacity:.16;stroke-linejoin:round}'
          '.fsw-flow{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:.1 9;animation:fswflow .9s linear infinite}'
-         '.fsw-fb-ctrl,.fsw-fl-ctrl{stroke:#2563eb}@keyframes fswflow{to{stroke-dashoffset:-9.1}}'
+         '.fsw-fb-ctrl,.fsw-fl-ctrl{stroke:#2563eb}.fsw-fb-ind,.fsw-fl-ind{stroke:#16a34a}.fsw-fb-mot,.fsw-fl-mot{stroke:#dc2626}@keyframes fswflow{to{stroke-dashoffset:-9.1}}'
          '@media (prefers-reduced-motion:reduce){.fsw-flow{animation:none;stroke-dasharray:none}}</style>')
 
 
@@ -122,6 +123,8 @@ def single_svg():
     b, W, H, _ = base()
     ov = wiring_anim.overlay(wiring_anim.build())
     states = ''.join(state_group(k) for k in SID)
+    import wiring_flow
+    ov += wiring_flow.overlay(wiring_flow.single_flows())
     Wt, Ht = W + 20, H + 20
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><g id="wiring" transform="translate(10,10)">{b}{states}{ov}</g></svg>')
@@ -144,6 +147,8 @@ def double_svg():
     dy = H + gap
     Wt, Ht = W + 70, 2 * H + gap + 40
     X = 838.5 + 10
+    import wiring_flow
+    flows = wiring_flow.overlay(wiring_flow.double_flows(W, dy, LINK_Y))
     link = ''
     for k, lst in LINKS.items():
         o = ''
@@ -157,7 +162,7 @@ def double_svg():
     return (f'<svg width="{Wt*1.3:.0f}" height="{Ht*1.3:.0f}" viewBox="0 0 {Wt:.0f} {Ht:.0f}" xmlns="http://www.w3.org/2000/svg">{STYLE}'
             f'<rect width="{Wt:.0f}" height="{Ht:.0f}" fill="#fff"/><defs><g id="wcore">{b}</g></defs>{lab}'
             f'<g id="wiring-A" transform="translate(10,10)"><use href="#wcore"/>{states}{ov}</g>'
-            f'<g id="wiring-B" transform="translate(10,{10+dy:.0f})"><use href="#wcore"/>{states}{ov}</g>{link}</svg>')
+            f'<g id="wiring-B" transform="translate(10,{10+dy:.0f})"><use href="#wcore"/>{states}{ov}</g>{link}{flows}</svg>')
 
 
 def write_all(out_dir):

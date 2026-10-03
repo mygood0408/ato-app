@@ -18,6 +18,8 @@ def segments():
         a = m.group(2)
         if 'clip-rule' in a or 'stroke=' not in a or 'fill="none"' not in a:
             continue
+        if 'stroke="#000000"' not in a:  # 빨강(전동기 틀·X 표시)·파랑 주석선은 배선이 아님
+            continue
         w = float(re.search(r'stroke-width="([\d.]+)"', a).group(1))
         if w < 0.9:
             continue
