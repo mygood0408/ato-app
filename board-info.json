@@ -68,18 +68,6 @@
         "relatedDrawings": {
           "SIN1": [
             {
-              "doc": "ATP_HW_Design_SIN1",
-              "pages": [
-                121,
-                122,
-                123,
-                222,
-                223,
-                224
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SIN1",
               "pages": [
                 189,
@@ -92,15 +80,6 @@
             }
           ],
           "SIN2": [
-            {
-              "doc": "ATP_HW_Design_SIN2",
-              "pages": [
-                95,
-                96,
-                97
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_SIN2",
               "pages": [
@@ -115,18 +94,6 @@
           ],
           "EUL": [
             {
-              "doc": "ATP_HW_Design_EUL",
-              "pages": [
-                157,
-                158,
-                159,
-                165,
-                166,
-                167
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_EUL",
               "pages": [
                 197,
@@ -139,15 +106,6 @@
             }
           ],
           "GCD": [
-            {
-              "doc": "ATP_HW_Design_GCD",
-              "pages": [
-                79,
-                80,
-                81
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_GCD",
               "pages": [
@@ -162,18 +120,6 @@
           ],
           "GYO": [
             {
-              "doc": "ATP_HW_Design_GYO",
-              "pages": [
-                130,
-                131,
-                132,
-                138,
-                139,
-                140
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_GYO",
               "pages": [
                 155,
@@ -187,18 +133,6 @@
           ],
           "HON": [
             {
-              "doc": "ATP_HW_Design_HON",
-              "pages": [
-                150,
-                151,
-                152,
-                158,
-                159,
-                160
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_HON",
               "pages": [
                 182,
@@ -210,30 +144,8 @@
               "confirmed": true
             }
           ],
-          "SCD": [
-            {
-              "doc": "ATP_HW_Design_SCD",
-              "pages": [
-                27,
-                28,
-                29
-              ],
-              "totalPagesFound": 3
-            }
-          ],
+          "SCD": [],
           "SNU1": [
-            {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 6
-            },
             {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
@@ -248,18 +160,6 @@
           ],
           "SNU2": [
             {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
                 118,
@@ -272,15 +172,6 @@
             }
           ],
           "SOL": [
-            {
-              "doc": "ATP_HW_Design_SOL",
-              "pages": [
-                68,
-                69,
-                70
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_SOL",
               "pages": [
@@ -295,21 +186,6 @@
           ],
           "SON1": [
             {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                151,
-                152,
-                153,
-                253,
-                254,
-                255
-              ],
-              "totalPagesFound": 9
-            },
-            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 238,
@@ -322,21 +198,6 @@
             }
           ],
           "SON2": [
-            {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                151,
-                152,
-                153,
-                253,
-                254,
-                255
-              ],
-              "totalPagesFound": 9
-            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -351,18 +212,6 @@
           ],
           "SPO1": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                180,
-                181,
-                182
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 145,
@@ -376,18 +225,6 @@
           ],
           "SPO2": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                180,
-                181,
-                182
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
                 154,
@@ -400,15 +237,6 @@
             }
           ],
           "YAN": [
-            {
-              "doc": "ATP_HW_Design_YAN",
-              "pages": [
-                102,
-                103,
-                104
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_YAN",
               "pages": [
@@ -674,18 +502,6 @@
         "relatedDrawings": {
           "SIN1": [
             {
-              "doc": "ATP_HW_Design_SIN1",
-              "pages": [
-                121,
-                122,
-                123,
-                222,
-                223,
-                224
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SIN1",
               "pages": [
                 189,
@@ -698,15 +514,6 @@
             }
           ],
           "SIN2": [
-            {
-              "doc": "ATP_HW_Design_SIN2",
-              "pages": [
-                95,
-                96,
-                97
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_SIN2",
               "pages": [
@@ -721,18 +528,6 @@
           ],
           "EUL": [
             {
-              "doc": "ATP_HW_Design_EUL",
-              "pages": [
-                157,
-                158,
-                159,
-                165,
-                166,
-                167
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_EUL",
               "pages": [
                 197,
@@ -745,15 +540,6 @@
             }
           ],
           "GCD": [
-            {
-              "doc": "ATP_HW_Design_GCD",
-              "pages": [
-                79,
-                80,
-                81
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_GCD",
               "pages": [
@@ -768,18 +554,6 @@
           ],
           "GYO": [
             {
-              "doc": "ATP_HW_Design_GYO",
-              "pages": [
-                130,
-                131,
-                132,
-                138,
-                139,
-                140
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_GYO",
               "pages": [
                 155,
@@ -793,18 +567,6 @@
           ],
           "HON": [
             {
-              "doc": "ATP_HW_Design_HON",
-              "pages": [
-                150,
-                151,
-                152,
-                158,
-                159,
-                160
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_HON",
               "pages": [
                 182,
@@ -816,30 +578,8 @@
               "confirmed": true
             }
           ],
-          "SCD": [
-            {
-              "doc": "ATP_HW_Design_SCD",
-              "pages": [
-                27,
-                28,
-                29
-              ],
-              "totalPagesFound": 3
-            }
-          ],
+          "SCD": [],
           "SNU1": [
-            {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 6
-            },
             {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
@@ -854,18 +594,6 @@
           ],
           "SNU2": [
             {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
                 118,
@@ -878,15 +606,6 @@
             }
           ],
           "SOL": [
-            {
-              "doc": "ATP_HW_Design_SOL",
-              "pages": [
-                68,
-                69,
-                70
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_SOL",
               "pages": [
@@ -901,21 +620,6 @@
           ],
           "SON1": [
             {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                151,
-                152,
-                153,
-                253,
-                254,
-                255
-              ],
-              "totalPagesFound": 9
-            },
-            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 238,
@@ -928,21 +632,6 @@
             }
           ],
           "SON2": [
-            {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                151,
-                152,
-                153,
-                253,
-                254,
-                255
-              ],
-              "totalPagesFound": 9
-            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -957,18 +646,6 @@
           ],
           "SPO1": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                180,
-                181,
-                182
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 145,
@@ -982,18 +659,6 @@
           ],
           "SPO2": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                180,
-                181,
-                182
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
                 154,
@@ -1006,15 +671,6 @@
             }
           ],
           "YAN": [
-            {
-              "doc": "ATP_HW_Design_YAN",
-              "pages": [
-                102,
-                103,
-                104
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_YAN",
               "pages": [
@@ -1127,20 +783,6 @@
         "relatedDrawings": {
           "SIN1": [
             {
-              "doc": "ATP_HW_Design_SIN1",
-              "pages": [
-                121,
-                122,
-                123,
-                127,
-                222,
-                223,
-                224,
-                228
-              ],
-              "totalPagesFound": 8
-            },
-            {
               "doc": "SICAS_HW_Design_SIN1",
               "pages": [
                 14,
@@ -1161,16 +803,6 @@
           ],
           "SIN2": [
             {
-              "doc": "ATP_HW_Design_SIN2",
-              "pages": [
-                95,
-                96,
-                97
-              ],
-              "totalPagesFound": 3,
-              "note": "SIN2 텍스트가 SIN1의 일부뿐 · 확인필요 (토큰 차집합 표 기준)"
-            },
-            {
               "doc": "SICAS_HW_Design_SIN2",
               "pages": [
                 8,
@@ -1188,20 +820,6 @@
             }
           ],
           "EUL": [
-            {
-              "doc": "ATP_HW_Design_EUL",
-              "pages": [
-                157,
-                158,
-                159,
-                163,
-                165,
-                166,
-                167,
-                171
-              ],
-              "totalPagesFound": 8
-            },
             {
               "doc": "SICAS_HW_Design_EUL",
               "pages": [
@@ -1222,16 +840,6 @@
             }
           ],
           "GCD": [
-            {
-              "doc": "ATP_HW_Design_GCD",
-              "pages": [
-                79,
-                80,
-                81,
-                85
-              ],
-              "totalPagesFound": 4
-            },
             {
               "doc": "SICAS_HW_Design_GCD",
               "pages": [
@@ -1255,20 +863,6 @@
           ],
           "GYO": [
             {
-              "doc": "ATP_HW_Design_GYO",
-              "pages": [
-                130,
-                131,
-                132,
-                136,
-                138,
-                139,
-                140,
-                144
-              ],
-              "totalPagesFound": 8
-            },
-            {
               "doc": "SICAS_HW_Design_GYO",
               "pages": [
                 11,
@@ -1287,20 +881,6 @@
             }
           ],
           "HON": [
-            {
-              "doc": "ATP_HW_Design_HON",
-              "pages": [
-                150,
-                151,
-                152,
-                156,
-                158,
-                159,
-                160,
-                164
-              ],
-              "totalPagesFound": 8
-            },
             {
               "doc": "SICAS_HW_Design_HON",
               "pages": [
@@ -1324,16 +904,6 @@
           ],
           "SCD": [
             {
-              "doc": "ATP_HW_Design_SCD",
-              "pages": [
-                27,
-                28,
-                29,
-                33
-              ],
-              "totalPagesFound": 4
-            },
-            {
               "doc": "SICAS_HW_Design_SCD",
               "pages": [
                 5,
@@ -1344,20 +914,6 @@
             }
           ],
           "SNU1": [
-            {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                109,
-                198,
-                199,
-                200,
-                204
-              ],
-              "totalPagesFound": 8
-            },
             {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
@@ -1378,20 +934,6 @@
           ],
           "SNU2": [
             {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                109,
-                198,
-                199,
-                200,
-                204
-              ],
-              "totalPagesFound": 8
-            },
-            {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
                 8,
@@ -1409,16 +951,6 @@
             }
           ],
           "SOL": [
-            {
-              "doc": "ATP_HW_Design_SOL",
-              "pages": [
-                68,
-                69,
-                70,
-                74
-              ],
-              "totalPagesFound": 4
-            },
             {
               "doc": "SICAS_HW_Design_SOL",
               "pages": [
@@ -1439,24 +971,6 @@
             }
           ],
           "SON1": [
-            {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                149,
-                151,
-                152,
-                153,
-                157,
-                253,
-                254,
-                255,
-                259
-              ],
-              "totalPagesFound": 12
-            },
             {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
@@ -1479,24 +993,6 @@
           ],
           "SON2": [
             {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                149,
-                151,
-                152,
-                153,
-                157,
-                253,
-                254,
-                255,
-                259
-              ],
-              "totalPagesFound": 12
-            },
-            {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
                 8,
@@ -1514,20 +1010,6 @@
             }
           ],
           "SPO1": [
-            {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                68,
-                180,
-                181,
-                182,
-                186
-              ],
-              "totalPagesFound": 8
-            },
             {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
@@ -1550,20 +1032,6 @@
           ],
           "SPO2": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                68,
-                180,
-                181,
-                182,
-                186
-              ],
-              "totalPagesFound": 8
-            },
-            {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
                 10,
@@ -1582,16 +1050,6 @@
             }
           ],
           "YAN": [
-            {
-              "doc": "ATP_HW_Design_YAN",
-              "pages": [
-                102,
-                103,
-                104,
-                108
-              ],
-              "totalPagesFound": 4
-            },
             {
               "doc": "SICAS_HW_Design_YAN",
               "pages": [
@@ -1640,18 +1098,6 @@
         "relatedDrawings": {
           "SIN1": [
             {
-              "doc": "ATP_HW_Design_SIN1",
-              "pages": [
-                121,
-                122,
-                123,
-                222,
-                223,
-                224
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SIN1",
               "pages": [
                 5,
@@ -1696,30 +1142,9 @@
               ],
               "totalPagesFound": 63,
               "confirmed": true
-            },
-            {
-              "doc": "ATP_HW_Design_SIN2",
-              "pages": [
-                95,
-                96,
-                97
-              ],
-              "totalPagesFound": 3
             }
           ],
           "EUL": [
-            {
-              "doc": "ATP_HW_Design_EUL",
-              "pages": [
-                157,
-                158,
-                159,
-                165,
-                166,
-                167
-              ],
-              "totalPagesFound": 6
-            },
             {
               "doc": "SICAS_HW_Design_EUL",
               "pages": [
@@ -1745,15 +1170,6 @@
           ],
           "GCD": [
             {
-              "doc": "ATP_HW_Design_GCD",
-              "pages": [
-                79,
-                80,
-                81
-              ],
-              "totalPagesFound": 3
-            },
-            {
               "doc": "SICAS_HW_Design_GCD",
               "pages": [
                 6,
@@ -1777,18 +1193,6 @@
             }
           ],
           "GYO": [
-            {
-              "doc": "ATP_HW_Design_GYO",
-              "pages": [
-                130,
-                131,
-                132,
-                138,
-                139,
-                140
-              ],
-              "totalPagesFound": 6
-            },
             {
               "doc": "SICAS_HW_Design_GYO",
               "pages": [
@@ -1814,18 +1218,6 @@
           ],
           "HON": [
             {
-              "doc": "ATP_HW_Design_HON",
-              "pages": [
-                150,
-                151,
-                152,
-                158,
-                159,
-                160
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_HON",
               "pages": [
                 4,
@@ -1848,30 +1240,8 @@
               "confirmed": true
             }
           ],
-          "SCD": [
-            {
-              "doc": "ATP_HW_Design_SCD",
-              "pages": [
-                27,
-                28,
-                29
-              ],
-              "totalPagesFound": 3
-            }
-          ],
+          "SCD": [],
           "SNU1": [
-            {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 6
-            },
             {
               "doc": "SICAS_HW_Design_SNU1",
               "pages": [
@@ -1897,18 +1267,6 @@
           ],
           "SNU2": [
             {
-              "doc": "ATP_HW_Design_SNU",
-              "pages": [
-                103,
-                104,
-                105,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SNU2",
               "pages": [
                 3,
@@ -1932,15 +1290,6 @@
             }
           ],
           "SOL": [
-            {
-              "doc": "ATP_HW_Design_SOL",
-              "pages": [
-                68,
-                69,
-                70
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_SOL",
               "pages": [
@@ -1966,21 +1315,6 @@
           ],
           "SON1": [
             {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                151,
-                152,
-                153,
-                253,
-                254,
-                255
-              ],
-              "totalPagesFound": 9
-            },
-            {
               "doc": "SICAS_HW_Design_SON1",
               "pages": [
                 6,
@@ -2004,21 +1338,6 @@
             }
           ],
           "SON2": [
-            {
-              "doc": "ATP_HW_Design_SON",
-              "pages": [
-                143,
-                144,
-                145,
-                151,
-                152,
-                153,
-                253,
-                254,
-                255
-              ],
-              "totalPagesFound": 9
-            },
             {
               "doc": "SICAS_HW_Design_SON2",
               "pages": [
@@ -2044,18 +1363,6 @@
           ],
           "SPO1": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                180,
-                181,
-                182
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SPO1",
               "pages": [
                 4,
@@ -2080,18 +1387,6 @@
           ],
           "SPO2": [
             {
-              "doc": "ATP_HW_Design_SPO",
-              "pages": [
-                62,
-                63,
-                64,
-                180,
-                181,
-                182
-              ],
-              "totalPagesFound": 6
-            },
-            {
               "doc": "SICAS_HW_Design_SPO2",
               "pages": [
                 4,
@@ -2115,15 +1410,6 @@
             }
           ],
           "YAN": [
-            {
-              "doc": "ATP_HW_Design_YAN",
-              "pages": [
-                102,
-                103,
-                104
-              ],
-              "totalPagesFound": 3
-            },
             {
               "doc": "SICAS_HW_Design_YAN",
               "pages": [
@@ -4992,16 +4278,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN1",
-              "pages": [
-                189,
-                190,
-                191,
-                192
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SIN2": [
@@ -5014,16 +4290,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                108,
-                109,
-                110,
-                111
-              ],
-              "totalPagesFound": 4
             }
           ],
           "EUL": [
@@ -5039,16 +4305,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_EUL",
-              "pages": [
-                197,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 4
             }
           ],
           "GCD": [
@@ -5061,16 +4317,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GCD",
-              "pages": [
-                258,
-                259,
-                260,
-                261
-              ],
-              "totalPagesFound": 4
             }
           ],
           "GYO": [
@@ -5086,16 +4332,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GYO",
-              "pages": [
-                155,
-                156,
-                157,
-                158
-              ],
-              "totalPagesFound": 4
             }
           ],
           "HON": [
@@ -5111,16 +4347,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_HON",
-              "pages": [
-                182,
-                183,
-                184,
-                185
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SCD": [
@@ -5148,16 +4374,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU1",
-              "pages": [
-                156,
-                157,
-                158,
-                159
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SNU2": [
@@ -5173,16 +4389,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU2",
-              "pages": [
-                118,
-                119,
-                120,
-                121
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SOL": [
@@ -5195,16 +4401,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SOL",
-              "pages": [
-                150,
-                151,
-                152,
-                153
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SON1": [
@@ -5223,16 +4419,6 @@
               ],
               "totalPagesFound": 9,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON1",
-              "pages": [
-                238,
-                239,
-                240,
-                241
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SON2": [
@@ -5251,16 +4437,6 @@
               ],
               "totalPagesFound": 9,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON2",
-              "pages": [
-                108,
-                109,
-                110,
-                111
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SPO1": [
@@ -5276,16 +4452,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO1",
-              "pages": [
-                145,
-                146,
-                147,
-                148
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SPO2": [
@@ -5301,16 +4467,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO2",
-              "pages": [
-                154,
-                155,
-                156,
-                157
-              ],
-              "totalPagesFound": 4
             }
           ],
           "YAN": [
@@ -5323,16 +4479,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_YAN",
-              "pages": [
-                231,
-                232,
-                233,
-                234
-              ],
-              "totalPagesFound": 4
             }
           ]
         }
@@ -5894,16 +5040,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN1",
-              "pages": [
-                189,
-                190,
-                191,
-                192
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SIN2": [
@@ -5916,16 +5052,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                108,
-                109,
-                110,
-                111
-              ],
-              "totalPagesFound": 4
             }
           ],
           "EUL": [
@@ -5941,16 +5067,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_EUL",
-              "pages": [
-                197,
-                198,
-                199,
-                200
-              ],
-              "totalPagesFound": 4
             }
           ],
           "GCD": [
@@ -5963,16 +5079,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GCD",
-              "pages": [
-                258,
-                259,
-                260,
-                261
-              ],
-              "totalPagesFound": 4
             }
           ],
           "GYO": [
@@ -5988,16 +5094,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GYO",
-              "pages": [
-                155,
-                156,
-                157,
-                158
-              ],
-              "totalPagesFound": 4
             }
           ],
           "HON": [
@@ -6013,16 +5109,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_HON",
-              "pages": [
-                182,
-                183,
-                184,
-                185
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SCD": [
@@ -6050,16 +5136,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU1",
-              "pages": [
-                156,
-                157,
-                158,
-                159
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SNU2": [
@@ -6075,16 +5151,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU2",
-              "pages": [
-                118,
-                119,
-                120,
-                121
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SOL": [
@@ -6097,16 +5163,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SOL",
-              "pages": [
-                150,
-                151,
-                152,
-                153
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SON1": [
@@ -6125,16 +5181,6 @@
               ],
               "totalPagesFound": 9,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON1",
-              "pages": [
-                238,
-                239,
-                240,
-                241
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SON2": [
@@ -6153,16 +5199,6 @@
               ],
               "totalPagesFound": 9,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON2",
-              "pages": [
-                108,
-                109,
-                110,
-                111
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SPO1": [
@@ -6178,16 +5214,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO1",
-              "pages": [
-                145,
-                146,
-                147,
-                148
-              ],
-              "totalPagesFound": 4
             }
           ],
           "SPO2": [
@@ -6203,16 +5229,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO2",
-              "pages": [
-                154,
-                155,
-                156,
-                157
-              ],
-              "totalPagesFound": 4
             }
           ],
           "YAN": [
@@ -6225,16 +5241,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_YAN",
-              "pages": [
-                231,
-                232,
-                233,
-                234
-              ],
-              "totalPagesFound": 4
             }
           ]
         }
@@ -6407,23 +5413,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN1",
-              "pages": [
-                14,
-                15,
-                183,
-                184,
-                185,
-                186,
-                189,
-                190,
-                191,
-                192,
-                194
-              ],
-              "totalPagesFound": 11
             }
           ],
           "SIN2": [
@@ -6436,22 +5425,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                8,
-                9,
-                104,
-                105,
-                108,
-                109,
-                110,
-                111,
-                113
-              ],
-              "totalPagesFound": 9,
-              "note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
             }
           ],
           "EUL": [
@@ -6469,23 +5442,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_EUL",
-              "pages": [
-                14,
-                15,
-                191,
-                192,
-                193,
-                194,
-                197,
-                198,
-                199,
-                200,
-                202
-              ],
-              "totalPagesFound": 11
             }
           ],
           "GCD": [
@@ -6499,25 +5455,6 @@
               ],
               "totalPagesFound": 4,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GCD",
-              "pages": [
-                18,
-                21,
-                250,
-                251,
-                252,
-                253,
-                254,
-                255,
-                258,
-                259,
-                260,
-                261,
-                263
-              ],
-              "totalPagesFound": 13
             }
           ],
           "GYO": [
@@ -6535,22 +5472,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GYO",
-              "pages": [
-                11,
-                12,
-                150,
-                151,
-                152,
-                155,
-                156,
-                157,
-                158,
-                160
-              ],
-              "totalPagesFound": 10
             }
           ],
           "HON": [
@@ -6568,25 +5489,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_HON",
-              "pages": [
-                13,
-                14,
-                15,
-                176,
-                177,
-                178,
-                179,
-                182,
-                183,
-                184,
-                185,
-                187,
-                236
-              ],
-              "totalPagesFound": 13
             }
           ],
           "SCD": [
@@ -6600,14 +5502,6 @@
               ],
               "totalPagesFound": 4,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SCD",
-              "pages": [
-                5,
-                6
-              ],
-              "totalPagesFound": 2
             }
           ],
           "SNU1": [
@@ -6625,22 +5519,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU1",
-              "pages": [
-                12,
-                13,
-                151,
-                152,
-                153,
-                156,
-                157,
-                158,
-                159,
-                161
-              ],
-              "totalPagesFound": 10
             }
           ],
           "SNU2": [
@@ -6658,21 +5536,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU2",
-              "pages": [
-                8,
-                9,
-                114,
-                115,
-                118,
-                119,
-                120,
-                121,
-                123
-              ],
-              "totalPagesFound": 9
             }
           ],
           "SOL": [
@@ -6686,23 +5549,6 @@
               ],
               "totalPagesFound": 4,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SOL",
-              "pages": [
-                12,
-                14,
-                144,
-                145,
-                146,
-                147,
-                150,
-                151,
-                152,
-                153,
-                155
-              ],
-              "totalPagesFound": 11
             }
           ],
           "SON1": [
@@ -6724,24 +5570,6 @@
               ],
               "totalPagesFound": 12,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON1",
-              "pages": [
-                16,
-                18,
-                231,
-                232,
-                233,
-                234,
-                235,
-                238,
-                239,
-                240,
-                241,
-                243
-              ],
-              "totalPagesFound": 12
             }
           ],
           "SON2": [
@@ -6763,21 +5591,6 @@
               ],
               "totalPagesFound": 12,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON2",
-              "pages": [
-                8,
-                9,
-                104,
-                105,
-                108,
-                109,
-                110,
-                111,
-                113
-              ],
-              "totalPagesFound": 9
             }
           ],
           "SPO1": [
@@ -6795,24 +5608,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO1",
-              "pages": [
-                13,
-                15,
-                16,
-                139,
-                140,
-                145,
-                146,
-                147,
-                148,
-                150,
-                151,
-                201
-              ],
-              "totalPagesFound": 12
             }
           ],
           "SPO2": [
@@ -6830,22 +5625,6 @@
               ],
               "totalPagesFound": 8,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO2",
-              "pages": [
-                10,
-                12,
-                149,
-                150,
-                151,
-                154,
-                155,
-                156,
-                157,
-                159
-              ],
-              "totalPagesFound": 10
             }
           ],
           "YAN": [
@@ -6859,26 +5638,6 @@
               ],
               "totalPagesFound": 4,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_YAN",
-              "pages": [
-                16,
-                19,
-                220,
-                221,
-                222,
-                223,
-                224,
-                225,
-                231,
-                232,
-                233,
-                234,
-                236,
-                237
-              ],
-              "totalPagesFound": 14
             }
           ]
         }
@@ -7203,52 +5962,9 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SIN1",
-              "pages": [
-                5,
-                6,
-                127,
-                128,
-                129,
-                130,
-                131,
-                132,
-                133,
-                134,
-                135,
-                136,
-                137,
-                138,
-                139
-              ],
-              "totalPagesFound": 65
             }
           ],
           "SIN2": [
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                3,
-                4,
-                50,
-                51,
-                52,
-                53,
-                54,
-                55,
-                56,
-                57,
-                58,
-                59,
-                60,
-                61,
-                62
-              ],
-              "totalPagesFound": 63,
-              "note": "단자번호만 다름 · 확인필요 (토큰 차집합 표 기준)"
-            },
             {
               "doc": "ATP_HW_Design_SIN2",
               "pages": [
@@ -7273,27 +5989,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_EUL",
-              "pages": [
-                5,
-                6,
-                7,
-                136,
-                137,
-                138,
-                139,
-                140,
-                141,
-                142,
-                143,
-                144,
-                145,
-                146,
-                147
-              ],
-              "totalPagesFound": 65
             }
           ],
           "GCD": [
@@ -7306,27 +6001,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GCD",
-              "pages": [
-                6,
-                7,
-                8,
-                195,
-                196,
-                197,
-                198,
-                199,
-                200,
-                201,
-                202,
-                203,
-                204,
-                205,
-                206
-              ],
-              "totalPagesFound": 65
             }
           ],
           "GYO": [
@@ -7342,27 +6016,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_GYO",
-              "pages": [
-                4,
-                5,
-                6,
-                94,
-                95,
-                96,
-                97,
-                98,
-                99,
-                100,
-                101,
-                102,
-                103,
-                104,
-                105
-              ],
-              "totalPagesFound": 66
             }
           ],
           "HON": [
@@ -7378,27 +6031,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_HON",
-              "pages": [
-                4,
-                5,
-                6,
-                121,
-                122,
-                123,
-                124,
-                125,
-                126,
-                127,
-                128,
-                129,
-                130,
-                131,
-                132
-              ],
-              "totalPagesFound": 65
             }
           ],
           "SCD": [
@@ -7426,27 +6058,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU1",
-              "pages": [
-                4,
-                5,
-                6,
-                95,
-                96,
-                97,
-                98,
-                99,
-                100,
-                101,
-                102,
-                103,
-                104,
-                105,
-                106
-              ],
-              "totalPagesFound": 66
             }
           ],
           "SNU2": [
@@ -7462,27 +6073,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SNU2",
-              "pages": [
-                3,
-                4,
-                5,
-                60,
-                61,
-                62,
-                63,
-                64,
-                65,
-                66,
-                67,
-                68,
-                69,
-                70,
-                71
-              ],
-              "totalPagesFound": 64
             }
           ],
           "SOL": [
@@ -7495,27 +6085,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SOL",
-              "pages": [
-                4,
-                5,
-                89,
-                90,
-                91,
-                92,
-                93,
-                94,
-                95,
-                96,
-                97,
-                98,
-                99,
-                100,
-                101
-              ],
-              "totalPagesFound": 64
             }
           ],
           "SON1": [
@@ -7534,27 +6103,6 @@
               ],
               "totalPagesFound": 9,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON1",
-              "pages": [
-                6,
-                7,
-                8,
-                175,
-                176,
-                177,
-                178,
-                179,
-                180,
-                181,
-                182,
-                183,
-                184,
-                185,
-                186
-              ],
-              "totalPagesFound": 66
             }
           ],
           "SON2": [
@@ -7573,27 +6121,6 @@
               ],
               "totalPagesFound": 9,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SON2",
-              "pages": [
-                3,
-                4,
-                50,
-                51,
-                52,
-                53,
-                54,
-                55,
-                56,
-                57,
-                58,
-                59,
-                60,
-                61,
-                62
-              ],
-              "totalPagesFound": 63
             }
           ],
           "SPO1": [
@@ -7609,27 +6136,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO1",
-              "pages": [
-                4,
-                5,
-                83,
-                84,
-                85,
-                86,
-                87,
-                88,
-                89,
-                90,
-                91,
-                92,
-                93,
-                94,
-                95
-              ],
-              "totalPagesFound": 65
             }
           ],
           "SPO2": [
@@ -7645,27 +6151,6 @@
               ],
               "totalPagesFound": 6,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_SPO2",
-              "pages": [
-                4,
-                5,
-                6,
-                95,
-                96,
-                97,
-                98,
-                99,
-                100,
-                101,
-                102,
-                103,
-                104,
-                105,
-                106
-              ],
-              "totalPagesFound": 64
             }
           ],
           "YAN": [
@@ -7678,27 +6163,6 @@
               ],
               "totalPagesFound": 3,
               "confirmed": true
-            },
-            {
-              "doc": "SICAS_HW_Design_YAN",
-              "pages": [
-                6,
-                7,
-                165,
-                166,
-                167,
-                168,
-                169,
-                170,
-                171,
-                172,
-                173,
-                174,
-                175,
-                176,
-                177
-              ],
-              "totalPagesFound": 64
             }
           ]
         }
@@ -8870,133 +7334,21 @@
           "section": "LZB700M 각 보드별 기능 (p.99~113)"
         },
         "relatedDrawings": {
-          "SIN1": [
-            {
-              "doc": "SICAS_HW_Design_SIN1",
-              "pages": [
-                193
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SIN2": [
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                112
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "EUL": [
-            {
-              "doc": "SICAS_HW_Design_EUL",
-              "pages": [
-                201
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "GCD": [
-            {
-              "doc": "SICAS_HW_Design_GCD",
-              "pages": [
-                262
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "GYO": [
-            {
-              "doc": "SICAS_HW_Design_GYO",
-              "pages": [
-                159
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "HON": [
-            {
-              "doc": "SICAS_HW_Design_HON",
-              "pages": [
-                186
-              ],
-              "totalPagesFound": 1
-            }
-          ],
+          "SIN1": [],
+          "SIN2": [],
+          "EUL": [],
+          "GCD": [],
+          "GYO": [],
+          "HON": [],
           "SCD": [],
-          "SNU1": [
-            {
-              "doc": "SICAS_HW_Design_SNU1",
-              "pages": [
-                160
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SNU2": [
-            {
-              "doc": "SICAS_HW_Design_SNU2",
-              "pages": [
-                122
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SOL": [
-            {
-              "doc": "SICAS_HW_Design_SOL",
-              "pages": [
-                154
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SON1": [
-            {
-              "doc": "SICAS_HW_Design_SON1",
-              "pages": [
-                242
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SON2": [
-            {
-              "doc": "SICAS_HW_Design_SON2",
-              "pages": [
-                112
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SPO1": [
-            {
-              "doc": "SICAS_HW_Design_SPO1",
-              "pages": [
-                149
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "SPO2": [
-            {
-              "doc": "SICAS_HW_Design_SPO2",
-              "pages": [
-                158
-              ],
-              "totalPagesFound": 1
-            }
-          ],
-          "YAN": [
-            {
-              "doc": "SICAS_HW_Design_YAN",
-              "pages": [
-                235
-              ],
-              "totalPagesFound": 1
-            }
-          ]
+          "SNU1": [],
+          "SNU2": [],
+          "SOL": [],
+          "SON1": [],
+          "SON2": [],
+          "SPO1": [],
+          "SPO2": [],
+          "YAN": []
         }
       },
       {
@@ -14835,6 +13187,7 @@
     "2026-09-30(S7): 도면-설비 매칭 정리 — ATOLOOP_CB SICAS·UPS_ATS_AVR_UNIT ATP 오매칭 항목 삭제, FTGS TX/RX1/RX2 보드에 궤도회로 접속도(SIN1·SIN2) 추가.",
     "남은 항목은 claude/s8_남은목록.json.",
     "2026-10-03(S12): C/B박스 4종 보드 이미지에 기계실 OT반 연결선(쓰는 단자만) 추가, 혼합형·센터패드 표현 기준 코멘트 추가.",
-    "2026-10-03(S11): 전 역 확인필요 도면 항목 198건 확정(S8 규칙: 핵심어 전 쪽 2회 이상·계통 일치). 남은 항목은 claude/s11_남은목록.json."
+    "2026-10-03(S11): 전 역 확인필요 도면 항목 198건 확정(S8 규칙: 핵심어 전 쪽 2회 이상·계통 일치). 남은 항목은 claude/s11_남은목록.json.",
+    "2026-10-03(S11): 반대 계통 오매칭 131건 삭제(같은 보드의 맞는 계통 항목이 같은 역·문서·쪽으로 이미 확정됨)."
   ]
 }
