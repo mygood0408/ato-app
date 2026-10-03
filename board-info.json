@@ -6523,22 +6523,191 @@
           "LZB700M [1]·[2] 각각: STELA3 출력 → FTGS Distributor → FTGS"
         ],
         "relatedDrawings": {
-          "SIN1": [],
-          "SIN2": [],
-          "EUL": [],
-          "GCD": [],
-          "GYO": [],
-          "HON": [],
-          "SCD": [],
-          "SNU1": [],
-          "SNU2": [],
-          "SOL": [],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
-          "YAN": []
-        }
+          "SIN1": [
+            {
+              "doc": "ATP_HW_Design_SIN1",
+              "pages": [
+                25,
+                120,
+                141,
+                221
+              ],
+              "confirmed": true
+            }
+          ],
+          "SIN2": [
+            {
+              "doc": "ATP_HW_Design_SIN2",
+              "pages": [
+                14,
+                94
+              ],
+              "confirmed": true
+            }
+          ],
+          "EUL": [
+            {
+              "doc": "ATP_HW_Design_EUL",
+              "pages": [
+                32,
+                92,
+                156,
+                164
+              ],
+              "confirmed": true
+            }
+          ],
+          "GCD": [
+            {
+              "doc": "ATP_HW_Design_GCD",
+              "pages": [
+                14,
+                78
+              ],
+              "confirmed": true
+            }
+          ],
+          "GYO": [
+            {
+              "doc": "ATP_HW_Design_GYO",
+              "pages": [
+                25,
+                73,
+                129,
+                137
+              ],
+              "confirmed": true
+            }
+          ],
+          "HON": [
+            {
+              "doc": "ATP_HW_Design_HON",
+              "pages": [
+                26,
+                80,
+                149,
+                157
+              ],
+              "confirmed": true
+            }
+          ],
+          "SCD": [
+            {
+              "doc": "ATP_HW_Design_SCD",
+              "pages": [
+                8,
+                26
+              ],
+              "confirmed": true
+            }
+          ],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                17,
+                102,
+                123,
+                197
+              ],
+              "confirmed": true
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                17,
+                102,
+                123,
+                197
+              ],
+              "confirmed": true
+            }
+          ],
+          "SOL": [
+            {
+              "doc": "ATP_HW_Design_SOL",
+              "pages": [
+                13,
+                67
+              ],
+              "confirmed": true
+            }
+          ],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                24,
+                66,
+                142,
+                150,
+                178,
+                252
+              ],
+              "confirmed": true
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                24,
+                66,
+                142,
+                150,
+                178,
+                252
+              ],
+              "confirmed": true
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                12,
+                61,
+                84,
+                179
+              ],
+              "confirmed": true
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                12,
+                61,
+                84,
+                179
+              ],
+              "confirmed": true
+            }
+          ],
+          "YAN": [
+            {
+              "doc": "ATP_HW_Design_YAN",
+              "pages": [
+                20,
+                101
+              ],
+              "confirmed": true
+            }
+          ]
+        },
+        "guidePages": [
+          {
+            "doc": "LZB_유지보수_매뉴얼",
+            "pages": [
+              116,
+              117
+            ],
+            "note": "사용자 지정(2026-10-03)"
+          }
+        ]
       },
       {
         "id": "LZB_SVK2102",
@@ -6620,22 +6789,221 @@
           "section": "LZB700M 각 보드별 기능 (p.99~113)"
         },
         "relatedDrawings": {
-          "SIN1": [],
-          "SIN2": [],
-          "EUL": [],
-          "GCD": [],
-          "GYO": [],
-          "HON": [],
-          "SCD": [],
-          "SNU1": [],
-          "SNU2": [],
-          "SOL": [],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
-          "YAN": []
-        }
+          "SIN1": [
+            {
+              "doc": "ATP_HW_Design_SIN1",
+              "pages": [
+                120,
+                125,
+                126,
+                221,
+                226,
+                227
+              ],
+              "confirmed": true
+            }
+          ],
+          "SIN2": [
+            {
+              "doc": "ATP_HW_Design_SIN2",
+              "pages": [
+                94,
+                99,
+                100
+              ],
+              "confirmed": true
+            }
+          ],
+          "EUL": [
+            {
+              "doc": "ATP_HW_Design_EUL",
+              "pages": [
+                156,
+                161,
+                162,
+                164,
+                169,
+                170
+              ],
+              "confirmed": true
+            }
+          ],
+          "GCD": [
+            {
+              "doc": "ATP_HW_Design_GCD",
+              "pages": [
+                78,
+                83,
+                84
+              ],
+              "confirmed": true
+            }
+          ],
+          "GYO": [
+            {
+              "doc": "ATP_HW_Design_GYO",
+              "pages": [
+                129,
+                134,
+                135,
+                137,
+                142,
+                143
+              ],
+              "confirmed": true
+            }
+          ],
+          "HON": [
+            {
+              "doc": "ATP_HW_Design_HON",
+              "pages": [
+                149,
+                154,
+                155,
+                157,
+                162,
+                163
+              ],
+              "confirmed": true
+            }
+          ],
+          "SCD": [
+            {
+              "doc": "ATP_HW_Design_SCD",
+              "pages": [
+                26,
+                31,
+                32
+              ],
+              "confirmed": true
+            }
+          ],
+          "SNU1": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                102,
+                107,
+                108,
+                197,
+                202,
+                203
+              ],
+              "confirmed": true
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "ATP_HW_Design_SNU",
+              "pages": [
+                102,
+                107,
+                108,
+                197,
+                202,
+                203
+              ],
+              "confirmed": true
+            }
+          ],
+          "SOL": [
+            {
+              "doc": "ATP_HW_Design_SOL",
+              "pages": [
+                67,
+                72,
+                73
+              ],
+              "confirmed": true
+            }
+          ],
+          "SON1": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                142,
+                147,
+                148,
+                150,
+                155,
+                156,
+                252,
+                257,
+                258
+              ],
+              "confirmed": true
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "ATP_HW_Design_SON",
+              "pages": [
+                142,
+                147,
+                148,
+                150,
+                155,
+                156,
+                252,
+                257,
+                258
+              ],
+              "confirmed": true
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                61,
+                66,
+                67,
+                179,
+                184,
+                185
+              ],
+              "confirmed": true
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "ATP_HW_Design_SPO",
+              "pages": [
+                61,
+                66,
+                67,
+                179,
+                184,
+                185
+              ],
+              "confirmed": true
+            }
+          ],
+          "YAN": [
+            {
+              "doc": "ATP_HW_Design_YAN",
+              "pages": [
+                101,
+                106,
+                107
+              ],
+              "confirmed": true
+            }
+          ]
+        },
+        "guidePages": [
+          {
+            "doc": "LZB_유지보수_매뉴얼",
+            "pages": [
+              103,
+              104,
+              105,
+              106,
+              107
+            ],
+            "note": "사용자 지정(2026-10-03)"
+          }
+        ]
       },
       {
         "id": "LZB_FAN",
@@ -7570,27 +7938,287 @@
           {
             "doc": "2호선_신호업무_지침서",
             "pages": [
-              18
+              11,
+              18,
+              26
             ],
-            "note": "페이지 제목 직접 확인 (2026-09-29 KB 검증)"
+            "note": "사용자 지정(2026-10-03)"
+          },
+          {
+            "doc": "FTGS_유지보수_매뉴얼",
+            "pages": [
+              16,
+              27
+            ],
+            "note": "사용자 지정(2026-10-03)"
           }
         ],
         "relatedDrawings": {
-          "SIN1": [],
-          "SIN2": [],
-          "EUL": [],
-          "GCD": [],
-          "GYO": [],
-          "HON": [],
-          "SCD": [],
-          "SNU1": [],
-          "SNU2": [],
-          "SOL": [],
-          "SON1": [],
-          "SON2": [],
-          "SPO1": [],
-          "SPO2": [],
-          "YAN": []
+          "SIN1": [
+            {
+              "doc": "SICAS_HW_Design_SIN1",
+              "pages": [
+                107,
+                108,
+                111,
+                112,
+                115,
+                116,
+                119,
+                120,
+                123,
+                124
+              ],
+              "confirmed": true
+            }
+          ],
+          "SIN2": [
+            {
+              "doc": "SICAS_HW_Design_SIN2",
+              "pages": [
+                34,
+                35,
+                38,
+                39,
+                42,
+                43,
+                46,
+                47
+              ],
+              "confirmed": true
+            }
+          ],
+          "EUL": [
+            {
+              "doc": "SICAS_HW_Design_EUL",
+              "pages": [
+                108,
+                109,
+                112,
+                113,
+                116,
+                117,
+                120,
+                121,
+                124,
+                125,
+                128,
+                129,
+                132,
+                133
+              ],
+              "confirmed": true
+            }
+          ],
+          "GCD": [
+            {
+              "doc": "SICAS_HW_Design_GCD",
+              "pages": [
+                179,
+                180,
+                183,
+                184,
+                187,
+                188,
+                191,
+                192
+              ],
+              "confirmed": true
+            }
+          ],
+          "GYO": [
+            {
+              "doc": "SICAS_HW_Design_GYO",
+              "pages": [
+                70,
+                71,
+                74,
+                75,
+                78,
+                79,
+                82,
+                83,
+                86,
+                87,
+                90,
+                91
+              ],
+              "confirmed": true
+            }
+          ],
+          "HON": [
+            {
+              "doc": "SICAS_HW_Design_HON",
+              "pages": [
+                93,
+                94,
+                97,
+                98,
+                101,
+                102,
+                105,
+                106,
+                109,
+                110,
+                113,
+                114,
+                117,
+                118
+              ],
+              "confirmed": true
+            }
+          ],
+          "SNU1": [
+            {
+              "doc": "SICAS_HW_Design_SNU1",
+              "pages": [
+                75,
+                76,
+                79,
+                80,
+                83,
+                84,
+                87,
+                88,
+                91,
+                92
+              ],
+              "confirmed": true
+            }
+          ],
+          "SNU2": [
+            {
+              "doc": "SICAS_HW_Design_SNU2",
+              "pages": [
+                40,
+                41,
+                45,
+                48,
+                49,
+                52,
+                53,
+                56,
+                57
+              ],
+              "confirmed": true
+            }
+          ],
+          "SOL": [
+            {
+              "doc": "SICAS_HW_Design_SOL",
+              "pages": [
+                78,
+                79,
+                82,
+                83,
+                86,
+                87
+              ],
+              "confirmed": true
+            }
+          ],
+          "SON1": [
+            {
+              "doc": "SICAS_HW_Design_SON1",
+              "pages": [
+                147,
+                148,
+                151,
+                152,
+                155,
+                156,
+                159,
+                160,
+                163,
+                164,
+                167,
+                168,
+                171,
+                172
+              ],
+              "confirmed": true
+            }
+          ],
+          "SON2": [
+            {
+              "doc": "SICAS_HW_Design_SON2",
+              "pages": [
+                34,
+                35,
+                38,
+                39,
+                42,
+                43,
+                46,
+                47
+              ],
+              "confirmed": true
+            }
+          ],
+          "SPO1": [
+            {
+              "doc": "SICAS_HW_Design_SPO1",
+              "pages": [
+                71,
+                72,
+                75,
+                76,
+                79,
+                80
+              ],
+              "confirmed": true
+            }
+          ],
+          "SPO2": [
+            {
+              "doc": "SICAS_HW_Design_SPO2",
+              "pages": [
+                71,
+                72,
+                75,
+                76,
+                79,
+                80,
+                83,
+                84,
+                87,
+                88,
+                91,
+                92
+              ],
+              "confirmed": true
+            }
+          ],
+          "YAN": [
+            {
+              "doc": "SICAS_HW_Design_YAN",
+              "pages": [
+                141,
+                142,
+                145,
+                146,
+                149,
+                150,
+                153,
+                154,
+                157,
+                158,
+                161,
+                162
+              ],
+              "confirmed": true
+            }
+          ],
+          "SCD": [
+            {
+              "doc": "SICAS_HW_Design_SCD",
+              "pages": [
+                27,
+                28
+              ],
+              "confirmed": true
+            }
+          ]
         }
       },
       {
@@ -9397,22 +10025,7 @@
         },
         "relatedDrawings": {
           "SIN1": [],
-          "SIN2": [
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                14,
-                20,
-                26,
-                27,
-                32,
-                107,
-                140
-              ],
-              "totalPagesFound": 7,
-              "confirmed": true
-            }
-          ],
+          "SIN2": [],
           "EUL": [],
           "GCD": [],
           "GYO": [],
@@ -9460,17 +10073,7 @@
         },
         "relatedDrawings": {
           "SIN1": [],
-          "SIN2": [
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                99,
-                107
-              ],
-              "totalPagesFound": 3,
-              "confirmed": true
-            }
-          ],
+          "SIN2": [],
           "EUL": [],
           "GCD": [],
           "GYO": [],
@@ -9481,15 +10084,7 @@
           "SOL": [],
           "SON1": [],
           "SON2": [],
-          "SPO1": [
-            {
-              "doc": "SICAS_HW_Design_SPO1",
-              "pages": [
-                184
-              ],
-              "confirmed": true
-            }
-          ],
+          "SPO1": [],
           "SPO2": [],
           "YAN": []
         },
@@ -9521,18 +10116,7 @@
         },
         "relatedDrawings": {
           "SIN1": [],
-          "SIN2": [
-            {
-              "doc": "SICAS_HW_Design_SIN2",
-              "pages": [
-                8,
-                99,
-                107
-              ],
-              "totalPagesFound": 3,
-              "confirmed": true
-            }
-          ],
+          "SIN2": [],
           "EUL": [],
           "GCD": [],
           "GYO": [],
@@ -9583,6 +10167,8 @@
     "2026-10-03(S11): 남은 확인필요 도면 항목 쪽 단위 판정 — 보드 라벨이 보이는 쪽만 남겨 177건 확정, 라벨 쪽 없거나 계통 불일치 262건 삭제.",
     "2026-10-03(S11): 2차 보강 — 구성개요 쪽·ventilator(팬)·UPS/IFC 개요 라벨 반영해 연결 39건 추가·기존 연결에 144쪽 추가, GF계전기 PCB↔AR계전기 연동 인터페이스 쪽 연결 제거(다른 장치).",
     "2026-10-03(S11): LZB_FAN — ATP 캐비닛 Disposition 도면의 Ventilator(팬) 표기 쪽 27쪽 연결 추가.",
-    "2026-10-03(S11): UPS_RECTIFIER_UNIT 구성개요 쪽 14쪽 연결 제거(개요에는 \"UPS messages\"만 있고 유닛 표기 없음, 이미지 확인)."
+    "2026-10-03(S11): UPS_RECTIFIER_UNIT 구성개요 쪽 14쪽 연결 제거(개요에는 \"UPS messages\"만 있고 유닛 표기 없음, 이미지 확인).",
+    "2026-10-03(S11): 기능·연결 기준 재검색 — LZB_SVK2402(ATP SV-24V 랙·±60V 인입 쪽), LZB_FTGS_DISTRIBUTOR(ATP→FTGS 캐비닛 연결도), FTGS_GF_RELAY_PCB(계전기 보드 S25533-B36-A7 쪽) 도면 연결 및 매뉴얼·지침서 쪽 연결. UPS_* 는 자료 없음으로 비움.",
+    "2026-10-03(S11): UPS_* 3개 보드 도면 연결 4건 비움(사용자 확인: 관련 자료 없음)."
   ]
 }
